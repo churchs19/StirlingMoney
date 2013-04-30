@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>имя учетной записи</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>Имя учетной записи не требуется.</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>счета</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>Добавьте учетную запись для начала</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>добавить учетную запись</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>добавить категорию</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>о</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>добавить</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>добавить учетную запись</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>Резервное копирование</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>депозит</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>доклады</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>Синхронизация</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>передача</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>снять</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>выписать чек</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>СТЕРЛИНГ ДЕНЬГИ</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>Резервное копирование</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>Ошибка резервного копирования базы данных: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>Пожалуйста, войдите в целях резервного копирования ваших данных или восстановить данные из SkyDrive.</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>В не подписано.</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>Ошибка при восстановлении базы данных: резервный файл поврежден или не является допустимой базой данных Стирлинг деньги.</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>Ошибка восстановления базы данных: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>Не удается найти существующий файл резервной копии для восстановления.</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>База данных успешно восстановлены.</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>Подписано.</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>Ошибка соединения с SkyDrive: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>Успешно резервное копирование базы данных.</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>Резервное копирование</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>сумма</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>имя</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>период</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>Дата начала</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>бюджет</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>Автомобиль</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>Законопроекты</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>Бизнес</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>Благотворительность</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>Одежда</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>Депозит</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>Развлечения</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>Питание</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>Здравоохранение</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>Дом</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>Прочее</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>имя категории</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>Имя категории не требуется.</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>Утилиты</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>Отдых</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>проверить</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>Удаление учетной записи</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>Вы уверены, что вы хотите удалить эту учетную запись и все его операции?</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>Удалить бюджет</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить этот бюджет?</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>Удалить цель</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>Вы уверены, что вы хотите удалить этой цели?</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>удалить</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>Удаление транзакции</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>Вы уверены, что вы хотите удалить эту сделку?</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>депозит</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>изменение учетной записи</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>редактировать</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>Учетная запись</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>сумма</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>имя</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>цели</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>Намеченная дата</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>Начальный баланс</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>Предупреждение: Недопустимые значения</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>ПИН, чтобы начать</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>Загрузка...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>Синхронизация...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>Загрузка...</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>Загрузка...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>Купить полную версию</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>СТЕРЛИНГ ДЕНЬГИ - ОТЧЕТЫ</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>восстановление</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>сохранить</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>Balance: {0}</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>Сервер недоступен</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>Ошибка синхронизации данных</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>Общий баланс</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>Учетная запись</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>сумма</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>проверить</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>местоположение</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>Примечания</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>Опубликовано</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>остаток</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>Загрузка...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>Транзакции не</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>Опубликовано баланс</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>Передача от</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>Трансфер из {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>передача</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>Передать</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>Трансфер в {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>Эта функциональность доступна только в полной версии.</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} Нажмите ниже кнопку Купить для того чтобы приобрести полную версию.</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>В пробном режиме допускается только десять (10) транзакций за счет.</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>В пробном режиме допускаются только два (2) счета.</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>судебное разбирательство</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>Неизвестный</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>Открепить от начала</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>Снятие</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>бюджеты</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>типы диаграмм</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>Фактические</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>Параметры</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>Бюджет</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>Диапазон дат</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>Расходы</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>Доход</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>Чистый доход</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>Сортировка списка учетных записей</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Параметры</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>Просмотрите этот app</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>Обновление базы данных</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>Подтверждение пароля</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>пароль</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>использовать пароль</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>пароль</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+</root>

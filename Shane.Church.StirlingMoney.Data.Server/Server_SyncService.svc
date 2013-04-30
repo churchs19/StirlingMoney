@@ -1,0 +1,1 @@
+<%@ ServiceHost Language="cs" Service="Shane.Church.StirlingMoney.Data.Sync.Server_SyncService" CodeBehind="Server_SyncService.svc.cs" Factory="Microsoft.Synchronization.Services.SyncServiceHostFactory, Microsoft.Synchronization.Services, Version=1.0.0.0, Culture=neutral" %>

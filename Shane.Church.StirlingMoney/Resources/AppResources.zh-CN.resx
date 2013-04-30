@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>帐户名称</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>帐户名称是必需的。</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>帐户</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>添加帐户要开始</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>添加帐户</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>添加类别</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>添加帐户</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>备份</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>存款</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>报告</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>同步</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>转让</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>撤回</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>写检查</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>斯特林钱</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>备份</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>备份数据库 {0} 的错误</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>请登录以备份您的数据或从 skydrive 来恢复您的数据。</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>未签名。</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>还原数据库时出错： 备份文件已损坏或不是有效的斯特林钱数据库。</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>错误恢复数据库 {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>无法找到现有的备份文件来恢复。</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>成功还原的数据库。</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>在签署。</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>SkyDrive:: {0} 连接时出错</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>成功备份的数据库。</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>备份</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>金额</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>结束日期</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>期</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>开始日期</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>财政预算案</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>汽车</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>条例草案</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>业务</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>慈善机构</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>服装</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>存款</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>娱乐</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>食品</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>健康</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>杂项</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>类别名称</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>类别名称是必需的。</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>实用程序</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>度假</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>检查</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>删除帐户</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>确实要删除此帐户，并且所有交易吗？</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>删除预算</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>确实要删除此预算吗？</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>删除目标</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>确实要删除这个目标吗？</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>删除事务</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>确实要删除此笔交易吗？</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>存款</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>编辑帐户</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>帐户</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>金额</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>目标</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>目标日期</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>初始的平衡</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>警告： 无效的值</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>要启动的 pin</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>正在下载...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>正在同步...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>正在加载...</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>上传 … …</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>购买完整版本</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>斯特林钱-报告</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>还原</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>Balance:: {0}</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>服务器不可用</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>数据同步错误</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>总余额</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>帐户</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>金额</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>检查</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>过帐</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>可用余额</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>正在加载...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>无交易</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>已过帐的平衡</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>从转移</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>从 {0} 转移</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>转让</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>转到</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>转移到 {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>此功能才可用的完整版本。</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} 以购买完整版本，请单击购买按钮波纹管。</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>在试用模式允许每个帐户只十 10 事务。</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>只有两个 2 帐户允许在试用模式。</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>审判</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>从开始取消固定</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>预算</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>图表类型</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>实际</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>金额</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>财政预算案</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>日期范围</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>费用</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>收入</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>净收入</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>帐户列表排序依据</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>回顾这个应用程序</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>更新数据库</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>使用密码</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+</root>

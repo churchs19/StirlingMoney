@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7CEBA024-137A-47B9-8BB8-76059E8C5449}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Shane.Church.StirlingMoney</RootNamespace>
+    <AssemblyName>Shane.Church.StirlingMoney.Personal</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>Shane.Church.StirlingMoney.Personal.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>Shane.Church.StirlingMoney.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;PERSONAL</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;PERSONAL</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AmCharts.Windows.QuickCharts.WP">
+      <HintPath>..\..\..\Projects\amCharts-Quick-Charts\QuickChartsWP\Bin\Release\AmCharts.Windows.QuickCharts.WP.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Phone.Audio">
+      <HintPath>..\packages\Coding4Fun.Phone.Audio.1.6.1\lib\sl4-windowsphone71\Coding4Fun.Phone.Audio.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Phone.Controls">
+      <HintPath>..\packages\Coding4Fun.Phone.Controls.1.6.1\lib\sl4-windowsphone71\Coding4Fun.Phone.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Phone.Controls.Toolkit">
+      <HintPath>..\packages\Coding4Fun.Phone.Controls.TimeSpan.1.6.1\lib\sl4-windowsphone71\Coding4Fun.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Phone.Net">
+      <HintPath>..\packages\Coding4Fun.Phone.Net.1.6.1\lib\sl4-windowsphone71\Coding4Fun.Phone.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Phone.Storage">
+      <HintPath>..\packages\Coding4Fun.Phone.Storage.1.6.1\lib\sl4-windowsphone71\Coding4Fun.Phone.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Advertising.Mobile, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Advertising.Mobile.UI, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Live, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Live.Controls, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <HintPath>..\packages\SilverlightToolkitWP.4.2012.6.25\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Microsoft.Synchronization.ClientServices">
+      <HintPath>..\..\..\synfxopensource\C#\WP7Client\Bin\Release\Microsoft.Synchronization.ClientServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+    <Reference Include="mscorlib.extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shane.Church.StirlingMoney\AddEditAccount.xaml.cs">
+      <Link>AddEditAccount.xaml.cs</Link>
+      <DependentUpon>AddEditAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\AddEditBudget.xaml.cs">
+      <Link>AddEditBudget.xaml.cs</Link>
+      <DependentUpon>AddEditBudget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\AddEditCategory.xaml.cs">
+      <Link>AddEditCategory.xaml.cs</Link>
+      <DependentUpon>AddEditCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\AddEditGoal.xaml.cs">
+      <Link>AddEditGoal.xaml.cs</Link>
+      <DependentUpon>AddEditGoal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\AddEditTransaction.xaml.cs">
+      <Link>AddEditTransaction.xaml.cs</Link>
+      <DependentUpon>AddEditTransaction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\App.xaml.cs">
+      <Link>App.xaml.cs</Link>
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\Categories.xaml.cs">
+      <Link>Categories.xaml.cs</Link>
+      <DependentUpon>Categories.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\ChartColors.cs">
+      <Link>ChartColors.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\LocalizedStrings.cs">
+      <Link>LocalizedStrings.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\Login.xaml.cs">
+      <Link>Login.xaml.cs</Link>
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\MainPage.xaml.cs">
+      <Link>MainPage.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\Reports.xaml.cs">
+      <Link>Reports.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\Resources\AppResources.Designer.cs">
+      <Link>Resources\AppResources.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\Settings.xaml.cs">
+      <Link>Settings.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\SkyDrive.xaml.cs">
+      <Link>SkyDrive.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney\Transactions.xaml.cs">
+      <Link>Transactions.xaml.cs</Link>
+    </Compile>
+    <Compile Include="AgentManagement.cs" />
+    <Compile Include="AgentManagementException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Shane.Church.StirlingMoney\packages.config">
+      <Link>packages.config</Link>
+    </None>
+    <None Include="copyifnewer.bat" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\Shane.Church.StirlingMoney\AddEditAccount.xaml">
+      <Link>AddEditAccount.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney\AddEditBudget.xaml">
+      <Link>AddEditBudget.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney\AddEditCategory.xaml">
+      <Link>AddEditCategory.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney\AddEditGoal.xaml">
+      <Link>AddEditGoal.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney\AddEditTransaction.xaml">
+      <Link>AddEditTransaction.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney\App.xaml">
+      <Link>App.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney\Categories.xaml">
+      <Link>Categories.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney\Login.xaml">
+      <Link>Login.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney\MainPage.xaml">
+      <Link>MainPage.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney\Reports.xaml">
+      <Link>Reports.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney\Settings.xaml">
+      <Link>Settings.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney\SkyDrive.xaml">
+      <Link>SkyDrive.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney\Transactions.xaml">
+      <Link>Transactions.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Shane.Church.StirlingMoney\ApplicationIcon.png">
+      <Link>ApplicationIcon.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Background.png">
+      <Link>Background.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\SplashScreenImage.jpg">
+      <Link>SplashScreenImage.jpg</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\About.png">
+      <Link>Images\About.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Account.png">
+      <Link>Images\Account.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Accounts.png">
+      <Link>Images\Accounts.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\AccountTileBack.png">
+      <Link>Images\AccountTileBack.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\AccountTileFront.png">
+      <Link>Images\AccountTileFront.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Add.png">
+      <Link>Images\Add.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\AddAccount.png">
+      <Link>Images\AddAccount.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\AddCategory.png">
+      <Link>Images\AddCategory.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Background.png">
+      <Link>Images\Background.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\BackupToCloud.png">
+      <Link>Images\BackupToCloud.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Cancel.dark.png">
+      <Link>Images\Cancel.dark.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Cancel.light.png">
+      <Link>Images\Cancel.light.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Categories.png">
+      <Link>Images\Categories.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Deposit.png">
+      <Link>Images\Deposit.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Reports.png">
+      <Link>Images\Reports.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Save.png">
+      <Link>Images\Save.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Search.dark.active.png">
+      <Link>Images\Search.dark.active.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Search.dark.png">
+      <Link>Images\Search.dark.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Search.light.active.png">
+      <Link>Images\Search.light.active.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Search.light.png">
+      <Link>Images\Search.light.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Synchronize.png">
+      <Link>Images\Synchronize.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Transfer.png">
+      <Link>Images\Transfer.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\Withdraw.png">
+      <Link>Images\Withdraw.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Images\WriteCheck.png">
+      <Link>Images\WriteCheck.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\Release.WMAppManifest.xml" />
+    <None Include="Properties\Debug.WMAppManifest.xml" />
+    <Content Include="..\Shane.Church.StirlingMoney\Toolkit.Content\ApplicationBar.Cancel.png">
+      <Link>Toolkit.Content\ApplicationBar.Cancel.png</Link>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Toolkit.Content\ApplicationBar.Check.png">
+      <Link>Toolkit.Content\ApplicationBar.Check.png</Link>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Toolkit.Content\ApplicationBar.Delete.png">
+      <Link>Toolkit.Content\ApplicationBar.Delete.png</Link>
+    </Content>
+    <Content Include="..\Shane.Church.StirlingMoney\Toolkit.Content\ApplicationBar.Select.png">
+      <Link>Toolkit.Content\ApplicationBar.Select.png</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.cs.resx">
+      <Link>Resources\AppResources.cs.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.da.resx">
+      <Link>Resources\AppResources.da.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.de.resx">
+      <Link>Resources\AppResources.de.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.el.resx">
+      <Link>Resources\AppResources.el.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.es.resx">
+      <Link>Resources\AppResources.es.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.fi.resx">
+      <Link>Resources\AppResources.fi.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.fr.resx">
+      <Link>Resources\AppResources.fr.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.hu.resx">
+      <Link>Resources\AppResources.hu.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.id.resx">
+      <Link>Resources\AppResources.id.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.it.resx">
+      <Link>Resources\AppResources.it.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.ja.resx">
+      <Link>Resources\AppResources.ja.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.ko.resx">
+      <Link>Resources\AppResources.ko.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.nl.resx">
+      <Link>Resources\AppResources.nl.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.no.resx">
+      <Link>Resources\AppResources.no.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.pl.resx">
+      <Link>Resources\AppResources.pl.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.pt.resx">
+      <Link>Resources\AppResources.pt.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.resx">
+      <Link>Resources\AppResources.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.ru.resx">
+      <Link>Resources\AppResources.ru.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.sv.resx">
+      <Link>Resources\AppResources.sv.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.zh-CN.resx">
+      <Link>Resources\AppResources.zh-CN.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney\Resources\AppResources.zh-TW.resx">
+      <Link>Resources\AppResources.zh-TW.resx</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Agent\Shane.Church.StirlingMoney.Agent.csproj">
+      <Project>{383E7E07-5A0D-47D8-8CE6-284BB44EA08A}</Project>
+      <Name>Shane.Church.StirlingMoney.Agent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Data.Client\Shane.Church.StirlingMoney.Data.Sync.csproj">
+      <Project>{9F565245-1A04-4855-ADD2-030B972FDA95}</Project>
+      <Name>Shane.Church.StirlingMoney.Data.Sync</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Tiles\Shane.Church.StirlingMoney.Tiles.csproj">
+      <Project>{A55BEF31-41F6-4287-8F66-394B329714D5}</Project>
+      <Name>Shane.Church.StirlingMoney.Tiles</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.ViewModels.Personal\Shane.Church.StirlingMoney.ViewModels.Personal.csproj">
+      <Project>{27355E0C-DDB9-4F6E-81A7-D6DB163780CD}</Project>
+      <Name>Shane.Church.StirlingMoney.ViewModels.Personal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shane.Church.Utility\Shane.Church.Utility.csproj">
+      <Project>{4CC9A946-A01F-4940-A908-B394BCF95BD9}</Project>
+      <Name>Shane.Church.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+  <PropertyGroup>
+    <PreBuildEvent>"$(ProjectDir)\copyifnewer.bat" "$(ProjectDir)properties\$(ConfigurationName).WMAppManifest.xml" "$(ProjectDir)properties\WMAppManifest.xml"</PreBuildEvent>
+  </PropertyGroup>
+</Project>

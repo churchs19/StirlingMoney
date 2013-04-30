@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>Nombre de cuenta es requerido.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>Se necesita cuenta.</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>Añadir cuenta</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>Añadir presupuesto</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>Añadir meta</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>{0} restante</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>Todos los gastos</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>Cantidad es necesaria y debe ser mayor que 0.</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>Fecha final debe ser después de la fecha de inicio.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>Fecha de finalización es requerida durante períodos de presupuesto personalizado.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>Mensual</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>Nombre es necesario.</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>Semanal</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>Anual</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>por categoría</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>historia</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>Se requiere nombre de categoría.</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>verificación</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} día de retraso</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} días restantes</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} días vencidos</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} días restantes</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>depósito</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>Editar cuenta</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>Editar presupuesto</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>Editar objetivo</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>Se necesita cuenta.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>logrado!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>Cantidad debe ser mayor que el saldo de la cuenta seleccionada.</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>Fecha de destino debe ser después de hoy.</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>Nombre es necesario.</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>Ubicación es necesario.</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(sin categoría)</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>Otros</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>PIN para iniciar</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>por orden alfabético</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>utilizado con más frecuencia</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>Confirmar que contraseña es necesaria.</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>Contraseña debe coincidir con Confirmar contraseña.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>Se requiere contraseña.</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>Transferencia de</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>Transferencia de {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>transferencia</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>Transferir a</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>Transferir a {0}</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} Pulse el bramido del botón de compra para adquirir la versión completa.</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>desconocido</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>liberar desde Inicio</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>retirada</value>
+  </data>
+</root>

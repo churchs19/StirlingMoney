@@ -1,0 +1,9 @@
+packages
+bin
+obj
+_UpgradeReport_Files
+*.user
+*.vspscc
+*.suo
+/UpgradeLog.XML
+/UpgradeLog.htm
