@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A28A5353-AFBB-4F9E-A1AA-1C9B49523028}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Shane.Church.Utility.Core</RootNamespace>
+    <AssemblyName>Shane.Church.Utility.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile104</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <SupportedCultures>ar%3bbg%3bca%3bzh-CN%3bzh-TW%3bcs%3bda%3bnl%3bet%3bfi%3bfr%3bde%3bel%3bhe%3bhi%3bhu%3bid%3bit%3bja%3bko%3blv%3blt%3bms%3bno%3bfa%3bpl%3bpt%3bro%3bru%3bsk%3bsl%3bes%3bsv%3bth%3btr%3buk%3bvi</SupportedCultures>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <EmbeddedResource Include="Resources\UtilityResources.ar.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.bg.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.ca.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.cs.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.da.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.de.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.el.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.es.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.et.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.fa.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.fi.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.fr.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.he.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.hi.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.hu.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.id.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.it.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.ja.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.ko.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.lt.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.lv.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.ms.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.nl.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.no.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.pl.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.pt.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UtilityResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\UtilityResources.ro.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.ru.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.sk.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.sl.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.sv.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.th.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.tr.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.uk.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.vi.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.zh-CHS.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.zh-CN.resx" />
+    <EmbeddedResource Include="Resources\UtilityResources.zh-TW.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Command\ActionCompleteEventHandler.cs" />
+    <Compile Include="Command\AsyncRelayCommand.cs" />
+    <Compile Include="Command\AsyncRelayCommandGeneric.cs" />
+    <Compile Include="Command\IExecuteWithObject.cs" />
+    <Compile Include="Command\IExecuteWithObjectAndResult.cs" />
+    <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Command\RelayCommandGeneric.cs" />
+    <Compile Include="Command\WeakAction.cs" />
+    <Compile Include="Command\WeakActionGeneric.cs" />
+    <Compile Include="Command\WeakFunc.cs" />
+    <Compile Include="Command\WeakFuncGeneric.cs" />
+    <Compile Include="Extensions\BindingDefinition.cs" />
+    <Compile Include="Extensions\InterfaceTypeDefinition.cs" />
+    <Compile Include="Extensions\RadianMathExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="ObservableObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\UtilityResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UtilityResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ValidationException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\portable-net40+sl4+win8+wp71\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\portable-net40+sl4+win8+wp71\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.3\lib\portable-net40+sl4+win8+wp71\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.3\lib\portable-net40+sl4+win8+wp71\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.3\lib\portable-net40+sl4+win8+wp71\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,8 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
 
 namespace Shane.Church.StirlingMoney.Data.v2
 {
@@ -11,7 +10,7 @@ namespace Shane.Church.StirlingMoney.Data.v2
 	{
 		public Goal()
 		{
-		
+
 		}
 
 		private Guid _goalId;
@@ -117,9 +116,11 @@ namespace Shane.Church.StirlingMoney.Data.v2
 			}
 		}
 
+#pragma warning disable 0169
 		// Version column aids update performance.
 		[Column(IsVersion = true)]
 		private Binary _version;
+#pragma warning restore 0169
 
 		#region INotifyPropertyChanged Members
 

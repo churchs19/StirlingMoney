@@ -1,8 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
 
 namespace Shane.Church.StirlingMoney.Data.v2
 {
@@ -31,7 +30,7 @@ namespace Shane.Church.StirlingMoney.Data.v2
 		}
 
 		private string _budgetName;
-		[Column(CanBeNull=false)]
+		[Column(CanBeNull = false)]
 		public string BudgetName
 		{
 			get { return _budgetName; }
@@ -47,7 +46,7 @@ namespace Shane.Church.StirlingMoney.Data.v2
 		}
 
 		private double _budgetAmount;
-		[Column(CanBeNull=false)]
+		[Column(CanBeNull = false)]
 		public double BudgetAmount
 		{
 			get { return _budgetAmount; }
@@ -85,7 +84,7 @@ namespace Shane.Church.StirlingMoney.Data.v2
 		/// 2 = Yearly
 		/// 3 = Custom
 		/// </summary>
-		[Column(CanBeNull=false)]
+		[Column(CanBeNull = false)]
 		public long BudgetPeriod
 		{
 			get { return _budgetPeriod; }
@@ -101,7 +100,7 @@ namespace Shane.Church.StirlingMoney.Data.v2
 		}
 
 		private DateTime _startDate;
-		[Column(CanBeNull=false)]
+		[Column(CanBeNull = false)]
 		public DateTime StartDate
 		{
 			get { return _startDate; }
@@ -117,7 +116,7 @@ namespace Shane.Church.StirlingMoney.Data.v2
 		}
 
 		private DateTime? _endDate;
-		[Column(CanBeNull=true)]
+		[Column(CanBeNull = true)]
 		public DateTime? EndDate
 		{
 			get { return _endDate; }
@@ -132,9 +131,11 @@ namespace Shane.Church.StirlingMoney.Data.v2
 			}
 		}
 
+#pragma warning disable 0169
 		// Version column aids update performance.
 		[Column(IsVersion = true)]
 		private Binary _version;
+#pragma warning restore 0169
 
 		public DateTime CurrentPeriodStart
 		{

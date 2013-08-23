@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Linq;
+using System.ComponentModel;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
+using System.Linq;
 
 
 namespace Shane.Church.StirlingMoney.Data.v2
@@ -21,7 +20,7 @@ namespace Shane.Church.StirlingMoney.Data.v2
 
 		private Guid _accountId;
 		[Column(IsPrimaryKey = true, CanBeNull = false, DbType = "UNIQUEIDENTIFIER NOT NULL")]
-		public Guid AccountId 
+		public Guid AccountId
 		{
 			get { return _accountId; }
 			set
@@ -67,9 +66,11 @@ namespace Shane.Church.StirlingMoney.Data.v2
 			}
 		}
 
+#pragma warning disable 0169
 		// Version column aids update performance.
 		[Column(IsVersion = true)]
 		private Binary _version;
+#pragma warning restore 0169
 
 		private EntitySet<Transaction> _transactions;
 

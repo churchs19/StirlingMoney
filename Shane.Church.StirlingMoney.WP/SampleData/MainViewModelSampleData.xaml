@@ -1,0 +1,82 @@
+<ViewModels:MainViewModel xmlns:ViewModels="clr-namespace:Shane.Church.StirlingMoney.Core.ViewModels;assembly=Shane.Church.StirlingMoney.Core" xmlns:System="clr-namespace:System;assembly=mscorlib">
+	<ViewModels:MainViewModel.Accounts>
+		<ViewModels:AccountListViewModel HasData="True" TotalBalance="796.6">
+			<ViewModels:AccountListViewModel.Accounts>
+				<ViewModels:AccountTileViewModel AccountName="Maecenas curabitur cras nam" AccountBalance="272.27" PinMenuText="Aliquam vestibulum class aenean mauris">
+					<ViewModels:AccountTileViewModel.AccountId>
+						<System:Guid/>
+					</ViewModels:AccountTileViewModel.AccountId>
+				</ViewModels:AccountTileViewModel>
+				<ViewModels:AccountTileViewModel AccountName="Praesent integer" AccountBalance="554.21" PinMenuText="Adipiscing sed">
+					<ViewModels:AccountTileViewModel.AccountId>
+						<System:Guid/>
+					</ViewModels:AccountTileViewModel.AccountId>
+				</ViewModels:AccountTileViewModel>
+				<ViewModels:AccountTileViewModel AccountName="Quisque curae accumsan duis" AccountBalance="540.63" PinMenuText="Phasellus nunc consequat donec dis">
+					<ViewModels:AccountTileViewModel.AccountId>
+						<System:Guid/>
+					</ViewModels:AccountTileViewModel.AccountId>
+				</ViewModels:AccountTileViewModel>
+				<ViewModels:AccountTileViewModel AccountName="Convallis vivamus dignissim" AccountBalance="843.96" PinMenuText="Nullam est amet">
+					<ViewModels:AccountTileViewModel.AccountId>
+						<System:Guid/>
+					</ViewModels:AccountTileViewModel.AccountId>
+				</ViewModels:AccountTileViewModel>
+				<ViewModels:AccountTileViewModel AccountName="Aliquam parturient hac" AccountBalance="186.08" PinMenuText="Etiam bibendum elementum leo">
+					<ViewModels:AccountTileViewModel.AccountId>
+						<System:Guid/>
+					</ViewModels:AccountTileViewModel.AccountId>
+				</ViewModels:AccountTileViewModel>
+				<ViewModels:AccountTileViewModel AccountName="Aptent facilisis aliquet ante" AccountBalance="191.96" PinMenuText="Auctor dictumst arcu fusce blandit">
+					<ViewModels:AccountTileViewModel.AccountId>
+						<System:Guid/>
+					</ViewModels:AccountTileViewModel.AccountId>
+				</ViewModels:AccountTileViewModel>
+				<ViewModels:AccountTileViewModel AccountName="Mus nec" AccountBalance="837.31" PinMenuText="Vestibulum non per sed">
+					<ViewModels:AccountTileViewModel.AccountId>
+						<System:Guid/>
+					</ViewModels:AccountTileViewModel.AccountId>
+				</ViewModels:AccountTileViewModel>
+				<ViewModels:AccountTileViewModel AccountName="Lorem congue diam" AccountBalance="913.81" PinMenuText="Commodo eget eleifend vestibulum">
+					<ViewModels:AccountTileViewModel.AccountId>
+						<System:Guid/>
+					</ViewModels:AccountTileViewModel.AccountId>
+				</ViewModels:AccountTileViewModel>
+				<ViewModels:AccountTileViewModel AccountName="Conubia elit" AccountBalance="427.28" PinMenuText="Sem adipiscing enim fermentum cubilia">
+					<ViewModels:AccountTileViewModel.AccountId>
+						<System:Guid/>
+					</ViewModels:AccountTileViewModel.AccountId>
+				</ViewModels:AccountTileViewModel>
+				<ViewModels:AccountTileViewModel AccountName="Facilisi erat" AccountBalance="414.69" PinMenuText="Eros morbi cursus fringilla habitasse">
+					<ViewModels:AccountTileViewModel.AccountId>
+						<System:Guid/>
+					</ViewModels:AccountTileViewModel.AccountId>
+				</ViewModels:AccountTileViewModel>
+			</ViewModels:AccountListViewModel.Accounts>
+		</ViewModels:AccountListViewModel>
+	</ViewModels:MainViewModel.Accounts>
+	<ViewModels:MainViewModel.Budgets>
+		<ViewModels:BudgetSummaryViewModel/>
+		<ViewModels:BudgetSummaryViewModel/>
+		<ViewModels:BudgetSummaryViewModel/>
+		<ViewModels:BudgetSummaryViewModel/>
+		<ViewModels:BudgetSummaryViewModel/>
+		<ViewModels:BudgetSummaryViewModel/>
+		<ViewModels:BudgetSummaryViewModel/>
+		<ViewModels:BudgetSummaryViewModel/>
+		<ViewModels:BudgetSummaryViewModel/>
+		<ViewModels:BudgetSummaryViewModel/>
+	</ViewModels:MainViewModel.Budgets>
+	<ViewModels:MainViewModel.Goals>
+		<ViewModels:GoalSummaryViewModel/>
+		<ViewModels:GoalSummaryViewModel/>
+		<ViewModels:GoalSummaryViewModel/>
+		<ViewModels:GoalSummaryViewModel/>
+		<ViewModels:GoalSummaryViewModel/>
+		<ViewModels:GoalSummaryViewModel/>
+		<ViewModels:GoalSummaryViewModel/>
+		<ViewModels:GoalSummaryViewModel/>
+		<ViewModels:GoalSummaryViewModel/>
+		<ViewModels:GoalSummaryViewModel/>
+	</ViewModels:MainViewModel.Goals>
+</ViewModels:MainViewModel>

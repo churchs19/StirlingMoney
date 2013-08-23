@@ -261,6 +261,7 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config" />
     <None Include="Properties\Debug.WMAppManifest.xml" />
     <None Include="Properties\Release.WMAppManifest.xml" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
