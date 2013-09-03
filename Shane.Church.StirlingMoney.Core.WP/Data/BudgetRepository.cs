@@ -1,44 +1,62 @@
 ﻿using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.StirlingMoney.Data.v3;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.Data
 {
 	public class BudgetRepository : Core.Data.IRepository<Core.Data.Budget>
 	{
-		Shane.Church.StirlingMoney.Data.v3.StirlingMoneyDataContext _context;
+		StirlingMoneyDataContext _context;
 
 		public BudgetRepository()
 		{
-			_context = KernelService.Kernel.Get<Shane.Church.StirlingMoney.Data.v3.StirlingMoneyDataContext>();
+			_context = KernelService.Kernel.Get<StirlingMoneyDataContext>();
 		}
 
 		public IQueryable<Core.Data.Budget> GetAllEntries(bool includeDeleted = false)
 		{
-			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
+			lock (StirlingMoneyDataContext.LockObject)
 			{
 				if (includeDeleted)
-					return _context.Budgets.Select(it => it.ToCoreBudget());
+					return _context.Budgets.ToList().Select(it => it.ToCoreBudget()).AsQueryable();
 				else
-					return _context.Budgets.Where(it => !it.IsDeleted.HasValue || (it.IsDeleted.HasValue && it.IsDeleted == false)).Select(it => it.ToCoreBudget());
+					return _context.Budgets.Where(it => !it.IsDeleted.HasValue || (it.IsDeleted.HasValue && it.IsDeleted == false)).ToList().Select(it => it.ToCoreBudget()).AsQueryable();
 			}
+		}
+
+		public Task<IQueryable<Core.Data.Budget>> GetAllEntriesAsync(bool includeDeleted = false)
+		{
+			return Task.Factory.StartNew<IQueryable<Core.Data.Budget>>(() =>
+				{
+					return GetAllEntries(includeDeleted);
+				});
 		}
 
 		public IQueryable<Core.Data.Budget> GetFilteredEntries(System.Linq.Expressions.Expression<Func<Core.Data.Budget, bool>> filter, bool includeDeleted = false)
 		{
-			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
+			lock (StirlingMoneyDataContext.LockObject)
 			{
 				var filterDelegate = filter.Compile();
-				var allResults = _context.Budgets.Select(it => it.ToCoreBudget()).ToList();
+				var allResults = _context.Budgets.ToList().Select(it => it.ToCoreBudget());
 				var results = allResults.Where(it => includeDeleted ? filterDelegate(it) : filterDelegate(it) && (!it.IsDeleted.HasValue || (it.IsDeleted.HasValue && !it.IsDeleted.Value))).ToList();
 				return results.AsQueryable();
 			}
 		}
 
+		public Task<IQueryable<Core.Data.Budget>> GetFilteredEntriesAsync(System.Linq.Expressions.Expression<Func<Core.Data.Budget, bool>> filter, bool includeDeleted = false)
+		{
+			return Task.Factory.StartNew<IQueryable<Core.Data.Budget>>(() =>
+			{
+				return GetFilteredEntries(filter, includeDeleted);
+			});
+		}
+
 		public void DeleteEntry(Core.Data.Budget entry, bool hardDelete = false)
 		{
-			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
+			lock (StirlingMoneyDataContext.LockObject)
 			{
 				var pEntry = _context.Budgets.Where(it => it.BudgetId == entry.BudgetId).FirstOrDefault();
 				if (pEntry != null)
@@ -55,11 +73,19 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			}
 		}
 
+		public Task DeleteEntryAsync(Core.Data.Budget entry, bool hardDelete = false)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				DeleteEntry(entry, hardDelete);
+			});
+		}
+
 		public Core.Data.Budget AddOrUpdateEntry(Core.Data.Budget entry)
 		{
 			if (entry.BudgetAmount != 0 && !string.IsNullOrWhiteSpace(entry.BudgetName))
 			{
-				lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
+				lock (StirlingMoneyDataContext.LockObject)
 				{
 					var item = _context.Budgets.Where(it => it.BudgetId == entry.BudgetId).FirstOrDefault();
 					if (item == null)
@@ -86,6 +112,14 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				}
 			}
 			return entry;
+		}
+
+		public Task<Core.Data.Budget> AddOrUpdateEntryAsync(Core.Data.Budget entry)
+		{
+			return Task.Factory.StartNew<Core.Data.Budget>(() =>
+			{
+				return AddOrUpdateEntry(entry);
+			});
 		}
 	}
 

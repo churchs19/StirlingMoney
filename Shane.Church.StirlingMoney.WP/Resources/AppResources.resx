@@ -531,4 +531,7 @@
   <data name="ResourceLanguage" xml:space="preserve">
     <value>en</value>
   </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>save</value>
+  </data>
 </root>

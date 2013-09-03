@@ -1,16 +1,20 @@
 ﻿using GalaSoft.MvvmLight;
+using Shane.Church.StirlingMoney.Core.Data;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class AccountListViewModel : ObservableObject
 	{
-		public AccountListViewModel()
+		private IRepository<Account> _accountRepository;
+
+		public AccountListViewModel(IRepository<Account> accountRepository)
 		{
+			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
+			_accountRepository = accountRepository;
 			_accounts = new ObservableCollection<AccountTileViewModel>();
 			_accounts.CollectionChanged += (s, e) =>
 			{
@@ -20,6 +24,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			};
 		}
 
+		private bool _accountsLoaded = false;
 		private ObservableCollection<AccountTileViewModel> _accounts;
 		public ObservableCollection<AccountTileViewModel> Accounts
 		{
@@ -50,8 +55,17 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public void LoadData()
+		public async Task LoadData(bool forceUpdate = false)
 		{
+			if (!_accountsLoaded || forceUpdate)
+			{
+				var entries = await _accountRepository.GetAllEntriesAsync();
+				foreach (var a in entries.Select(it => new AccountTileViewModel(it)))
+				{
+					Accounts.Add(a);
+				}
+				_accountsLoaded = true;
+			}
 		}
 	}
 }

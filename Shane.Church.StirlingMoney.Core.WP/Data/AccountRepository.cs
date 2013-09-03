@@ -2,6 +2,7 @@
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.Data
 {
@@ -19,9 +20,9 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
 			{
 				if (includeDeleted)
-					return _context.Accounts.Select(it => it.ToCoreAccount());
+					return _context.Accounts.ToList().Select(it => it.ToCoreAccount()).AsQueryable();
 				else
-					return _context.Accounts.Where(it => !it.IsDeleted.HasValue || (it.IsDeleted.HasValue && it.IsDeleted == false)).Select(it => it.ToCoreAccount());
+					return _context.Accounts.Where(it => !it.IsDeleted.HasValue || (it.IsDeleted.HasValue && it.IsDeleted == false)).ToList().Select(it => it.ToCoreAccount()).AsQueryable();
 			}
 		}
 
@@ -30,7 +31,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
 			{
 				var filterDelegate = filter.Compile();
-				var allResults = _context.Accounts.Select(it => it.ToCoreAccount()).ToList();
+				var allResults = _context.Accounts.ToList().Select(it => it.ToCoreAccount());
 				var results = allResults.Where(it => includeDeleted ? filterDelegate(it) : filterDelegate(it) && (!it.IsDeleted.HasValue || (it.IsDeleted.HasValue && !it.IsDeleted.Value))).ToList();
 				return results.AsQueryable();
 			}
@@ -82,6 +83,39 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				}
 			}
 			return entry;
+		}
+
+
+		public Task<IQueryable<Core.Data.Account>> GetAllEntriesAsync(bool includeDeleted = false)
+		{
+			return Task.Factory.StartNew<IQueryable<Core.Data.Account>>(() =>
+			{
+				return GetAllEntries(includeDeleted);
+			});
+		}
+
+		public Task<IQueryable<Core.Data.Account>> GetFilteredEntriesAsync(System.Linq.Expressions.Expression<Func<Core.Data.Account, bool>> filter, bool includeDeleted = false)
+		{
+			return Task.Factory.StartNew<IQueryable<Core.Data.Account>>(() =>
+			{
+				return GetFilteredEntries(filter, includeDeleted);
+			});
+		}
+
+		public Task DeleteEntryAsync(Core.Data.Account entry, bool hardDelete = false)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				DeleteEntry(entry, hardDelete);
+			});
+		}
+
+		public Task<Core.Data.Account> AddOrUpdateEntryAsync(Core.Data.Account entry)
+		{
+			return Task.Factory.StartNew<Core.Data.Account>(() =>
+			{
+				return AddOrUpdateEntry(entry);
+			});
 		}
 	}
 

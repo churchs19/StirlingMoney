@@ -2,6 +2,7 @@
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.Data
 {
@@ -19,10 +20,18 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
 			{
 				if (includeDeleted)
-					return _context.Goals.Select(it => it.ToCoreGoal());
+					return _context.Goals.ToList().Select(it => it.ToCoreGoal()).AsQueryable();
 				else
-					return _context.Goals.Where(it => !it.IsDeleted.HasValue || (it.IsDeleted.HasValue && it.IsDeleted == false)).Select(it => it.ToCoreGoal());
+					return _context.Goals.Where(it => !it.IsDeleted.HasValue || (it.IsDeleted.HasValue && it.IsDeleted == false)).ToList().Select(it => it.ToCoreGoal()).AsQueryable();
 			}
+		}
+
+		public Task<IQueryable<Core.Data.Goal>> GetAllEntriesAsync(bool includeDeleted = false)
+		{
+			return Task.Factory.StartNew<IQueryable<Core.Data.Goal>>(() =>
+			{
+				return GetAllEntries(includeDeleted);
+			});
 		}
 
 		public IQueryable<Core.Data.Goal> GetFilteredEntries(System.Linq.Expressions.Expression<Func<Core.Data.Goal, bool>> filter, bool includeDeleted = false)
@@ -30,10 +39,18 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
 			{
 				var filterDelegate = filter.Compile();
-				var allResults = _context.Goals.Select(it => it.ToCoreGoal()).ToList();
+				var allResults = _context.Goals.ToList().Select(it => it.ToCoreGoal());
 				var results = allResults.Where(it => includeDeleted ? filterDelegate(it) : filterDelegate(it) && (!it.IsDeleted.HasValue || (it.IsDeleted.HasValue && !it.IsDeleted.Value))).ToList();
 				return results.AsQueryable();
 			}
+		}
+
+		public Task<IQueryable<Core.Data.Goal>> GetFilteredEntriesAsync(System.Linq.Expressions.Expression<Func<Core.Data.Goal, bool>> filter, bool includeDeleted = false)
+		{
+			return Task.Factory.StartNew<IQueryable<Core.Data.Goal>>(() =>
+			{
+				return GetFilteredEntries(filter, includeDeleted);
+			});
 		}
 
 		public void DeleteEntry(Core.Data.Goal entry, bool hardDelete = false)
@@ -53,6 +70,14 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 					_context.SubmitChanges();
 				}
 			}
+		}
+
+		public Task DeleteEntryAsync(Core.Data.Goal entry, bool hardDelete = false)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				DeleteEntry(entry, hardDelete);
+			});
 		}
 
 		public Core.Data.Goal AddOrUpdateEntry(Core.Data.Goal entry)
@@ -85,6 +110,14 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				}
 			}
 			return entry;
+		}
+
+		public Task<Core.Data.Goal> AddOrUpdateEntryAsync(Core.Data.Goal entry)
+		{
+			return Task.Factory.StartNew<Core.Data.Goal>(() =>
+			{
+				return AddOrUpdateEntry(entry);
+			});
 		}
 	}
 

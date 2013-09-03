@@ -1,36 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Shane.Church.StirlingMoney.Core.Services
+﻿namespace Shane.Church.StirlingMoney.Core.Services
 {
 	/// <summary>
-	/// The navigation service to 
-	/// enable page navigation.
-	/// For all our platforms.
+	/// The NavigationService interface.
 	/// </summary>
 	public interface INavigationService
 	{
 		/// <summary>
-		/// Navigate to a specific page.
-		/// Used for Windows phone.
+		/// Gets a value indicating whether can go back.
 		/// </summary>
-		/// <param name="page">The absolute uri to the page to navigate to.</param>
-		void NavigateTo(Uri page);
+		bool CanGoBack { get; }
 
 		/// <summary>
-		/// Used for Windows 8.
-		/// </summary>
-		/// <param name="pageToNavigateTo"></param>
-		void NavigateTo(Type pageToNavigateTo);
-
-
-		/// <summary>
-		/// Go back to
-		/// the previous page.
-		/// Used for Windows Phone and Windows 8.
+		/// The go back.
 		/// </summary>
 		void GoBack();
+
+		/// <summary>
+		/// The navigate.
+		/// </summary>
+		/// <param name="parameter">
+		/// The parameter.
+		/// </param>
+		/// <typeparam name="TDestinationViewModel">
+		/// The destination view model.
+		/// </typeparam>
+		void Navigate<TDestinationViewModel>(object parameter = null);
 	}
 }

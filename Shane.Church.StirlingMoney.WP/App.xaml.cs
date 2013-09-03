@@ -18,6 +18,7 @@ using System.Windows.Markup;
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
+using Shane.Church.StirlingMoney.Data.Update;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -98,6 +99,8 @@ namespace Shane.Church.StirlingMoney.WP
             //Sets how often the rate reminder is displayed.
             rateReminder.RecurrencePerUsageCount = 5;
 			rateReminder.AllowUsersToSkipFurtherReminders = true;
+
+			UpdateController.ConfigureDatabase();
 
 			//if (LiveTileHelper.AreNewTilesSupported)
 			//{

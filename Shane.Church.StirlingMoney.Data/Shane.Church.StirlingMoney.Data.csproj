@@ -144,7 +144,6 @@
     <Compile Include="v3\AuthorizedUser.cs" />
     <Compile Include="v3\Budget.cs" />
     <Compile Include="v3\Category.cs" />
-    <Compile Include="v3\ChangeTrackingObject.cs" />
     <Compile Include="v3\Goal.cs" />
     <Compile Include="v3\StirlingMoneyDataContext.cs" />
     <Compile Include="v3\Transaction.cs" />

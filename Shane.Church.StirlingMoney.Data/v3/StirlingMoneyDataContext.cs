@@ -10,6 +10,10 @@ namespace Shane.Church.StirlingMoney.Data.v3
 		public static string DBConnectionString = "Data Source=isostore:/StirlingMoney.v3.sdf";
 		public static string DBFileName = "StirlingMoney.v3.sdf";
 
+		public StirlingMoneyDataContext()
+			: base(StirlingMoneyDataContext.DBConnectionString)
+		{ }
+
 		// Pass the connection string to the base class.
 		public StirlingMoneyDataContext(string connectionString)
 			: base(connectionString)

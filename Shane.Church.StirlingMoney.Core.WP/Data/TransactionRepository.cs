@@ -2,6 +2,7 @@
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.Data
 {
@@ -19,10 +20,18 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
 			{
 				if (includeDeleted)
-					return _context.Transactions.Select(it => it.ToCoreTransaction());
+					return _context.Transactions.ToList().Select(it => it.ToCoreTransaction()).AsQueryable();
 				else
-					return _context.Transactions.Where(it => !it.IsDeleted.HasValue || (it.IsDeleted.HasValue && it.IsDeleted == false)).Select(it => it.ToCoreTransaction());
+					return _context.Transactions.Where(it => !it.IsDeleted.HasValue || (it.IsDeleted.HasValue && it.IsDeleted == false)).ToList().Select(it => it.ToCoreTransaction()).AsQueryable();
 			}
+		}
+
+		public Task<IQueryable<Core.Data.Transaction>> GetAllEntriesAsync(bool includeDeleted = false)
+		{
+			return Task.Factory.StartNew<IQueryable<Core.Data.Transaction>>(() =>
+			{
+				return GetAllEntries(includeDeleted);
+			});
 		}
 
 		public IQueryable<Core.Data.Transaction> GetFilteredEntries(System.Linq.Expressions.Expression<Func<Core.Data.Transaction, bool>> filter, bool includeDeleted = false)
@@ -30,10 +39,18 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
 			{
 				var filterDelegate = filter.Compile();
-				var allResults = _context.Transactions.Select(it => it.ToCoreTransaction()).ToList();
+				var allResults = _context.Transactions.ToList().Select(it => it.ToCoreTransaction());
 				var results = allResults.Where(it => includeDeleted ? filterDelegate(it) : filterDelegate(it) && (!it.IsDeleted.HasValue || (it.IsDeleted.HasValue && !it.IsDeleted.Value))).ToList();
 				return results.AsQueryable();
 			}
+		}
+
+		public Task<IQueryable<Core.Data.Transaction>> GetFilteredEntriesAsync(System.Linq.Expressions.Expression<Func<Core.Data.Transaction, bool>> filter, bool includeDeleted = false)
+		{
+			return Task.Factory.StartNew<IQueryable<Core.Data.Transaction>>(() =>
+				{
+					return GetFilteredEntries(filter, includeDeleted);
+				});
 		}
 
 		public void DeleteEntry(Core.Data.Transaction entry, bool hardDelete = false)
@@ -53,6 +70,14 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 					_context.SubmitChanges();
 				}
 			}
+		}
+
+		public Task DeleteEntryAsync(Core.Data.Transaction entry, bool hardDelete = false)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				DeleteEntry(entry, hardDelete);
+			});
 		}
 
 		public Core.Data.Transaction AddOrUpdateEntry(Core.Data.Transaction entry)
@@ -88,6 +113,14 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				}
 			}
 			return entry;
+		}
+
+		public Task<Core.Data.Transaction> AddOrUpdateEntryAsync(Core.Data.Transaction entry)
+		{
+			return Task.Factory.StartNew<Core.Data.Transaction>(() =>
+				{
+					return AddOrUpdateEntry(entry);
+				});
 		}
 
 		public double GetSumByAccount(Guid accountId)

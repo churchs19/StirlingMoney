@@ -2,6 +2,7 @@
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.Data
 {
@@ -19,10 +20,18 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
 			{
 				if (includeDeleted)
-					return _context.AuthorizedUsers.Select(it => it.ToCoreAuthorizedUser());
+					return _context.AuthorizedUsers.ToList().Select(it => it.ToCoreAuthorizedUser()).AsQueryable();
 				else
-					return _context.AuthorizedUsers.Where(it => !it.IsDeleted.HasValue || (it.IsDeleted.HasValue && it.IsDeleted == true)).Select(it => it.ToCoreAuthorizedUser());
+					return _context.AuthorizedUsers.Where(it => !it.IsDeleted.HasValue || (it.IsDeleted.HasValue && it.IsDeleted == true)).ToList().Select(it => it.ToCoreAuthorizedUser()).AsQueryable();
 			}
+		}
+
+		public Task<IQueryable<Core.Data.AuthorizedUser>> GetAllEntriesAsync(bool includeDeleted = false)
+		{
+			return Task.Factory.StartNew<IQueryable<Core.Data.AuthorizedUser>>(() =>
+			{
+				return GetAllEntries(includeDeleted);
+			});
 		}
 
 		public IQueryable<Core.Data.AuthorizedUser> GetFilteredEntries(System.Linq.Expressions.Expression<Func<Core.Data.AuthorizedUser, bool>> filter, bool includeDeleted = false)
@@ -30,10 +39,18 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
 			{
 				var filterDelegate = filter.Compile();
-				var allResults = _context.AuthorizedUsers.Select(it => it.ToCoreAuthorizedUser()).ToList();
+				var allResults = _context.AuthorizedUsers.ToList().Select(it => it.ToCoreAuthorizedUser());
 				var results = allResults.Where(it => includeDeleted ? filterDelegate(it) : filterDelegate(it) && (!it.IsDeleted.HasValue || (it.IsDeleted.HasValue && !it.IsDeleted.Value))).ToList();
 				return results.AsQueryable();
 			}
+		}
+
+		public Task<IQueryable<Core.Data.AuthorizedUser>> GetFilteredEntriesAsync(System.Linq.Expressions.Expression<Func<Core.Data.AuthorizedUser, bool>> filter, bool includeDeleted = false)
+		{
+			return Task.Factory.StartNew<IQueryable<Core.Data.AuthorizedUser>>(() =>
+			{
+				return GetFilteredEntries(filter, includeDeleted);
+			});
 		}
 
 		public void DeleteEntry(Core.Data.AuthorizedUser entry, bool hardDelete = false)
@@ -53,6 +70,14 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 					_context.SubmitChanges();
 				}
 			}
+		}
+
+		public Task DeleteEntryAsync(Core.Data.AuthorizedUser entry, bool hardDelete = false)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				DeleteEntry(entry, hardDelete);
+			});
 		}
 
 		public Core.Data.AuthorizedUser AddOrUpdateEntry(Core.Data.AuthorizedUser entry)
@@ -82,6 +107,14 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				}
 			}
 			return entry;
+		}
+
+		public Task<Core.Data.AuthorizedUser> AddOrUpdateEntryAsync(Core.Data.AuthorizedUser entry)
+		{
+			return Task.Factory.StartNew<Core.Data.AuthorizedUser>(() =>
+			{
+				return AddOrUpdateEntry(entry);
+			});
 		}
 	}
 

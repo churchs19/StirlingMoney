@@ -232,6 +232,15 @@ namespace Shane.Church.StirlingMoney.WP.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to save.
+        /// </summary>
+        public static string AppBarSave {
+            get {
+                return ResourceManager.GetString("AppBarSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to settings.
         /// </summary>
         public static string AppBarSettings {

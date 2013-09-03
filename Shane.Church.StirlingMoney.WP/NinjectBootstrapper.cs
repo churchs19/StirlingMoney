@@ -1,14 +1,18 @@
 ﻿using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Data;
 using Shane.Church.StirlingMoney.Core.WP.Services;
+using Shane.Church.StirlingMoney.Core.WP.ViewModels;
 using Shane.Church.StirlingMoney.Data.v3;
 
 namespace Shane.Church.StirlingMoney.WP
 {
 	public static class NinjectBootstrapper
 	{
+		private static StirlingMoneyDataContext _context;
+
 		public static void Bootstrap()
 		{
 			KernelService.Kernel = new StandardKernel();
@@ -24,6 +28,8 @@ namespace Shane.Church.StirlingMoney.WP
 			KernelService.Kernel.Bind<IRepository<Core.Data.Goal>>().To<GoalRepository>();
 			KernelService.Kernel.Bind<IRepository<Core.Data.Transaction>>().To<TransactionRepository>();
 			KernelService.Kernel.Bind<ITransactionSum>().To<TransactionRepository>();
+			KernelService.Kernel.Bind<MainViewModel>().To<PhoneMainViewModel>();
+			KernelService.Kernel.Bind<AboutViewModel>().To<PhoneAboutViewModel>();
 		}
 	}
 }

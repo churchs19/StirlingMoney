@@ -2,6 +2,7 @@
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.Data
 {
@@ -19,10 +20,18 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
 			{
 				if (includeDeleted)
-					return _context.Categories.Select(it => it.ToCoreCategory());
+					return _context.Categories.ToList().Select(it => it.ToCoreCategory()).AsQueryable();
 				else
-					return _context.Categories.Where(it => !it.IsDeleted.HasValue || (it.IsDeleted.HasValue && it.IsDeleted == false)).Select(it => it.ToCoreCategory());
+					return _context.Categories.Where(it => !it.IsDeleted.HasValue || (it.IsDeleted.HasValue && it.IsDeleted == false)).ToList().Select(it => it.ToCoreCategory()).AsQueryable();
 			}
+		}
+
+		public Task<IQueryable<Core.Data.Category>> GetAllEntriesAsync(bool includeDeleted = false)
+		{
+			return Task.Factory.StartNew<IQueryable<Core.Data.Category>>(() =>
+			{
+				return GetAllEntries(includeDeleted);
+			});
 		}
 
 		public IQueryable<Core.Data.Category> GetFilteredEntries(System.Linq.Expressions.Expression<Func<Core.Data.Category, bool>> filter, bool includeDeleted = false)
@@ -30,10 +39,18 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
 			{
 				var filterDelegate = filter.Compile();
-				var allResults = _context.Categories.Select(it => it.ToCoreCategory()).ToList();
+				var allResults = _context.Categories.ToList().Select(it => it.ToCoreCategory());
 				var results = allResults.Where(it => includeDeleted ? filterDelegate(it) : filterDelegate(it) && (!it.IsDeleted.HasValue || (it.IsDeleted.HasValue && !it.IsDeleted.Value))).ToList();
 				return results.AsQueryable();
 			}
+		}
+
+		public Task<IQueryable<Core.Data.Category>> GetFilteredEntriesAsync(System.Linq.Expressions.Expression<Func<Core.Data.Category, bool>> filter, bool includeDeleted = false)
+		{
+			return Task.Factory.StartNew<IQueryable<Core.Data.Category>>(() =>
+			{
+				return GetFilteredEntries(filter, includeDeleted);
+			});
 		}
 
 		public void DeleteEntry(Core.Data.Category entry, bool hardDelete = false)
@@ -53,6 +70,14 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 					_context.SubmitChanges();
 				}
 			}
+		}
+
+		public Task DeleteEntryAsync(Core.Data.Category entry, bool hardDelete = false)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				DeleteEntry(entry, hardDelete);
+			});
 		}
 
 		public Core.Data.Category AddOrUpdateEntry(Core.Data.Category entry)
@@ -81,6 +106,14 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				}
 			}
 			return entry;
+		}
+
+		public Task<Core.Data.Category> AddOrUpdateEntryAsync(Core.Data.Category entry)
+		{
+			return Task.Factory.StartNew<Core.Data.Category>(() =>
+				{
+					return AddOrUpdateEntry(entry);
+				});
 		}
 	}
 
