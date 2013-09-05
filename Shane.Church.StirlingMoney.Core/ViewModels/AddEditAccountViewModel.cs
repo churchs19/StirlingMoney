@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Properties;
@@ -6,6 +7,7 @@ using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
@@ -13,6 +15,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 	{
 		public AddEditAccountViewModel()
 		{
+			SaveCommand = new RelayCommand(SaveAccount);
 		}
 
 		private long? _id = null;
@@ -103,9 +106,13 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			return validationErrors;
 		}
 
+		public ICommand SaveCommand { get; private set; }
+
 		public void SaveAccount()
 		{
 			var accountRepository = KernelService.Kernel.Get<IRepository<Account>>();
+			var navService = KernelService.Kernel.Get<INavigationService>();
+
 			Account a = new Account();
 			a.Id = _id;
 			a.IsDeleted = _isDeleted;
@@ -114,6 +121,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			a.AccountName = AccountName;
 			a = accountRepository.AddOrUpdateEntry(a);
 			AccountId = a.AccountId;
+			_id = a.Id;
+			_isDeleted = a.IsDeleted;
+
+			if (navService.CanGoBack)
+				navService.GoBack();
 		}
 	}
 }

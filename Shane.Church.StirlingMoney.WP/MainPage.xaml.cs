@@ -6,9 +6,7 @@ using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.WP.Resources;
 using System;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -102,7 +100,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 			ApplicationBarIconButton appBarIconButtonSync = new ApplicationBarIconButton(new Uri("/Images/Synchronize.png", UriKind.Relative));
 			appBarIconButtonSync.Text = AppResources.AppBarSync;
-			appBarIconButtonSync.Click +=new EventHandler(appBarIconButtonSync_Click);
+			appBarIconButtonSync.Click += new EventHandler(appBarIconButtonSync_Click);
 			ApplicationBar.Buttons.Add(appBarIconButtonSync);
 
 			ApplicationBarIconButton appBarIconButtonReports = new ApplicationBarIconButton(new Uri("/Images/Reports.png", UriKind.Relative));
@@ -138,12 +136,12 @@ namespace Shane.Church.StirlingMoney.WP
 
 		void appBarIconButtonAddGoal_Click(object sender, EventArgs e)
 		{
-			
+			_model.AddGoalCommand.Execute(null);
 		}
 
 		void appBarIconButtonAddBudget_Click(object sender, EventArgs e)
 		{
-//			NavigationService.Navigate(new Uri(@"/AddEditBudget.xaml", UriKind.Relative));
+			_model.AddBudgetCommand.Execute(null);
 		}
 
 		private void appBarIconButtonAddAccount_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Properties;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
@@ -24,6 +26,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			PeriodList.Add(Resources.BudgetMonthly);
 			PeriodList.Add(Resources.BudgetYearly);
 			PeriodList.Add(Resources.BudgetCustom);
+
+			SaveCommand = new RelayCommand(SaveBudget);
 		}
 
 		private long? _id = null;
@@ -216,9 +220,13 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			return validationErrors;
 		}
 
+		public ICommand SaveCommand { get; private set; }
+
 		public void SaveBudget()
 		{
 			var budgetRepository = KernelService.Kernel.Get<IRepository<Budget>>();
+			var navService = KernelService.Kernel.Get<INavigationService>();
+
 			Budget b = null;
 			b.BudgetId = BudgetId.HasValue ? BudgetId.Value : Guid.Empty;
 			b.BudgetName = Name;
@@ -257,6 +265,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 			b = budgetRepository.AddOrUpdateEntry(b);
 			BudgetId = b.BudgetId;
+			_id = b.Id;
+			_isDeleted = b.IsDeleted;
+
+			if (navService.CanGoBack)
+				navService.GoBack();
 		}
 	}
 }

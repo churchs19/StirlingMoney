@@ -103,8 +103,14 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public void SaveItem()
 		{
 			var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
+			var navService = KernelService.Kernel.Get<INavigationService>();
 			Category c = new Category() { CategoryId = CategoryId, CategoryName = CategoryName, Id = _id, IsDeleted = _isDeleted };
-			categoryRepository.AddOrUpdateEntry(c);
+			c = categoryRepository.AddOrUpdateEntry(c);
+			CategoryId = c.CategoryId;
+			_id = c.Id;
+
+			if (navService.CanGoBack)
+				navService.GoBack();
 		}
 	}
 }

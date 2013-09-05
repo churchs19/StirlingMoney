@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:ad="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
+    xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls.Binding"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -39,7 +40,7 @@
 				<ColumnDefinition Width="316*"/>
 			</Grid.ColumnDefinitions>
 			<TextBlock HorizontalAlignment="Left" Name="textBlockCategoryName" Text="{Binding Path=LocalizedResources.CategoryNameLabel, Source={StaticResource LocalizedStrings}}" Width="140" Margin="0,0,0,0" VerticalAlignment="Center" />
-			<TextBox Grid.Column="1" Height="72" HorizontalAlignment="Left" Name="textBoxCategoryName" Text="{Binding CategoryName,Mode=TwoWay}" VerticalAlignment="Center" Width="310" InputScope="Text" />
+            <TextBox Grid.Column="1" Height="72" HorizontalAlignment="Left" Name="textBoxCategoryName" Text="{Binding CategoryName,Mode=TwoWay}" VerticalAlignment="Center" Width="310" InputScope="Text" c4f:TextBinding.UpdateSourceOnChange="True" />
         </Grid>
 
 		<StackPanel Grid.Row="2">

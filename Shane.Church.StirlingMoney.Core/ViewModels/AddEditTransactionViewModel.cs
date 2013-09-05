@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Properties;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
@@ -26,7 +28,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				{
 					RaisePropertyChanged(() => TransferAccounts);
 				};
+			SaveCommand = new RelayCommand(SaveTransaction);
 		}
+
+		private long? _id;
+		private bool? _isDeleted;
 
 		private Guid _transactionId;
 		public Guid TransactionId
@@ -236,6 +242,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				Transaction t = transactionRepository.GetFilteredEntries(it => it.TransactionId == TransactionId).FirstOrDefault();
 				if (t != null)
 				{
+					_id = t.Id;
+					_isDeleted = t.IsDeleted;
 					TransactionId = t.TransactionId;
 					TransactionDate = t.TransactionDate;
 					Amount = t.Amount;
@@ -303,12 +311,17 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			return validationErrors;
 		}
 
+		public ICommand SaveCommand { get; private set; }
+
 		public void SaveTransaction()
 		{
 			var transactionRepository = KernelService.Kernel.Get<IRepository<Transaction>>();
 			var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
+			var navService = KernelService.Kernel.Get<INavigationService>();
 
 			Transaction transaction = new Transaction();
+			transaction.Id = _id;
+			transaction.IsDeleted = _isDeleted;
 			transaction.TransactionId = TransactionId;
 			transaction.TransactionDate = TransactionDate;
 			transaction.Note = Note;
@@ -382,7 +395,13 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 			if (_transactionType != TransactionType.Transfer && TransactionId != Guid.Empty)
 			{
-				transactionRepository.AddOrUpdateEntry(transaction);
+				var t = transactionRepository.AddOrUpdateEntry(transaction);
+				TransactionId = t.TransactionId;
+				_id = t.Id;
+				_isDeleted = t.IsDeleted;
+
+				if (navService.CanGoBack)
+					navService.GoBack();
 			}
 		}
 	}

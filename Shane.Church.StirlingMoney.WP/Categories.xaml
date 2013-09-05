@@ -22,7 +22,7 @@
                     <telerikPrimitives:RadContextMenu OpenGesture="Hold">
                         <telerikPrimitives:RadContextMenuItem Name="menuItemEdit" 
 															  Content="{Binding LocalizedResources.EditMenuItem, Source={StaticResource LocalizedStrings}}"
-															  Command="{Binding EditCommand}" Tap="menuItemEdit_Tap"/>
+															  Command="{Binding EditCommand}"/>
                         <telerikPrimitives:RadContextMenuItem Name="menuItemDelete"
 															  Content="{Binding LocalizedResources.DeleteMenuItem, Source={StaticResource LocalizedStrings}}"
 															  Command="{Binding DeleteCommand}" Tap="menuItemDelete_Tap" />

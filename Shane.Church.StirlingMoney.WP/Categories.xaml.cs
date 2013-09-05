@@ -81,11 +81,6 @@ namespace Shane.Church.StirlingMoney.WP
 			_model.AddCommand.Execute(null);
 		}
 
-		private async void menuItemEdit_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-		{
-			await _model.LoadData();
-		}
-
 		private async void menuItemDelete_Tap(object sender, System.Windows.Input.GestureEventArgs e)
 		{
 			await _model.LoadData();

@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Properties;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
@@ -19,6 +21,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				RaisePropertyChanged(() => Accounts);
 			};
+			SaveCommand = new RelayCommand(SaveGoal);
 		}
 
 		private long? _id = null;
@@ -149,9 +152,13 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			return validationErrors;
 		}
 
+		public ICommand SaveCommand { get; private set; }
+
 		public void SaveGoal()
 		{
 			var goalService = KernelService.Kernel.Get<IRepository<Goal>>();
+			var navService = KernelService.Kernel.Get<INavigationService>();
+
 			Goal g = new Goal();
 			g.GoalId = GoalId.Value;
 			g.GoalName = Name;
@@ -165,6 +172,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 			g = goalService.AddOrUpdateEntry(g);
 			GoalId = g.GoalId;
+			_id = g.Id;
+			_isDeleted = g.IsDeleted;
+
+			if (navService.CanGoBack)
+				navService.GoBack();
 		}
 	}
 }

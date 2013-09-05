@@ -15,13 +15,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 	{
 		private IRepository<Budget> _budgetRepository;
 		private IRepository<Goal> _goalRepository;
+		private INavigationService _navService;
 
-		public MainViewModel(IRepository<Budget> budgetRepository, IRepository<Goal> goalRepository)
+		public MainViewModel(IRepository<Budget> budgetRepository, IRepository<Goal> goalRepository, INavigationService navService)
 		{
 			if (budgetRepository == null) throw new ArgumentNullException("budgetRepository");
 			_budgetRepository = budgetRepository;
 			if (goalRepository == null) throw new ArgumentNullException("goalRepository");
 			_goalRepository = goalRepository;
+			if (navService == null) throw new ArgumentNullException("navService");
+			_navService = navService;
 			_accounts = KernelService.Kernel.Get<AccountListViewModel>();
 			_budgets = new ObservableCollection<BudgetSummaryViewModel>();
 			_budgets.CollectionChanged += (s, e) =>
@@ -33,6 +36,14 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				RaisePropertyChanged(() => Goals);
 			};
+
+			AddAccountCommand = new RelayCommand(NavigateToAddAccount);
+			CategoriesCommand = new RelayCommand(NavigateToCategories);
+			SyncCommand = new RelayCommand(Sync);
+			ReportsCommand = new RelayCommand(NavigateToReports);
+			SettingsCommand = new RelayCommand(NavigateToSettings);
+			RateCommand = new RelayCommand(RateApp);
+			AboutCommand = new RelayCommand(NavigateToAbout);
 		}
 
 		private AccountListViewModel _accounts;
@@ -86,99 +97,67 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		protected ICommand _addAccountCommand;
-		public ICommand AddAccountCommand
+		public ICommand AddAccountCommand { get; private set; }
+
+		public void NavigateToAddAccount()
 		{
-			get
-			{
-				if (_addAccountCommand == null)
-				{
-					_addAccountCommand = new RelayCommand(() =>
-					{
-						var navService = KernelService.Kernel.Get<INavigationService>();
-						navService.Navigate<AddEditAccountViewModel>();
-					});
-				}
-				return _addAccountCommand;
-			}
+			_navService.Navigate<AddEditAccountViewModel>();
 		}
 
-		protected ICommand _categoriesCommand;
-		public ICommand CategoriesCommand
+		public ICommand CategoriesCommand { get; private set; }
+
+		public void NavigateToCategories()
 		{
-			get
-			{
-				if (_categoriesCommand == null)
-				{
-					_categoriesCommand = new RelayCommand(() =>
-					{
-						var navService = KernelService.Kernel.Get<INavigationService>();
-						navService.Navigate<CategoryListViewModel>();
-					});
-				}
-				return _categoriesCommand;
-			}
+			_navService.Navigate<CategoryListViewModel>();
 		}
 
-		protected ICommand _syncCommand;
-		public ICommand SyncCommand
+		public ICommand SyncCommand { get; private set; }
+
+		public void Sync()
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
+			throw new NotImplementedException();
 		}
 
-		protected ICommand _reportsCommand;
-		public ICommand ReportsCommand
+		public ICommand ReportsCommand { get; private set; }
+
+		public void NavigateToReports()
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
+			throw new NotImplementedException();
 		}
 
-		protected ICommand _settingsCommand;
-		public ICommand SettingsCommand
+		public ICommand SettingsCommand { get; private set; }
+
+		public void NavigateToSettings()
 		{
-			get
-			{
-				if (_settingsCommand == null)
-				{
-					_settingsCommand = new RelayCommand(() =>
-					{
-						var navService = KernelService.Kernel.Get<INavigationService>();
-						navService.Navigate<SettingsViewModel>();
-					});
-				}
-				return _settingsCommand;
-			}
+			_navService.Navigate<SettingsViewModel>();
 		}
 
-		protected ICommand _rateCommand;
-		public ICommand RateCommand
+		public ICommand RateCommand { get; protected set; }
+
+		public void RateApp()
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
+			throw new NotImplementedException();
 		}
 
-		protected ICommand _aboutCommand;
-		public ICommand AboutCommand
+		public ICommand AboutCommand { get; private set; }
+
+		public void NavigateToAbout()
 		{
-			get
-			{
-				if (_aboutCommand == null)
-				{
-					_aboutCommand = new RelayCommand(() =>
-					{
-						var navService = KernelService.Kernel.Get<INavigationService>();
-						navService.Navigate<AboutViewModel>();
-					});
-				}
-				return _aboutCommand;
-			}
+			_navService.Navigate<AboutViewModel>();
+		}
+
+		public ICommand AddBudgetCommand { get; private set; }
+
+		public void NavigateToAddBudget()
+		{
+			_navService.Navigate<AddEditBudgetViewModel>();
+		}
+
+		public ICommand AddGoalCommand { get; private set; }
+
+		public void NavigateToAddGoal()
+		{
+			_navService.Navigate<AddEditGoalViewModel>();
 		}
 	}
 }
