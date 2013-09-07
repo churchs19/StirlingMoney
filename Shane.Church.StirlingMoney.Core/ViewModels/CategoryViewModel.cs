@@ -4,6 +4,7 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Properties;
 using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.StirlingMoney.Core.ViewModels.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -100,17 +101,29 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public ICommand SaveCommand { get; private set; }
 
+		public delegate void ValidationFailedHandler(object sender, ValidationFailedEventArgs args);
+		public event ValidationFailedHandler ValidationFailed;
+
 		public void SaveItem()
 		{
-			var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
-			var navService = KernelService.Kernel.Get<INavigationService>();
-			Category c = new Category() { CategoryId = CategoryId, CategoryName = CategoryName, Id = _id, IsDeleted = _isDeleted };
-			c = categoryRepository.AddOrUpdateEntry(c);
-			CategoryId = c.CategoryId;
-			_id = c.Id;
+			var errors = Validate();
+			if (errors.Count == 0)
+			{
+				var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
+				var navService = KernelService.Kernel.Get<INavigationService>();
+				Category c = new Category() { CategoryId = CategoryId, CategoryName = CategoryName, Id = _id, IsDeleted = _isDeleted };
+				c = categoryRepository.AddOrUpdateEntry(c);
+				CategoryId = c.CategoryId;
+				_id = c.Id;
 
-			if (navService.CanGoBack)
-				navService.GoBack();
+				if (navService.CanGoBack)
+					navService.GoBack();
+			}
+			else
+			{
+				if (ValidationFailed != null)
+					ValidationFailed(this, new ValidationFailedEventArgs(errors));
+			}
 		}
 	}
 }

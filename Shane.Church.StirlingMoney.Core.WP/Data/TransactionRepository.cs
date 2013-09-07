@@ -125,12 +125,14 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 
 		public double GetSumByAccount(Guid accountId)
 		{
-			return _context.Transactions.Where(it => it.Account.AccountId == accountId).Select(it => it.Amount).Sum();
+			var query = _context.Transactions.Where(it => it.Account.AccountId == accountId).Select(it => it.Amount);
+			return query.Any() ? query.Sum() : 0;
 		}
 
 		public double GetPostedSumByAccount(Guid accountId)
 		{
-			return _context.Transactions.Where(it => it.Account.AccountId == accountId && it.Posted).Select(it => it.Amount).Sum();
+			var query = _context.Transactions.Where(it => it.Account.AccountId == accountId && it.Posted).Select(it => it.Amount);
+			return query.Any() ? query.Sum() : 0;
 		}
 	}
 

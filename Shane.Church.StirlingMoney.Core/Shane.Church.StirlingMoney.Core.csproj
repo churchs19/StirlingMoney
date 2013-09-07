@@ -76,6 +76,7 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\Shared\ListDataItem.cs" />
+    <Compile Include="ViewModels\Shared\ValidationFailedEventArgs.cs" />
     <Compile Include="ViewModels\TransactionListItemViewModel.cs" />
     <Compile Include="ViewModels\TransactionListViewModel.cs" />
   </ItemGroup>
@@ -122,7 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

@@ -22,7 +22,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Shane.Church.StirlingMoney.Core.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Account Name is required..
         /// </summary>
-        internal static string AccountNameRequiredError {
+        public static string AccountNameRequiredError {
             get {
                 return ResourceManager.GetString("AccountNameRequiredError", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Account is required..
         /// </summary>
-        internal static string AccountRequiredError {
+        public static string AccountRequiredError {
             get {
                 return ResourceManager.GetString("AccountRequiredError", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to add account.
         /// </summary>
-        internal static string AddAccountTitle {
+        public static string AddAccountTitle {
             get {
                 return ResourceManager.GetString("AddAccountTitle", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to add budget.
         /// </summary>
-        internal static string AddBudgetTitle {
+        public static string AddBudgetTitle {
             get {
                 return ResourceManager.GetString("AddBudgetTitle", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to add goal.
         /// </summary>
-        internal static string AddGoalTitle {
+        public static string AddGoalTitle {
             get {
                 return ResourceManager.GetString("AddGoalTitle", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} remaining.
         /// </summary>
-        internal static string AmountRemaining {
+        public static string AmountRemaining {
             get {
                 return ResourceManager.GetString("AmountRemaining", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to All Expenses.
         /// </summary>
-        internal static string BudgetAllExpensesLabel {
+        public static string BudgetAllExpensesLabel {
             get {
                 return ResourceManager.GetString("BudgetAllExpensesLabel", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Amount is required and must be greater than 0..
         /// </summary>
-        internal static string BudgetAmountRequiredError {
+        public static string BudgetAmountRequiredError {
             get {
                 return ResourceManager.GetString("BudgetAmountRequiredError", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Custom.
         /// </summary>
-        internal static string BudgetCustom {
+        public static string BudgetCustom {
             get {
                 return ResourceManager.GetString("BudgetCustom", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to End Date must be after Start Date..
         /// </summary>
-        internal static string BudgetEndDateRangeError {
+        public static string BudgetEndDateRangeError {
             get {
                 return ResourceManager.GetString("BudgetEndDateRangeError", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to End Date is required for Custom budget periods..
         /// </summary>
-        internal static string BudgetEndDateRequiredError {
+        public static string BudgetEndDateRequiredError {
             get {
                 return ResourceManager.GetString("BudgetEndDateRequiredError", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Monthly.
         /// </summary>
-        internal static string BudgetMonthly {
+        public static string BudgetMonthly {
             get {
                 return ResourceManager.GetString("BudgetMonthly", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Name is required..
         /// </summary>
-        internal static string BudgetNameRequiredError {
+        public static string BudgetNameRequiredError {
             get {
                 return ResourceManager.GetString("BudgetNameRequiredError", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Weekly.
         /// </summary>
-        internal static string BudgetWeekly {
+        public static string BudgetWeekly {
             get {
                 return ResourceManager.GetString("BudgetWeekly", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Yearly.
         /// </summary>
-        internal static string BudgetYearly {
+        public static string BudgetYearly {
             get {
                 return ResourceManager.GetString("BudgetYearly", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to by category.
         /// </summary>
-        internal static string CategoryChartTypeByCategory {
+        public static string CategoryChartTypeByCategory {
             get {
                 return ResourceManager.GetString("CategoryChartTypeByCategory", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to history.
         /// </summary>
-        internal static string CategoryChartTypeHistory {
+        public static string CategoryChartTypeHistory {
             get {
                 return ResourceManager.GetString("CategoryChartTypeHistory", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Category Name is required..
         /// </summary>
-        internal static string CategoryNameRequiredError {
+        public static string CategoryNameRequiredError {
             get {
                 return ResourceManager.GetString("CategoryNameRequiredError", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to check.
         /// </summary>
-        internal static string CheckTitle {
+        public static string CheckTitle {
             get {
                 return ResourceManager.GetString("CheckTitle", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} day overdue.
         /// </summary>
-        internal static string DayOverdue {
+        public static string DayOverdue {
             get {
                 return ResourceManager.GetString("DayOverdue", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} day remaining.
         /// </summary>
-        internal static string DayRemaining {
+        public static string DayRemaining {
             get {
                 return ResourceManager.GetString("DayRemaining", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} days overdue.
         /// </summary>
-        internal static string DaysOverdue {
+        public static string DaysOverdue {
             get {
                 return ResourceManager.GetString("DaysOverdue", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} days remaining.
         /// </summary>
-        internal static string DaysRemaining {
+        public static string DaysRemaining {
             get {
                 return ResourceManager.GetString("DaysRemaining", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to deposit.
         /// </summary>
-        internal static string DepositTitle {
+        public static string DepositTitle {
             get {
                 return ResourceManager.GetString("DepositTitle", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to edit account.
         /// </summary>
-        internal static string EditAccountTitle {
+        public static string EditAccountTitle {
             get {
                 return ResourceManager.GetString("EditAccountTitle", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to edit budget.
         /// </summary>
-        internal static string EditBudgetTitle {
+        public static string EditBudgetTitle {
             get {
                 return ResourceManager.GetString("EditBudgetTitle", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to edit goal.
         /// </summary>
-        internal static string EditGoalTitle {
+        public static string EditGoalTitle {
             get {
                 return ResourceManager.GetString("EditGoalTitle", resourceCulture);
             }
@@ -306,7 +306,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Account is required..
         /// </summary>
-        internal static string GoalAccountRequiredError {
+        public static string GoalAccountRequiredError {
             get {
                 return ResourceManager.GetString("GoalAccountRequiredError", resourceCulture);
             }
@@ -315,7 +315,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to achieved!.
         /// </summary>
-        internal static string GoalAchieved {
+        public static string GoalAchieved {
             get {
                 return ResourceManager.GetString("GoalAchieved", resourceCulture);
             }
@@ -324,7 +324,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Amount must be greater than the current balance of the selected account..
         /// </summary>
-        internal static string GoalAmountError {
+        public static string GoalAmountError {
             get {
                 return ResourceManager.GetString("GoalAmountError", resourceCulture);
             }
@@ -333,7 +333,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Target Date must be after today..
         /// </summary>
-        internal static string GoalDateError {
+        public static string GoalDateError {
             get {
                 return ResourceManager.GetString("GoalDateError", resourceCulture);
             }
@@ -342,7 +342,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Name is required..
         /// </summary>
-        internal static string GoalNameRequiredError {
+        public static string GoalNameRequiredError {
             get {
                 return ResourceManager.GetString("GoalNameRequiredError", resourceCulture);
             }
@@ -351,16 +351,25 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Location is required..
         /// </summary>
-        internal static string LocationRequiredError {
+        public static string LocationRequiredError {
             get {
                 return ResourceManager.GetString("LocationRequiredError", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to no.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (no category).
         /// </summary>
-        internal static string NoCategoryLabel {
+        public static string NoCategoryLabel {
             get {
                 return ResourceManager.GetString("NoCategoryLabel", resourceCulture);
             }
@@ -369,7 +378,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Other.
         /// </summary>
-        internal static string OtherLabel {
+        public static string OtherLabel {
             get {
                 return ResourceManager.GetString("OtherLabel", resourceCulture);
             }
@@ -378,7 +387,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to pin to start.
         /// </summary>
-        internal static string PinToStart {
+        public static string PinToStart {
             get {
                 return ResourceManager.GetString("PinToStart", resourceCulture);
             }
@@ -387,7 +396,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to alphabetically.
         /// </summary>
-        internal static string SettingsAccountSortAlpha {
+        public static string SettingsAccountSortAlpha {
             get {
                 return ResourceManager.GetString("SettingsAccountSortAlpha", resourceCulture);
             }
@@ -396,7 +405,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to most frequently used.
         /// </summary>
-        internal static string SettingsAccountSortMostFrequentlyUsed {
+        public static string SettingsAccountSortMostFrequentlyUsed {
             get {
                 return ResourceManager.GetString("SettingsAccountSortMostFrequentlyUsed", resourceCulture);
             }
@@ -405,7 +414,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Confirm Password is required..
         /// </summary>
-        internal static string SettingsConfirmPasswordRequiredError {
+        public static string SettingsConfirmPasswordRequiredError {
             get {
                 return ResourceManager.GetString("SettingsConfirmPasswordRequiredError", resourceCulture);
             }
@@ -414,7 +423,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Password must match Confirm Password..
         /// </summary>
-        internal static string SettingsPasswordMismatchError {
+        public static string SettingsPasswordMismatchError {
             get {
                 return ResourceManager.GetString("SettingsPasswordMismatchError", resourceCulture);
             }
@@ -423,7 +432,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Password is required..
         /// </summary>
-        internal static string SettingsPasswordRequiredError {
+        public static string SettingsPasswordRequiredError {
             get {
                 return ResourceManager.GetString("SettingsPasswordRequiredError", resourceCulture);
             }
@@ -432,7 +441,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Transfer from.
         /// </summary>
-        internal static string TransferFromComparisonString {
+        public static string TransferFromComparisonString {
             get {
                 return ResourceManager.GetString("TransferFromComparisonString", resourceCulture);
             }
@@ -441,7 +450,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Transfer from {0}.
         /// </summary>
-        internal static string TransferFromLocation {
+        public static string TransferFromLocation {
             get {
                 return ResourceManager.GetString("TransferFromLocation", resourceCulture);
             }
@@ -450,7 +459,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to transfer.
         /// </summary>
-        internal static string TransferTitle {
+        public static string TransferTitle {
             get {
                 return ResourceManager.GetString("TransferTitle", resourceCulture);
             }
@@ -459,7 +468,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Transfer to.
         /// </summary>
-        internal static string TransferToComparisonString {
+        public static string TransferToComparisonString {
             get {
                 return ResourceManager.GetString("TransferToComparisonString", resourceCulture);
             }
@@ -468,7 +477,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Transfer to {0}.
         /// </summary>
-        internal static string TransferToLocation {
+        public static string TransferToLocation {
             get {
                 return ResourceManager.GetString("TransferToLocation", resourceCulture);
             }
@@ -477,7 +486,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0} Click the buy button bellow in order to purchase the full version..
         /// </summary>
-        internal static string TrialMessagePurchaseText {
+        public static string TrialMessagePurchaseText {
             get {
                 return ResourceManager.GetString("TrialMessagePurchaseText", resourceCulture);
             }
@@ -486,7 +495,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to unknown.
         /// </summary>
-        internal static string UnknownTitle {
+        public static string UnknownTitle {
             get {
                 return ResourceManager.GetString("UnknownTitle", resourceCulture);
             }
@@ -495,7 +504,7 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to unpin from start.
         /// </summary>
-        internal static string UnpinFromStart {
+        public static string UnpinFromStart {
             get {
                 return ResourceManager.GetString("UnpinFromStart", resourceCulture);
             }
@@ -504,9 +513,18 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to withdrawal.
         /// </summary>
-        internal static string WithdrawalTitle {
+        public static string WithdrawalTitle {
             get {
                 return ResourceManager.GetString("WithdrawalTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

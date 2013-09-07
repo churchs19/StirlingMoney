@@ -664,6 +664,15 @@ namespace Shane.Church.StirlingMoney.WP.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to credit limit.
+        /// </summary>
+        public static string CreditLimitLabel {
+            get {
+                return ResourceManager.GetString("CreditLimitLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date Range.
         /// </summary>
         public static string DateRangeLabel {
@@ -858,6 +867,15 @@ namespace Shane.Church.StirlingMoney.WP.Resources {
         public static string InvalidValuesTitle {
             get {
                 return ResourceManager.GetString("InvalidValuesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to credit card.
+        /// </summary>
+        public static string IsCreditCardLabel {
+            get {
+                return ResourceManager.GetString("IsCreditCardLabel", resourceCulture);
             }
         }
         

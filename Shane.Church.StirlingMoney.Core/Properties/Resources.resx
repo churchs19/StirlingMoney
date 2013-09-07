@@ -267,4 +267,10 @@
   <data name="WithdrawalTitle" xml:space="preserve">
     <value>withdrawal</value>
   </data>
+  <data name="Yes" xml:space="preserve">
+    <value>yes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>no</value>
+  </data>
 </root>

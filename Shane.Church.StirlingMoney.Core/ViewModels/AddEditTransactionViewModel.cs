@@ -4,6 +4,7 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Properties;
 using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.StirlingMoney.Core.ViewModels.Shared;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -313,95 +314,107 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public ICommand SaveCommand { get; private set; }
 
+		public delegate void ValidationFailedHandler(object sender, ValidationFailedEventArgs args);
+		public event ValidationFailedHandler ValidationFailed;
+
 		public void SaveTransaction()
 		{
-			var transactionRepository = KernelService.Kernel.Get<IRepository<Transaction>>();
-			var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
-			var navService = KernelService.Kernel.Get<INavigationService>();
+			var errors = Validate();
+			if (errors.Count == 0)
+			{
+				var transactionRepository = KernelService.Kernel.Get<IRepository<Transaction>>();
+				var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
+				var navService = KernelService.Kernel.Get<INavigationService>();
 
-			Transaction transaction = new Transaction();
-			transaction.Id = _id;
-			transaction.IsDeleted = _isDeleted;
-			transaction.TransactionId = TransactionId;
-			transaction.TransactionDate = TransactionDate;
-			transaction.Note = Note;
-			transaction.Posted = Posted;
-			transaction.AccountId = AccountId;
-			Guid categoryId = Guid.Empty;
-			if (!string.IsNullOrEmpty(Category))
-			{
-				categoryId = categoryRepository.GetFilteredEntries(it => it.CategoryName == Category).Select(it => it.CategoryId).FirstOrDefault();
-			}
-			switch (_transactionType)
-			{
-				case TransactionType.Check:
-					transaction.Location = Location;
-					transaction.CategoryId = categoryId;
-					transaction.CheckNumber = CheckNumber;
-					transaction.Amount = -Amount;
-					break;
-				case TransactionType.Deposit:
-					transaction.Location = Location;
-					transaction.CategoryId = categoryId;
-					transaction.Amount = Amount;
-					break;
-				case TransactionType.Transfer:
-					if (TransactionId != Guid.Empty)
-					{
-						//Editing an existing transfer
-						if (Location.Contains(Resources.TransferFromComparisonString))
+				Transaction transaction = new Transaction();
+				transaction.Id = _id;
+				transaction.IsDeleted = _isDeleted;
+				transaction.TransactionId = TransactionId;
+				transaction.TransactionDate = TransactionDate;
+				transaction.Note = Note;
+				transaction.Posted = Posted;
+				transaction.AccountId = AccountId;
+				Guid categoryId = Guid.Empty;
+				if (!string.IsNullOrEmpty(Category))
+				{
+					categoryId = categoryRepository.GetFilteredEntries(it => it.CategoryName == Category).Select(it => it.CategoryId).FirstOrDefault();
+				}
+				switch (_transactionType)
+				{
+					case TransactionType.Check:
+						transaction.Location = Location;
+						transaction.CategoryId = categoryId;
+						transaction.CheckNumber = CheckNumber;
+						transaction.Amount = -Amount;
+						break;
+					case TransactionType.Deposit:
+						transaction.Location = Location;
+						transaction.CategoryId = categoryId;
+						transaction.Amount = Amount;
+						break;
+					case TransactionType.Transfer:
+						if (TransactionId != Guid.Empty)
 						{
-							transaction.Amount = Math.Abs(Amount);
+							//Editing an existing transfer
+							if (Location.Contains(Resources.TransferFromComparisonString))
+							{
+								transaction.Amount = Math.Abs(Amount);
+							}
+							else
+							{
+								transaction.Amount = -Math.Abs(Amount);
+							}
 						}
 						else
 						{
-							transaction.Amount = -Math.Abs(Amount);
+							//New transfer
+							transaction.Amount = -Amount;
+							transaction.Location = string.Format(Resources.TransferToLocation, TransferAccount);
+
+							if (TransactionId == Guid.Empty)
+							{
+								transaction = transactionRepository.AddOrUpdateEntry(transaction);
+							}
+
+							var accountRepository = KernelService.Kernel.Get<IRepository<Account>>();
+
+							Transaction destTransaction = new Transaction();
+							destTransaction.TransactionDate = TransactionDate;
+							destTransaction.Note = Note;
+							destTransaction.Posted = Posted;
+							destTransaction.AccountId = accountRepository.GetFilteredEntries(it => it.AccountName == TransferAccount).Select(it => it.AccountId).FirstOrDefault();
+							destTransaction.Amount = Amount;
+							var accountName = accountRepository.GetFilteredEntries(it => it.AccountId == AccountId).Select(it => it.AccountName).FirstOrDefault();
+							destTransaction.Location = string.Format(Resources.TransferFromLocation, accountName);
+							destTransaction.TransactionId = Guid.NewGuid();
+
+							transactionRepository.AddOrUpdateEntry(destTransaction);
 						}
-					}
-					else
-					{
-						//New transfer
+						break;
+					case TransactionType.Withdrawal:
+						transaction.Location = Location;
+						transaction.CategoryId = categoryId;
 						transaction.Amount = -Amount;
-						transaction.Location = string.Format(Resources.TransferToLocation, TransferAccount);
+						break;
+					default:
+						break;
+				}
 
-						if (TransactionId == Guid.Empty)
-						{
-							transaction = transactionRepository.AddOrUpdateEntry(transaction);
-						}
+				if (_transactionType != TransactionType.Transfer && TransactionId != Guid.Empty)
+				{
+					var t = transactionRepository.AddOrUpdateEntry(transaction);
+					TransactionId = t.TransactionId;
+					_id = t.Id;
+					_isDeleted = t.IsDeleted;
 
-						var accountRepository = KernelService.Kernel.Get<IRepository<Account>>();
-
-						Transaction destTransaction = new Transaction();
-						destTransaction.TransactionDate = TransactionDate;
-						destTransaction.Note = Note;
-						destTransaction.Posted = Posted;
-						destTransaction.AccountId = accountRepository.GetFilteredEntries(it => it.AccountName == TransferAccount).Select(it => it.AccountId).FirstOrDefault();
-						destTransaction.Amount = Amount;
-						var accountName = accountRepository.GetFilteredEntries(it => it.AccountId == AccountId).Select(it => it.AccountName).FirstOrDefault();
-						destTransaction.Location = string.Format(Resources.TransferFromLocation, accountName);
-						destTransaction.TransactionId = Guid.NewGuid();
-
-						transactionRepository.AddOrUpdateEntry(destTransaction);
-					}
-					break;
-				case TransactionType.Withdrawal:
-					transaction.Location = Location;
-					transaction.CategoryId = categoryId;
-					transaction.Amount = -Amount;
-					break;
-				default:
-					break;
+					if (navService.CanGoBack)
+						navService.GoBack();
+				}
 			}
-
-			if (_transactionType != TransactionType.Transfer && TransactionId != Guid.Empty)
+			else
 			{
-				var t = transactionRepository.AddOrUpdateEntry(transaction);
-				TransactionId = t.TransactionId;
-				_id = t.Id;
-				_isDeleted = t.IsDeleted;
-
-				if (navService.CanGoBack)
-					navService.GoBack();
+				if (ValidationFailed != null)
+					ValidationFailed(this, new ValidationFailedEventArgs(errors));
 			}
 		}
 	}

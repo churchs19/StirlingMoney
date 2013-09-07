@@ -129,7 +129,9 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				AccountName = account.AccountName,
 				InitialBalance = account.InitialBalance,
 				EditDateTime = account.EditDateTime,
-				IsDeleted = account.IsDeleted
+				IsDeleted = account.IsDeleted,
+				IsCreditCard = account.IsCreditCard,
+				CreditLimit = account.CreditLimit
 			};
 		}
 	}

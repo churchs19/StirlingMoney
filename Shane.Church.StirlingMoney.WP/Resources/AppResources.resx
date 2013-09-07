@@ -534,4 +534,10 @@
   <data name="AppBarSave" xml:space="preserve">
     <value>save</value>
   </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>credit card</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>credit limit</value>
+  </data>
 </root>

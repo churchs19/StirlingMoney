@@ -4,6 +4,7 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Properties;
 using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.StirlingMoney.Core.ViewModels.Shared;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -222,54 +223,66 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public ICommand SaveCommand { get; private set; }
 
+		public delegate void ValidationFailedHandler(object sender, ValidationFailedEventArgs args);
+		public event ValidationFailedHandler ValidationFailed;
+
 		public void SaveBudget()
 		{
-			var budgetRepository = KernelService.Kernel.Get<IRepository<Budget>>();
-			var navService = KernelService.Kernel.Get<INavigationService>();
-
-			Budget b = null;
-			b.BudgetId = BudgetId.HasValue ? BudgetId.Value : Guid.Empty;
-			b.BudgetName = Name;
-			b.BudgetAmount = Amount;
-			b.StartDate = DateTime.SpecifyKind(StartDate, DateTimeKind.Utc);
-			if (Type != Resources.BudgetAllExpensesLabel)
+			var errors = Validate();
+			if (errors.Count == 0)
 			{
-				b.CategoryId = KernelService.Kernel.Get<IRepository<Category>>().GetFilteredEntries(it => it.CategoryName == Type).Select(it => it.CategoryId).FirstOrDefault();
+				var budgetRepository = KernelService.Kernel.Get<IRepository<Budget>>();
+				var navService = KernelService.Kernel.Get<INavigationService>();
+
+				Budget b = null;
+				b.BudgetId = BudgetId.HasValue ? BudgetId.Value : Guid.Empty;
+				b.BudgetName = Name;
+				b.BudgetAmount = Amount;
+				b.StartDate = DateTime.SpecifyKind(StartDate, DateTimeKind.Utc);
+				if (Type != Resources.BudgetAllExpensesLabel)
+				{
+					b.CategoryId = KernelService.Kernel.Get<IRepository<Category>>().GetFilteredEntries(it => it.CategoryName == Type).Select(it => it.CategoryId).FirstOrDefault();
+				}
+				else
+				{
+					b.CategoryId = null;
+				}
+				if (Period == Resources.BudgetWeekly)
+				{
+					b.BudgetPeriod = PeriodType.Weekly;
+					b.EndDate = null;
+				}
+				else if (Period == Resources.BudgetMonthly)
+				{
+					b.BudgetPeriod = PeriodType.Monthly;
+					b.EndDate = null;
+				}
+				else if (Period == Resources.BudgetYearly)
+				{
+					b.BudgetPeriod = PeriodType.Yearly;
+					b.EndDate = null;
+				}
+				else if (Period == Resources.BudgetCustom)
+				{
+					b.BudgetPeriod = PeriodType.Custom;
+					b.EndDate = DateTime.SpecifyKind(EndDate.Value, DateTimeKind.Utc);
+				}
+				b.Id = _id;
+				b.IsDeleted = _isDeleted;
+
+				b = budgetRepository.AddOrUpdateEntry(b);
+				BudgetId = b.BudgetId;
+				_id = b.Id;
+				_isDeleted = b.IsDeleted;
+
+				if (navService.CanGoBack)
+					navService.GoBack();
 			}
 			else
 			{
-				b.CategoryId = null;
+				if (ValidationFailed != null)
+					ValidationFailed(this, new ValidationFailedEventArgs(errors));
 			}
-			if (Period == Resources.BudgetWeekly)
-			{
-				b.BudgetPeriod = PeriodType.Weekly;
-				b.EndDate = null;
-			}
-			else if (Period == Resources.BudgetMonthly)
-			{
-				b.BudgetPeriod = PeriodType.Monthly;
-				b.EndDate = null;
-			}
-			else if (Period == Resources.BudgetYearly)
-			{
-				b.BudgetPeriod = PeriodType.Yearly;
-				b.EndDate = null;
-			}
-			else if (Period == Resources.BudgetCustom)
-			{
-				b.BudgetPeriod = PeriodType.Custom;
-				b.EndDate = DateTime.SpecifyKind(EndDate.Value, DateTimeKind.Utc);
-			}
-			b.Id = _id;
-			b.IsDeleted = _isDeleted;
-
-			b = budgetRepository.AddOrUpdateEntry(b);
-			BudgetId = b.BudgetId;
-			_id = b.Id;
-			_isDeleted = b.IsDeleted;
-
-			if (navService.CanGoBack)
-				navService.GoBack();
 		}
 	}
 }
