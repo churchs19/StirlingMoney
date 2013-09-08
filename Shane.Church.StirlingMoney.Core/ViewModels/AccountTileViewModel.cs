@@ -1,22 +1,34 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Properties;
+using Shane.Church.StirlingMoney.Core.Services;
 using System;
+using System.Linq;
+using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class AccountTileViewModel : ObservableObject
 	{
-		public AccountTileViewModel()
-		{
+		private ITileService<Account> _tileService;
+		private IRepository<Account> _accountRepository;
+		private INavigationService _navService;
 
-		}
-
-		public AccountTileViewModel(Account a)
+		public AccountTileViewModel(ITileService<Account> tileService, IRepository<Account> accountRepository, INavigationService navService)
 		{
-			AccountId = a.AccountId;
-			AccountName = a.AccountName;
-			AccountBalance = a.AccountBalance;
-			PostedBalance = a.PostedBalance;
+			if (tileService == null) throw new ArgumentNullException("tileService");
+			_tileService = tileService;
+			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
+			_accountRepository = accountRepository;
+			if (navService == null) throw new ArgumentNullException("navService");
+			_navService = navService;
+
+			EditCommand = new RelayCommand(Edit);
+			DeleteCommand = new RelayCommand(Delete);
+			PinCommand = new RelayCommand(Pin);
+			TransactionsCommand = new RelayCommand(Transactions);
 		}
 
 		private string _accountName;
@@ -72,22 +84,63 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			get
 			{
-				//if (!TileUtility.TileExists(AccountId))
-				//{
-				//	return Shane.Church.StirlingMoney.ViewModels.Resources.ViewModelResources.PinToStart;
-				//}
-				//else
-				//{
-				//	return Shane.Church.StirlingMoney.ViewModels.Resources.ViewModelResources.UnpinFromStart;
-				//}
-				throw new NotImplementedException();
+				if (!_tileService.TileExists(AccountId))
+				{
+					return Resources.PinToStart;
+				}
+				else
+				{
+					return Resources.UnpinFromStart;
+				}
 			}
 		}
 
+		public ICommand EditCommand { get; protected set; }
 
-
-		public void LoadData(Guid AccountId)
+		public void Edit()
 		{
+			_navService.Navigate<AddEditAccountViewModel>(this.AccountId);
+		}
+
+		public ICommand DeleteCommand { get; protected set; }
+
+		public void Delete()
+		{
+
+		}
+
+		public ICommand PinCommand { get; protected set; }
+
+		public void Pin()
+		{
+
+		}
+
+		public ICommand TransactionsCommand { get; protected set; }
+
+		public void Transactions()
+		{
+			_navService.Navigate<TransactionListViewModel>(this.AccountId);
+		}
+
+		public void LoadData(Guid accountId)
+		{
+			Account a = _accountRepository.GetFilteredEntries(it => it.AccountId == accountId).FirstOrDefault();
+			if (a != null)
+			{
+				AccountId = accountId;
+				AccountName = a.AccountName;
+				AccountBalance = a.AccountBalance;
+				PostedBalance = a.PostedBalance;
+			}
+		}
+
+		public void LoadData(Account a)
+		{
+			AccountId = a.AccountId;
+			AccountName = a.AccountName;
+			AccountBalance = a.AccountBalance;
+			PostedBalance = a.PostedBalance;
 		}
 	}
 }

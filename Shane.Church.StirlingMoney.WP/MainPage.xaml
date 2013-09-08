@@ -60,12 +60,17 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <telerikPrimitives:RadCustomHubTile Title="{Binding AccountName}" Height="185" Width="185" Foreground="White" Margin="0,0,10,10">
+                                    <telerikPrimitives:RadCustomHubTile Title="{Binding AccountName}" 
+                                                                        Height="185" 
+                                                                        Width="185" 
+                                                                        Foreground="White" 
+                                                                        Margin="0,0,10,10"
+                                                                        Command="{Binding TransactionsCommand}">
                                         <telerikPrimitives:RadContextMenu.ContextMenu>
                                             <telerikPrimitives:RadContextMenu OpenGesture="Hold">
-                                                <telerikPrimitives:RadContextMenuItem x:Name="menuItemPinToStart" Content="{Binding PinMenuText}" Tag="{Binding AccountId}" />
-                                                <telerikPrimitives:RadContextMenuItem x:Name="menuItemEdit" Content="{Binding Path=LocalizedResources.EditMenuItem, Source={StaticResource LocalizedStrings}}" Tag="{Binding AccountId}" />
-                                                <telerikPrimitives:RadContextMenuItem x:Name="menuItemDelete" Content="{Binding Path=LocalizedResources.DeleteMenuItem, Source={StaticResource LocalizedStrings}}" Tag="{Binding AccountId}"/>
+                                                <telerikPrimitives:RadContextMenuItem x:Name="menuItemPinToStart" Content="{Binding PinMenuText}" Command="{Binding PinCommand}" />
+                                                <telerikPrimitives:RadContextMenuItem x:Name="menuItemEdit" Content="{Binding Path=LocalizedResources.EditMenuItem, Source={StaticResource LocalizedStrings}}" Command="{Binding EditCommand}" />
+                                                <telerikPrimitives:RadContextMenuItem x:Name="menuItemDelete" Content="{Binding Path=LocalizedResources.DeleteMenuItem, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}"/>
                                             </telerikPrimitives:RadContextMenu>
                                         </telerikPrimitives:RadContextMenu.ContextMenu>
                                         <telerikPrimitives:RadCustomHubTile.FrontContentTemplate>
@@ -82,32 +87,26 @@
                                         </telerikPrimitives:RadCustomHubTile.FrontContentTemplate>
                                         <telerikPrimitives:RadCustomHubTile.BackContentTemplate>
                                             <DataTemplate>
-                                                <Grid Background="{StaticResource PhoneAccentBrush}">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="Auto"/>
-                                                        <RowDefinition Height="Auto"/>
-                                                        <RowDefinition Height="Auto"/>
-                                                        <RowDefinition Height="*"/>
-                                                    </Grid.RowDefinitions>
-                                                    <TextBlock Grid.Row="0"
-                                                               Text="{Binding Path=LocalizedResources.TransactionsAvailableBalanceLabel, Source={StaticResource LocalizedStrings}}" 
+                                                <StackPanel Background="{StaticResource PhoneAccentBrush}" Width="185" Height="185">
+                                                    <TextBlock Text="{Binding Path=LocalizedResources.TransactionsAvailableBalanceLabel, Source={StaticResource LocalizedStrings}}" 
                                                                HorizontalAlignment="Left" 
                                                                Margin="9,9,9,0"
-                                                               FontWeight="Bold"/>
-                                                    <TextBlock Grid.Row="1"
-                                                               Text="{Binding AccountBalance, Converter={StaticResource LocalizedCurrency}}" 
-                                                               HorizontalAlignment="Left" 
-                                                               Margin="9,0"/>
-                                                    <TextBlock Grid.Row="2"
-                                                               Text="{Binding Path=LocalizedResources.TransactionsPostedBalanceLabel, Source={StaticResource LocalizedStrings}}" 
+                                                               FontWeight="Bold" 
+                                                               FontSize="15" />
+                                                    <TextBlock Text="{Binding AccountBalance, Converter={StaticResource LocalizedCurrency}}" 
                                                                HorizontalAlignment="Left" 
                                                                Margin="9,0" 
-                                                               FontWeight="Bold"/>
-                                                    <TextBlock Grid.Row="3"
-                                                               Text="{Binding PostedBalance, Converter={StaticResource LocalizedCurrency}}" 
+                                                               FontSize="15"/>
+                                                    <TextBlock Text="{Binding Path=LocalizedResources.TransactionsPostedBalanceLabel, Source={StaticResource LocalizedStrings}}" 
                                                                HorizontalAlignment="Left" 
-                                                               Margin="9,0,9,9"/>
-                                                </Grid>
+                                                               Margin="9,0" 
+                                                               FontWeight="Bold"
+                                                               FontSize="15"/>
+                                                    <TextBlock Text="{Binding PostedBalance, Converter={StaticResource LocalizedCurrency}}" 
+                                                               HorizontalAlignment="Left" 
+                                                               Margin="9,0,9,9"
+                                                               FontSize="15"/>
+                                                </StackPanel>
                                             </DataTemplate>
                                         </telerikPrimitives:RadCustomHubTile.BackContentTemplate>
                                     </telerikPrimitives:RadCustomHubTile>

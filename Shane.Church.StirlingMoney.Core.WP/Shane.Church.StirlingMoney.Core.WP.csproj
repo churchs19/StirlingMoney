@@ -125,6 +125,7 @@
     <Compile Include="Services\PhoneAgentManagementService.cs" />
     <Compile Include="Services\PhoneNavigationService.cs" />
     <Compile Include="Services\PhoneSettingsService.cs" />
+    <Compile Include="Services\PhoneTileService.cs" />
     <Compile Include="Services\PhoneWebNavigationService.cs" />
     <Compile Include="ViewModels\PhoneAboutViewModel.cs" />
     <Compile Include="ViewModels\PhoneMainViewModel.cs" />

@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
+using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -60,9 +62,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			if (!_accountsLoaded || forceUpdate)
 			{
 				var entries = await _accountRepository.GetAllEntriesAsync();
-				foreach (var a in entries.Select(it => new AccountTileViewModel(it)))
+				foreach (var a in entries)
 				{
-					Accounts.Add(a);
+					var tile = KernelService.Kernel.Get<AccountTileViewModel>();
+					tile.LoadData(a);
+					Accounts.Add(tile);
 				}
 				_accountsLoaded = true;
 			}

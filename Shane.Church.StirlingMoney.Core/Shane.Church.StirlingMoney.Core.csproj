@@ -60,6 +60,7 @@
     <Compile Include="Services\IAgentManagementService.cs" />
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\ISettingsService.cs" />
+    <Compile Include="Services\ITileService.cs" />
     <Compile Include="Services\IWebNavigationService.cs" />
     <Compile Include="Services\KernelService.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />

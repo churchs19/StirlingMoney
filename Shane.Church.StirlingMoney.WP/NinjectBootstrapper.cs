@@ -11,8 +11,6 @@ namespace Shane.Church.StirlingMoney.WP
 {
 	public static class NinjectBootstrapper
 	{
-		private static StirlingMoneyDataContext _context;
-
 		public static void Bootstrap()
 		{
 			KernelService.Kernel = new StandardKernel();
@@ -30,6 +28,7 @@ namespace Shane.Church.StirlingMoney.WP
 			KernelService.Kernel.Bind<ITransactionSum>().To<TransactionRepository>();
 			KernelService.Kernel.Bind<MainViewModel>().To<PhoneMainViewModel>();
 			KernelService.Kernel.Bind<AboutViewModel>().To<PhoneAboutViewModel>();
+			KernelService.Kernel.Bind<ITileService<Core.Data.Account>>().To<PhoneAccountTileService>().InSingletonScope();
 		}
 	}
 }
