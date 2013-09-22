@@ -110,5 +110,33 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				return CheckNumber.HasValue;
 			}
 		}
+
+		public void LoadData(Guid transactionId)
+		{
+			var t = _transactionRepository.GetFilteredEntries(it => it.TransactionId == transactionId).FirstOrDefault();
+			if (t != null)
+			{
+				TransactionId = transactionId;
+				TransactionDate = t.TransactionDate;
+				Location = t.Location;
+				Amount = t.Amount;
+				CheckNumber = t.CheckNumber;
+				_posted = t.Posted;
+				Memo = t.Note;
+				Category = t.Category != null ? t.Category.CategoryName : null;
+			}
+		}
+
+		public void LoadData(Transaction transaction)
+		{
+			TransactionId = transaction.TransactionId;
+			TransactionDate = transaction.TransactionDate;
+			Location = transaction.Location;
+			Amount = transaction.Amount;
+			CheckNumber = transaction.CheckNumber;
+			_posted = transaction.Posted;
+			Memo = transaction.Note;
+			Category = transaction.Category != null ? transaction.Category.CategoryName : null;
+		}
 	}
 }

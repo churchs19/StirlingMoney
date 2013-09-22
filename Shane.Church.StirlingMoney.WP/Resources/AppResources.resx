@@ -540,4 +540,60 @@
   <data name="CreditLimitLabel" xml:space="preserve">
     <value>credit limit</value>
   </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>Application Error</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>The application has encountered a problem. I am sorry for the inconvenience.
+
+I would appreciate your assistance by sending the prepared error report. This will help with resolving the problem faster.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>You have {0} time(s) left.</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>You have {0} day(s) left.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>Trial Reminder</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Do not show this reminder again</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>You are using the ad-supported trial version of this application. Do you want to purchase the application now to remove the ads? If you choose Yes - you will be redirected to the marketplace.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>Trial Expired</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Do not show this reminder again</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>The trial of this application has expired. Do you want to purchase the application now? If you choose Yes - you will be redirected to the marketplace.</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>Rate the app</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Do not show this reminder again</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>I would love to hear from you! If you like the app, please rate it on the marketplace and share your feedback.</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>yes</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>no</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>ok</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>cancel</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>select date</value>
+  </data>
 </root>

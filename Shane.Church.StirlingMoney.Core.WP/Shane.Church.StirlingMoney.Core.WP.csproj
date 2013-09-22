@@ -70,6 +70,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\portable-net40+sl4+wp7+win8\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Ninject.Common">
       <HintPath>..\packages\Portable.Ninject.3.0.6\lib\sl4-wp71\Ninject.Common.dll</HintPath>
@@ -110,6 +111,7 @@
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\ByteToImageSourceValueConverter.cs" />
     <Compile Include="Converters\CurrencyValueConverter.cs" />
+    <Compile Include="Converters\TransactionBrushConverter.cs" />
     <Compile Include="Data\AccountRepository.cs" />
     <Compile Include="Data\AuthorizedUserRepository.cs" />
     <Compile Include="Data\BudgetRepository.cs" />

@@ -1,0 +1,22 @@
+Link targets with SiteCatalyst tags
+
+300x50	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+300x75	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+216x36	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+216x54	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+168x42	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+168x28	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+120x20	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+120x30	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+728x90	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+468x60	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+300x250	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+234x60	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+160x600	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+120x600	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+320x53	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+300x250	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+300x50	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+216x36	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+168x28	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535
+120x20	http://www.windowsphone.com/en-us/store/app/stirling-money/c81aa8df-5dd6-4afe-b0eb-58a824581535

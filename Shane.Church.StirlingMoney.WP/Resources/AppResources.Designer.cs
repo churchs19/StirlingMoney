@@ -313,6 +313,60 @@ namespace Shane.Church.StirlingMoney.WP.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The trial of this application has expired. Do you want to purchase the application now? If you choose Yes - you will be redirected to the marketplace..
+        /// </summary>
+        public static string AppTrialEnd_MessageBox_Content {
+            get {
+                return ResourceManager.GetString("AppTrialEnd_MessageBox_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do not show this reminder again.
+        /// </summary>
+        public static string AppTrialEnd_MessageBox_SkipFurtherRemindersMessage {
+            get {
+                return ResourceManager.GetString("AppTrialEnd_MessageBox_SkipFurtherRemindersMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trial Expired.
+        /// </summary>
+        public static string AppTrialEnd_MessageBox_Title {
+            get {
+                return ResourceManager.GetString("AppTrialEnd_MessageBox_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are using the ad-supported trial version of this application. Do you want to purchase the application now to remove the ads? If you choose Yes - you will be redirected to the marketplace..
+        /// </summary>
+        public static string AppTrialReminder_MessageBox_Content {
+            get {
+                return ResourceManager.GetString("AppTrialReminder_MessageBox_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do not show this reminder again.
+        /// </summary>
+        public static string AppTrialReminder_MessageBox_SkipFurtherRemindersMessage {
+            get {
+                return ResourceManager.GetString("AppTrialReminder_MessageBox_SkipFurtherRemindersMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trial Reminder.
+        /// </summary>
+        public static string AppTrialReminder_MessageBox_Title {
+            get {
+                return ResourceManager.GetString("AppTrialReminder_MessageBox_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to backup.
         /// </summary>
         public static string BackupButton {
@@ -772,6 +826,26 @@ namespace Shane.Church.StirlingMoney.WP.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The application has encountered a problem. I am sorry for the inconvenience.
+        ///
+        ///I would appreciate your assistance by sending the prepared error report. This will help with resolving the problem faster..
+        /// </summary>
+        public static string Diagnostics_MessageBox_Content {
+            get {
+                return ResourceManager.GetString("Diagnostics_MessageBox_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Error.
+        /// </summary>
+        public static string Diagnostics_MessageBox_Title {
+            get {
+                return ResourceManager.GetString("Diagnostics_MessageBox_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to edit account.
         /// </summary>
         public static string EditAccountTitle {
@@ -880,6 +954,42 @@ namespace Shane.Church.StirlingMoney.WP.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to cancel.
+        /// </summary>
+        public static string MBCancelText {
+            get {
+                return ResourceManager.GetString("MBCancelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no.
+        /// </summary>
+        public static string MBNoText {
+            get {
+                return ResourceManager.GetString("MBNoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ok.
+        /// </summary>
+        public static string MBOkText {
+            get {
+                return ResourceManager.GetString("MBOkText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to yes.
+        /// </summary>
+        public static string MBYesText {
+            get {
+                return ResourceManager.GetString("MBYesText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to net income.
         /// </summary>
         public static string NetIncomeTitle {
@@ -961,6 +1071,33 @@ namespace Shane.Church.StirlingMoney.WP.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I would love to hear from you! If you like the app, please rate it on the marketplace and share your feedback..
+        /// </summary>
+        public static string RateReminder_MessageBox_Content {
+            get {
+                return ResourceManager.GetString("RateReminder_MessageBox_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do not show this reminder again.
+        /// </summary>
+        public static string RateReminder_MessageBox_SkipFurtherRemindersMessage {
+            get {
+                return ResourceManager.GetString("RateReminder_MessageBox_SkipFurtherRemindersMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate the app.
+        /// </summary>
+        public static string RateReminder_MessageBox_Title {
+            get {
+                return ResourceManager.GetString("RateReminder_MessageBox_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to STIRLING MONEY - REPORTS.
         /// </summary>
         public static string ReportsTitle {
@@ -1011,6 +1148,15 @@ namespace Shane.Church.StirlingMoney.WP.Resources {
         public static string SearchHint {
             get {
                 return ResourceManager.GetString("SearchHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select date.
+        /// </summary>
+        public static string SelectDateText {
+            get {
+                return ResourceManager.GetString("SelectDateText", resourceCulture);
             }
         }
         
@@ -1290,6 +1436,24 @@ namespace Shane.Church.StirlingMoney.WP.Resources {
         public static string TrialMessageTwoAccounts {
             get {
                 return ResourceManager.GetString("TrialMessageTwoAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have {0} day(s) left..
+        /// </summary>
+        public static string TrialReminderPeriodMessage {
+            get {
+                return ResourceManager.GetString("TrialReminderPeriodMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have {0} time(s) left..
+        /// </summary>
+        public static string TrialReminderUsageCountMessage {
+            get {
+                return ResourceManager.GetString("TrialReminderUsageCountMessage", resourceCulture);
             }
         }
         

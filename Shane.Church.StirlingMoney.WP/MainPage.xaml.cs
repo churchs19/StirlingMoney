@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Controls;
+﻿using Inneractive.Nokia.Ad;
+using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -18,6 +19,8 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			InitializeComponent();
 
+			InitializeAdControl();
+
 			//Shows the rate reminder message, according to the settings of the RateReminder.
 			(App.Current as App).rateReminder.Notify();
 		}
@@ -31,6 +34,41 @@ namespace Shane.Church.StirlingMoney.WP
 
 			await LoadData();
 		}
+
+		#region Ad Control
+		private void InitializeAdControl()
+		{
+#if !PERSONAL
+			if ((App.Current as App).trialReminder.IsTrialMode())
+			{
+				AdControl.AdReceived += new InneractiveAd.IaAdReceived(AdControl_AdReceived);
+				AdControl.AdFailed += new InneractiveAd.IaAdFailed(AdControl_AdFailed);
+				AdControl.DefaultAdReceived += new InneractiveAd.IaDefaultAdReceived(AdControl_DefaultAdReceived);
+			}
+			else
+			{
+				AdControl = null;
+			}
+#else
+			AdControl = null;
+#endif
+		}
+
+		void AdControl_DefaultAdReceived(object sender)
+		{
+			AdControl.Visibility = System.Windows.Visibility.Visible;
+		}
+
+		private void AdControl_AdReceived(object sender)
+		{
+			AdControl.Visibility = System.Windows.Visibility.Visible;
+		}
+
+		private void AdControl_AdFailed(object sender)
+		{
+			AdControl.Visibility = System.Windows.Visibility.Collapsed;
+		}
+		#endregion
 
 		#region App Bar
 		private enum ApplicationBarType

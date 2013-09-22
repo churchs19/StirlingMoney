@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Controls;
+﻿using Inneractive.Nokia.Ad;
+using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
@@ -54,30 +55,35 @@ namespace Shane.Church.StirlingMoney.WP
 		#region Ad Control
 		private void InitializeAdControl()
 		{
-			if (Microsoft.Devices.Environment.DeviceType == Microsoft.Devices.DeviceType.Emulator)
+#if !PERSONAL
+			if ((App.Current as App).trialReminder.IsTrialMode())
 			{
-				AdControl.ApplicationId = "test_client";
-				AdControl.AdUnitId = "Image480_80";
+				AdControl.AdReceived += new InneractiveAd.IaAdReceived(AdControl_AdReceived);
+				AdControl.AdFailed += new InneractiveAd.IaAdFailed(AdControl_AdFailed);
+				AdControl.DefaultAdReceived += new InneractiveAd.IaDefaultAdReceived(AdControl_DefaultAdReceived);
 			}
 			else
 			{
-				AdControl.ApplicationId = "081af108-c899-401e-a44a-b54e303f12dc";
-				AdControl.AdUnitId = "92173";
+				AdControl = null;
 			}
-#if PERSONAL
-			AdControl.IsEnabled = false;
-			AdControl.Height = 0;
+#else
+			AdControl = null;
 #endif
 		}
 
-		private void AdControl_ErrorOccurred(object sender, Microsoft.Advertising.AdErrorEventArgs e)
+		void AdControl_DefaultAdReceived(object sender)
 		{
-			AdControl.Height = 0;
+			AdControl.Visibility = System.Windows.Visibility.Visible;
 		}
 
-		private void AdControl_AdRefreshed(object sender, EventArgs e)
+		private void AdControl_AdReceived(object sender)
 		{
-			AdControl.Height = 80;
+			AdControl.Visibility = System.Windows.Visibility.Visible;
+		}
+
+		private void AdControl_AdFailed(object sender)
+		{
+			AdControl.Visibility = System.Windows.Visibility.Collapsed;
 		}
 		#endregion
 

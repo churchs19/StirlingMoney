@@ -16,6 +16,10 @@
     shell:SystemTray.IsVisible="True" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource MoneyBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <controls:Pivot x:Name="PivotMain" Title="{Binding Path=LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Grid.Row="0" SelectionChanged="Pivot_SelectionChanged">
             <controls:PivotItem Header="{Binding Path=LocalizedResources.AccountsTitle, Source={StaticResource LocalizedStrings}}" 
 								    DataContext="{Binding Accounts}">
@@ -60,12 +64,15 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
+                                    <Grid Width="185" Height="185">
                                     <telerikPrimitives:RadCustomHubTile Title="{Binding AccountName}" 
                                                                         Height="185" 
                                                                         Width="185" 
                                                                         Foreground="White" 
                                                                         Margin="0,0,10,10"
-                                                                        Command="{Binding TransactionsCommand}">
+                                                                        Command="{Binding TransactionsCommand}"
+                                                                        FrontContent="{Binding BindsDirectlyToSource=True}"
+                                                                        BackContent="{Binding BindsDirectlyToSource=True}">
                                         <telerikPrimitives:RadContextMenu.ContextMenu>
                                             <telerikPrimitives:RadContextMenu OpenGesture="Hold">
                                                 <telerikPrimitives:RadContextMenuItem x:Name="menuItemPinToStart" Content="{Binding PinMenuText}" Command="{Binding PinCommand}" />
@@ -81,7 +88,7 @@
                                                         <RowDefinition Height="*"/>
                                                     </Grid.RowDefinitions>
                                                     <Image Grid.Row="0" Grid.RowSpan="2" Source="Images/Account.png" Stretch="None"/>
-                                                    <TextBlock Grid.Row="0" Text="{Binding AccountBalance, Converter={StaticResource LocalizedCurrency}}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,9,0,0" FontSize="{StaticResource PhoneFontSizeSmall}" FontFamily="{StaticResource PhoneFontFamilyNormal}" />
+                                                    <TextBlock Grid.Row="0" Text="{Binding AccountBalance, Converter={StaticResource LocalizedCurrency}}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="9,9,19,9" FontSize="{StaticResource PhoneFontSizeSmall}" FontFamily="{StaticResource PhoneFontFamilyNormal}" />
                                                 </Grid>
                                             </DataTemplate>
                                         </telerikPrimitives:RadCustomHubTile.FrontContentTemplate>
@@ -110,6 +117,7 @@
                                             </DataTemplate>
                                         </telerikPrimitives:RadCustomHubTile.BackContentTemplate>
                                     </telerikPrimitives:RadCustomHubTile>
+                                    </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
@@ -121,6 +129,20 @@
             <controls:PivotItem Header="{Binding Path=LocalizedResources.GoalsTitle, Source={StaticResource LocalizedStrings}}">
             </controls:PivotItem>
         </controls:Pivot>
-	</Grid>
+        <StackPanel Grid.Row="1">
+            <StackPanel>
+                <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"
+                                  AppID="ShaneChurch_StirlingMoney_WP"
+                                  AdType="IaAdType_Banner"
+                                  ReloadTime="30"
+                                  Keywords="finance,money,cash,check,credit,credit card,financial,debt,income"
+                                  OptionalAdHeight="80"
+                                  OptionalAdWidth="480"
+                                  AdAlignment="BOTTOM_CENTER"
+                                  Margin="0,0,0,0"
+                                  Name="AdControl" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
 </phone:PhoneApplicationPage>
 

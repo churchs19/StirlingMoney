@@ -6,7 +6,6 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:ad="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
     xmlns:c4f="clr-namespace:Coding4Fun.Phone.Controls.Binding"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -44,12 +43,18 @@
         </Grid>
 
 		<StackPanel Grid.Row="2">
-			<ad:AdControl Name="AdControl" 
-					Height="80" 
-					Width="480" 
-					IsAutoRefreshEnabled="True"
-					ErrorOccurred="AdControl_ErrorOccurred"
-					AdRefreshed="AdControl_AdRefreshed"/>
-		</StackPanel>
+            <StackPanel>
+                <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"
+                                  AppID="ShaneChurch_StirlingMoney_WP"
+                                  AdType="IaAdType_Banner"
+                                  ReloadTime="30"
+                                  Keywords="finance,money,cash,check,credit,credit card,financial,debt,income"
+                                  OptionalAdHeight="80"
+                                  OptionalAdWidth="480"
+                                  AdAlignment="BOTTOM_CENTER"
+                                  Margin="0,0,0,0"
+                                  Name="AdControl" />
+            </StackPanel>
+        </StackPanel>
 	</Grid>
 </phone:PhoneApplicationPage>

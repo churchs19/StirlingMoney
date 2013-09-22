@@ -37,7 +37,10 @@ namespace Shane.Church.StirlingMoney.WP
         /// Component used to raise a notification to the end users to rate the application on the marketplace.
         /// </summary>
         public RadRateApplicationReminder rateReminder;
-
+		/// <summary>
+		/// Component used to remind end users about the trial state of the application.
+		/// </summary>
+		public RadTrialApplicationReminder trialReminder;
         
 		/// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -85,19 +88,49 @@ namespace Shane.Church.StirlingMoney.WP
             }
 
 			//Creates an instance of the Diagnostics component.
-            diagnostics = new RadDiagnostics();
+			diagnostics = new RadDiagnostics();
 
-            //Defines the default email where the diagnostics info will be send.
-            diagnostics.EmailTo = "shane@s-church.net";
+			//Defines the default email where the diagnostics info will be send.
+			diagnostics.EmailTo = "shane@s-church.net";
+			diagnostics.MessageBoxInfo.Title = AppResources.Diagnostics_MessageBox_Title;
+			diagnostics.MessageBoxInfo.Content = AppResources.Diagnostics_MessageBox_Content;
 
-            //Initializes this instance.
-            diagnostics.Init();
-        
-		      //Creates a new instance of the RadRateApplicationReminder component.
-            rateReminder = new RadRateApplicationReminder();
+			//Initializes this instance.
+			diagnostics.Init();
 
-            //Sets how often the rate reminder is displayed.
-            rateReminder.RecurrencePerUsageCount = 5;
+			//Creates an instance of the RadTrialApplicationReminder component.
+			trialReminder = new RadTrialApplicationReminder();
+			trialReminder.TrialReminderMessageBoxInfo.Title = AppResources.AppTrialReminder_MessageBox_Title;
+			trialReminder.TrialReminderMessageBoxInfo.Content = AppResources.AppTrialReminder_MessageBox_Content;
+			trialReminder.TrialReminderMessageBoxInfo.SkipFurtherRemindersMessage = AppResources.AppTrialReminder_MessageBox_SkipFurtherRemindersMessage;
+			trialReminder.TrialExpiredMessageBoxInfo.Title = AppResources.AppTrialEnd_MessageBox_Title;
+			trialReminder.TrialExpiredMessageBoxInfo.Content = AppResources.AppTrialEnd_MessageBox_Content;
+			trialReminder.TrialExpiredMessageBoxInfo.SkipFurtherRemindersMessage = AppResources.AppTrialEnd_MessageBox_SkipFurtherRemindersMessage;
+
+			//Sets the length of the trial period.
+			trialReminder.AllowedTrialPeriod = TimeSpan.MaxValue;
+
+#if DEBUG_TRIAL
+			//The reminder is shown only if the application is in trial mode. When this property is set to true the application will simulate that it is in trial mode.
+			trialReminder.SimulateTrialForTests = true;
+			trialReminder.OccurrenceUsageCount = 1;
+#else
+			trialReminder.FreePeriod = TimeSpan.FromDays(7);
+
+			//Sets how often the trial reminder is displayed.
+			trialReminder.OccurrencePeriod = TimeSpan.FromDays(7);
+#endif
+
+			trialReminder.AllowUsersToSkipFurtherReminders = true;
+
+			//Creates a new instance of the RadRateApplicationReminder component.
+			rateReminder = new RadRateApplicationReminder();
+			rateReminder.MessageBoxInfo.Title = AppResources.RateReminder_MessageBox_Title;
+			rateReminder.MessageBoxInfo.Content = AppResources.RateReminder_MessageBox_Content;
+			rateReminder.MessageBoxInfo.SkipFurtherRemindersMessage = AppResources.RateReminder_MessageBox_SkipFurtherRemindersMessage;
+
+			//Sets how often the rate reminder is displayed.
+			rateReminder.RecurrencePerUsageCount = 5;
 			rateReminder.AllowUsersToSkipFurtherReminders = true;
 
 			UpdateController.ConfigureDatabase();

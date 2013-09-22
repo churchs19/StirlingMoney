@@ -51,8 +51,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Advertising.Mobile, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Advertising.Mobile.UI, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Inneractive.Ad">
+      <HintPath>..\lib\InneractiveAdSDK\WP7\Inneractive.Ad.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Live">
       <HintPath>..\packages\LiveSDK.5.4\lib\WindowsPhone71\Microsoft.Live.dll</HintPath>
     </Reference>
@@ -82,6 +83,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\portable-net40+sl4+wp7+win8\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Ninject.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -144,8 +146,17 @@
     <Compile Include="AddEditAccount.xaml.cs">
       <DependentUpon>AddEditAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddEditBudget.xaml.cs">
+      <DependentUpon>AddEditBudget.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddEditCategory.xaml.cs">
       <DependentUpon>AddEditCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddEditGoal.xaml.cs">
+      <DependentUpon>AddEditGoal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddEditTransaction.xaml.cs">
+      <DependentUpon>AddEditTransaction.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -166,6 +177,9 @@
       <DependentUpon>AppResources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Transactions.xaml.cs">
+      <DependentUpon>Transactions.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -271,6 +285,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddEditBudget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditGoal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditTransaction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Categories.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -282,6 +308,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transactions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -317,6 +347,9 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </DesignData>
     <DesignData Include="SampleData\MainViewModelSampleData.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </DesignData>
+    <DesignData Include="SampleData\TransactionListViewModelSampleData.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </DesignData>
   </ItemGroup>
