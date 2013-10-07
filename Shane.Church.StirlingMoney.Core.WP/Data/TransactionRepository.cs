@@ -64,7 +64,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.Transactions.DeleteOnSubmit(pEntry);
 					else
 					{
-						pEntry.EditDateTime = DateTimeOffset.Now;
+						pEntry.EditDateTime = DateTimeOffset.UtcNow;
 						pEntry.IsDeleted = true;
 					}
 					_context.SubmitChanges();
@@ -97,7 +97,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 					item.Amount = entry.Amount;
 					item.CategoryId = entry.CategoryId;
 					item.CheckNumber = entry.CheckNumber;
-					item.EditDateTime = DateTimeOffset.Now;
+					item.EditDateTime = DateTimeOffset.UtcNow;
 					item.Id = entry.Id;
 					item.IsDeleted = entry.IsDeleted;
 					item.Location = entry.Location;

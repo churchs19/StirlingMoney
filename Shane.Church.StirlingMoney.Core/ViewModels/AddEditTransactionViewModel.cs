@@ -30,6 +30,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					RaisePropertyChanged(() => TransferAccounts);
 				};
 			SaveCommand = new RelayCommand(SaveTransaction);
+			Amount = 0;
 		}
 
 		private long? _id;
@@ -214,15 +215,15 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public void LoadData(Guid accountId, Guid transactionId, TransactionType type = TransactionType.Unknown)
+		public void LoadData(AddEditTransactionParams param)
 		{
-			this._transactionType = type;
-			AccountId = accountId;
+			this._transactionType = param.Type;
+			AccountId = param.AccountId;
 			var transactionRepository = KernelService.Kernel.Get<IRepository<Transaction>>();
 			var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
 			var accountRepository = KernelService.Kernel.Get<IRepository<Account>>();
 
-			if (transactionId == Guid.Empty)
+			if (param.TransactionId == Guid.Empty)
 			{
 				TransactionDate = DateTime.Today;
 				if (_transactionType == TransactionType.Check)
@@ -240,7 +241,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 			else
 			{
-				Transaction t = transactionRepository.GetFilteredEntries(it => it.TransactionId == TransactionId).FirstOrDefault();
+				Transaction t = transactionRepository.GetFilteredEntries(it => it.TransactionId == param.TransactionId).FirstOrDefault();
 				if (t != null)
 				{
 					_id = t.Id;
@@ -263,9 +264,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					CheckNumber = t.CheckNumber;
 				}
 			}
-			if (type == TransactionType.Unknown)
+			if (param.Type == TransactionType.Unknown)
 			{
-				Transaction t = transactionRepository.GetFilteredEntries(it => it.TransactionId == transactionId).FirstOrDefault();
+				Transaction t = transactionRepository.GetFilteredEntries(it => it.TransactionId == param.TransactionId).FirstOrDefault();
 				if (t.CheckNumber.HasValue)
 					_transactionType = TransactionType.Check;
 				else if (t.Location != null && (t.Location.Contains(Resources.TransferFromComparisonString) || t.Location.Contains(Resources.TransferToComparisonString)))
@@ -400,16 +401,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 						break;
 				}
 
-				if (_transactionType != TransactionType.Transfer && TransactionId != Guid.Empty)
+				if (_transactionType != TransactionType.Transfer)
 				{
 					var t = transactionRepository.AddOrUpdateEntry(transaction);
 					TransactionId = t.TransactionId;
 					_id = t.Id;
 					_isDeleted = t.IsDeleted;
-
-					if (navService.CanGoBack)
-						navService.GoBack();
 				}
+
+				if (navService.CanGoBack)
+					navService.GoBack();
 			}
 			else
 			{

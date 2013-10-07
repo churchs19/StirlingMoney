@@ -4,6 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+	xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+	xmlns:telerikData="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Data"
+    xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -13,23 +16,90 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
+    <phone:PhoneApplicationPage.Resources>
+        <ImageBrush x:Key="MoneyBackgroundBrush" ImageSource="/Images/Background.png" Opacity=".25" Stretch="UniformToFill" />
+        <DataTemplate x:Key="ListPickerFullTemplate">
+            <TextBlock FontSize="{StaticResource PhoneFontSizeLarge}"
+					   Margin="10,10" TextWrapping="NoWrap"
+					   Text="{Binding BindsDirectlyToSource=True}"></TextBlock>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MoneyBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="{Binding Path=LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="{Binding TitleText}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
-        </Grid>
+        <ScrollViewer Grid.Row="1" >
+            <StackPanel x:Name="ContentPanel" Margin="12,0,12,0">
+                <TextBlock HorizontalAlignment="Left" Name="textBlockGoalName" 
+						   Text="{Binding Path=LocalizedResources.GoalNameLabel, Source={StaticResource LocalizedStrings}}"
+						   Margin="5,5" />
+                <TextBox Name="textBoxGoalName"
+						 Text="{Binding Name,Mode=TwoWay}"
+						 InputScope="Text" />
+                <TextBlock HorizontalAlignment="Left" Name="textBlockGoalType" 
+						   Text="{Binding Path=LocalizedResources.GoalAccountLabel, Source={StaticResource LocalizedStrings}}"
+						   Margin="5,5" 
+						   VerticalAlignment="Center"
+						   Grid.Row="1"
+						   Grid.Column="0"/>
+                <telerikInput:RadListPicker Name="listPickerGoalAccount"
+                                            ItemsSource="{Binding Accounts}"
+                                            SelectedItem="{Binding Account,Mode=TwoWay}"
+                                            PopupHeader="{Binding Path=LocalizedResources.GoalTypeLabel, Source={StaticResource LocalizedStrings}}"
+                                            PopupItemTemplate="{StaticResource ListPickerFullTemplate}">
+                </telerikInput:RadListPicker>
+                <!--<toolkit:ListPicker Name="listPickerGoalAccount"
+									Grid.Row="1"
+									Grid.Column="1"
+									ItemsSource="{Binding Accounts}"
+									SelectedItem="{Binding Account,Mode=TwoWay}"
+									FullModeHeader="{Binding Path=LocalizedResources.GoalTypeLabel, Source={StaticResource LocalizedStrings}}"
+									FullModeItemTemplate="{StaticResource ListPickerFullTemplate}">
+                </toolkit:ListPicker>-->
+                <TextBlock HorizontalAlignment="Left" Name="textBlockGoalAmount" 
+						   Text="{Binding Path=LocalizedResources.GoalAmountLabel, Source={StaticResource LocalizedStrings}}"
+						   Margin="5,5"/>
+                <TextBox Name="textBoxGoalAmount"
+						 Text="{Binding Amount, Converter={StaticResource LocalizedCurrency},Mode=TwoWay}"
+						 InputScope="Number" GotFocus="textBoxGoalAmount_GotFocus" />
+                <TextBlock HorizontalAlignment="Left" Name="textBlockGoalStartDate" 
+						   Text="{Binding Path=LocalizedResources.GoalTargetDateLabel, Source={StaticResource LocalizedStrings}}"
+						   Margin="5,5"/>
+                <telerikInput:RadDatePicker Name="datePickerTargetDate"
+                                            Value="{Binding TargetDate,Mode=TwoWay}"
+                                            EmptyContent="{Binding Path=LocalizedResources.SelectDateText, Source={StaticResource LocalizedStrings}}"/>
+                <!--<toolkit:DatePicker Name="datePickerTargetDate" 
+									Value="{Binding TargetDate, Mode=TwoWay}"
+									Grid.Row="3"
+									Grid.Column="1"/>-->
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Row="2" x:Name="AdPanel">
+            <StackPanel>
+                <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"
+                                  AppID="ShaneChurch_StirlingMoney_WP"
+                                  AdType="IaAdType_Banner"
+                                  ReloadTime="30"
+                                  Keywords="finance,money,cash,check,credit,credit card,financial,debt,income"
+                                  OptionalAdHeight="80"
+                                  OptionalAdWidth="480"
+                                  AdAlignment="BOTTOM_CENTER"
+                                  Margin="0,0,0,0"
+                                  Name="AdControl" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 
 </phone:PhoneApplicationPage>

@@ -69,6 +69,7 @@
     <Compile Include="ViewModels\AddEditAccountViewModel.cs" />
     <Compile Include="ViewModels\AddEditBudgetViewModel.cs" />
     <Compile Include="ViewModels\AddEditGoalViewModel.cs" />
+    <Compile Include="ViewModels\AddEditTransactionParams.cs" />
     <Compile Include="ViewModels\AddEditTransactionViewModel.cs" />
     <Compile Include="ViewModels\BudgetSummaryViewModel.cs" />
     <Compile Include="ViewModels\CategoryListViewModel.cs" />

@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
 	xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:gauges="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.DataVisualization"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
@@ -68,6 +69,10 @@
                                     <telerikPrimitives:RadCustomHubTile Title="{Binding AccountName}" 
                                                                         Height="185" 
                                                                         Width="185" 
+                                                                        Grid.Row="0"
+                                                                        Grid.Column="0"
+                                                                        Grid.RowSpan="1"
+                                                                        Grid.ColumnSpan="1"
                                                                         Foreground="White" 
                                                                         Margin="0,0,10,10"
                                                                         Command="{Binding TransactionsCommand}"
@@ -125,6 +130,96 @@
                 </Grid>
             </controls:PivotItem>
             <controls:PivotItem Header="{Binding Path=LocalizedResources.BudgetsTitle, Source={StaticResource LocalizedStrings}}">
+                <Grid>
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding Budgets}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel></StackPanel>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <gauges:RadGauge>
+                                        <Grid>
+                                            <Grid.Resources>
+                                                <gauges:GaugeValueToBrushConverter x:Key="converter1" DefaultColor="Gray">
+                                                    <gauges:GaugeColorValueRange Color="Red" MaxValue="120" MinValue="80"/>
+                                                </gauges:GaugeValueToBrushConverter>
+                                                <DataTemplate x:Key="triangleTemplate">
+                                                    <Path Data="M5,-3 L0,0 L5,3 z" Fill="{StaticResource PhoneForegroundBrush}" Stroke="{StaticResource PhoneForegroundBrush}">
+                                                        <Path.RenderTransform>
+                                                            <RotateTransform Angle="-90"/>
+                                                        </Path.RenderTransform>
+                                                    </Path>
+                                                </DataTemplate>
+                                                <TransformGroup x:Key="indicatorNudge">
+                                                    <ScaleTransform ScaleX="1.007"/>
+                                                    <TranslateTransform X="-2"/>
+                                                </TransformGroup>
+                                                <gauges:GaugeValueToStringConverter x:Key="valueToStringConverter"/>
+                                            </Grid.Resources>
+                                            <gauges:LinearGaugeRange LabelOffset="-20" LabelStep="{Binding TickValue}" MaxValue="{Binding MaxValue}" MajorTickStep="4" Margin="7" TickStep="{Binding TickValue}" Width="456" Height="60">
+                                                <gauges:LinearGaugeRange.LabelTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Foreground="Gray" FontWeight="Bold" FontSize="13" Text="{Binding}"/>
+                                                    </DataTemplate>
+                                                </gauges:LinearGaugeRange.LabelTemplate>
+                                                <gauges:LinearGaugeRange.MajorTickTemplate>
+                                                    <DataTemplate>
+                                                        <Rectangle Fill="{Binding Converter={StaticResource converter1}}" Height="18" Width="2"/>
+                                                    </DataTemplate>
+                                                </gauges:LinearGaugeRange.MajorTickTemplate>
+                                                <gauges:LinearGaugeRange.TickTemplate>
+                                                    <DataTemplate>
+                                                        <Rectangle Fill="{Binding Converter={StaticResource converter1}}" Height="14" Width="1"/>
+                                                    </DataTemplate>
+                                                </gauges:LinearGaugeRange.TickTemplate>
+                                                <gauges:SegmentedLinearGaugeIndicator Value="{Binding MaxValue}">
+                                                    <gauges:BarIndicatorSegment Length="1" Stroke="#88A9A9A9" Thickness="10"/>
+                                                    <gauges:BarIndicatorSegment Length="1" Stroke="#88808080" Thickness="10"/>
+                                                    <gauges:BarIndicatorSegment Length="1.04" Stroke="#88FF3333" Thickness="10"/>
+                                                </gauges:SegmentedLinearGaugeIndicator>
+                                                <gauges:SegmentedLinearGaugeIndicator gauges:LinearGaugeRange.IndicatorOffset="-5" Value="{Binding MaxValue}">
+                                                    <gauges:BarIndicatorSegment Length="1" Stroke="#FF575757" Thickness="1"/>
+                                                    <gauges:BarIndicatorSegment Length="1" Stroke="#FF575A5A" Thickness="1"/>
+                                                    <gauges:BarIndicatorSegment Length="1.04" Stroke="Red" Thickness="1"/>
+                                                </gauges:SegmentedLinearGaugeIndicator>
+                                                <gauges:SegmentedLinearGaugeIndicator gauges:LinearGaugeRange.IndicatorOffset="5" Value="{Binding MaxValue}">
+                                                    <gauges:BarIndicatorSegment Length="1" Stroke="#FF575757" Thickness="1"/>
+                                                    <gauges:BarIndicatorSegment Length="1" Stroke="#FF575A5A" Thickness="1"/>
+                                                    <gauges:BarIndicatorSegment Length="1.04" Stroke="Red" Thickness="1"/>
+                                                </gauges:SegmentedLinearGaugeIndicator>
+                                                <gauges:LinearBarGaugeIndicator x:Name="indicator1" BarBrush="{StaticResource PhoneForegroundBrush}" BarThickness="8" IsAnimated="True" RenderTransform="{StaticResource indicatorNudge}" Value="{Binding AmountSpent}"/>
+                                                <gauges:MarkerGaugeIndicator x:Name="indicator2" IsAnimated="True" gauges:LinearGaugeRange.IndicatorOffset="7" Value="{Binding AmountSpent}">
+                                                    <gauges:MarkerGaugeIndicator.MarkerTemplate>
+                                                        <DataTemplate>
+                                                            <Rectangle Fill="{StaticResource PhoneForegroundBrush}" Height="22" Width="2"/>
+                                                        </DataTemplate>
+                                                    </gauges:MarkerGaugeIndicator.MarkerTemplate>
+                                                </gauges:MarkerGaugeIndicator>
+                                                <gauges:MarkerGaugeIndicator x:Name="indicator3" IsAnimated="True" gauges:LinearGaugeRange.IndicatorOffset="12" Value="{Binding AmountSpent}">
+                                                    <gauges:MarkerGaugeIndicator.MarkerTemplate>
+                                                        <DataTemplate>
+                                                            <Grid Height="37" Width="37">
+                                                                <Grid.RenderTransform>
+                                                                    <TranslateTransform X="20"/>
+                                                                </Grid.RenderTransform>
+                                                                <TextBlock FontWeight="Bold" FontSize="13" HorizontalAlignment="Center" Text="{Binding Converter={StaticResource valueToStringConverter}}" VerticalAlignment="Center"/>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </gauges:MarkerGaugeIndicator.MarkerTemplate>
+                                                </gauges:MarkerGaugeIndicator>
+                                                <gauges:MarkerGaugeIndicator x:Name="indicator4" IsAnimated="True" gauges:LinearGaugeRange.IndicatorOffset="-2" MarkerTemplate="{StaticResource triangleTemplate}" RenderTransformOrigin="0.5, 0.5" Value="{Binding AmountSpent}"/>
+                                            </gauges:LinearGaugeRange>
+                                        </Grid>
+
+                                    </gauges:RadGauge>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
             </controls:PivotItem>
             <controls:PivotItem Header="{Binding Path=LocalizedResources.GoalsTitle, Source={StaticResource LocalizedStrings}}">
             </controls:PivotItem>

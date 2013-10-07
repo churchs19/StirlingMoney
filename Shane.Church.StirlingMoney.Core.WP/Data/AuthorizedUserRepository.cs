@@ -64,7 +64,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.AuthorizedUsers.DeleteOnSubmit(pEntry);
 					else
 					{
-						pEntry.EditDateTime = DateTimeOffset.Now;
+						pEntry.EditDateTime = DateTimeOffset.UtcNow;
 						pEntry.IsDeleted = true;
 					}
 					_context.SubmitChanges();
@@ -94,7 +94,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.AuthorizedUsers.InsertOnSubmit(item);
 					}
 					item.MicrosoftAccountEmail = entry.MicrosoftAccountEmail;
-					item.EditDateTime = DateTimeOffset.Now;
+					item.EditDateTime = DateTimeOffset.UtcNow;
 					item.Id = entry.Id;
 					item.StirlingMoneyAccountId = entry.StirlingMoneyAccountId;
 					item.IsDeleted = entry.IsDeleted;

@@ -45,7 +45,7 @@
             </ScrollViewer>
         </Grid>
 
-        <StackPanel Grid.Row="2">
+        <StackPanel Grid.Row="2" x:Name="AdPanel">
             <StackPanel>
                 <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"
                                   AppID="ShaneChurch_StirlingMoney_WP"

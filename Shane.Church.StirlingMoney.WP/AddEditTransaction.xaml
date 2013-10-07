@@ -4,6 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+	xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+	xmlns:telerikData="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Data"
+    xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -14,22 +17,97 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MoneyBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="{Binding Path=LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="{Binding TitleText}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
-        </Grid>
+        <ScrollViewer Grid.Row="1" >
+            <StackPanel x:Name="ContentPanel" Margin="12,0,12,0">
+                <TextBlock HorizontalAlignment="Left" Name="textBlockTransactionDate" 
+						   Text="{Binding Path=LocalizedResources.TransactionDateLabel, Source={StaticResource LocalizedStrings}}"
+						   Margin="5,5"/>
+                <telerikInput:RadDatePicker Name="datePickerTransactionDate"
+                                            Value="{Binding TransactionDate,Mode=TwoWay}"
+                                            EmptyContent="{Binding Path=LocalizedResources.SelectDateText, Source={StaticResource LocalizedStrings}}"/>
+                <TextBlock HorizontalAlignment="Left" Name="textBlockAmount" 
+						   Text="{Binding Path=LocalizedResources.TransactionAmountLabel, Source={StaticResource LocalizedStrings}}"
+						   Margin="5,5"/>
+                <TextBox Name="textBoxAmount"
+						 Text="{Binding Amount, Converter={StaticResource LocalizedCurrency},Mode=TwoWay}"
+						 InputScope="Number" GotFocus="textBoxAmount_GotFocus" />
+                <TextBlock HorizontalAlignment="Left" Name="textBlockLocation" 
+						   Text="{Binding Path=LocalizedResources.TransactionLocationLabel, Source={StaticResource LocalizedStrings}}"
+						   Margin="5,5"
+						   Visibility="{Binding LocationVisible, Converter={StaticResource BooleanVisibilityConverter}}"/>
+                <TextBox Name="textBoxLocation"
+						 Text="{Binding Location,Mode=TwoWay}"
+						 Visibility="{Binding LocationVisible, Converter={StaticResource BooleanVisibilityConverter}}"
+						 IsReadOnly="{Binding IsLocationReadOnly}"
+						 InputScope="Text"/>
+                <TextBlock HorizontalAlignment="Left" Name="textBlockAccount" 
+						   Text="{Binding Path=LocalizedResources.TransactionAccountLabel, Source={StaticResource LocalizedStrings}}"
+						   Visibility="{Binding AccountVisible, Converter={StaticResource BooleanVisibilityConverter}}"/>
+                <telerikInput:RadListPicker Name="listPickerAccount"
+                                            ItemsSource="{Binding TransferAccounts}"
+                                            SelectedItem="{Binding TransferAccount,Mode=TwoWay}"
+                                            PopupHeader="{Binding Path=LocalizedResources.TransactionAccountLabel, Source={StaticResource LocalizedStrings}}"
+                                            Visibility="{Binding AccountVisible, Converter={StaticResource BooleanVisibilityConverter}}">
+                </telerikInput:RadListPicker>
+                <TextBlock HorizontalAlignment="Left" Name="textBlockCheckNum" 
+						   Text="{Binding Path=LocalizedResources.TransactionCheckNumberLabel, Source={StaticResource LocalizedStrings}}"
+						   Margin="5,5" 
+						   Visibility="{Binding IsCheck, Converter={StaticResource BooleanVisibilityConverter}}"/>
+                <TextBox Name="textBoxCheckNum"
+						 Text="{Binding CheckNumber,Mode=TwoWay}"
+						 InputScope="Number"
+						 Visibility="{Binding IsCheck, Converter={StaticResource BooleanVisibilityConverter}}"/>
+                <TextBlock HorizontalAlignment="Left" Name="textBlockCategory" 
+						   Text="{Binding Path=LocalizedResources.TransactionCategoryLabel, Source={StaticResource LocalizedStrings}}"
+						   Margin="5,5" 
+						   Visibility="{Binding CategoryVisible, Converter={StaticResource BooleanVisibilityConverter}}"/>
+                <telerikInput:RadListPicker Name="listPickerCategory"
+                                            ItemsSource="{Binding Categories}"
+                                            SelectedItem="{Binding Category,Mode=TwoWay}"
+                                            PopupHeader="{Binding Path=LocalizedResources.TransactionCategoryLabel, Source={StaticResource LocalizedStrings}}"
+                                            Visibility="{Binding CategoryVisible, Converter={StaticResource BooleanVisibilityConverter}}">
+                </telerikInput:RadListPicker>
+                <TextBlock HorizontalAlignment="Left" Name="textBlockNote" 
+						   Text="{Binding Path=LocalizedResources.TransactionNotesLabel, Source={StaticResource LocalizedStrings}}"
+						   Margin="5,5"/>
+                <TextBox Name="textBoxNote"
+						 Text="{Binding Note,Mode=TwoWay}"
+						 InputScope="Text"/>
+                <TextBlock HorizontalAlignment="Left" Name="textBlockPosted" 
+						   Text="{Binding Path=LocalizedResources.TransactionPostedLabel, Source={StaticResource LocalizedStrings}}"
+						   Margin="5,5"/>
+                <CheckBox Name="checkBoxPosted"
+						  IsChecked="{Binding Posted, Mode=TwoWay}"/>
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Row="2" x:Name="AdPanel">
+            <StackPanel>
+                <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"
+                                  AppID="ShaneChurch_StirlingMoney_WP"
+                                  AdType="IaAdType_Banner"
+                                  ReloadTime="30"
+                                  Keywords="finance,money,cash,check,credit,credit card,financial,debt,income"
+                                  OptionalAdHeight="80"
+                                  OptionalAdWidth="480"
+                                  AdAlignment="BOTTOM_CENTER"
+                                  Margin="0,0,0,0"
+                                  Name="AdControl" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 
 </phone:PhoneApplicationPage>

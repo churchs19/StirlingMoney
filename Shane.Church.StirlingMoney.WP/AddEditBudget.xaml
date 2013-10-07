@@ -81,14 +81,15 @@
                 <TextBlock Name="textBlockBudgetEndDate" 
 						   Text="{Binding Path=LocalizedResources.BudgetEndDateLabel, Source={StaticResource LocalizedStrings}}"
 						   Margin="12,0,0,0" 
-						   Visibility="{Binding EndDateVisibility}"/>
+						   Visibility="{Binding IsCustomBudget,Converter={StaticResource BooleanVisibilityConverter}}"/>
                 <telerikInput:RadDatePicker Name="datePickerEndDate"
                                             Value="{Binding EndDate,Mode=TwoWay}"
-                                            EmptyContent="{Binding Path=LocalizedResources.SelectDateText, Source={StaticResource LocalizedStrings}}"/>
+                                            EmptyContent="{Binding Path=LocalizedResources.SelectDateText, Source={StaticResource LocalizedStrings}}"
+                                            Visibility="{Binding IsCustomBudget,Converter={StaticResource BooleanVisibilityConverter}}"/>
             </StackPanel>
         </ScrollViewer>
 
-        <StackPanel Grid.Row="2">
+        <StackPanel Grid.Row="2" x:Name="AdPanel">
             <StackPanel>
                 <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"
                                   AppID="ShaneChurch_StirlingMoney_WP"

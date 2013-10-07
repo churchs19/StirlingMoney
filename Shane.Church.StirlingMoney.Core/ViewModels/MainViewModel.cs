@@ -44,6 +44,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			SettingsCommand = new RelayCommand(NavigateToSettings);
 			RateCommand = new RelayCommand(RateApp);
 			AboutCommand = new RelayCommand(NavigateToAbout);
+			AddBudgetCommand = new RelayCommand(NavigateToAddBudget);
+			AddGoalCommand = new RelayCommand(NavigateToAddGoal);
 		}
 
 		private AccountListViewModel _accounts;

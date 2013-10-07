@@ -94,7 +94,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			set
 			{
 				if (Set(() => Period, ref _period, value))
-					RaisePropertyChanged(() => EndDateVisible);
+					RaisePropertyChanged(() => IsCustomBudget);
 			}
 		}
 
@@ -118,7 +118,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public bool EndDateVisible
+		public bool IsCustomBudget
 		{
 			get
 			{
@@ -234,7 +234,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				var budgetRepository = KernelService.Kernel.Get<IRepository<Budget>>();
 				var navService = KernelService.Kernel.Get<INavigationService>();
 
-				Budget b = null;
+				Budget b = new Budget();
 				b.BudgetId = BudgetId.HasValue ? BudgetId.Value : Guid.Empty;
 				b.BudgetName = Name;
 				b.BudgetAmount = Amount;

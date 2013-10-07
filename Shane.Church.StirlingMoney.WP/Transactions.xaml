@@ -15,7 +15,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True"  d:DataContext="{d:DesignData /SampleData/TransactionListViewModelSampleData.xaml}">
+    shell:SystemTray.IsVisible="True" d:DataContext="{d:DesignData /SampleData/TransactionListViewModelSampleData.xaml}">
 
     <phone:PhoneApplicationPage.Resources>
         <util:TransactionBrushConverter x:Key="TransactionBrushConverter"/>        
@@ -23,8 +23,8 @@
             <StackPanel>
                 <telerikPrimitives:RadContextMenu.ContextMenu>
                     <telerikPrimitives:RadContextMenu OpenGesture="Hold">
-                        <telerikPrimitives:RadContextMenuItem x:Name="menuItemEdit" Content="{Binding Path=LocalizedResources.EditMenuItem, Source={StaticResource LocalizedStrings}}" />
-                        <telerikPrimitives:RadContextMenuItem x:Name="menuItemDelete" Content="{Binding Path=LocalizedResources.DeleteMenuItem, Source={StaticResource LocalizedStrings}}" />
+                        <telerikPrimitives:RadContextMenuItem x:Name="menuItemEdit" Content="{Binding Path=LocalizedResources.EditMenuItem, Source={StaticResource LocalizedStrings}}" Command="{Binding EditCommand}"/>
+                        <telerikPrimitives:RadContextMenuItem x:Name="menuItemDelete" Content="{Binding Path=LocalizedResources.DeleteMenuItem, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
                     </telerikPrimitives:RadContextMenu>
                 </telerikPrimitives:RadContextMenu.ContextMenu>
                 <Grid>
@@ -44,8 +44,7 @@
 							   Grid.RowSpan="2" 
 							   Margin="0,2,0,2"
 							   Fill="{Binding Amount, Converter={StaticResource TransactionBrushConverter}}"/>
-                    <CheckBox IsChecked="{Binding Posted, Mode=TwoWay}" 
-							  Tag="{Binding TransactionId, Mode=TwoWay}"
+                    <CheckBox IsChecked="{Binding Posted, Mode=TwoWay}"
 							  Grid.Row="0"
 							  Grid.Column="1"
 							  Grid.RowSpan="2"
@@ -88,7 +87,7 @@
         <DataTemplate x:Key="groupHeaderTemplate">
             <Border Background="{StaticResource PhoneContrastBackgroundBrush}"
 					Padding="5,5">
-                <TextBlock Text="{Binding Title}"
+                <TextBlock Text="{Binding BindsDirectlyToSource=True}"
 						   Foreground="{StaticResource PhoneContrastForegroundBrush}"/>
             </Border>
         </DataTemplate>
@@ -157,47 +156,24 @@
 					   FontWeight="Bold"
 					   TextAlignment="Right"
 					   Padding="3,3"></TextBlock>
-            <!--<toolkit:PhoneTextBox x:Name="textBoxSearch"
-								  Grid.Row="3"
-								  Grid.Column="0"
-								  Grid.ColumnSpan="2"
-								  Hint="{Binding Path=LocalizedResources.SearchHint, Source={StaticResource LocalizedStrings}}"
-								  ActionIcon="/Images/Cancel.dark.png"
-								  ActionIconTapped="textBoxSearch_ActionIconTapped"
-								  Visibility="{Binding SearchBoxVisibility}"
-								  Text="{Binding SearchText, Mode=TwoWay}"
-								  Margin="-12,0,-12,0"
-								  InputScope="Search"
-								  KeyDown="textBoxSearch_KeyDown"/>-->
-            <!--<TextBlock x:Name="textBlockNoData" 
-					   Text="{Binding Path=LocalizedResources.TransactionsNoData, Source={StaticResource LocalizedStrings}}"
-					   Grid.Row="3"
-					   Grid.Column="0"
-					   Grid.ColumnSpan="2"
-					   FontSize="{StaticResource PhoneFontSizeMedium}" 
-					   FontWeight="Bold"
-					   TextAlignment="Center"
-					   Margin="0,50,0,0"
-					   Padding="3,3"
-					   Visibility="{Binding NoDataVisibility}"></TextBlock>-->
-            <!--<toolkit:LongListSelector
-					ItemsSource="{Binding Transactions}"
-					x:Name="transactionsListGroups" Background="Transparent"  
-					ItemTemplate="{StaticResource transactionsItemTemplate}"
-					GroupHeaderTemplate="{StaticResource groupHeaderTemplate}"
-					Grid.Row="4"
-					Grid.Column="0"
-					Grid.ColumnSpan="2"
-					toolkit:TiltEffect.IsTiltEnabled="True">
-            </toolkit:LongListSelector>-->
             <telerikData:RadJumpList x:Name="jumpListTransactions" Grid.Row="5" 
                                      Grid.Column="0" 
-                                     Grid.ColumnSpan="2" 
+                                     Grid.ColumnSpan="2"
+                                     IsAsyncBalanceEnabled="True"
                                      AsyncBalanceMode="FillViewportFirst"
                                      ItemTemplate="{StaticResource transactionsItemTemplate}" 
                                      ItemsSource="{Binding Transactions}"
-                                     EmptyContent="{Binding Path=LocalizedResources.TransactionsNoData, Source={StaticResource LocalizedStrings}}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsAsyncBalanceEnabled="True" EmptyContentDisplayMode="DataSourceEmpty" DataVirtualizationMode="OnDemandManual" DataRequested="jumpListTransactions_DataRequested">
-                
+                                     EmptyContent="{Binding Path=LocalizedResources.TransactionsNoData, Source={StaticResource LocalizedStrings}}" 
+                                     GroupHeaderTemplate="{StaticResource groupHeaderTemplate}"
+                                     IsGroupPickerEnabled="False"
+                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                     EmptyContentDisplayMode="DataSourceEmpty" 
+                                     DataVirtualizationMode="OnDemandAutomatic" 
+                                     DataRequested="jumpListTransactions_DataRequested" GroupCheckMode="None">
+				<telerikData:RadJumpList.VirtualizationStrategyDefinition>
+					<telerikPrimitives:StackVirtualizationStrategyDefinition>
+					</telerikPrimitives:StackVirtualizationStrategyDefinition>
+				</telerikData:RadJumpList.VirtualizationStrategyDefinition>
             </telerikData:RadJumpList>
         </Grid>
         <StackPanel Grid.Row="2">

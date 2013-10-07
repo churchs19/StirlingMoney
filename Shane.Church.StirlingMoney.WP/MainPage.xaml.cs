@@ -14,6 +14,11 @@ namespace Shane.Church.StirlingMoney.WP
 	public partial class MainPage : PhoneApplicationPage
 	{
 		public MainViewModel _model;
+
+		private bool _refreshAccounts;
+		private bool _refreshBudgets;
+		private bool _refreshGoals;
+
 		// Constructor
 		public MainPage()
 		{
@@ -31,6 +36,10 @@ namespace Shane.Church.StirlingMoney.WP
 			this.DataContext = _model;
 
 			base.OnNavigatedTo(e);
+
+			_refreshAccounts = true;
+			_refreshBudgets = true;
+			_refreshGoals = true;
 
 			await LoadData();
 		}
@@ -229,15 +238,18 @@ namespace Shane.Church.StirlingMoney.WP
 				string header = pi.Header.ToString();
 				if (header == AppResources.AccountsTitle)
 				{
-					await _model.LoadAccounts();
+					await _model.LoadAccounts(_refreshAccounts);
+					_refreshAccounts = false;
 				}
 				else if (header == AppResources.BudgetsTitle)
 				{
-					await _model.LoadBudgets();
+					await _model.LoadBudgets(_refreshBudgets);
+					_refreshBudgets = false;
 				}
 				else if (header == AppResources.GoalsTitle)
 				{
-					await _model.LoadGoals();
+					await _model.LoadGoals(_refreshGoals);
+					_refreshGoals = false;
 				}
 			}
 		}

@@ -64,7 +64,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.Goals.DeleteOnSubmit(pEntry);
 					else
 					{
-						pEntry.EditDateTime = DateTimeOffset.Now;
+						pEntry.EditDateTime = DateTimeOffset.UtcNow;
 						pEntry.IsDeleted = true;
 					}
 					_context.SubmitChanges();

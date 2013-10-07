@@ -1,19 +1,33 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class TransactionListItemViewModel : ObservableObject
+	public class TransactionListItemViewModel : ObservableObject, IComparable
 	{
 		private IRepository<Transaction> _transactionRepository;
+		private INavigationService _navService;
+		private TransactionListViewModel _parent;
 
-		public TransactionListItemViewModel(IRepository<Transaction> transactionRepository)
+		public TransactionListItemViewModel(IRepository<Transaction> transactionRepository, INavigationService navService, TransactionListViewModel parent)
 		{
 			if (transactionRepository == null) throw new ArgumentNullException("transactionRepository");
 			_transactionRepository = transactionRepository;
+			if (navService == null) throw new ArgumentNullException("navService");
+			_navService = navService;
+			if (parent == null) throw new ArgumentNullException("parent");
+			_parent = parent;
+
+			EditCommand = new RelayCommand(Edit);
+			DeleteCommand = new RelayCommand(Delete);
 		}
+
+		private Guid _accountId;
 
 		private Guid _transactionId;
 		public Guid TransactionId
@@ -65,6 +79,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
+		public delegate void PostedChangedHandler();
+		public event PostedChangedHandler PostedChanged;
+
 		private bool _posted;
 		public bool Posted
 		{
@@ -79,6 +96,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 						t.Posted = Posted;
 						_transactionRepository.AddOrUpdateEntry(t);
 					}
+					if (PostedChanged != null)
+						PostedChanged();
 				}
 			}
 		}
@@ -103,6 +122,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
+		private DateTimeOffset _editDate;
+		public DateTimeOffset EditDate
+		{
+			get { return _editDate; }
+			set
+			{
+				Set(() => EditDate, ref _editDate, value);
+			}
+		}
+
 		public bool IsCheck
 		{
 			get
@@ -124,6 +153,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				_posted = t.Posted;
 				Memo = t.Note;
 				Category = t.Category != null ? t.Category.CategoryName : null;
+				EditDate = t.EditDateTime;
 			}
 		}
 
@@ -137,6 +167,51 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_posted = transaction.Posted;
 			Memo = transaction.Note;
 			Category = transaction.Category != null ? transaction.Category.CategoryName : null;
+			_accountId = transaction.AccountId;
+			EditDate = transaction.EditDateTime;
+		}
+
+		public ICommand EditCommand { get; private set; }
+
+		public void Edit()
+		{
+			AddEditTransactionParams param = new AddEditTransactionParams() { AccountId = this._accountId, TransactionId = this.TransactionId };
+			_navService.Navigate<AddEditTransactionViewModel>(param);
+		}
+
+		public ICommand DeleteCommand { get; private set; }
+
+		public void Delete()
+		{
+			_transactionRepository.DeleteEntry(new Transaction { TransactionId = TransactionId });
+			_parent.Transactions.Remove(this);
+			_parent.CurrentRow--;
+			_parent.TotalRows--;
+		}
+
+		public int CompareTo(object obj)
+		{
+			if (obj is TransactionListItemViewModel)
+			{
+				var t = (TransactionListItemViewModel)obj;
+				if (this.TransactionDate.Date < t.TransactionDate.Date)
+				{
+					return -1;
+				}
+				else if (this.TransactionDate.Date > t.TransactionDate.Date)
+				{
+					return 1;
+				}
+				else
+				{
+					var diff = this.EditDate - t.EditDate;
+					return diff.CompareTo(new TimeSpan(0));
+				}
+			}
+			else
+			{
+				return int.MinValue;
+			}
 		}
 	}
 }

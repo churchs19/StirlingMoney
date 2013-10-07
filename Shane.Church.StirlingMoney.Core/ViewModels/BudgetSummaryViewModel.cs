@@ -66,6 +66,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				{
 					RaisePropertyChanged(() => AmountRemaining);
 					RaisePropertyChanged(() => AmountRemainingText);
+					RaisePropertyChanged(() => MaxValue);
 				}
 			}
 		}
@@ -83,6 +84,38 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			get
 			{
 				return string.Format(Resources.AmountRemaining, AmountRemaining.ToString("C"));
+			}
+		}
+
+		public double MaxValue
+		{
+			get
+			{
+				var baseVal = Math.Round(1.2 * TotalAmount);
+				if (baseVal % 10 != 0)
+				{
+					return baseVal + (10 - (baseVal % 10));
+				}
+				else
+				{
+					return baseVal;
+				}
+			}
+		}
+
+		public double TickValue
+		{
+			get
+			{
+				var baseVal = Math.Round(TotalAmount / 5);
+				if (baseVal % 10 != 0)
+				{
+					return baseVal + (10 - (baseVal % 10));
+				}
+				else
+				{
+					return baseVal;
+				}
 			}
 		}
 

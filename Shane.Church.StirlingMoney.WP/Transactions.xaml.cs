@@ -8,12 +8,15 @@ using Shane.Church.StirlingMoney.Core.WP.Services;
 using Shane.Church.StirlingMoney.WP.Resources;
 using System;
 using System.Collections.Generic;
+using System.Windows;
+using Telerik.Windows.Data;
 
 namespace Shane.Church.StirlingMoney.WP
 {
 	public partial class Transactions : PhoneApplicationPage
 	{
 		TransactionListViewModel _model;
+		INavigationService _navService;
 
 		public Transactions()
 		{
@@ -22,23 +25,49 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeAdControl();
 
 			InitializeApplicationBar();
+
+			_navService = KernelService.Kernel.Get<INavigationService>();
+
+			GenericGroupDescriptor<TransactionListItemViewModel, DateTime> grouping = new GenericGroupDescriptor<TransactionListItemViewModel, DateTime>(it => it.TransactionDate.Date);
+			grouping.GroupFormatString = "{0:D}";
+			grouping.SortMode = ListSortMode.Descending;
+
+			jumpListTransactions.GroupDescriptorsSource = new List<DataDescriptor>() { grouping };
+
+			GenericSortDescriptor<TransactionListItemViewModel, TransactionListItemViewModel> sort = new GenericSortDescriptor<TransactionListItemViewModel, TransactionListItemViewModel>(it => it);
+			sort.SortMode = ListSortMode.Descending;
+
+			jumpListTransactions.SortDescriptorsSource = new List<DataDescriptor>() { sort };
 		}
 
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
-			_model = KernelService.Kernel.Get<TransactionListViewModel>();
-
-			try
+			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.New)
 			{
-				var id = PhoneNavigationService.DecodeNavigationParameter<Guid>(this.NavigationContext);
-				_model.LoadData(id);
-			}
-			catch (KeyNotFoundException)
-			{
-				_model.LoadData(Guid.Empty);
-			}
+				_model = KernelService.Kernel.Get<TransactionListViewModel>();
 
-			this.DataContext = _model;
+				try
+				{
+					var id = PhoneNavigationService.DecodeNavigationParameter<Guid>(this.NavigationContext);
+					_model.LoadData(id);
+				}
+				catch (KeyNotFoundException)
+				{
+					_model.LoadData(Guid.Empty);
+				}
+				this.DataContext = _model;
+				this.jumpListTransactions.ItemsSource = _model.Transactions;
+			}
+			else
+			{
+				_model.RefreshData().ContinueWith((t) =>
+				{
+					Deployment.Current.Dispatcher.BeginInvoke(() =>
+					{
+						this.jumpListTransactions.RefreshData();
+					});
+				});
+			}
 
 			base.OnNavigatedTo(e);
 		}
@@ -111,18 +140,22 @@ namespace Shane.Church.StirlingMoney.WP
 
 		private void ApplicationBarWithdraw_Click(object sender, EventArgs e)
 		{
+			_model.WithdrawCommand.Execute(null);
 		}
 
 		private void ApplicationBarWriteCheck_Click(object sender, EventArgs e)
 		{
+			_model.WriteCheckCommand.Execute(null);
 		}
 
 		private void ApplicationBarDeposit_Click(object sender, EventArgs e)
 		{
+			_model.DepositCommand.Execute(null);
 		}
 
 		private void ApplicationBarTransfer_Click(object sender, EventArgs e)
 		{
+			_model.TransferCommand.Execute(null);
 		}
 		#endregion
 
@@ -131,7 +164,6 @@ namespace Shane.Church.StirlingMoney.WP
 			_model.LoadNextTransactions();
 			if (_model.TotalRows == _model.Transactions.Count)
 				jumpListTransactions.DataVirtualizationMode = Telerik.Windows.Controls.DataVirtualizationMode.None;
-
 		}
 
 	}

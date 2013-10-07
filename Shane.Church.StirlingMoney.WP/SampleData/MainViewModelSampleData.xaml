@@ -56,17 +56,27 @@
 		</ViewModels:AccountListViewModel>
 	</ViewModels:MainViewModel.Accounts>
 	<ViewModels:MainViewModel.Budgets>
-		<ViewModels:BudgetSummaryViewModel/>
-		<ViewModels:BudgetSummaryViewModel/>
-		<ViewModels:BudgetSummaryViewModel/>
-		<ViewModels:BudgetSummaryViewModel/>
-		<ViewModels:BudgetSummaryViewModel/>
-		<ViewModels:BudgetSummaryViewModel/>
-		<ViewModels:BudgetSummaryViewModel/>
-		<ViewModels:BudgetSummaryViewModel/>
-		<ViewModels:BudgetSummaryViewModel/>
-		<ViewModels:BudgetSummaryViewModel/>
-	</ViewModels:MainViewModel.Budgets>
+        <ViewModels:BudgetSummaryViewModel AmountSpent="20" BudgetName="Test" TotalAmount="100" MaxValue="120" StartDate="10/01/2013 17:44:57" EndDate="10/10/2013 17:44:57">
+            <ViewModels:BudgetSummaryViewModel.BudgetId>
+                <System:Guid/>
+            </ViewModels:BudgetSummaryViewModel.BudgetId>
+        </ViewModels:BudgetSummaryViewModel>
+        <ViewModels:BudgetSummaryViewModel AmountSpent="90" BudgetName="Test" TotalAmount="1200" MaxValue="1440"  StartDate="10/01/2013 17:44:57" EndDate="10/15/2013 17:44:57">
+            <ViewModels:BudgetSummaryViewModel.BudgetId>
+                <System:Guid/>
+            </ViewModels:BudgetSummaryViewModel.BudgetId>
+        </ViewModels:BudgetSummaryViewModel>
+        <ViewModels:BudgetSummaryViewModel AmountSpent="33" BudgetName="Test" TotalAmount="80" MaxValue="100" StartDate="10/01/2013 17:44:57" EndDate="10/15/2013 17:44:57">
+            <ViewModels:BudgetSummaryViewModel.BudgetId>
+                <System:Guid/>
+            </ViewModels:BudgetSummaryViewModel.BudgetId>
+        </ViewModels:BudgetSummaryViewModel>
+        <ViewModels:BudgetSummaryViewModel AmountSpent="55" BudgetName="Test" TotalAmount="77" MaxValue="100"  StartDate="10/01/2013 17:44:57" EndDate="10/15/2013 17:44:57">
+            <ViewModels:BudgetSummaryViewModel.BudgetId>
+                <System:Guid/>
+            </ViewModels:BudgetSummaryViewModel.BudgetId>
+        </ViewModels:BudgetSummaryViewModel>
+    </ViewModels:MainViewModel.Budgets>
 	<ViewModels:MainViewModel.Goals>
 		<ViewModels:GoalSummaryViewModel/>
 		<ViewModels:GoalSummaryViewModel/>
