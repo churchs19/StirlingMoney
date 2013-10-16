@@ -15,8 +15,19 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class AddEditGoalViewModel : ObservableObject
 	{
-		public AddEditGoalViewModel()
+		private INavigationService _navService;
+		private IRepository<Goal> _goalRepository;
+		private IRepository<Account> _accountRepository;
+
+		public AddEditGoalViewModel(INavigationService navService, IRepository<Goal> goalRepository, IRepository<Account> accountRepository)
 		{
+			if (navService == null) throw new ArgumentNullException("navService");
+			_navService = navService;
+			if (goalRepository == null) throw new ArgumentNullException("goalRepository");
+			_goalRepository = goalRepository;
+			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
+			_accountRepository = accountRepository;
+
 			_accounts = new ObservableCollection<string>();
 			_accounts.CollectionChanged += (s, e) =>
 			{
@@ -61,6 +72,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
+		public bool IsAccountReadonly
+		{
+			get { return !string.IsNullOrWhiteSpace(_account); }
+		}
+
 		private ObservableCollection<string> _accounts;
 		public ObservableCollection<string> Accounts
 		{
@@ -76,6 +92,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				Set(() => Amount, ref _amount, value);
 			}
 		}
+
+		private DateTime _startDate;
 
 		private DateTime _targetDate;
 		public DateTime TargetDate
@@ -104,19 +122,28 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public void LoadData(Guid? goalId)
 		{
-			if (goalId.HasValue)
+			var accts = _accountRepository.GetAllEntries().Select(it => it.AccountName);
+			foreach (var a in accts)
+				Accounts.Add(a);
+
+			if (goalId.HasValue && !goalId.Equals(Guid.Empty))
 			{
-				var goalRepository = KernelService.Kernel.Get<IRepository<Goal>>();
-				var goal = goalRepository.GetFilteredEntries(it => it.GoalId == goalId.Value).FirstOrDefault();
+				var goal = _goalRepository.GetFilteredEntries(it => it.GoalId == goalId.Value).FirstOrDefault();
 				if (goal != null)
 				{
 					GoalId = goal.GoalId;
 					Name = goal.GoalName;
+					_startDate = goal.StartDate;
 					TargetDate = goal.TargetDate;
 					Amount = goal.Amount;
 					_id = goal.Id;
 					_isDeleted = goal.IsDeleted;
 				}
+			}
+			else
+			{
+				_startDate = new DateTime(DateTime.Today.Ticks, DateTimeKind.Utc);
+				TargetDate = DateTime.Today.AddMonths(1);
 			}
 		}
 
@@ -138,12 +165,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				validationErrors.Add(Resources.GoalDateError);
 			}
+			if (TargetDate <= _startDate)
+			{
+				validationErrors.Add(String.Format(Resources.GoalDateComparisonError, _startDate));
+			}
 
-			var account = KernelService.Kernel.Get<IRepository<Account>>().GetFilteredEntries(it => it.AccountName == Account).FirstOrDefault();
+			var account = _accountRepository.GetFilteredEntries(it => it.AccountName == Account).FirstOrDefault();
 			double accountBalance = 0;
 			if (account != null)
 			{
-				accountBalance = account.InitialBalance + KernelService.Kernel.Get<ITransactionSum>().GetSumByAccount(account.AccountId);
+				accountBalance = account.AccountBalance;
 			}
 			if (Amount <= accountBalance)
 			{
@@ -163,27 +194,32 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			var errors = Validate();
 			if (errors.Count == 0)
 			{
-				var goalService = KernelService.Kernel.Get<IRepository<Goal>>();
-				var navService = KernelService.Kernel.Get<INavigationService>();
-
 				Goal g = new Goal();
-				g.GoalId = GoalId.Value;
+				g.GoalId = GoalId.HasValue ? GoalId.Value : Guid.Empty;
 				g.GoalName = Name;
+				if (GoalId.HasValue && !GoalId.Equals(Guid.Empty))
+				{
+					g.StartDate = DateTime.SpecifyKind(DateTime.Today, DateTimeKind.Utc);
+				}
+				else
+				{
+					g.StartDate = _startDate;
+				}
 				g.TargetDate = TargetDate;
 				g.Amount = Amount;
 				g.Id = _id;
 				g.IsDeleted = _isDeleted;
-				var account = KernelService.Kernel.Get<IRepository<Account>>().GetFilteredEntries(it => it.AccountName == Account).FirstOrDefault();
+				var account = _accountRepository.GetFilteredEntries(it => it.AccountName == Account).FirstOrDefault();
 				g.AccountId = account.AccountId;
 				g.InitialBalance = account.InitialBalance + KernelService.Kernel.Get<ITransactionSum>().GetSumByAccount(account.AccountId);
 
-				g = goalService.AddOrUpdateEntry(g);
+				g = _goalRepository.AddOrUpdateEntry(g);
 				GoalId = g.GoalId;
 				_id = g.Id;
 				_isDeleted = g.IsDeleted;
 
-				if (navService.CanGoBack)
-					navService.GoBack();
+				if (_navService.CanGoBack)
+					_navService.GoBack();
 			}
 			else
 			{

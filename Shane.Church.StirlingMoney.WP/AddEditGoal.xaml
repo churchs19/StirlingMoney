@@ -57,33 +57,21 @@
                 <telerikInput:RadListPicker Name="listPickerGoalAccount"
                                             ItemsSource="{Binding Accounts}"
                                             SelectedItem="{Binding Account,Mode=TwoWay}"
-                                            PopupHeader="{Binding Path=LocalizedResources.GoalTypeLabel, Source={StaticResource LocalizedStrings}}"
-                                            PopupItemTemplate="{StaticResource ListPickerFullTemplate}">
+                                            PopupHeader="{Binding Path=LocalizedResources.GoalAccountLabel, Source={StaticResource LocalizedStrings}}"
+                                            NoSelectionContent="{Binding Path=LocalizedResources.GoalSelectAccountLabel, Source={StaticResource LocalizedStrings}}">
                 </telerikInput:RadListPicker>
-                <!--<toolkit:ListPicker Name="listPickerGoalAccount"
-									Grid.Row="1"
-									Grid.Column="1"
-									ItemsSource="{Binding Accounts}"
-									SelectedItem="{Binding Account,Mode=TwoWay}"
-									FullModeHeader="{Binding Path=LocalizedResources.GoalTypeLabel, Source={StaticResource LocalizedStrings}}"
-									FullModeItemTemplate="{StaticResource ListPickerFullTemplate}">
-                </toolkit:ListPicker>-->
                 <TextBlock HorizontalAlignment="Left" Name="textBlockGoalAmount" 
 						   Text="{Binding Path=LocalizedResources.GoalAmountLabel, Source={StaticResource LocalizedStrings}}"
 						   Margin="5,5"/>
                 <TextBox Name="textBoxGoalAmount"
 						 Text="{Binding Amount, Converter={StaticResource LocalizedCurrency},Mode=TwoWay}"
 						 InputScope="Number" GotFocus="textBoxGoalAmount_GotFocus" />
-                <TextBlock HorizontalAlignment="Left" Name="textBlockGoalStartDate" 
+                <TextBlock HorizontalAlignment="Left" Name="textBlockGoalTargetDate" 
 						   Text="{Binding Path=LocalizedResources.GoalTargetDateLabel, Source={StaticResource LocalizedStrings}}"
 						   Margin="5,5"/>
                 <telerikInput:RadDatePicker Name="datePickerTargetDate"
                                             Value="{Binding TargetDate,Mode=TwoWay}"
                                             EmptyContent="{Binding Path=LocalizedResources.SelectDateText, Source={StaticResource LocalizedStrings}}"/>
-                <!--<toolkit:DatePicker Name="datePickerTargetDate" 
-									Value="{Binding TargetDate, Mode=TwoWay}"
-									Grid.Row="3"
-									Grid.Column="1"/>-->
             </StackPanel>
         </ScrollViewer>
         <StackPanel Grid.Row="2" x:Name="AdPanel">

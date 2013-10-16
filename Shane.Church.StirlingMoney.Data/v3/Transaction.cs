@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Shane.Church.Utility.Core.WP;
+using System;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
-using Shane.Church.Utility.Core.WP;
 
 namespace Shane.Church.StirlingMoney.Data.v3
 {
@@ -21,9 +19,9 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			}
 		}
 
-		private DateTimeOffset _editDateTime;
-		[Column(CanBeNull = false, DbType = "DATETIME NOT NULL")]
-		public DateTimeOffset EditDateTime
+		private DateTime _editDateTime;
+		[Column(CanBeNull = false)]
+		public DateTime EditDateTime
 		{
 			get { return _editDateTime; }
 			set
@@ -55,7 +53,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _transactionId; }
 			set
 			{
-                Set(() => TransactionId, ref _transactionId, value);
+				Set(() => TransactionId, ref _transactionId, value);
 			}
 		}
 
@@ -66,7 +64,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _transDate; }
 			set
 			{
-                Set(() => TransactionDate, ref _transDate, value);
+				Set(() => TransactionDate, ref _transDate, value);
 			}
 		}
 
@@ -77,7 +75,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _amount; }
 			set
 			{
-                Set(() => Amount, ref _amount, value);
+				Set(() => Amount, ref _amount, value);
 			}
 		}
 
@@ -88,7 +86,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _location; }
 			set
 			{
-                Set(() => Location, ref _location, value);
+				Set(() => Location, ref _location, value);
 			}
 		}
 
@@ -99,7 +97,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _note; }
 			set
 			{
-                Set(() => Note, ref _note, value);
+				Set(() => Note, ref _note, value);
 			}
 		}
 
@@ -110,7 +108,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _posted; }
 			set
 			{
-                Set(() => Posted, ref _posted, value);
+				Set(() => Posted, ref _posted, value);
 			}
 		}
 
@@ -121,7 +119,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _checkNumber; }
 			set
 			{
-                Set(() => CheckNumber, ref _checkNumber, value);
+				Set(() => CheckNumber, ref _checkNumber, value);
 			}
 		}
 
@@ -136,7 +134,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _account.Entity; }
 			set
 			{
-                RaisePropertyChanging(() => Account);
+				RaisePropertyChanging(() => Account);
 				_account.Entity = value;
 
 				if (value != null)
@@ -144,7 +142,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 					_accountId = value.AccountId;
 				}
 
-                RaisePropertyChanged(() => Account);
+				RaisePropertyChanged(() => Account);
 			}
 		}
 
@@ -155,7 +153,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _categoryId; }
 			set
 			{
-                Set(() => CategoryId, ref _categoryId, value);
+				Set(() => CategoryId, ref _categoryId, value);
 			}
 		}
 	}

@@ -37,10 +37,6 @@
                     <TextBox Name="textBoxAccountName" Text="{Binding AccountName,Mode=TwoWay}" InputScope="Text" c4f:TextBinding.UpdateSourceOnChange="True" />
                     <TextBlock Height="30"  Name="textBlockInitialBalance" Text="{Binding Path=LocalizedResources.InitialBalanceLabel, Source={StaticResource LocalizedStrings}}" Margin="12,0,0,0" />
                     <TextBox Name="textBoxInitialBalance" Text="{Binding InitialBalance, Converter={StaticResource LocalizedCurrency},Mode=TwoWay}" Margin="0,0,0,0" IsReadOnly="{Binding IsInitialBalanceReadOnly}" InputScope="CurrencyAmount" GotFocus="textBoxInitialBalance_GotFocus" />
-                    <TextBlock Height="30" Name="textBlockIsCreditCard" Text="{Binding Path=LocalizedResources.IsCreditCardLabel, Source={StaticResource LocalizedStrings}}" Margin="12,0,0,0" />
-                    <telerikPrimitives:RadToggleSwitch Name="toggleSwitchIsCreditCard" VerticalAlignment="Stretch" FontFamily="{StaticResource PhoneFontFamilyNormal}" Content="{Binding IsCreditCardLabel}" IsChecked="{Binding IsCreditCard,Mode=TwoWay}"/>
-                    <TextBlock Height="30" Name="textBlockCreditLimit" Text="{Binding Path=LocalizedResources.CreditLimitLabel, Source={StaticResource LocalizedStrings}}" Margin="12,0,0,0" Visibility="{Binding IsCreditCard, Converter={StaticResource BooleanVisibilityConverter}}" />
-                    <TextBox Name="textBoxCreditLimit" Text="{Binding CreditLimit, Converter={StaticResource LocalizedCurrency},Mode=TwoWay}" Margin="0,0,0,0" InputScope="CurrencyAmount" Visibility="{Binding IsCreditCard, Converter={StaticResource BooleanVisibilityConverter}}" GotFocus="textBoxCreditLimit_GotFocus" />
                 </StackPanel>
             </ScrollViewer>
         </Grid>

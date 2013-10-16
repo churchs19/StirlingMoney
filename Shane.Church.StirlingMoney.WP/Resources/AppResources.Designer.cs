@@ -900,6 +900,24 @@ namespace Shane.Church.StirlingMoney.WP.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to select account.
+        /// </summary>
+        public static string GoalSelectAccountLabel {
+            get {
+                return ResourceManager.GetString("GoalSelectAccountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to start date.
+        /// </summary>
+        public static string GoalStartDateLabel {
+            get {
+                return ResourceManager.GetString("GoalStartDateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to goals.
         /// </summary>
         public static string GoalsTitle {

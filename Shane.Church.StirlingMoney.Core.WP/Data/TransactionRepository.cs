@@ -64,7 +64,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.Transactions.DeleteOnSubmit(pEntry);
 					else
 					{
-						pEntry.EditDateTime = DateTimeOffset.UtcNow;
+						pEntry.EditDateTime = DateTime.UtcNow;
 						pEntry.IsDeleted = true;
 					}
 					_context.SubmitChanges();
@@ -97,19 +97,19 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 					item.Amount = entry.Amount;
 					item.CategoryId = entry.CategoryId;
 					item.CheckNumber = entry.CheckNumber;
-					item.EditDateTime = DateTimeOffset.UtcNow;
+					item.EditDateTime = DateTime.UtcNow;
 					item.Id = entry.Id;
 					item.IsDeleted = entry.IsDeleted;
 					item.Location = entry.Location;
 					item.Note = entry.Note;
 					item.Posted = entry.Posted;
-					item.TransactionDate = entry.TransactionDate;
+					item.TransactionDate = DateTime.SpecifyKind(entry.TransactionDate, DateTimeKind.Utc);
 
 					_context.SubmitChanges();
 
 					entry.TransactionId = item.TransactionId;
 					entry.Id = item.Id;
-					entry.EditDateTime = item.EditDateTime;
+					entry.EditDateTime = DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc);
 				}
 			}
 			return entry;
@@ -146,13 +146,13 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				Amount = item.Amount,
 				CategoryId = item.CategoryId,
 				CheckNumber = item.CheckNumber,
-				EditDateTime = item.EditDateTime,
+				EditDateTime = new DateTimeOffset(DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc), new TimeSpan(0)),
 				Id = item.Id,
 				IsDeleted = item.IsDeleted,
 				Location = item.Location,
 				Note = item.Note,
 				Posted = item.Posted,
-				TransactionDate = item.TransactionDate,
+				TransactionDate = DateTime.SpecifyKind(item.TransactionDate, DateTimeKind.Utc),
 				TransactionId = item.TransactionId
 			};
 		}

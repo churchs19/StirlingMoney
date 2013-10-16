@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Shane.Church.Utility.Core.WP;
+using System;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
-using Shane.Church.Utility.Core.WP;
 
 namespace Shane.Church.StirlingMoney.Data.v3
 {
@@ -25,9 +23,9 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			}
 		}
 
-		private DateTimeOffset _editDateTime;
-		[Column(CanBeNull = false, DbType = "DATETIME NOT NULL")]
-		public DateTimeOffset EditDateTime
+		private DateTime _editDateTime;
+		[Column(CanBeNull = false)]
+		public DateTime EditDateTime
 		{
 			get { return _editDateTime; }
 			set
@@ -59,7 +57,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _categoryId; }
 			set
 			{
-                Set(() => CategoryId, ref _categoryId, value);
+				Set(() => CategoryId, ref _categoryId, value);
 			}
 		}
 
@@ -70,7 +68,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _categoryName; }
 			set
 			{
-                Set(() => CategoryName, ref _categoryName, value);
+				Set(() => CategoryName, ref _categoryName, value);
 			}
 		}
 	}

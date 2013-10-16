@@ -117,8 +117,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					AccountId = a.AccountId;
 					AccountName = a.AccountName;
 					InitialBalance = a.InitialBalance;
-					IsCreditCard = a.IsCreditCard;
-					CreditLimit = a.CreditLimit;
 					_id = a.Id;
 					_isDeleted = a.IsDeleted;
 				}
@@ -156,8 +154,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				a.AccountId = AccountId;
 				a.InitialBalance = InitialBalance;
 				a.AccountName = AccountName;
-				a.IsCreditCard = IsCreditCard;
-				a.CreditLimit = CreditLimit;
 				a = accountRepository.AddOrUpdateEntry(a);
 				AccountId = a.AccountId;
 				_id = a.Id;

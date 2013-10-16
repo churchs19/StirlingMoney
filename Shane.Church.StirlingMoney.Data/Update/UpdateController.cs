@@ -82,10 +82,15 @@ namespace Shane.Church.StirlingMoney.Data.Update
 			context.SubmitChanges();
 			var categoriesQuery = (from c in oldContext.Categories
 								   select c);
-			List<Data.v3.Category> categories = new List<v3.Category>();
 			foreach (var c in categoriesQuery)
 			{
-				Data.v3.Category item = new Data.v3.Category() { CategoryId = c.CategoryId, CategoryName = c.CategoryName, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) };
+				Data.v3.Category item = new Data.v3.Category() 
+				{ 
+					CategoryId = c.CategoryId, 
+					CategoryName = c.CategoryName, 
+					Id = null, IsDeleted = false, 
+					EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) 
+				};
 				context.Categories.InsertOnSubmit(item);
 			}
 			context.SubmitChanges();
@@ -93,7 +98,15 @@ namespace Shane.Church.StirlingMoney.Data.Update
 								 select a);
 			foreach (var a in accountsQuery)
 			{
-				Data.v3.Account item = new Data.v3.Account() { AccountId = a.AccountId, AccountName = a.AccountName, InitialBalance = a.InitialBalance, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) };
+				Data.v3.Account item = new Data.v3.Account() 
+				{ 
+					AccountId = a.AccountId, 
+					AccountName = a.AccountName, 
+					InitialBalance = a.InitialBalance, 
+					Id = null, 
+					IsDeleted = false, 
+					EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) 
+				};
 				context.Accounts.InsertOnSubmit(item);
 			}
 			context.SubmitChanges();
@@ -111,15 +124,66 @@ namespace Shane.Church.StirlingMoney.Data.Update
 					Location = tx.Location,
 					Note = tx.Note,
 					Posted = tx.Posted,
-					TransactionDate = tx.TransactionDate,
+					TransactionDate = DateTime.SpecifyKind(tx.TransactionDate, DateTimeKind.Utc),
 					Id = null,
 					IsDeleted = false,
-					EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc)
+					EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc),
+					_accountId = tx._accountId
 				};
-				item.Account = (from a in context.Accounts
-								where a.AccountId == tx.Account.AccountId
-								select a).FirstOrDefault();
 				context.Transactions.InsertOnSubmit(item);
+			}
+			context.SubmitChanges();
+			foreach (var g in oldContext.Goals)
+			{
+				Data.v3.Goal item = new v3.Goal()
+				{
+					_accountId = g._accountId,
+					Amount = g.Amount,
+					GoalId = g.GoalId,
+					GoalName = g.GoalName,
+					TargetDate = DateTime.SpecifyKind(g.TargetDate, DateTimeKind.Utc),
+					StartDate = DateTime.SpecifyKind(g.TargetDate.AddMonths(1), DateTimeKind.Utc),
+					InitialBalance = g.InitialBalance,
+					EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc),
+					Id = null,
+					IsDeleted = false
+				};
+				context.Goals.InsertOnSubmit(item);
+			}
+			context.SubmitChanges();
+			foreach (var b in oldContext.Budgets)
+			{
+				var period = Core.Data.PeriodType.Weekly;
+				switch(b.BudgetPeriod)
+				{
+					case 0:
+					default:
+						period = Core.Data.PeriodType.Weekly;
+						break;
+					case 1:
+						period = Core.Data.PeriodType.Monthly;
+						break;
+					case 2:
+						period = Core.Data.PeriodType.Yearly;
+						break;
+					case 3:
+						period = Core.Data.PeriodType.Custom;
+						break;
+				}
+				Data.v3.Budget item = new v3.Budget()
+				{
+					BudgetAmount = b.BudgetAmount,
+					BudgetId = b.BudgetId,
+					BudgetName = b.BudgetName,
+					BudgetPeriod = period,
+					CategoryId = b.CategoryId,
+					StartDate = DateTime.SpecifyKind(b.StartDate, DateTimeKind.Utc),
+					EndDate = b.EndDate.HasValue ? new Nullable<DateTime>(DateTime.SpecifyKind(b.EndDate.Value, DateTimeKind.Utc)) : null,
+					EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc),
+					Id = null,
+					IsDeleted = null
+				};
+				context.Budgets.InsertOnSubmit(item);
 			}
 			context.SubmitChanges();
 		}

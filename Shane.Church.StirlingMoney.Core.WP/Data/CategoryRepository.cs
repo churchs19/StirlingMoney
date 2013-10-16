@@ -64,7 +64,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.Categories.DeleteOnSubmit(pEntry);
 					else
 					{
-						pEntry.EditDateTime = DateTimeOffset.UtcNow;
+						pEntry.EditDateTime = DateTime.UtcNow;
 						pEntry.IsDeleted = true;
 					}
 					_context.SubmitChanges();
@@ -94,7 +94,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.Categories.InsertOnSubmit(item);
 					}
 					item.CategoryName = entry.CategoryName;
-					item.EditDateTime = DateTimeOffset.UtcNow;
+					item.EditDateTime = DateTime.UtcNow;
 					item.Id = entry.Id;
 					item.IsDeleted = entry.IsDeleted;
 
@@ -102,7 +102,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 
 					entry.CategoryId = item.CategoryId;
 					entry.Id = item.Id;
-					entry.EditDateTime = item.EditDateTime;
+					entry.EditDateTime = DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc);
 				}
 			}
 			return entry;
@@ -126,7 +126,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				Id = item.Id,
 				CategoryId = item.CategoryId,
 				CategoryName = item.CategoryName,
-				EditDateTime = item.EditDateTime,
+				EditDateTime = new DateTimeOffset(DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc), new TimeSpan(0)),
 				IsDeleted = item.IsDeleted
 			};
 		}

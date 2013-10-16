@@ -64,7 +64,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.Goals.DeleteOnSubmit(pEntry);
 					else
 					{
-						pEntry.EditDateTime = DateTimeOffset.UtcNow;
+						pEntry.EditDateTime = DateTime.UtcNow;
 						pEntry.IsDeleted = true;
 					}
 					_context.SubmitChanges();
@@ -95,18 +95,19 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 					}
 					item.Account = _context.Accounts.Where(it => it.AccountId == entry.AccountId).FirstOrDefault();
 					item.Amount = entry.Amount;
-					item.EditDateTime = DateTimeOffset.Now;
+					item.EditDateTime = DateTime.UtcNow;
 					item.GoalName = entry.GoalName;
 					item.Id = entry.Id;
 					item.InitialBalance = entry.InitialBalance;
 					item.IsDeleted = entry.IsDeleted;
-					item.TargetDate = entry.TargetDate;
+					item.TargetDate = DateTime.SpecifyKind(entry.TargetDate, DateTimeKind.Utc);
+					item.StartDate = DateTime.SpecifyKind(entry.StartDate, DateTimeKind.Utc);
 
 					_context.SubmitChanges();
 
 					entry.GoalId = item.GoalId;
 					entry.Id = item.Id;
-					entry.EditDateTime = item.EditDateTime;
+					entry.EditDateTime = DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc);
 				}
 			}
 			return entry;
@@ -130,12 +131,13 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				Id = item.Id,
 				AccountId = item.Account.AccountId,
 				Amount = item.Amount,
-				EditDateTime = item.EditDateTime,
+				EditDateTime = new DateTimeOffset(DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc), new TimeSpan(0)),
 				GoalId = item.GoalId,
 				GoalName = item.GoalName,
 				InitialBalance = item.InitialBalance,
 				IsDeleted = item.IsDeleted,
-				TargetDate = item.TargetDate
+				TargetDate = DateTime.SpecifyKind(item.TargetDate, DateTimeKind.Utc),
+				StartDate = DateTime.SpecifyKind(item.StartDate, DateTimeKind.Utc)
 			};
 		}
 	}

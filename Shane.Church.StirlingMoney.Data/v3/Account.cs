@@ -28,9 +28,9 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			}
 		}
 
-		private DateTimeOffset _editDateTime;
-		[Column(CanBeNull = false, DbType = "DATETIME NOT NULL")]
-		public DateTimeOffset EditDateTime
+		private DateTime _editDateTime;
+		[Column(CanBeNull = false)]
+		public DateTime EditDateTime
 		{
 			get { return _editDateTime; }
 			set
@@ -88,25 +88,25 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			}
 		}
 
-		private bool _isCreditCard;
-		public bool IsCreditCard
-		{
-			get { return _isCreditCard; }
-			set
-			{
-				Set(() => IsCreditCard, ref _isCreditCard, value);
-			}
-		}
+		//private bool _isCreditCard;
+		//public bool IsCreditCard
+		//{
+		//	get { return _isCreditCard; }
+		//	set
+		//	{
+		//		Set(() => IsCreditCard, ref _isCreditCard, value);
+		//	}
+		//}
 
-		private double _creditLimit;
-		public double CreditLimit
-		{
-			get { return _creditLimit; }
-			set
-			{
-				Set(() => CreditLimit, ref _creditLimit, value);
-			}
-		}
+		//private double _creditLimit;
+		//public double CreditLimit
+		//{
+		//	get { return _creditLimit; }
+		//	set
+		//	{
+		//		Set(() => CreditLimit, ref _creditLimit, value);
+		//	}
+		//}
 
 		private double? _archivedBalance;
 		[Column(CanBeNull = true)]

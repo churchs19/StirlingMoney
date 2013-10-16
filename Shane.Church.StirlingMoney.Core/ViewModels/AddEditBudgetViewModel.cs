@@ -234,7 +234,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				var budgetRepository = KernelService.Kernel.Get<IRepository<Budget>>();
 				var navService = KernelService.Kernel.Get<INavigationService>();
 
-				Budget b = new Budget();
+				Budget b = KernelService.Kernel.Get<Budget>();
 				b.BudgetId = BudgetId.HasValue ? BudgetId.Value : Guid.Empty;
 				b.BudgetName = Name;
 				b.BudgetAmount = Amount;

@@ -64,7 +64,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.AuthorizedUsers.DeleteOnSubmit(pEntry);
 					else
 					{
-						pEntry.EditDateTime = DateTimeOffset.UtcNow;
+						pEntry.EditDateTime = DateTime.UtcNow;
 						pEntry.IsDeleted = true;
 					}
 					_context.SubmitChanges();
@@ -94,7 +94,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.AuthorizedUsers.InsertOnSubmit(item);
 					}
 					item.MicrosoftAccountEmail = entry.MicrosoftAccountEmail;
-					item.EditDateTime = DateTimeOffset.UtcNow;
+					item.EditDateTime = DateTime.UtcNow;
 					item.Id = entry.Id;
 					item.StirlingMoneyAccountId = entry.StirlingMoneyAccountId;
 					item.IsDeleted = entry.IsDeleted;
@@ -103,7 +103,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 
 					entry.AuthorizedUserId = item.AuthorizedUserId;
 					entry.Id = item.Id;
-					entry.EditDateTime = item.EditDateTime;
+					entry.EditDateTime = DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc);
 				}
 			}
 			return entry;
@@ -128,7 +128,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				AuthorizedUserId = item.AuthorizedUserId,
 				MicrosoftAccountEmail = item.MicrosoftAccountEmail,
 				StirlingMoneyAccountId = item.StirlingMoneyAccountId,
-				EditDateTime = item.EditDateTime,
+				EditDateTime = new DateTimeOffset(DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc), new TimeSpan(0)),
 				IsDeleted = item.IsDeleted
 			};
 		}

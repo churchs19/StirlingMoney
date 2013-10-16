@@ -65,7 +65,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.Budgets.DeleteOnSubmit(pEntry);
 					else
 					{
-						pEntry.EditDateTime = DateTimeOffset.UtcNow;
+						pEntry.EditDateTime = DateTime.UtcNow;
 						pEntry.IsDeleted = true;
 					}
 					_context.SubmitChanges();
@@ -98,11 +98,11 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 					item.BudgetName = entry.BudgetName;
 					item.BudgetPeriod = entry.BudgetPeriod;
 					item.CategoryId = entry.CategoryId;
-					item.EditDateTime = DateTimeOffset.UtcNow;
-					item.EndDate = entry.EndDate;
+					item.EditDateTime = DateTime.UtcNow;
+					item.EndDate = entry.EndDate.HasValue ? new Nullable<DateTime>(DateTime.SpecifyKind(entry.EndDate.Value, DateTimeKind.Utc)) : null;
 					item.Id = entry.Id;
 					item.IsDeleted = entry.IsDeleted;
-					item.StartDate = entry.StartDate;
+					item.StartDate = DateTime.SpecifyKind(entry.StartDate, DateTimeKind.Utc);
 
 					_context.SubmitChanges();
 
@@ -127,19 +127,19 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 	{
 		public static Core.Data.Budget ToCoreBudget(this Shane.Church.StirlingMoney.Data.v3.Budget item)
 		{
-			return new Core.Data.Budget()
-			{
-				Id = item.Id,
-				BudgetAmount = item.BudgetAmount,
-				BudgetId = item.BudgetId,
-				BudgetName = item.BudgetName,
-				BudgetPeriod = item.BudgetPeriod,
-				CategoryId = item.CategoryId,
-				EndDate = item.EndDate,
-				EditDateTime = item.EditDateTime,
-				StartDate = item.StartDate,
-				IsDeleted = item.IsDeleted
-			};
+			var coreBudget = KernelService.Kernel.Get<Core.Data.Budget>();
+			coreBudget.Id = item.Id;
+			coreBudget.BudgetAmount = item.BudgetAmount;
+			coreBudget.BudgetId = item.BudgetId;
+			coreBudget.BudgetName = item.BudgetName;
+			coreBudget.BudgetPeriod = item.BudgetPeriod;
+			coreBudget.CategoryId = item.CategoryId;
+			coreBudget.EndDate = item.EndDate.HasValue ? new Nullable<DateTime>(DateTime.SpecifyKind(item.EndDate.Value, DateTimeKind.Utc)) : null;
+			coreBudget.EditDateTime = new DateTimeOffset(DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc), new TimeSpan(0));
+			coreBudget.StartDate = DateTime.SpecifyKind(item.StartDate, DateTimeKind.Utc);
+			coreBudget.IsDeleted = item.IsDeleted;
+
+			return coreBudget;
 		}
 	}
 }

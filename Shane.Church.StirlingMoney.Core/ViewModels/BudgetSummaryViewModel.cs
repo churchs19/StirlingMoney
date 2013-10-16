@@ -1,23 +1,35 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Properties;
+using Shane.Church.StirlingMoney.Core.Services;
 using System;
+using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class BudgetSummaryViewModel : ObservableObject
 	{
-		public BudgetSummaryViewModel()
-		{
+		private INavigationService _navService;
+		private IRepository<Budget> _budgetRepository;
 
+		public BudgetSummaryViewModel(INavigationService navService, IRepository<Budget> budgetRepository)
+		{
+			if (navService == null) throw new ArgumentNullException("navService");
+			_navService = navService;
+			if (budgetRepository == null) throw new ArgumentNullException("budgetRepository");
+			_budgetRepository = budgetRepository;
+			EditCommand = new RelayCommand(NavigateToEdit);
+			DeleteCommand = new RelayCommand(Delete);
 		}
 
-		public BudgetSummaryViewModel(Budget b)
+		public void LoadData(Budget b)
 		{
 			BudgetId = b.BudgetId;
 			BudgetName = b.BudgetName;
 			TotalAmount = b.BudgetAmount;
-			AmountSpent = 0;
+			AmountSpent = b.AmountSpent;
 			StartDate = b.CurrentPeriodStart;
 			EndDate = b.CurrentPeriodEnd;
 		}
@@ -94,7 +106,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				var baseVal = Math.Round(1.2 * TotalAmount);
 				if (baseVal % 10 != 0)
 				{
-					return baseVal + (10 - (baseVal % 10));
+					baseVal = baseVal + (10 - (baseVal % 10));
+				}
+				if (AmountSpent > baseVal)
+				{
+					return AmountSpent;
 				}
 				else
 				{
@@ -103,19 +119,19 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public double TickValue
+		public double OveragePercentage
 		{
 			get
 			{
-				var baseVal = Math.Round(TotalAmount / 5);
-				if (baseVal % 10 != 0)
-				{
-					return baseVal + (10 - (baseVal % 10));
-				}
-				else
-				{
-					return baseVal;
-				}
+				return (MaxValue / TotalAmount) - 1;
+			}
+		}
+
+		public double SpendingRatio
+		{
+			get
+			{
+				return AmountSpent / TotalAmount;
 			}
 		}
 
@@ -183,5 +199,25 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
+		public ICommand EditCommand { get; private set; }
+
+		public void NavigateToEdit()
+		{
+			_navService.Navigate<AddEditBudgetViewModel>(this.BudgetId);
+		}
+
+		public delegate void ItemDeletedHandler(object sender);
+		public event ItemDeletedHandler ItemDeleted;
+
+		public ICommand DeleteCommand { get; private set; }
+
+		public void Delete()
+		{
+			Budget b = KernelService.Kernel.Get<Budget>();
+			b.BudgetId = this.BudgetId;
+			_budgetRepository.DeleteEntry(b);
+			if (ItemDeleted != null)
+				ItemDeleted(this);
+		}
 	}
 }

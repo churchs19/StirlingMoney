@@ -168,6 +168,8 @@
     <Compile Include="Categories.xaml.cs">
       <DependentUpon>Categories.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\BudgetBrushConverter.cs" />
+    <Compile Include="Helpers\GoalBrushConverter.cs" />
     <Compile Include="Helpers\LocalizedDateConverter.cs" />
     <Compile Include="Helpers\NonEmptyDateValidator.cs" />
     <Compile Include="Helpers\TextBinding.cs" />

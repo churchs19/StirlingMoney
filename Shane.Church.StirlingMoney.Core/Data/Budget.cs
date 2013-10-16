@@ -1,12 +1,20 @@
-﻿using Ninject;
-using Shane.Church.StirlingMoney.Core.Services;
-using System;
+﻿using System;
 using System.Linq;
 
 namespace Shane.Church.StirlingMoney.Core.Data
 {
 	public class Budget
 	{
+		private IRepository<Category> _categories;
+		private IRepository<Transaction> _transactions;
+
+		public Budget(IRepository<Category> categoryRepository, IRepository<Transaction> transactionRepository)
+		{
+			if (categoryRepository == null) throw new ArgumentNullException("categoryRepository");
+			_categories = categoryRepository;
+			if (transactionRepository == null) throw new ArgumentNullException("transactionRepository");
+			_transactions = transactionRepository;
+		}
 		public long? Id { get; set; }
 		public Guid BudgetId { get; set; }
 		public string BudgetName { get; set; }
@@ -81,11 +89,28 @@ namespace Shane.Church.StirlingMoney.Core.Data
 				try
 				{
 					if (!CategoryId.HasValue) return null;
-					return KernelService.Kernel.Get<IRepository<Category>>().GetFilteredEntries(it => it.CategoryId == CategoryId.Value).FirstOrDefault();
+					return _categories.GetFilteredEntries(it => it.CategoryId == CategoryId.Value).FirstOrDefault();
 				}
 				catch
 				{
 					return null;
+				}
+			}
+		}
+
+		public double AmountSpent
+		{
+			get
+			{
+				if (!CategoryId.HasValue)
+				{
+					var amount = _transactions.GetFilteredEntries(it => it.TransactionDate >= CurrentPeriodStart && it.TransactionDate <= CurrentPeriodEnd).Select(it => it.Amount).Sum();
+					return -amount;
+				}
+				else
+				{
+					var amount = _transactions.GetFilteredEntries(it => it.TransactionDate >= CurrentPeriodStart && it.TransactionDate <= CurrentPeriodEnd && it.CategoryId == CategoryId.Value).Select(it => it.Amount).Sum();
+					return -amount;
 				}
 			}
 		}

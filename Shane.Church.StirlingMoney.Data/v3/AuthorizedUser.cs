@@ -19,9 +19,9 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			}
 		}
 
-		private DateTimeOffset _editDateTime;
-		[Column(CanBeNull = false, DbType = "DATETIME NOT NULL")]
-		public DateTimeOffset EditDateTime
+		private DateTime _editDateTime;
+		[Column(CanBeNull = false)]
+		public DateTime EditDateTime
 		{
 			get { return _editDateTime; }
 			set

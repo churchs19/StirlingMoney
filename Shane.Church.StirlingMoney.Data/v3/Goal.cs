@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Shane.Church.Utility.Core.WP;
+using System;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
-using Shane.Church.Utility.Core.WP;
 
 namespace Shane.Church.StirlingMoney.Data.v3
 {
@@ -21,9 +19,9 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			}
 		}
 
-		private DateTimeOffset _editDateTime;
-		[Column(CanBeNull = false, DbType = "DATETIME NOT NULL")]
-		public DateTimeOffset EditDateTime
+		private DateTime _editDateTime;
+		[Column(CanBeNull = false)]
+		public DateTime EditDateTime
 		{
 			get { return _editDateTime; }
 			set
@@ -55,7 +53,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _goalId; }
 			set
 			{
-                Set(() => GoalId, ref _goalId, value);
+				Set(() => GoalId, ref _goalId, value);
 			}
 		}
 
@@ -66,7 +64,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _goalName; }
 			set
 			{
-                Set(() => GoalName, ref _goalName, value);
+				Set(() => GoalName, ref _goalName, value);
 			}
 		}
 
@@ -81,7 +79,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _account.Entity; }
 			set
 			{
-                RaisePropertyChanging(() => Account);
+				RaisePropertyChanging(() => Account);
 				_account.Entity = value;
 
 				if (value != null)
@@ -89,7 +87,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 					_accountId = value.AccountId;
 				}
 
-                RaisePropertyChanged(() => Account);
+				RaisePropertyChanged(() => Account);
 			}
 		}
 
@@ -100,7 +98,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _amount; }
 			set
 			{
-                Set(() => Amount, ref _amount, value);
+				Set(() => Amount, ref _amount, value);
 			}
 		}
 
@@ -111,18 +109,29 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			get { return _initialBalance; }
 			set
 			{
-                Set(() => InitialBalance, ref _initialBalance, value);
+				Set(() => InitialBalance, ref _initialBalance, value);
 			}
 		}
 
 		private DateTime _targetDate;
-		[Column]
+		[Column(CanBeNull = false)]
 		public DateTime TargetDate
 		{
 			get { return _targetDate; }
 			set
 			{
-                Set(() => TargetDate, ref _targetDate, value);
+				Set(() => TargetDate, ref _targetDate, value);
+			}
+		}
+
+		private DateTime _startDate;
+		[Column(CanBeNull = false)]
+		public DateTime StartDate
+		{
+			get { return _startDate; }
+			set
+			{
+				Set(() => StartDate, ref _startDate, value);
 			}
 		}
 	}

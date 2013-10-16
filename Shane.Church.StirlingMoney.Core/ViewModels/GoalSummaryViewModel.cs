@@ -1,27 +1,39 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Properties;
+using Shane.Church.StirlingMoney.Core.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class GoalSummaryViewModel : ObservableObject
 	{
-		public GoalSummaryViewModel()
-		{
+		private INavigationService _navService;
+		private IRepository<Goal> _goalRepository;
 
+		public GoalSummaryViewModel(INavigationService navService, IRepository<Goal> goalRepository)
+		{
+			if (navService == null) throw new ArgumentNullException("navService");
+			_navService = navService;
+			if (goalRepository == null) throw new ArgumentNullException("goalRepository");
+			_goalRepository = goalRepository;
+
+			EditCommand = new RelayCommand(NavigateToEdit);
+			DeleteCommand = new RelayCommand(Delete);
 		}
 
-		public GoalSummaryViewModel(Goal g)
+		public void LoadData(Goal g)
 		{
 			GoalId = g.GoalId;
 			GoalName = g.GoalName;
 			GoalAmount = g.Amount;
 			InitialBalance = g.InitialBalance;
 			TargetDate = g.TargetDate;
+			StartDate = g.StartDate;
+			CurrentAmount = g.Account.AccountBalance;
 		}
 
 		private Guid _goalId;
@@ -119,6 +131,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
+		private DateTime _startDate;
+		public DateTime StartDate
+		{
+			get { return _startDate; }
+			set
+			{
+				Set(() => StartDate, ref _startDate, value);
+			}
+		}
+
 		public int DaysRemaining
 		{
 			get
@@ -149,6 +171,42 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
+		public double MinValue
+		{
+			get
+			{
+				return Math.Min(InitialBalance, CurrentAmount);
+			}
+		}
+
+		public double MaxValue
+		{
+			get
+			{
+				var baseVal = Math.Round(1.2 * GoalAmount);
+				if (baseVal % 10 != 0)
+				{
+					baseVal = baseVal + (10 - (baseVal % 10));
+				}
+				if (GoalAmount > baseVal)
+				{
+					return GoalAmount;
+				}
+				else
+				{
+					return baseVal;
+				}
+			}
+		}
+
+		public double OveragePercentage
+		{
+			get
+			{
+				return (MaxValue / GoalAmount) - 1;
+			}
+		}
+
 		public string PinMenuText
 		{
 			get
@@ -163,6 +221,27 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				//}
 				return "";
 			}
+		}
+
+		public ICommand EditCommand { get; private set; }
+
+		public void NavigateToEdit()
+		{
+			_navService.Navigate<AddEditBudgetViewModel>(this.GoalId);
+		}
+
+		public delegate void ItemDeletedHandler(object sender);
+		public event ItemDeletedHandler ItemDeleted;
+
+		public ICommand DeleteCommand { get; private set; }
+
+		public void Delete()
+		{
+			Goal g = KernelService.Kernel.Get<Goal>();
+			g.GoalId = this.GoalId;
+			_goalRepository.DeleteEntry(g);
+			if (ItemDeleted != null)
+				ItemDeleted(this);
 		}
 	}
 }

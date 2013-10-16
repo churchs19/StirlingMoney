@@ -14,6 +14,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		public double Amount { get; set; }
 		public double InitialBalance { get; set; }
 		public DateTime TargetDate { get; set; }
+		public DateTime StartDate { get; set; }
 		public DateTimeOffset EditDateTime { get; set; }
 		public bool? IsDeleted { get; set; }
 

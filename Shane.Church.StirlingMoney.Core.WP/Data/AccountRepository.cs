@@ -48,7 +48,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.Accounts.DeleteOnSubmit(pEntry);
 					else
 					{
-						pEntry.EditDateTime = DateTimeOffset.UtcNow;
+						pEntry.EditDateTime = DateTime.UtcNow;
 						pEntry.IsDeleted = true;
 					}
 					_context.SubmitChanges();
@@ -70,7 +70,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 						_context.Accounts.InsertOnSubmit(item);
 					}
 					item.AccountName = entry.AccountName;
-					item.EditDateTime = DateTimeOffset.UtcNow;
+					item.EditDateTime = DateTime.UtcNow;
 					item.Id = entry.Id;
 					item.InitialBalance = entry.InitialBalance;
 					item.IsDeleted = entry.IsDeleted;
@@ -79,7 +79,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 
 					entry.Id = item.Id;
 					entry.AccountId = item.AccountId;
-					entry.EditDateTime = item.EditDateTime;
+					entry.EditDateTime = DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc);
 				}
 			}
 			return entry;
@@ -121,17 +121,15 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 
 	public static class AccountExtensions
 	{
-		public static Core.Data.Account ToCoreAccount(this Shane.Church.StirlingMoney.Data.v3.Account account)
+		public static Core.Data.Account ToCoreAccount(this Shane.Church.StirlingMoney.Data.v3.Account item)
 		{
 			return new Core.Data.Account()
 			{
-				AccountId = account.AccountId,
-				AccountName = account.AccountName,
-				InitialBalance = account.InitialBalance,
-				EditDateTime = account.EditDateTime,
-				IsDeleted = account.IsDeleted,
-				IsCreditCard = account.IsCreditCard,
-				CreditLimit = account.CreditLimit
+				AccountId = item.AccountId,
+				AccountName = item.AccountName,
+				InitialBalance = item.InitialBalance,
+				EditDateTime = new DateTimeOffset(DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc), new TimeSpan(0)),
+				IsDeleted = item.IsDeleted
 			};
 		}
 	}

@@ -56,37 +56,42 @@
 		</ViewModels:AccountListViewModel>
 	</ViewModels:MainViewModel.Accounts>
 	<ViewModels:MainViewModel.Budgets>
-        <ViewModels:BudgetSummaryViewModel AmountSpent="20" BudgetName="Test" TotalAmount="100" MaxValue="120" StartDate="10/01/2013 17:44:57" EndDate="10/10/2013 17:44:57">
+        <ViewModels:BudgetSummaryViewModel AmountSpent="115" BudgetName="Test" TotalAmount="100" MaxValue="120" StartDate="10/01/2013 17:44:57" EndDate="10/10/2013 17:44:57" OveragePercentage=".2">
             <ViewModels:BudgetSummaryViewModel.BudgetId>
                 <System:Guid/>
             </ViewModels:BudgetSummaryViewModel.BudgetId>
         </ViewModels:BudgetSummaryViewModel>
-        <ViewModels:BudgetSummaryViewModel AmountSpent="90" BudgetName="Test" TotalAmount="1200" MaxValue="1440"  StartDate="10/01/2013 17:44:57" EndDate="10/15/2013 17:44:57">
+        <ViewModels:BudgetSummaryViewModel AmountSpent="90" BudgetName="Test" TotalAmount="1200" MaxValue="1440"  StartDate="10/01/2013 17:44:57" EndDate="10/15/2013 17:44:57" OveragePercentage=".2">
             <ViewModels:BudgetSummaryViewModel.BudgetId>
                 <System:Guid/>
             </ViewModels:BudgetSummaryViewModel.BudgetId>
         </ViewModels:BudgetSummaryViewModel>
-        <ViewModels:BudgetSummaryViewModel AmountSpent="33" BudgetName="Test" TotalAmount="80" MaxValue="100" StartDate="10/01/2013 17:44:57" EndDate="10/15/2013 17:44:57">
+        <ViewModels:BudgetSummaryViewModel AmountSpent="33" BudgetName="Test" TotalAmount="80" MaxValue="100" StartDate="10/01/2013 17:44:57" EndDate="10/15/2013 17:44:57" OveragePercentage=".25">
             <ViewModels:BudgetSummaryViewModel.BudgetId>
                 <System:Guid/>
             </ViewModels:BudgetSummaryViewModel.BudgetId>
         </ViewModels:BudgetSummaryViewModel>
-        <ViewModels:BudgetSummaryViewModel AmountSpent="55" BudgetName="Test" TotalAmount="77" MaxValue="100"  StartDate="10/01/2013 17:44:57" EndDate="10/15/2013 17:44:57">
+        <ViewModels:BudgetSummaryViewModel AmountSpent="55" BudgetName="Test" TotalAmount="77" MaxValue="100"  StartDate="10/01/2013 17:44:57" EndDate="10/15/2013 17:44:57" OveragePercentage="0.2987012987012987">
             <ViewModels:BudgetSummaryViewModel.BudgetId>
                 <System:Guid/>
             </ViewModels:BudgetSummaryViewModel.BudgetId>
         </ViewModels:BudgetSummaryViewModel>
     </ViewModels:MainViewModel.Budgets>
 	<ViewModels:MainViewModel.Goals>
-		<ViewModels:GoalSummaryViewModel/>
-		<ViewModels:GoalSummaryViewModel/>
-		<ViewModels:GoalSummaryViewModel/>
-		<ViewModels:GoalSummaryViewModel/>
-		<ViewModels:GoalSummaryViewModel/>
-		<ViewModels:GoalSummaryViewModel/>
-		<ViewModels:GoalSummaryViewModel/>
-		<ViewModels:GoalSummaryViewModel/>
-		<ViewModels:GoalSummaryViewModel/>
-		<ViewModels:GoalSummaryViewModel/>
-	</ViewModels:MainViewModel.Goals>
+        <ViewModels:GoalSummaryViewModel GoalName="Test" GoalAmount="800" InitialBalance="200" TargetDate="10/30/2013 17:44:57" CurrentAmount="300" MaxValue="860" OveragePercentage=".1">
+            <ViewModels:GoalSummaryViewModel.GoalId>
+                <System:Guid/>
+            </ViewModels:GoalSummaryViewModel.GoalId>
+        </ViewModels:GoalSummaryViewModel>
+        <ViewModels:GoalSummaryViewModel GoalName="Test" GoalAmount="0" InitialBalance="-200" TargetDate="10/30/2013 17:44:57" CurrentAmount="-120" MaxValue="20" OveragePercentage=".1">
+            <ViewModels:GoalSummaryViewModel.GoalId>
+                <System:Guid/>
+            </ViewModels:GoalSummaryViewModel.GoalId>
+        </ViewModels:GoalSummaryViewModel>
+        <ViewModels:GoalSummaryViewModel GoalName="Test" GoalAmount="300" InitialBalance="0" TargetDate="10/30/2013 17:44:57" CurrentAmount="290" MaxValue="330" OveragePercentage=".1">
+            <ViewModels:GoalSummaryViewModel.GoalId>
+                <System:Guid/>
+            </ViewModels:GoalSummaryViewModel.GoalId>
+        </ViewModels:GoalSummaryViewModel>
+    </ViewModels:MainViewModel.Goals>
 </ViewModels:MainViewModel>

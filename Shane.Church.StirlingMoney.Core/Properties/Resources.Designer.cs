@@ -331,6 +331,15 @@ namespace Shane.Church.StirlingMoney.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Target Date must be after {0:d}.
+        /// </summary>
+        public static string GoalDateComparisonError {
+            get {
+                return ResourceManager.GetString("GoalDateComparisonError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Target Date must be after today..
         /// </summary>
         public static string GoalDateError {

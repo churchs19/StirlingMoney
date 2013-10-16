@@ -5,7 +5,6 @@ using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -78,11 +77,24 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			if (!_budgetsLoaded || forceUpdate)
 			{
 				var budgets = await _budgetRepository.GetAllEntriesAsync();
-				foreach (var b in budgets.Select(it => new BudgetSummaryViewModel(it)))
+				foreach (var b in budgets)
 				{
-					Budgets.Add(b);
+					var budgetModel = KernelService.Kernel.Get<BudgetSummaryViewModel>();
+					budgetModel.LoadData(b);
+					budgetModel.ItemDeleted += budgetModel_ItemDeleted;
+					Budgets.Add(budgetModel);
 				}
 				_budgetsLoaded = true;
+			}
+		}
+
+		void budgetModel_ItemDeleted(object sender)
+		{
+			var item = sender as BudgetSummaryViewModel;
+			if (item != null)
+			{
+				item.ItemDeleted -= budgetModel_ItemDeleted;
+				Budgets.Remove(item);
 			}
 		}
 
@@ -91,11 +103,24 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			if (!_goalsLoaded || forceUpdate)
 			{
 				var goals = await _goalRepository.GetAllEntriesAsync();
-				foreach (var b in goals.Select(it => new GoalSummaryViewModel(it)))
+				foreach (var g in goals)
 				{
-					Goals.Add(b);
+					var goalModel = KernelService.Kernel.Get<GoalSummaryViewModel>();
+					goalModel.LoadData(g);
+					goalModel.ItemDeleted += goalModel_ItemDeleted;
+					Goals.Add(goalModel);
 				}
 				_goalsLoaded = true;
+			}
+		}
+
+		void goalModel_ItemDeleted(object sender)
+		{
+			var item = sender as GoalSummaryViewModel;
+			if (item != null)
+			{
+				item.ItemDeleted -= goalModel_ItemDeleted;
+				Goals.Remove(item);
 			}
 		}
 

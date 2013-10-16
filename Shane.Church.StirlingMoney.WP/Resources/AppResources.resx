@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>about</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>other apps by Shane Church</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>rate this app</value>
+  </data>
   <data name="AccountNameLabel" xml:space="preserve">
     <value>account name</value>
   </data>
@@ -126,6 +135,9 @@
   <data name="AccountsTitle" xml:space="preserve">
     <value>accounts</value>
   </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>Actual</value>
+  </data>
   <data name="AddAccountPrompt" xml:space="preserve">
     <value>Add an account to get started</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="AddCategoryTitle" xml:space="preserve">
     <value>add category</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>Amount</value>
   </data>
   <data name="AppBarAbout" xml:space="preserve">
     <value>about</value>
@@ -153,8 +168,17 @@
   <data name="AppBarDeposit" xml:space="preserve">
     <value>deposit</value>
   </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>review this app</value>
+  </data>
   <data name="AppBarReports" xml:space="preserve">
     <value>reports</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>save</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>settings</value>
   </data>
   <data name="AppBarSync" xml:space="preserve">
     <value>sync</value>
@@ -168,8 +192,32 @@
   <data name="AppBarWriteCheck" xml:space="preserve">
     <value>write check</value>
   </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>Copyright © Shane Church 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>A financial organizer for Windows Phone</value>
+  </data>
   <data name="AppTitle" xml:space="preserve">
     <value>STIRLING MONEY</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>The trial of this application has expired. Do you want to purchase the application now? If you choose Yes - you will be redirected to the marketplace.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Do not show this reminder again</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>Trial Expired</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>You are using the ad-supported trial version of this application. Do you want to purchase the application now to remove the ads? If you choose Yes - you will be redirected to the marketplace.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Do not show this reminder again</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>Trial Reminder</value>
   </data>
   <data name="BackupButton" xml:space="preserve">
     <value>backup</value>
@@ -210,6 +258,9 @@
   <data name="BudgetAmountLabel" xml:space="preserve">
     <value>amount</value>
   </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>Budget</value>
+  </data>
   <data name="BudgetEndDateLabel" xml:space="preserve">
     <value>end date</value>
   </data>
@@ -221,6 +272,9 @@
   </data>
   <data name="BudgetStartDateLabel" xml:space="preserve">
     <value>start date</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>budgets</value>
   </data>
   <data name="BudgetTitle" xml:space="preserve">
     <value>budget</value>
@@ -276,8 +330,17 @@
   <data name="CategoryVacation" xml:space="preserve">
     <value>Vacation</value>
   </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>chart types</value>
+  </data>
   <data name="CheckTitle" xml:space="preserve">
     <value>check</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>credit limit</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>Date Range</value>
   </data>
   <data name="DeleteAccountTitle" xml:space="preserve">
     <value>Delete Account</value>
@@ -309,11 +372,22 @@
   <data name="DepositTitle" xml:space="preserve">
     <value>deposit</value>
   </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>The application has encountered a problem. I am sorry for the inconvenience.
+
+I would appreciate your assistance by sending the prepared error report. This will help with resolving the problem faster.</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>Application Error</value>
+  </data>
   <data name="EditAccountTitle" xml:space="preserve">
     <value>edit account</value>
   </data>
   <data name="EditMenuItem" xml:space="preserve">
     <value>edit</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>Expenses</value>
   </data>
   <data name="GoalAccountLabel" xml:space="preserve">
     <value>account</value>
@@ -324,17 +398,44 @@
   <data name="GoalNameLabel" xml:space="preserve">
     <value>name</value>
   </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>select account</value>
+  </data>
   <data name="GoalsTitle" xml:space="preserve">
     <value>goals</value>
   </data>
   <data name="GoalTargetDateLabel" xml:space="preserve">
     <value>target date</value>
   </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>Income</value>
+  </data>
   <data name="InitialBalanceLabel" xml:space="preserve">
     <value>initial balance</value>
   </data>
   <data name="InvalidValuesTitle" xml:space="preserve">
     <value>Warning: Invalid Values</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>credit card</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>cancel</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>no</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>ok</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>yes</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>net income</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>password</value>
   </data>
   <data name="PinToStart" xml:space="preserve">
     <value>pin to start</value>
@@ -348,14 +449,32 @@
   <data name="ProgressBarText" xml:space="preserve">
     <value>Loading...</value>
   </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>Updating database</value>
+  </data>
   <data name="ProgressBarUploadingText" xml:space="preserve">
     <value>Uploading...</value>
   </data>
   <data name="PurchaseFullVersionButton" xml:space="preserve">
     <value>Buy full version</value>
   </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>I would love to hear from you! If you like the app, please rate it on the marketplace and share your feedback.</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Do not show this reminder again</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>Rate the app</value>
+  </data>
   <data name="ReportsTitle" xml:space="preserve">
     <value>STIRLING MONEY - REPORTS</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>en</value>
   </data>
   <data name="RestoreButton" xml:space="preserve">
     <value>restore</value>
@@ -363,8 +482,32 @@
   <data name="SaveButton" xml:space="preserve">
     <value>save</value>
   </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>search</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>select date</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>sort account list by</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>confirm password</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>password</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>settings</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>use password</value>
+  </data>
   <data name="StartTileBalance" xml:space="preserve">
     <value>Balance: {0}</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>technical support/feedback email</value>
   </data>
   <data name="ToastServerUnavailable" xml:space="preserve">
     <value>Server unavailable</value>
@@ -438,6 +581,12 @@
   <data name="TrialMessageTwoAccounts" xml:space="preserve">
     <value>Only two (2) accounts are allowed in trial mode.</value>
   </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>You have {0} day(s) left.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>You have {0} time(s) left.</value>
+  </data>
   <data name="TrialTitle" xml:space="preserve">
     <value>trial</value>
   </data>
@@ -450,150 +599,7 @@
   <data name="WithdrawalTitle" xml:space="preserve">
     <value>withdrawal</value>
   </data>
-  <data name="BudgetsTitle" xml:space="preserve">
-    <value>budgets</value>
-  </data>
-  <data name="ChartTypesTitle" xml:space="preserve">
-    <value>chart types</value>
-  </data>
-  <data name="ActualChartLabel" xml:space="preserve">
-    <value>Actual</value>
-  </data>
-  <data name="AmountChartLabel" xml:space="preserve">
-    <value>Amount</value>
-  </data>
-  <data name="AppBarSettings" xml:space="preserve">
-    <value>settings</value>
-  </data>
-  <data name="BudgetChartLabel" xml:space="preserve">
-    <value>Budget</value>
-  </data>
-  <data name="DateRangeLabel" xml:space="preserve">
-    <value>Date Range</value>
-  </data>
-  <data name="ExpensesChartLabel" xml:space="preserve">
-    <value>Expenses</value>
-  </data>
-  <data name="IncomeChartLabel" xml:space="preserve">
-    <value>Income</value>
-  </data>
-  <data name="NetIncomeTitle" xml:space="preserve">
-    <value>net income</value>
-  </data>
-  <data name="SettingsAccountSortLabel" xml:space="preserve">
-    <value>sort account list by</value>
-  </data>
-  <data name="SettingsTitle" xml:space="preserve">
-    <value>settings</value>
-  </data>
-  <data name="AppBarMenuItemReview" xml:space="preserve">
-    <value>review this app</value>
-  </data>
-  <data name="ProgressBarUpdatingText" xml:space="preserve">
-    <value>Updating database</value>
-  </data>
-  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
-    <value>confirm password</value>
-  </data>
-  <data name="SettingsPasswordLabel" xml:space="preserve">
-    <value>password</value>
-  </data>
-  <data name="SettingsUsePasswordLabel" xml:space="preserve">
-    <value>use password</value>
-  </data>
-  <data name="PasswordLabel" xml:space="preserve">
-    <value>password</value>
-  </data>
-  <data name="SearchHint" xml:space="preserve">
-    <value>search</value>
-  </data>
-  <data name="AboutLabel" xml:space="preserve">
-    <value>about</value>
-  </data>
-  <data name="AboutOtherAppsLabel" xml:space="preserve">
-    <value>other apps by Shane Church</value>
-  </data>
-  <data name="AboutReviewLabel" xml:space="preserve">
-    <value>rate this app</value>
-  </data>
-  <data name="AppCopyright" xml:space="preserve">
-    <value>Copyright © Shane Church 2013</value>
-  </data>
-  <data name="AppDescription" xml:space="preserve">
-    <value>A financial organizer for Windows Phone</value>
-  </data>
-  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
-    <value>technical support/feedback email</value>
-  </data>
-  <data name="ResourceFlowDirection" xml:space="preserve">
-    <value>LeftToRight</value>
-  </data>
-  <data name="ResourceLanguage" xml:space="preserve">
-    <value>en</value>
-  </data>
-  <data name="AppBarSave" xml:space="preserve">
-    <value>save</value>
-  </data>
-  <data name="IsCreditCardLabel" xml:space="preserve">
-    <value>credit card</value>
-  </data>
-  <data name="CreditLimitLabel" xml:space="preserve">
-    <value>credit limit</value>
-  </data>
-  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
-    <value>Application Error</value>
-  </data>
-  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
-    <value>The application has encountered a problem. I am sorry for the inconvenience.
-
-I would appreciate your assistance by sending the prepared error report. This will help with resolving the problem faster.</value>
-  </data>
-  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
-    <value>You have {0} time(s) left.</value>
-  </data>
-  <data name="TrialReminderPeriodMessage" xml:space="preserve">
-    <value>You have {0} day(s) left.</value>
-  </data>
-  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
-    <value>Trial Reminder</value>
-  </data>
-  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
-    <value>Do not show this reminder again</value>
-  </data>
-  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
-    <value>You are using the ad-supported trial version of this application. Do you want to purchase the application now to remove the ads? If you choose Yes - you will be redirected to the marketplace.</value>
-  </data>
-  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
-    <value>Trial Expired</value>
-  </data>
-  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
-    <value>Do not show this reminder again</value>
-  </data>
-  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
-    <value>The trial of this application has expired. Do you want to purchase the application now? If you choose Yes - you will be redirected to the marketplace.</value>
-  </data>
-  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
-    <value>Rate the app</value>
-  </data>
-  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
-    <value>Do not show this reminder again</value>
-  </data>
-  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
-    <value>I would love to hear from you! If you like the app, please rate it on the marketplace and share your feedback.</value>
-  </data>
-  <data name="MBYesText" xml:space="preserve">
-    <value>yes</value>
-  </data>
-  <data name="MBNoText" xml:space="preserve">
-    <value>no</value>
-  </data>
-  <data name="MBOkText" xml:space="preserve">
-    <value>ok</value>
-  </data>
-  <data name="MBCancelText" xml:space="preserve">
-    <value>cancel</value>
-  </data>
-  <data name="SelectDateText" xml:space="preserve">
-    <value>select date</value>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>start date</value>
   </data>
 </root>

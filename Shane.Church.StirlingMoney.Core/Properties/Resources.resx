@@ -207,6 +207,9 @@
   <data name="GoalAmountError" xml:space="preserve">
     <value>Amount must be greater than the current balance of the selected account.</value>
   </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>Target Date must be after {0:d}</value>
+  </data>
   <data name="GoalDateError" xml:space="preserve">
     <value>Target Date must be after today.</value>
   </data>
@@ -215,6 +218,9 @@
   </data>
   <data name="LocationRequiredError" xml:space="preserve">
     <value>Location is required.</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>no</value>
   </data>
   <data name="NoCategoryLabel" xml:space="preserve">
     <value>(no category)</value>
@@ -269,8 +275,5 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>yes</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>no</value>
   </data>
 </root>

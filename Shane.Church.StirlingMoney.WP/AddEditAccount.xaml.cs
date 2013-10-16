@@ -110,10 +110,6 @@ namespace Shane.Church.StirlingMoney.WP
 			if (bind != null)
 				bind.UpdateSource();
 
-			bind = ((FrameworkElement)this.textBoxCreditLimit).GetBindingExpression(TextBox.TextProperty);
-
-			if (bind != null)
-				bind.UpdateSource();
 
 			_model.SaveCommand.Execute(null);
 		}
@@ -124,12 +120,6 @@ namespace Shane.Church.StirlingMoney.WP
 			{
 				textBoxInitialBalance.Text = "";
 			}
-		}
-
-		private void textBoxCreditLimit_GotFocus(object sender, RoutedEventArgs e)
-		{
-			if (_model.CreditLimit == 0)
-				textBlockCreditLimit.Text = "";
 		}
 	}
 }
