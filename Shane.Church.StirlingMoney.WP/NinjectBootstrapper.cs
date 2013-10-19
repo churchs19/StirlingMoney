@@ -29,6 +29,8 @@ namespace Shane.Church.StirlingMoney.WP
 			KernelService.Kernel.Bind<MainViewModel>().To<PhoneMainViewModel>();
 			KernelService.Kernel.Bind<AboutViewModel>().To<PhoneAboutViewModel>();
 			KernelService.Kernel.Bind<ITileService<Core.Data.Account>>().To<PhoneAccountTileService>().InSingletonScope();
+			KernelService.Kernel.Bind<AddEditAccountViewModel>().To<PhoneAddEditAccountViewModel>();
+			KernelService.Kernel.Bind<AccountTileViewModel>().To<PhoneAccountTileViewModel>();
 		}
 	}
 }

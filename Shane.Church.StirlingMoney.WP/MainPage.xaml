@@ -8,6 +8,7 @@
 	xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
     xmlns:gauges="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.DataVisualization"
     xmlns:util="clr-namespace:Shane.Church.StirlingMoney.WP.Helpers"
+    xmlns:coreUtil="clr-namespace:Shane.Church.StirlingMoney.Core.WP.Converters;assembly=Shane.Church.StirlingMoney.Core.WP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
@@ -17,6 +18,10 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
 
+    <phone:PhoneApplicationPage.Resources>
+        <coreUtil:ByteToImageSourceValueConverter x:Key="ByteImageConverter"/>
+    </phone:PhoneApplicationPage.Resources>
+    
     <Grid x:Name="LayoutRoot" Background="{StaticResource MoneyBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -62,16 +67,16 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Width="185" Height="185">
+                                    <Grid>
                                         <telerikPrimitives:RadCustomHubTile Title="{Binding AccountName}" 
-                                                                        Height="185" 
-                                                                        Width="185" 
+                                                                        Height="210" 
+                                                                        Width="210" 
                                                                         Grid.Row="0"
                                                                         Grid.Column="0"
                                                                         Grid.RowSpan="1"
                                                                         Grid.ColumnSpan="1"
                                                                         Foreground="White" 
-                                                                        Margin="0,0,10,10"
+                                                                        Margin="0,0,15,15"
                                                                         Command="{Binding TransactionsCommand}"
                                                                         FrontContent="{Binding BindsDirectlyToSource=True}"
                                                                         BackContent="{Binding BindsDirectlyToSource=True}">
@@ -89,14 +94,14 @@
                                                             <RowDefinition Height="40"/>
                                                             <RowDefinition Height="*"/>
                                                         </Grid.RowDefinitions>
-                                                        <Image Grid.Row="0" Grid.RowSpan="2" Source="Images/Account.png" Stretch="None"/>
-                                                        <TextBlock Grid.Row="0" Text="{Binding AccountBalance, Converter={StaticResource LocalizedCurrency}}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="9,9,19,9" FontSize="{StaticResource PhoneFontSizeSmall}" FontFamily="{StaticResource PhoneFontFamilyNormal}" />
+                                                        <Image Grid.Row="0" Grid.RowSpan="2" Source="{Binding Image, Converter={StaticResource ByteImageConverter}}" Margin="29" Stretch="Fill"/>
+                                                        <TextBlock Grid.Row="0" Text="{Binding AccountBalance, Converter={StaticResource LocalizedCurrency}}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="9,9,12,9" FontSize="{StaticResource PhoneFontSizeSmall}" FontFamily="{StaticResource PhoneFontFamilyNormal}" />
                                                     </Grid>
                                                 </DataTemplate>
                                             </telerikPrimitives:RadCustomHubTile.FrontContentTemplate>
                                             <telerikPrimitives:RadCustomHubTile.BackContentTemplate>
                                                 <DataTemplate>
-                                                    <StackPanel Background="{StaticResource PhoneAccentBrush}" Width="185" Height="185">
+                                                    <StackPanel Background="{StaticResource PhoneAccentBrush}" Width="210" Height="210">
                                                         <TextBlock Text="{Binding Path=LocalizedResources.TransactionsAvailableBalanceLabel, Source={StaticResource LocalizedStrings}}" 
                                                                HorizontalAlignment="Left" 
                                                                Margin="9,9,9,0"

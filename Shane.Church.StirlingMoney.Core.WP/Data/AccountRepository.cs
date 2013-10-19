@@ -74,6 +74,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 					item.Id = entry.Id;
 					item.InitialBalance = entry.InitialBalance;
 					item.IsDeleted = entry.IsDeleted;
+					item.ImageUri = entry.ImageUri;
 
 					_context.SubmitChanges();
 
@@ -129,7 +130,8 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				AccountName = item.AccountName,
 				InitialBalance = item.InitialBalance,
 				EditDateTime = new DateTimeOffset(DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc), new TimeSpan(0)),
-				IsDeleted = item.IsDeleted
+				IsDeleted = item.IsDeleted,
+				ImageUri = item.ImageUri
 			};
 		}
 	}

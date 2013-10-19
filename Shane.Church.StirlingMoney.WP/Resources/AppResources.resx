@@ -602,4 +602,7 @@ I would appreciate your assistance by sending the prepared error report. This wi
   <data name="GoalStartDateLabel" xml:space="preserve">
     <value>start date</value>
   </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>account image</value>
+  </data>
 </root>

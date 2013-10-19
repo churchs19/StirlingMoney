@@ -13,6 +13,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		public double InitialBalance { get; set; }
 		public DateTimeOffset EditDateTime { get; set; }
 		public bool? IsDeleted { get; set; }
+		public string ImageUri { get; set; }
 
 		public double AccountBalance
 		{

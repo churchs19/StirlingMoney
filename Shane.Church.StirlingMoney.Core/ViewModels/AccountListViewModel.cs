@@ -66,9 +66,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				{
 					var tile = KernelService.Kernel.Get<AccountTileViewModel>();
 					tile.LoadData(a);
+					tile.AccountDeleted += tile_AccountDeleted;
 					Accounts.Add(tile);
 				}
 				_accountsLoaded = true;
+			}
+		}
+
+		void tile_AccountDeleted(object sender)
+		{
+			var item = sender as AccountTileViewModel;
+			if (item != null)
+			{
+				item.AccountDeleted -= tile_AccountDeleted;
+				Accounts.Remove(item);
 			}
 		}
 	}

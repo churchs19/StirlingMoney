@@ -88,6 +88,16 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			}
 		}
 
+		private string _imageUri;
+		public string ImageUri
+		{
+			get { return _imageUri; }
+			set
+			{
+				Set(() => ImageUri, ref _imageUri, value);
+			}
+		}
+
 		//private bool _isCreditCard;
 		//public bool IsCreditCard
 		//{

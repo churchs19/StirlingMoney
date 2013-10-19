@@ -15,6 +15,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		private ITileService<Account> _tileService;
 		private IRepository<Account> _accountRepository;
 		private INavigationService _navService;
+		protected string _imageUri;
 
 		public AccountTileViewModel(ITileService<Account> tileService, IRepository<Account> accountRepository, INavigationService navService)
 		{
@@ -80,6 +81,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
+		private byte[] _image;
+		public byte[] Image
+		{
+			get { return _image; }
+			set
+			{
+				Set(() => Image, ref _image, value);
+			}
+		}
+
 		public string PinMenuText
 		{
 			get
@@ -104,9 +115,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public ICommand DeleteCommand { get; protected set; }
 
+		public delegate void AccountDeletedHandler(object sender);
+		public event AccountDeletedHandler AccountDeleted;
+
 		public void Delete()
 		{
-
+			Account acct = KernelService.Kernel.Get<Account>();
+			acct.AccountId = this.AccountId;
+			_accountRepository.DeleteEntry(acct);
+			if (AccountDeleted != null)
+				AccountDeleted(this);
 		}
 
 		public ICommand PinCommand { get; protected set; }
@@ -123,7 +141,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_navService.Navigate<TransactionListViewModel>(this.AccountId);
 		}
 
-		public void LoadData(Guid accountId)
+		public virtual void LoadData(Guid accountId)
 		{
 			Account a = _accountRepository.GetFilteredEntries(it => it.AccountId == accountId).FirstOrDefault();
 			if (a != null)
@@ -132,15 +150,17 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				AccountName = a.AccountName;
 				AccountBalance = a.AccountBalance;
 				PostedBalance = a.PostedBalance;
+				_imageUri = a.ImageUri;
 			}
 		}
 
-		public void LoadData(Account a)
+		public virtual void LoadData(Account a)
 		{
 			AccountId = a.AccountId;
 			AccountName = a.AccountName;
 			AccountBalance = a.AccountBalance;
 			PostedBalance = a.PostedBalance;
+			_imageUri = a.ImageUri;
 		}
 	}
 }

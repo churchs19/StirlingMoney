@@ -1,12 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Properties;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels.Shared;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 
@@ -14,8 +14,21 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class AddEditAccountViewModel : ObservableObject
 	{
-		public AddEditAccountViewModel()
+		private IRepository<Account> _accountRepository;
+		private INavigationService _navService;
+
+		public AddEditAccountViewModel(IRepository<Account> accountRepository, INavigationService navService)
 		{
+			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
+			_accountRepository = accountRepository;
+			if (navService == null) throw new ArgumentNullException("navService");
+			_navService = navService;
+
+			_availableImages = new ObservableCollection<ImageData>();
+			_availableImages.CollectionChanged += (s, e) =>
+			{
+				RaisePropertyChanged(() => AvailableImages);
+			};
 			SaveCommand = new RelayCommand(SaveAccount);
 		}
 
@@ -56,27 +69,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		private bool _isCreditCard;
-		public bool IsCreditCard
+		private ImageData _image;
+		public ImageData Image
 		{
-			get { return _isCreditCard; }
+			get { return _image; }
 			set
 			{
-				if (Set(() => IsCreditCard, ref _isCreditCard, value))
-				{
-					RaisePropertyChanged(() => IsCreditCardLabel);
-				}
+				Set(() => Image, ref _image, value);
 			}
 		}
 
-		private double _creditLimit;
-		public double CreditLimit
+		private ObservableCollection<ImageData> _availableImages;
+		public ObservableCollection<ImageData> AvailableImages
 		{
-			get { return _creditLimit; }
-			set
-			{
-				Set(() => CreditLimit, ref _creditLimit, value);
-			}
+			get { return _availableImages; }
 		}
 
 		public string PageTitle
@@ -102,16 +108,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public string IsCreditCardLabel
-		{
-			get { return IsCreditCard ? Resources.Yes : Resources.No; }
-		}
-
-		public void LoadData(Guid accountId)
+		public virtual void LoadData(Guid accountId)
 		{
 			if (accountId != Guid.Empty)
 			{
-				Account a = KernelService.Kernel.Get<IRepository<Account>>().GetFilteredEntries(it => it.AccountId == accountId).FirstOrDefault();
+				Account a = _accountRepository.GetFilteredEntries(it => it.AccountId == accountId).FirstOrDefault();
 				if (a != null)
 				{
 					AccountId = a.AccountId;
@@ -145,22 +146,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			var errors = Validate();
 			if (errors.Count == 0)
 			{
-				var accountRepository = KernelService.Kernel.Get<IRepository<Account>>();
-				var navService = KernelService.Kernel.Get<INavigationService>();
-
 				Account a = new Account();
 				a.Id = _id;
 				a.IsDeleted = _isDeleted;
 				a.AccountId = AccountId;
 				a.InitialBalance = InitialBalance;
 				a.AccountName = AccountName;
-				a = accountRepository.AddOrUpdateEntry(a);
+				a.ImageUri = Image != null ? Image.Name : null;
+				a = _accountRepository.AddOrUpdateEntry(a);
 				AccountId = a.AccountId;
 				_id = a.Id;
 				_isDeleted = a.IsDeleted;
 
-				if (navService.CanGoBack)
-					navService.GoBack();
+				if (_navService.CanGoBack)
+					_navService.GoBack();
 			}
 			else
 			{
