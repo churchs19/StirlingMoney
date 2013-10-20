@@ -70,6 +70,7 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingHelper.cs" />
     <Compile Include="ChangingObservableObject.cs" />
     <Compile Include="DebugUtility.cs" />
     <Compile Include="Imaging.cs" />

@@ -235,6 +235,7 @@ namespace Shane.Church.StirlingMoney.WP
 			PivotItem pi = PivotMain.SelectedItem as PivotItem;
 			if (pi != null)
 			{
+				LoadingBusy.IsRunning = true;
 				string header = pi.Header.ToString();
 				if (header == AppResources.AccountsTitle)
 				{
@@ -251,6 +252,7 @@ namespace Shane.Church.StirlingMoney.WP
 					await _model.LoadGoals(_refreshGoals);
 					_refreshGoals = false;
 				}
+				LoadingBusy.IsRunning = false;
 			}
 		}
 	}

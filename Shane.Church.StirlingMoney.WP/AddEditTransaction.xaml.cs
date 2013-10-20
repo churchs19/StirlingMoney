@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 
 namespace Shane.Church.StirlingMoney.WP
@@ -105,21 +104,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 		void appBarIconButtonSave_Click(object sender, EventArgs e)
 		{
-			var bind = ((FrameworkElement)this.textBoxAmount).GetBindingExpression(TextBox.TextProperty);
-			if (bind != null)
-				bind.UpdateSource();
-
-			bind = ((FrameworkElement)this.textBoxCheckNum).GetBindingExpression(TextBox.TextProperty);
-			if (bind != null)
-				bind.UpdateSource();
-
-			bind = ((FrameworkElement)this.textBoxLocation).GetBindingExpression(TextBox.TextProperty);
-			if (bind != null)
-				bind.UpdateSource();
-
-			bind = ((FrameworkElement)this.textBoxNote).GetBindingExpression(TextBox.TextProperty);
-			if (bind != null)
-				bind.UpdateSource();
+			Shane.Church.Utility.Core.WP.BindingHelper.UpdateBindings(this.textBoxAmount, this.textBoxCheckNum, this.textBoxLocation, this.textBoxNote);
 
 			_model.SaveCommand.Execute(null);
 		}

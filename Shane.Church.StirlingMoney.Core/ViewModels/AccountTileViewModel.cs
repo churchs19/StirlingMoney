@@ -30,6 +30,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			DeleteCommand = new RelayCommand(Delete);
 			PinCommand = new RelayCommand(Pin);
 			TransactionsCommand = new RelayCommand(Transactions);
+
+			var rnd = new Random();
+			UpdateInterval = TimeSpan.FromSeconds(Convert.ToDouble(rnd.Next(3, 6)) + rnd.NextDouble());
 		}
 
 		private string _accountName;
@@ -88,6 +91,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			set
 			{
 				Set(() => Image, ref _image, value);
+			}
+		}
+
+		private TimeSpan _updateInterval;
+		public TimeSpan UpdateInterval
+		{
+			get { return _updateInterval; }
+			private set
+			{
+				Set(() => UpdateInterval, ref _updateInterval, value);
 			}
 		}
 

@@ -101,6 +101,8 @@ namespace Shane.Church.StirlingMoney.WP
 
 		void appBarIconButtonSave_Click(object sender, EventArgs e)
 		{
+			Shane.Church.Utility.Core.WP.BindingHelper.UpdateBindings(this.textBoxCategoryName);
+
 			_model.SaveCommand.Execute(null);
 		}
 	}

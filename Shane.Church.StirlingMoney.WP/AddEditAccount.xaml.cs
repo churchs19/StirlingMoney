@@ -6,11 +6,11 @@ using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
 using Shane.Church.StirlingMoney.WP.Resources;
+using Shane.Church.Utility.Core.WP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 
 namespace Shane.Church.StirlingMoney.WP
@@ -105,11 +105,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 		void appBarIconButtonSave_Click(object sender, EventArgs e)
 		{
-			var bind = ((FrameworkElement)this.textBoxInitialBalance).GetBindingExpression(TextBox.TextProperty);
-
-			if (bind != null)
-				bind.UpdateSource();
-
+			BindingHelper.UpdateBindings(this.textBoxAccountName, this.textBoxInitialBalance);
 
 			_model.SaveCommand.Execute(null);
 		}

@@ -77,6 +77,7 @@
                                                                         Grid.ColumnSpan="1"
                                                                         Foreground="White" 
                                                                         Margin="0,0,15,15"
+                                                                        UpdateInterval="{Binding UpdateInterval}"
                                                                         Command="{Binding TransactionsCommand}"
                                                                         FrontContent="{Binding BindsDirectlyToSource=True}"
                                                                         BackContent="{Binding BindsDirectlyToSource=True}">
@@ -94,7 +95,7 @@
                                                             <RowDefinition Height="40"/>
                                                             <RowDefinition Height="*"/>
                                                         </Grid.RowDefinitions>
-                                                        <Image Grid.Row="0" Grid.RowSpan="2" Source="{Binding Image, Converter={StaticResource ByteImageConverter}}" Margin="29" Stretch="Fill"/>
+                                                        <Image Grid.Row="0" Grid.RowSpan="2" Source="{Binding Image, Converter={StaticResource ByteImageConverter}}" Margin="39" Stretch="Fill"/>
                                                         <TextBlock Grid.Row="0" Text="{Binding AccountBalance, Converter={StaticResource LocalizedCurrency}}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="9,9,12,9" FontSize="{StaticResource PhoneFontSizeSmall}" FontFamily="{StaticResource PhoneFontFamilyNormal}" />
                                                     </Grid>
                                                 </DataTemplate>
@@ -393,6 +394,15 @@
                 </Grid>
             </controls:PivotItem>
         </controls:Pivot>
+        <telerikPrimitives:RadBusyIndicator x:Name="LoadingBusy" 
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Content="{Binding Path=LocalizedResources.ProgressBarText, Source={StaticResource LocalizedStrings}}"
+                                            Background="{StaticResource PhoneSemitransparentBrush}" 
+                                            Foreground="{StaticResource PhoneAccentBrush}" 
+                                            IsRunning="{Binding IsLoading}" 
+                                            BorderBrush="{StaticResource PhoneSemitransparentBrush}" 
+                                            AnimationStyle="AnimationStyle3"/>
         <StackPanel Grid.Row="1">
             <StackPanel>
                 <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"

@@ -67,15 +67,28 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			get { return _goals; }
 		}
 
+		private bool _isLoading = false;
+		public bool IsLoading
+		{
+			get { return _isLoading; }
+			set
+			{
+				Set(() => IsLoading, ref _isLoading, value);
+			}
+		}
+
 		public async Task LoadAccounts(bool forceUpdate = false)
 		{
+			IsLoading = true;
 			await Accounts.LoadData(forceUpdate);
+			IsLoading = false;
 		}
 
 		public async Task LoadBudgets(bool forceUpdate = false)
 		{
 			if (!_budgetsLoaded || forceUpdate)
 			{
+				IsLoading = true;
 				var budgets = await _budgetRepository.GetAllEntriesAsync();
 				foreach (var b in budgets)
 				{
@@ -85,6 +98,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					Budgets.Add(budgetModel);
 				}
 				_budgetsLoaded = true;
+				IsLoading = false;
 			}
 		}
 
@@ -102,6 +116,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			if (!_goalsLoaded || forceUpdate)
 			{
+				IsLoading = true;
 				var goals = await _goalRepository.GetAllEntriesAsync();
 				foreach (var g in goals)
 				{
@@ -111,6 +126,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					Goals.Add(goalModel);
 				}
 				_goalsLoaded = true;
+				IsLoading = false;
 			}
 		}
 

@@ -283,14 +283,14 @@ namespace Shane.Church.StirlingMoney.WP
 		// Code to execute on Unhandled Exceptions
 		private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
 		{
-			if (System.Diagnostics.Debugger.IsAttached)
+			if (e.ExceptionObject.Message.Equals("0x8000ffff")) e.Handled = true;
+			if (e.ExceptionObject.StackTrace.Contains("Inneractive.Ad")) e.Handled = true;
+			if (e.ExceptionObject.Message.Equals("User has not granted the application consent to access data in Windows Live.")) e.Handled = true;
+			if (System.Diagnostics.Debugger.IsAttached && !e.Handled)
 			{
 				// An unhandled exception has occurred; break into the debugger
 				System.Diagnostics.Debugger.Break();
 			}
-			if (e.ExceptionObject.Message.Equals("0x8000ffff")) e.Handled = true;
-			if (e.ExceptionObject.StackTrace.Contains("Inneractive.Ad")) e.Handled = true;
-			if (e.ExceptionObject.Message.Equals("User has not granted the application consent to access data in Windows Live.")) e.Handled = true;
 		}
 
 		#region Phone application initialization

@@ -31,6 +31,10 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 					Image = AvailableImages.Where(it => it.Name == acct.ImageUri).FirstOrDefault();
 				}
 			}
+			if (Image == null)
+			{
+				Image = AvailableImages.Where(it => it.Name == "Book-Open.png").FirstOrDefault();
+			}
 		}
 
 		private void GetAvailableImages()

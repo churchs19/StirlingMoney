@@ -1,4 +1,4 @@
-<ViewModels:MainViewModel xmlns:ViewModels="clr-namespace:Shane.Church.StirlingMoney.Core.ViewModels;assembly=Shane.Church.StirlingMoney.Core" xmlns:System="clr-namespace:System;assembly=mscorlib">
+<ViewModels:MainViewModel xmlns:ViewModels="clr-namespace:Shane.Church.StirlingMoney.Core.ViewModels;assembly=Shane.Church.StirlingMoney.Core" xmlns:System="clr-namespace:System;assembly=mscorlib" IsLoading="False">
 	<ViewModels:MainViewModel.Accounts>
 		<ViewModels:AccountListViewModel HasData="True" TotalBalance="796.6">
 			<ViewModels:AccountListViewModel.Accounts>
