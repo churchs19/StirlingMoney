@@ -605,4 +605,18 @@ I would appreciate your assistance by sending the prepared error report. This wi
   <data name="AccountImageLabel" xml:space="preserve">
     <value>account image</value>
   </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>synchronization</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>Stirling Money can be synchronized and backed up to Windows Azure. Additionally, individual accounts may be shared with other users like your spouse.
+
+I take your security very seriously and all data is transmitted securely over HTTPS and is anonymously secured using your Microsoft account credentials. Stirling Money does not store any account specific like account or routing numbers or personally identifiable information like your name or login information. If you have further questions, please contact me using the link below:</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>enable synchronization</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>questions or concerns</value>
+  </data>
 </root>

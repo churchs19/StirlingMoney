@@ -89,6 +89,7 @@ namespace Shane.Church.StirlingMoney.Data.v3
 		}
 
 		private string _imageUri;
+		[Column]
 		public string ImageUri
 		{
 			get { return _imageUri; }

@@ -1242,6 +1242,44 @@ namespace Shane.Church.StirlingMoney.WP.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to enable synchronization.
+        /// </summary>
+        public static string SynchronizationEnableLabel {
+            get {
+                return ResourceManager.GetString("SynchronizationEnableLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stirling Money can be synchronized and backed up to Windows Azure. Additionally, individual accounts may be shared with other users like your spouse.
+        ///
+        ///I take your security very seriously and all data is transmitted securely over HTTPS and is anonymously secured using your Microsoft account credentials. Stirling Money does not store any account specific like account or routing numbers or personally identifiable information like your name or login information. If you have further questions, please contact m [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string SynchronizationExplanation {
+            get {
+                return ResourceManager.GetString("SynchronizationExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to questions or concerns.
+        /// </summary>
+        public static string SynchronizationFeedbackLink {
+            get {
+                return ResourceManager.GetString("SynchronizationFeedbackLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to synchronization.
+        /// </summary>
+        public static string SynchronizationTitle {
+            get {
+                return ResourceManager.GetString("SynchronizationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to technical support/feedback email.
         /// </summary>
         public static string TechnicalSupportEmailLabel {

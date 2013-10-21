@@ -138,6 +138,7 @@
     <Compile Include="ViewModels\PhoneAccountTileViewModel.cs" />
     <Compile Include="ViewModels\PhoneAddEditAccountViewModel.cs" />
     <Compile Include="ViewModels\PhoneMainViewModel.cs" />
+    <Compile Include="ViewModels\PhoneSettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shane.Church.StirlingMoney.Core\Shane.Church.StirlingMoney.Core.csproj">

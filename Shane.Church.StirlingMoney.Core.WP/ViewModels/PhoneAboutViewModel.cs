@@ -1,19 +1,26 @@
-﻿using Shane.Church.StirlingMoney.Core.ViewModels;
+﻿using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Commands;
 using System.Reflection;
 
 namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 {
-    public class PhoneAboutViewModel : AboutViewModel
-    {
-        public override void Initialize()
-        {
-            RateThisAppCommand = new RateThisAppCommand();
-            SendAnEmailCommand = new SendAnEmailCommand();
-            OtherAppsCommand = new OtherAppsCommand();
+	public class PhoneAboutViewModel : AboutViewModel
+	{
+		public PhoneAboutViewModel(IWebNavigationService navService)
+			: base(navService)
+		{
 
-            var versionAttrib = new AssemblyName(Assembly.GetExecutingAssembly().FullName);
-            Version = versionAttrib.Version.ToString();
-        }
-    }
+		}
+
+		public override void Initialize()
+		{
+			RateThisAppCommand = new RateThisAppCommand();
+			SendAnEmailCommand = new SendAnEmailCommand();
+			OtherAppsCommand = new OtherAppsCommand();
+
+			var versionAttrib = new AssemblyName(Assembly.GetExecutingAssembly().FullName);
+			Version = versionAttrib.Version.ToString();
+		}
+	}
 }

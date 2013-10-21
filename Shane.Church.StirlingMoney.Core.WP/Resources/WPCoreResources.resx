@@ -132,4 +132,7 @@
   <data name="TooManyAgentsError" xml:space="preserve">
     <value />
   </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>Stirling Money Synchronization Question or Concern</value>
+  </data>
 </root>

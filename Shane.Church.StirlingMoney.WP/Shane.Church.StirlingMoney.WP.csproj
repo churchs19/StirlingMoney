@@ -196,6 +196,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="SampleData\AddEditAccountViewModelSampleData.cs" />
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Transactions.xaml.cs">
       <DependentUpon>Transactions.xaml</DependentUpon>
     </Compile>
@@ -333,6 +336,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Transactions.xaml">
       <SubType>Designer</SubType>

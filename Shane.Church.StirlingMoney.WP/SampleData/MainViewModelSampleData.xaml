@@ -1,6 +1,6 @@
 <ViewModels:MainViewModel xmlns:ViewModels="clr-namespace:Shane.Church.StirlingMoney.Core.ViewModels;assembly=Shane.Church.StirlingMoney.Core" xmlns:System="clr-namespace:System;assembly=mscorlib" IsLoading="False">
 	<ViewModels:MainViewModel.Accounts>
-		<ViewModels:AccountListViewModel HasData="True" TotalBalance="796.6">
+		<ViewModels:AccountListViewModel TotalBalance="796.6">
 			<ViewModels:AccountListViewModel.Accounts>
 				<ViewModels:AccountTileViewModel AccountName="Maecenas curabitur cras nam" AccountBalance="272.27" PinMenuText="Aliquam vestibulum class aenean mauris">
 					<ViewModels:AccountTileViewModel.AccountId>

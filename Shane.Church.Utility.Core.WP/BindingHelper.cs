@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace Shane.Church.Utility.Core.WP
 {
@@ -14,6 +9,17 @@ namespace Shane.Church.Utility.Core.WP
 			foreach (var item in items)
 			{
 				var bind = item.GetBindingExpression(TextBox.TextProperty);
+
+				if (bind != null)
+					bind.UpdateSource();
+			}
+		}
+
+		public static void UpdatePasswordBindings(params PasswordBox[] items)
+		{
+			foreach (var item in items)
+			{
+				var bind = item.GetBindingExpression(PasswordBox.PasswordProperty);
 
 				if (bind != null)
 					bind.UpdateSource();

@@ -7,54 +7,59 @@ using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-    public abstract class AboutViewModel : ObservableObject
-    {
-        public ICommand RateThisAppCommand
-        {
-            get;
-            protected set;
-        }
+	public abstract class AboutViewModel : ObservableObject
+	{
+		private IWebNavigationService _navService;
 
-        public ICommand OtherAppsCommand
-        {
-            get;
-            protected set;
-        }
+		public AboutViewModel(IWebNavigationService navService)
+		{
+			if (navService == null) throw new ArgumentNullException("navService");
+			_navService = navService;
 
-        public ICommand SendAnEmailCommand
-        {
-            get;
-            protected set;
-        }
+			GoToSChurchNetCommand = new RelayCommand(NavigateToWebsite);
 
-        public ICommand GoToSChurchNetCommand
-        {
-            get;
-            protected set;
-        }
+			Initialize();
+		}
 
-        public AboutViewModel()
-        {
-            GoToSChurchNetCommand = new RelayCommand(NavigateToWebsite);
+		public ICommand RateThisAppCommand
+		{
+			get;
+			protected set;
+		}
 
-            Initialize();
-        }
+		public ICommand OtherAppsCommand
+		{
+			get;
+			protected set;
+		}
 
-        private string _version;
-        public string Version
-        {
-            get { return "Version " + _version; }
-            set
-            {
-                Set(() => Version, ref _version, value);
-            }
-        }
+		public ICommand SendAnEmailCommand
+		{
+			get;
+			protected set;
+		}
 
-        public abstract void Initialize();
+		public ICommand GoToSChurchNetCommand
+		{
+			get;
+			protected set;
+		}
 
-        public void NavigateToWebsite()
-        {
-            KernelService.Kernel.Get<IWebNavigationService>().NavigateTo(new Uri("http://www.s-church.net"));
-        }
-    }
+		private string _version;
+		public string Version
+		{
+			get { return "Version " + _version; }
+			set
+			{
+				Set(() => Version, ref _version, value);
+			}
+		}
+
+		public abstract void Initialize();
+
+		public void NavigateToWebsite()
+		{
+			_navService.NavigateTo(new Uri("http://www.s-church.net"));
+		}
+	}
 }

@@ -78,5 +78,28 @@ namespace Shane.Church.StirlingMoney.Data.v3
 				Set(() => StirlingMoneyAccountId, ref _stirlingMoneyAccountId, value);
 			}
 		}
+
+		[Column]
+		internal Guid _accountId;
+
+		private EntityRef<Account> _account;
+
+		[Association(Storage = "_account", ThisKey = "_accountId", OtherKey = "AccountId", IsForeignKey = true)]
+		public Account Account
+		{
+			get { return _account.Entity; }
+			set
+			{
+				RaisePropertyChanging(() => Account);
+				_account.Entity = value;
+
+				if (value != null)
+				{
+					_accountId = value.AccountId;
+				}
+
+				RaisePropertyChanged(() => Account);
+			}
+		}
 	}
 }

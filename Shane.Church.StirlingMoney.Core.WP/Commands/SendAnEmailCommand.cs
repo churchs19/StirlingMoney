@@ -27,7 +27,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Commands
         {
             EmailComposeTask emailTask = new EmailComposeTask();
             emailTask.To = "shane@s-church.net";
-            emailTask.Subject = emailTask.Subject = Resources.WPCoreResources.TechnicalSupportEmailSubject;
+            emailTask.Subject = Resources.WPCoreResources.TechnicalSupportEmailSubject;
             emailTask.Show();
         }
     }
