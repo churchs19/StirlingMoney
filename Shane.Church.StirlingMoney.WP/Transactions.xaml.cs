@@ -5,7 +5,7 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
-using Shane.Church.StirlingMoney.WP.Resources;
+using Shane.Church.StirlingMoney.Strings;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -118,22 +118,22 @@ namespace Shane.Church.StirlingMoney.WP
 			ApplicationBar.IsMenuEnabled = true;
 
 			ApplicationBarIconButton ApplicationBarWithdraw = new ApplicationBarIconButton(new Uri("/Images/Withdraw.png", UriKind.Relative));
-			ApplicationBarWithdraw.Text = AppResources.AppBarWithdraw;
+			ApplicationBarWithdraw.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarWithdraw;
 			ApplicationBarWithdraw.Click += new EventHandler(ApplicationBarWithdraw_Click);
 			ApplicationBar.Buttons.Add(ApplicationBarWithdraw);
 
 			ApplicationBarIconButton ApplicationBarWriteCheck = new ApplicationBarIconButton(new Uri("/Images/WriteCheck.png", UriKind.Relative));
-			ApplicationBarWriteCheck.Text = AppResources.AppBarWriteCheck;
+			ApplicationBarWriteCheck.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarWriteCheck;
 			ApplicationBarWriteCheck.Click += new EventHandler(ApplicationBarWriteCheck_Click);
 			ApplicationBar.Buttons.Add(ApplicationBarWriteCheck);
 
 			ApplicationBarIconButton ApplicationBarDeposit = new ApplicationBarIconButton(new Uri("/Images/Deposit.png", UriKind.Relative));
-			ApplicationBarDeposit.Text = AppResources.AppBarDeposit;
+			ApplicationBarDeposit.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarDeposit;
 			ApplicationBarDeposit.Click += new EventHandler(ApplicationBarDeposit_Click);
 			ApplicationBar.Buttons.Add(ApplicationBarDeposit);
 
 			ApplicationBarIconButton ApplicationBarTransfer = new ApplicationBarIconButton(new Uri("/Images/Transfer.png", UriKind.Relative));
-			ApplicationBarTransfer.Text = AppResources.AppBarTransfer;
+			ApplicationBarTransfer.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarTransfer;
 			ApplicationBarTransfer.Click += new EventHandler(ApplicationBarTransfer_Click);
 			ApplicationBar.Buttons.Add(ApplicationBarTransfer);
 		}

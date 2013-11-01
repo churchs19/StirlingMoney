@@ -2,10 +2,7 @@
 using Microsoft.Phone.Tasks;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Shane.Church.StirlingMoney.Strings;
 
 namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 {
@@ -21,7 +18,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 		{
 			EmailComposeTask emailTask = new EmailComposeTask();
 			emailTask.To = "shane@s-church.net";
-			emailTask.Subject = Resources.WPCoreResources.SynchronizationFeedbackEmailSubject;
+			emailTask.Subject = Resources.SynchronizationFeedbackEmailSubject;
 			emailTask.Show();
 		}
 	}

@@ -5,7 +5,7 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
-using Shane.Church.StirlingMoney.WP.Resources;
+using Shane.Church.StirlingMoney.Strings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +37,7 @@ namespace Shane.Church.StirlingMoney.WP
 						args.Errors.ToArray());
 				if (!String.IsNullOrEmpty(errorMessages))
 				{
-					MessageBox.Show(errorMessages, AppResources.InvalidValuesTitle, MessageBoxButton.OK);
+					MessageBox.Show(errorMessages, Shane.Church.StirlingMoney.Strings.Resources.InvalidValuesTitle, MessageBoxButton.OK);
 				}
 			};
 			try
@@ -97,7 +97,7 @@ namespace Shane.Church.StirlingMoney.WP
 			ApplicationBar = new ApplicationBar();
 
 			ApplicationBarIconButton appBarIconButtonSave = new ApplicationBarIconButton(new Uri("/Images/Save.png", UriKind.Relative));
-			appBarIconButtonSave.Text = AppResources.AppBarSave;
+			appBarIconButtonSave.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarSave;
 			appBarIconButtonSave.Click += appBarIconButtonSave_Click;
 			ApplicationBar.Buttons.Add(appBarIconButtonSave);
 		}

@@ -1,10 +1,12 @@
 ﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Shane.Church.StirlingMoney.Core.WP;
 using Shane.Church.StirlingMoney.Data.Update;
-using Shane.Church.StirlingMoney.WP.Resources;
+using Shane.Church.StirlingMoney.Strings;
 using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Markup;
@@ -83,8 +85,8 @@ namespace Shane.Church.StirlingMoney.WP
 
 			//Defines the default email where the diagnostics info will be send.
 			diagnostics.EmailTo = "shane@s-church.net";
-			diagnostics.MessageBoxInfo.Title = AppResources.Diagnostics_MessageBox_Title;
-			diagnostics.MessageBoxInfo.Content = AppResources.Diagnostics_MessageBox_Content;
+			diagnostics.MessageBoxInfo.Title = Shane.Church.StirlingMoney.Strings.Resources.Diagnostics_MessageBox_Title;
+			diagnostics.MessageBoxInfo.Content = Shane.Church.StirlingMoney.Strings.Resources.Diagnostics_MessageBox_Content;
 			diagnostics.ExceptionOccurred += diagnostics_ExceptionOccurred;
 
 			//Initializes this instance.
@@ -92,12 +94,12 @@ namespace Shane.Church.StirlingMoney.WP
 
 			//Creates an instance of the RadTrialApplicationReminder component.
 			trialReminder = new RadTrialApplicationReminder();
-			trialReminder.TrialReminderMessageBoxInfo.Title = AppResources.AppTrialReminder_MessageBox_Title;
-			trialReminder.TrialReminderMessageBoxInfo.Content = AppResources.AppTrialReminder_MessageBox_Content;
-			trialReminder.TrialReminderMessageBoxInfo.SkipFurtherRemindersMessage = AppResources.AppTrialReminder_MessageBox_SkipFurtherRemindersMessage;
-			trialReminder.TrialExpiredMessageBoxInfo.Title = AppResources.AppTrialEnd_MessageBox_Title;
-			trialReminder.TrialExpiredMessageBoxInfo.Content = AppResources.AppTrialEnd_MessageBox_Content;
-			trialReminder.TrialExpiredMessageBoxInfo.SkipFurtherRemindersMessage = AppResources.AppTrialEnd_MessageBox_SkipFurtherRemindersMessage;
+			trialReminder.TrialReminderMessageBoxInfo.Title = Shane.Church.StirlingMoney.Strings.Resources.AppTrialReminder_MessageBox_Title;
+			trialReminder.TrialReminderMessageBoxInfo.Content = Shane.Church.StirlingMoney.Strings.Resources.AppTrialReminder_MessageBox_Content;
+			trialReminder.TrialReminderMessageBoxInfo.SkipFurtherRemindersMessage = Shane.Church.StirlingMoney.Strings.Resources.AppTrialReminder_MessageBox_SkipFurtherRemindersMessage;
+			trialReminder.TrialExpiredMessageBoxInfo.Title = Shane.Church.StirlingMoney.Strings.Resources.AppTrialEnd_MessageBox_Title;
+			trialReminder.TrialExpiredMessageBoxInfo.Content = Shane.Church.StirlingMoney.Strings.Resources.AppTrialEnd_MessageBox_Content;
+			trialReminder.TrialExpiredMessageBoxInfo.SkipFurtherRemindersMessage = Shane.Church.StirlingMoney.Strings.Resources.AppTrialEnd_MessageBox_SkipFurtherRemindersMessage;
 
 			//Sets the length of the trial period.
 			trialReminder.AllowedTrialPeriod = TimeSpan.MaxValue;
@@ -117,9 +119,9 @@ namespace Shane.Church.StirlingMoney.WP
 
 			//Creates a new instance of the RadRateApplicationReminder component.
 			rateReminder = new RadRateApplicationReminder();
-			rateReminder.MessageBoxInfo.Title = AppResources.RateReminder_MessageBox_Title;
-			rateReminder.MessageBoxInfo.Content = AppResources.RateReminder_MessageBox_Content;
-			rateReminder.MessageBoxInfo.SkipFurtherRemindersMessage = AppResources.RateReminder_MessageBox_SkipFurtherRemindersMessage;
+			rateReminder.MessageBoxInfo.Title = Shane.Church.StirlingMoney.Strings.Resources.RateReminder_MessageBox_Title;
+			rateReminder.MessageBoxInfo.Content = Shane.Church.StirlingMoney.Strings.Resources.RateReminder_MessageBox_Content;
+			rateReminder.MessageBoxInfo.SkipFurtherRemindersMessage = Shane.Church.StirlingMoney.Strings.Resources.RateReminder_MessageBox_SkipFurtherRemindersMessage;
 
 			//Sets how often the rate reminder is displayed.
 			rateReminder.RecurrencePerUsageCount = 5;
@@ -132,7 +134,7 @@ namespace Shane.Church.StirlingMoney.WP
 			//	var tile = ShellTile.ActiveTiles.First();
 			//	var flipTileData = new RadFlipTileData()
 			//	{
-			//		Title = AppResources.AppTitle,
+			//		Title = Resources.AppTitle,
 			//		SmallBackgroundImage = new Uri("/SmallApplicationIcon.png", UriKind.Relative),
 			//		BackgroundImage = new Uri("/MediumApplicationIcon.png", UriKind.Relative),
 			//		WideBackgroundImage = new Uri("/WideApplicationIcon.png", UriKind.Relative)
@@ -167,11 +169,11 @@ namespace Shane.Church.StirlingMoney.WP
 		// and ResourceFlowDirection should be initialized in each .resx file to match these values with that 
 		// file's culture. For example: 
 		// 
-		// AppResources.es-ES.resx 
+		// Resources.es-ES.resx 
 		//    ResourceLanguage's value should be "es-ES" 
 		//    ResourceFlowDirection's value should be "LeftToRight" 
 		// 
-		// AppResources.ar-SA.resx 
+		// Resources.ar-SA.resx 
 		//     ResourceLanguage's value should be "ar-SA" 
 		//     ResourceFlowDirection's value should be "RightToLeft" 
 		// 
@@ -200,7 +202,7 @@ namespace Shane.Church.StirlingMoney.WP
 				// 
 				// If a compiler error occurs, ResourceLanguage is missing from 
 				// the resource file. 
-				RootFrame.Language = XmlLanguage.GetLanguage(AppResources.ResourceLanguage);
+				RootFrame.Language = XmlLanguage.GetLanguage(Shane.Church.StirlingMoney.Strings.Resources.ResourceLanguage);
 
 				// Set the FlowDirection of all elements under the root frame based 
 				// on the ResourceFlowDirection resource string for each 
@@ -208,11 +210,11 @@ namespace Shane.Church.StirlingMoney.WP
 				// 
 				// If a compiler error occurs, ResourceFlowDirection is missing from 
 				// the resource file. 
-				FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), AppResources.ResourceFlowDirection, false);
+				FlowDirection flow = (FlowDirection)Enum.Parse(typeof(FlowDirection), Shane.Church.StirlingMoney.Strings.Resources.ResourceFlowDirection, false);
 				RootFrame.FlowDirection = flow;
 
 				//Initialiaze Telerik Localization Manager
-				Telerik.Windows.Controls.InputLocalizationManager.Instance.ResourceManager = Shane.Church.StirlingMoney.WP.Resources.AppResources.ResourceManager;
+				Telerik.Windows.Controls.InputLocalizationManager.Instance.ResourceManager = Shane.Church.StirlingMoney.Strings.Resources.ResourceManager;
 			}
 			catch
 			{
@@ -235,7 +237,11 @@ namespace Shane.Church.StirlingMoney.WP
 		private void Application_Launching(object sender, LaunchingEventArgs e)
 		{
 			//Before using any of the ApplicationBuildingBlocks, this class should be initialized with the version of the application.
-			ApplicationUsageHelper.Init("3.0");
+			//Before using any of the ApplicationBuildingBlocks, this class should be initialized with the version of the application.
+			var versionAttrib = new AssemblyName(Assembly.GetExecutingAssembly().FullName);
+			ApplicationUsageHelper.Init(versionAttrib.Version.ToString());
+			FlurryWP8SDK.Api.StartSession(FlurryConfig.ApiKey);
+			FlurryWP8SDK.Api.SetVersion(versionAttrib.Version.ToString());
 
 		}
 
@@ -243,6 +249,12 @@ namespace Shane.Church.StirlingMoney.WP
 		// This code will not execute when the application is first launched
 		private void Application_Activated(object sender, ActivatedEventArgs e)
 		{
+			//Before using any of the ApplicationBuildingBlocks, this class should be initialized with the version of the application.
+			var versionAttrib = new AssemblyName(Assembly.GetExecutingAssembly().FullName);
+			ApplicationUsageHelper.Init(versionAttrib.Version.ToString());
+			FlurryWP8SDK.Api.StartSession(FlurryConfig.ApiKey);
+			FlurryWP8SDK.Api.SetVersion(versionAttrib.Version.ToString());
+
 			if (!e.IsApplicationInstancePreserved)
 			{
 				//This will ensure that the ApplicationUsageHelper is initialized again if the application has been in Tombstoned state.
@@ -262,12 +274,14 @@ namespace Shane.Church.StirlingMoney.WP
 		private void Application_Deactivated(object sender, DeactivatedEventArgs e)
 		{
 			// Ensure that required application state is persisted here.
+			FlurryWP8SDK.Api.EndSession();
 		}
 
 		// Code to execute when the application is closing (eg, user hit Back)
 		// This code will not execute when the application is deactivated
 		private void Application_Closing(object sender, ClosingEventArgs e)
 		{
+			FlurryWP8SDK.Api.EndSession();
 		}
 
 		// Code to execute if a navigation fails

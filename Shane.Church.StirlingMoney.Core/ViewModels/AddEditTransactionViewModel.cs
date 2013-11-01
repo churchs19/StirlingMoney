@@ -2,7 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
-using Shane.Church.StirlingMoney.Core.Properties;
+using Shane.Church.StirlingMoney.Strings;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels.Shared;
 using System;

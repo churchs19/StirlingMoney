@@ -24,6 +24,6 @@ namespace Shane.Church.StirlingMoney.Data.v3
 		public Table<Category> Categories;
 		public Table<Budget> Budgets;
 		public Table<Goal> Goals;
-		public Table<AuthorizedUser> AuthorizedUsers;
+		public Table<AppSyncUser> AppSyncUsers;
 	}
 }

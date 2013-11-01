@@ -129,11 +129,6 @@
     <Compile Include="v1\Category.cs" />
     <Compile Include="v2\Goal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\AppResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="v1\StirlingMoneyDataContext.cs" />
     <Compile Include="v1\Transaction.cs" />
     <Compile Include="v1\TransactionType.cs" />
@@ -144,7 +139,7 @@
     <Compile Include="v2\Transaction.cs" />
     <Compile Include="v2\TransactionType.cs" />
     <Compile Include="v3\Account.cs" />
-    <Compile Include="v3\AuthorizedUser.cs" />
+    <Compile Include="v3\AppSyncUser.cs" />
     <Compile Include="v3\Budget.cs" />
     <Compile Include="v3\Category.cs" />
     <Compile Include="v3\Goal.cs" />
@@ -152,35 +147,13 @@
     <Compile Include="v3\Transaction.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\AppResources.cs.resx" />
-    <EmbeddedResource Include="Resources\AppResources.da.resx" />
-    <EmbeddedResource Include="Resources\AppResources.de.resx" />
-    <EmbeddedResource Include="Resources\AppResources.el.resx" />
-    <EmbeddedResource Include="Resources\AppResources.es.resx" />
-    <EmbeddedResource Include="Resources\AppResources.fi.resx" />
-    <EmbeddedResource Include="Resources\AppResources.fr.resx" />
-    <EmbeddedResource Include="Resources\AppResources.hu.resx" />
-    <EmbeddedResource Include="Resources\AppResources.id.resx" />
-    <EmbeddedResource Include="Resources\AppResources.it.resx" />
-    <EmbeddedResource Include="Resources\AppResources.ja.resx" />
-    <EmbeddedResource Include="Resources\AppResources.ko.resx" />
-    <EmbeddedResource Include="Resources\AppResources.nl.resx" />
-    <EmbeddedResource Include="Resources\AppResources.no.resx" />
-    <EmbeddedResource Include="Resources\AppResources.pl.resx" />
-    <EmbeddedResource Include="Resources\AppResources.pt.resx" />
-    <EmbeddedResource Include="Resources\AppResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\AppResources.ru.resx" />
-    <EmbeddedResource Include="Resources\AppResources.sv.resx" />
-    <EmbeddedResource Include="Resources\AppResources.zh-CN.resx" />
-    <EmbeddedResource Include="Resources\AppResources.zh-TW.resx" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Shane.Church.StirlingMoney.Core\Shane.Church.StirlingMoney.Core.csproj">
       <Project>{4E5D8824-CC49-41A4-BC97-3E5BC5378754}</Project>
       <Name>Shane.Church.StirlingMoney.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Strings\Shane.Church.StirlingMoney.Strings.csproj">
+      <Project>{E66B6C80-38B7-4929-B6B9-B9FC8F62C356}</Project>
+      <Name>Shane.Church.StirlingMoney.Strings</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shane.Church.Utility.Core.WP\Shane.Church.Utility.Core.WP.csproj">
       <Project>{75A3873F-015F-4784-B6A6-8A4484FBE48D}</Project>

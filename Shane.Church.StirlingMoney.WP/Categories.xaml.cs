@@ -4,7 +4,7 @@ using Microsoft.Phone.Shell;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
-using Shane.Church.StirlingMoney.WP.Resources;
+using Shane.Church.StirlingMoney.Strings;
 using System;
 
 namespace Shane.Church.StirlingMoney.WP
@@ -77,7 +77,7 @@ namespace Shane.Church.StirlingMoney.WP
 			ApplicationBar.IsMenuEnabled = true;
 
 			ApplicationBarIconButton appBarIconButtonAddCategory = new ApplicationBarIconButton(new Uri("/Images/AddCategory.png", UriKind.Relative));
-			appBarIconButtonAddCategory.Text = AppResources.AppBarAdd;
+			appBarIconButtonAddCategory.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarAdd;
 			appBarIconButtonAddCategory.Click += new EventHandler(appBarIconButtonAddCategory_Click);
 			ApplicationBar.Buttons.Add(appBarIconButtonAddCategory);
 		}

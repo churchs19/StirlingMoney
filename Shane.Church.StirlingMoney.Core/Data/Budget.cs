@@ -1,20 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Ninject;
+using Shane.Church.StirlingMoney.Core.Services;
+using System;
 using System.Linq;
 
 namespace Shane.Church.StirlingMoney.Core.Data
 {
 	public class Budget
 	{
-		private IRepository<Category> _categories;
-		private IRepository<Transaction> _transactions;
-
-		public Budget(IRepository<Category> categoryRepository, IRepository<Transaction> transactionRepository)
-		{
-			if (categoryRepository == null) throw new ArgumentNullException("categoryRepository");
-			_categories = categoryRepository;
-			if (transactionRepository == null) throw new ArgumentNullException("transactionRepository");
-			_transactions = transactionRepository;
-		}
 		public long? Id { get; set; }
 		public Guid BudgetId { get; set; }
 		public string BudgetName { get; set; }
@@ -26,6 +19,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		public DateTimeOffset EditDateTime { get; set; }
 		public bool? IsDeleted { get; set; }
 
+		[JsonIgnore]
 		public DateTime CurrentPeriodStart
 		{
 			get
@@ -65,6 +59,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			}
 		}
 
+		[JsonIgnore]
 		public DateTime CurrentPeriodEnd
 		{
 			get
@@ -82,14 +77,20 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			}
 		}
 
+		[JsonIgnore]
 		public Category Category
 		{
 			get
 			{
 				try
 				{
-					if (!CategoryId.HasValue) return null;
-					return _categories.GetFilteredEntries(it => it.CategoryId == CategoryId.Value).FirstOrDefault();
+					if (!CategoryId.HasValue)
+						return null;
+					else
+					{
+						IRepository<Category> _categories = KernelService.Kernel.Get<IRepository<Category>>();
+						return _categories.GetFilteredEntries(it => it.CategoryId == CategoryId.Value).FirstOrDefault();
+					}
 				}
 				catch
 				{
@@ -98,10 +99,12 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			}
 		}
 
+		[JsonIgnore]
 		public double AmountSpent
 		{
 			get
 			{
+				IRepository<Transaction> _transactions = KernelService.Kernel.Get<IRepository<Transaction>>();
 				if (!CategoryId.HasValue)
 				{
 					var amount = _transactions.GetFilteredEntries(it => it.TransactionDate >= CurrentPeriodStart && it.TransactionDate <= CurrentPeriodEnd).Select(it => it.Amount).Sum();

@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using Newtonsoft.Json;
+using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		public bool? IsDeleted { get; set; }
 		public string ImageUri { get; set; }
 
+		[JsonIgnore]
 		public double AccountBalance
 		{
 			get
@@ -27,6 +29,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			}
 		}
 
+		[JsonIgnore]
 		public double PostedBalance
 		{
 			get
@@ -39,6 +42,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			}
 		}
 
+		[JsonIgnore]
 		public IQueryable<Transaction> Transactions
 		{
 			get

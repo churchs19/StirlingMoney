@@ -2,8 +2,8 @@
 using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
-using Shane.Church.StirlingMoney.Core.Properties;
 using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.StirlingMoney.Strings;
 using System;
 using System.Linq;
 using System.Windows.Input;

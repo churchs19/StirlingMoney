@@ -1,11 +1,15 @@
-﻿using Ninject;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
+using Shane.Church.StirlingMoney.Core.WP;
 using Shane.Church.StirlingMoney.Core.WP.Data;
 using Shane.Church.StirlingMoney.Core.WP.Services;
 using Shane.Church.StirlingMoney.Core.WP.ViewModels;
+using Shane.Church.StirlingMoney.Core.WP7.Services;
 using Shane.Church.StirlingMoney.Data.v3;
+using System.Linq;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -20,7 +24,7 @@ namespace Shane.Church.StirlingMoney.WP
 			KernelService.Kernel.Bind<IWebNavigationService>().To<PhoneWebNavigationService>().InSingletonScope();
 			KernelService.Kernel.Bind<StirlingMoneyDataContext>().ToSelf().InSingletonScope();
 			KernelService.Kernel.Bind<IRepository<Core.Data.Account>>().To<AccountRepository>();
-			KernelService.Kernel.Bind<IRepository<Core.Data.AuthorizedUser>>().To<AuthorizedUserRepository>();
+			KernelService.Kernel.Bind<IRepository<Core.Data.AppSyncUser>>().To<AppSyncUserRepository>();
 			KernelService.Kernel.Bind<IRepository<Core.Data.Budget>>().To<BudgetRepository>();
 			KernelService.Kernel.Bind<IRepository<Core.Data.Category>>().To<CategoryRepository>();
 			KernelService.Kernel.Bind<IRepository<Core.Data.Goal>>().To<GoalRepository>();
@@ -32,6 +36,20 @@ namespace Shane.Church.StirlingMoney.WP
 			KernelService.Kernel.Bind<AddEditAccountViewModel>().To<PhoneAddEditAccountViewModel>();
 			KernelService.Kernel.Bind<AccountTileViewModel>().To<PhoneAccountTileViewModel>();
 			KernelService.Kernel.Bind<SettingsViewModel>().To<PhoneSettingsViewModel>();
+			KernelService.Kernel.Bind<ILoggingService>().To<PhoneLoggingService>();
+			KernelService.Kernel.Bind<IMobileServiceClient>().ToMethod<MobileServiceClient>(it =>
+			{
+				var client = new MobileServiceClient(
+					MobileServiceConfig.Uri,
+					MobileServiceConfig.Key
+				);
+				client.SerializerSettings.DateParseHandling = Newtonsoft.Json.DateParseHandling.DateTimeOffset;
+				client.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.RoundtripKind;
+				client.SerializerSettings.CamelCasePropertyNames = true;
+				client.SerializerSettings.Converters.Remove(client.SerializerSettings.Converters.Where(its => its is Microsoft.WindowsAzure.MobileServices.MobileServiceIsoDateTimeConverter).FirstOrDefault());
+				return client;
+			});
+			KernelService.Kernel.Bind<SyncService>().To<WP7SyncService>();
 		}
 	}
 }

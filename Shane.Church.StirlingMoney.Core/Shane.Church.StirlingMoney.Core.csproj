@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Account.cs" />
-    <Compile Include="Data\AuthorizedUser.cs" />
+    <Compile Include="Data\AppSyncUser.cs" />
     <Compile Include="Data\Budget.cs" />
     <Compile Include="Data\Category.cs" />
     <Compile Include="Data\Goal.cs" />
@@ -49,21 +49,19 @@
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\ITransactionSum.cs" />
     <Compile Include="Data\PeriodType.cs" />
+    <Compile Include="Data\SyncItem.cs" />
     <Compile Include="Data\Transaction.cs" />
     <Compile Include="Data\TransactionType.cs" />
     <Compile Include="Exceptions\AgentManagementException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Services\IAgentManagementService.cs" />
+    <Compile Include="Services\ILoggingService.cs" />
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\ISettingsService.cs" />
     <Compile Include="Services\ITileService.cs" />
     <Compile Include="Services\IWebNavigationService.cs" />
     <Compile Include="Services\KernelService.cs" />
+    <Compile Include="Services\SyncService.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\AccountListViewModel.cs" />
     <Compile Include="ViewModels\AccountTileViewModel.cs" />
@@ -91,7 +89,7 @@
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\portable-net40+sl4+win8+wp71\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Mobile">
-      <HintPath>..\packages\WindowsAzure.MobileServices.1.0.2\lib\portable-win+net45+sl40+wp71\Microsoft.WindowsAzure.Mobile.dll</HintPath>
+      <HintPath>..\packages\WindowsAzure.MobileServices.1.0.3\lib\portable-win+net45+sl40+wp71\Microsoft.WindowsAzure.Mobile.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\portable-net40+sl4+wp7+win8\Newtonsoft.Json.dll</HintPath>
@@ -119,16 +117,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Strings\Shane.Church.StirlingMoney.Strings.csproj">
+      <Project>{e66b6c80-38b7-4929-b6b9-b9fc8f62c356}</Project>
+      <Name>Shane.Church.StirlingMoney.Strings</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shane.Church.Utility.Core\Shane.Church.Utility.Core.csproj">
       <Project>{a28a5353-afbb-4f9e-a1aa-1c9b49523028}</Project>
       <Name>Shane.Church.Utility.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

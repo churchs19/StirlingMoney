@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using Newtonsoft.Json;
+using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		public Guid AccountId { get; set; }
 		public Guid? CategoryId { get; set; }
 
+		[JsonIgnore]
 		public Account Account
 		{
 			get
@@ -36,6 +38,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			}
 		}
 
+		[JsonIgnore]
 		public Category Category
 		{
 			get

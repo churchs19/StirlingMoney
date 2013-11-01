@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using Newtonsoft.Json;
+using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		public DateTimeOffset EditDateTime { get; set; }
 		public bool? IsDeleted { get; set; }
 
+		[JsonIgnore]
 		public Account Account
 		{
 			get

@@ -43,13 +43,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Live, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\LiveSDK.5.5\lib\WindowsPhone71\Microsoft.Live.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Live.Controls, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\LiveSDK.5.5\lib\WindowsPhone71\Microsoft.Live.Controls.dll</HintPath>
+    <Reference Include="FlurryWP8SDK">
+      <HintPath>..\lib\Flurry WindowsPhone SDK vWP8 3.1.2\FlurryWP8SDK.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Threading.Tasks">
@@ -61,14 +56,17 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Mobile">
-      <HintPath>..\packages\WindowsAzure.MobileServices.1.0.2\lib\sl4-windowsphone71\Microsoft.WindowsAzure.Mobile.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Mobile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.MobileServices.1.0.3\lib\sl4-windowsphone71\Microsoft.WindowsAzure.Mobile.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Mobile.Ext">
-      <HintPath>..\packages\WindowsAzure.MobileServices.1.0.2\lib\sl4-windowsphone71\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Mobile.Ext, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.MobileServices.1.0.3\lib\sl4-windowsphone71\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Mobile.UI">
-      <HintPath>..\packages\WindowsAzure.MobileServices.1.0.2\lib\sl4-windowsphone71\Microsoft.WindowsAzure.Mobile.UI.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Mobile.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.MobileServices.1.0.3\lib\sl4-windowsphone71\Microsoft.WindowsAzure.Mobile.UI.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -118,18 +116,17 @@
     <Compile Include="Converters\CurrencyValueConverter.cs" />
     <Compile Include="Converters\TransactionBrushConverter.cs" />
     <Compile Include="Data\AccountRepository.cs" />
-    <Compile Include="Data\AuthorizedUserRepository.cs" />
+    <Compile Include="Data\AppSyncUserRepository.cs" />
     <Compile Include="Data\BudgetRepository.cs" />
     <Compile Include="Data\CategoryRepository.cs" />
     <Compile Include="Data\GoalRepository.cs" />
     <Compile Include="Data\TransactionRepository.cs" />
+    <Compile Include="FlurryConfig.cs" />
+    <Compile Include="LiveConfig.cs" />
+    <Compile Include="MobileServiceConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\WPCoreResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WPCoreResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Services\PhoneAgentManagementService.cs" />
+    <Compile Include="Services\PhoneLoggingService.cs" />
     <Compile Include="Services\PhoneNavigationService.cs" />
     <Compile Include="Services\PhoneSettingsService.cs" />
     <Compile Include="Services\PhoneTileService.cs" />
@@ -149,6 +146,10 @@
       <Project>{146ED221-2FCD-42B6-8A1E-88E43DD00C8A}</Project>
       <Name>Shane.Church.StirlingMoney.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Strings\Shane.Church.StirlingMoney.Strings.csproj">
+      <Project>{E66B6C80-38B7-4929-B6B9-B9FC8F62C356}</Project>
+      <Name>Shane.Church.StirlingMoney.Strings</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shane.Church.Utility.Core.WP\Shane.Church.Utility.Core.WP.csproj">
       <Project>{75A3873F-015F-4784-B6A6-8A4484FBE48D}</Project>
       <Name>Shane.Church.Utility.Core.WP</Name>
@@ -160,14 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Fonts\LiveSymbol.ttf" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\WPCoreResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>WPCoreResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\Accounts-Book.png" />

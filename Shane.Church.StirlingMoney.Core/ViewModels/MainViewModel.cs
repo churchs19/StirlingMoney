@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.Utility.Core.Command;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -15,8 +16,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		private IRepository<Budget> _budgetRepository;
 		private IRepository<Goal> _goalRepository;
 		private INavigationService _navService;
+		private SyncService _syncService;
 
-		public MainViewModel(IRepository<Budget> budgetRepository, IRepository<Goal> goalRepository, INavigationService navService)
+		public MainViewModel(IRepository<Budget> budgetRepository, IRepository<Goal> goalRepository, INavigationService navService, SyncService syncService)
 		{
 			if (budgetRepository == null) throw new ArgumentNullException("budgetRepository");
 			_budgetRepository = budgetRepository;
@@ -24,6 +26,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_goalRepository = goalRepository;
 			if (navService == null) throw new ArgumentNullException("navService");
 			_navService = navService;
+			if (syncService == null) throw new ArgumentNullException("syncService");
+			_syncService = syncService;
 			_accounts = KernelService.Kernel.Get<AccountListViewModel>();
 			_budgets = new ObservableCollection<BudgetSummaryViewModel>();
 			_budgets.CollectionChanged += (s, e) =>
@@ -38,7 +42,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 			AddAccountCommand = new RelayCommand(NavigateToAddAccount);
 			CategoriesCommand = new RelayCommand(NavigateToCategories);
-			SyncCommand = new RelayCommand(Sync);
+			SyncCommand = new AsyncRelayCommand(it => Sync(it));
 			ReportsCommand = new RelayCommand(NavigateToReports);
 			SettingsCommand = new RelayCommand(NavigateToSettings);
 			RateCommand = new RelayCommand(RateApp);
@@ -156,9 +160,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public ICommand SyncCommand { get; private set; }
 
-		public void Sync()
+		public async Task Sync(object param)
 		{
-			throw new NotImplementedException();
+			await _syncService.Sync();
 		}
 
 		public ICommand ReportsCommand { get; private set; }

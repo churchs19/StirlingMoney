@@ -1,14 +1,15 @@
-﻿
+﻿using Shane.Church.StirlingMoney.Strings;
+
 namespace Shane.Church.StirlingMoney.WP
 {
-    public class LocalizedStrings
-    {
-        public LocalizedStrings()
-        {
-        }
+	public class LocalizedStrings
+	{
+		public LocalizedStrings()
+		{
+		}
 
-        private static Resources.AppResources localizedResources = new Resources.AppResources();
+		private static Resources localizedResources = new Shane.Church.StirlingMoney.Strings.Resources();
 
-        public Resources.AppResources LocalizedResources { get { return localizedResources; } }
-    }
+		public Resources LocalizedResources { get { return localizedResources; } }
+	}
 }
