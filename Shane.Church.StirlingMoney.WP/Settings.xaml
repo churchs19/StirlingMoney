@@ -61,6 +61,14 @@
                         <TextBlock Text="{Binding Path=LocalizedResources.SynchronizationEnableLabel, Source={StaticResource LocalizedStrings}}" Margin="0,20,0,0"/>
                         <telerikPrimitives:RadToggleSwitch x:Name="toggleEnableSync"
                                                            IsChecked="{Binding EnableSync, Mode=TwoWay}"/>
+                        
+                    </StackPanel>
+                </ScrollViewer>
+            </controls:PivotItem>
+            <controls:PivotItem>
+                <ScrollViewer>
+                    <StackPanel>
+                        
                     </StackPanel>
                 </ScrollViewer>
             </controls:PivotItem>

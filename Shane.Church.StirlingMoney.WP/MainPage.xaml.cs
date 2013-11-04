@@ -4,9 +4,9 @@ using Microsoft.Phone.Shell;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
-using Shane.Church.StirlingMoney.Strings;
 using System;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Shane.Church.StirlingMoney.WP
@@ -14,6 +14,7 @@ namespace Shane.Church.StirlingMoney.WP
 	public partial class MainPage : PhoneApplicationPage
 	{
 		public MainViewModel _model;
+		public ILoggingService _log;
 
 		private bool _refreshAccounts;
 		private bool _refreshBudgets;
@@ -26,13 +27,20 @@ namespace Shane.Church.StirlingMoney.WP
 
 			InitializeAdControl();
 
+#if !PERSONAL
+			//Shows the trial reminder message, according to the settings of the TrialReminder.
+			(App.Current as App).trialReminder.Notify();
+
 			//Shows the rate reminder message, according to the settings of the RateReminder.
 			(App.Current as App).rateReminder.Notify();
+#endif
 		}
 
 		protected override async void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
+			_log = KernelService.Kernel.Get<ILoggingService>();
 			_model = KernelService.Kernel.Get<MainViewModel>();
+			_model.BusyChanged += _model_BusyChanged;
 			this.DataContext = _model;
 
 			base.OnNavigatedTo(e);
@@ -42,6 +50,35 @@ namespace Shane.Church.StirlingMoney.WP
 			_refreshGoals = true;
 
 			await LoadData();
+		}
+
+		void _model_BusyChanged(Core.Data.BusyEventArgs args)
+		{
+			if (args.IsBusy)
+			{
+				Deployment.Current.Dispatcher.BeginInvoke(() =>
+				{
+					LoadingBusy.Content = args.Message;
+					LoadingBusy.AnimationStyle = (Telerik.Windows.Controls.AnimationStyle)args.AnimationType;
+					LoadingBusy.IsRunning = true;
+				});
+			}
+			else if (args.IsError)
+			{
+				Deployment.Current.Dispatcher.BeginInvoke(() =>
+				{
+					LoadingBusy.IsRunning = false;
+					_log.LogException(args.Error);
+					MessageBox.Show(args.Error.Message, Strings.Resources.GeneralErrorCaption, MessageBoxButton.OK);
+				});
+			}
+			else
+			{
+				Deployment.Current.Dispatcher.BeginInvoke(() =>
+				{
+					LoadingBusy.IsRunning = false;
+				});
+			}
 		}
 
 		#region Ad Control
@@ -56,9 +93,11 @@ namespace Shane.Church.StirlingMoney.WP
 			}
 			else
 			{
+				AdPanel.Children.Remove(AdControl);
 				AdControl = null;
 			}
 #else
+			AdPanel.Children.Remove(AdControl);
 			AdControl = null;
 #endif
 		}

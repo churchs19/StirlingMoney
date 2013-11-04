@@ -126,11 +126,17 @@
   <data name="AboutReviewLabel" xml:space="preserve">
     <value>rate this app</value>
   </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>account image</value>
+  </data>
   <data name="AccountNameLabel" xml:space="preserve">
     <value>account name</value>
   </data>
   <data name="AccountNameRequiredError" xml:space="preserve">
     <value>Account Name is required.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>Account is required.</value>
   </data>
   <data name="AccountsTitle" xml:space="preserve">
     <value>accounts</value>
@@ -144,11 +150,29 @@
   <data name="AddAccountTitle" xml:space="preserve">
     <value>add account</value>
   </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>add budget</value>
+  </data>
   <data name="AddCategoryTitle" xml:space="preserve">
     <value>add category</value>
   </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>add goal</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>This task synchronizes Stirling Money data with any shared users and updates the live tiles.</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>Background agents for this application have been disabled by the user.</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>This device does not support background agents, so this feature will be disabled.</value>
+  </data>
   <data name="AmountChartLabel" xml:space="preserve">
     <value>Amount</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>{0} remaining</value>
   </data>
   <data name="AppBarAbout" xml:space="preserve">
     <value>about</value>
@@ -255,17 +279,38 @@
   <data name="BackupTitle" xml:space="preserve">
     <value>backup</value>
   </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>All Expenses</value>
+  </data>
   <data name="BudgetAmountLabel" xml:space="preserve">
     <value>amount</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>Amount is required and must be greater than 0.</value>
   </data>
   <data name="BudgetChartLabel" xml:space="preserve">
     <value>Budget</value>
   </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
   <data name="BudgetEndDateLabel" xml:space="preserve">
     <value>end date</value>
   </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>End Date must be after Start Date.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>End Date is required for Custom budget periods.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
   <data name="BudgetNameLabel" xml:space="preserve">
     <value>name</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>Name is required.</value>
   </data>
   <data name="BudgetPeriodLabel" xml:space="preserve">
     <value>period</value>
@@ -282,6 +327,12 @@
   <data name="BudgetTypeLabel" xml:space="preserve">
     <value>type</value>
   </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>Weekly</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>Yearly</value>
+  </data>
   <data name="CategoriesTitle" xml:space="preserve">
     <value>categories</value>
   </data>
@@ -296,6 +347,12 @@
   </data>
   <data name="CategoryCharity" xml:space="preserve">
     <value>Charity</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>by category</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>history</value>
   </data>
   <data name="CategoryClothing" xml:space="preserve">
     <value>Clothing</value>
@@ -342,6 +399,18 @@
   <data name="DateRangeLabel" xml:space="preserve">
     <value>Date Range</value>
   </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} day overdue</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} day remaining</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} days overdue</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} days remaining</value>
+  </data>
   <data name="DeleteAccountTitle" xml:space="preserve">
     <value>Delete Account</value>
   </data>
@@ -383,6 +452,12 @@ I would appreciate your assistance by sending the prepared error report. This wi
   <data name="EditAccountTitle" xml:space="preserve">
     <value>edit account</value>
   </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>edit budget</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>edit goal</value>
+  </data>
   <data name="EditMenuItem" xml:space="preserve">
     <value>edit</value>
   </data>
@@ -392,14 +467,35 @@ I would appreciate your assistance by sending the prepared error report. This wi
   <data name="GoalAccountLabel" xml:space="preserve">
     <value>account</value>
   </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>Account is required.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>achieved!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>Amount must be greater than the current balance of the selected account.</value>
+  </data>
   <data name="GoalAmountLabel" xml:space="preserve">
     <value>amount</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>Target Date must be after {0:d}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>Target Date must be after today.</value>
   </data>
   <data name="GoalNameLabel" xml:space="preserve">
     <value>name</value>
   </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>Name is required.</value>
+  </data>
   <data name="GoalSelectAccountLabel" xml:space="preserve">
     <value>select account</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>start date</value>
   </data>
   <data name="GoalsTitle" xml:space="preserve">
     <value>goals</value>
@@ -419,6 +515,9 @@ I would appreciate your assistance by sending the prepared error report. This wi
   <data name="IsCreditCardLabel" xml:space="preserve">
     <value>credit card</value>
   </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>Location is required.</value>
+  </data>
   <data name="MBCancelText" xml:space="preserve">
     <value>cancel</value>
   </data>
@@ -434,6 +533,15 @@ I would appreciate your assistance by sending the prepared error report. This wi
   <data name="NetIncomeTitle" xml:space="preserve">
     <value>net income</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>no</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(no category)</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>Other</value>
+  </data>
   <data name="PasswordLabel" xml:space="preserve">
     <value>password</value>
   </data>
@@ -444,10 +552,10 @@ I would appreciate your assistance by sending the prepared error report. This wi
     <value>Downloading...</value>
   </data>
   <data name="ProgressBarSyncText" xml:space="preserve">
-    <value>Synchronizing...</value>
+    <value>synchronizing...</value>
   </data>
   <data name="ProgressBarText" xml:space="preserve">
-    <value>Loading...</value>
+    <value>loading...</value>
   </data>
   <data name="ProgressBarUpdatingText" xml:space="preserve">
     <value>Updating database</value>
@@ -488,14 +596,29 @@ I would appreciate your assistance by sending the prepared error report. This wi
   <data name="SelectDateText" xml:space="preserve">
     <value>select date</value>
   </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>alphabetically</value>
+  </data>
   <data name="SettingsAccountSortLabel" xml:space="preserve">
     <value>sort account list by</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>most frequently used</value>
   </data>
   <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
     <value>confirm password</value>
   </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>Confirm Password is required.</value>
+  </data>
   <data name="SettingsPasswordLabel" xml:space="preserve">
     <value>password</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>Password must match Confirm Password.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>Password is required.</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
     <value>settings</value>
@@ -506,14 +629,43 @@ I would appreciate your assistance by sending the prepared error report. This wi
   <data name="StartTileBalance" xml:space="preserve">
     <value>Balance: {0}</value>
   </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>enable synchronization</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>Stirling Money can be synchronized and backed up to Windows Azure. Additionally, individual accounts may be shared with other users like your spouse.
+
+I take your security very seriously and all data is transmitted securely over HTTPS and is anonymously secured using your Microsoft account credentials. Stirling Money does not store any account specific like account or routing numbers or personally identifiable information like your name or login information. If you have further questions, please contact me using the link below:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>Stirling Money Synchronization Question or Concern</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>questions or concerns</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>synchronization</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>You must be logged in to sync.</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>Unable to sync at this time. Please try again later.</value>
+  </data>
   <data name="TechnicalSupportEmailLabel" xml:space="preserve">
     <value>technical support/feedback email</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>Stirling Money Feedback</value>
   </data>
   <data name="ToastServerUnavailable" xml:space="preserve">
     <value>Server unavailable</value>
   </data>
   <data name="ToastSyncError" xml:space="preserve">
     <value>Data Sync Error</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>Too many background agents have been enabled. Please go to the settings application to disable other agents before enabling the Stirling Birthday agent.</value>
   </data>
   <data name="TotalBalanceLabel" xml:space="preserve">
     <value>total balance</value>
@@ -599,159 +751,10 @@ I would appreciate your assistance by sending the prepared error report. This wi
   <data name="WithdrawalTitle" xml:space="preserve">
     <value>withdrawal</value>
   </data>
-  <data name="GoalStartDateLabel" xml:space="preserve">
-    <value>start date</value>
-  </data>
-  <data name="AccountImageLabel" xml:space="preserve">
-    <value>account image</value>
-  </data>
-  <data name="SynchronizationTitle" xml:space="preserve">
-    <value>synchronization</value>
-  </data>
-  <data name="SynchronizationExplanation" xml:space="preserve">
-    <value>Stirling Money can be synchronized and backed up to Windows Azure. Additionally, individual accounts may be shared with other users like your spouse.
-
-I take your security very seriously and all data is transmitted securely over HTTPS and is anonymously secured using your Microsoft account credentials. Stirling Money does not store any account specific like account or routing numbers or personally identifiable information like your name or login information. If you have further questions, please contact me using the link below:</value>
-  </data>
-  <data name="SynchronizationEnableLabel" xml:space="preserve">
-    <value>enable synchronization</value>
-  </data>
-  <data name="SynchronizationFeedbackLink" xml:space="preserve">
-    <value>questions or concerns</value>
-  </data>
-  <data name="TooManyAgentsError" xml:space="preserve">
-    <value>Too many background agents have been enabled. Please go to the settings application to disable other agents before enabling the Stirling Birthday agent.</value>
-  </data>
-  <data name="AgentDescription" xml:space="preserve">
-    <value>This task synchronizes Stirling Money data with any shared users and updates the live tiles.</value>
-  </data>
-  <data name="AgentsDisabledByUserError" xml:space="preserve">
-    <value>Background agents for this application have been disabled by the user.</value>
-  </data>
-  <data name="AgentsNotSupportedError" xml:space="preserve">
-    <value>This device does not support background agents, so this feature will be disabled.</value>
-  </data>
   <data name="Yes" xml:space="preserve">
     <value>yes</value>
   </data>
-  <data name="SettingsPasswordRequiredError" xml:space="preserve">
-    <value>Password is required.</value>
-  </data>
-  <data name="SettingsPasswordMismatchError" xml:space="preserve">
-    <value>Password must match Confirm Password.</value>
-  </data>
-  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
-    <value>Confirm Password is required.</value>
-  </data>
-  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
-    <value>most frequently used</value>
-  </data>
-  <data name="SettingsAccountSortAlpha" xml:space="preserve">
-    <value>alphabetically</value>
-  </data>
-  <data name="OtherLabel" xml:space="preserve">
-    <value>Other</value>
-  </data>
-  <data name="NoCategoryLabel" xml:space="preserve">
-    <value>(no category)</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>no</value>
-  </data>
-  <data name="LocationRequiredError" xml:space="preserve">
-    <value>Location is required.</value>
-  </data>
-  <data name="GoalNameRequiredError" xml:space="preserve">
-    <value>Name is required.</value>
-  </data>
-  <data name="GoalDateError" xml:space="preserve">
-    <value>Target Date must be after today.</value>
-  </data>
-  <data name="GoalDateComparisonError" xml:space="preserve">
-    <value>Target Date must be after {0:d}</value>
-  </data>
-  <data name="GoalAmountError" xml:space="preserve">
-    <value>Amount must be greater than the current balance of the selected account.</value>
-  </data>
-  <data name="GoalAchieved" xml:space="preserve">
-    <value>achieved!</value>
-  </data>
-  <data name="GoalAccountRequiredError" xml:space="preserve">
-    <value>Account is required.</value>
-  </data>
-  <data name="EditGoalTitle" xml:space="preserve">
-    <value>edit goal</value>
-  </data>
-  <data name="EditBudgetTitle" xml:space="preserve">
-    <value>edit budget</value>
-  </data>
-  <data name="DaysRemaining" xml:space="preserve">
-    <value>{0} days remaining</value>
-  </data>
-  <data name="DaysOverdue" xml:space="preserve">
-    <value>{0} days overdue</value>
-  </data>
-  <data name="DayRemaining" xml:space="preserve">
-    <value>{0} day remaining</value>
-  </data>
-  <data name="DayOverdue" xml:space="preserve">
-    <value>{0} day overdue</value>
-  </data>
-  <data name="CategoryChartTypeHistory" xml:space="preserve">
-    <value>history</value>
-  </data>
-  <data name="CategoryChartTypeByCategory" xml:space="preserve">
-    <value>by category</value>
-  </data>
-  <data name="BudgetYearly" xml:space="preserve">
-    <value>Yearly</value>
-  </data>
-  <data name="BudgetWeekly" xml:space="preserve">
-    <value>Weekly</value>
-  </data>
-  <data name="BudgetNameRequiredError" xml:space="preserve">
-    <value>Name is required.</value>
-  </data>
-  <data name="BudgetMonthly" xml:space="preserve">
-    <value>Monthly</value>
-  </data>
-  <data name="BudgetEndDateRequiredError" xml:space="preserve">
-    <value>End Date is required for Custom budget periods.</value>
-  </data>
-  <data name="BudgetEndDateRangeError" xml:space="preserve">
-    <value>End Date must be after Start Date.</value>
-  </data>
-  <data name="BudgetCustom" xml:space="preserve">
-    <value>Custom</value>
-  </data>
-  <data name="BudgetAmountRequiredError" xml:space="preserve">
-    <value>Amount is required and must be greater than 0.</value>
-  </data>
-  <data name="BudgetAllExpensesLabel" xml:space="preserve">
-    <value>All Expenses</value>
-  </data>
-  <data name="AmountRemaining" xml:space="preserve">
-    <value>{0} remaining</value>
-  </data>
-  <data name="AddGoalTitle" xml:space="preserve">
-    <value>add goal</value>
-  </data>
-  <data name="AddBudgetTitle" xml:space="preserve">
-    <value>add budget</value>
-  </data>
-  <data name="AccountRequiredError" xml:space="preserve">
-    <value>Account is required.</value>
-  </data>
-  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
-    <value>Stirling Money Synchronization Question or Concern</value>
-  </data>
-  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
-    <value>Stirling Money Feedback</value>
-  </data>
-  <data name="SyncUnknownError" xml:space="preserve">
-    <value>Unable to sync at this time. Please try again later.</value>
-  </data>
-  <data name="SyncLoginError" xml:space="preserve">
-    <value>You must be logged in to sync.</value>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>Stirling Money Error</value>
   </data>
 </root>

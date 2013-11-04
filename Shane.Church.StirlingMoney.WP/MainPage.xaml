@@ -20,6 +20,7 @@
 
     <phone:PhoneApplicationPage.Resources>
         <coreUtil:ByteToImageSourceValueConverter x:Key="ByteImageConverter"/>
+        <util:IntBusyAnimationConverter x:Key="BusyAnimationConverter"/>
     </phone:PhoneApplicationPage.Resources>
     
     <Grid x:Name="LayoutRoot" Background="{StaticResource MoneyBackgroundBrush}">
@@ -397,14 +398,12 @@
         <telerikPrimitives:RadBusyIndicator x:Name="LoadingBusy" 
                                             Grid.Row="0"
                                             Grid.Column="0"
-                                            Content="{Binding Path=LocalizedResources.ProgressBarText, Source={StaticResource LocalizedStrings}}"
                                             Background="{StaticResource PhoneSemitransparentBrush}" 
                                             Foreground="{StaticResource PhoneAccentBrush}" 
-                                            IsRunning="{Binding IsLoading}" 
-                                            BorderBrush="{StaticResource PhoneSemitransparentBrush}" 
-                                            AnimationStyle="AnimationStyle3"/>
+                                            IsRunning="False"
+                                            BorderBrush="{StaticResource PhoneSemitransparentBrush}" />
         <StackPanel Grid.Row="1">
-            <StackPanel>
+            <StackPanel x:Name="AdPanel">
                 <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"
                                   AppID="ShaneChurch_StirlingMoney_WP"
                                   AdType="IaAdType_Banner"

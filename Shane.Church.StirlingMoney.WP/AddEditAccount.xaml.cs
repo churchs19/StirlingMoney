@@ -5,7 +5,6 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
-using Shane.Church.StirlingMoney.Strings;
 using Shane.Church.Utility.Core.WP;
 using System;
 using System.Collections.Generic;

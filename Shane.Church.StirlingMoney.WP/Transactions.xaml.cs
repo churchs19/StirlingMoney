@@ -84,11 +84,14 @@ namespace Shane.Church.StirlingMoney.WP
 			}
 			else
 			{
+				AdPanel.Children.Remove(AdControl);
 				AdControl = null;
 			}
 #else
+			AdPanel.Children.Remove(AdControl);
 			AdControl = null;
 #endif
+
 		}
 
 		void AdControl_DefaultAdReceived(object sender)

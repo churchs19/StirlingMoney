@@ -49,6 +49,7 @@
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\ITransactionSum.cs" />
     <Compile Include="Data\PeriodType.cs" />
+    <Compile Include="Data\BusyEventArgs.cs" />
     <Compile Include="Data\SyncItem.cs" />
     <Compile Include="Data\Transaction.cs" />
     <Compile Include="Data\TransactionType.cs" />

@@ -17,8 +17,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		private IRepository<Goal> _goalRepository;
 		private INavigationService _navService;
 		private SyncService _syncService;
+		private ILoggingService _logService;
 
-		public MainViewModel(IRepository<Budget> budgetRepository, IRepository<Goal> goalRepository, INavigationService navService, SyncService syncService)
+		public MainViewModel(IRepository<Budget> budgetRepository, IRepository<Goal> goalRepository, INavigationService navService, SyncService syncService, ILoggingService logService)
 		{
 			if (budgetRepository == null) throw new ArgumentNullException("budgetRepository");
 			_budgetRepository = budgetRepository;
@@ -28,6 +29,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_navService = navService;
 			if (syncService == null) throw new ArgumentNullException("syncService");
 			_syncService = syncService;
+			if (logService == null) throw new ArgumentNullException("logService");
+			_logService = logService;
 			_accounts = KernelService.Kernel.Get<AccountListViewModel>();
 			_budgets = new ObservableCollection<BudgetSummaryViewModel>();
 			_budgets.CollectionChanged += (s, e) =>
@@ -42,7 +45,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 			AddAccountCommand = new RelayCommand(NavigateToAddAccount);
 			CategoriesCommand = new RelayCommand(NavigateToCategories);
-			SyncCommand = new AsyncRelayCommand(it => Sync(it));
+			SyncCommand = new AsyncRelayCommand(action: it => Sync(it), completed: () => SyncCompleted(), error: it => SyncError(it));
 			ReportsCommand = new RelayCommand(NavigateToReports);
 			SettingsCommand = new RelayCommand(NavigateToSettings);
 			RateCommand = new RelayCommand(RateApp);
@@ -71,28 +74,27 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			get { return _goals; }
 		}
 
-		private bool _isLoading = false;
-		public bool IsLoading
-		{
-			get { return _isLoading; }
-			set
-			{
-				Set(() => IsLoading, ref _isLoading, value);
-			}
-		}
-
 		public async Task LoadAccounts(bool forceUpdate = false)
 		{
-			IsLoading = true;
+			if (BusyChanged != null)
+			{
+				BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
+			}
 			await Accounts.LoadData(forceUpdate);
-			IsLoading = false;
+			if (BusyChanged != null)
+			{
+				BusyChanged(new BusyEventArgs() { IsBusy = false });
+			}
 		}
 
 		public async Task LoadBudgets(bool forceUpdate = false)
 		{
 			if (!_budgetsLoaded || forceUpdate)
 			{
-				IsLoading = true;
+				if (BusyChanged != null)
+				{
+					BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
+				}
 				var budgets = await _budgetRepository.GetAllEntriesAsync();
 				foreach (var b in budgets)
 				{
@@ -102,7 +104,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					Budgets.Add(budgetModel);
 				}
 				_budgetsLoaded = true;
-				IsLoading = false;
+				if (BusyChanged != null)
+				{
+					BusyChanged(new BusyEventArgs() { IsBusy = false });
+				}
 			}
 		}
 
@@ -120,7 +125,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			if (!_goalsLoaded || forceUpdate)
 			{
-				IsLoading = true;
+				if (BusyChanged != null)
+				{
+					BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
+				}
 				var goals = await _goalRepository.GetAllEntriesAsync();
 				foreach (var g in goals)
 				{
@@ -130,7 +138,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					Goals.Add(goalModel);
 				}
 				_goalsLoaded = true;
-				IsLoading = false;
+				if (BusyChanged != null)
+				{
+					BusyChanged(new BusyEventArgs() { IsBusy = false });
+				}
 			}
 		}
 
@@ -162,7 +173,33 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public async Task Sync(object param)
 		{
+			if (BusyChanged != null)
+			{
+				BusyChanged(new BusyEventArgs() { AnimationType = 7, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarSyncText });
+			}
 			await _syncService.Sync();
+		}
+
+		public delegate void BusyChangedHandler(BusyEventArgs args);
+		public event BusyChangedHandler BusyChanged;
+
+		public Task SyncCompleted()
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				if (BusyChanged != null)
+				{
+					BusyChanged(new BusyEventArgs() { IsBusy = false });
+				}
+			});
+		}
+
+		public void SyncError(Exception ex)
+		{
+			if (BusyChanged != null)
+			{
+				BusyChanged(new BusyEventArgs() { IsBusy = false, IsError = true, Error = ex });
+			}
 		}
 
 		public ICommand ReportsCommand { get; private set; }

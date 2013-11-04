@@ -19,6 +19,11 @@ namespace Shane.Church.StirlingMoney.WP.Helpers
 			{
 				var model = (GoalSummaryViewModel)value;
 
+				if (model.DaysRemaining <= 0)
+				{
+					return _behind;
+				}
+
 				var totalDays = model.TargetDate - model.StartDate;
 				var totalAmount = model.GoalAmount - model.InitialBalance;
 				var pacePerDay = totalAmount / totalDays.Days;

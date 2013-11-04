@@ -1098,6 +1098,15 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stirling Money Error.
+        /// </summary>
+        public static string GeneralErrorCaption {
+            get {
+                return ResourceManager.GetString("GeneralErrorCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to account.
         /// </summary>
         public static string GoalAccountLabel {
@@ -1359,7 +1368,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Synchronizing....
+        ///   Looks up a localized string similar to synchronizing....
         /// </summary>
         public static string ProgressBarSyncText {
             get {
@@ -1368,7 +1377,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Loading....
+        ///   Looks up a localized string similar to loading....
         /// </summary>
         public static string ProgressBarText {
             get {

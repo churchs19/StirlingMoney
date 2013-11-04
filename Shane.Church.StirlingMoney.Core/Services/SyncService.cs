@@ -194,6 +194,7 @@ namespace Shane.Church.StirlingMoney.Core.Services
 			{
 				_log.LogException(ex, "Sync Error");
 				//TODO: Do I need a message here?
+				throw;
 			}
 		}
 	}
