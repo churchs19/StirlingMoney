@@ -49,6 +49,16 @@ namespace Shane.Church.StirlingMoney.WP.SampleData
 		{
 			throw new NotImplementedException();
 		}
+
+		public void BatchAddOrUpdateEntries(System.Collections.Generic.ICollection<Account> entries)
+		{
+			throw new NotImplementedException();
+		}
+
+		public System.Threading.Tasks.Task BatchAddOrUpdateEntriesAsync(System.Collections.Generic.ICollection<Account> entries)
+		{
+			throw new NotImplementedException();
+		}
 	}
 	public class SampleNavService : INavigationService
 	{

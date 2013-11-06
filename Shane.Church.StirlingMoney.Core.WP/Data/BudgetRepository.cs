@@ -121,6 +121,44 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				return AddOrUpdateEntry(entry);
 			});
 		}
+
+		public void BatchAddOrUpdateEntries(System.Collections.Generic.ICollection<Core.Data.Budget> entries)
+		{
+			lock (StirlingMoneyDataContext.LockObject)
+			{
+				foreach (var entry in entries)
+				{
+					if (entry.BudgetAmount != 0 && !string.IsNullOrWhiteSpace(entry.BudgetName))
+					{
+						var item = _context.Budgets.Where(it => it.BudgetId == entry.BudgetId).FirstOrDefault();
+						if (item == null)
+						{
+							item = new StirlingMoney.Data.v3.Budget();
+							item.BudgetId = entry.BudgetId.Equals(Guid.Empty) ? Guid.NewGuid() : entry.BudgetId;
+							_context.Budgets.InsertOnSubmit(item);
+						}
+						item.BudgetAmount = entry.BudgetAmount;
+						item.BudgetName = entry.BudgetName;
+						item.BudgetPeriod = entry.BudgetPeriod;
+						item.CategoryId = entry.CategoryId;
+						item.EditDateTime = DateTime.UtcNow;
+						item.EndDate = entry.EndDate.HasValue ? new Nullable<DateTime>(DateTime.SpecifyKind(entry.EndDate.Value, DateTimeKind.Utc)) : null;
+						item.Id = entry.Id;
+						item.IsDeleted = entry.IsDeleted;
+						item.StartDate = DateTime.SpecifyKind(entry.StartDate, DateTimeKind.Utc);
+					}
+				}
+				_context.SubmitChanges();
+			}
+		}
+
+		public Task BatchAddOrUpdateEntriesAsync(System.Collections.Generic.ICollection<Core.Data.Budget> entries)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				BatchAddOrUpdateEntries(entries);
+			});
+		}
 	}
 
 	public static class BudgetExtensions

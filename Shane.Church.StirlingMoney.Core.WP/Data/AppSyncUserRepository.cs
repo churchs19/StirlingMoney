@@ -114,6 +114,40 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				return AddOrUpdateEntry(entry);
 			});
 		}
+
+
+		public void BatchAddOrUpdateEntries(System.Collections.Generic.ICollection<Core.Data.AppSyncUser> entries)
+		{
+			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
+			{
+				foreach (var entry in entries)
+				{
+					if (!string.IsNullOrEmpty(entry.UserEmail))
+					{
+						var item = _context.AppSyncUsers.Where(it => it.UserEmail == entry.UserEmail).FirstOrDefault();
+						if (item == null)
+						{
+							item = new StirlingMoney.Data.v3.AppSyncUser();
+							item.UserEmail = entry.UserEmail;
+							_context.AppSyncUsers.InsertOnSubmit(item);
+						}
+						item.EditDateTime = DateTime.UtcNow;
+						item.Id = entry.Id;
+						item.IsDeleted = entry.IsDeleted;
+						item.IsSyncOwner = entry.IsSyncOwner;
+					}
+				}
+				_context.SubmitChanges();
+			}
+		}
+
+		public Task BatchAddOrUpdateEntriesAsync(System.Collections.Generic.ICollection<Core.Data.AppSyncUser> entries)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				BatchAddOrUpdateEntries(entries);
+			});
+		}
 	}
 
 	public static class AuthorizedUserExtensions

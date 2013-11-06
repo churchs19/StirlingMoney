@@ -134,6 +134,46 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			var query = _context.Transactions.Where(it => it.Account.AccountId == accountId && it.Posted).Select(it => it.Amount);
 			return query.Any() ? query.Sum() : 0;
 		}
+
+		public void BatchAddOrUpdateEntries(System.Collections.Generic.ICollection<Core.Data.Transaction> entries)
+		{
+			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
+			{
+				foreach (var entry in entries)
+				{
+					if (!entry.AccountId.Equals(Guid.Empty))
+					{
+						var item = _context.Transactions.Where(it => it.TransactionId == entry.TransactionId).FirstOrDefault();
+						if (item == null)
+						{
+							item = new StirlingMoney.Data.v3.Transaction();
+							item.TransactionId = entry.TransactionId.Equals(Guid.Empty) ? Guid.NewGuid() : entry.TransactionId;
+							_context.Transactions.InsertOnSubmit(item);
+						}
+						item.Account = _context.Accounts.Where(it => it.AccountId == entry.AccountId).FirstOrDefault();
+						item.Amount = entry.Amount;
+						item.CategoryId = entry.CategoryId;
+						item.CheckNumber = entry.CheckNumber;
+						item.EditDateTime = DateTime.UtcNow;
+						item.Id = entry.Id;
+						item.IsDeleted = entry.IsDeleted;
+						item.Location = entry.Location;
+						item.Note = entry.Note;
+						item.Posted = entry.Posted;
+						item.TransactionDate = DateTime.SpecifyKind(entry.TransactionDate, DateTimeKind.Utc);
+					}
+				}
+				_context.SubmitChanges();
+			}
+		}
+
+		public Task BatchAddOrUpdateEntriesAsync(System.Collections.Generic.ICollection<Core.Data.Transaction> entries)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				BatchAddOrUpdateEntries(entries);
+			});
+		}
 	}
 
 	public static class TransactionExtensions

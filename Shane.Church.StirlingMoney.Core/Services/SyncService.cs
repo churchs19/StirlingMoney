@@ -154,7 +154,7 @@ namespace Shane.Church.StirlingMoney.Core.Services
 
 						var results = await Client.InvokeApiAsync("sync", body);
 
-						foreach (var item in results.OrderBy(it=>it["tableName"].ToString(), new TableNameSortComparer()))
+						foreach (var item in results.OrderBy(it => it["tableName"].ToString(), new TableNameSortComparer()))
 						{
 							try
 							{
@@ -162,33 +162,27 @@ namespace Shane.Church.StirlingMoney.Core.Services
 								{
 									case "Categories":
 										var categoryChanges = item["changes"].ToObject<List<Category>>();
-										foreach (var c in categoryChanges)
-											await _categories.AddOrUpdateEntryAsync(c);
+										await _categories.BatchAddOrUpdateEntriesAsync(categoryChanges);
 										break;
 									case "Accounts":
 										var accountChanges = item["changes"].ToObject<List<Account>>();
-										foreach (var a in accountChanges)
-											await _accounts.AddOrUpdateEntryAsync(a);
+										await _accounts.BatchAddOrUpdateEntriesAsync(accountChanges);
 										break;
 									case "AppSyncUsers":
-										var userChanges = item["changes"].ToObject<List<AppSyncUser>>();
-										foreach (var u in userChanges.Where(it => it.UserEmail.ToLower() != this.Email.ToLower()))
-											await _users.AddOrUpdateEntryAsync(u);
+										var userChanges = item["changes"].ToObject<List<AppSyncUser>>().Where(it => it.UserEmail.ToLower() != this.Email.ToLower()).ToList();
+										await _users.BatchAddOrUpdateEntriesAsync(userChanges);
 										break;
 									case "Budgets":
 										var budgetChanges = item["changes"].ToObject<List<Budget>>();
-										foreach (var b in budgetChanges)
-											await _budgets.AddOrUpdateEntryAsync(b);
+										await _budgets.BatchAddOrUpdateEntriesAsync(budgetChanges);
 										break;
 									case "Goals":
 										var goalChanges = item["changes"].ToObject<List<Goal>>();
-										foreach (var g in goalChanges)
-											await _goals.AddOrUpdateEntryAsync(g);
+										await _goals.BatchAddOrUpdateEntriesAsync(goalChanges);
 										break;
 									case "Transactions":
 										var transactionChanges = item["changes"].ToObject<List<Transaction>>();
-										foreach (var t in transactionChanges)
-											await _transactions.AddOrUpdateEntryAsync(t);
+										await _transactions.BatchAddOrUpdateEntriesAsync(transactionChanges);
 										break;
 								}
 							}
@@ -197,6 +191,14 @@ namespace Shane.Church.StirlingMoney.Core.Services
 								throw;
 							}
 						}
+
+						var accountList = _accounts.GetAllEntries().ToList();
+						foreach (var a in accountList)
+						{
+							a.AccountBalance = a.LiveAccountBalance;
+							a.PostedBalance = a.LivePostedBalance;
+						}
+						await _accounts.BatchAddOrUpdateEntriesAsync(accountList);
 
 						_settingsService.SaveSetting<DateTimeOffset>(DateTimeOffset.Now, "LastSuccessfulSync");
 					}

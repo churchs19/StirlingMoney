@@ -120,6 +120,45 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				return AddOrUpdateEntry(entry);
 			});
 		}
+
+
+		public void BatchAddOrUpdateEntries(System.Collections.Generic.ICollection<Core.Data.Goal> entries)
+		{
+			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
+			{
+				foreach (var entry in entries)
+				{
+					if (!entry.AccountId.Equals(Guid.Empty) && !string.IsNullOrWhiteSpace(entry.GoalName))
+					{
+						var item = _context.Goals.Where(it => it.GoalId == entry.GoalId).FirstOrDefault();
+						if (item == null)
+						{
+							item = new StirlingMoney.Data.v3.Goal();
+							item.GoalId = entry.GoalId.Equals(Guid.Empty) ? Guid.NewGuid() : entry.GoalId;
+							_context.Goals.InsertOnSubmit(item);
+						}
+						item.Account = _context.Accounts.Where(it => it.AccountId == entry.AccountId).FirstOrDefault();
+						item.Amount = entry.Amount;
+						item.EditDateTime = DateTime.UtcNow;
+						item.GoalName = entry.GoalName;
+						item.Id = entry.Id;
+						item.InitialBalance = entry.InitialBalance;
+						item.IsDeleted = entry.IsDeleted;
+						item.TargetDate = DateTime.SpecifyKind(entry.TargetDate, DateTimeKind.Utc);
+						item.StartDate = DateTime.SpecifyKind(entry.StartDate, DateTimeKind.Utc);
+					}
+				}
+				_context.SubmitChanges();
+			}
+		}
+
+		public Task BatchAddOrUpdateEntriesAsync(System.Collections.Generic.ICollection<Core.Data.Goal> entries)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				BatchAddOrUpdateEntries(entries);
+			});
+		}
 	}
 
 	public static class GoalExtensions

@@ -67,26 +67,12 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				SyncCompleted();
 		}
 
-		public async Task Initialize()
+		public Task Initialize()
 		{
-			try
+			return Task.Factory.StartNew(() =>
 			{
-				if (_settingsService.LoadSetting<bool>("EnableSync"))
-				{
-					await _syncService.Sync(true);
-				}
-				else
-				{
-					if (SyncCompleted != null)
-					{
-						SyncCompleted();
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				_logService.LogException(ex, "MainViewModel.Initialize");
-			}
+				SyncCommand.Execute(null);
+			});
 		}
 
 		private AccountListViewModel _accounts;

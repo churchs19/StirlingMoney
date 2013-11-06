@@ -115,6 +115,39 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 					return AddOrUpdateEntry(entry);
 				});
 		}
+
+		public void BatchAddOrUpdateEntries(System.Collections.Generic.ICollection<Core.Data.Category> entries)
+		{
+			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
+			{
+				foreach (var entry in entries)
+				{
+					if (!string.IsNullOrWhiteSpace(entry.CategoryName))
+					{
+						var item = _context.Categories.Where(it => it.CategoryId == entry.CategoryId).FirstOrDefault();
+						if (item == null)
+						{
+							item = new StirlingMoney.Data.v3.Category();
+							item.CategoryId = entry.CategoryId.Equals(Guid.Empty) ? Guid.NewGuid() : entry.CategoryId;
+							_context.Categories.InsertOnSubmit(item);
+						}
+						item.CategoryName = entry.CategoryName;
+						item.EditDateTime = DateTime.UtcNow;
+						item.Id = entry.Id;
+						item.IsDeleted = entry.IsDeleted;
+					}
+				}
+				_context.SubmitChanges();
+			}
+		}
+
+		public Task BatchAddOrUpdateEntriesAsync(System.Collections.Generic.ICollection<Core.Data.Category> entries)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				BatchAddOrUpdateEntries(entries);
+			});
+		}
 	}
 
 	public static class CategoryExtensions

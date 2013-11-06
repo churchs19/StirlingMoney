@@ -55,8 +55,11 @@ namespace Shane.Church.StirlingMoney.WP
 				{
 					_model.LoadData(Guid.Empty);
 				}
-				this.DataContext = _model;
-				this.jumpListTransactions.ItemsSource = _model.Transactions;
+				Deployment.Current.Dispatcher.BeginInvoke(() =>
+				{
+					this.DataContext = _model;
+					this.jumpListTransactions.ItemsSource = _model.Transactions;
+				});
 			}
 			else
 			{
@@ -70,6 +73,22 @@ namespace Shane.Church.StirlingMoney.WP
 			}
 
 			base.OnNavigatedTo(e);
+		}
+
+		protected override void OnNavigatingFrom(System.Windows.Navigation.NavigatingCancelEventArgs e)
+		{
+			var account = _model.GetAccount();
+			if (account != null)
+			{
+				account.UpdateBalances().ContinueWith((it) =>
+				{
+					base.OnNavigatingFrom(e);
+				});
+			}
+			else
+			{
+				base.OnNavigatingFrom(e);
+			}
 		}
 
 		#region Ad Control
@@ -164,9 +183,12 @@ namespace Shane.Church.StirlingMoney.WP
 
 		private void jumpListTransactions_DataRequested(object sender, EventArgs e)
 		{
-			_model.LoadNextTransactions();
-			if (_model.TotalRows == _model.Transactions.Count)
-				jumpListTransactions.DataVirtualizationMode = Telerik.Windows.Controls.DataVirtualizationMode.None;
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				_model.LoadNextTransactions();
+				if (_model.TotalRows == _model.Transactions.Count)
+					jumpListTransactions.DataVirtualizationMode = Telerik.Windows.Controls.DataVirtualizationMode.None;
+			});
 		}
 
 	}

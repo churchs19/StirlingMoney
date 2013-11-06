@@ -33,12 +33,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			TransferCommand = new RelayCommand(Transfer);
 
 			_transactions = new ObservableCollection<TransactionListItemViewModel>();
-			_transactions.CollectionChanged += (s, e) =>
-				{
-					RaisePropertyChanged(() => Transactions);
-					RaisePropertyChanged(() => PostedBalance);
-					RaisePropertyChanged(() => AvailableBalance);
-				};
+			//_transactions.CollectionChanged += (s, e) =>
+			//	{
+			//		RaisePropertyChanged(() => Transactions);
+			//		RaisePropertyChanged(() => PostedBalance);
+			//		RaisePropertyChanged(() => AvailableBalance);
+			//	};
+			_transactions.CollectionChanged += _transactions_CollectionChanged;
+		}
+
+		void _transactions_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			RaisePropertyChanged(() => Transactions);
+			RaisePropertyChanged(() => PostedBalance);
+			RaisePropertyChanged(() => AvailableBalance);
 		}
 
 		private Account _account;
@@ -65,6 +73,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public string AccountName
 		{
 			get { return _account.AccountName; }
+		}
+
+		public Account GetAccount()
+		{
+			return _accountRepository.GetFilteredEntries(it => it.AccountId == this.AccountId).FirstOrDefault();
 		}
 
 		private ObservableCollection<TransactionListItemViewModel> _transactions;
@@ -117,7 +130,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			get
 			{
-				return _account != null ? _account.PostedBalance : 0;
+				return _account != null ? _account.LivePostedBalance : 0;
 			}
 		}
 
@@ -125,7 +138,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			get
 			{
-				return _account != null ? _account.AccountBalance : 0;
+				return _account != null ? _account.LiveAccountBalance : 0;
 			}
 		}
 

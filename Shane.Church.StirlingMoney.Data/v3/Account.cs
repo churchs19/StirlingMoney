@@ -130,6 +130,28 @@ namespace Shane.Church.StirlingMoney.Data.v3
 			}
 		}
 
+		private double _accountBalance;
+		[Column]
+		public double AccountBalance
+		{
+			get { return _accountBalance; }
+			set
+			{
+				Set(() => AccountBalance, ref _accountBalance, value);
+			}
+		}
+
+		private double _postedBalance;
+		[Column]
+		public double PostedBalance
+		{
+			get { return _postedBalance; }
+			set
+			{
+				Set(() => PostedBalance, ref _postedBalance, value);
+			}
+		}
+
 		private EntitySet<Transaction> _transactions;
 
 		[Association(Storage = "_transactions", OtherKey = "_accountId", ThisKey = "AccountId")]

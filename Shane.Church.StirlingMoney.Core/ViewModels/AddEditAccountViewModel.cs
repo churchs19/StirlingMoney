@@ -153,6 +153,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				a.InitialBalance = InitialBalance;
 				a.AccountName = AccountName;
 				a.ImageUri = Image != null ? Image.Name : null;
+				a.AccountBalance = a.LiveAccountBalance;
+				a.PostedBalance = a.LivePostedBalance;
 				a = _accountRepository.AddOrUpdateEntry(a);
 				AccountId = a.AccountId;
 				_id = a.Id;

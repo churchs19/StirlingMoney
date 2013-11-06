@@ -3,6 +3,7 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.Data
 {
@@ -15,9 +16,13 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		public DateTimeOffset EditDateTime { get; set; }
 		public bool? IsDeleted { get; set; }
 		public string ImageUri { get; set; }
+		[JsonIgnore]
+		public double AccountBalance { get; set; }
+		[JsonIgnore]
+		public double PostedBalance { get; set; }
 
 		[JsonIgnore]
-		public double AccountBalance
+		public double LiveAccountBalance
 		{
 			get
 			{
@@ -30,7 +35,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		}
 
 		[JsonIgnore]
-		public double PostedBalance
+		public double LivePostedBalance
 		{
 			get
 			{
@@ -49,6 +54,19 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			{
 				var repo = KernelService.Kernel.Get<IRepository<Transaction>>();
 				return repo.GetFilteredEntries((t) => t.AccountId == this.AccountId);
+			}
+		}
+
+		public async Task UpdateBalances()
+		{
+			var repo = KernelService.Kernel.Get<IRepository<Account>>();
+			var acct = await repo.GetFilteredEntriesAsync(it => it.AccountId == this.AccountId);
+			var a = acct.FirstOrDefault();
+			if (a != null)
+			{
+				a.AccountBalance = a.LiveAccountBalance;
+				a.PostedBalance = a.LivePostedBalance;
+				await repo.AddOrUpdateEntryAsync(a);
 			}
 		}
 	}

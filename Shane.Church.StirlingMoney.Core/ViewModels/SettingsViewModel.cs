@@ -99,7 +99,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					{
 						_syncService.Authenticate().ContinueWith((t) =>
 						{
-
 						});
 					}
 					else

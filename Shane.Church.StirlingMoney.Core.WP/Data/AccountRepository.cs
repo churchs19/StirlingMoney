@@ -75,6 +75,8 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 					item.InitialBalance = entry.InitialBalance;
 					item.IsDeleted = entry.IsDeleted;
 					item.ImageUri = entry.ImageUri;
+					item.PostedBalance = entry.PostedBalance;
+					item.AccountBalance = entry.AccountBalance;
 
 					_context.SubmitChanges();
 
@@ -118,6 +120,44 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				return AddOrUpdateEntry(entry);
 			});
 		}
+
+
+		public void BatchAddOrUpdateEntries(System.Collections.Generic.ICollection<Core.Data.Account> entries)
+		{
+			lock (StirlingMoney.Data.v3.StirlingMoneyDataContext.LockObject)
+			{
+				foreach (var entry in entries)
+				{
+					if (!string.IsNullOrWhiteSpace(entry.AccountName))
+					{
+						var item = _context.Accounts.Where(it => it.AccountId.Equals(entry.AccountId)).FirstOrDefault();
+						if (item == null)
+						{
+							item = new StirlingMoney.Data.v3.Account();
+							item.AccountId = (entry.AccountId.Equals(Guid.Empty)) ? Guid.NewGuid() : entry.AccountId;
+							_context.Accounts.InsertOnSubmit(item);
+						}
+						item.AccountName = entry.AccountName;
+						item.EditDateTime = DateTime.UtcNow;
+						item.Id = entry.Id;
+						item.InitialBalance = entry.InitialBalance;
+						item.IsDeleted = entry.IsDeleted;
+						item.ImageUri = entry.ImageUri;
+						item.AccountBalance = entry.AccountBalance;
+						item.PostedBalance = entry.PostedBalance;
+					}
+				}
+				_context.SubmitChanges();
+			}
+		}
+
+		public Task BatchAddOrUpdateEntriesAsync(System.Collections.Generic.ICollection<Core.Data.Account> entries)
+		{
+			return Task.Factory.StartNew(() =>
+			{
+				BatchAddOrUpdateEntries(entries);
+			});
+		}
 	}
 
 	public static class AccountExtensions
@@ -131,7 +171,9 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 				InitialBalance = item.InitialBalance,
 				EditDateTime = new DateTimeOffset(DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc), new TimeSpan(0)),
 				IsDeleted = item.IsDeleted,
-				ImageUri = item.ImageUri
+				ImageUri = item.ImageUri,
+				AccountBalance = item.AccountBalance,
+				PostedBalance = item.PostedBalance
 			};
 		}
 	}
