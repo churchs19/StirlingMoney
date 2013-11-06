@@ -3,7 +3,6 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
-using Shane.Church.StirlingMoney.Strings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +25,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
+			FlurryWP8SDK.Api.LogPageView();
 			_model = new CategoryViewModel();
 			_model.ValidationFailed += (s, args) =>
 			{

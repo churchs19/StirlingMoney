@@ -185,6 +185,7 @@
     <Compile Include="Categories.xaml.cs">
       <DependentUpon>Categories.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\EntryTemplateSelector.cs" />
     <Compile Include="Helpers\BudgetBrushConverter.cs" />
     <Compile Include="Helpers\GoalBrushConverter.cs" />
     <Compile Include="Helpers\IntBusyAnimationConverter.cs" />

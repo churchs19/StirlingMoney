@@ -18,8 +18,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		private INavigationService _navService;
 		private SyncService _syncService;
 		private ILoggingService _logService;
+		private ISettingsService _settingsService;
 
-		public MainViewModel(IRepository<Budget> budgetRepository, IRepository<Goal> goalRepository, INavigationService navService, SyncService syncService, ILoggingService logService)
+		public MainViewModel(IRepository<Budget> budgetRepository, IRepository<Goal> goalRepository, INavigationService navService, SyncService syncService, ILoggingService logService, ISettingsService settingsService)
 		{
 			if (budgetRepository == null) throw new ArgumentNullException("budgetRepository");
 			_budgetRepository = budgetRepository;
@@ -29,8 +30,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_navService = navService;
 			if (syncService == null) throw new ArgumentNullException("syncService");
 			_syncService = syncService;
+			_syncService.SyncCompleted += _syncService_SyncCompleted;
 			if (logService == null) throw new ArgumentNullException("logService");
 			_logService = logService;
+			if (settingsService == null) throw new ArgumentNullException("settingsService");
+			_settingsService = settingsService;
 			_accounts = KernelService.Kernel.Get<AccountListViewModel>();
 			_budgets = new ObservableCollection<BudgetSummaryViewModel>();
 			_budgets.CollectionChanged += (s, e) =>
@@ -45,13 +49,37 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 			AddAccountCommand = new RelayCommand(NavigateToAddAccount);
 			CategoriesCommand = new RelayCommand(NavigateToCategories);
-			SyncCommand = new AsyncRelayCommand(action: it => Sync(it), completed: () => SyncCompleted(), error: it => SyncError(it));
+			SyncCommand = new AsyncRelayCommand(action: it => Sync(it), completed: () => SyncTaskCompleted(), error: it => SyncError(it));
 			ReportsCommand = new RelayCommand(NavigateToReports);
 			SettingsCommand = new RelayCommand(NavigateToSettings);
 			RateCommand = new RelayCommand(RateApp);
 			AboutCommand = new RelayCommand(NavigateToAbout);
 			AddBudgetCommand = new RelayCommand(NavigateToAddBudget);
 			AddGoalCommand = new RelayCommand(NavigateToAddGoal);
+		}
+
+		public delegate void SyncCompletedHandler();
+		public event SyncCompletedHandler SyncCompleted;
+
+		void _syncService_SyncCompleted()
+		{
+			if (SyncCompleted != null)
+				SyncCompleted();
+		}
+
+		public async Task Initialize()
+		{
+			try
+			{
+				if (_settingsService.LoadSetting<bool>("EnableSync"))
+				{
+					await _syncService.Sync(true);
+				}
+			}
+			catch (Exception ex)
+			{
+				_logService.LogException(ex, "MainViewModel.Initialize");
+			}
 		}
 
 		private AccountListViewModel _accounts;
@@ -183,7 +211,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public delegate void BusyChangedHandler(BusyEventArgs args);
 		public event BusyChangedHandler BusyChanged;
 
-		public Task SyncCompleted()
+		public Task SyncTaskCompleted()
 		{
 			return Task.Factory.StartNew(() =>
 			{

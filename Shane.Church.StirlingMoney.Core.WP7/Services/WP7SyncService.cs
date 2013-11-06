@@ -41,7 +41,22 @@ namespace Shane.Church.StirlingMoney.Core.WP7.Services
 			}
 		}
 
-		public async Task<bool> LiveLoginSilent()
+		public override async Task AuthenticateUserSilent()
+		{
+			try
+			{
+				if (await LiveLoginSilent())
+				{
+					await SetUserData();
+				}
+			}
+			catch (Exception ex)
+			{
+				_log.LogException(ex, "WP7SyncService AuthenticateUserSilent");
+			}
+		}
+
+		private async Task<bool> LiveLoginSilent()
 		{
 			LiveLoginResult result;
 			try
@@ -103,9 +118,14 @@ namespace Shane.Church.StirlingMoney.Core.WP7.Services
 				}
 				catch (Exception ex)
 				{
-					FlurryWP8SDK.Api.LogError("Sync Exception", ex);
+					FlurryWP8SDK.Api.LogError("WP7SyncService Authenticate", ex);
 				}
 			}
+			await SetUserData();
+		}
+
+		private async Task SetUserData()
+		{
 			try
 			{
 				if (_session != null)

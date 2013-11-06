@@ -2,7 +2,6 @@
 using Microsoft.Phone.Shell;
 using Shane.Church.StirlingMoney.Core.WP;
 using Shane.Church.StirlingMoney.Data.Update;
-using Shane.Church.StirlingMoney.Strings;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -216,13 +215,13 @@ namespace Shane.Church.StirlingMoney.WP
 				//Initialiaze Telerik Localization Manager
 				Telerik.Windows.Controls.InputLocalizationManager.Instance.ResourceManager = Shane.Church.StirlingMoney.Strings.Resources.ResourceManager;
 			}
-			catch
+			catch (Exception ex)
 			{
 				// If an exception is caught here it is most likely due to either 
 				// ResourceLangauge not being correctly set to a supported language 
 				// code or ResourceFlowDirection is set to a value other than LeftToRight 
 				// or RightToLeft. 
-
+				FlurryWP8SDK.Api.LogError("InitializeLanguage", ex);
 				if (Debugger.IsAttached)
 				{
 					Debugger.Break();
@@ -297,6 +296,7 @@ namespace Shane.Church.StirlingMoney.WP
 		// Code to execute on Unhandled Exceptions
 		private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
 		{
+			FlurryWP8SDK.Api.LogError("Application_UnhandledException", e.ExceptionObject);
 			if (e.ExceptionObject.Message.Equals("0x8000ffff")) e.Handled = true;
 			if (e.ExceptionObject.StackTrace.Contains("Inneractive.Ad")) e.Handled = true;
 			if (e.ExceptionObject.Message.Equals("User has not granted the application consent to access data in Windows Live.")) e.Handled = true;

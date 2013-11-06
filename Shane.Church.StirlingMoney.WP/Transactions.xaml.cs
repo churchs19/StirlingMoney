@@ -5,7 +5,6 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
-using Shane.Church.StirlingMoney.Strings;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -42,6 +41,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
+			FlurryWP8SDK.Api.LogPageView();
 			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.New)
 			{
 				_model = KernelService.Kernel.Get<TransactionListViewModel>();

@@ -99,15 +99,27 @@ namespace Shane.Church.StirlingMoney.Core.Services
 
 		public abstract Task<bool> IsNetworkConnected();
 
+		public abstract Task AuthenticateUserSilent();
+
 		public abstract Task AuthenticateUser();
 
-		public async Task Sync()
+		public delegate void SyncCompletedHandler();
+		public event SyncCompletedHandler SyncCompleted;
+
+		public async Task Sync(bool silent = false)
 		{
 			try
 			{
 				if (await IsNetworkConnected())
 				{
-					await Authenticate();
+					if (!silent)
+					{
+						await Authenticate();
+					}
+					else
+					{
+						await AuthenticateUserSilent();
+					}
 
 					if (User != null)
 					{
@@ -196,6 +208,8 @@ namespace Shane.Church.StirlingMoney.Core.Services
 				//TODO: Do I need a message here?
 				throw;
 			}
+			if (SyncCompleted != null)
+				SyncCompleted();
 		}
 	}
 }

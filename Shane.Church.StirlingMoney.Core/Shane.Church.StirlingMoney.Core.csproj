@@ -76,6 +76,7 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\GoalSummaryViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SettingsAppSyncUserViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\Shared\ListDataItem.cs" />
     <Compile Include="ViewModels\Shared\ValidationFailedEventArgs.cs" />

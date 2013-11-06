@@ -757,4 +757,16 @@ I take your security very seriously and all data is transmitted securely over HT
   <data name="GeneralErrorCaption" xml:space="preserve">
     <value>Stirling Money Error</value>
   </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>authorized users</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>Stirling Money can share data between authorized users so you and your family are always up to date on where your accounts stand. Enter the Microsoft Account email address of the user or users you would like to synchronize and share your data with below.</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>add authorized user account</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>No Authorized Users</value>
+  </data>
 </root>

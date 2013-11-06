@@ -4,7 +4,6 @@ using Microsoft.Phone.Shell;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
-using Shane.Church.StirlingMoney.Strings;
 using System;
 
 namespace Shane.Church.StirlingMoney.WP
@@ -24,6 +23,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override async void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
+			FlurryWP8SDK.Api.LogPageView();
 			_model = KernelService.Kernel.Get<CategoryListViewModel>();
 			this.DataContext = _model;
 

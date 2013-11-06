@@ -10,5 +10,6 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		public string UserId { get; set; }
 		public DateTimeOffset EditDateTime { get; set; }
 		public bool? IsDeleted { get; set; }
+		public bool IsSyncOwner { get; set; }
 	}
 }

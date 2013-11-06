@@ -5,7 +5,6 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
-using Shane.Church.StirlingMoney.Strings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +28,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
+			FlurryWP8SDK.Api.LogPageView();
 			_model = KernelService.Kernel.Get<AddEditGoalViewModel>();
 			_model.ValidationFailed += (s, args) =>
 			{

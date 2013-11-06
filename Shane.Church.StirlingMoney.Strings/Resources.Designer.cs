@@ -439,6 +439,24 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stirling Money can share data between authorized users so you and your family are always up to date on where your accounts stand. Enter the Microsoft Account email address of the user or users you would like to synchronize and share your data with below..
+        /// </summary>
+        public static string AuthorizedUsersDescription {
+            get {
+                return ResourceManager.GetString("AuthorizedUsersDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to authorized users.
+        /// </summary>
+        public static string AuthorizedUsersTitle {
+            get {
+                return ResourceManager.GetString("AuthorizedUsersTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to backup.
         /// </summary>
         public static string BackupButton {
@@ -1314,11 +1332,29 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to add authorized user account.
+        /// </summary>
+        public static string NewAuthorizedUser {
+            get {
+                return ResourceManager.GetString("NewAuthorizedUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to no.
         /// </summary>
         public static string No {
             get {
                 return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Authorized Users.
+        /// </summary>
+        public static string NoAuthorizedUsers {
+            get {
+                return ResourceManager.GetString("NoAuthorizedUsers", resourceCulture);
             }
         }
         

@@ -401,7 +401,8 @@
                                             Background="{StaticResource PhoneSemitransparentBrush}" 
                                             Foreground="{StaticResource PhoneAccentBrush}" 
                                             IsRunning="False"
-                                            BorderBrush="{StaticResource PhoneSemitransparentBrush}" />
+                                            BorderBrush="{StaticResource PhoneSemitransparentBrush}"
+                                            AnimationStyle="AnimationStyle3"/>
         <StackPanel Grid.Row="1">
             <StackPanel x:Name="AdPanel">
                 <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"

@@ -29,6 +29,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
+			FlurryWP8SDK.Api.LogPageView();
 			_model = KernelService.Kernel.Get<AddEditAccountViewModel>();
 			_model.ValidationFailed += (s, args) =>
 				{
