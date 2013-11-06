@@ -56,5 +56,16 @@ namespace Shane.Church.StirlingMoney.Data.v3
 				Set(() => UserEmail, ref _userEmail, value);
 			}
 		}
+
+		private bool _isSyncOwner;
+		[Column(CanBeNull = false)]
+		public bool IsSyncOwner
+		{
+			get { return _isSyncOwner; }
+			set
+			{
+				Set(() => IsSyncOwner, ref _isSyncOwner, value);
+			}
+		}
 	}
 }

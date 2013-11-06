@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{bd6a11bb-9127-4fa5-9264-50ecfc7fdbaf}" Title="Stirling Money - Dev" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Shane Church" Description="Sample description" Publisher="Shane Church">
+  <App xmlns="" ProductID="{bd6a11bb-9127-4fa5-9264-50ecfc7fdbaf}" Title="Stirling Money - Dev" RuntimeType="Silverlight" Version="3.0.0.0" Genre="apps.normal" Author="Shane Church" Description="Sample description" Publisher="Shane Church">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />
@@ -19,7 +19,7 @@
         <TemplateType5>
           <BackgroundImageURI IsRelative="true" IsResource="false">Background.png</BackgroundImageURI>
           <Count>0</Count>
-          <Title>Shane.Church.StirlingMoney.WP</Title>
+          <Title>Stirling Money - Dev</Title>
         </TemplateType5>
       </PrimaryToken>
     </Tokens>

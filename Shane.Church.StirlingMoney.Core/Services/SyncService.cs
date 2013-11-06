@@ -154,7 +154,7 @@ namespace Shane.Church.StirlingMoney.Core.Services
 
 						var results = await Client.InvokeApiAsync("sync", body);
 
-						foreach (var item in results)
+						foreach (var item in results.OrderBy(it=>it["tableName"].ToString(), new TableNameSortComparer()))
 						{
 							try
 							{
@@ -210,6 +210,26 @@ namespace Shane.Church.StirlingMoney.Core.Services
 			}
 			if (SyncCompleted != null)
 				SyncCompleted();
+		}
+	}
+
+	public class TableNameSortComparer : IComparer<string>
+	{
+		private Dictionary<string, int> tableOrder = new Dictionary<string, int>();
+
+		public TableNameSortComparer()
+		{
+			tableOrder.Add("Categories", 0);
+			tableOrder.Add("Accounts", 1);
+			tableOrder.Add("AppSyncUsers", 2);
+			tableOrder.Add("Budgets", 3);
+			tableOrder.Add("Goals", 4);
+			tableOrder.Add("Transactions", 5);
+		}
+
+		public int Compare(string x, string y)
+		{
+			return tableOrder[x].CompareTo(tableOrder[y]);
 		}
 	}
 }

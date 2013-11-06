@@ -55,6 +55,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			if (!_accountsLoaded || forceUpdate)
 			{
+				Accounts.Clear();
 				var sort = _settings.LoadSetting<int>("AccountSort");
 				var entries = await _accountRepository.GetAllEntriesAsync();
 				if (sort == 0)

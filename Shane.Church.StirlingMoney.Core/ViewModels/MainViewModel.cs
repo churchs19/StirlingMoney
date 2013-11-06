@@ -75,6 +75,13 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				{
 					await _syncService.Sync(true);
 				}
+				else
+				{
+					if (SyncCompleted != null)
+					{
+						SyncCompleted();
+					}
+				}
 			}
 			catch (Exception ex)
 			{
@@ -123,6 +130,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				{
 					BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 				}
+				Budgets.Clear();
 				var budgets = await _budgetRepository.GetAllEntriesAsync();
 				foreach (var b in budgets)
 				{
@@ -157,6 +165,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				{
 					BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 				}
+				Goals.Clear();
 				var goals = await _goalRepository.GetAllEntriesAsync();
 				foreach (var g in goals)
 				{

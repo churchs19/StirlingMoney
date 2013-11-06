@@ -53,12 +53,14 @@ namespace Shane.Church.StirlingMoney.WP
 			{
 				await _model.Initialize();
 			}
+			else
+			{
+				_refreshAccounts = true;
+				_refreshBudgets = true;
+				_refreshGoals = true;
 
-			_refreshAccounts = true;
-			_refreshBudgets = true;
-			_refreshGoals = true;
-
-			await LoadData();
+				await LoadData();
+			}
 		}
 
 		async void _model_SyncCompleted()

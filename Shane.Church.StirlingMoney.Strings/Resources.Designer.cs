@@ -376,7 +376,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to STIRLING MONEY.
+        ///   Looks up a localized string similar to STIRLING MONEY - DEV.
         /// </summary>
         public static string AppTitle {
             get {

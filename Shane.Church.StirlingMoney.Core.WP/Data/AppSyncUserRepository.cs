@@ -96,6 +96,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 					item.EditDateTime = DateTime.UtcNow;
 					item.Id = entry.Id;
 					item.IsDeleted = entry.IsDeleted;
+					item.IsSyncOwner = entry.IsSyncOwner;
 
 					_context.SubmitChanges();
 
@@ -123,6 +124,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			{
 				Id = item.Id,
 				UserEmail = item.UserEmail,
+				IsSyncOwner = item.IsSyncOwner,
 				EditDateTime = new DateTimeOffset(DateTime.SpecifyKind(item.EditDateTime, DateTimeKind.Utc), new TimeSpan(0)),
 				IsDeleted = item.IsDeleted
 			};
