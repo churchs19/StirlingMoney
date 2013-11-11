@@ -1,57 +1,48 @@
-﻿using Newtonsoft.Json;
-using Ninject;
+﻿using Ninject;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.Data
 {
 	public class Transaction
 	{
-		public long? Id { get; set; }
 		public Guid TransactionId { get; set; }
-		public DateTime TransactionDate { get; set; }
+		public DateTimeOffset TransactionDate { get; set; }
 		public double Amount { get; set; }
 		public string Location { get; set; }
 		public string Note { get; set; }
 		public bool Posted { get; set; }
 		public long? CheckNumber { get; set; }
 		public DateTimeOffset EditDateTime { get; set; }
-		public bool? IsDeleted { get; set; }
+		public bool IsDeleted { get; set; }
 
 		public Guid AccountId { get; set; }
-		public Guid? CategoryId { get; set; }
+		public Guid CategoryId { get; set; }
 
-		[JsonIgnore]
-		public Account Account
+		public async Task<Account> GetAccount()
 		{
-			get
+			try
 			{
-				try
-				{
-					return KernelService.Kernel.Get<IRepository<Account>>().GetFilteredEntries(it => it.AccountId == AccountId).FirstOrDefault();
-				}
-				catch
-				{
-					return null;
-				}
+				return await KernelService.Kernel.Get<IRepository<Account, Guid>>().GetEntryAsync(AccountId);
+			}
+			catch
+			{
+				return null;
 			}
 		}
 
-		[JsonIgnore]
-		public Category Category
+		public async Task<Category> GetCategory()
 		{
-			get
+			try
 			{
-				try
-				{
-					if (!CategoryId.HasValue) return null;
-					return KernelService.Kernel.Get<IRepository<Category>>().GetFilteredEntries(it => it.CategoryId == CategoryId.Value).FirstOrDefault();
-				}
-				catch
-				{
-					return null;
-				}
+				if (!CategoryId.Equals(Guid.Empty)) return null;
+				return await KernelService.Kernel.Get<IRepository<Category, Guid>>().GetEntryAsync(CategoryId);
+			}
+			catch
+			{
+				return null;
 			}
 		}
 	}

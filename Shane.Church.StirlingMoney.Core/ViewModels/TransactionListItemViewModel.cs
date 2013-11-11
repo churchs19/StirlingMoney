@@ -1,20 +1,22 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.Utility.Core.Command;
 using System;
-using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class TransactionListItemViewModel : ObservableObject, IComparable
 	{
-		private IRepository<Transaction> _transactionRepository;
+		private IRepository<Transaction, Guid> _transactionRepository;
 		private INavigationService _navService;
 		private TransactionListViewModel _parent;
 
-		public TransactionListItemViewModel(IRepository<Transaction> transactionRepository, INavigationService navService, TransactionListViewModel parent)
+		public TransactionListItemViewModel(IRepository<Transaction, Guid> transactionRepository, INavigationService navService, TransactionListViewModel parent)
 		{
 			if (transactionRepository == null) throw new ArgumentNullException("transactionRepository");
 			_transactionRepository = transactionRepository;
@@ -24,7 +26,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_parent = parent;
 
 			EditCommand = new RelayCommand(Edit);
-			DeleteCommand = new RelayCommand(Delete);
+			DeleteCommand = new AsyncRelayCommand(o => Delete());
 		}
 
 		private Guid _accountId;
@@ -69,8 +71,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		private DateTime _transactionDate;
-		public DateTime TransactionDate
+		private DateTimeOffset _transactionDate;
+		public DateTimeOffset TransactionDate
 		{
 			get { return _transactionDate; }
 			set
@@ -90,14 +92,21 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				if (Set(() => Posted, ref _posted, value))
 				{
-					var t = _transactionRepository.GetFilteredEntries(it => it.TransactionId == TransactionId).FirstOrDefault();
-					if (t != null)
+					try
 					{
-						t.Posted = Posted;
-						_transactionRepository.AddOrUpdateEntry(t);
+						var t = _transactionRepository.GetEntryAsync(TransactionId).Result;
+						if (t != null)
+						{
+							t.Posted = Posted;
+							t = _transactionRepository.AddOrUpdateEntryAsync(t).Result;
+						}
+						if (PostedChanged != null)
+							PostedChanged();
 					}
-					if (PostedChanged != null)
-						PostedChanged();
+					catch
+					{
+						Set(() => Posted, ref _posted, !Posted);
+					}
 				}
 			}
 		}
@@ -140,9 +149,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public void LoadData(Guid transactionId)
+		public async Task LoadData(Guid transactionId)
 		{
-			var t = _transactionRepository.GetFilteredEntries(it => it.TransactionId == transactionId).FirstOrDefault();
+			var t = await _transactionRepository.GetEntryAsync(transactionId);
 			if (t != null)
 			{
 				TransactionId = transactionId;
@@ -152,12 +161,13 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				CheckNumber = t.CheckNumber;
 				_posted = t.Posted;
 				Memo = t.Note;
-				Category = t.Category != null ? t.Category.CategoryName : null;
+				var category = await t.GetCategory();
+				Category = category != null ? category.CategoryName : null;
 				EditDate = t.EditDateTime;
 			}
 		}
 
-		public void LoadData(Transaction transaction)
+		public async Task LoadData(Transaction transaction)
 		{
 			TransactionId = transaction.TransactionId;
 			TransactionDate = transaction.TransactionDate;
@@ -166,7 +176,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			CheckNumber = transaction.CheckNumber;
 			_posted = transaction.Posted;
 			Memo = transaction.Note;
-			Category = transaction.Category != null ? transaction.Category.CategoryName : null;
+			var cat = await transaction.GetCategory();
+			Category = cat != null ? cat.CategoryName : null;
 			_accountId = transaction.AccountId;
 			EditDate = transaction.EditDateTime;
 		}
@@ -181,9 +192,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public ICommand DeleteCommand { get; private set; }
 
-		public void Delete()
+		public async Task Delete()
 		{
-			_transactionRepository.DeleteEntry(new Transaction { TransactionId = TransactionId });
+			await _transactionRepository.DeleteEntryAsync(new Transaction { TransactionId = TransactionId });
 			_parent.Transactions.Remove(this);
 			_parent.CurrentRow--;
 			_parent.TotalRows--;

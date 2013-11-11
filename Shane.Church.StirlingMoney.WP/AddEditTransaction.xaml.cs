@@ -26,7 +26,7 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeApplicationBar();
 		}
 
-		protected override void OnNavigatedTo(NavigationEventArgs e)
+		protected override async void OnNavigatedTo(NavigationEventArgs e)
 		{
 			FlurryWP8SDK.Api.LogPageView();
 			_model = KernelService.Kernel.Get<AddEditTransactionViewModel>();
@@ -40,19 +40,32 @@ namespace Shane.Church.StirlingMoney.WP
 					MessageBox.Show(errorMessages, Shane.Church.StirlingMoney.Strings.Resources.InvalidValuesTitle, MessageBoxButton.OK);
 				}
 			};
+
+			base.OnNavigatedTo(e);
+
+			AddEditTransactionParams param;
 			try
 			{
-				var param = PhoneNavigationService.DecodeNavigationParameter<AddEditTransactionParams>(this.NavigationContext);
-				_model.LoadData(param);
+				param = PhoneNavigationService.DecodeNavigationParameter<AddEditTransactionParams>(this.NavigationContext);
 			}
 			catch (KeyNotFoundException)
 			{
-				_model.LoadData(new AddEditTransactionParams());
+				param = new AddEditTransactionParams();
 			}
 
-			this.DataContext = _model;
+			await _model.LoadData(param);
 
-			base.OnNavigatedTo(e);
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				this.DataContext = _model;
+			});
+		}
+
+		protected override void OnNavigatedFrom(NavigationEventArgs e)
+		{
+			if (e.NavigationMode == NavigationMode.Back)
+				_model.Commit().Wait(1000);
+			base.OnNavigatedFrom(e);
 		}
 
 		#region Ad Control

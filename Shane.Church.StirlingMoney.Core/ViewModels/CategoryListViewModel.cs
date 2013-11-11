@@ -2,7 +2,9 @@
 using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -38,7 +40,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public async Task LoadData()
 		{
-			var service = KernelService.Kernel.Get<IRepository<Category>>();
+			var service = KernelService.Kernel.Get<IRepository<Category, Guid>>();
 			Items.Clear();
 			var categories = await service.GetAllEntriesAsync();
 			var categoryList = categories.OrderBy(it => it.CategoryName).ToList();

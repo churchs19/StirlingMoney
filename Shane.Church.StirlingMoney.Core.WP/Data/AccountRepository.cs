@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.Data
 {
-	public class AccountRepository : Core.Data.IRepository<Core.Data.Account>
+	public class AccountRepository : Core.Repositories.IRepository<Core.Data.Account, Guid>
 	{
 		Shane.Church.StirlingMoney.Data.v3.StirlingMoneyDataContext _context;
 
@@ -32,7 +32,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Data
 			{
 				var filterDelegate = filter.Compile();
 				var allResults = _context.Accounts.ToList().Select(it => it.ToCoreAccount());
-				var results = allResults.Where(it => includeDeleted ? filterDelegate(it) : filterDelegate(it) && (!it.IsDeleted.HasValue || (it.IsDeleted.HasValue && !it.IsDeleted.Value))).ToList();
+				var results = allResults.Where(it => includeDeleted ? filterDelegate(it) : filterDelegate(it) && !it.IsDeleted).ToList();
 				return results.AsQueryable();
 			}
 		}

@@ -1,17 +1,19 @@
 ﻿using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 {
 	public class PhoneAccountTileViewModel : AccountTileViewModel
 	{
-		private IRepository<Account> _accountRepository;
+		private IRepository<Account, Guid> _accountRepository;
 
-		public PhoneAccountTileViewModel(ITileService<Account> tileService, IRepository<Account> accountRepository, INavigationService navService)
+		public PhoneAccountTileViewModel(ITileService<Account> tileService, IRepository<Account, Guid> accountRepository, INavigationService navService)
 			: base(tileService, accountRepository, navService)
 		{
 			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
@@ -24,9 +26,9 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 			GetImage(_imageUri);
 		}
 
-		public override void LoadData(Guid accountId)
+		public override async Task LoadData(Guid accountId)
 		{
-			base.LoadData(accountId);
+			await base.LoadData(accountId);
 			GetImage(_imageUri);
 		}
 

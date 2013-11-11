@@ -49,9 +49,9 @@ namespace Shane.Church.StirlingMoney.WP
 
 			base.OnNavigatedTo(e);
 
-			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.New)
+			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.New && _settings.LoadSetting<bool>("EnableSync"))
 			{
-				await _model.Initialize();
+				_model.SyncCommand.Execute(null);
 			}
 			else
 			{
@@ -61,6 +61,13 @@ namespace Shane.Church.StirlingMoney.WP
 
 				await LoadData();
 			}
+		}
+
+		protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
+		{
+			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.Back)
+				_model.Commit().Wait(1000);
+			base.OnNavigatedFrom(e);
 		}
 
 		async void _model_SyncCompleted()
@@ -169,59 +176,56 @@ namespace Shane.Church.StirlingMoney.WP
 		/// <summary>
 		/// Builds a localized application bar
 		/// </summary>
-		private async Task BuildApplicationBar(ApplicationBarType type = ApplicationBarType.Accounts)
+		private void BuildApplicationBar(ApplicationBarType type = ApplicationBarType.Accounts)
 		{
-			await Deployment.Current.Dispatcher.InvokeAsync(() =>
+			if (ApplicationBar == null)
 			{
-				if (ApplicationBar == null)
-				{
-					InitializeApplicationBar();
-				}
-				ApplicationBar.IsVisible = true;
-				ApplicationBar.IsMenuEnabled = true;
-				ApplicationBar.Buttons.Clear();
-				switch (type)
-				{
-					case ApplicationBarType.Goals:
-						ApplicationBarIconButton appBarIconButtonAddGoal = new ApplicationBarIconButton(new Uri("/Images/Add.png", UriKind.Relative));
-						appBarIconButtonAddGoal.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarAdd;
-						appBarIconButtonAddGoal.Click += new EventHandler(appBarIconButtonAddGoal_Click);
-						ApplicationBar.Buttons.Add(appBarIconButtonAddGoal);
+				InitializeApplicationBar();
+			}
+			ApplicationBar.IsVisible = true;
+			ApplicationBar.IsMenuEnabled = true;
+			ApplicationBar.Buttons.Clear();
+			switch (type)
+			{
+				case ApplicationBarType.Goals:
+					ApplicationBarIconButton appBarIconButtonAddGoal = new ApplicationBarIconButton(new Uri("/Images/Add.png", UriKind.Relative));
+					appBarIconButtonAddGoal.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarAdd;
+					appBarIconButtonAddGoal.Click += new EventHandler(appBarIconButtonAddGoal_Click);
+					ApplicationBar.Buttons.Add(appBarIconButtonAddGoal);
 
-						break;
-					case ApplicationBarType.Budget:
-						ApplicationBarIconButton appBarIconButtonAddBudget = new ApplicationBarIconButton(new Uri("/Images/Add.png", UriKind.Relative));
-						appBarIconButtonAddBudget.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarAdd;
-						appBarIconButtonAddBudget.Click += new EventHandler(appBarIconButtonAddBudget_Click);
-						ApplicationBar.Buttons.Add(appBarIconButtonAddBudget);
-						break;
-					case ApplicationBarType.Accounts:
-					default:
-						ApplicationBarIconButton appBarIconButtonAddAccount = new ApplicationBarIconButton(new Uri("/Images/AddAccount.png", UriKind.Relative));
-						appBarIconButtonAddAccount.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarAddAccount;
-						appBarIconButtonAddAccount.Click += new EventHandler(appBarIconButtonAddAccount_Click);
-						ApplicationBar.Buttons.Add(appBarIconButtonAddAccount);
+					break;
+				case ApplicationBarType.Budget:
+					ApplicationBarIconButton appBarIconButtonAddBudget = new ApplicationBarIconButton(new Uri("/Images/Add.png", UriKind.Relative));
+					appBarIconButtonAddBudget.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarAdd;
+					appBarIconButtonAddBudget.Click += new EventHandler(appBarIconButtonAddBudget_Click);
+					ApplicationBar.Buttons.Add(appBarIconButtonAddBudget);
+					break;
+				case ApplicationBarType.Accounts:
+				default:
+					ApplicationBarIconButton appBarIconButtonAddAccount = new ApplicationBarIconButton(new Uri("/Images/AddAccount.png", UriKind.Relative));
+					appBarIconButtonAddAccount.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarAddAccount;
+					appBarIconButtonAddAccount.Click += new EventHandler(appBarIconButtonAddAccount_Click);
+					ApplicationBar.Buttons.Add(appBarIconButtonAddAccount);
 
-						ApplicationBarIconButton appBarIconButtonCategories = new ApplicationBarIconButton(new Uri("/Images/Categories.png", UriKind.Relative));
-						appBarIconButtonCategories.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarCategories;
-						appBarIconButtonCategories.Click += new EventHandler(appBarIconButtonCategories_Click);
-						ApplicationBar.Buttons.Add(appBarIconButtonCategories);
-						break;
-				}
+					ApplicationBarIconButton appBarIconButtonCategories = new ApplicationBarIconButton(new Uri("/Images/Categories.png", UriKind.Relative));
+					appBarIconButtonCategories.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarCategories;
+					appBarIconButtonCategories.Click += new EventHandler(appBarIconButtonCategories_Click);
+					ApplicationBar.Buttons.Add(appBarIconButtonCategories);
+					break;
+			}
 
-				if (_settings.LoadSetting<bool>("EnableSync"))
-				{
-					ApplicationBarIconButton appBarIconButtonSync = new ApplicationBarIconButton(new Uri("/Images/Synchronize.png", UriKind.Relative));
-					appBarIconButtonSync.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarSync;
-					appBarIconButtonSync.Click += new EventHandler(appBarIconButtonSync_Click);
-					ApplicationBar.Buttons.Add(appBarIconButtonSync);
-				}
+			if (_settings.LoadSetting<bool>("EnableSync"))
+			{
+				ApplicationBarIconButton appBarIconButtonSync = new ApplicationBarIconButton(new Uri("/Images/Synchronize.png", UriKind.Relative));
+				appBarIconButtonSync.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarSync;
+				appBarIconButtonSync.Click += new EventHandler(appBarIconButtonSync_Click);
+				ApplicationBar.Buttons.Add(appBarIconButtonSync);
+			}
 
-				//ApplicationBarIconButton appBarIconButtonReports = new ApplicationBarIconButton(new Uri("/Images/Reports.png", UriKind.Relative));
-				//appBarIconButtonReports.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarReports;
-				//appBarIconButtonReports.Click += new EventHandler(appBarIconButtonReports_Click);
-				//ApplicationBar.Buttons.Add(appBarIconButtonReports);
-			});
+			//ApplicationBarIconButton appBarIconButtonReports = new ApplicationBarIconButton(new Uri("/Images/Reports.png", UriKind.Relative));
+			//appBarIconButtonReports.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarReports;
+			//appBarIconButtonReports.Click += new EventHandler(appBarIconButtonReports_Click);
+			//ApplicationBar.Buttons.Add(appBarIconButtonReports);
 		}
 
 		void appBarIconButtonSync_Click(object sender, EventArgs e)
@@ -272,13 +276,15 @@ namespace Shane.Church.StirlingMoney.WP
 
 		private async void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			await Deployment.Current.Dispatcher.InvokeAsync(async () =>
-			{
-				PivotItem pi = e.AddedItems[0] as PivotItem;
-				UpdateApplicationBar(pi);
+			PivotItem pi = e.AddedItems[0] as PivotItem;
 
-				await LoadData();
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				UpdateApplicationBar(pi);
 			});
+
+			if (!LoadingBusy.IsRunning)
+				await LoadData();
 		}
 
 		private void UpdateApplicationBar(PivotItem pi)
@@ -303,37 +309,30 @@ namespace Shane.Church.StirlingMoney.WP
 
 		private async Task LoadData()
 		{
-			await Deployment.Current.Dispatcher.InvokeAsync(async () =>
+			PivotItem pi = PivotMain.SelectedItem as PivotItem;
+			if (pi != null)
 			{
-				PivotItem pi = PivotMain.SelectedItem as PivotItem;
-				if (pi != null)
+				Deployment.Current.Dispatcher.BeginInvoke(() =>
 				{
-					LoadingBusy.IsRunning = true;
-					string header = pi.Header.ToString();
-					if (header == Shane.Church.StirlingMoney.Strings.Resources.AccountsTitle)
-					{
-						if (_refreshAccounts)
-							UpdateApplicationBar(pi);
-						await _model.LoadAccounts(_refreshAccounts);
-						_refreshAccounts = false;
-					}
-					else if (header == Shane.Church.StirlingMoney.Strings.Resources.BudgetsTitle)
-					{
-						if (_refreshBudgets)
-							UpdateApplicationBar(pi);
-						await _model.LoadBudgets(_refreshBudgets);
-						_refreshBudgets = false;
-					}
-					else if (header == Shane.Church.StirlingMoney.Strings.Resources.GoalsTitle)
-					{
-						if (_refreshGoals)
-							UpdateApplicationBar(pi);
-						await _model.LoadGoals(_refreshGoals);
-						_refreshGoals = false;
-					}
-					LoadingBusy.IsRunning = false;
+					UpdateApplicationBar(pi);
+				});
+				string header = pi.Header.ToString();
+				if (header == Shane.Church.StirlingMoney.Strings.Resources.AccountsTitle)
+				{
+					await _model.LoadAccounts(_refreshAccounts);
+					_refreshAccounts = false;
 				}
-			});
+				else if (header == Shane.Church.StirlingMoney.Strings.Resources.BudgetsTitle)
+				{
+					await _model.LoadBudgets(_refreshBudgets);
+					_refreshBudgets = false;
+				}
+				else if (header == Shane.Church.StirlingMoney.Strings.Resources.GoalsTitle)
+				{
+					await _model.LoadGoals(_refreshGoals);
+					_refreshGoals = false;
+				}
+			}
 		}
 	}
 }

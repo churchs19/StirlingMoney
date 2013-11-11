@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Collections.ObjectModel;
@@ -11,14 +12,14 @@ using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class TransactionListViewModel : ObservableObject
+	public class TransactionListViewModel : ObservableObject, ICommittable
 	{
-		private IRepository<Account> _accountRepository;
-		private IRepository<Transaction> _transactionRepository;
+		private IRepository<Account, Guid> _accountRepository;
+		private IRepository<Transaction, Guid> _transactionRepository;
 		private INavigationService _navService;
 		private DateTimeOffset _refreshTime;
 
-		public TransactionListViewModel(IRepository<Account> accountRepository, IRepository<Transaction> transactionRepository, INavigationService navService)
+		public TransactionListViewModel(IRepository<Account, Guid> accountRepository, IRepository<Transaction, Guid> transactionRepository, INavigationService navService)
 		{
 			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
 			_accountRepository = accountRepository;
@@ -33,14 +34,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			TransferCommand = new RelayCommand(Transfer);
 
 			_transactions = new ObservableCollection<TransactionListItemViewModel>();
-			//_transactions.CollectionChanged += (s, e) =>
-			//	{
-			//		RaisePropertyChanged(() => Transactions);
-			//		RaisePropertyChanged(() => PostedBalance);
-			//		RaisePropertyChanged(() => AvailableBalance);
-			//	};
 			_transactions.CollectionChanged += _transactions_CollectionChanged;
 		}
+
+		public delegate void BusyChangedHandler(BusyEventArgs args);
+		public event BusyChangedHandler BusyChanged;
 
 		void _transactions_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
 		{
@@ -75,9 +73,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			get { return _account.AccountName; }
 		}
 
-		public Account GetAccount()
+		public async Task<Account> GetAccount()
 		{
-			return _accountRepository.GetFilteredEntries(it => it.AccountId == this.AccountId).FirstOrDefault();
+			return await _accountRepository.GetEntryAsync(AccountId);
 		}
 
 		private ObservableCollection<TransactionListItemViewModel> _transactions;
@@ -130,7 +128,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			get
 			{
-				return _account != null ? _account.LivePostedBalance : 0;
+				return _account != null ? _account.PostedBalance : 0;
 			}
 		}
 
@@ -138,32 +136,23 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			get
 			{
-				return _account != null ? _account.LiveAccountBalance : 0;
+				return _account != null ? _account.AccountBalance : 0;
 			}
 		}
 
 		public int CurrentRow { get; set; }
 		public int TotalRows { get; set; }
 
-		private bool _isLoading;
-		public bool IsLoading
-		{
-			get { return _isLoading; }
-			set
-			{
-				Set(() => IsLoading, ref _isLoading, value);
-			}
-		}
-
-		public void LoadNextTransactions(int count = 20)
+		public async Task LoadNextTransactions(int count = 40)
 		{
 			if (Account != null && CurrentRow < TotalRows)
 			{
-				var nextTransactions = Account.Transactions.OrderByDescending(it => it.TransactionDate).ThenByDescending(it => it.EditDateTime).Skip(CurrentRow).Take(count).ToList();
+				var transQuery = await Account.GetTransactions();
+				var nextTransactions = transQuery.OrderByDescending(it => it.TransactionDate).ThenByDescending(it => it.EditDateTime).Skip(CurrentRow).Take(count).ToList();
 				foreach (var t in nextTransactions)
 				{
 					var item = KernelService.Kernel.Get<TransactionListItemViewModel>(new Ninject.Parameters.ConstructorArgument("parent", this));
-					item.LoadData(t);
+					await item.LoadData(t);
 					item.PostedChanged += item_PostedChanged;
 					Transactions.Add(item);
 					CurrentRow++;
@@ -189,34 +178,55 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public void LoadData(Guid accountId)
+		public async Task LoadData(Guid accountId)
 		{
-			IsLoading = true;
+			if (BusyChanged != null)
+			{
+				BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
+			}
 
-			this.Account = _accountRepository.GetFilteredEntries(it => it.AccountId == accountId).FirstOrDefault();
+			await TaskEx.Yield();
+
+			this.Account = await _accountRepository.GetEntryAsync(accountId);
 			this.CurrentRow = 0;
-			this.TotalRows = this.Account != null ? this.Account.Transactions.Count() : 0;
-			_refreshTime = DateTimeOffset.UtcNow;
+			if (this.Account != null)
+			{
+				this.TotalRows = Account.TransactionCount;
+			}
+			else
+			{
+				this.TotalRows = 0;
+			}
+			await LoadNextTransactions();
 
-			IsLoading = false;
+			if (BusyChanged != null)
+			{
+				BusyChanged(new BusyEventArgs() { IsBusy = false });
+			}
 		}
 
 		public async Task RefreshData()
 		{
-			IsLoading = true;
+			if (BusyChanged != null)
+			{
+				BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
+			}
 
-			var updatedList = await _transactionRepository.GetFilteredEntriesAsync(it => it.EditDateTime > _refreshTime);
+			await TaskEx.Yield();
+
+			var updated = await _transactionRepository.GetUpdatedEntries(_refreshTime);
+			var updatedList = updated.ToList();
 			foreach (var t in updatedList)
 			{
 				var listItem = Transactions.Where(it => it.TransactionId == t.TransactionId).FirstOrDefault();
 				if (listItem != null)
 				{
-					listItem.LoadData(t);
+					await listItem.LoadData(t);
 				}
 				else
 				{
 					var item = KernelService.Kernel.Get<TransactionListItemViewModel>(new Ninject.Parameters.ConstructorArgument("parent", this));
-					item.LoadData(t);
+					await item.LoadData(t);
 					item.PostedChanged += item_PostedChanged;
 					Transactions.Add(item);
 					CurrentRow++;
@@ -227,7 +237,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			RaisePropertyChanged(() => AvailableBalance);
 			RaisePropertyChanged(() => PostedBalance);
 
-			IsLoading = false;
+			if (BusyChanged != null)
+			{
+				BusyChanged(new BusyEventArgs() { IsBusy = false });
+			}
 		}
 
 		public ICommand WithdrawCommand { get; private set; }
@@ -260,6 +273,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			AddEditTransactionParams param = new AddEditTransactionParams() { Type = Core.Data.TransactionType.Transfer, AccountId = AccountId };
 			_navService.Navigate<AddEditTransactionViewModel>(param);
+		}
+
+		public async Task Commit()
+		{
+			await _accountRepository.Commit();
 		}
 	}
 }

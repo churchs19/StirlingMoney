@@ -1,29 +1,30 @@
 ﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.Utility.Core.Command;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class SettingsAppSyncUserViewModel : ObservableObject
 	{
-		private IRepository<AppSyncUser> _repository;
+		private IRepository<AppSyncUser, string> _repository;
 
 		public event ActionCompleteEventHandler SaveActionCompleted;
 		public event ActionCompleteEventHandler RemoveActionCompleted;
 
-		public SettingsAppSyncUserViewModel(IRepository<AppSyncUser> repository)
+		public SettingsAppSyncUserViewModel(IRepository<AppSyncUser, string> repository)
 		{
 			if (repository == null)
 				throw new ArgumentNullException("repository");
 			_repository = repository;
 
-			_removeCommand = new RelayCommand(RemoveEntry);
-			_saveCommand = new RelayCommand(SaveEntry);
+			_removeCommand = new AsyncRelayCommand(o => RemoveEntry());
+			_saveCommand = new AsyncRelayCommand(o => SaveEntry());
 		}
 
 		private long? _id;
@@ -88,31 +89,28 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			if (user != null)
 			{
-				Id = user.Id;
 				AppSyncId = user.AppSyncId;
 				UserEmail = user.UserEmail;
 				IsRemovable = !user.IsSyncOwner;
 			}
 		}
 
-		public void RemoveEntry()
+		public async Task RemoveEntry()
 		{
 			var entry = KernelService.Kernel.Get<AppSyncUser>();
-			entry.Id = Id;
 			entry.AppSyncId = AppSyncId;
 			entry.UserEmail = UserEmail;
-			_repository.DeleteEntry(entry);
+			await _repository.DeleteEntryAsync(entry);
 			if (RemoveActionCompleted != null)
 				RemoveActionCompleted(this, new EventArgs());
 		}
 
-		public void SaveEntry()
+		public async Task SaveEntry()
 		{
 			var entry = KernelService.Kernel.Get<AppSyncUser>();
-			entry.Id = Id;
 			entry.AppSyncId = AppSyncId;
 			entry.UserEmail = UserEmail;
-			_repository.AddOrUpdateEntry(entry);
+			await _repository.AddOrUpdateEntryAsync(entry);
 			if (SaveActionCompleted != null)
 				SaveActionCompleted(this, new EventArgs());
 		}

@@ -30,7 +30,7 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeApplicationBar();
 		}
 
-		protected override void OnNavigatedTo(NavigationEventArgs e)
+		protected override async void OnNavigatedTo(NavigationEventArgs e)
 		{
 			FlurryWP8SDK.Api.LogPageView();
 			_logService = KernelService.Kernel.Get<ILoggingService>();
@@ -58,18 +58,29 @@ namespace Shane.Church.StirlingMoney.WP
 				else
 					newAuthorizedUser.ChangeValidationState(ValidationState.Invalid, "Required");
 			};
-			_model.LoadData();
-
-			_savedPivotItem = SettingsPivot.Items[2] as PivotItem;
-			if (!_model.EnableSync)
-			{
-				SettingsPivot.Items.RemoveAt(2);
-			}
-
-			this.DataContext = _model;
-
 			base.OnNavigatedTo(e);
+
+			await _model.LoadData();
+
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				_savedPivotItem = SettingsPivot.Items[2] as PivotItem;
+				if (!_model.EnableSync)
+				{
+					SettingsPivot.Items.RemoveAt(2);
+				}
+
+				this.DataContext = _model;
+			});
 		}
+
+		protected override void OnNavigatedFrom(NavigationEventArgs e)
+		{
+			if (e.NavigationMode == NavigationMode.Back)
+				_model.Commit().Wait(1000);
+			base.OnNavigatedFrom(e);
+		}
+
 
 		#region Ad Control
 		private void InitializeAdControl()

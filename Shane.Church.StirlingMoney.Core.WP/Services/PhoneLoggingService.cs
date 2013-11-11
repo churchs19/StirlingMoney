@@ -5,6 +5,11 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 {
 	public class PhoneLoggingService : ILoggingService
 	{
+		public PhoneLoggingService()
+		{
+
+		}
+
 		public void LogMessage(string message)
 		{
 			FlurryWP8SDK.Api.LogEvent(message);

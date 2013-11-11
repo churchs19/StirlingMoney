@@ -116,6 +116,13 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Net" />
     <Reference Include="mscorlib.extensions" />
+    <Reference Include="Wintellect.Sterling.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b18e15f7365ddb8a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Wintellect.SterlingDB\Wintellect.Sterling.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Wintellect.Sterling.WP7">
+      <HintPath>..\lib\Wintellect.SterlingDB\WP7\Wintellect.Sterling.WP7.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\LiveAuthClientExtensions.cs" />
@@ -128,6 +135,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Core.SterlingDb\Shane.Church.StirlingMoney.Core.SterlingDb.csproj">
+      <Project>{7EDFE360-EEFA-42DC-A5DA-DCEFFA32DEFE}</Project>
+      <Name>Shane.Church.StirlingMoney.Core.SterlingDb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shane.Church.StirlingMoney.Core.WP\Shane.Church.StirlingMoney.Core.WP.csproj">
       <Project>{3FBC6023-4FDA-40DE-9937-6CA019ADD09A}</Project>
       <Name>Shane.Church.StirlingMoney.Core.WP</Name>

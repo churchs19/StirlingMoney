@@ -2,38 +2,49 @@
 using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels.Shared;
 using Shane.Church.StirlingMoney.Strings;
+using Shane.Church.Utility.Core.Command;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class CategoryViewModel : ObservableObject
+	public class CategoryViewModel : ObservableObject, ICommittable
 	{
-		public CategoryViewModel()
+		private IRepository<Category, Guid> _categoryRepository;
+		private INavigationService _navService;
+
+		public CategoryViewModel(IRepository<Category, Guid> categoryRepo, INavigationService navService)
 		{
+			if (categoryRepo == null) throw new ArgumentNullException("categoryRepo");
+			_categoryRepository = categoryRepo;
+			if (navService == null) throw new ArgumentNullException("navService");
+			_navService = navService;
+
 			EditCommand = new RelayCommand(NavigateToEdit);
-			DeleteCommand = new RelayCommand(DeleteItem);
-			SaveCommand = new RelayCommand(SaveItem);
+			DeleteCommand = new AsyncRelayCommand(o => DeleteItem());
+			SaveCommand = new AsyncRelayCommand(o => SaveItem());
+		}
+
+		public CategoryViewModel()
+			: this(KernelService.Kernel.Get<IRepository<Category, Guid>>(), KernelService.Kernel.Get<INavigationService>())
+		{
 		}
 
 		public CategoryViewModel(Category c)
+			: this(KernelService.Kernel.Get<IRepository<Category, Guid>>(), KernelService.Kernel.Get<INavigationService>())
 		{
-			_id = c.Id;
 			_isDeleted = c.IsDeleted;
 			CategoryId = c.CategoryId;
 			CategoryName = c.CategoryName;
-			EditCommand = new RelayCommand(NavigateToEdit);
-			DeleteCommand = new RelayCommand(DeleteItem);
-			SaveCommand = new RelayCommand(SaveItem);
 		}
 
-		private long? _id = null;
-		private bool? _isDeleted = null;
+		private bool _isDeleted;
 
 		private Guid _categoryId;
 		public Guid CategoryId
@@ -55,17 +66,15 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public void LoadData(Guid categoryId)
+		public async Task LoadData(Guid categoryId)
 		{
 			if (categoryId != Guid.Empty)
 			{
-				var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
-				var category = categoryRepository.GetFilteredEntries(it => it.CategoryId == categoryId).FirstOrDefault();
+				var category = await _categoryRepository.GetEntryAsync(categoryId);
 				if (category != null)
 				{
 					CategoryId = category.CategoryId;
 					CategoryName = category.CategoryName;
-					_id = category.Id;
 					_isDeleted = category.IsDeleted;
 				}
 			}
@@ -87,16 +96,14 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public void NavigateToEdit()
 		{
-			var navService = KernelService.Kernel.Get<INavigationService>();
-			navService.Navigate<CategoryViewModel>(this.CategoryId);
+			_navService.Navigate<CategoryViewModel>(this.CategoryId);
 		}
 
 		public ICommand DeleteCommand { get; private set; }
 
-		public void DeleteItem()
+		public async Task DeleteItem()
 		{
-			var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
-			categoryRepository.DeleteEntry(new Category() { CategoryId = CategoryId, Id = _id });
+			await _categoryRepository.DeleteEntryAsync(new Category() { CategoryId = CategoryId });
 		}
 
 		public ICommand SaveCommand { get; private set; }
@@ -104,26 +111,28 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public delegate void ValidationFailedHandler(object sender, ValidationFailedEventArgs args);
 		public event ValidationFailedHandler ValidationFailed;
 
-		public void SaveItem()
+		public async Task SaveItem()
 		{
 			var errors = Validate();
 			if (errors.Count == 0)
 			{
-				var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
-				var navService = KernelService.Kernel.Get<INavigationService>();
-				Category c = new Category() { CategoryId = CategoryId, CategoryName = CategoryName, Id = _id, IsDeleted = _isDeleted };
-				c = categoryRepository.AddOrUpdateEntry(c);
+				Category c = new Category() { CategoryId = CategoryId, CategoryName = CategoryName, IsDeleted = _isDeleted };
+				c = await _categoryRepository.AddOrUpdateEntryAsync(c);
 				CategoryId = c.CategoryId;
-				_id = c.Id;
 
-				if (navService.CanGoBack)
-					navService.GoBack();
+				if (_navService.CanGoBack)
+					_navService.GoBack();
 			}
 			else
 			{
 				if (ValidationFailed != null)
 					ValidationFailed(this, new ValidationFailedEventArgs(errors));
 			}
+		}
+
+		public async Task Commit()
+		{
+			await _categoryRepository.Commit();
 		}
 	}
 }

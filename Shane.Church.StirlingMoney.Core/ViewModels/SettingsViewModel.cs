@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels.Shared;
 using Shane.Church.StirlingMoney.Strings;
@@ -10,20 +11,21 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class SettingsViewModel : ObservableObject
+	public class SettingsViewModel : ObservableObject, ICommittable
 	{
 		private ISettingsService _settings;
 		private INavigationService _navService;
-		private IRepository<AppSyncUser> _userRepository;
+		private IRepository<AppSyncUser, string> _userRepository;
 		private SyncService _syncService;
 
 		public event ActionCompleteEventHandler AddActionCompleted;
 
-		public SettingsViewModel(ISettingsService settings, INavigationService navService, IRepository<AppSyncUser> userRepository, SyncService syncService)
+		public SettingsViewModel(ISettingsService settings, INavigationService navService, IRepository<AppSyncUser, string> userRepository, SyncService syncService)
 		{
 			if (settings == null) throw new ArgumentNullException("settings");
 			_settings = settings;
@@ -43,7 +45,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			};
 
 			SaveCommand = new RelayCommand(SaveSettings);
-			AddEntryCommand = new RelayCommand(AddEntry);
+			AddEntryCommand = new AsyncRelayCommand(o => AddEntry());
 		}
 
 		private ListDataItem _accountSort;
@@ -131,7 +133,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public void LoadData()
+		public async Task LoadData()
 		{
 			AccountSort = (from a in AccountSortOptions
 						   where (int)a.Value == _settings.LoadSetting<int>("AccountSort")
@@ -141,7 +143,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			Password = _settings.LoadSetting<string>("Password");
 			EnableSync = _settings.LoadSetting<bool>("EnableSync");
 
-			foreach (var u in _userRepository.GetAllEntries())
+			var users = await _userRepository.GetAllEntriesAsync();
+			foreach (var u in users)
 			{
 				var authUser = KernelService.Kernel.Get<SettingsAppSyncUserViewModel>();
 				authUser.LoadEntry(u);
@@ -182,13 +185,13 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			return !string.IsNullOrEmpty(NewUserEmail);
 		}
 
-		public void AddEntry()
+		public async Task AddEntry()
 		{
 			if (IsNewEntryValid())
 			{
 				var newEntry = KernelService.Kernel.Get<AppSyncUser>();
 				newEntry.UserEmail = this.NewUserEmail;
-				newEntry = _userRepository.AddOrUpdateEntry(newEntry);
+				newEntry = await _userRepository.AddOrUpdateEntryAsync(newEntry);
 				var evm = KernelService.Kernel.Get<SettingsAppSyncUserViewModel>();
 				evm.LoadEntry(newEntry);
 				evm.RemoveActionCompleted += (sender, args) =>
@@ -245,5 +248,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		}
 
 		public ICommand SyncFeedbackCommand { get; protected set; }
+
+		public async Task Commit()
+		{
+			await _userRepository.Commit();
+		}
 	}
 }

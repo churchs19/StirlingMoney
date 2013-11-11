@@ -2,10 +2,12 @@
 using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Strings;
+using Shane.Church.Utility.Core.Command;
 using System;
-using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
@@ -13,11 +15,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 	public class AccountTileViewModel : ObservableObject
 	{
 		private ITileService<Account> _tileService;
-		private IRepository<Account> _accountRepository;
+		private IRepository<Account, Guid> _accountRepository;
 		private INavigationService _navService;
 		protected string _imageUri;
 
-		public AccountTileViewModel(ITileService<Account> tileService, IRepository<Account> accountRepository, INavigationService navService)
+		public AccountTileViewModel(ITileService<Account> tileService, IRepository<Account, Guid> accountRepository, INavigationService navService)
 		{
 			if (tileService == null) throw new ArgumentNullException("tileService");
 			_tileService = tileService;
@@ -27,7 +29,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_navService = navService;
 
 			EditCommand = new RelayCommand(Edit);
-			DeleteCommand = new RelayCommand(Delete);
+			DeleteCommand = new AsyncRelayCommand(o => Delete());
 			PinCommand = new RelayCommand(Pin);
 			TransactionsCommand = new RelayCommand(Transactions);
 
@@ -131,11 +133,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public delegate void AccountDeletedHandler(object sender);
 		public event AccountDeletedHandler AccountDeleted;
 
-		public void Delete()
+		public async Task Delete()
 		{
 			Account acct = KernelService.Kernel.Get<Account>();
 			acct.AccountId = this.AccountId;
-			_accountRepository.DeleteEntry(acct);
+			await _accountRepository.DeleteEntryAsync(acct);
 			if (AccountDeleted != null)
 				AccountDeleted(this);
 		}
@@ -154,9 +156,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_navService.Navigate<TransactionListViewModel>(this.AccountId);
 		}
 
-		public virtual void LoadData(Guid accountId)
+		public virtual async Task LoadData(Guid accountId)
 		{
-			Account a = _accountRepository.GetFilteredEntries(it => it.AccountId == accountId).FirstOrDefault();
+			Account a = await _accountRepository.GetEntryAsync(accountId);
 			if (a != null)
 			{
 				AccountId = accountId;

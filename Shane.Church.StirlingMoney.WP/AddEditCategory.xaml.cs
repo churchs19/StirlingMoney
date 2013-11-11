@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -23,7 +24,7 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeApplicationBar();
 		}
 
-		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+		protected override async void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
 			FlurryWP8SDK.Api.LogPageView();
 			_model = new CategoryViewModel();
@@ -37,19 +38,32 @@ namespace Shane.Church.StirlingMoney.WP
 					MessageBox.Show(errorMessages, Shane.Church.StirlingMoney.Strings.Resources.InvalidValuesTitle, MessageBoxButton.OK);
 				}
 			};
+
+			base.OnNavigatedTo(e);
+
+			Guid id;
 			try
 			{
-				var id = PhoneNavigationService.DecodeNavigationParameter<Guid>(this.NavigationContext);
-				_model.LoadData(id);
+				id = PhoneNavigationService.DecodeNavigationParameter<Guid>(this.NavigationContext);
 			}
 			catch (KeyNotFoundException)
 			{
-				_model.LoadData(Guid.Empty);
+				id = Guid.Empty;
 			}
 
-			this.DataContext = _model;
+			await _model.LoadData(id);
 
-			base.OnNavigatedTo(e);
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				this.DataContext = _model;
+			});
+		}
+
+		protected override void OnNavigatedFrom(NavigationEventArgs e)
+		{
+			if (e.NavigationMode == NavigationMode.Back)
+				_model.Commit().Wait(1000);
+			base.OnNavigatedFrom(e);
 		}
 
 		#region Ad Control

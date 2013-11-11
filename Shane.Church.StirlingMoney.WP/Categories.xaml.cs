@@ -5,6 +5,7 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using System;
+using System.Windows;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -25,11 +26,15 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			FlurryWP8SDK.Api.LogPageView();
 			_model = KernelService.Kernel.Get<CategoryListViewModel>();
-			this.DataContext = _model;
 
 			base.OnNavigatedTo(e);
 
 			await _model.LoadData();
+
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				this.DataContext = _model;
+			});
 		}
 
 		#region Ad Control

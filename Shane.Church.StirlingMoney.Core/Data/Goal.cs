@@ -1,37 +1,32 @@
-﻿using Newtonsoft.Json;
-using Ninject;
+﻿using Ninject;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.Data
 {
 	public class Goal
 	{
-		public long? Id { get; set; }
 		public Guid GoalId { get; set; }
 		public string GoalName { get; set; }
 		public Guid AccountId { get; set; }
 		public double Amount { get; set; }
 		public double InitialBalance { get; set; }
-		public DateTime TargetDate { get; set; }
-		public DateTime StartDate { get; set; }
+		public DateTimeOffset TargetDate { get; set; }
+		public DateTimeOffset StartDate { get; set; }
 		public DateTimeOffset EditDateTime { get; set; }
-		public bool? IsDeleted { get; set; }
+		public bool IsDeleted { get; set; }
 
-		[JsonIgnore]
-		public Account Account
+		public async Task<Account> GetAccount()
 		{
-			get
+			try
 			{
-				try
-				{
-					return KernelService.Kernel.Get<IRepository<Account>>().GetFilteredEntries(it => it.AccountId == AccountId).FirstOrDefault();
-				}
-				catch
-				{
-					return null;
-				}
+				return await KernelService.Kernel.Get<IRepository<Account, Guid>>().GetEntryAsync(this.AccountId);
+			}
+			catch
+			{
+				return null;
 			}
 		}
 	}

@@ -1,25 +1,26 @@
 ﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels.Shared;
 using Shane.Church.StirlingMoney.Strings;
+using Shane.Church.Utility.Core.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class AddEditGoalViewModel : ObservableObject
+	public class AddEditGoalViewModel : ObservableObject, ICommittable
 	{
 		private INavigationService _navService;
-		private IRepository<Goal> _goalRepository;
-		private IRepository<Account> _accountRepository;
+		private IRepository<Goal, Guid> _goalRepository;
+		private IRepository<Account, Guid> _accountRepository;
 
-		public AddEditGoalViewModel(INavigationService navService, IRepository<Goal> goalRepository, IRepository<Account> accountRepository)
+		public AddEditGoalViewModel(INavigationService navService, IRepository<Goal, Guid> goalRepository, IRepository<Account, Guid> accountRepository)
 		{
 			if (navService == null) throw new ArgumentNullException("navService");
 			_navService = navService;
@@ -33,11 +34,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				RaisePropertyChanged(() => Accounts);
 			};
-			SaveCommand = new RelayCommand(SaveGoal);
+			SaveCommand = new AsyncRelayCommand(o => SaveGoal());
 		}
 
-		private long? _id = null;
-		private bool? _isDeleted = null;
+		private bool _isDeleted = false;
 
 		private Guid? _goalId;
 		public Guid? GoalId
@@ -93,7 +93,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		private DateTime _startDate;
+		private DateTimeOffset _startDate;
 
 		private DateTime _targetDate;
 		public DateTime TargetDate
@@ -120,23 +120,22 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public void LoadData(Guid? goalId)
+		public async Task LoadData(Guid? goalId)
 		{
-			var accts = _accountRepository.GetAllEntries().Select(it => it.AccountName);
-			foreach (var a in accts)
+			var acctList = await _accountRepository.GetAllEntriesAsync();
+			foreach (var a in acctList.Select(it => it.AccountName))
 				Accounts.Add(a);
 
 			if (goalId.HasValue && !goalId.Equals(Guid.Empty))
 			{
-				var goal = _goalRepository.GetFilteredEntries(it => it.GoalId == goalId.Value).FirstOrDefault();
+				var goal = await _goalRepository.GetEntryAsync(goalId.Value);
 				if (goal != null)
 				{
 					GoalId = goal.GoalId;
 					Name = goal.GoalName;
 					_startDate = goal.StartDate;
-					TargetDate = goal.TargetDate;
+					TargetDate = DateTime.SpecifyKind(goal.TargetDate.UtcDateTime.Date, DateTimeKind.Utc);
 					Amount = goal.Amount;
-					_id = goal.Id;
 					_isDeleted = goal.IsDeleted;
 				}
 			}
@@ -147,7 +146,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public IList<string> Validate()
+		public async Task<IList<string>> Validate()
 		{
 			List<string> validationErrors = new List<string>();
 
@@ -170,11 +169,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				validationErrors.Add(String.Format(Resources.GoalDateComparisonError, _startDate));
 			}
 
-			var account = _accountRepository.GetFilteredEntries(it => it.AccountName == Account).FirstOrDefault();
+			var account = await _accountRepository.GetFilteredEntriesAsync(it => it.AccountName == Account);
 			double accountBalance = 0;
-			if (account != null)
+			if (account.FirstOrDefault() != null)
 			{
-				accountBalance = account.AccountBalance;
+				accountBalance = account.FirstOrDefault().AccountBalance;
 			}
 			if (Amount <= accountBalance)
 			{
@@ -189,9 +188,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public delegate void ValidationFailedHandler(object sender, ValidationFailedEventArgs args);
 		public event ValidationFailedHandler ValidationFailed;
 
-		public void SaveGoal()
+		public async Task SaveGoal()
 		{
-			var errors = Validate();
+			var errors = await Validate();
 			if (errors.Count == 0)
 			{
 				Goal g = new Goal();
@@ -205,17 +204,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				{
 					g.StartDate = _startDate;
 				}
-				g.TargetDate = TargetDate;
+				g.TargetDate = new DateTimeOffset(DateTime.SpecifyKind(TargetDate, DateTimeKind.Utc));
 				g.Amount = Amount;
-				g.Id = _id;
 				g.IsDeleted = _isDeleted;
-				var account = _accountRepository.GetFilteredEntries(it => it.AccountName == Account).FirstOrDefault();
+				var accountQuery = await _accountRepository.GetFilteredEntriesAsync(it => it.AccountName == Account);
+				var account = accountQuery.FirstOrDefault();
 				g.AccountId = account.AccountId;
-				g.InitialBalance = account.InitialBalance + KernelService.Kernel.Get<ITransactionSum>().GetSumByAccount(account.AccountId);
+				g.InitialBalance = account.AccountBalance;
 
-				g = _goalRepository.AddOrUpdateEntry(g);
+				g = await _goalRepository.AddOrUpdateEntryAsync(g);
 				GoalId = g.GoalId;
-				_id = g.Id;
 				_isDeleted = g.IsDeleted;
 
 				if (_navService.CanGoBack)
@@ -226,6 +224,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				if (ValidationFailed != null)
 					ValidationFailed(this, new ValidationFailedEventArgs(errors));
 			}
+		}
+
+		public async Task Commit()
+		{
+			await _goalRepository.Commit();
 		}
 	}
 }

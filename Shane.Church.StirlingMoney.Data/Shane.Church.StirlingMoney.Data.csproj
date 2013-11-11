@@ -120,6 +120,12 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Net" />
     <Reference Include="mscorlib.extensions" />
+    <Reference Include="Wintellect.Sterling.Core">
+      <HintPath>..\lib\Wintellect.SterlingDB\Wintellect.Sterling.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Wintellect.Sterling.WP7">
+      <HintPath>..\lib\Wintellect.SterlingDB\WP7\Wintellect.Sterling.WP7.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Update\v2\Account.cs" />

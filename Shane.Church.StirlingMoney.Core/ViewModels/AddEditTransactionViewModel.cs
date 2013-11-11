@@ -1,40 +1,62 @@
 ﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
-using Shane.Church.StirlingMoney.Strings;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels.Shared;
+using Shane.Church.StirlingMoney.Strings;
+using Shane.Church.Utility.Core.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class AddEditTransactionViewModel : ObservableObject
+	public class AddEditTransactionViewModel : ObservableObject, ICommittable
 	{
 		private TransactionType _transactionType = TransactionType.Unknown;
+		private IRepository<Account, Guid> _accountRepository;
+		private IRepository<Transaction, Guid> _transactionRepository;
+		private IRepository<Category, Guid> _categoryRepository;
+		private INavigationService _navService;
 
-		public AddEditTransactionViewModel()
+		public AddEditTransactionViewModel(IRepository<Account, Guid> accountRepo, IRepository<Transaction, Guid> transactionRepo, IRepository<Category, Guid> categoryRepo, INavigationService navService)
 		{
+			if (accountRepo == null) throw new ArgumentNullException("accountRepo");
+			_accountRepository = accountRepo;
+			if (transactionRepo == null) throw new ArgumentNullException("transactionRepo");
+			_transactionRepository = transactionRepo;
+			if (categoryRepo == null) throw new ArgumentNullException("categoryRepo");
+			_categoryRepository = categoryRepo;
+			if (navService == null) throw new ArgumentNullException("navService");
+			_navService = navService;
+
 			_categories = new ObservableCollection<string>();
 			_categories.CollectionChanged += (s, e) =>
-				{
-					RaisePropertyChanged(() => Categories);
-				};
+			{
+				RaisePropertyChanged(() => Categories);
+			};
 			_transferAccounts = new ObservableCollection<string>();
 			_transferAccounts.CollectionChanged += (s, e) =>
-				{
-					RaisePropertyChanged(() => TransferAccounts);
-				};
-			SaveCommand = new RelayCommand(SaveTransaction);
+			{
+				RaisePropertyChanged(() => TransferAccounts);
+			};
+			SaveCommand = new AsyncRelayCommand(o => SaveTransaction());
 			Amount = 0;
 		}
 
-		private long? _id;
-		private bool? _isDeleted;
+		public AddEditTransactionViewModel()
+			: this(KernelService.Kernel.Get<IRepository<Account, Guid>>(),
+				KernelService.Kernel.Get<IRepository<Transaction, Guid>>(),
+				KernelService.Kernel.Get<IRepository<Category, Guid>>(),
+				KernelService.Kernel.Get<INavigationService>())
+		{
+		}
+
+		private bool _isDeleted;
 
 		private Guid _transactionId;
 		public Guid TransactionId
@@ -215,20 +237,18 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public void LoadData(AddEditTransactionParams param)
+		public async Task LoadData(AddEditTransactionParams param)
 		{
 			this._transactionType = param.Type;
 			AccountId = param.AccountId;
-			var transactionRepository = KernelService.Kernel.Get<IRepository<Transaction>>();
-			var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
-			var accountRepository = KernelService.Kernel.Get<IRepository<Account>>();
 
 			if (param.TransactionId == Guid.Empty)
 			{
 				TransactionDate = DateTime.Today;
 				if (_transactionType == TransactionType.Check)
 				{
-					var checks = transactionRepository.GetFilteredEntries(it => it.CheckNumber.HasValue).Select(it => it.CheckNumber);
+					var checksQuery = await _transactionRepository.GetFilteredEntriesAsync(it => it.CheckNumber.HasValue);
+					var checks = checksQuery.Select(it => it.CheckNumber);
 					if (checks.Any())
 					{
 						CheckNumber = checks.Max() + 1;
@@ -241,20 +261,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 			else
 			{
-				Transaction t = transactionRepository.GetFilteredEntries(it => it.TransactionId == param.TransactionId).FirstOrDefault();
+				Transaction t = await _transactionRepository.GetEntryAsync(param.TransactionId);
 				if (t != null)
 				{
-					_id = t.Id;
 					_isDeleted = t.IsDeleted;
 					TransactionId = t.TransactionId;
-					TransactionDate = t.TransactionDate;
+					TransactionDate = DateTime.SpecifyKind(t.TransactionDate.Date, DateTimeKind.Utc);
 					Amount = t.Amount;
 					Location = t.Location;
 					Note = t.Note;
 					Posted = t.Posted;
-					if (t.CategoryId.HasValue)
+					if (!t.CategoryId.Equals(Guid.Empty))
 					{
-						Category = categoryRepository.GetFilteredEntries(it => it.CategoryId == t.CategoryId.Value).Select(it => it.CategoryName).FirstOrDefault();
+						var cat = await _categoryRepository.GetEntryAsync(t.CategoryId);
+						Category = cat.CategoryName;
 					}
 					else
 					{
@@ -266,7 +286,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 			if (param.Type == TransactionType.Unknown)
 			{
-				Transaction t = transactionRepository.GetFilteredEntries(it => it.TransactionId == param.TransactionId).FirstOrDefault();
+				Transaction t = await _transactionRepository.GetEntryAsync(param.TransactionId);
 				if (t.CheckNumber.HasValue)
 					_transactionType = TransactionType.Check;
 				else if (t.Location != null && (t.Location.Contains(Resources.TransferFromComparisonString) || t.Location.Contains(Resources.TransferToComparisonString)))
@@ -280,13 +300,15 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				Amount = -Amount;
 
 			Categories.Clear();
-			foreach (var c in categoryRepository.GetAllEntries().OrderBy(it => it.CategoryName).Select(it => it.CategoryName))
+			var catQuery = await _categoryRepository.GetAllEntriesAsync();
+			foreach (var c in catQuery.OrderBy(it => it.CategoryName).Select(it => it.CategoryName))
 				Categories.Add(c);
 			if (Categories.Count > 0)
 				Categories.Insert(0, "");
 
 			TransferAccounts.Clear();
-			foreach (var a in accountRepository.GetAllEntries().OrderBy(it => it.AccountName).Select(it => it.AccountName))
+			var acctQuery = await _accountRepository.GetAllEntriesAsync();
+			foreach (var a in acctQuery.OrderBy(it => it.AccountName).Select(it => it.AccountName))
 				TransferAccounts.Add(a);
 			if (TransferAccounts.Count > 0)
 				TransferAccounts.Insert(0, "");
@@ -318,28 +340,26 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public delegate void ValidationFailedHandler(object sender, ValidationFailedEventArgs args);
 		public event ValidationFailedHandler ValidationFailed;
 
-		public void SaveTransaction()
+		public async Task SaveTransaction()
 		{
 			var errors = Validate();
 			if (errors.Count == 0)
 			{
-				var transactionRepository = KernelService.Kernel.Get<IRepository<Transaction>>();
-				var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
-				var navService = KernelService.Kernel.Get<INavigationService>();
-
 				Transaction transaction = new Transaction();
-				transaction.Id = _id;
 				transaction.IsDeleted = _isDeleted;
 				transaction.TransactionId = TransactionId;
-				transaction.TransactionDate = TransactionDate;
+				transaction.TransactionDate = new DateTimeOffset(DateTime.SpecifyKind(TransactionDate, DateTimeKind.Utc));
 				transaction.Note = Note;
 				transaction.Posted = Posted;
 				transaction.AccountId = AccountId;
 				Guid categoryId = Guid.Empty;
 				if (!string.IsNullOrEmpty(Category))
 				{
-					categoryId = categoryRepository.GetFilteredEntries(it => it.CategoryName == Category).Select(it => it.CategoryId).FirstOrDefault();
+					var catQuery = await _categoryRepository.GetFilteredEntriesAsync(it => it.CategoryName == Category);
+					categoryId = catQuery.Select(it => it.CategoryId).FirstOrDefault();
 				}
+				else
+					categoryId = Guid.Empty;
 				switch (_transactionType)
 				{
 					case TransactionType.Check:
@@ -374,22 +394,23 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 							if (TransactionId == Guid.Empty)
 							{
-								transaction = transactionRepository.AddOrUpdateEntry(transaction);
+								transaction = await _transactionRepository.AddOrUpdateEntryAsync(transaction);
 							}
 
-							var accountRepository = KernelService.Kernel.Get<IRepository<Account>>();
+							var accountRepository = KernelService.Kernel.Get<IRepository<Account, Guid>>();
 
 							Transaction destTransaction = new Transaction();
-							destTransaction.TransactionDate = TransactionDate;
+							destTransaction.TransactionDate = new DateTimeOffset(DateTime.SpecifyKind(TransactionDate, DateTimeKind.Utc));
 							destTransaction.Note = Note;
 							destTransaction.Posted = Posted;
-							destTransaction.AccountId = accountRepository.GetFilteredEntries(it => it.AccountName == TransferAccount).Select(it => it.AccountId).FirstOrDefault();
+							var transAcctQuery = await accountRepository.GetFilteredEntriesAsync(it => it.AccountName == TransferAccount);
+							destTransaction.AccountId = transAcctQuery.Select(it => it.AccountId).FirstOrDefault();
 							destTransaction.Amount = Amount;
-							var accountName = accountRepository.GetFilteredEntries(it => it.AccountId == AccountId).Select(it => it.AccountName).FirstOrDefault();
+							var acct = await accountRepository.GetEntryAsync(AccountId);
+							var accountName = acct.AccountName;
 							destTransaction.Location = string.Format(Resources.TransferFromLocation, accountName);
-							destTransaction.TransactionId = Guid.NewGuid();
 
-							transactionRepository.AddOrUpdateEntry(destTransaction);
+							destTransaction = await _transactionRepository.AddOrUpdateEntryAsync(destTransaction);
 						}
 						break;
 					case TransactionType.Withdrawal:
@@ -403,20 +424,24 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 				if (_transactionType != TransactionType.Transfer)
 				{
-					var t = transactionRepository.AddOrUpdateEntry(transaction);
+					var t = await _transactionRepository.AddOrUpdateEntryAsync(transaction);
 					TransactionId = t.TransactionId;
-					_id = t.Id;
 					_isDeleted = t.IsDeleted;
 				}
 
-				if (navService.CanGoBack)
-					navService.GoBack();
+				if (_navService.CanGoBack)
+					_navService.GoBack();
 			}
 			else
 			{
 				if (ValidationFailed != null)
 					ValidationFailed(this, new ValidationFailedEventArgs(errors));
 			}
+		}
+
+		public async Task Commit()
+		{
+			await _transactionRepository.Commit();
 		}
 	}
 }

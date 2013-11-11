@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.Data
 {
-	public class TransactionRepository : Core.Data.IRepository<Core.Data.Transaction>, Core.Data.ITransactionSum
+	public class TransactionRepository : Core.Repositories.IRepository<Core.Data.Transaction>, Core.Data.ITransactionSum
 	{
 		Shane.Church.StirlingMoney.Data.v3.StirlingMoneyDataContext _context;
 

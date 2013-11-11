@@ -2,7 +2,9 @@
 using Microsoft.WindowsAzure.MobileServices;
 using Newtonsoft.Json.Linq;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.StirlingMoney.Core.SterlingDb;
 using Shane.Church.StirlingMoney.Core.WP;
 using Shane.Church.StirlingMoney.Core.WP7.Extensions;
 using Shane.Church.StirlingMoney.Strings;
@@ -10,25 +12,31 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
+using Wintellect.Sterling.Core;
+using Wintellect.Sterling.WP7.IsolatedStorage;
 
 namespace Shane.Church.StirlingMoney.Core.WP7.Services
 {
 	public class WP7SyncService : SyncService
 	{
 		LiveAuthClient _liveIdClient = new LiveAuthClient(LiveConfig.ClientId);
+		SterlingEngine _engine;
+		IsoStorageHelper _helper = new IsoStorageHelper();
 
 		public WP7SyncService(IMobileServiceClient client,
 							ISettingsService settings,
 							ILoggingService log,
-							IRepository<Account> accounts,
-							IRepository<AppSyncUser> users,
-							IRepository<Budget> budgets,
-							IRepository<Goal> goals,
-							IRepository<Category> categories,
-							IRepository<Transaction> transactions)
+							IRepository<Account, Guid> accounts,
+							IRepository<AppSyncUser, string> users,
+							IRepository<Budget, Guid> budgets,
+							IRepository<Goal, Guid> goals,
+							IRepository<Category, Guid> categories,
+							IRepository<Transaction, Guid> transactions,
+							SterlingEngine engine)
 			: base(client, settings, log, accounts, users, budgets, goals, categories, transactions)
 		{
-
+			if (engine == null) throw new ArgumentNullException("engine");
+			_engine = engine;
 		}
 
 		private LiveConnectSession _session;
@@ -170,6 +178,27 @@ namespace Shane.Church.StirlingMoney.Core.WP7.Services
 				}
 			});
 			return tcs.Task;
+		}
+
+		public override async Task BackupDatabase()
+		{
+			using (var bw = _helper.GetWriter("DbBackup"))
+			{
+				await _engine.SterlingDatabase.BackupAsync<StirlingMoneyDatabaseInstance>(bw);
+			}
+		}
+
+		public override async Task RestoreDatabase()
+		{
+			using (var br = _helper.GetReader("DbBackup"))
+			{
+				await _engine.SterlingDatabase.RestoreAsync<StirlingMoneyDatabaseInstance>(br);
+			}
+		}
+
+		public override Task RemoveDatabaseBackup()
+		{
+			return TaskEx.Run(() => _helper.Purge("DbBackup"));
 		}
 	}
 }

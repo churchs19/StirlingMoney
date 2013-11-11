@@ -159,6 +159,12 @@
       <HintPath>..\lib\RCWP\2013.3.1016.2040\Telerik.Windows.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Wintellect.Sterling.Core">
+      <HintPath>..\lib\Wintellect.SterlingDB\Wintellect.Sterling.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Wintellect.Sterling.WP7">
+      <HintPath>..\lib\Wintellect.SterlingDB\WP7\Wintellect.Sterling.WP7.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.xaml.cs">
@@ -350,6 +356,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Core.SterlingDb\Shane.Church.StirlingMoney.Core.SterlingDb.csproj">
+      <Project>{7EDFE360-EEFA-42DC-A5DA-DCEFFA32DEFE}</Project>
+      <Name>Shane.Church.StirlingMoney.Core.SterlingDb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shane.Church.StirlingMoney.Core.WP7\Shane.Church.StirlingMoney.Core.WP7.csproj">
       <Project>{A31F7CD4-5CE3-4571-9FBF-4B2AEDEB91E2}</Project>
       <Name>Shane.Church.StirlingMoney.Core.WP7</Name>

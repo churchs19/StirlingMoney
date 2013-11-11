@@ -1,8 +1,10 @@
 ﻿using GalaSoft.MvvmLight;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,10 +13,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class AccountListViewModel : ObservableObject
 	{
-		private IRepository<Account> _accountRepository;
+		private IRepository<Account, Guid> _accountRepository;
 		private ISettingsService _settings;
 
-		public AccountListViewModel(IRepository<Account> accountRepository, ISettingsService settings)
+		public AccountListViewModel()
+			: this(KernelService.Kernel.Get<IRepository<Account, Guid>>(), KernelService.Kernel.Get<ISettingsService>())
+		{
+
+		}
+
+		public AccountListViewModel(IRepository<Account, Guid> accountRepository, ISettingsService settings)
 		{
 			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
 			_accountRepository = accountRepository;
@@ -55,23 +63,35 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			if (!_accountsLoaded || forceUpdate)
 			{
-				Accounts.Clear();
 				var sort = _settings.LoadSetting<int>("AccountSort");
 				var entries = await _accountRepository.GetAllEntriesAsync();
+				var entriesList = entries.ToList();
+				List<Account> sortedEntries;
 				if (sort == 0)
 				{
-					entries = entries.OrderBy(it => it.AccountName);
+					sortedEntries = entriesList.OrderBy(it => it.AccountName).ToList();
 				}
 				else
 				{
-					entries = entries.OrderByDescending(it => it.Transactions.Count()).ThenBy(it => it.AccountName);
+					sortedEntries = entriesList.OrderByDescending(it => it.TransactionCount).ThenBy(it => it.AccountName).ToList();
 				}
-				foreach (var a in entries)
+				foreach (var a in Accounts.Where(it => !sortedEntries.Select(e => e.AccountId).Contains(it.AccountId)))
+					Accounts.Remove(a);
+				foreach (var a in sortedEntries)
 				{
-					var tile = KernelService.Kernel.Get<AccountTileViewModel>();
+					var acctTileQuery = Accounts.Where(it => it.AccountId == a.AccountId);
+					AccountTileViewModel tile;
+					if (acctTileQuery.Any())
+					{
+						tile = acctTileQuery.FirstOrDefault();
+					}
+					else
+					{
+						tile = KernelService.Kernel.Get<AccountTileViewModel>();
+						tile.AccountDeleted += tile_AccountDeleted;
+						Accounts.Add(tile);
+					}
 					tile.LoadData(a);
-					tile.AccountDeleted += tile_AccountDeleted;
-					Accounts.Add(tile);
 				}
 				_accountsLoaded = true;
 			}

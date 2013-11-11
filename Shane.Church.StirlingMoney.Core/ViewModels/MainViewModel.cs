@@ -2,25 +2,27 @@
 using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.Utility.Core.Command;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class MainViewModel : ObservableObject
+	public class MainViewModel : ObservableObject, ICommittable
 	{
-		private IRepository<Budget> _budgetRepository;
-		private IRepository<Goal> _goalRepository;
+		private IRepository<Budget, Guid> _budgetRepository;
+		private IRepository<Goal, Guid> _goalRepository;
 		private INavigationService _navService;
 		private SyncService _syncService;
 		private ILoggingService _logService;
 		private ISettingsService _settingsService;
 
-		public MainViewModel(IRepository<Budget> budgetRepository, IRepository<Goal> goalRepository, INavigationService navService, SyncService syncService, ILoggingService logService, ISettingsService settingsService)
+		public MainViewModel(IRepository<Budget, Guid> budgetRepository, IRepository<Goal, Guid> goalRepository, INavigationService navService, SyncService syncService, ILoggingService logService, ISettingsService settingsService)
 		{
 			if (budgetRepository == null) throw new ArgumentNullException("budgetRepository");
 			_budgetRepository = budgetRepository;
@@ -67,14 +69,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				SyncCompleted();
 		}
 
-		public Task Initialize()
-		{
-			return Task.Factory.StartNew(() =>
-			{
-				SyncCommand.Execute(null);
-			});
-		}
-
 		private AccountListViewModel _accounts;
 		public AccountListViewModel Accounts
 		{
@@ -101,7 +95,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 			}
+
+			await TaskEx.Yield();
+
 			await Accounts.LoadData(forceUpdate);
+
 			if (BusyChanged != null)
 			{
 				BusyChanged(new BusyEventArgs() { IsBusy = false });
@@ -116,14 +114,27 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				{
 					BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 				}
-				Budgets.Clear();
+
+				await TaskEx.Yield();
+
 				var budgets = await _budgetRepository.GetAllEntriesAsync();
-				foreach (var b in budgets)
+				var budgetList = budgets.ToList();
+				foreach (var b in Budgets.Where(it => !budgets.Select(z => z.BudgetId == it.BudgetId).Any()))
+					Budgets.Remove(b);
+				foreach (var b in budgetList)
 				{
-					var budgetModel = KernelService.Kernel.Get<BudgetSummaryViewModel>();
+					BudgetSummaryViewModel budgetModel;
+					if (Budgets.Where(it => it.BudgetId == b.BudgetId).Any())
+					{
+						budgetModel = Budgets.Where(it => it.BudgetId == b.BudgetId).First();
+					}
+					else
+					{
+						budgetModel = KernelService.Kernel.Get<BudgetSummaryViewModel>();
+						budgetModel.ItemDeleted += budgetModel_ItemDeleted;
+						Budgets.Add(budgetModel);
+					}
 					budgetModel.LoadData(b);
-					budgetModel.ItemDeleted += budgetModel_ItemDeleted;
-					Budgets.Add(budgetModel);
 				}
 				_budgetsLoaded = true;
 				if (BusyChanged != null)
@@ -151,14 +162,27 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				{
 					BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 				}
-				Goals.Clear();
+
+				await TaskEx.Yield();
+
 				var goals = await _goalRepository.GetAllEntriesAsync();
+				var goalList = goals.ToList();
+				foreach (var g in Goals.Where(it => !goalList.Where(z => z.GoalId == it.GoalId).Any()))
+					Goals.Remove(g);
 				foreach (var g in goals)
 				{
-					var goalModel = KernelService.Kernel.Get<GoalSummaryViewModel>();
-					goalModel.LoadData(g);
-					goalModel.ItemDeleted += goalModel_ItemDeleted;
-					Goals.Add(goalModel);
+					GoalSummaryViewModel goalModel;
+					if (Goals.Where(it => it.GoalId == g.GoalId).Any())
+					{
+						goalModel = Goals.Where(it => it.GoalId == g.GoalId).First();
+					}
+					else
+					{
+						goalModel = KernelService.Kernel.Get<GoalSummaryViewModel>();
+						goalModel.ItemDeleted += goalModel_ItemDeleted;
+						Goals.Add(goalModel);
+					}
+					await goalModel.LoadData(g);
 				}
 				_goalsLoaded = true;
 				if (BusyChanged != null)
@@ -200,6 +224,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				BusyChanged(new BusyEventArgs() { AnimationType = 7, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarSyncText });
 			}
+			await TaskEx.Yield();
+
 			await _syncService.Sync();
 		}
 
@@ -265,6 +291,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public void NavigateToAddGoal()
 		{
 			_navService.Navigate<AddEditGoalViewModel>();
+		}
+
+		public async Task Commit()
+		{
+			await _budgetRepository.Commit();
 		}
 	}
 }

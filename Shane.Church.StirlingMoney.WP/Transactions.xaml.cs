@@ -16,6 +16,8 @@ namespace Shane.Church.StirlingMoney.WP
 	{
 		TransactionListViewModel _model;
 		INavigationService _navService;
+		ILoggingService _log;
+		bool _isNew = true;
 
 		public Transactions()
 		{
@@ -24,8 +26,6 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeAdControl();
 
 			InitializeApplicationBar();
-
-			_navService = KernelService.Kernel.Get<INavigationService>();
 
 			GenericGroupDescriptor<TransactionListItemViewModel, DateTime> grouping = new GenericGroupDescriptor<TransactionListItemViewModel, DateTime>(it => it.TransactionDate.Date);
 			grouping.GroupFormatString = "{0:D}";
@@ -42,52 +42,53 @@ namespace Shane.Church.StirlingMoney.WP
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
 			FlurryWP8SDK.Api.LogPageView();
-			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.New)
-			{
-				_model = KernelService.Kernel.Get<TransactionListViewModel>();
-
-				try
-				{
-					var id = PhoneNavigationService.DecodeNavigationParameter<Guid>(this.NavigationContext);
-					_model.LoadData(id);
-				}
-				catch (KeyNotFoundException)
-				{
-					_model.LoadData(Guid.Empty);
-				}
-				Deployment.Current.Dispatcher.BeginInvoke(() =>
-				{
-					this.DataContext = _model;
-					this.jumpListTransactions.ItemsSource = _model.Transactions;
-				});
-			}
-			else
-			{
-				_model.RefreshData().ContinueWith((t) =>
-				{
-					Deployment.Current.Dispatcher.BeginInvoke(() =>
-					{
-						this.jumpListTransactions.RefreshData();
-					});
-				});
-			}
+			_log = KernelService.Kernel.Get<ILoggingService>();
+			_model = KernelService.Kernel.Get<TransactionListViewModel>();
+			_navService = KernelService.Kernel.Get<INavigationService>();
+			_model.BusyChanged += _model_BusyChanged;
 
 			base.OnNavigatedTo(e);
 		}
 
 		protected override void OnNavigatingFrom(System.Windows.Navigation.NavigatingCancelEventArgs e)
 		{
-			var account = _model.GetAccount();
-			if (account != null)
+			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.Back)
 			{
-				account.UpdateBalances().ContinueWith((it) =>
+				var account = _model.GetAccount().Result;
+				if (account != null)
 				{
-					base.OnNavigatingFrom(e);
+					_model.Commit().Wait(1000);
+				}
+			}
+			base.OnNavigatingFrom(e);
+		}
+
+		void _model_BusyChanged(Core.Data.BusyEventArgs args)
+		{
+			if (args.IsBusy)
+			{
+				Deployment.Current.Dispatcher.BeginInvoke(() =>
+				{
+					LoadingBusy.Content = args.Message;
+					LoadingBusy.AnimationStyle = (Telerik.Windows.Controls.AnimationStyle)args.AnimationType;
+					LoadingBusy.IsRunning = true;
+				});
+			}
+			else if (args.IsError)
+			{
+				Deployment.Current.Dispatcher.BeginInvoke(() =>
+				{
+					LoadingBusy.IsRunning = false;
+					_log.LogException(args.Error);
+					MessageBox.Show(args.Error.Message, Strings.Resources.GeneralErrorCaption, MessageBoxButton.OK);
 				});
 			}
 			else
 			{
-				base.OnNavigatingFrom(e);
+				Deployment.Current.Dispatcher.BeginInvoke(() =>
+				{
+					LoadingBusy.IsRunning = false;
+				});
 			}
 		}
 
@@ -181,14 +182,49 @@ namespace Shane.Church.StirlingMoney.WP
 		}
 		#endregion
 
-		private void jumpListTransactions_DataRequested(object sender, EventArgs e)
+		private async void jumpListTransactions_DataRequested(object sender, EventArgs e)
 		{
+			await _model.LoadNextTransactions();
 			Deployment.Current.Dispatcher.BeginInvoke(() =>
 			{
-				_model.LoadNextTransactions();
 				if (_model.TotalRows == _model.Transactions.Count)
 					jumpListTransactions.DataVirtualizationMode = Telerik.Windows.Controls.DataVirtualizationMode.None;
 			});
+		}
+
+		private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+		{
+			if (_isNew)
+			{
+				Guid id;
+				try
+				{
+					id = PhoneNavigationService.DecodeNavigationParameter<Guid>(this.NavigationContext);
+				}
+				catch (KeyNotFoundException)
+				{
+					id = Guid.Empty;
+				}
+
+				await _model.LoadData(id);
+
+				_isNew = false;
+
+				Deployment.Current.Dispatcher.BeginInvoke(() =>
+				{
+					this.DataContext = _model;
+					this.jumpListTransactions.ItemsSource = _model.Transactions;
+				});
+			}
+			else
+			{
+				await _model.RefreshData();
+				Deployment.Current.Dispatcher.BeginInvoke(() =>
+				{
+					this.jumpListTransactions.RefreshData();
+				});
+
+			}
 		}
 
 	}

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.Data
 {
-	public class GoalRepository : Core.Data.IRepository<Core.Data.Goal>
+	public class GoalRepository : Core.Repositories.IRepository<Core.Data.Goal>
 	{
 		Shane.Church.StirlingMoney.Data.v3.StirlingMoneyDataContext _context;
 

@@ -2,9 +2,12 @@
 using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Strings;
+using Shane.Church.Utility.Core.Command;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
@@ -12,16 +15,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 	public class BudgetSummaryViewModel : ObservableObject
 	{
 		private INavigationService _navService;
-		private IRepository<Budget> _budgetRepository;
+		private IRepository<Budget, Guid> _budgetRepository;
 
-		public BudgetSummaryViewModel(INavigationService navService, IRepository<Budget> budgetRepository)
+		public BudgetSummaryViewModel(INavigationService navService, IRepository<Budget, Guid> budgetRepository)
 		{
 			if (navService == null) throw new ArgumentNullException("navService");
 			_navService = navService;
 			if (budgetRepository == null) throw new ArgumentNullException("budgetRepository");
 			_budgetRepository = budgetRepository;
 			EditCommand = new RelayCommand(NavigateToEdit);
-			DeleteCommand = new RelayCommand(Delete);
+			DeleteCommand = new AsyncRelayCommand(o => Delete());
 		}
 
 		public void LoadData(Budget b)
@@ -135,8 +138,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		private DateTime _startDate;
-		public DateTime StartDate
+		private DateTimeOffset _startDate;
+		public DateTimeOffset StartDate
 		{
 			get { return _startDate; }
 			set
@@ -149,8 +152,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		private DateTime _endDate;
-		public DateTime EndDate
+		private DateTimeOffset _endDate;
+		public DateTimeOffset EndDate
 		{
 			get { return _endDate; }
 			set
@@ -211,11 +214,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public ICommand DeleteCommand { get; private set; }
 
-		public void Delete()
+		public async Task Delete()
 		{
 			Budget b = KernelService.Kernel.Get<Budget>();
 			b.BudgetId = this.BudgetId;
-			_budgetRepository.DeleteEntry(b);
+			await _budgetRepository.DeleteEntryAsync(b);
 			if (ItemDeleted != null)
 				ItemDeleted(this);
 		}

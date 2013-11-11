@@ -13,12 +13,15 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
+    Loaded="PhoneApplicationPage_Loaded"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True" d:DataContext="{d:DesignData /SampleData/TransactionListViewModelSampleData.xaml}">
+    shell:SystemTray.IsVisible="True">
 
     <phone:PhoneApplicationPage.Resources>
-        <util:TransactionBrushConverter x:Key="TransactionBrushConverter"/>        
+        <util:TransactionBrushConverter x:Key="TransactionBrushConverter"/>
+        <DataTemplate x:Key="transactionsLoadingTemplate">
+        </DataTemplate>
         <DataTemplate x:Key="transactionsItemTemplate">
             <StackPanel>
                 <telerikPrimitives:RadContextMenu.ContextMenu>
@@ -160,7 +163,7 @@
                                      Grid.Column="0" 
                                      Grid.ColumnSpan="2"
                                      IsAsyncBalanceEnabled="True"
-                                     AsyncBalanceMode="FillViewportFirst"
+                                     AsyncBalanceMode="Standard"
                                      ItemTemplate="{StaticResource transactionsItemTemplate}" 
                                      ItemsSource="{Binding Transactions}"
                                      EmptyContent="{Binding Path=LocalizedResources.TransactionsNoData, Source={StaticResource LocalizedStrings}}" 
@@ -169,13 +172,35 @@
                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                                      EmptyContentDisplayMode="DataSourceEmpty" 
                                      DataVirtualizationMode="OnDemandAutomatic" 
-                                     DataRequested="jumpListTransactions_DataRequested" GroupCheckMode="None">
+                                     DataRequested="jumpListTransactions_DataRequested" 
+                                     GroupCheckMode="None">
 				<telerikData:RadJumpList.VirtualizationStrategyDefinition>
 					<telerikPrimitives:StackVirtualizationStrategyDefinition>
 					</telerikPrimitives:StackVirtualizationStrategyDefinition>
 				</telerikData:RadJumpList.VirtualizationStrategyDefinition>
+                <telerikData:RadJumpList.ItemLoadingContent>
+                    <Grid MinHeight="60">
+                        <telerikPrimitives:RadBusyIndicator x:Name="LoadingTransactionsBusy" 
+                                            Foreground="{StaticResource PhoneAccentBrush}" 
+                                            ContentPosition="Right"
+                                            Content="{Binding Path=LocalizedResources.ProgressBarText, Source={StaticResource LocalizedStrings}}"
+                                            IsRunning="True"
+                                            BorderBrush="{StaticResource PhoneSemitransparentBrush}"
+                                            AnimationStyle="AnimationStyle2"/>
+                    </Grid>
+                </telerikData:RadJumpList.ItemLoadingContent>
             </telerikData:RadJumpList>
         </Grid>
+        <telerikPrimitives:RadBusyIndicator x:Name="LoadingBusy" 
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Grid.RowSpan="2"
+                                            Background="{StaticResource PhoneSemitransparentBrush}" 
+                                            Foreground="{StaticResource PhoneAccentBrush}" 
+                                            Content="{Binding Path=LocalizedResources.ProgressBarText, Source={StaticResource LocalizedStrings}}"
+                                            IsRunning="True"
+                                            BorderBrush="{StaticResource PhoneSemitransparentBrush}"
+                                            AnimationStyle="AnimationStyle3"/>
         <StackPanel Grid.Row="2">
             <StackPanel x:Name="AdPanel">
                 <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"

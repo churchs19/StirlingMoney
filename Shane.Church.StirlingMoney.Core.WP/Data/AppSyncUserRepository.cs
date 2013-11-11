@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.Data
 {
-	public class AppSyncUserRepository : Core.Data.IRepository<Core.Data.AppSyncUser>
+	public class AppSyncUserRepository : Core.Repositories.IRepository<Core.Data.AppSyncUser>
 	{
 		Shane.Church.StirlingMoney.Data.v3.StirlingMoneyDataContext _context;
 

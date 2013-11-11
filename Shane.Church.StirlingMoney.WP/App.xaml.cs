@@ -1,7 +1,9 @@
 ﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Ninject;
+using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.StirlingMoney.Core.SterlingDb;
 using Shane.Church.StirlingMoney.Core.WP;
-using Shane.Church.StirlingMoney.Data.Update;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -11,6 +13,7 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
 using Telerik.Windows.Controls;
+using Wintellect.Sterling.Core;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -56,6 +59,11 @@ namespace Shane.Church.StirlingMoney.WP
 
 			// Language display initialization 
 			InitializeLanguage();
+
+			if (KernelService.Kernel == null)
+			{
+				KernelService.Kernel = new StandardKernel();
+			}
 
 			NinjectBootstrapper.Bootstrap();
 
@@ -126,7 +134,7 @@ namespace Shane.Church.StirlingMoney.WP
 			rateReminder.RecurrencePerUsageCount = 5;
 			rateReminder.AllowUsersToSkipFurtherReminders = true;
 
-			UpdateController.ConfigureDatabase();
+			//			UpdateController.ConfigureDatabase();
 
 			//if (LiveTileHelper.AreNewTilesSupported)
 			//{
@@ -242,6 +250,12 @@ namespace Shane.Church.StirlingMoney.WP
 			FlurryWP8SDK.Api.StartSession(FlurryConfig.ApiKey);
 			FlurryWP8SDK.Api.SetVersion(versionAttrib.Version.ToString());
 
+			var engine = KernelService.Kernel.Get<SterlingEngine>();
+			SterlingDefaultLogger logger = new SterlingDefaultLogger(engine.SterlingDatabase, SterlingLogLevel.Verbose);
+
+			engine.Activate();
+
+			engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
 		}
 
 		// Code to execute when the application is activated (brought to foreground)
@@ -260,12 +274,12 @@ namespace Shane.Church.StirlingMoney.WP
 				ApplicationUsageHelper.OnApplicationActivated();
 			}
 
+			var engine = KernelService.Kernel.Get<SterlingEngine>();
+			SterlingDefaultLogger logger = new SterlingDefaultLogger(engine.SterlingDatabase, SterlingLogLevel.Verbose);
 
-			//// Ensure that application state is restored appropriately
-			//if (!App.ViewModel.IsDataLoaded)
-			//{
-			//    App.ViewModel.LoadData();
-			//}
+			engine.Activate();
+
+			engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
 		}
 
 		// Code to execute when the application is deactivated (sent to background)
@@ -273,6 +287,7 @@ namespace Shane.Church.StirlingMoney.WP
 		private void Application_Deactivated(object sender, DeactivatedEventArgs e)
 		{
 			// Ensure that required application state is persisted here.
+			KernelService.Kernel.Get<SterlingEngine>().Dispose();
 			FlurryWP8SDK.Api.EndSession();
 		}
 
@@ -280,6 +295,7 @@ namespace Shane.Church.StirlingMoney.WP
 		// This code will not execute when the application is deactivated
 		private void Application_Closing(object sender, ClosingEventArgs e)
 		{
+			KernelService.Kernel.Get<SterlingEngine>().Dispose();
 			FlurryWP8SDK.Api.EndSession();
 		}
 
@@ -296,7 +312,7 @@ namespace Shane.Church.StirlingMoney.WP
 		// Code to execute on Unhandled Exceptions
 		private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
 		{
-			FlurryWP8SDK.Api.LogError("Application_UnhandledException", e.ExceptionObject);
+			//FlurryWP8SDK.Api.LogError("Application_UnhandledException", e.ExceptionObject);
 			if (e.ExceptionObject.Message.Equals("0x8000ffff")) e.Handled = true;
 			if (e.ExceptionObject.StackTrace.Contains("Inneractive.Ad")) e.Handled = true;
 			if (e.ExceptionObject.Message.Equals("User has not granted the application consent to access data in Windows Live.")) e.Handled = true;

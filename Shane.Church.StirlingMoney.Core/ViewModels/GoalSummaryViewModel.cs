@@ -2,9 +2,12 @@
 using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Strings;
+using Shane.Church.Utility.Core.Command;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
@@ -12,9 +15,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 	public class GoalSummaryViewModel : ObservableObject
 	{
 		private INavigationService _navService;
-		private IRepository<Goal> _goalRepository;
+		private IRepository<Goal, Guid> _goalRepository;
 
-		public GoalSummaryViewModel(INavigationService navService, IRepository<Goal> goalRepository)
+		public GoalSummaryViewModel(INavigationService navService, IRepository<Goal, Guid> goalRepository)
 		{
 			if (navService == null) throw new ArgumentNullException("navService");
 			_navService = navService;
@@ -22,10 +25,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_goalRepository = goalRepository;
 
 			EditCommand = new RelayCommand(NavigateToEdit);
-			DeleteCommand = new RelayCommand(Delete);
+			DeleteCommand = new AsyncRelayCommand(o => Delete());
 		}
 
-		public void LoadData(Goal g)
+		public async Task LoadData(Goal g)
 		{
 			GoalId = g.GoalId;
 			GoalName = g.GoalName;
@@ -33,7 +36,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			InitialBalance = g.InitialBalance;
 			TargetDate = g.TargetDate;
 			StartDate = g.StartDate;
-			CurrentAmount = g.Account.AccountBalance;
+			var account = await g.GetAccount();
+			CurrentAmount = account.AccountBalance;
 		}
 
 		private Guid _goalId;
@@ -117,8 +121,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		private DateTime _targetDate;
-		public DateTime TargetDate
+		private DateTimeOffset _targetDate;
+		public DateTimeOffset TargetDate
 		{
 			get { return _targetDate; }
 			set
@@ -131,8 +135,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		private DateTime _startDate;
-		public DateTime StartDate
+		private DateTimeOffset _startDate;
+		public DateTimeOffset StartDate
 		{
 			get { return _startDate; }
 			set
@@ -235,11 +239,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public ICommand DeleteCommand { get; private set; }
 
-		public void Delete()
+		public async Task Delete()
 		{
 			Goal g = KernelService.Kernel.Get<Goal>();
 			g.GoalId = this.GoalId;
-			_goalRepository.DeleteEntry(g);
+			await _goalRepository.DeleteEntryAsync(g);
 			if (ItemDeleted != null)
 				ItemDeleted(this);
 		}

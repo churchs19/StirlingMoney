@@ -106,6 +106,12 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Net" />
     <Reference Include="mscorlib.extensions" />
+    <Reference Include="Wintellect.Sterling.Core">
+      <HintPath>..\lib\Wintellect.SterlingDB\Wintellect.Sterling.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Wintellect.Sterling.WP7">
+      <HintPath>..\lib\Wintellect.SterlingDB\WP7\Wintellect.Sterling.WP7.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\OtherAppsCommand.cs" />
@@ -115,12 +121,6 @@
     <Compile Include="Converters\ByteToImageSourceValueConverter.cs" />
     <Compile Include="Converters\CurrencyValueConverter.cs" />
     <Compile Include="Converters\TransactionBrushConverter.cs" />
-    <Compile Include="Data\AccountRepository.cs" />
-    <Compile Include="Data\AppSyncUserRepository.cs" />
-    <Compile Include="Data\BudgetRepository.cs" />
-    <Compile Include="Data\CategoryRepository.cs" />
-    <Compile Include="Data\GoalRepository.cs" />
-    <Compile Include="Data\TransactionRepository.cs" />
     <Compile Include="FlurryConfig.cs" />
     <Compile Include="LiveConfig.cs" />
     <Compile Include="MobileServiceConfig.cs" />
@@ -138,6 +138,10 @@
     <Compile Include="ViewModels\PhoneSettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Core.SterlingDb\Shane.Church.StirlingMoney.Core.SterlingDb.csproj">
+      <Project>{7EDFE360-EEFA-42DC-A5DA-DCEFFA32DEFE}</Project>
+      <Name>Shane.Church.StirlingMoney.Core.SterlingDb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shane.Church.StirlingMoney.Core\Shane.Church.StirlingMoney.Core.csproj">
       <Project>{4E5D8824-CC49-41A4-BC97-3E5BC5378754}</Project>
       <Name>Shane.Church.StirlingMoney.Core</Name>
@@ -249,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\Visa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

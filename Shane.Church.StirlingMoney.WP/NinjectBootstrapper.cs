@@ -1,15 +1,19 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.StirlingMoney.Core.SterlingDb;
+using Shane.Church.StirlingMoney.Core.SterlingDb.Repositories;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP;
-using Shane.Church.StirlingMoney.Core.WP.Data;
 using Shane.Church.StirlingMoney.Core.WP.Services;
 using Shane.Church.StirlingMoney.Core.WP.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP7.Services;
 using Shane.Church.StirlingMoney.Data.v3;
+using System;
 using System.Linq;
+using Wintellect.Sterling.Core;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -17,27 +21,26 @@ namespace Shane.Church.StirlingMoney.WP
 	{
 		public static void Bootstrap()
 		{
-			KernelService.Kernel = new StandardKernel();
-			KernelService.Kernel.Bind<IAgentManagementService>().To<PhoneAgentManagementService>().InSingletonScope();
-			KernelService.Kernel.Bind<INavigationService>().To<PhoneNavigationService>().InSingletonScope();
-			KernelService.Kernel.Bind<ISettingsService>().To<PhoneSettingsService>().InSingletonScope();
-			KernelService.Kernel.Bind<IWebNavigationService>().To<PhoneWebNavigationService>().InSingletonScope();
-			KernelService.Kernel.Bind<StirlingMoneyDataContext>().ToSelf().InSingletonScope();
-			KernelService.Kernel.Bind<IRepository<Core.Data.Account>>().To<AccountRepository>();
-			KernelService.Kernel.Bind<IRepository<Core.Data.AppSyncUser>>().To<AppSyncUserRepository>();
-			KernelService.Kernel.Bind<IRepository<Core.Data.Budget>>().To<BudgetRepository>();
-			KernelService.Kernel.Bind<IRepository<Core.Data.Category>>().To<CategoryRepository>();
-			KernelService.Kernel.Bind<IRepository<Core.Data.Goal>>().To<GoalRepository>();
-			KernelService.Kernel.Bind<IRepository<Core.Data.Transaction>>().To<TransactionRepository>();
-			KernelService.Kernel.Bind<ITransactionSum>().To<TransactionRepository>();
-			KernelService.Kernel.Bind<MainViewModel>().To<PhoneMainViewModel>();
-			KernelService.Kernel.Bind<AboutViewModel>().To<PhoneAboutViewModel>();
-			KernelService.Kernel.Bind<ITileService<Core.Data.Account>>().To<PhoneAccountTileService>().InSingletonScope();
-			KernelService.Kernel.Bind<AddEditAccountViewModel>().To<PhoneAddEditAccountViewModel>();
-			KernelService.Kernel.Bind<AccountTileViewModel>().To<PhoneAccountTileViewModel>();
-			KernelService.Kernel.Bind<SettingsViewModel>().To<PhoneSettingsViewModel>();
-			KernelService.Kernel.Bind<ILoggingService>().To<PhoneLoggingService>();
-			KernelService.Kernel.Bind<IMobileServiceClient>().ToMethod<MobileServiceClient>(it =>
+			KernelService.Kernel.Rebind<IAgentManagementService>().To<PhoneAgentManagementService>().InSingletonScope();
+			KernelService.Kernel.Rebind<INavigationService>().To<PhoneNavigationService>().InSingletonScope();
+			KernelService.Kernel.Rebind<ISettingsService>().To<PhoneSettingsService>().InSingletonScope();
+			KernelService.Kernel.Rebind<IWebNavigationService>().To<PhoneWebNavigationService>().InSingletonScope();
+			KernelService.Kernel.Rebind<StirlingMoneyDataContext>().ToSelf().InSingletonScope();
+			KernelService.Kernel.Rebind<IRepository<Core.Data.Account, Guid>>().To<AccountRepository>();
+			KernelService.Kernel.Rebind<IRepository<Core.Data.AppSyncUser, string>>().To<AppSyncUserRepository>();
+			KernelService.Kernel.Rebind<IRepository<Core.Data.Budget, Guid>>().To<BudgetRepository>();
+			KernelService.Kernel.Rebind<IRepository<Core.Data.Category, Guid>>().To<CategoryRepository>();
+			KernelService.Kernel.Rebind<IRepository<Core.Data.Goal, Guid>>().To<GoalRepository>();
+			KernelService.Kernel.Rebind<IRepository<Core.Data.Transaction, Guid>>().To<TransactionRepository>();
+			KernelService.Kernel.Rebind<ITransactionSum>().To<TransactionRepository>();
+			KernelService.Kernel.Rebind<MainViewModel>().To<PhoneMainViewModel>();
+			KernelService.Kernel.Rebind<AboutViewModel>().To<PhoneAboutViewModel>();
+			KernelService.Kernel.Rebind<ITileService<Core.Data.Account>>().To<PhoneAccountTileService>().InSingletonScope();
+			KernelService.Kernel.Rebind<AddEditAccountViewModel>().To<PhoneAddEditAccountViewModel>();
+			KernelService.Kernel.Rebind<AccountTileViewModel>().To<PhoneAccountTileViewModel>();
+			KernelService.Kernel.Rebind<SettingsViewModel>().To<PhoneSettingsViewModel>();
+			KernelService.Kernel.Rebind<ILoggingService>().To<PhoneLoggingService>();
+			KernelService.Kernel.Rebind<IMobileServiceClient>().ToMethod<MobileServiceClient>(it =>
 			{
 				var client = new MobileServiceClient(
 					MobileServiceConfig.Uri,
@@ -49,7 +52,11 @@ namespace Shane.Church.StirlingMoney.WP
 				client.SerializerSettings.Converters.Remove(client.SerializerSettings.Converters.Where(its => its is Microsoft.WindowsAzure.MobileServices.MobileServiceIsoDateTimeConverter).FirstOrDefault());
 				return client;
 			});
-			KernelService.Kernel.Bind<SyncService>().To<WP7SyncService>();
+			KernelService.Kernel.Rebind<SyncService>().To<WP7SyncService>();
+			KernelService.Kernel.Rebind<ISterlingPlatformAdapter>().To<Wintellect.Sterling.WP7.PlatformAdapter>();
+			KernelService.Kernel.Rebind<ISterlingDriver>().To<Wintellect.Sterling.WP7.IsolatedStorage.IsolatedStorageDriver>();
+			KernelService.Kernel.Rebind<ISterlingDatabaseInstance>().To<StirlingMoneyDatabaseInstance>();
+			KernelService.Kernel.Rebind<SterlingEngine>().ToSelf().InSingletonScope();
 		}
 	}
 }

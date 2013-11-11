@@ -1,14 +1,16 @@
 ﻿using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.WP.SampleData
 {
-	public class SampleAccountRepository : IRepository<Account>
+	public class SampleAccountRepository : IRepository<Account, Guid>
 	{
 		public IQueryable<Account> GetAllEntries(bool includeDeleted = false)
 		{
@@ -50,12 +52,67 @@ namespace Shane.Church.StirlingMoney.WP.SampleData
 			throw new NotImplementedException();
 		}
 
-		public void BatchAddOrUpdateEntries(System.Collections.Generic.ICollection<Account> entries)
+		public void BatchUpdateEntries(System.Collections.Generic.ICollection<Account> entries)
 		{
 			throw new NotImplementedException();
 		}
 
-		public System.Threading.Tasks.Task BatchAddOrUpdateEntriesAsync(System.Collections.Generic.ICollection<Account> entries)
+		public System.Threading.Tasks.Task BatchUpdateEntriesAsync(System.Collections.Generic.ICollection<Account> entries)
+		{
+			throw new NotImplementedException();
+		}
+
+
+		public Task<Account> GetEntryAsync(Guid key)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Dispose()
+		{
+			throw new NotImplementedException();
+		}
+
+
+		public Task Commit()
+		{
+			throw new NotImplementedException();
+		}
+
+
+		public Task<IQueryable<Account>> GetUpdatedEntries(DateTimeOffset date)
+		{
+			throw new NotImplementedException();
+		}
+
+
+		public Task<int> GetEntriesCount(bool includeDeleted = false)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<IQueryable<Account>> GetIndexFilteredEntriesAsync<TIndex>(string indexName, TIndex indexValue, bool includeDeleted = false)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<int> GetIndexFilteredEntriesCountAsync<TIndex>(string indexName, TIndex indexValue, bool includeDeleted = false)
+		{
+			throw new NotImplementedException();
+		}
+
+
+		int IRepository<Account, Guid>.GetEntriesCount(bool includeDeleted = false)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<int> GetEntriesCountAsync(bool includeDeleted = false)
+		{
+			throw new NotImplementedException();
+		}
+
+		public int GetIndexFilteredEntriesCount<TIndex>(string indexName, TIndex indexValue, bool includeDeleted = false)
 		{
 			throw new NotImplementedException();
 		}
@@ -79,15 +136,15 @@ namespace Shane.Church.StirlingMoney.WP.SampleData
 	}
 	public class SampleAddEditAccountViewModel : AddEditAccountViewModel
 	{
-		public SampleAddEditAccountViewModel(IRepository<Account> account, INavigationService navService)
+		public SampleAddEditAccountViewModel(IRepository<Account, Guid> account, INavigationService navService)
 			: base(account, navService)
 		{
 
 		}
 
-		public override void LoadData(Guid accountId)
+		public override async Task LoadData(Guid accountId)
 		{
-			base.LoadData(accountId);
+			await base.LoadData(accountId);
 		}
 	}
 	public class AddEditAccountViewModelSampleData

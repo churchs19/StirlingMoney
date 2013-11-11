@@ -1,23 +1,25 @@
 ﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels.Shared;
 using Shane.Church.StirlingMoney.Strings;
+using Shane.Church.Utility.Core.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class AddEditAccountViewModel : ObservableObject
+	public class AddEditAccountViewModel : ObservableObject, ICommittable
 	{
-		private IRepository<Account> _accountRepository;
+		private IRepository<Account, Guid> _accountRepository;
 		private INavigationService _navService;
 
-		public AddEditAccountViewModel(IRepository<Account> accountRepository, INavigationService navService)
+		public AddEditAccountViewModel(IRepository<Account, Guid> accountRepository, INavigationService navService)
 		{
 			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
 			_accountRepository = accountRepository;
@@ -29,11 +31,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				RaisePropertyChanged(() => AvailableImages);
 			};
-			SaveCommand = new RelayCommand(SaveAccount);
+			SaveCommand = new AsyncRelayCommand(o => SaveAccount());
 		}
 
-		private long? _id = null;
-		private bool? _isDeleted = null;
+		private bool _isDeleted;
 
 		private Guid _accountId;
 		public Guid AccountId
@@ -108,17 +109,17 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public virtual void LoadData(Guid accountId)
+		public virtual async Task LoadData(Guid accountId)
 		{
 			if (accountId != Guid.Empty)
 			{
-				Account a = _accountRepository.GetFilteredEntries(it => it.AccountId == accountId).FirstOrDefault();
+				var query = await _accountRepository.GetFilteredEntriesAsync(it => it.AccountId == accountId);
+				var a = query.FirstOrDefault();
 				if (a != null)
 				{
 					AccountId = a.AccountId;
 					AccountName = a.AccountName;
 					InitialBalance = a.InitialBalance;
-					_id = a.Id;
 					_isDeleted = a.IsDeleted;
 				}
 			}
@@ -141,23 +142,19 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public delegate void ValidationFailedHandler(object sender, ValidationFailedEventArgs args);
 		public event ValidationFailedHandler ValidationFailed;
 
-		public void SaveAccount()
+		public async Task SaveAccount()
 		{
 			var errors = Validate();
 			if (errors.Count == 0)
 			{
 				Account a = new Account();
-				a.Id = _id;
 				a.IsDeleted = _isDeleted;
 				a.AccountId = AccountId;
 				a.InitialBalance = InitialBalance;
 				a.AccountName = AccountName;
 				a.ImageUri = Image != null ? Image.Name : null;
-				a.AccountBalance = a.LiveAccountBalance;
-				a.PostedBalance = a.LivePostedBalance;
-				a = _accountRepository.AddOrUpdateEntry(a);
+				a = await _accountRepository.AddOrUpdateEntryAsync(a);
 				AccountId = a.AccountId;
-				_id = a.Id;
 				_isDeleted = a.IsDeleted;
 
 				if (_navService.CanGoBack)
@@ -168,6 +165,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				if (ValidationFailed != null)
 					ValidationFailed(this, new ValidationFailedEventArgs(errors));
 			}
+		}
+
+		public async Task Commit()
+		{
+			await _accountRepository.Commit();
 		}
 	}
 }

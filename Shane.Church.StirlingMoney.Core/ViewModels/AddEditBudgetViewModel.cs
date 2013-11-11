@@ -1,38 +1,56 @@
 ﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels.Shared;
 using Shane.Church.StirlingMoney.Strings;
+using Shane.Church.Utility.Core.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class AddEditBudgetViewModel : ObservableObject
+	public class AddEditBudgetViewModel : ObservableObject, ICommittable
 	{
-		public AddEditBudgetViewModel()
+		private IRepository<Budget, Guid> _budgetRepository;
+		private IRepository<Category, Guid> _categoryRepository;
+		private INavigationService _navService;
+
+		public AddEditBudgetViewModel(IRepository<Budget, Guid> budgetRepo, IRepository<Category, Guid> categoryRepo, INavigationService navService)
 		{
+			if (budgetRepo == null) throw new ArgumentNullException("budgetRepo");
+			_budgetRepository = budgetRepo;
+			if (categoryRepo == null) throw new ArgumentNullException("categoryRepo");
+			_categoryRepository = categoryRepo;
+			if (navService == null) throw new ArgumentNullException("navService");
+			_navService = navService;
+
 			_typeList = new ObservableCollection<string>();
 			_typeList.CollectionChanged += (s, e) =>
-				{
-					RaisePropertyChanged(() => TypeList);
-				};
+			{
+				RaisePropertyChanged(() => TypeList);
+			};
 			_periodList = new List<string>();
 			PeriodList.Add(Resources.BudgetWeekly);
 			PeriodList.Add(Resources.BudgetMonthly);
 			PeriodList.Add(Resources.BudgetYearly);
 			PeriodList.Add(Resources.BudgetCustom);
 
-			SaveCommand = new RelayCommand(SaveBudget);
+			SaveCommand = new AsyncRelayCommand(o => SaveBudget());
 		}
 
-		private long? _id = null;
-		private bool? _isDeleted = null;
+		public AddEditBudgetViewModel()
+			: this(KernelService.Kernel.Get<IRepository<Budget, Guid>>(), KernelService.Kernel.Get<IRepository<Category, Guid>>(), KernelService.Kernel.Get<INavigationService>())
+		{
+
+		}
+
+		private bool _isDeleted;
 
 		private Guid? _budgetId;
 		public Guid? BudgetId
@@ -141,11 +159,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public void LoadData(Guid? budgetId)
+		public async Task LoadData(Guid? budgetId)
 		{
 			TypeList.Clear();
-			var categoryRepository = KernelService.Kernel.Get<IRepository<Category>>();
-			foreach (Category c in categoryRepository.GetAllEntries().OrderBy(it => it.CategoryName))
+			var categories = await _categoryRepository.GetAllEntriesAsync();
+			foreach (Category c in categories.OrderBy(it => it.CategoryName))
 			{
 				TypeList.Add(c.CategoryName);
 			}
@@ -164,19 +182,19 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			Type = Resources.BudgetAllExpensesLabel;
 			if (budgetId.HasValue && budgetId.Value != Guid.Empty)
 			{
-				var b = KernelService.Kernel.Get<IRepository<Budget>>().GetFilteredEntries(it => it.BudgetId == budgetId.Value).FirstOrDefault();
+				var b = await _budgetRepository.GetEntryAsync(budgetId.Value);
 				if (b != null)
 				{
 					BudgetId = b.BudgetId;
 					Name = b.BudgetName;
 					Amount = b.BudgetAmount;
-					StartDate = b.StartDate;
-					EndDate = b.EndDate;
-					_id = b.Id;
+					StartDate = DateTime.SpecifyKind(b.StartDate.UtcDateTime.Date, DateTimeKind.Utc);
+					EndDate = b.EndDate.HasValue ? (DateTime?)DateTime.SpecifyKind(b.EndDate.Value.UtcDateTime.Date, DateTimeKind.Utc) : null;
 					_isDeleted = b.IsDeleted;
 					if (b.CategoryId.HasValue)
 					{
-						Type = categoryRepository.GetFilteredEntries(it => it.CategoryId == b.CategoryId.Value).Select(it => it.CategoryName).FirstOrDefault();
+						var cat = await _categoryRepository.GetEntryAsync(b.CategoryId.Value);
+						Type = cat.CategoryName;
 					}
 
 					if (b.BudgetPeriod == PeriodType.Weekly)
@@ -226,22 +244,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public delegate void ValidationFailedHandler(object sender, ValidationFailedEventArgs args);
 		public event ValidationFailedHandler ValidationFailed;
 
-		public void SaveBudget()
+		public async Task SaveBudget()
 		{
 			var errors = Validate();
 			if (errors.Count == 0)
 			{
-				var budgetRepository = KernelService.Kernel.Get<IRepository<Budget>>();
-				var navService = KernelService.Kernel.Get<INavigationService>();
-
 				Budget b = KernelService.Kernel.Get<Budget>();
 				b.BudgetId = BudgetId.HasValue ? BudgetId.Value : Guid.Empty;
 				b.BudgetName = Name;
 				b.BudgetAmount = Amount;
-				b.StartDate = DateTime.SpecifyKind(StartDate, DateTimeKind.Utc);
+				b.StartDate = new DateTimeOffset(DateTime.SpecifyKind(StartDate.Date, DateTimeKind.Utc));
 				if (Type != Resources.BudgetAllExpensesLabel)
 				{
-					b.CategoryId = KernelService.Kernel.Get<IRepository<Category>>().GetFilteredEntries(it => it.CategoryName == Type).Select(it => it.CategoryId).FirstOrDefault();
+					var catQuery = await _categoryRepository.GetFilteredEntriesAsync(it => it.CategoryName == Type);
+					b.CategoryId = catQuery.Select(it => it.CategoryId).FirstOrDefault();
 				}
 				else
 				{
@@ -265,24 +281,27 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				else if (Period == Resources.BudgetCustom)
 				{
 					b.BudgetPeriod = PeriodType.Custom;
-					b.EndDate = DateTime.SpecifyKind(EndDate.Value, DateTimeKind.Utc);
+					b.EndDate = new DateTimeOffset(DateTime.SpecifyKind(EndDate.Value.Date, DateTimeKind.Utc));
 				}
-				b.Id = _id;
 				b.IsDeleted = _isDeleted;
 
-				b = budgetRepository.AddOrUpdateEntry(b);
+				b = await _budgetRepository.AddOrUpdateEntryAsync(b);
 				BudgetId = b.BudgetId;
-				_id = b.Id;
 				_isDeleted = b.IsDeleted;
 
-				if (navService.CanGoBack)
-					navService.GoBack();
+				if (_navService.CanGoBack)
+					_navService.GoBack();
 			}
 			else
 			{
 				if (ValidationFailed != null)
 					ValidationFailed(this, new ValidationFailedEventArgs(errors));
 			}
+		}
+
+		public async Task Commit()
+		{
+			await _budgetRepository.Commit();
 		}
 	}
 }

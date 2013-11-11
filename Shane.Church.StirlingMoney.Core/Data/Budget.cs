@@ -1,26 +1,50 @@
 ﻿using Newtonsoft.Json;
 using Ninject;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
-using System.Linq;
+using System.Threading.Tasks;
+using Wintellect.Sterling.Core.Serialization;
 
 namespace Shane.Church.StirlingMoney.Core.Data
 {
 	public class Budget
 	{
-		public long? Id { get; set; }
+		private IRepository<Transaction, Guid> _transactionRepository;
+		private IRepository<Category, Guid> _categoryRepository;
+		private ITransactionSum _transactionSum;
+
+		public Budget(IRepository<Transaction, Guid> transactionRepo, IRepository<Category, Guid> categoryRepo, ITransactionSum transactionSum)
+		{
+			if (transactionRepo == null) throw new ArgumentNullException("transactionRepo");
+			_transactionRepository = transactionRepo;
+			if (categoryRepo == null) throw new ArgumentNullException("categoryRepo");
+			_categoryRepository = categoryRepo;
+			if (transactionSum == null) throw new ArgumentNullException("transactionSum");
+			_transactionSum = transactionSum;
+		}
+
+		public Budget()
+			: this(KernelService.Kernel.Get<IRepository<Transaction, Guid>>(),
+				KernelService.Kernel.Get<IRepository<Category, Guid>>(),
+				KernelService.Kernel.Get<ITransactionSum>())
+		{
+
+		}
+
 		public Guid BudgetId { get; set; }
 		public string BudgetName { get; set; }
 		public double BudgetAmount { get; set; }
 		public Guid? CategoryId { get; set; }
 		public PeriodType BudgetPeriod { get; set; }
-		public DateTime StartDate { get; set; }
-		public DateTime? EndDate { get; set; }
+		public DateTimeOffset StartDate { get; set; }
+		public DateTimeOffset? EndDate { get; set; }
 		public DateTimeOffset EditDateTime { get; set; }
-		public bool? IsDeleted { get; set; }
+		public bool IsDeleted { get; set; }
 
 		[JsonIgnore]
-		public DateTime CurrentPeriodStart
+		[SterlingIgnore]
+		public DateTimeOffset CurrentPeriodStart
 		{
 			get
 			{
@@ -60,7 +84,8 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		}
 
 		[JsonIgnore]
-		public DateTime CurrentPeriodEnd
+		[SterlingIgnore]
+		public DateTimeOffset CurrentPeriodEnd
 		{
 			get
 			{
@@ -77,44 +102,39 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			}
 		}
 
-		[JsonIgnore]
-		public Category Category
+		public async Task<Category> GetCategory()
 		{
-			get
+			try
 			{
-				try
-				{
-					if (!CategoryId.HasValue)
-						return null;
-					else
-					{
-						IRepository<Category> _categories = KernelService.Kernel.Get<IRepository<Category>>();
-						return _categories.GetFilteredEntries(it => it.CategoryId == CategoryId.Value).FirstOrDefault();
-					}
-				}
-				catch
-				{
+				if (!CategoryId.HasValue)
 					return null;
+				else
+				{
+					return await _categoryRepository.GetEntryAsync(CategoryId.Value);
 				}
+			}
+			catch
+			{
+				return null;
 			}
 		}
 
 		[JsonIgnore]
+		[SterlingIgnore]
 		public double AmountSpent
 		{
 			get
 			{
-				IRepository<Transaction> _transactions = KernelService.Kernel.Get<IRepository<Transaction>>();
+				double amount = 0;
 				if (!CategoryId.HasValue)
 				{
-					var amount = _transactions.GetFilteredEntries(it => it.TransactionDate >= CurrentPeriodStart && it.TransactionDate <= CurrentPeriodEnd).Select(it => it.Amount).Sum();
-					return -amount;
+					amount = _transactionSum.GetSumBetweenDates(CurrentPeriodStart, CurrentPeriodEnd);
 				}
 				else
 				{
-					var amount = _transactions.GetFilteredEntries(it => it.TransactionDate >= CurrentPeriodStart && it.TransactionDate <= CurrentPeriodEnd && it.CategoryId == CategoryId.Value).Select(it => it.Amount).Sum();
-					return -amount;
+					amount = _transactionSum.GetSumBetweenDatesByCategory(CategoryId.Value, CurrentPeriodStart, CurrentPeriodEnd);
 				}
+				return -amount;
 			}
 		}
 	}

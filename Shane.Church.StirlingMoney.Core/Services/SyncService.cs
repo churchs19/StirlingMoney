@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,22 +14,22 @@ namespace Shane.Church.StirlingMoney.Core.Services
 	{
 		protected ISettingsService _settingsService;
 		protected ILoggingService _log;
-		protected IRepository<Account> _accounts;
-		protected IRepository<AppSyncUser> _users;
-		protected IRepository<Budget> _budgets;
-		protected IRepository<Goal> _goals;
-		protected IRepository<Category> _categories;
-		protected IRepository<Transaction> _transactions;
+		protected IRepository<Account, Guid> _accounts;
+		protected IRepository<AppSyncUser, string> _users;
+		protected IRepository<Budget, Guid> _budgets;
+		protected IRepository<Goal, Guid> _goals;
+		protected IRepository<Category, Guid> _categories;
+		protected IRepository<Transaction, Guid> _transactions;
 
 		public SyncService(IMobileServiceClient client,
 							ISettingsService settings,
 							ILoggingService log,
-							IRepository<Account> accounts,
-							IRepository<AppSyncUser> users,
-							IRepository<Budget> budgets,
-							IRepository<Goal> goals,
-							IRepository<Category> categories,
-							IRepository<Transaction> transactions)
+							IRepository<Account, Guid> accounts,
+							IRepository<AppSyncUser, string> users,
+							IRepository<Budget, Guid> budgets,
+							IRepository<Goal, Guid> goals,
+							IRepository<Category, Guid> categories,
+							IRepository<Transaction, Guid> transactions)
 		{
 			if (settings == null) throw new ArgumentNullException("settings");
 			_settingsService = settings;
@@ -123,14 +124,16 @@ namespace Shane.Church.StirlingMoney.Core.Services
 
 					if (User != null)
 					{
+						await BackupDatabase();
+
 						DateTimeOffset lastSuccessfulSyncDate = _settingsService.LoadSetting<DateTimeOffset>("LastSuccessfulSync");
 
-						var localCategories = _categories.GetFilteredEntries(it => it.EditDateTime > lastSuccessfulSyncDate, true).ToList();
-						var localAccounts = _accounts.GetFilteredEntries(it => it.EditDateTime > lastSuccessfulSyncDate, true).ToList();
-						var localUsers = _users.GetFilteredEntries(it => it.EditDateTime > lastSuccessfulSyncDate, true).ToList();
-						var localBudgets = _budgets.GetFilteredEntries(it => it.EditDateTime > lastSuccessfulSyncDate, true).ToList();
-						var localGoals = _goals.GetFilteredEntries(it => it.EditDateTime > lastSuccessfulSyncDate, true).ToList();
-						var localTransactions = _transactions.GetFilteredEntries(it => it.EditDateTime > lastSuccessfulSyncDate, true).ToList();
+						var localCategories = await _categories.GetUpdatedEntries(lastSuccessfulSyncDate);
+						var localAccounts = await _accounts.GetUpdatedEntries(lastSuccessfulSyncDate);
+						var localUsers = await _users.GetUpdatedEntries(lastSuccessfulSyncDate);
+						var localBudgets = await _budgets.GetUpdatedEntries(lastSuccessfulSyncDate);
+						var localGoals = await _goals.GetUpdatedEntries(lastSuccessfulSyncDate);
+						var localTransactions = await _transactions.GetUpdatedEntries(lastSuccessfulSyncDate);
 
 						List<SyncItem> objects = new List<SyncItem>();
 						JsonSerializer serializer = JsonSerializer.Create(Client.SerializerSettings);
@@ -162,27 +165,27 @@ namespace Shane.Church.StirlingMoney.Core.Services
 								{
 									case "Categories":
 										var categoryChanges = item["changes"].ToObject<List<Category>>();
-										await _categories.BatchAddOrUpdateEntriesAsync(categoryChanges);
+										await _categories.BatchUpdateEntriesAsync(categoryChanges);
 										break;
 									case "Accounts":
 										var accountChanges = item["changes"].ToObject<List<Account>>();
-										await _accounts.BatchAddOrUpdateEntriesAsync(accountChanges);
+										await _accounts.BatchUpdateEntriesAsync(accountChanges);
 										break;
 									case "AppSyncUsers":
 										var userChanges = item["changes"].ToObject<List<AppSyncUser>>().Where(it => it.UserEmail.ToLower() != this.Email.ToLower()).ToList();
-										await _users.BatchAddOrUpdateEntriesAsync(userChanges);
+										await _users.BatchUpdateEntriesAsync(userChanges);
 										break;
 									case "Budgets":
 										var budgetChanges = item["changes"].ToObject<List<Budget>>();
-										await _budgets.BatchAddOrUpdateEntriesAsync(budgetChanges);
+										await _budgets.BatchUpdateEntriesAsync(budgetChanges);
 										break;
 									case "Goals":
 										var goalChanges = item["changes"].ToObject<List<Goal>>();
-										await _goals.BatchAddOrUpdateEntriesAsync(goalChanges);
+										await _goals.BatchUpdateEntriesAsync(goalChanges);
 										break;
 									case "Transactions":
 										var transactionChanges = item["changes"].ToObject<List<Transaction>>();
-										await _transactions.BatchAddOrUpdateEntriesAsync(transactionChanges);
+										await _transactions.BatchUpdateEntriesAsync(transactionChanges);
 										break;
 								}
 							}
@@ -192,27 +195,31 @@ namespace Shane.Church.StirlingMoney.Core.Services
 							}
 						}
 
-						var accountList = _accounts.GetAllEntries().ToList();
-						foreach (var a in accountList)
-						{
-							a.AccountBalance = a.LiveAccountBalance;
-							a.PostedBalance = a.LivePostedBalance;
-						}
-						await _accounts.BatchAddOrUpdateEntriesAsync(accountList);
+						await _accounts.Commit();
 
 						_settingsService.SaveSetting<DateTimeOffset>(DateTimeOffset.Now, "LastSuccessfulSync");
+
+						await RemoveDatabaseBackup();
 					}
 				}
+
+				if (SyncCompleted != null)
+					SyncCompleted();
 			}
 			catch (Exception ex)
 			{
 				_log.LogException(ex, "Sync Error");
-				//TODO: Do I need a message here?
+				RestoreDatabase().Wait(5000);
+				RemoveDatabaseBackup().Wait(5000);
 				throw;
 			}
-			if (SyncCompleted != null)
-				SyncCompleted();
 		}
+
+		public abstract Task BackupDatabase();
+
+		public abstract Task RestoreDatabase();
+
+		public abstract Task RemoveDatabaseBackup();
 	}
 
 	public class TableNameSortComparer : IComparer<string>

@@ -1,31 +1,33 @@
 ﻿using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 {
 	public class PhoneAddEditAccountViewModel : AddEditAccountViewModel
 	{
-		private IRepository<Account> _accountRepository;
+		private IRepository<Account, Guid> _accountRepository;
 
-		public PhoneAddEditAccountViewModel(IRepository<Account> accountRepository, INavigationService navService)
+		public PhoneAddEditAccountViewModel(IRepository<Account, Guid> accountRepository, INavigationService navService)
 			: base(accountRepository, navService)
 		{
 			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
 			_accountRepository = accountRepository;
 		}
 
-		public override void LoadData(Guid accountId)
+		public override async Task LoadData(Guid accountId)
 		{
-			base.LoadData(accountId);
+			await base.LoadData(accountId);
 			GetAvailableImages();
 			if (accountId != null && !accountId.Equals(Guid.Empty))
 			{
-				var acct = _accountRepository.GetFilteredEntries(it => it.AccountId == accountId).FirstOrDefault();
+				var acct = await _accountRepository.GetEntryAsync(accountId);
 				if (acct != null)
 				{
 					Image = AvailableImages.Where(it => it.Name == acct.ImageUri).FirstOrDefault();
