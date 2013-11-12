@@ -20,6 +20,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb
 					.WithIndex<Category, Boolean, Guid>("IsDeleted", it => it.IsDeleted)
 					.WithIndex<Category, string, Boolean, Guid>("CategoryNameIsDeleted", it => new Tuple<string, Boolean>(it.CategoryName, it.IsDeleted)),
 				CreateTableDefinition<Account, Guid>(it => it.AccountId)
+					.WithIndex<Account, double, Guid>("InitialBalance", it => it.InitialBalance)
 					.WithIndex<Account, DateTimeOffset, Guid>("EditDateTime", it => it.EditDateTime)
 					.WithIndex<Account, Boolean, Guid>("IsDeleted", it => it.IsDeleted),
 				CreateTableDefinition<Budget, Guid>(it => it.BudgetId)
@@ -36,6 +37,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb
 					.WithIndex<Transaction, DateTimeOffset, double, Guid>("TransactionDate", it=>new Tuple<DateTimeOffset, double>(it.TransactionDate, it.Amount))
 					.WithIndex<Transaction, Guid, double, Guid>("TransactionCategoryAmount", it=>new Tuple<Guid, double>(it.CategoryId, it.Amount))
 					.WithIndex<Transaction, DateTimeOffset, Guid>("EditDateTime", it => it.EditDateTime)
+					.WithIndex<Transaction, DateTimeOffset, DateTimeOffset, Guid>("TransactionDateEditDateTime", it=>new Tuple<DateTimeOffset, DateTimeOffset>(it.TransactionDate, it.EditDateTime))
 					.WithIndex<Transaction, DateTimeOffset, Boolean, Guid>("EditDateTimePosted", it => new Tuple<DateTimeOffset, Boolean>(it.EditDateTime, it.Posted))
 					.WithIndex<Transaction, Boolean, Guid>("IsDeleted", it => it.IsDeleted)
 			};

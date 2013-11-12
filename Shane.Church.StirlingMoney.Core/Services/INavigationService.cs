@@ -1,4 +1,5 @@
-﻿namespace Shane.Church.StirlingMoney.Core.Services
+﻿using System;
+namespace Shane.Church.StirlingMoney.Core.Services
 {
 	/// <summary>
 	/// The NavigationService interface.
@@ -25,5 +26,7 @@
 		/// The destination view model.
 		/// </typeparam>
 		void Navigate<TDestinationViewModel>(object parameter = null);
+
+		Uri NavigationUri<TDestinationViewModel>(object parameter = null);
 	}
 }

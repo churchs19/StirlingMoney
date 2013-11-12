@@ -11,30 +11,18 @@ namespace Shane.Church.StirlingMoney.Data.Update
 		{
 			// Create the database if it does not exist.
 			bool v1dbExists = false;
-			bool v2dbExists = false;
-			using (Data.v3.StirlingMoneyDataContext db = new Data.v3.StirlingMoneyDataContext(Data.v3.StirlingMoneyDataContext.DBConnectionString))
+			using (Data.v2.StirlingMoneyDataContext v2db = new Data.v2.StirlingMoneyDataContext(Data.v2.StirlingMoneyDataContext.DBConnectionString))
 			{
-				if (db.DatabaseExists() == false)
+				if (v2db.DatabaseExists() == false)
 				{
-					CreateContext(db);
+					CreateContext(v2db);
 				}
-				using (Data.v2.StirlingMoneyDataContext v2db = new Data.v2.StirlingMoneyDataContext(Data.v2.StirlingMoneyDataContext.DBConnectionString))
+				using (Data.v1.StirlingMoneyDataContext v1db = new v1.StirlingMoneyDataContext(Data.v1.StirlingMoneyDataContext.DBConnectionString))
 				{
-					using (Data.v1.StirlingMoneyDataContext v1db = new v1.StirlingMoneyDataContext(Data.v1.StirlingMoneyDataContext.DBConnectionString))
+					if (v1db.DatabaseExists())
 					{
-						if (!v2db.DatabaseExists() && v1db.DatabaseExists())
-						{
-							v1dbExists = true;
-							v2dbExists = true;
-							v2db.CreateDatabase();
-							UpgradeV1(v1db, v2db);
-							UpgradeV2(v2db, db);
-						}
-						else if (v2db.DatabaseExists())
-						{
-							v2dbExists = true;
-							UpgradeV2(v2db, db);
-						}
+						v1dbExists = true;
+						UpgradeV1(v1db, v2db);
 					}
 				}
 			}
@@ -42,151 +30,33 @@ namespace Shane.Church.StirlingMoney.Data.Update
 			{
 				DeleteV1();
 			}
-			if (v2dbExists)
-			{
-				DeleteV2();
-			}
 		}
 
-		private static void CreateContext(Data.v3.StirlingMoneyDataContext context)
+		private static void CreateContext(Data.v2.StirlingMoneyDataContext context)
 		{
 			// Create the local database.
 			context.CreateDatabase();
 
 			//Prepopulate the  default category list
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryAutomobile, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryBills, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryBusiness, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryCharity, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryClothing, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryDeposit, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryEntertainment, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryFood, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryHealth, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryHome, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryUtilities, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryMiscellaneous, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
-			//context.Categories.InsertOnSubmit(new Data.v3.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryVacation, Id = null, IsDeleted = false, EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc) });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryAutomobile });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryBills });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryBusiness });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryCharity });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryClothing });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryDeposit });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryEntertainment });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryFood });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryHealth });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryHome });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryUtilities });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryMiscellaneous });
+			context.Categories.InsertOnSubmit(new Data.v2.Category() { CategoryId = Guid.NewGuid(), CategoryName = Shane.Church.StirlingMoney.Strings.Resources.CategoryVacation });
 
-			//context.SubmitChanges();
+			context.SubmitChanges();
 
 			//DatabaseSchemaUpdater updater = context.CreateDatabaseSchemaUpdater();
 			//updater.DatabaseSchemaVersion = 1;
 			//updater.Execute();
-		}
-
-
-		private static void UpgradeV2(Data.v2.StirlingMoneyDataContext oldContext, Data.v3.StirlingMoneyDataContext context)
-		{
-			context.Categories.DeleteAllOnSubmit(context.Categories);
-			context.SubmitChanges();
-			var categoriesQuery = (from c in oldContext.Categories
-								   select c);
-			foreach (var c in categoriesQuery)
-			{
-				Data.v3.Category item = new Data.v3.Category()
-				{
-					CategoryId = c.CategoryId,
-					CategoryName = c.CategoryName,
-					Id = null,
-					IsDeleted = false,
-					EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc)
-				};
-				context.Categories.InsertOnSubmit(item);
-			}
-			context.SubmitChanges();
-			var accountsQuery = (from a in oldContext.Accounts
-								 select a);
-			foreach (var a in accountsQuery)
-			{
-				Data.v3.Account item = new Data.v3.Account()
-				{
-					AccountId = a.AccountId,
-					AccountName = a.AccountName,
-					InitialBalance = a.InitialBalance,
-					Id = null,
-					IsDeleted = false,
-					EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc)
-				};
-				context.Accounts.InsertOnSubmit(item);
-			}
-			context.SubmitChanges();
-			var transactions = (from tx in oldContext.Transactions
-								select tx);
-			foreach (var tx in transactions)
-			{
-				Guid? categoryId = null;
-				Data.v3.Transaction item = new Data.v3.Transaction()
-				{
-					TransactionId = tx.TransactionId,
-					Amount = tx.Amount,
-					CategoryId = categoryId,
-					CheckNumber = tx.CheckNumber,
-					Location = tx.Location,
-					Note = tx.Note,
-					Posted = tx.Posted,
-					TransactionDate = DateTime.SpecifyKind(tx.TransactionDate, DateTimeKind.Utc),
-					Id = null,
-					IsDeleted = false,
-					EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc),
-					_accountId = tx._accountId
-				};
-				context.Transactions.InsertOnSubmit(item);
-			}
-			context.SubmitChanges();
-			foreach (var g in oldContext.Goals)
-			{
-				Data.v3.Goal item = new v3.Goal()
-				{
-					_accountId = g._accountId,
-					Amount = g.Amount,
-					GoalId = g.GoalId,
-					GoalName = g.GoalName,
-					TargetDate = DateTime.SpecifyKind(g.TargetDate, DateTimeKind.Utc),
-					StartDate = DateTime.SpecifyKind(g.TargetDate.AddMonths(1), DateTimeKind.Utc),
-					InitialBalance = g.InitialBalance,
-					EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc),
-					Id = null,
-					IsDeleted = false
-				};
-				context.Goals.InsertOnSubmit(item);
-			}
-			context.SubmitChanges();
-			foreach (var b in oldContext.Budgets)
-			{
-				var period = Core.Data.PeriodType.Weekly;
-				switch (b.BudgetPeriod)
-				{
-					case 0:
-					default:
-						period = Core.Data.PeriodType.Weekly;
-						break;
-					case 1:
-						period = Core.Data.PeriodType.Monthly;
-						break;
-					case 2:
-						period = Core.Data.PeriodType.Yearly;
-						break;
-					case 3:
-						period = Core.Data.PeriodType.Custom;
-						break;
-				}
-				Data.v3.Budget item = new v3.Budget()
-				{
-					BudgetAmount = b.BudgetAmount,
-					BudgetId = b.BudgetId,
-					BudgetName = b.BudgetName,
-					BudgetPeriod = period,
-					CategoryId = b.CategoryId,
-					StartDate = DateTime.SpecifyKind(b.StartDate, DateTimeKind.Utc),
-					EndDate = b.EndDate.HasValue ? new Nullable<DateTime>(DateTime.SpecifyKind(b.EndDate.Value, DateTimeKind.Utc)) : null,
-					EditDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc),
-					Id = null,
-					IsDeleted = null
-				};
-				context.Budgets.InsertOnSubmit(item);
-			}
-			context.SubmitChanges();
 		}
 
 		private static void DeleteV2()

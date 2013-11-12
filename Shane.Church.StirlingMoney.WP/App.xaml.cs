@@ -1,9 +1,11 @@
 ﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Ninject;
+using Shane.Church.StirlingMoney.Core.Exceptions;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.SterlingDb;
 using Shane.Church.StirlingMoney.Core.WP;
+using Shane.Church.StirlingMoney.Core.WP7;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -59,11 +61,6 @@ namespace Shane.Church.StirlingMoney.WP
 
 			// Language display initialization 
 			InitializeLanguage();
-
-			if (KernelService.Kernel == null)
-			{
-				KernelService.Kernel = new StandardKernel();
-			}
 
 			NinjectBootstrapper.Bootstrap();
 
@@ -148,6 +145,7 @@ namespace Shane.Church.StirlingMoney.WP
 			//	};
 			//	LiveTileHelper.UpdateTile(tile, flipTileData);
 			//}
+			InitializeBackgroundAgent();
 		}
 
 		void diagnostics_ExceptionOccurred(object sender, ExceptionOccurredEventArgs e)
@@ -200,7 +198,6 @@ namespace Shane.Church.StirlingMoney.WP
 					Thread.CurrentThread.CurrentUICulture = new CultureInfo(appForceCulture);
 				}
 
-
 				// Set the font to match the display language defined by the 
 				// ResourceLanguage resource string for each supported language. 
 				// 
@@ -239,6 +236,19 @@ namespace Shane.Church.StirlingMoney.WP
 			}
 		}
 
+		private void InitializeBackgroundAgent()
+		{
+			try
+			{
+				IAgentManagementService service = KernelService.Kernel.Get<IAgentManagementService>();
+				service.StartAgent();
+			}
+			catch (AgentManagementException)
+			{
+				//Eat any Agent Management exceptions here.
+			}
+		}
+
 		// Code to execute when the application is launching (eg, from Start)
 		// This code will not execute when the application is reactivated
 		private void Application_Launching(object sender, LaunchingEventArgs e)
@@ -256,6 +266,8 @@ namespace Shane.Church.StirlingMoney.WP
 			engine.Activate();
 
 			engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
+
+			engine.SterlingDatabase.GetDatabase("Money").RefreshAsync().Wait(1000);
 		}
 
 		// Code to execute when the application is activated (brought to foreground)
@@ -280,6 +292,8 @@ namespace Shane.Church.StirlingMoney.WP
 			engine.Activate();
 
 			engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
+
+			engine.SterlingDatabase.GetDatabase("Money").RefreshAsync().Wait(1000);
 		}
 
 		// Code to execute when the application is deactivated (sent to background)

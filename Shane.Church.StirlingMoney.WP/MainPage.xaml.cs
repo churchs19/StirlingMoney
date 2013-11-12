@@ -49,7 +49,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 			base.OnNavigatedTo(e);
 
-			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.New && _settings.LoadSetting<bool>("EnableSync"))
+			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.New && _settings.LoadSetting<bool>("EnableSync") && _settings.LoadSetting<bool>("SyncOnStartup"))
 			{
 				_model.SyncCommand.Execute(null);
 			}

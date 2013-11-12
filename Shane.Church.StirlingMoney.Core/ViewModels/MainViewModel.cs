@@ -117,16 +117,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 				await TaskEx.Yield();
 
-				var budgets = await _budgetRepository.GetAllEntriesAsync();
+				var budgets = _budgetRepository.GetAllKeys();
 				var budgetList = budgets.ToList();
-				foreach (var b in Budgets.Where(it => !budgets.Select(z => z.BudgetId == it.BudgetId).Any()))
+				foreach (var b in Budgets.Where(it => !budgets.Select(z => z == it.BudgetId).Any()))
 					Budgets.Remove(b);
 				foreach (var b in budgetList)
 				{
 					BudgetSummaryViewModel budgetModel;
-					if (Budgets.Where(it => it.BudgetId == b.BudgetId).Any())
+					if (Budgets.Where(it => it.BudgetId == b).Any())
 					{
-						budgetModel = Budgets.Where(it => it.BudgetId == b.BudgetId).First();
+						budgetModel = Budgets.Where(it => it.BudgetId == b).First();
 					}
 					else
 					{
@@ -134,7 +134,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 						budgetModel.ItemDeleted += budgetModel_ItemDeleted;
 						Budgets.Add(budgetModel);
 					}
-					budgetModel.LoadData(b);
+					await budgetModel.LoadData(b);
 				}
 				_budgetsLoaded = true;
 				if (BusyChanged != null)
@@ -165,16 +165,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 				await TaskEx.Yield();
 
-				var goals = await _goalRepository.GetAllEntriesAsync();
+				var goals = _goalRepository.GetAllKeys();
 				var goalList = goals.ToList();
-				foreach (var g in Goals.Where(it => !goalList.Where(z => z.GoalId == it.GoalId).Any()))
+				foreach (var g in Goals.Where(it => !goalList.Where(z => z == it.GoalId).Any()))
 					Goals.Remove(g);
 				foreach (var g in goals)
 				{
 					GoalSummaryViewModel goalModel;
-					if (Goals.Where(it => it.GoalId == g.GoalId).Any())
+					if (Goals.Where(it => it.GoalId == g).Any())
 					{
-						goalModel = Goals.Where(it => it.GoalId == g.GoalId).First();
+						goalModel = Goals.Where(it => it.GoalId == g).First();
 					}
 					else
 					{

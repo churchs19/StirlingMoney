@@ -102,6 +102,9 @@ namespace Shane.Church.StirlingMoney.Core.WP7.Services
 
 		public override async Task AuthenticateUser()
 		{
+#if AGENT
+			throw new InvalidOperationException();
+#else
 			if (_session == null || _session.Expires.CompareTo(DateTimeOffset.Now) < 0)
 			{
 				LiveLoginResult result;
@@ -126,10 +129,11 @@ namespace Shane.Church.StirlingMoney.Core.WP7.Services
 				}
 				catch (Exception ex)
 				{
-					FlurryWP8SDK.Api.LogError("WP7SyncService Authenticate", ex);
+					_log.LogException(ex, "WP7SyncService Authenticate");
 				}
 			}
 			await SetUserData();
+#endif
 		}
 
 		private async Task SetUserData()

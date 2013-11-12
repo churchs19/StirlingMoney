@@ -101,11 +101,12 @@ namespace Shane.Church.StirlingMoney.WP.SampleData
 			throw new NotImplementedException();
 		}
 
-
+#pragma warning disable 1066
 		int IRepository<Account, Guid>.GetEntriesCount(bool includeDeleted = false)
 		{
 			throw new NotImplementedException();
 		}
+#pragma warning restore 1066
 
 		public Task<int> GetEntriesCountAsync(bool includeDeleted = false)
 		{
@@ -113,6 +114,16 @@ namespace Shane.Church.StirlingMoney.WP.SampleData
 		}
 
 		public int GetIndexFilteredEntriesCount<TIndex>(string indexName, TIndex indexValue, bool includeDeleted = false)
+		{
+			throw new NotImplementedException();
+		}
+
+		public IQueryable<Guid> GetAllKeys(bool includeDeleted = false)
+		{
+			throw new NotImplementedException();
+		}
+
+		public System.Collections.Generic.Dictionary<Guid, TIndex> GetAllIndexKeys<TIndex>(string indexName, bool includeDeleted = false)
 		{
 			throw new NotImplementedException();
 		}
@@ -132,6 +143,12 @@ namespace Shane.Church.StirlingMoney.WP.SampleData
 		public void Navigate<TDestinationViewModel>(object parameter = null)
 		{
 
+		}
+
+
+		public Uri NavigationUri<TDestinationViewModel>(object parameter = null)
+		{
+			throw new NotImplementedException();
 		}
 	}
 	public class SampleAddEditAccountViewModel : AddEditAccountViewModel

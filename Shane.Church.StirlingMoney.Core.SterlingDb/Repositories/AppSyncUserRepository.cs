@@ -1,5 +1,6 @@
 ﻿using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
+using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,36 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 	{
 		private SterlingEngine _engine;
 		private ISterlingDatabaseInstance _db;
+		private ISettingsService _settings;
 
-		public AppSyncUserRepository(SterlingEngine engine)
+		public AppSyncUserRepository(SterlingEngine engine, ISettingsService settings)
 		{
 			if (engine == null) throw new ArgumentNullException("engine");
 			_engine = engine;
+			if (settings == null) throw new ArgumentNullException("settings");
+			_settings = settings;
 			_db = _engine.SterlingDatabase.GetDatabase("Money");
+		}
+
+		public IQueryable<string> GetAllKeys(bool includeDeleted = false)
+		{
+			if (includeDeleted)
+				return _db.Query<AppSyncUser, string>().Select(it => it.Key).AsQueryable();
+			else
+			{
+				return _db.Query<AppSyncUser, bool, string>("IsDeleted").Where(it => !it.Index).Select(it => it.Key).AsQueryable();
+			}
+		}
+
+		public Dictionary<string, TIndex> GetAllIndexKeys<TIndex>(string indexName, bool includeDeleted = false)
+		{
+			if (includeDeleted)
+				return _db.Query<AppSyncUser, TIndex, string>(indexName).ToDictionary(key => key.Key, val => val.Index);
+			else
+			{
+				var activeKeys = _db.Query<AppSyncUser, bool, string>("IsDeleted").Where(it => !it.Index).Select(it => it.Key).ToList();
+				return _db.Query<AppSyncUser, TIndex, string>(indexName).Where(it => activeKeys.Contains(it.Key)).ToDictionary(key => key.Key, val => val.Index);
+			}
 		}
 
 		IQueryable<AppSyncUser> GetAllEntries(bool includeDeleted = false)

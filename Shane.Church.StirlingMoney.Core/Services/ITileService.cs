@@ -1,9 +1,11 @@
-﻿using System;
-
+﻿
 namespace Shane.Church.StirlingMoney.Core.Services
 {
-	public interface ITileService<T>
+	public interface ITileService<T, TKey>
 	{
-		bool TileExists(Guid id);
+		bool TileExists(TKey id);
+		void AddTile(TKey id);
+		void UpdateTile(TKey id);
+		void DeleteTile(TKey Id);
 	}
 }

@@ -3,6 +3,7 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Wintellect.Sterling.Core.Serialization;
@@ -78,10 +79,23 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			}
 		}
 
+		public Dictionary<Guid, Tuple<DateTimeOffset, DateTimeOffset>> GetTransactionKeys()
+		{
+			var transactionIds = _transactionRepository.GetAllIndexKeys<Guid>("TransactionAccountId").Where(it => it.Value == this.AccountId).Select(it => it.Key);
+			return _transactionRepository.GetAllIndexKeys<Tuple<DateTimeOffset, DateTimeOffset>>("TransactionDateEditDateTime").Where(it => transactionIds.Contains(it.Key)).ToDictionary(key => key.Key, val => val.Value);
+		}
+
 		public async Task<IQueryable<Transaction>> GetTransactions()
 		{
-			//Getting deadlock here
 			return await _transactionRepository.GetIndexFilteredEntriesAsync<Guid>("TransactionAccountId", AccountId);
+		}
+
+		public static double GetAccountBalance(Guid AccountId)
+		{
+			var accountRepo = KernelService.Kernel.Get<IRepository<Account, Guid>>();
+			var transSum = KernelService.Kernel.Get<ITransactionSum>();
+			var initialBalance = accountRepo.GetAllIndexKeys<double>("InitialBalance").Where(it => it.Key == AccountId).Select(it => it.Value).FirstOrDefault();
+			return initialBalance + transSum.GetSumByAccount(AccountId);
 		}
 	}
 }

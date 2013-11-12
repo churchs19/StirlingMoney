@@ -13,6 +13,9 @@
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
+      <ExtendedTask Name="BackgroundTask">
+        <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="Shane.Church.StirlingMoney.WP.Agent" Source="Shane.Church.StirlingMoney.WP.Agent" Type="Shane.Church.StirlingMoney.WP.Agent.ScheduledAgent" />
+      </ExtendedTask>
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="Shane.Church.StirlingMoney.WPToken" TaskName="_default">

@@ -102,6 +102,9 @@
                         <TextBlock Text="{Binding LocalizedResources.SynchronizationEnableLabel, Source={StaticResource LocalizedStrings}}" Margin="0,20,0,0"/>
                         <telerikPrimitives:RadToggleSwitch x:Name="toggleEnableSync"
 							IsChecked="{Binding EnableSync, Mode=TwoWay}" CheckedChanged="toggleEnableSync_CheckedChanged"/>
+                        <TextBlock Text="{Binding LocalizedResources.SyncOnStartupLabel, Source={StaticResource LocalizedStrings}}" Margin="0,20,0,0" Visibility="{Binding IsChecked, Converter={StaticResource BooleanVisibilityConverter}, ElementName=toggleEnableSync}"/>
+                        <telerikPrimitives:RadToggleSwitch x:Name="toggleSyncOnStartup"
+							IsChecked="{Binding SyncOnStartup, Mode=TwoWay}" Visibility="{Binding IsChecked, Converter={StaticResource BooleanVisibilityConverter}, ElementName=toggleEnableSync}"/>
                     </StackPanel>
                 </ScrollViewer>
             </controls:PivotItem>

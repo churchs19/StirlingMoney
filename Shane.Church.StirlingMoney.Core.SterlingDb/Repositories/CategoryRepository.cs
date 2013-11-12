@@ -1,5 +1,6 @@
 ﻿using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
+using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,36 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 	{
 		private SterlingEngine _engine;
 		private ISterlingDatabaseInstance _db;
+		private ISettingsService _settings;
 
-		public CategoryRepository(SterlingEngine engine)
+		public CategoryRepository(SterlingEngine engine, ISettingsService settings)
 		{
 			if (engine == null) throw new ArgumentNullException("engine");
 			_engine = engine;
+			if (settings == null) throw new ArgumentNullException("settings");
+			_settings = settings;
 			_db = _engine.SterlingDatabase.GetDatabase("Money");
+		}
+
+		public IQueryable<Guid> GetAllKeys(bool includeDeleted = false)
+		{
+			if (includeDeleted)
+				return _db.Query<Category, Guid>().Select(it => it.Key).AsQueryable();
+			else
+			{
+				return _db.Query<Category, bool, Guid>("IsDeleted").Where(it => !it.Index).Select(it => it.Key).AsQueryable();
+			}
+		}
+
+		public Dictionary<Guid, TIndex> GetAllIndexKeys<TIndex>(string indexName, bool includeDeleted = false)
+		{
+			if (includeDeleted)
+				return _db.Query<Category, TIndex, Guid>(indexName).ToDictionary(key => key.Key, val => val.Index);
+			else
+			{
+				var activeKeys = _db.Query<Category, bool, Guid>("IsDeleted").Where(it => !it.Index).Select(it => it.Key).ToList();
+				return _db.Query<Category, TIndex, Guid>(indexName).Where(it => activeKeys.Contains(it.Key)).ToDictionary(key => key.Key, val => val.Index);
+			}
 		}
 
 		public IQueryable<Category> GetAllEntries(bool includeDeleted = false)
@@ -48,7 +73,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public async Task DeleteEntryAsync(Category entry, bool hardDelete = false)
 		{
-			if (hardDelete)
+			if (hardDelete || !_settings.LoadSetting<bool>("SyncEnabled"))
 				await _db.DeleteAsync<Category>(entry);
 			else
 			{

@@ -10,7 +10,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 {
 	public class PhoneAgentManagementService : IAgentManagementService
 	{
-		private const string _taskName = "StirlingMoneySyncTask";
+		private const string _taskName = "StirlingMoneySyncAgent";
 
 		public PhoneAgentManagementService()
 		{
@@ -46,7 +46,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 				ScheduledActionService.Add(periodicTask);
 				// If debugging is enabled, use LaunchForTest to launch the agent in one minute.
 #if(DEBUG_AGENT)
-                ScheduledActionService.LaunchForTest(_taskName, TimeSpan.FromSeconds(60));
+				ScheduledActionService.LaunchForTest(_taskName, TimeSpan.FromSeconds(30));
 #endif
 			}
 			catch (InvalidOperationException exception)

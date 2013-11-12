@@ -8,6 +8,10 @@ namespace Shane.Church.StirlingMoney.Core.Repositories
 {
 	public interface IRepository<T, TKey> : IDisposable
 	{
+		IQueryable<TKey> GetAllKeys(bool includeDeleted = false);
+
+		Dictionary<TKey, TIndex> GetAllIndexKeys<TIndex>(string indexName, bool includeDeleted = false);
+
 		/// <summary>
 		/// Get all entries.
 		/// </summary>

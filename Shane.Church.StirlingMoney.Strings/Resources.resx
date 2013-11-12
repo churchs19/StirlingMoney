@@ -769,4 +769,7 @@ I take your security very seriously and all data is transmitted securely over HT
   <data name="NoAuthorizedUsers" xml:space="preserve">
     <value>No Authorized Users</value>
   </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>synchronize on startup</value>
+  </data>
 </root>

@@ -13,7 +13,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 	{
 		private IRepository<Account, Guid> _accountRepository;
 
-		public PhoneAccountTileViewModel(ITileService<Account> tileService, IRepository<Account, Guid> accountRepository, INavigationService navService)
+		public PhoneAccountTileViewModel(ITileService<Account, Guid> tileService, IRepository<Account, Guid> accountRepository, INavigationService navService)
 			: base(tileService, accountRepository, navService)
 		{
 			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
@@ -37,17 +37,24 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 			if (string.IsNullOrWhiteSpace(ImageName)) ImageName = "Book-Open.png";
 			// The resource name will correspond to the namespace and path in the file system.
 			// Have a look at the resources collection in the debugger to figure out the name.
+#if AGENT
+			string resourcePath = "Shane.Church.StirlingMoney.Core.WP7.Agent.Images." + ImageName;
+#else
 			string resourcePath = "Shane.Church.StirlingMoney.Core.WP.Images." + ImageName;
+#endif
 			Assembly assembly = Assembly.GetExecutingAssembly();
 
 			using (var resourceStream = assembly.GetManifestResourceStream(resourcePath))
 			{
-				var data = new byte[resourceStream.Length];
-				using (var ms = new MemoryStream(data))
+				if (resourceStream != null)
 				{
-					resourceStream.CopyTo(ms);
+					var data = new byte[resourceStream.Length];
+					using (var ms = new MemoryStream(data))
+					{
+						resourceStream.CopyTo(ms);
+					}
+					this.Image = data;
 				}
-				this.Image = data;
 			}
 		}
 	}

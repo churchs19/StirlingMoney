@@ -5,7 +5,6 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using System;
-using System.Windows;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -22,19 +21,16 @@ namespace Shane.Church.StirlingMoney.WP
 			BuildApplicationBar();
 		}
 
-		protected override async void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
 			FlurryWP8SDK.Api.LogPageView();
 			_model = KernelService.Kernel.Get<CategoryListViewModel>();
 
 			base.OnNavigatedTo(e);
 
-			await _model.LoadData();
+			_model.LoadData();
 
-			Deployment.Current.Dispatcher.BeginInvoke(() =>
-			{
-				this.DataContext = _model;
-			});
+			this.DataContext = _model;
 		}
 
 		#region Ad Control
@@ -92,9 +88,9 @@ namespace Shane.Church.StirlingMoney.WP
 			_model.AddCommand.Execute(null);
 		}
 
-		private async void menuItemDelete_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+		private void menuItemDelete_Tap(object sender, System.Windows.Input.GestureEventArgs e)
 		{
-			await _model.LoadData();
+			_model.LoadData();
 		}
 	}
 }

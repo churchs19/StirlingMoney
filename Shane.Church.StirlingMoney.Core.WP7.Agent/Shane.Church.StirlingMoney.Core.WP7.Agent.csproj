@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{265F7C73-551C-45B6-9826-7B1F991F0CFC}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Shane.Church.StirlingMoney.Core.WP7.Agent</RootNamespace>
+    <AssemblyName>Shane.Church.StirlingMoney.Core.WP7.Agent</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;AGENT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Personal|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Personal\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;AGENT;PERSONAL</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Trial|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Trial\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;AGENT;DEBUG_TRIAL</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Agent|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Agent\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;AGENT;DEBUG_AGENT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Live, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\LiveSDK.5.5\lib\WindowsPhone71\Microsoft.Live.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Mobile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.MobileServices.1.0.3\lib\sl4-windowsphone71\Microsoft.WindowsAzure.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Mobile.Ext, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.MobileServices.1.0.3\lib\sl4-windowsphone71\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\portable-net40+sl4+wp7+win8\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Common">
+      <HintPath>..\packages\Portable.Ninject.3.0.6\lib\sl4-wp71\Ninject.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.WP">
+      <HintPath>..\packages\Portable.Ninject.3.0.6\lib\sl4-wp71\Ninject.WP.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.3\lib\sl4-windowsphone71\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.15\lib\sl4-windowsphone71\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.15\lib\sl4-windowsphone71\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.15\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.3\lib\sl4-windowsphone71\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.3\lib\sl4-windowsphone71\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="mscorlib.extensions" />
+    <Reference Include="Telerik.Windows.BackgroundAgentTools, Version=2013.3.1016.2040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Wintellect.Sterling.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b18e15f7365ddb8a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Wintellect.SterlingDB\Wintellect.Sterling.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Wintellect.Sterling.WP7, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b18e15f7365ddb8a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Wintellect.SterlingDB\WP7\Wintellect.Sterling.WP7.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP7\Extensions\LiveAuthClientExtensions.cs">
+      <Link>Extensions\LiveAuthClientExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP7\Extensions\LiveConnectClientExtensions.cs">
+      <Link>Extensions\LiveConnectClientExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP7\NinjectBootstrapper.cs">
+      <Link>NinjectBootstrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP7\Services\WP7AccountTileService.cs">
+      <Link>Services\WP7AccountTileService.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP7\Services\WP7SyncService.cs">
+      <Link>Services\WP7SyncService.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\MediumTileBack.xaml.cs">
+      <Link>Controls\MediumTileBack.xaml.cs</Link>
+      <DependentUpon>MediumTileBack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\MediumTileBackWP7.xaml.cs">
+      <Link>Controls\MediumTileBackWP7.xaml.cs</Link>
+      <DependentUpon>MediumTileBackWP7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\MediumTileFront.xaml.cs">
+      <Link>Controls\MediumTileFront.xaml.cs</Link>
+      <DependentUpon>MediumTileFront.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\MediumTileFrontWP7.xaml.cs">
+      <Link>Controls\MediumTileFrontWP7.xaml.cs</Link>
+      <DependentUpon>MediumTileFrontWP7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\SmallTile.xaml.cs">
+      <Link>Controls\SmallTile.xaml.cs</Link>
+      <DependentUpon>SmallTile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\WideTileBack.xaml.cs">
+      <Link>Controls\WideTileBack.xaml.cs</Link>
+      <DependentUpon>WideTileBack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\WideTileFront.xaml.cs">
+      <Link>Controls\WideTileFront.xaml.cs</Link>
+      <DependentUpon>WideTileFront.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Converters\BooleanToVisibilityConverter.cs">
+      <Link>Converters\BooleanToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Converters\ByteToImageSourceValueConverter.cs">
+      <Link>Converters\ByteToImageSourceValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Converters\CurrencyValueConverter.cs">
+      <Link>Converters\CurrencyValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\FlurryConfig.cs">
+      <Link>FlurryConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\LiveConfig.cs">
+      <Link>LiveConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\LocalizedStrings.cs">
+      <Link>LocalizedStrings.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\MobileServiceConfig.cs">
+      <Link>MobileServiceConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Services\PhoneNavigationService.cs">
+      <Link>Services\PhoneNavigationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Services\PhoneSettingsService.cs">
+      <Link>Services\PhoneSettingsService.cs</Link>
+    </Compile>
+    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\ViewModels\PhoneAccountTileViewModel.cs">
+      <Link>ViewModels\PhoneAccountTileViewModel.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AgentLoggingService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fonts\LiveSymbol.ttf" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Core.SterlingDb\Shane.Church.StirlingMoney.Core.SterlingDb.csproj">
+      <Project>{7EDFE360-EEFA-42DC-A5DA-DCEFFA32DEFE}</Project>
+      <Name>Shane.Church.StirlingMoney.Core.SterlingDb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Core\Shane.Church.StirlingMoney.Core.csproj">
+      <Project>{4E5D8824-CC49-41A4-BC97-3E5BC5378754}</Project>
+      <Name>Shane.Church.StirlingMoney.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Strings\Shane.Church.StirlingMoney.Strings.csproj">
+      <Project>{E66B6C80-38B7-4929-B6B9-B9FC8F62C356}</Project>
+      <Name>Shane.Church.StirlingMoney.Strings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shane.Church.Utility.Core.WP\Shane.Church.Utility.Core.WP.csproj">
+      <Project>{75A3873F-015F-4784-B6A6-8A4484FBE48D}</Project>
+      <Name>Shane.Church.Utility.Core.WP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shane.Church.Utility.Core\Shane.Church.Utility.Core.csproj">
+      <Project>{A28A5353-AFBB-4F9E-A1AA-1C9B49523028}</Project>
+      <Name>Shane.Church.Utility.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\MediumTileBack.xaml">
+      <Link>Controls\MediumTileBack.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\MediumTileBackWP7.xaml">
+      <Link>Controls\MediumTileBackWP7.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\MediumTileFront.xaml">
+      <Link>Controls\MediumTileFront.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\MediumTileFrontWP7.xaml">
+      <Link>Controls\MediumTileFrontWP7.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\SmallTile.xaml">
+      <Link>Controls\SmallTile.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\WideTileBack.xaml">
+      <Link>Controls\WideTileBack.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\WideTileFront.xaml">
+      <Link>Controls\WideTileFront.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Accounts-Book.png">
+      <Link>Images\Accounts-Book.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\American Express.png">
+      <Link>Images\American Express.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\ATM.png">
+      <Link>Images\ATM.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Bank.png">
+      <Link>Images\Bank.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Bike-Loan.png">
+      <Link>Images\Bike-Loan.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Book-Open.png">
+      <Link>Images\Book-Open.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Car-Loan.png">
+      <Link>Images\Car-Loan.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Cash.png">
+      <Link>Images\Cash.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Charity.png">
+      <Link>Images\Charity.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Cheque.png">
+      <Link>Images\Cheque.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\CitiBank.png">
+      <Link>Images\CitiBank.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Counting-Machine.png">
+      <Link>Images\Counting-Machine.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Debit-Card.png">
+      <Link>Images\Debit-Card.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Discover.png">
+      <Link>Images\Discover.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Fund.png">
+      <Link>Images\Fund.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Home-Loan.png">
+      <Link>Images\Home-Loan.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\HSBC.png">
+      <Link>Images\HSBC.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Jewel-Loan.png">
+      <Link>Images\Jewel-Loan.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Market.png">
+      <Link>Images\Market.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Master-Card.png">
+      <Link>Images\Master-Card.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Money-Bag.png">
+      <Link>Images\Money-Bag.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Money.png">
+      <Link>Images\Money.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Payment-01.png">
+      <Link>Images\Payment-01.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Payment-02.png">
+      <Link>Images\Payment-02.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Paypal.png">
+      <Link>Images\Paypal.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Piggy Bank.png">
+      <Link>Images\Piggy Bank.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\RBS.png">
+      <Link>Images\RBS.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Settled credit record.png">
+      <Link>Images\Settled credit record.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Shane.Church.StirlingMoney.Core.WP\Images\Visa.png">
+      <Link>Images\Visa.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -28,7 +28,13 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			DeleteCommand = new AsyncRelayCommand(o => Delete());
 		}
 
-		public async Task LoadData(Goal g)
+		public async Task LoadData(Guid goalId)
+		{
+			var g = await _goalRepository.GetEntryAsync(goalId);
+			LoadData(g);
+		}
+
+		public void LoadData(Goal g)
 		{
 			GoalId = g.GoalId;
 			GoalName = g.GoalName;
@@ -36,8 +42,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			InitialBalance = g.InitialBalance;
 			TargetDate = g.TargetDate;
 			StartDate = g.StartDate;
-			var account = await g.GetAccount();
-			CurrentAmount = account.AccountBalance;
+			CurrentAmount = Account.GetAccountBalance(g.AccountId);
 		}
 
 		private Guid _goalId;

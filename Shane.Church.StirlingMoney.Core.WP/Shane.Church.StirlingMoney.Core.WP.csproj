@@ -42,11 +42,42 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Personal|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Personal\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;PERSONAL</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Trial|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Trial\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;DEBUG_TRIAL</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Agent|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Agent\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;DEBUG_AGENT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FlurryWP8SDK">
       <HintPath>..\lib\Flurry WindowsPhone SDK vWP8 3.1.2\FlurryWP8SDK.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
@@ -117,19 +148,40 @@
     <Compile Include="Commands\OtherAppsCommand.cs" />
     <Compile Include="Commands\RateThisAppCommand.cs" />
     <Compile Include="Commands\SendAnEmailCommand.cs" />
+    <Compile Include="Controls\MediumTileBack.xaml.cs">
+      <DependentUpon>MediumTileBack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MediumTileBackWP7.xaml.cs">
+      <DependentUpon>MediumTileBackWP7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MediumTileFront.xaml.cs">
+      <DependentUpon>MediumTileFront.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MediumTileFrontWP7.xaml.cs">
+      <DependentUpon>MediumTileFrontWP7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SmallTile.xaml.cs">
+      <DependentUpon>SmallTile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WideTileBack.xaml.cs">
+      <DependentUpon>WideTileBack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WideTileFront.xaml.cs">
+      <DependentUpon>WideTileFront.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\ByteToImageSourceValueConverter.cs" />
     <Compile Include="Converters\CurrencyValueConverter.cs" />
     <Compile Include="Converters\TransactionBrushConverter.cs" />
     <Compile Include="FlurryConfig.cs" />
     <Compile Include="LiveConfig.cs" />
+    <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MobileServiceConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PhoneAgentManagementService.cs" />
     <Compile Include="Services\PhoneLoggingService.cs" />
     <Compile Include="Services\PhoneNavigationService.cs" />
     <Compile Include="Services\PhoneSettingsService.cs" />
-    <Compile Include="Services\PhoneTileService.cs" />
     <Compile Include="Services\PhoneWebNavigationService.cs" />
     <Compile Include="ViewModels\PhoneAboutViewModel.cs" />
     <Compile Include="ViewModels\PhoneAccountTileViewModel.cs" />
@@ -256,6 +308,36 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\MediumTileBack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MediumTileBackWP7.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MediumTileFront.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MediumTileFrontWP7.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SmallTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WideTileBack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WideTileFront.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

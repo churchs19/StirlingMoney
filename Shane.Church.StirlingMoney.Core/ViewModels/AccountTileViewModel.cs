@@ -14,12 +14,12 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class AccountTileViewModel : ObservableObject
 	{
-		private ITileService<Account> _tileService;
+		private ITileService<Account, Guid> _tileService;
 		private IRepository<Account, Guid> _accountRepository;
 		private INavigationService _navService;
 		protected string _imageUri;
 
-		public AccountTileViewModel(ITileService<Account> tileService, IRepository<Account, Guid> accountRepository, INavigationService navService)
+		public AccountTileViewModel(ITileService<Account, Guid> tileService, IRepository<Account, Guid> accountRepository, INavigationService navService)
 		{
 			if (tileService == null) throw new ArgumentNullException("tileService");
 			_tileService = tileService;
@@ -119,6 +119,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					return Resources.UnpinFromStart;
 				}
 			}
+			set
+			{
+				RaisePropertyChanged(() => PinMenuText);
+			}
 		}
 
 		public ICommand EditCommand { get; protected set; }
@@ -146,14 +150,21 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public void Pin()
 		{
-
+			if (_tileService.TileExists(AccountId))
+			{
+				_tileService.DeleteTile(AccountId);
+			}
+			else
+			{
+				_tileService.AddTile(AccountId);
+			}
 		}
 
 		public ICommand TransactionsCommand { get; protected set; }
 
 		public void Transactions()
 		{
-			_navService.Navigate<TransactionListViewModel>(this.AccountId);
+			_navService.Navigate<TransactionListViewModel>(new TransactionListParams() { Id = AccountId, PinnedTile = false });
 		}
 
 		public virtual async Task LoadData(Guid accountId)
@@ -161,11 +172,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			Account a = await _accountRepository.GetEntryAsync(accountId);
 			if (a != null)
 			{
-				AccountId = accountId;
-				AccountName = a.AccountName;
-				AccountBalance = a.AccountBalance;
-				PostedBalance = a.PostedBalance;
-				_imageUri = a.ImageUri;
+				LoadData(a);
 			}
 		}
 
@@ -176,6 +183,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			AccountBalance = a.AccountBalance;
 			PostedBalance = a.PostedBalance;
 			_imageUri = a.ImageUri;
+			_tileService.UpdateTile(AccountId);
 		}
 	}
 }

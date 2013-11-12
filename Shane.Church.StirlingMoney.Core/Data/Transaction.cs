@@ -8,6 +8,23 @@ namespace Shane.Church.StirlingMoney.Core.Data
 {
 	public class Transaction
 	{
+		private IRepository<Account, Guid> _accountRepository;
+		private IRepository<Category, Guid> _categoryRepository;
+
+		public Transaction(IRepository<Account, Guid> accountRepo, IRepository<Category, Guid> categoryRepo)
+		{
+			if (accountRepo == null) throw new ArgumentNullException("accountRepo");
+			_accountRepository = accountRepo;
+			if (categoryRepo == null) throw new ArgumentNullException("categoryRepo");
+			_categoryRepository = categoryRepo;
+		}
+
+		public Transaction()
+			: this(KernelService.Kernel.Get<IRepository<Account, Guid>>(), KernelService.Kernel.Get<IRepository<Category, Guid>>())
+		{
+
+		}
+
 		public Guid TransactionId { get; set; }
 		public DateTimeOffset TransactionDate { get; set; }
 		public double Amount { get; set; }
@@ -25,7 +42,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		{
 			try
 			{
-				return await KernelService.Kernel.Get<IRepository<Account, Guid>>().GetEntryAsync(AccountId);
+				return await _accountRepository.GetEntryAsync(AccountId);
 			}
 			catch
 			{

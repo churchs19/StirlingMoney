@@ -85,6 +85,12 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
+		public async Task LoadEntry(string userEmail)
+		{
+			var u = await _repository.GetEntryAsync(userEmail);
+			LoadEntry(u);
+		}
+
 		public void LoadEntry(AppSyncUser user)
 		{
 			if (user != null)
@@ -97,9 +103,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public async Task RemoveEntry()
 		{
-			var entry = KernelService.Kernel.Get<AppSyncUser>();
-			entry.AppSyncId = AppSyncId;
-			entry.UserEmail = UserEmail;
+			var entry = await _repository.GetEntryAsync(UserEmail);
 			await _repository.DeleteEntryAsync(entry);
 			if (RemoveActionCompleted != null)
 				RemoveActionCompleted(this, new EventArgs());

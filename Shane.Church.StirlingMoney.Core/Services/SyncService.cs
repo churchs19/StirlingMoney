@@ -124,30 +124,32 @@ namespace Shane.Church.StirlingMoney.Core.Services
 
 					if (User != null)
 					{
-						await BackupDatabase();
+//						await BackupDatabase();
 
 						DateTimeOffset lastSuccessfulSyncDate = _settingsService.LoadSetting<DateTimeOffset>("LastSuccessfulSync");
 
-						var localCategories = await _categories.GetUpdatedEntries(lastSuccessfulSyncDate);
-						var localAccounts = await _accounts.GetUpdatedEntries(lastSuccessfulSyncDate);
-						var localUsers = await _users.GetUpdatedEntries(lastSuccessfulSyncDate);
-						var localBudgets = await _budgets.GetUpdatedEntries(lastSuccessfulSyncDate);
-						var localGoals = await _goals.GetUpdatedEntries(lastSuccessfulSyncDate);
-						var localTransactions = await _transactions.GetUpdatedEntries(lastSuccessfulSyncDate);
+						var localCategories = _categories.GetUpdatedEntries(lastSuccessfulSyncDate);
+						var localAccounts = _accounts.GetUpdatedEntries(lastSuccessfulSyncDate);
+						var localUsers = _users.GetUpdatedEntries(lastSuccessfulSyncDate);
+						var localBudgets = _budgets.GetUpdatedEntries(lastSuccessfulSyncDate);
+						var localGoals = _goals.GetUpdatedEntries(lastSuccessfulSyncDate);
+						var localTransactions = _transactions.GetUpdatedEntries(lastSuccessfulSyncDate);
+
+						Task.WaitAll(localCategories, localAccounts, localBudgets, localUsers, localGoals, localTransactions);
 
 						List<SyncItem> objects = new List<SyncItem>();
 						JsonSerializer serializer = JsonSerializer.Create(Client.SerializerSettings);
-						JArray arrCategories = JArray.FromObject(localCategories, serializer);
+						JArray arrCategories = JArray.FromObject(localCategories.Result, serializer);
 						objects.Add(new SyncItem() { TableName = "Categories", KeyField = "categoryId", Values = arrCategories });
-						JArray arrAccounts = JArray.FromObject(localAccounts, serializer);
+						JArray arrAccounts = JArray.FromObject(localAccounts.Result, serializer);
 						objects.Add(new SyncItem() { TableName = "Accounts", KeyField = "accountId", Values = arrAccounts });
-						JArray arrUsers = JArray.FromObject(localUsers, serializer);
+						JArray arrUsers = JArray.FromObject(localUsers.Result, serializer);
 						objects.Add(new SyncItem() { TableName = "AppSyncUsers", KeyField = "userEmail", Values = arrUsers });
-						JArray arrBudgets = JArray.FromObject(localBudgets, serializer);
+						JArray arrBudgets = JArray.FromObject(localBudgets.Result, serializer);
 						objects.Add(new SyncItem() { TableName = "Budgets", KeyField = "budgetId", Values = arrBudgets });
-						JArray arrGoals = JArray.FromObject(localGoals, serializer);
+						JArray arrGoals = JArray.FromObject(localGoals.Result, serializer);
 						objects.Add(new SyncItem() { TableName = "Goals", KeyField = "goalId", Values = arrGoals });
-						JArray arrTransactions = JArray.FromObject(localTransactions, serializer);
+						JArray arrTransactions = JArray.FromObject(localTransactions.Result, serializer);
 						objects.Add(new SyncItem() { TableName = "Transactions", KeyField = "transactionId", Values = arrTransactions });
 
 						JObject body = new JObject();
@@ -157,49 +159,52 @@ namespace Shane.Church.StirlingMoney.Core.Services
 
 						var results = await Client.InvokeApiAsync("sync", body);
 
-						foreach (var item in results.OrderBy(it => it["tableName"].ToString(), new TableNameSortComparer()))
+						try
 						{
-							try
+							var updateTasks = new List<Task>();
+							foreach (var item in results.OrderBy(it => it["tableName"].ToString(), new TableNameSortComparer()))
 							{
+
 								switch (item["tableName"].ToString())
 								{
 									case "Categories":
 										var categoryChanges = item["changes"].ToObject<List<Category>>();
-										await _categories.BatchUpdateEntriesAsync(categoryChanges);
+										updateTasks.Add(_categories.BatchUpdateEntriesAsync(categoryChanges));
 										break;
 									case "Accounts":
 										var accountChanges = item["changes"].ToObject<List<Account>>();
-										await _accounts.BatchUpdateEntriesAsync(accountChanges);
+										updateTasks.Add(_accounts.BatchUpdateEntriesAsync(accountChanges));
 										break;
 									case "AppSyncUsers":
 										var userChanges = item["changes"].ToObject<List<AppSyncUser>>().Where(it => it.UserEmail.ToLower() != this.Email.ToLower()).ToList();
-										await _users.BatchUpdateEntriesAsync(userChanges);
+										updateTasks.Add(_users.BatchUpdateEntriesAsync(userChanges));
 										break;
 									case "Budgets":
 										var budgetChanges = item["changes"].ToObject<List<Budget>>();
-										await _budgets.BatchUpdateEntriesAsync(budgetChanges);
+										updateTasks.Add(_budgets.BatchUpdateEntriesAsync(budgetChanges));
 										break;
 									case "Goals":
 										var goalChanges = item["changes"].ToObject<List<Goal>>();
-										await _goals.BatchUpdateEntriesAsync(goalChanges);
+										updateTasks.Add(_goals.BatchUpdateEntriesAsync(goalChanges));
 										break;
 									case "Transactions":
 										var transactionChanges = item["changes"].ToObject<List<Transaction>>();
-										await _transactions.BatchUpdateEntriesAsync(transactionChanges);
+										updateTasks.Add(_transactions.BatchUpdateEntriesAsync(transactionChanges));
 										break;
 								}
 							}
-							catch
-							{
-								throw;
-							}
+							Task.WaitAll(updateTasks.ToArray());
+						}
+						catch
+						{
+							throw;
 						}
 
 						await _accounts.Commit();
 
 						_settingsService.SaveSetting<DateTimeOffset>(DateTimeOffset.Now, "LastSuccessfulSync");
 
-						await RemoveDatabaseBackup();
+//						await RemoveDatabaseBackup();
 					}
 				}
 
@@ -209,8 +214,8 @@ namespace Shane.Church.StirlingMoney.Core.Services
 			catch (Exception ex)
 			{
 				_log.LogException(ex, "Sync Error");
-				RestoreDatabase().Wait(5000);
-				RemoveDatabaseBackup().Wait(5000);
+				//RestoreDatabase().Wait(5000);
+				//RemoveDatabaseBackup().Wait(5000);
 				throw;
 			}
 		}

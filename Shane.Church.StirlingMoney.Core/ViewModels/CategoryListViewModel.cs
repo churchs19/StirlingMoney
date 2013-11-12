@@ -14,14 +14,23 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class CategoryListViewModel : ObservableObject
 	{
-		public CategoryListViewModel()
+		private IRepository<Category, Guid> _categoryRepository;
+
+		public CategoryListViewModel(IRepository<Category, Guid> categoryRepo)
 		{
+			if (categoryRepo == null) throw new ArgumentNullException("categoryRepo");
+			_categoryRepository = categoryRepo;
 			_items = new ObservableCollection<CategoryViewModel>();
 			_items.CollectionChanged += (s, e) =>
-				{
-					RaisePropertyChanged(() => Items);
-				};
+			{
+				RaisePropertyChanged(() => Items);
+			};
 			AddCommand = new RelayCommand(AddCategory);
+		}
+
+		public CategoryListViewModel()
+			: this(KernelService.Kernel.Get<IRepository<Category, Guid>>())
+		{
 		}
 
 		private ObservableCollection<CategoryViewModel> _items;
@@ -38,15 +47,14 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			navService.Navigate<CategoryViewModel>();
 		}
 
-		public async Task LoadData()
+		public void LoadData()
 		{
-			var service = KernelService.Kernel.Get<IRepository<Category, Guid>>();
 			Items.Clear();
-			var categories = await service.GetAllEntriesAsync();
-			var categoryList = categories.OrderBy(it => it.CategoryName).ToList();
+			var categories = _categoryRepository.GetAllIndexKeys<string>("CategoryName");
+			var categoryList = categories.OrderBy(it => it.Value).ToDictionary(key => key.Key, val => val.Value);
 			foreach (var c in categories)
 			{
-				Items.Add(new CategoryViewModel(c));
+				Items.Add(new CategoryViewModel() { CategoryId = c.Key, CategoryName = c.Value });
 			}
 		}
 	}

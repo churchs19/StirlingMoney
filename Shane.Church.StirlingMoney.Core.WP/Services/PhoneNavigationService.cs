@@ -69,6 +69,15 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 		/// <param name="parameter">The parameter.</param>
 		public void Navigate<TDestinationViewModel>(object parameter = null)
 		{
+			var navUri = NavigationUri<TDestinationViewModel>(parameter);
+			if(navUri != null)
+			{
+				this.RootFrame.Navigate(navUri);
+			}
+		}
+
+		public Uri NavigationUri<TDestinationViewModel>(object parameter = null)
+		{
 			var navParameter = string.Empty;
 			if (parameter != null)
 			{
@@ -78,9 +87,9 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 			if (ViewModelRouting.ContainsKey(typeof(TDestinationViewModel)))
 			{
 				var page = ViewModelRouting[typeof(TDestinationViewModel)];
-
-				this.RootFrame.Navigate(new Uri("/" + page + navParameter, UriKind.Relative));
+				return new Uri("/" + page + navParameter, UriKind.Relative);
 			}
+			return null;
 		}
 	}
 }

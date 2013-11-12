@@ -147,8 +147,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			if (Account != null && CurrentRow < TotalRows)
 			{
-				var transQuery = await Account.GetTransactions();
-				var nextTransactions = transQuery.OrderByDescending(it => it.TransactionDate).ThenByDescending(it => it.EditDateTime).Skip(CurrentRow).Take(count).ToList();
+				var nextTransactions = Account.GetTransactionKeys().OrderByDescending(it => it.Value.Item1).ThenByDescending(it => it.Value.Item2).Skip(CurrentRow).Take(count).Select(it => it.Key).ToList();
 				foreach (var t in nextTransactions)
 				{
 					var item = KernelService.Kernel.Get<TransactionListItemViewModel>(new Ninject.Parameters.ConstructorArgument("parent", this));
@@ -214,11 +213,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 			await TaskEx.Yield();
 
-			var updated = await _transactionRepository.GetUpdatedEntries(_refreshTime);
+			var updated = _transactionRepository.GetAllIndexKeys<DateTimeOffset>("EditDateTime").Where(it => it.Value > _refreshTime).Select(it => it.Key);
 			var updatedList = updated.ToList();
 			foreach (var t in updatedList)
 			{
-				var listItem = Transactions.Where(it => it.TransactionId == t.TransactionId).FirstOrDefault();
+				var listItem = Transactions.Where(it => it.TransactionId == t).FirstOrDefault();
 				if (listItem != null)
 				{
 					await listItem.LoadData(t);
@@ -230,7 +229,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					item.PostedChanged += item_PostedChanged;
 					Transactions.Add(item);
 					CurrentRow++;
-					TotalRows++;
+					TotalRows = this.Account.TransactionCount;
 				}
 			}
 			_refreshTime = DateTimeOffset.UtcNow;

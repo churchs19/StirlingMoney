@@ -4,11 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
 	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"	
-    xmlns:util="clr-namespace:Shane.Church.StirlingMoney.Core.WP.Converters;assembly=Shane.Church.StirlingMoney.Core.WP">
+    xmlns:util="clr-namespace:Shane.Church.StirlingMoney.Core.WP.Converters;assembly=Shane.Church.StirlingMoney.Core.WP"
+    xmlns:local="clr-namespace:Shane.Church.StirlingMoney.Core.WP;assembly=Shane.Church.StirlingMoney.Core.WP">
 
     <!--Application Resources-->
     <Application.Resources>
-        <local:LocalizedStrings xmlns:local="clr-namespace:Shane.Church.StirlingMoney.WP" x:Key="LocalizedStrings" />
+        <local:LocalizedStrings x:Key="LocalizedStrings" />
         <util:CurrencyValueConverter x:Key="LocalizedCurrency" />
         <util:BooleanToVisibilityConverter x:Key="BooleanVisibilityConverter" />
         <ImageBrush x:Key="MoneyBackgroundBrush" ImageSource="/Images/Background.png" Opacity=".25" Stretch="UniformToFill" />

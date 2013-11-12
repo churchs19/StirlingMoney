@@ -2,6 +2,7 @@
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Ninject;
+using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
@@ -196,17 +197,17 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			if (_isNew)
 			{
-				Guid id;
+				TransactionListParams param = null;
 				try
 				{
-					id = PhoneNavigationService.DecodeNavigationParameter<Guid>(this.NavigationContext);
+					param = PhoneNavigationService.DecodeNavigationParameter<TransactionListParams>(this.NavigationContext);
 				}
 				catch (KeyNotFoundException)
 				{
-					id = Guid.Empty;
+					param = new TransactionListParams();
 				}
 
-				await _model.LoadData(id);
+				await _model.LoadData(param.Id);
 
 				_isNew = false;
 

@@ -1694,6 +1694,15 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to synchronize on startup.
+        /// </summary>
+        public static string SyncOnStartupLabel {
+            get {
+                return ResourceManager.GetString("SyncOnStartupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to sync at this time. Please try again later..
         /// </summary>
         public static string SyncUnknownError {

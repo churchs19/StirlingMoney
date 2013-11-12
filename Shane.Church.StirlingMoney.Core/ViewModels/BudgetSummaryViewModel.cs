@@ -27,6 +27,12 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			DeleteCommand = new AsyncRelayCommand(o => Delete());
 		}
 
+		public async Task LoadData(Guid budgetId)
+		{
+			var b = await _budgetRepository.GetEntryAsync(budgetId);
+			LoadData(b);
+		}
+
 		public void LoadData(Budget b)
 		{
 			BudgetId = b.BudgetId;

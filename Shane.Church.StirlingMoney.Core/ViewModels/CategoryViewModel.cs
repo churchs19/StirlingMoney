@@ -39,12 +39,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public CategoryViewModel(Category c)
 			: this(KernelService.Kernel.Get<IRepository<Category, Guid>>(), KernelService.Kernel.Get<INavigationService>())
 		{
-			_isDeleted = c.IsDeleted;
 			CategoryId = c.CategoryId;
 			CategoryName = c.CategoryName;
 		}
-
-		private bool _isDeleted;
 
 		private Guid _categoryId;
 		public Guid CategoryId
@@ -75,7 +72,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				{
 					CategoryId = category.CategoryId;
 					CategoryName = category.CategoryName;
-					_isDeleted = category.IsDeleted;
 				}
 			}
 		}
@@ -103,7 +99,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public async Task DeleteItem()
 		{
-			await _categoryRepository.DeleteEntryAsync(new Category() { CategoryId = CategoryId });
+			var c = await _categoryRepository.GetEntryAsync(CategoryId);
+			await _categoryRepository.DeleteEntryAsync(c);
 		}
 
 		public ICommand SaveCommand { get; private set; }
@@ -116,7 +113,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			var errors = Validate();
 			if (errors.Count == 0)
 			{
-				Category c = new Category() { CategoryId = CategoryId, CategoryName = CategoryName, IsDeleted = _isDeleted };
+				Category c = new Category() { CategoryId = CategoryId, CategoryName = CategoryName };
 				c = await _categoryRepository.AddOrUpdateEntryAsync(c);
 				CategoryId = c.CategoryId;
 

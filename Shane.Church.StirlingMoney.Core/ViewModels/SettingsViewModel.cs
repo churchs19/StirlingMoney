@@ -105,9 +105,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					}
 					else
 					{
+						SyncOnStartup = false;
 						_syncService.Disconnect();
 					}
 				}
+			}
+		}
+
+		private bool _syncOnStartup;
+		public bool SyncOnStartup
+		{
+			get { return _syncOnStartup; }
+			set
+			{
+				Set(() => SyncOnStartup, ref _syncOnStartup, value);
 			}
 		}
 
@@ -142,12 +153,13 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			UsePassword = _settings.LoadSetting<bool>("UsePassword");
 			Password = _settings.LoadSetting<string>("Password");
 			EnableSync = _settings.LoadSetting<bool>("EnableSync");
+			SyncOnStartup = _settings.LoadSetting<bool>("SyncOnStartup");
 
-			var users = await _userRepository.GetAllEntriesAsync();
+			var users = _userRepository.GetAllKeys();
 			foreach (var u in users)
 			{
 				var authUser = KernelService.Kernel.Get<SettingsAppSyncUserViewModel>();
-				authUser.LoadEntry(u);
+				await authUser.LoadEntry(u);
 				AuthorizedUsers.Add(authUser);
 			}
 		}
@@ -236,6 +248,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				else
 					_settings.RemoveSetting("Password");
 				_settings.SaveSetting<bool>(EnableSync, "EnableSync");
+				_settings.SaveSetting<bool>(SyncOnStartup, "SyncOnStartup");
 
 				if (_navService.CanGoBack)
 					_navService.GoBack();

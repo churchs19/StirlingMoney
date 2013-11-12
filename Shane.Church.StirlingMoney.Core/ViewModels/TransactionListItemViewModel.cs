@@ -5,6 +5,7 @@ using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.Utility.Core.Command;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -13,13 +14,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 	public class TransactionListItemViewModel : ObservableObject, IComparable
 	{
 		private IRepository<Transaction, Guid> _transactionRepository;
+		private IRepository<Category, Guid> _categoryRepository;
 		private INavigationService _navService;
 		private TransactionListViewModel _parent;
 
-		public TransactionListItemViewModel(IRepository<Transaction, Guid> transactionRepository, INavigationService navService, TransactionListViewModel parent)
+		public TransactionListItemViewModel(IRepository<Transaction, Guid> transactionRepository, IRepository<Category, Guid> categoryRepository, INavigationService navService, TransactionListViewModel parent)
 		{
 			if (transactionRepository == null) throw new ArgumentNullException("transactionRepository");
 			_transactionRepository = transactionRepository;
+			if (categoryRepository == null) throw new ArgumentNullException("categoryRepository");
+			_categoryRepository = categoryRepository;
 			if (navService == null) throw new ArgumentNullException("navService");
 			_navService = navService;
 			if (parent == null) throw new ArgumentNullException("parent");
@@ -161,13 +165,12 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				CheckNumber = t.CheckNumber;
 				_posted = t.Posted;
 				Memo = t.Note;
-				var category = await t.GetCategory();
-				Category = category != null ? category.CategoryName : null;
+				Category = _categoryRepository.GetAllIndexKeys<string>("CategoryName").Where(it => it.Key == t.CategoryId).Select(it => it.Value).FirstOrDefault();
 				EditDate = t.EditDateTime;
 			}
 		}
 
-		public async Task LoadData(Transaction transaction)
+		public void LoadData(Transaction transaction)
 		{
 			TransactionId = transaction.TransactionId;
 			TransactionDate = transaction.TransactionDate;
@@ -176,8 +179,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			CheckNumber = transaction.CheckNumber;
 			_posted = transaction.Posted;
 			Memo = transaction.Note;
-			var cat = await transaction.GetCategory();
-			Category = cat != null ? cat.CategoryName : null;
+			Category = _categoryRepository.GetAllIndexKeys<string>("CategoryName").Where(it => it.Key == transaction.CategoryId).Select(it => it.Value).FirstOrDefault();
 			_accountId = transaction.AccountId;
 			EditDate = transaction.EditDateTime;
 		}
