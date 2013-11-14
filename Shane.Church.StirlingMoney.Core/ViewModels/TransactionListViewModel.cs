@@ -143,6 +143,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public int CurrentRow { get; set; }
 		public int TotalRows { get; set; }
 
+		private bool _initialLoadComplete;
+		public bool InitialLoadComplete
+		{
+			get { return _initialLoadComplete; }
+			set
+			{
+				Set(() => InitialLoadComplete, ref _initialLoadComplete, value);
+			}
+		}
+
 		public async Task LoadNextTransactions(int count = 40)
 		{
 			if (Account != null && CurrentRow < TotalRows)
@@ -196,6 +206,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				this.TotalRows = 0;
 			}
+			InitialLoadComplete = true;
+
+			await TaskEx.Yield();
+
 			await LoadNextTransactions();
 
 			if (BusyChanged != null)

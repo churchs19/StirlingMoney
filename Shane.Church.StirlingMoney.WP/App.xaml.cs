@@ -1,5 +1,6 @@
 ﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Phone.Tasks;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Exceptions;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -7,6 +8,7 @@ using Shane.Church.StirlingMoney.Core.SterlingDb;
 using Shane.Church.StirlingMoney.Core.WP;
 using Shane.Church.StirlingMoney.Core.WP7;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
@@ -118,7 +120,6 @@ namespace Shane.Church.StirlingMoney.WP
 			//Sets how often the trial reminder is displayed.
 			trialReminder.OccurrencePeriod = TimeSpan.FromDays(7);
 #endif
-
 			trialReminder.AllowUsersToSkipFurtherReminders = true;
 
 			//Creates a new instance of the RadRateApplicationReminder component.
@@ -131,21 +132,29 @@ namespace Shane.Church.StirlingMoney.WP
 			rateReminder.RecurrencePerUsageCount = 5;
 			rateReminder.AllowUsersToSkipFurtherReminders = true;
 
-			//			UpdateController.ConfigureDatabase();
+			rateReminder.ReminderClosed += rateReminder_ReminderClosed;
 
-			//if (LiveTileHelper.AreNewTilesSupported)
-			//{
-			//	var tile = ShellTile.ActiveTiles.First();
-			//	var flipTileData = new RadFlipTileData()
-			//	{
-			//		Title = Resources.AppTitle,
-			//		SmallBackgroundImage = new Uri("/SmallApplicationIcon.png", UriKind.Relative),
-			//		BackgroundImage = new Uri("/MediumApplicationIcon.png", UriKind.Relative),
-			//		WideBackgroundImage = new Uri("/WideApplicationIcon.png", UriKind.Relative)
-			//	};
-			//	LiveTileHelper.UpdateTile(tile, flipTileData);
-			//}
 			InitializeBackgroundAgent();
+		}
+
+		void rateReminder_ReminderClosed(object sender, ReminderClosedEventArgs e)
+		{
+			if (e.MessageBoxEventArgs.Result == DialogResult.Cancel)
+			{
+				RadMessageBox.Show(buttonsContent: new List<object>() { Shane.Church.StirlingMoney.Strings.Resources.GiveFeedbackButton, Shane.Church.StirlingMoney.Strings.Resources.NoThanksButton },
+					title: Shane.Church.StirlingMoney.Strings.Resources.FeedbackTitle,
+					message: Shane.Church.StirlingMoney.Strings.Resources.FeedbackContent,
+					closedHandler: (eArgs) =>
+					{
+						if (eArgs.ButtonIndex == 0)
+						{
+							EmailComposeTask emailTask = new EmailComposeTask();
+							emailTask.To = "shane@s-church.net";
+							emailTask.Subject = emailTask.Subject = Shane.Church.StirlingMoney.Strings.Resources.TechnicalSupportEmailSubject;
+							emailTask.Show();
+						}
+					});
+			}
 		}
 
 		void diagnostics_ExceptionOccurred(object sender, ExceptionOccurredEventArgs e)

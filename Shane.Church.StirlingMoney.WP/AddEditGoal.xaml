@@ -74,8 +74,8 @@
                                             EmptyContent="{Binding Path=LocalizedResources.SelectDateText, Source={StaticResource LocalizedStrings}}"/>
             </StackPanel>
         </ScrollViewer>
-        <StackPanel Grid.Row="2" x:Name="AdPanel">
-            <StackPanel>
+        <StackPanel Grid.Row="2">
+            <StackPanel x:Name="AdPanel">
                 <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"
                                   AppID="ShaneChurch_StirlingMoney_WP"
                                   AdType="IaAdType_Banner"

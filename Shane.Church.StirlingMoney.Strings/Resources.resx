@@ -243,6 +243,12 @@
   <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
     <value>Trial Reminder</value>
   </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>Stirling Money can share data between authorized users so you and your family are always up to date on where your accounts stand. Enter the Microsoft Account email address of the user or users you would like to synchronize and share your data with below.</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>authorized users</value>
+  </data>
   <data name="BackupButton" xml:space="preserve">
     <value>backup</value>
   </data>
@@ -464,6 +470,18 @@ I would appreciate your assistance by sending the prepared error report. This wi
   <data name="ExpensesChartLabel" xml:space="preserve">
     <value>Expenses</value>
   </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>How can I improve this application so that you would be willing to rate it 5 stars in the marketplace?</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Can I make it better?</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>Stirling Money Error</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>give feedback</value>
+  </data>
   <data name="GoalAccountLabel" xml:space="preserve">
     <value>account</value>
   </data>
@@ -533,11 +551,20 @@ I would appreciate your assistance by sending the prepared error report. This wi
   <data name="NetIncomeTitle" xml:space="preserve">
     <value>net income</value>
   </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>add authorized user account</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>no</value>
   </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>No Authorized Users</value>
+  </data>
   <data name="NoCategoryLabel" xml:space="preserve">
     <value>(no category)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>no thanks</value>
   </data>
   <data name="OtherLabel" xml:space="preserve">
     <value>Other</value>
@@ -649,6 +676,9 @@ I take your security very seriously and all data is transmitted securely over HT
   <data name="SyncLoginError" xml:space="preserve">
     <value>You must be logged in to sync.</value>
   </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>synchronize on startup</value>
+  </data>
   <data name="SyncUnknownError" xml:space="preserve">
     <value>Unable to sync at this time. Please try again later.</value>
   </data>
@@ -753,23 +783,5 @@ I take your security very seriously and all data is transmitted securely over HT
   </data>
   <data name="Yes" xml:space="preserve">
     <value>yes</value>
-  </data>
-  <data name="GeneralErrorCaption" xml:space="preserve">
-    <value>Stirling Money Error</value>
-  </data>
-  <data name="AuthorizedUsersTitle" xml:space="preserve">
-    <value>authorized users</value>
-  </data>
-  <data name="AuthorizedUsersDescription" xml:space="preserve">
-    <value>Stirling Money can share data between authorized users so you and your family are always up to date on where your accounts stand. Enter the Microsoft Account email address of the user or users you would like to synchronize and share your data with below.</value>
-  </data>
-  <data name="NewAuthorizedUser" xml:space="preserve">
-    <value>add authorized user account</value>
-  </data>
-  <data name="NoAuthorizedUsers" xml:space="preserve">
-    <value>No Authorized Users</value>
-  </data>
-  <data name="SyncOnStartupLabel" xml:space="preserve">
-    <value>synchronize on startup</value>
   </data>
 </root>

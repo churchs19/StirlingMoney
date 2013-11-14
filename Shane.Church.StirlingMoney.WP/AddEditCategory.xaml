@@ -42,8 +42,8 @@
             <TextBox Grid.Column="1" Height="72" HorizontalAlignment="Left" Name="textBoxCategoryName" Text="{Binding CategoryName,Mode=TwoWay}" VerticalAlignment="Center" Width="310" InputScope="Text" c4f:TextBinding.UpdateSourceOnChange="True" />
         </Grid>
 
-		<StackPanel Grid.Row="2" x:Name="AdPanel">
-            <StackPanel>
+		<StackPanel Grid.Row="2">
+            <StackPanel x:Name="AdPanel">
                 <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"
                                   AppID="ShaneChurch_StirlingMoney_WP"
                                   AdType="IaAdType_Banner"

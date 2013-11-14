@@ -1116,11 +1116,38 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How can I improve this application so that you would be willing to rate it 5 stars in the marketplace?.
+        /// </summary>
+        public static string FeedbackContent {
+            get {
+                return ResourceManager.GetString("FeedbackContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can I make it better?.
+        /// </summary>
+        public static string FeedbackTitle {
+            get {
+                return ResourceManager.GetString("FeedbackTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stirling Money Error.
         /// </summary>
         public static string GeneralErrorCaption {
             get {
                 return ResourceManager.GetString("GeneralErrorCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to give feedback.
+        /// </summary>
+        public static string GiveFeedbackButton {
+            get {
+                return ResourceManager.GetString("GiveFeedbackButton", resourceCulture);
             }
         }
         
@@ -1364,6 +1391,15 @@ namespace Shane.Church.StirlingMoney.Strings {
         public static string NoCategoryLabel {
             get {
                 return ResourceManager.GetString("NoCategoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no thanks.
+        /// </summary>
+        public static string NoThanksButton {
+            get {
+                return ResourceManager.GetString("NoThanksButton", resourceCulture);
             }
         }
         
