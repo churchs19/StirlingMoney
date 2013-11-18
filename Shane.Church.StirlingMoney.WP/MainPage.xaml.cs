@@ -3,6 +3,7 @@ using Microsoft.Phone.Shell;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
+using Shane.Church.StirlingMoney.Core.WP.Services;
 using Shane.Church.Utility.Core.WP;
 using System;
 using System.Linq;
@@ -18,7 +19,6 @@ namespace Shane.Church.StirlingMoney.WP
 		private ILoggingService _log;
 		private ISettingsService _settings;
 		private ILicensingService _license;
-
 
 		private bool _refreshAccounts;
 		private bool _refreshBudgets;
@@ -50,6 +50,15 @@ namespace Shane.Church.StirlingMoney.WP
 			_model.BusyChanged += _model_BusyChanged;
 			_model.SyncCompleted += _model_SyncCompleted;
 			this.DataContext = _model;
+
+			try
+			{
+				if (PhoneNavigationService.DecodeNavigationParameter<bool>(this.NavigationContext))
+				{
+					NavigationService.RemoveBackEntry();
+				}
+			}
+			catch { }
 
 			base.OnNavigatedTo(e);
 

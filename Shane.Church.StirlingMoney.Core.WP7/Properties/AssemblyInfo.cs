@@ -1,17 +1,16 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Resources;
+using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Shane.Church.StirlingMoney.Core.WP7")]
+[assembly: AssemblyTitle("Stirling Money - Windows Phone 7 Core Implementation")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Shane.Church.StirlingMoney.Core.WP7")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCompany("Shane Church")]
+[assembly: AssemblyProduct("Stirling Money - Windows Phone 7 Core Implentation")]
+[assembly: AssemblyCopyright("Copyright © Shane Church 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,6 +31,7 @@ using System.Resources;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: NeutralResourcesLanguageAttribute("en-US")]
+[assembly: AssemblyVersion("3.0.7.*")]
+[assembly: AssemblyFileVersion("3.0.7.0")]
+
+[assembly: NeutralResourcesLanguageAttribute("en")]

@@ -40,7 +40,9 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb
 					.WithIndex<Transaction, DateTimeOffset, Guid>("EditDateTime", it => it.EditDateTime)
 					.WithIndex<Transaction, DateTimeOffset, DateTimeOffset, Guid>("TransactionDateEditDateTime", it=>new Tuple<DateTimeOffset, DateTimeOffset>(it.TransactionDate, it.EditDateTime))
 					.WithIndex<Transaction, DateTimeOffset, Boolean, Guid>("EditDateTimePosted", it => new Tuple<DateTimeOffset, Boolean>(it.EditDateTime, it.Posted))
-					.WithIndex<Transaction, Boolean, Guid>("IsDeleted", it => it.IsDeleted)
+					.WithIndex<Transaction, Boolean, Guid>("IsDeleted", it => it.IsDeleted),
+				CreateTableDefinition<Setting, string>(it=>it.Key)
+					.WithIndex<Setting, Boolean, string>("IsDeleted", it => it.IsDeleted)
 			};
 
 			return tables;

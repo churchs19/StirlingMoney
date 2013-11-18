@@ -18,6 +18,7 @@ namespace Shane.Church.StirlingMoney.WP
 		INavigationService _navService;
 		ILoggingService _log;
 		bool _isNew = true;
+		bool _isPinned = false;
 
 		public Transactions()
 		{
@@ -54,10 +55,16 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.Back)
 			{
+				_isPinned = false;
 				var account = _model.GetAccount().Result;
 				if (account != null)
 				{
 					_model.Commit().Wait(1000);
+				}
+				if (_isPinned)
+				{
+					e.Cancel = true;
+					_navService.Navigate<MainViewModel>(true);
 				}
 			}
 			base.OnNavigatingFrom(e);
@@ -174,6 +181,7 @@ namespace Shane.Church.StirlingMoney.WP
 				await _model.LoadData(param.Id);
 
 				_isNew = false;
+				_isPinned = param.PinnedTile;
 
 				Deployment.Current.Dispatcher.BeginInvoke(() =>
 				{

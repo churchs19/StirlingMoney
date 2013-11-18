@@ -46,6 +46,7 @@ namespace Shane.Church.StirlingMoney.Core.WP7
 			KernelService.Kernel.Rebind<IRepository<Core.Data.Category, Guid>>().To<CategoryRepository>();
 			KernelService.Kernel.Rebind<IRepository<Core.Data.Goal, Guid>>().To<GoalRepository>();
 			KernelService.Kernel.Rebind<IRepository<Core.Data.Transaction, Guid>>().To<TransactionRepository>();
+			KernelService.Kernel.Rebind<IRepository<Core.Data.Setting, string>>().To<SettingRepository>();
 			KernelService.Kernel.Rebind<ITransactionSum>().To<TransactionRepository>();
 #if WP8
 #else
