@@ -1,4 +1,5 @@
-﻿<phone:PhoneApplicationPage
+﻿<base:AdvertisingPage
+    xmlns:base="clr-namespace:Shane.Church.StirlingMoney.WP"
     x:Class="Shane.Church.StirlingMoney.WP.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -18,7 +19,7 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
 
-    <phone:PhoneApplicationPage.Resources>
+    <base:AdvertisingPage.Resources>
         <coreUtil:ByteToImageSourceValueConverter x:Key="ByteImageConverter"/>
         <DataTemplate x:Key="triangleTemplate">
             <Path Data="M5,-3 L0,0 L5,3 z" Fill="{StaticResource PhoneForegroundBrush}" Stroke="{StaticResource PhoneForegroundBrush}">
@@ -33,7 +34,7 @@
         </TransformGroup>
         <util:BudgetBrushConverter x:Key="BudgetBrushConverter"/>
         <util:GoalBrushConverter x:Key="GoalBrushConverter" />
-    </phone:PhoneApplicationPage.Resources>
+    </base:AdvertisingPage.Resources>
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource MoneyBackgroundBrush}">
         <Grid.RowDefinitions>
@@ -41,6 +42,16 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <controls:Pivot x:Name="PivotMain" Title="{Binding Path=LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Grid.Row="0" SelectionChanged="Pivot_SelectionChanged" Grid.ColumnSpan="2">
+            <controls:Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontFamily="{StaticResource TitleFontFamily}" FontSize="{StaticResource PhoneFontSizeExtraExtraLarge}"/>
+                </DataTemplate>
+            </controls:Pivot.HeaderTemplate>
+            <controls:Pivot.TitleTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontFamily="{StaticResource AppTitleFontFamily}" FontSize="{StaticResource PhoneFontSizeNormal}"/>
+                </DataTemplate>
+            </controls:Pivot.TitleTemplate>
             <controls:PivotItem Header="{Binding Path=LocalizedResources.AccountsTitle, Source={StaticResource LocalizedStrings}}" 
 								    DataContext="{Binding Accounts}">
                 <Grid x:Name="ContentPanel" Margin="12,0,12,0">
@@ -414,5 +425,5 @@
             </StackPanel>
         </StackPanel>
     </Grid>
-</phone:PhoneApplicationPage>
+</base:AdvertisingPage>
 

@@ -1,0 +1,92 @@
+﻿<base:AdvertisingPage
+    xmlns:base="clr-namespace:Shane.Church.StirlingMoney.WP"
+    x:Class="Shane.Church.StirlingMoney.WP.SkyDrive"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:live="clr-namespace:Microsoft.Live.Controls;assembly=Microsoft.Live.Controls" 
+    xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:gauges="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.DataVisualization"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MoneyBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="{Binding Path=LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="{StaticResource AppTitleFontFamily}"/>
+            <TextBlock x:Name="PageTitle" Text="{Binding Path=LocalizedResources.BackupTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="{StaticResource TitleFontFamily}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel>
+                <TextBlock x:Name="textBlockInstructions" Text="{Binding Path=LocalizedResources.BackupInstructions, Source={StaticResource LocalizedStrings}}" TextWrapping="Wrap" />
+                <Button Name="buttonBackup" Margin="0,50,0,0" Content="{Binding Path=LocalizedResources.BackupButton, Source={StaticResource LocalizedStrings}}" Command="{Binding BackupCommand}" />
+                <Button Name="buttonRestore" Content="{Binding Path=LocalizedResources.RestoreButton, Source={StaticResource LocalizedStrings}}" Command="{Binding RestoreCommand}" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="0" Grid.RowSpan="2">
+            <telerikPrimitives:RadBusyIndicator x:Name="BusyIndicator" IsRunning="False" 
+                                                    AnimationStyle="AnimationStyle9" 
+                                                    Background="{StaticResource PhoneSemitransparentBrush}"
+                                                    BorderBrush="{StaticResource PhoneSemitransparentBrush}" BorderThickness="0,240,0,0">
+                <telerikPrimitives:RadBusyIndicator.Content>
+                    <StackPanel>
+                        <TextBlock Text="{Binding ProgressText}" HorizontalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                        <gauges:RadGauge Margin="0,0,0,0">
+                            <Grid Width="430" Height="100">
+                                <Grid.Resources>
+                                    <gauges:GaugeValueToBrushConverter x:Key="valueToBrushConverter2" DefaultColor="{StaticResource PhoneAccentColor}">
+                                    </gauges:GaugeValueToBrushConverter>
+                                </Grid.Resources>
+                                <gauges:LinearGaugeRange TickStep="25" LabelStep="25" MinValue="0" MaxValue="100" Grid.ColumnSpan="2" LabelOffset="-35">
+                                    <gauges:LinearGaugeRange.LabelTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Foreground="{StaticResource PhoneForegroundBrush}" FontWeight="Bold" FontSize="13" Text="{Binding}" RenderTransformOrigin="0.5,0.5">
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </gauges:LinearGaugeRange.LabelTemplate>
+                                    <gauges:LinearGaugeRange.TickTemplate>
+                                        <DataTemplate>
+                                        </DataTemplate>
+                                    </gauges:LinearGaugeRange.TickTemplate>
+                                    <gauges:LinearBarGaugeIndicator BarBrush="{StaticResource PhoneContrastBackgroundBrush}" BarThickness="40" Value="100"/>
+                                    <gauges:LinearBarGaugeIndicator BarBrush="{StaticResource PhoneAccentBrush}" BarThickness="40" Value="{Binding ProgressPercentage}" IsAnimated="True"/>
+                                </gauges:LinearGaugeRange>
+                            </Grid>
+                        </gauges:RadGauge>
+                    </StackPanel>
+                </telerikPrimitives:RadBusyIndicator.Content>
+            </telerikPrimitives:RadBusyIndicator>
+        </Grid>
+        <StackPanel Grid.Row="2">
+            <StackPanel x:Name="AdPanel">
+                <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"
+                                  AppID="ShaneChurch_StirlingMoney_WP"
+                                  AdType="IaAdType_Banner"
+                                  ReloadTime="30"
+                                  Keywords="finance,money,cash,check,credit,credit card,financial,debt,income"
+                                  OptionalAdHeight="80"
+                                  OptionalAdWidth="480"
+                                  AdAlignment="BOTTOM_CENTER"
+                                  Margin="0,0,0,0"
+                                  Name="AdControl" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
+
+</base:AdvertisingPage>

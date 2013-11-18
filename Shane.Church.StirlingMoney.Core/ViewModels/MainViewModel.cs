@@ -58,6 +58,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			AboutCommand = new RelayCommand(NavigateToAbout);
 			AddBudgetCommand = new RelayCommand(NavigateToAddBudget);
 			AddGoalCommand = new RelayCommand(NavigateToAddGoal);
+			BackupCommand = new RelayCommand(NavigateToBackup);
 		}
 
 		public delegate void SyncCompletedHandler();
@@ -296,6 +297,13 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public async Task Commit()
 		{
 			await _budgetRepository.Commit();
+		}
+
+		public ICommand BackupCommand { get; private set; }
+
+		public void NavigateToBackup()
+		{
+			_navService.Navigate<BackupViewModel>();
 		}
 	}
 }

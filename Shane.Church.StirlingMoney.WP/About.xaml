@@ -20,8 +20,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="{Binding LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="{Binding LocalizedResources.AboutLabel, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="ApplicationTitle" Text="{Binding LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="{StaticResource AppTitleFontFamily}"/>
+            <TextBlock x:Name="PageTitle" Text="{Binding LocalizedResources.AboutLabel, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="{StaticResource TitleFontFamily}"/>
         </StackPanel>
 
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
@@ -39,7 +39,7 @@
                     Text="{Binding LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" 
                     Margin="12,0,12,0" 
                     FontSize="{StaticResource PhoneFontSizeLarge}" 
-                    FontFamily="{StaticResource PhoneFontFamilySemiBold}"/>
+                    FontFamily="{StaticResource TitleFontFamily}"/>
                 <TextBlock 
                     Text="{Binding Version}" 
                     Margin="12,0,12,0" 

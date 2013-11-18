@@ -14,6 +14,8 @@
         <util:BooleanToVisibilityConverter x:Key="BooleanVisibilityConverter" />
         <ImageBrush x:Key="MoneyBackgroundBrush" ImageSource="/Images/Background.png" Opacity=".25" Stretch="UniformToFill" />
         <ImageBrush x:Key="SplashBackgroundBrush" ImageSource="/SplashScreenImage.jpg" Stretch="UniformToFill" />
+        <FontFamily x:Key="TitleFontFamily">/Fonts/Novecentosanswide-Normal.ttf#Novecento sans wide Normal</FontFamily>
+        <FontFamily x:Key="AppTitleFontFamily">/Fonts/Novecentosanswide-Light.ttf#Novecento sans wide Light</FontFamily>
     </Application.Resources>
 
 

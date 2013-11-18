@@ -61,7 +61,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to about.
+        ///   Looks up a localized string similar to About.
         /// </summary>
         public static string AboutLabel {
             get {
@@ -124,7 +124,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to accounts.
+        ///   Looks up a localized string similar to Accounts.
         /// </summary>
         public static string AccountsTitle {
             get {
@@ -151,7 +151,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to add account.
+        ///   Looks up a localized string similar to Add Account.
         /// </summary>
         public static string AddAccountTitle {
             get {
@@ -160,7 +160,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to add budget.
+        ///   Looks up a localized string similar to Add Budget.
         /// </summary>
         public static string AddBudgetTitle {
             get {
@@ -169,7 +169,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to add category.
+        ///   Looks up a localized string similar to Add Category.
         /// </summary>
         public static string AddCategoryTitle {
             get {
@@ -178,7 +178,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to add goal.
+        ///   Looks up a localized string similar to Add Goal.
         /// </summary>
         public static string AddGoalTitle {
             get {
@@ -376,7 +376,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to STIRLING MONEY - DEV.
+        ///   Looks up a localized string similar to Stirling Money - Dev.
         /// </summary>
         public static string AppTitle {
             get {
@@ -448,7 +448,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to authorized users.
+        ///   Looks up a localized string similar to Authorized Users.
         /// </summary>
         public static string AuthorizedUsersTitle {
             get {
@@ -475,7 +475,9 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please sign in in order to backup your data to or restore your data from SkyDrive..
+        ///   Looks up a localized string similar to Tap backup to save your data to the Stirling Money folder in SkyDrive. This will overwrite any existing backup.
+        ///
+        ///Tap restore to overwrite your local data with your backup from SkyDrive..
         /// </summary>
         public static string BackupInstructions {
             get {
@@ -493,7 +495,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error restoring database: The backup file is corrupt or not a valid Stirling Money database..
+        ///   Looks up a localized string similar to Error occurred restoring database..
         /// </summary>
         public static string BackupRestoreError {
             get {
@@ -556,7 +558,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to backup.
+        ///   Looks up a localized string similar to Backup.
         /// </summary>
         public static string BackupTitle {
             get {
@@ -682,7 +684,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to budgets.
+        ///   Looks up a localized string similar to Budgets.
         /// </summary>
         public static string BudgetsTitle {
             get {
@@ -727,7 +729,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to categories.
+        ///   Looks up a localized string similar to Categories.
         /// </summary>
         public static string CategoriesTitle {
             get {
@@ -898,7 +900,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to check.
+        ///   Looks up a localized string similar to Check.
         /// </summary>
         public static string CheckTitle {
             get {
@@ -1042,7 +1044,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to deposit.
+        ///   Looks up a localized string similar to Deposit.
         /// </summary>
         public static string DepositTitle {
             get {
@@ -1071,7 +1073,16 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to edit account.
+        ///   Looks up a localized string similar to downloaded {0} of {1} bytes....
+        /// </summary>
+        public static string DownloadingProgressText {
+            get {
+                return ResourceManager.GetString("DownloadingProgressText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Account.
         /// </summary>
         public static string EditAccountTitle {
             get {
@@ -1080,7 +1091,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to edit budget.
+        ///   Looks up a localized string similar to Edit Budget.
         /// </summary>
         public static string EditBudgetTitle {
             get {
@@ -1089,7 +1100,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to edit goal.
+        ///   Looks up a localized string similar to Edit Goal.
         /// </summary>
         public static string EditGoalTitle {
             get {
@@ -1251,7 +1262,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to goals.
+        ///   Looks up a localized string similar to Goals.
         /// </summary>
         public static string GoalsTitle {
             get {
@@ -1440,7 +1451,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to synchronizing....
+        ///   Looks up a localized string similar to Synchronizing....
         /// </summary>
         public static string ProgressBarSyncText {
             get {
@@ -1449,7 +1460,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to loading....
+        ///   Looks up a localized string similar to Loading....
         /// </summary>
         public static string ProgressBarText {
             get {
@@ -1647,7 +1658,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to settings.
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string SettingsTitle {
             get {
@@ -1712,7 +1723,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to synchronization.
+        ///   Looks up a localized string similar to Synchronization.
         /// </summary>
         public static string SynchronizationTitle {
             get {
@@ -1883,7 +1894,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to loading....
+        ///   Looks up a localized string similar to Loading....
         /// </summary>
         public static string TransactionsLoadingTitle {
             get {
@@ -1928,7 +1939,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to transfer.
+        ///   Looks up a localized string similar to Transfer.
         /// </summary>
         public static string TransferTitle {
             get {
@@ -2009,7 +2020,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to trial.
+        ///   Looks up a localized string similar to Trial.
         /// </summary>
         public static string TrialTitle {
             get {
@@ -2018,7 +2029,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to unknown.
+        ///   Looks up a localized string similar to Unknown.
         /// </summary>
         public static string UnknownTitle {
             get {
@@ -2036,11 +2047,56 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to withdrawal.
+        ///   Looks up a localized string similar to uploaded {0} of {1} bytes....
+        /// </summary>
+        public static string UploadingProgressText {
+            get {
+                return ResourceManager.GetString("UploadingProgressText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Withdrawal.
         /// </summary>
         public static string WithdrawalTitle {
             get {
                 return ResourceManager.GetString("WithdrawalTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are using the 30 day free trial of the synchronization services. Would you like to purchase the application to continue using the services beyond the trial? If you choose Yes - you will be redirected to the marketplace..
+        /// </summary>
+        public static string WP7SyncTrialReminder_Content {
+            get {
+                return ResourceManager.GetString("WP7SyncTrialReminder_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trial Reminder.
+        /// </summary>
+        public static string WP7SyncTrialReminder_Title {
+            get {
+                return ResourceManager.GetString("WP7SyncTrialReminder_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your synchronization service triial has expired. Do you want to purchase the application now? If you choose Yes - you will be redirected to the marketplace..
+        /// </summary>
+        public static string WP7SyncTrialReminderExpired_Content {
+            get {
+                return ResourceManager.GetString("WP7SyncTrialReminderExpired_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trial Expired.
+        /// </summary>
+        public static string WP7SyncTrialReminderExpired_Title {
+            get {
+                return ResourceManager.GetString("WP7SyncTrialReminderExpired_Title", resourceCulture);
             }
         }
         

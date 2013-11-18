@@ -21,7 +21,8 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 																				{ typeof(AddEditTransactionViewModel), "AddEditTransaction.xaml" },
 																				{ typeof(CategoryListViewModel), "Categories.xaml" },
 																				{ typeof(CategoryViewModel), "AddEditCategory.xaml" },
-																				{ typeof(TransactionListViewModel), "Transactions.xaml" }
+																				{ typeof(TransactionListViewModel), "Transactions.xaml" },
+																				{ typeof(BackupViewModel), "SkyDrive.xaml" }
 		};
 
 		public bool CanGoBack
@@ -70,7 +71,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 		public void Navigate<TDestinationViewModel>(object parameter = null)
 		{
 			var navUri = NavigationUri<TDestinationViewModel>(parameter);
-			if(navUri != null)
+			if (navUri != null)
 			{
 				this.RootFrame.Navigate(navUri);
 			}

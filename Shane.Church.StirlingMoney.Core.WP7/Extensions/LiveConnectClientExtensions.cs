@@ -70,5 +70,22 @@ namespace Shane.Church.StirlingMoney.Core.WP7.Extensions
 			client.PostAsync(path, body);
 			return tcs.Task;
 		}
+
+		public static Task<Stream> DownloadAsyncTask(this LiveConnectClient client, string path, object userState = null)
+		{
+			TaskCompletionSource<Stream> tcs = new TaskCompletionSource<Stream>();
+			client.DownloadCompleted += (sender, args) =>
+			{
+				if (args.Cancelled) tcs.TrySetCanceled();
+				if (args.Error != null) tcs.TrySetException(args.Error);
+
+				tcs.TrySetResult(args.Result);
+			};
+			if (userState == null)
+				client.DownloadAsync(path);
+			else
+				client.DownloadAsync(path, userState);
+			return tcs.Task;
+		}
 	}
 }

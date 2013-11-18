@@ -1,6 +1,7 @@
 ﻿using Microsoft.Phone.Scheduler;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
+using Shane.Church.StirlingMoney.Core.Exceptions;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.SterlingDb;
@@ -69,58 +70,80 @@ namespace Shane.Church.StirlingMoney.WP.Agent
 		/// </remarks>
 		protected override void OnInvoke(ScheduledTask task)
 		{
-#if DEBUG
-			AgentExitReason reason = task.LastExitReason;
-			DebugUtility.SaveDiagnostics(new Diagnostics() { DeviceUniqueId = DebugUtility.GetDeviceUniqueID(), AgentExitReason = reason.ToString() });
-			Debug.WriteLine("Agent Last Exited for Reason: " + reason.ToString());
-			DebugUtility.DebugStartStopwatch();
-			DebugUtility.DebugOutputMemoryUsage("Scheduled Task Initial Memory Snapshot");
-#endif
-			var engine = KernelService.Kernel.Get<SterlingEngine>();
-			SterlingDefaultLogger logger = new SterlingDefaultLogger(engine.SterlingDatabase, SterlingLogLevel.Verbose);
-
-			engine.Activate();
-
-			engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
-
-			engine.SterlingDatabase.GetDatabase("Money").RefreshAsync().Wait(1000);
-
-			var settingsService = KernelService.Kernel.Get<ISettingsService>();
-
-			if (settingsService.LoadSetting<bool>("EnableSync"))
+			try
 			{
-				var syncService = KernelService.Kernel.Get<SyncService>();
-				syncService.Sync(true).Wait(15000);
-				syncService = null;
+#if DEBUG
+				AgentExitReason reason = task.LastExitReason;
+				DebugUtility.SaveDiagnostics(new Diagnostics() { DeviceUniqueId = DebugUtility.GetDeviceUniqueID(), AgentExitReason = reason.ToString() });
+				Debug.WriteLine("Agent Last Exited for Reason: " + reason.ToString());
+				DebugUtility.DebugStartStopwatch();
+				DebugUtility.DebugOutputMemoryUsage("Scheduled Task Initial Memory Snapshot");
+#endif
+				var engine = KernelService.Kernel.Get<SterlingEngine>();
+				SterlingDefaultLogger logger = new SterlingDefaultLogger(engine.SterlingDatabase, SterlingLogLevel.Verbose);
+
+				engine.Activate();
+
+				engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
+
+				engine.SterlingDatabase.GetDatabase("Money").RefreshAsync().Wait(5000);
+
+				var settingsService = KernelService.Kernel.Get<ISettingsService>();
+
+				if (settingsService.LoadSetting<bool>("EnableSync"))
+				{
+					var syncService = KernelService.Kernel.Get<SyncService>();
+					try
+					{
+						syncService.Sync(true).Wait(15000);
+					}
+					catch (NotAuthorizedException naex)
+					{
+						//Don't sync if the user doesn't have a subscription but no need to throw an exception in the agent
+#if DEBUG
+						DebugUtility.SaveDiagnosticException(naex);
+#endif
+					}
+					finally
+					{
+						syncService = null;
+						System.GC.Collect();
+						System.GC.WaitForPendingFinalizers();
+						System.GC.Collect();
+					}
+				}
+
+				var tileService = KernelService.Kernel.Get<ITileService<Account, Guid>>();
+				var accountRepo = KernelService.Kernel.Get<IRepository<Account, Guid>>();
+
+				var accountKeys = accountRepo.GetAllKeys().ToList();
+
+				accountRepo = null;
 				System.GC.Collect();
 				System.GC.WaitForPendingFinalizers();
 				System.GC.Collect();
+
+				foreach (var k in accountKeys)
+				{
+					tileService.UpdateTile(k);
+				}
 			}
-
-			var tileService = KernelService.Kernel.Get<ITileService<Account, Guid>>();
-			var accountRepo = KernelService.Kernel.Get<IRepository<Account, Guid>>();
-
-			var accountKeys = accountRepo.GetAllKeys().ToList();
-
-			accountRepo = null;
-			System.GC.Collect();
-			System.GC.WaitForPendingFinalizers();
-			System.GC.Collect();
-
-			foreach (var k in accountKeys)
+			catch (Exception ex)
 			{
-				tileService.UpdateTile(k);
+#if DEBUG
+				DebugUtility.SaveDiagnosticException(ex);
+#endif
 			}
 
-			NotifyComplete();
 #if DEBUG
+			DebugUtility.SaveDiagnosticMessage("Agent Completed Successfully");
 			DebugUtility.DebugOutputElapsedTime("Scheduled Task Final Time Snapshot:");
 			DebugUtility.DebugOutputMemoryUsage("Scheduled Task Final Memory Snapshot");
 #endif
-
 #if DEBUG_AGENT
 			//			ScheduledActionService.LaunchForTest("StirlingBirthdayTileUpdateTask", TimeSpan.FromSeconds(60));
 #endif
+			NotifyComplete();
 		}
 	}
 }

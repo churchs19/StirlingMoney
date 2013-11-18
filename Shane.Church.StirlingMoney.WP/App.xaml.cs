@@ -7,6 +7,7 @@ using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.SterlingDb;
 using Shane.Church.StirlingMoney.Core.WP;
 using Shane.Church.StirlingMoney.Core.WP7;
+using Shane.Church.Utility.Core.WP;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,10 +37,6 @@ namespace Shane.Church.StirlingMoney.WP
 		/// Component used to raise a notification to the end users to rate the application on the marketplace.
 		/// </summary>
 		public RadRateApplicationReminder rateReminder;
-		/// <summary>
-		/// Component used to remind end users about the trial state of the application.
-		/// </summary>
-		public RadTrialApplicationReminder trialReminder;
 
 		/// <summary>
 		/// Provides easy access to the root frame of the Phone Application.
@@ -97,30 +94,6 @@ namespace Shane.Church.StirlingMoney.WP
 
 			//Initializes this instance.
 			diagnostics.Init();
-
-			//Creates an instance of the RadTrialApplicationReminder component.
-			trialReminder = new RadTrialApplicationReminder();
-			trialReminder.TrialReminderMessageBoxInfo.Title = Shane.Church.StirlingMoney.Strings.Resources.AppTrialReminder_MessageBox_Title;
-			trialReminder.TrialReminderMessageBoxInfo.Content = Shane.Church.StirlingMoney.Strings.Resources.AppTrialReminder_MessageBox_Content;
-			trialReminder.TrialReminderMessageBoxInfo.SkipFurtherRemindersMessage = Shane.Church.StirlingMoney.Strings.Resources.AppTrialReminder_MessageBox_SkipFurtherRemindersMessage;
-			trialReminder.TrialExpiredMessageBoxInfo.Title = Shane.Church.StirlingMoney.Strings.Resources.AppTrialEnd_MessageBox_Title;
-			trialReminder.TrialExpiredMessageBoxInfo.Content = Shane.Church.StirlingMoney.Strings.Resources.AppTrialEnd_MessageBox_Content;
-			trialReminder.TrialExpiredMessageBoxInfo.SkipFurtherRemindersMessage = Shane.Church.StirlingMoney.Strings.Resources.AppTrialEnd_MessageBox_SkipFurtherRemindersMessage;
-
-			//Sets the length of the trial period.
-			trialReminder.AllowedTrialPeriod = TimeSpan.MaxValue;
-
-#if DEBUG_TRIAL
-			//The reminder is shown only if the application is in trial mode. When this property is set to true the application will simulate that it is in trial mode.
-			trialReminder.SimulateTrialForTests = true;
-			trialReminder.OccurrenceUsageCount = 1;
-#else
-			trialReminder.FreePeriod = TimeSpan.FromDays(7);
-
-			//Sets how often the trial reminder is displayed.
-			trialReminder.OccurrencePeriod = TimeSpan.FromDays(7);
-#endif
-			trialReminder.AllowUsersToSkipFurtherReminders = true;
 
 			//Creates a new instance of the RadRateApplicationReminder component.
 			rateReminder = new RadRateApplicationReminder();
@@ -277,6 +250,10 @@ namespace Shane.Church.StirlingMoney.WP
 			engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
 
 			engine.SterlingDatabase.GetDatabase("Money").RefreshAsync().Wait(1000);
+
+#if DEBUG
+			DebugUtility.DebugOutputMemoryUsage("Application_Launching");
+#endif
 		}
 
 		// Code to execute when the application is activated (brought to foreground)
@@ -285,7 +262,6 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			//Before using any of the ApplicationBuildingBlocks, this class should be initialized with the version of the application.
 			var versionAttrib = new AssemblyName(Assembly.GetExecutingAssembly().FullName);
-			ApplicationUsageHelper.Init(versionAttrib.Version.ToString());
 			FlurryWP8SDK.Api.StartSession(FlurryConfig.ApiKey);
 			FlurryWP8SDK.Api.SetVersion(versionAttrib.Version.ToString());
 
@@ -303,6 +279,10 @@ namespace Shane.Church.StirlingMoney.WP
 			engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
 
 			engine.SterlingDatabase.GetDatabase("Money").RefreshAsync().Wait(1000);
+
+#if DEBUG
+			DebugUtility.DebugOutputMemoryUsage("Application_Activated");
+#endif
 		}
 
 		// Code to execute when the application is deactivated (sent to background)

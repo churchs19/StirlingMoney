@@ -1,4 +1,5 @@
-﻿using Microsoft.WindowsAzure.MobileServices;
+﻿using Microsoft.Phone.Marketplace;
+using Microsoft.WindowsAzure.MobileServices;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -14,6 +15,7 @@ using Shane.Church.StirlingMoney.Core.WP7.Services;
 #endif
 using System;
 using System.Linq;
+using Telerik.Windows.Controls;
 using Wintellect.Sterling.Core;
 using Ninject;
 
@@ -67,6 +69,64 @@ namespace Shane.Church.StirlingMoney.Core.WP7
 			KernelService.Kernel.Rebind<ISterlingDriver>().To<Wintellect.Sterling.WP7.IsolatedStorage.IsolatedStorageDriver>();
 			KernelService.Kernel.Rebind<ISterlingDatabaseInstance>().To<StirlingMoneyDatabaseInstance>();
 			KernelService.Kernel.Rebind<SterlingEngine>().ToSelf().InSingletonScope();
+			KernelService.Kernel.Rebind<LicenseInformation>().ToSelf().InSingletonScope();
+#if !AGENT
+			KernelService.Kernel.Rebind<RadTrialApplicationReminder>().ToMethod<RadTrialApplicationReminder>(it =>
+			{
+
+				//Creates an instance of the RadTrialApplicationReminder component.
+				var trialReminder = new RadTrialApplicationReminder();
+				trialReminder.TrialReminderMessageBoxInfo.Title = Shane.Church.StirlingMoney.Strings.Resources.AppTrialReminder_MessageBox_Title;
+				trialReminder.TrialReminderMessageBoxInfo.Content = Shane.Church.StirlingMoney.Strings.Resources.AppTrialReminder_MessageBox_Content;
+				trialReminder.TrialReminderMessageBoxInfo.SkipFurtherRemindersMessage = Shane.Church.StirlingMoney.Strings.Resources.AppTrialReminder_MessageBox_SkipFurtherRemindersMessage;
+				trialReminder.TrialExpiredMessageBoxInfo.Title = Shane.Church.StirlingMoney.Strings.Resources.AppTrialEnd_MessageBox_Title;
+				trialReminder.TrialExpiredMessageBoxInfo.Content = Shane.Church.StirlingMoney.Strings.Resources.AppTrialEnd_MessageBox_Content;
+				trialReminder.TrialExpiredMessageBoxInfo.SkipFurtherRemindersMessage = Shane.Church.StirlingMoney.Strings.Resources.AppTrialEnd_MessageBox_SkipFurtherRemindersMessage;
+
+				//Sets the length of the trial period.
+				trialReminder.AllowedTrialPeriod = TimeSpan.MaxValue;
+
+#if DEBUG_TRIAL
+				//The reminder is shown only if the application is in trial mode. When this property is set to true the application will simulate that it is in trial mode.
+				trialReminder.SimulateTrialForTests = true;
+
+				trialReminder.OccurrenceUsageCount = 1;
+#else
+				trialReminder.FreePeriod = TimeSpan.FromDays(7);
+
+				//Sets how often the trial reminder is displayed.
+				trialReminder.OccurrencePeriod = TimeSpan.FromDays(7);
+#endif
+				trialReminder.AllowUsersToSkipFurtherReminders = true;
+
+				return trialReminder;
+			}).InSingletonScope();
+			KernelService.Kernel.Rebind<RadTrialFeatureReminder>().ToMethod<RadTrialFeatureReminder>(it =>
+			{
+				var syncReminder = new RadTrialFeatureReminder();
+				syncReminder.AllowUsersToSkipFurtherReminders = false;
+				syncReminder.AllowedTrialPeriod = TimeSpan.FromDays(30);
+#if DEBUG_TRIAL
+				//The reminder is shown only if the application is in trial mode. When this property is set to true the application will simulate that it is in trial mode.
+				syncReminder.SimulateTrialForTests = true;
+
+				syncReminder.OccurrenceUsageCount = 1;
+#else
+				syncReminder.OccurrencePeriod = TimeSpan.FromDays(3);
+#endif
+				syncReminder.TrialExpiredMessageBoxInfo.Title = Shane.Church.StirlingMoney.Strings.Resources.WP7SyncTrialReminderExpired_Title;
+				syncReminder.TrialExpiredMessageBoxInfo.Content = Shane.Church.StirlingMoney.Strings.Resources.WP7SyncTrialReminderExpired_Content;
+				syncReminder.TrialReminderMessageBoxInfo.Title = Shane.Church.StirlingMoney.Strings.Resources.WP7SyncTrialReminder_Title;
+				syncReminder.TrialReminderMessageBoxInfo.Content = Shane.Church.StirlingMoney.Strings.Resources.WP7SyncTrialReminder_Content;
+
+				return syncReminder;
+			}).InSingletonScope();
+			KernelService.Kernel.Rebind<ILicensingService>().To<WP7LicensingService>().InSingletonScope();
+			KernelService.Kernel.Rebind<IBackupService>().To<WP7BackupService>();
+			KernelService.Kernel.Rebind<IUpgradeDBService>().To<PhoneUpgradeDBService>();
+#else
+			KernelService.Kernel.Rebind<ILicensingService>().To<WP7AgentLicensingService>().InSingletonScope();
+#endif
 		}
 	}
 }

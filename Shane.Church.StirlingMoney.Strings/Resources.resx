@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutLabel" xml:space="preserve">
-    <value>about</value>
+    <value>About</value>
   </data>
   <data name="AboutOtherAppsLabel" xml:space="preserve">
     <value>other apps by Shane Church</value>
@@ -139,7 +139,7 @@
     <value>Account is required.</value>
   </data>
   <data name="AccountsTitle" xml:space="preserve">
-    <value>accounts</value>
+    <value>Accounts</value>
   </data>
   <data name="ActualChartLabel" xml:space="preserve">
     <value>Actual</value>
@@ -148,16 +148,16 @@
     <value>Add an account to get started</value>
   </data>
   <data name="AddAccountTitle" xml:space="preserve">
-    <value>add account</value>
+    <value>Add Account</value>
   </data>
   <data name="AddBudgetTitle" xml:space="preserve">
-    <value>add budget</value>
+    <value>Add Budget</value>
   </data>
   <data name="AddCategoryTitle" xml:space="preserve">
-    <value>add category</value>
+    <value>Add Category</value>
   </data>
   <data name="AddGoalTitle" xml:space="preserve">
-    <value>add goal</value>
+    <value>Add Goal</value>
   </data>
   <data name="AgentDescription" xml:space="preserve">
     <value>This task synchronizes Stirling Money data with any shared users and updates the live tiles.</value>
@@ -223,7 +223,7 @@
     <value>A financial organizer for Windows Phone</value>
   </data>
   <data name="AppTitle" xml:space="preserve">
-    <value>STIRLING MONEY - DEV</value>
+    <value>Stirling Money - Dev</value>
   </data>
   <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
     <value>The trial of this application has expired. Do you want to purchase the application now? If you choose Yes - you will be redirected to the marketplace.</value>
@@ -247,7 +247,7 @@
     <value>Stirling Money can share data between authorized users so you and your family are always up to date on where your accounts stand. Enter the Microsoft Account email address of the user or users you would like to synchronize and share your data with below.</value>
   </data>
   <data name="AuthorizedUsersTitle" xml:space="preserve">
-    <value>authorized users</value>
+    <value>Authorized Users</value>
   </data>
   <data name="BackupButton" xml:space="preserve">
     <value>backup</value>
@@ -256,13 +256,15 @@
     <value>Error backing up database: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Please sign in in order to backup your data to or restore your data from SkyDrive.</value>
+    <value>Tap backup to save your data to the Stirling Money folder in SkyDrive. This will overwrite any existing backup.
+
+Tap restore to overwrite your local data with your backup from SkyDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Not Signed In.</value>
   </data>
   <data name="BackupRestoreError" xml:space="preserve">
-    <value>Error restoring database: The backup file is corrupt or not a valid Stirling Money database.</value>
+    <value>Error occurred restoring database.</value>
   </data>
   <data name="BackupRestoreException" xml:space="preserve">
     <value>Error restoring database: {0}</value>
@@ -283,7 +285,7 @@
     <value>Database backed up successfully.</value>
   </data>
   <data name="BackupTitle" xml:space="preserve">
-    <value>backup</value>
+    <value>Backup</value>
   </data>
   <data name="BudgetAllExpensesLabel" xml:space="preserve">
     <value>All Expenses</value>
@@ -325,7 +327,7 @@
     <value>start date</value>
   </data>
   <data name="BudgetsTitle" xml:space="preserve">
-    <value>budgets</value>
+    <value>Budgets</value>
   </data>
   <data name="BudgetTitle" xml:space="preserve">
     <value>budget</value>
@@ -340,7 +342,7 @@
     <value>Yearly</value>
   </data>
   <data name="CategoriesTitle" xml:space="preserve">
-    <value>categories</value>
+    <value>Categories</value>
   </data>
   <data name="CategoryAutomobile" xml:space="preserve">
     <value>Automobile</value>
@@ -397,7 +399,7 @@
     <value>chart types</value>
   </data>
   <data name="CheckTitle" xml:space="preserve">
-    <value>check</value>
+    <value>Check</value>
   </data>
   <data name="CreditLimitLabel" xml:space="preserve">
     <value>credit limit</value>
@@ -445,7 +447,7 @@
     <value>Are you sure you want to delete this transaction?</value>
   </data>
   <data name="DepositTitle" xml:space="preserve">
-    <value>deposit</value>
+    <value>Deposit</value>
   </data>
   <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
     <value>The application has encountered a problem. I am sorry for the inconvenience.
@@ -456,13 +458,13 @@ I would appreciate your assistance by sending the prepared error report. This wi
     <value>Application Error</value>
   </data>
   <data name="EditAccountTitle" xml:space="preserve">
-    <value>edit account</value>
+    <value>Edit Account</value>
   </data>
   <data name="EditBudgetTitle" xml:space="preserve">
-    <value>edit budget</value>
+    <value>Edit Budget</value>
   </data>
   <data name="EditGoalTitle" xml:space="preserve">
-    <value>edit goal</value>
+    <value>Edit Goal</value>
   </data>
   <data name="EditMenuItem" xml:space="preserve">
     <value>edit</value>
@@ -516,7 +518,7 @@ I would appreciate your assistance by sending the prepared error report. This wi
     <value>start date</value>
   </data>
   <data name="GoalsTitle" xml:space="preserve">
-    <value>goals</value>
+    <value>Goals</value>
   </data>
   <data name="GoalTargetDateLabel" xml:space="preserve">
     <value>target date</value>
@@ -579,10 +581,10 @@ I would appreciate your assistance by sending the prepared error report. This wi
     <value>Downloading...</value>
   </data>
   <data name="ProgressBarSyncText" xml:space="preserve">
-    <value>synchronizing...</value>
+    <value>Synchronizing...</value>
   </data>
   <data name="ProgressBarText" xml:space="preserve">
-    <value>loading...</value>
+    <value>Loading...</value>
   </data>
   <data name="ProgressBarUpdatingText" xml:space="preserve">
     <value>Updating database</value>
@@ -648,7 +650,7 @@ I would appreciate your assistance by sending the prepared error report. This wi
     <value>Password is required.</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>settings</value>
+    <value>Settings</value>
   </data>
   <data name="SettingsUsePasswordLabel" xml:space="preserve">
     <value>use password</value>
@@ -671,7 +673,7 @@ I take your security very seriously and all data is transmitted securely over HT
     <value>questions or concerns</value>
   </data>
   <data name="SynchronizationTitle" xml:space="preserve">
-    <value>synchronization</value>
+    <value>Synchronization</value>
   </data>
   <data name="SyncLoginError" xml:space="preserve">
     <value>You must be logged in to sync.</value>
@@ -728,7 +730,7 @@ I take your security very seriously and all data is transmitted securely over HT
     <value>available balance</value>
   </data>
   <data name="TransactionsLoadingTitle" xml:space="preserve">
-    <value>loading...</value>
+    <value>Loading...</value>
   </data>
   <data name="TransactionsNoData" xml:space="preserve">
     <value>No Transactions</value>
@@ -743,7 +745,7 @@ I take your security very seriously and all data is transmitted securely over HT
     <value>Transfer from {0}</value>
   </data>
   <data name="TransferTitle" xml:space="preserve">
-    <value>transfer</value>
+    <value>Transfer</value>
   </data>
   <data name="TransferToComparisonString" xml:space="preserve">
     <value>Transfer to</value>
@@ -770,18 +772,36 @@ I take your security very seriously and all data is transmitted securely over HT
     <value>You have {0} time(s) left.</value>
   </data>
   <data name="TrialTitle" xml:space="preserve">
-    <value>trial</value>
+    <value>Trial</value>
   </data>
   <data name="UnknownTitle" xml:space="preserve">
-    <value>unknown</value>
+    <value>Unknown</value>
   </data>
   <data name="UnpinFromStart" xml:space="preserve">
     <value>unpin from start</value>
   </data>
   <data name="WithdrawalTitle" xml:space="preserve">
-    <value>withdrawal</value>
+    <value>Withdrawal</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>yes</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>Trial Expired</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Your synchronization service triial has expired. Do you want to purchase the application now? If you choose Yes - you will be redirected to the marketplace.</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>Trial Reminder</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>You are using the 30 day free trial of the synchronization services. Would you like to purchase the application to continue using the services beyond the trial? If you choose Yes - you will be redirected to the marketplace.</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>uploaded {0} of {1} bytes...</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>downloaded {0} of {1} bytes...</value>
   </data>
 </root>

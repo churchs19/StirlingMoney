@@ -128,8 +128,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		private long? _checkNumber;
-		public long? CheckNumber
+		private long _checkNumber;
+		public long CheckNumber
 		{
 			get { return _checkNumber; }
 			set
@@ -247,8 +247,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				TransactionDate = DateTime.Today;
 				if (_transactionType == TransactionType.Check)
 				{
-					var checksQuery = await _transactionRepository.GetFilteredEntriesAsync(it => it.CheckNumber.HasValue);
-					var checks = checksQuery.Select(it => it.CheckNumber);
+					var checks = _transactionRepository.GetAllIndexKeys<Tuple<Guid, long>>("TransactionAccountIdCheckNumber").Where(it => it.Value.Item1 == AccountId).Select(it => it.Value.Item2);
 					if (checks.Any())
 					{
 						CheckNumber = checks.Max() + 1;
@@ -257,6 +256,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					{
 						CheckNumber = 1;
 					}
+				}
+				else
+				{
+					CheckNumber = 0;
 				}
 			}
 			else
@@ -287,7 +290,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			if (param.Type == TransactionType.Unknown)
 			{
 				Transaction t = await _transactionRepository.GetEntryAsync(param.TransactionId);
-				if (t.CheckNumber.HasValue)
+				if (t.CheckNumber > 0)
 					_transactionType = TransactionType.Check;
 				else if (t.Location != null && (t.Location.Contains(Resources.TransferFromComparisonString) || t.Location.Contains(Resources.TransferToComparisonString)))
 					_transactionType = TransactionType.Transfer;

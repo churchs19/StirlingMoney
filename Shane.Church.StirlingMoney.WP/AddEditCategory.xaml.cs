@@ -1,6 +1,6 @@
-﻿using Inneractive.Nokia.Ad;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
+﻿using Microsoft.Phone.Shell;
+using Ninject;
+using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
 using System;
@@ -11,7 +11,7 @@ using System.Windows.Navigation;
 
 namespace Shane.Church.StirlingMoney.WP
 {
-	public partial class AddEditCategory : PhoneApplicationPage
+	public partial class AddEditCategory : AdvertisingPage
 	{
 		private CategoryViewModel _model;
 
@@ -19,7 +19,7 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			InitializeComponent();
 
-			InitializeAdControl();
+			InitializeAdControl(this.AdPanel, this.AdControl);
 
 			InitializeApplicationBar();
 		}
@@ -27,7 +27,7 @@ namespace Shane.Church.StirlingMoney.WP
 		protected override async void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
 			FlurryWP8SDK.Api.LogPageView();
-			_model = new CategoryViewModel();
+			_model = KernelService.Kernel.Get<CategoryViewModel>();
 			_model.ValidationFailed += (s, args) =>
 			{
 				string errorMessages = String.Join(
@@ -65,43 +65,6 @@ namespace Shane.Church.StirlingMoney.WP
 				_model.Commit().Wait(1000);
 			base.OnNavigatedFrom(e);
 		}
-
-		#region Ad Control
-		private void InitializeAdControl()
-		{
-#if !PERSONAL
-			if ((App.Current as App).trialReminder.IsTrialMode())
-			{
-				AdControl.AdReceived += new InneractiveAd.IaAdReceived(AdControl_AdReceived);
-				AdControl.AdFailed += new InneractiveAd.IaAdFailed(AdControl_AdFailed);
-				AdControl.DefaultAdReceived += new InneractiveAd.IaDefaultAdReceived(AdControl_DefaultAdReceived);
-			}
-			else
-			{
-				AdPanel.Children.Remove(AdControl);
-				AdControl = null;
-			}
-#else
-			AdPanel.Children.Remove(AdControl);
-			AdControl = null;
-#endif
-		}
-
-		void AdControl_DefaultAdReceived(object sender)
-		{
-			AdControl.Visibility = System.Windows.Visibility.Visible;
-		}
-
-		private void AdControl_AdReceived(object sender)
-		{
-			AdControl.Visibility = System.Windows.Visibility.Visible;
-		}
-
-		private void AdControl_AdFailed(object sender)
-		{
-			AdControl.Visibility = System.Windows.Visibility.Collapsed;
-		}
-		#endregion
 
 		private void InitializeApplicationBar()
 		{

@@ -65,8 +65,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		private long? _checkNumber;
-		public long? CheckNumber
+		private long _checkNumber;
+		public long CheckNumber
 		{
 			get { return _checkNumber; }
 			set
@@ -149,7 +149,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			get
 			{
-				return CheckNumber.HasValue;
+				return CheckNumber > 0;
 			}
 		}
 
@@ -158,15 +158,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			var t = await _transactionRepository.GetEntryAsync(transactionId);
 			if (t != null)
 			{
-				TransactionId = transactionId;
-				TransactionDate = t.TransactionDate;
-				Location = t.Location;
-				Amount = t.Amount;
-				CheckNumber = t.CheckNumber;
-				_posted = t.Posted;
-				Memo = t.Note;
-				Category = _categoryRepository.GetAllIndexKeys<string>("CategoryName").Where(it => it.Key == t.CategoryId).Select(it => it.Value).FirstOrDefault();
-				EditDate = t.EditDateTime;
+				LoadData(t);
 			}
 		}
 

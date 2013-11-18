@@ -33,6 +33,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb
 					.WithIndex<Transaction, Guid, Guid>("TransactionAccountId", it => it.AccountId)
 					.WithIndex<Transaction, Guid, Double, Guid>("TransactionAccountIdAmount", it=>new Tuple<Guid, Double>(it.AccountId, it.Amount))
 					.WithIndex<Transaction, Guid, Boolean, Guid>("TransactionAccountIdIsDeleted", it => new Tuple<Guid, Boolean>(it.AccountId, it.IsDeleted))
+					.WithIndex<Transaction, Guid, long, Guid>("TransactionAccountIdCheckNumber", it=>new Tuple<Guid, long>(it.AccountId, it.CheckNumber))
 					.WithIndex<Transaction, Boolean, Guid>("Posted", it=> it.Posted)
 					.WithIndex<Transaction, DateTimeOffset, double, Guid>("TransactionDate", it=>new Tuple<DateTimeOffset, double>(it.TransactionDate, it.Amount))
 					.WithIndex<Transaction, Guid, double, Guid>("TransactionCategoryAmount", it=>new Tuple<Guid, double>(it.CategoryId, it.Amount))

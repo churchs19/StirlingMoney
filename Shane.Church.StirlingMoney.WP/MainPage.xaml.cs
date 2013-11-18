@@ -1,21 +1,24 @@
-﻿using Inneractive.Nokia.Ad;
-using Microsoft.Phone.Controls;
+﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
+using Shane.Church.Utility.Core.WP;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace Shane.Church.StirlingMoney.WP
 {
-	public partial class MainPage : PhoneApplicationPage
+	public partial class MainPage : AdvertisingPage
 	{
-		public MainViewModel _model;
-		public ILoggingService _log;
-		public ISettingsService _settings;
+		private MainViewModel _model;
+		private ILoggingService _log;
+		private ISettingsService _settings;
+		private ILicensingService _license;
+
 
 		private bool _refreshAccounts;
 		private bool _refreshBudgets;
@@ -26,11 +29,11 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			InitializeComponent();
 
-			InitializeAdControl();
+			InitializeAdControl(this.AdPanel, this.AdControl);
 
 #if !PERSONAL
 			//Shows the trial reminder message, according to the settings of the TrialReminder.
-			(App.Current as App).trialReminder.Notify();
+			KernelService.Kernel.Get<RadTrialApplicationReminder>().Notify();
 
 			//Shows the rate reminder message, according to the settings of the RateReminder.
 			(App.Current as App).rateReminder.Notify();
@@ -42,6 +45,7 @@ namespace Shane.Church.StirlingMoney.WP
 			FlurryWP8SDK.Api.LogPageView();
 			_log = KernelService.Kernel.Get<ILoggingService>();
 			_settings = KernelService.Kernel.Get<ISettingsService>();
+			_license = KernelService.Kernel.Get<ILicensingService>();
 			_model = KernelService.Kernel.Get<MainViewModel>();
 			_model.BusyChanged += _model_BusyChanged;
 			_model.SyncCompleted += _model_SyncCompleted;
@@ -111,43 +115,6 @@ namespace Shane.Church.StirlingMoney.WP
 			}
 		}
 
-		#region Ad Control
-		private void InitializeAdControl()
-		{
-#if !PERSONAL
-			if ((App.Current as App).trialReminder.IsTrialMode())
-			{
-				AdControl.AdReceived += new InneractiveAd.IaAdReceived(AdControl_AdReceived);
-				AdControl.AdFailed += new InneractiveAd.IaAdFailed(AdControl_AdFailed);
-				AdControl.DefaultAdReceived += new InneractiveAd.IaDefaultAdReceived(AdControl_DefaultAdReceived);
-			}
-			else
-			{
-				AdPanel.Children.Remove(AdControl);
-				AdControl = null;
-			}
-#else
-			AdPanel.Children.Remove(AdControl);
-			AdControl = null;
-#endif
-		}
-
-		void AdControl_DefaultAdReceived(object sender)
-		{
-			AdControl.Visibility = System.Windows.Visibility.Visible;
-		}
-
-		private void AdControl_AdReceived(object sender)
-		{
-			AdControl.Visibility = System.Windows.Visibility.Visible;
-		}
-
-		private void AdControl_AdFailed(object sender)
-		{
-			AdControl.Visibility = System.Windows.Visibility.Collapsed;
-		}
-		#endregion
-
 		#region App Bar
 		private enum ApplicationBarType
 		{
@@ -214,18 +181,43 @@ namespace Shane.Church.StirlingMoney.WP
 					break;
 			}
 
-			if (_settings.LoadSetting<bool>("EnableSync"))
+			if (_settings.LoadSetting<bool>("EnableSync") && _license.IsSyncLicensed())
 			{
 				ApplicationBarIconButton appBarIconButtonSync = new ApplicationBarIconButton(new Uri("/Images/Synchronize.png", UriKind.Relative));
 				appBarIconButtonSync.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarSync;
 				appBarIconButtonSync.Click += new EventHandler(appBarIconButtonSync_Click);
 				ApplicationBar.Buttons.Add(appBarIconButtonSync);
+
+				if (!ApplicationBar.MenuItems.OfType<ApplicationBarMenuItem>().Where(it => it.Text == Shane.Church.StirlingMoney.Strings.Resources.BackupButton).Any())
+				{
+					ApplicationBarMenuItem appBarMenuItemBackup = new ApplicationBarMenuItem(Shane.Church.StirlingMoney.Strings.Resources.BackupButton);
+					appBarMenuItemBackup.Click += new EventHandler(appBarIconButtonSkyDrive_Click);
+					ApplicationBar.MenuItems.Insert(2, appBarMenuItemBackup);
+				}
+			}
+			else
+			{
+				ApplicationBarIconButton appBarIconButtonSkyDrive = new ApplicationBarIconButton(new Uri("/Images/BackupToCloud.png", UriKind.Relative));
+				appBarIconButtonSkyDrive.Text = Shane.Church.StirlingMoney.Strings.Resources.BackupButton;
+				appBarIconButtonSkyDrive.Click += new EventHandler(appBarIconButtonSkyDrive_Click);
+				ApplicationBar.Buttons.Add(appBarIconButtonSkyDrive);
+
+				var backupMenuQuery = ApplicationBar.MenuItems.OfType<ApplicationBarMenuItem>().Where(it => it.Text == Shane.Church.StirlingMoney.Strings.Resources.BackupButton);
+				if (backupMenuQuery.Any())
+				{
+					ApplicationBar.MenuItems.Remove(backupMenuQuery.First());
+				}
 			}
 
 			//ApplicationBarIconButton appBarIconButtonReports = new ApplicationBarIconButton(new Uri("/Images/Reports.png", UriKind.Relative));
 			//appBarIconButtonReports.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarReports;
 			//appBarIconButtonReports.Click += new EventHandler(appBarIconButtonReports_Click);
 			//ApplicationBar.Buttons.Add(appBarIconButtonReports);
+		}
+
+		private void appBarIconButtonSkyDrive_Click(object sender, EventArgs e)
+		{
+			_model.BackupCommand.Execute(null);
 		}
 
 		void appBarIconButtonSync_Click(object sender, EventArgs e)
@@ -332,6 +324,9 @@ namespace Shane.Church.StirlingMoney.WP
 					await _model.LoadGoals(_refreshGoals);
 					_refreshGoals = false;
 				}
+#if DEBUG
+				DebugUtility.DebugOutputMemoryUsage("MainPage_LoadData");
+#endif
 			}
 		}
 	}

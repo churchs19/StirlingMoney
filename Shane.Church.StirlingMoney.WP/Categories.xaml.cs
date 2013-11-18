@@ -1,6 +1,4 @@
-﻿using Inneractive.Nokia.Ad;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
+﻿using Microsoft.Phone.Shell;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
@@ -8,7 +6,7 @@ using System;
 
 namespace Shane.Church.StirlingMoney.WP
 {
-	public partial class Categories : PhoneApplicationPage
+	public partial class Categories : AdvertisingPage
 	{
 		private CategoryListViewModel _model;
 
@@ -16,7 +14,7 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			InitializeComponent();
 
-			InitializeAdControl();
+			InitializeAdControl(this.AdPanel, this.AdControl);
 
 			BuildApplicationBar();
 		}
@@ -32,41 +30,6 @@ namespace Shane.Church.StirlingMoney.WP
 
 			this.DataContext = _model;
 		}
-
-		#region Ad Control
-		private void InitializeAdControl()
-		{
-#if !PERSONAL
-			if ((App.Current as App).trialReminder.IsTrialMode())
-			{
-				AdControl.AdReceived += new InneractiveAd.IaAdReceived(AdControl_AdReceived);
-				AdControl.AdFailed += new InneractiveAd.IaAdFailed(AdControl_AdFailed);
-				AdControl.DefaultAdReceived += new InneractiveAd.IaDefaultAdReceived(AdControl_DefaultAdReceived);
-			}
-			else
-			{
-				AdControl = null;
-			}
-#else
-			AdControl = null;
-#endif
-		}
-
-		void AdControl_DefaultAdReceived(object sender)
-		{
-			AdControl.Visibility = System.Windows.Visibility.Visible;
-		}
-
-		private void AdControl_AdReceived(object sender)
-		{
-			AdControl.Visibility = System.Windows.Visibility.Visible;
-		}
-
-		private void AdControl_AdFailed(object sender)
-		{
-			AdControl.Visibility = System.Windows.Visibility.Collapsed;
-		}
-		#endregion
 
 		/// <summary>
 		/// Builds a localized application bar

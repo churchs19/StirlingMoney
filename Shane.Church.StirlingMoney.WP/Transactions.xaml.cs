@@ -1,11 +1,10 @@
-﻿using Inneractive.Nokia.Ad;
-using Microsoft.Phone.Controls;
+﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Ninject;
-using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
+using Shane.Church.Utility.Core.WP;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -13,7 +12,7 @@ using Telerik.Windows.Data;
 
 namespace Shane.Church.StirlingMoney.WP
 {
-	public partial class Transactions : PhoneApplicationPage
+	public partial class Transactions : AdvertisingPage
 	{
 		TransactionListViewModel _model;
 		INavigationService _navService;
@@ -24,7 +23,7 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			InitializeComponent();
 
-			InitializeAdControl();
+			InitializeAdControl(this.AdPanel, this.AdControl);
 
 			InitializeApplicationBar();
 
@@ -93,44 +92,6 @@ namespace Shane.Church.StirlingMoney.WP
 			}
 		}
 
-		#region Ad Control
-		private void InitializeAdControl()
-		{
-#if !PERSONAL
-			if ((App.Current as App).trialReminder.IsTrialMode())
-			{
-				AdControl.AdReceived += new InneractiveAd.IaAdReceived(AdControl_AdReceived);
-				AdControl.AdFailed += new InneractiveAd.IaAdFailed(AdControl_AdFailed);
-				AdControl.DefaultAdReceived += new InneractiveAd.IaDefaultAdReceived(AdControl_DefaultAdReceived);
-			}
-			else
-			{
-				AdPanel.Children.Remove(AdControl);
-				AdControl = null;
-			}
-#else
-			AdPanel.Children.Remove(AdControl);
-			AdControl = null;
-#endif
-
-		}
-
-		void AdControl_DefaultAdReceived(object sender)
-		{
-			AdControl.Visibility = System.Windows.Visibility.Visible;
-		}
-
-		private void AdControl_AdReceived(object sender)
-		{
-			AdControl.Visibility = System.Windows.Visibility.Visible;
-		}
-
-		private void AdControl_AdFailed(object sender)
-		{
-			AdControl.Visibility = System.Windows.Visibility.Collapsed;
-		}
-		#endregion
-
 		#region App Bar
 		/// <summary>
 		/// Builds a localized application bar
@@ -191,6 +152,9 @@ namespace Shane.Church.StirlingMoney.WP
 				if (_model.TotalRows == _model.Transactions.Count)
 					jumpListTransactions.DataVirtualizationMode = Telerik.Windows.Controls.DataVirtualizationMode.None;
 			});
+#if DEBUG
+			DebugUtility.DebugOutputMemoryUsage("Transactions_jumpListTransactions_DataRequested");
+#endif
 		}
 
 		private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
@@ -226,6 +190,10 @@ namespace Shane.Church.StirlingMoney.WP
 				});
 
 			}
+
+#if DEBUG
+			DebugUtility.DebugOutputMemoryUsage("Transactions_PhoneApplicationPage_Loaded");
+#endif
 		}
 
 	}

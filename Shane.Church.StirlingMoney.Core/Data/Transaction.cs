@@ -17,6 +17,8 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			_accountRepository = accountRepo;
 			if (categoryRepo == null) throw new ArgumentNullException("categoryRepo");
 			_categoryRepository = categoryRepo;
+
+			CheckNumber = 0;
 		}
 
 		public Transaction()
@@ -31,7 +33,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		public string Location { get; set; }
 		public string Note { get; set; }
 		public bool Posted { get; set; }
-		public long? CheckNumber { get; set; }
+		public long CheckNumber { get; set; }
 		public DateTimeOffset EditDateTime { get; set; }
 		public bool IsDeleted { get; set; }
 
