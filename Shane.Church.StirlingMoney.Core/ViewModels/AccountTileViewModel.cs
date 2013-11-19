@@ -1,6 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -139,9 +138,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public async Task Delete()
 		{
-			Account acct = KernelService.Kernel.Get<Account>();
-			acct.AccountId = this.AccountId;
-			await _accountRepository.DeleteEntryAsync(acct);
+			await _accountRepository.DeleteEntryAsync(this.AccountId);
 			if (AccountDeleted != null)
 				AccountDeleted(this);
 		}
@@ -167,7 +164,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_navService.Navigate<TransactionListViewModel>(new TransactionListParams() { Id = AccountId, PinnedTile = false });
 		}
 
-		public virtual async Task LoadData(Guid accountId)
+		public virtual async Task LoadData(Guid accountId, bool updateTile = false)
 		{
 			Account a = await _accountRepository.GetEntryAsync(accountId);
 			if (a != null)
@@ -176,14 +173,15 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public virtual void LoadData(Account a)
+		public virtual void LoadData(Account a, bool updateTile = false)
 		{
 			AccountId = a.AccountId;
 			AccountName = a.AccountName;
 			AccountBalance = a.AccountBalance;
 			PostedBalance = a.PostedBalance;
 			_imageUri = a.ImageUri;
-			_tileService.UpdateTile(AccountId);
+			if (updateTile)
+				_tileService.UpdateTile(AccountId);
 		}
 	}
 }

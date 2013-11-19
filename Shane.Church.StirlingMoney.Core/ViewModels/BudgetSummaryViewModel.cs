@@ -1,6 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -222,9 +221,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public async Task Delete()
 		{
-			Budget b = KernelService.Kernel.Get<Budget>();
-			b.BudgetId = this.BudgetId;
-			await _budgetRepository.DeleteEntryAsync(b);
+			await _budgetRepository.DeleteEntryAsync(BudgetId);
 			if (ItemDeleted != null)
 				ItemDeleted(this);
 		}

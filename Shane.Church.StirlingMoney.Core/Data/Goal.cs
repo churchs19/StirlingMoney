@@ -8,6 +8,11 @@ namespace Shane.Church.StirlingMoney.Core.Data
 {
 	public class Goal
 	{
+		public Goal()
+		{
+			GoalName = "";
+		}
+
 		public Guid GoalId { get; set; }
 		public string GoalName { get; set; }
 		public Guid AccountId { get; set; }

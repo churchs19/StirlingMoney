@@ -188,7 +188,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public async Task Delete()
 		{
-			await _transactionRepository.DeleteEntryAsync(new Transaction { TransactionId = TransactionId });
+			await _transactionRepository.DeleteEntryAsync(TransactionId);
 			_parent.Transactions.Remove(this);
 			_parent.CurrentRow--;
 			_parent.TotalRows--;

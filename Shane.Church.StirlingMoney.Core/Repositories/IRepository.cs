@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.Repositories
 {
-	public interface IRepository<T, TKey> : IDisposable
+	public interface IRepository<T, TKey>
 	{
 		IQueryable<TKey> GetAllKeys(bool includeDeleted = false);
 
@@ -48,7 +48,7 @@ namespace Shane.Church.StirlingMoney.Core.Repositories
 		/// <param name="entry"></param>
 		//void DeleteEntry(T entry, bool hardDelete = false);
 
-		Task DeleteEntryAsync(T entry, bool hardDelete = false);
+		Task DeleteEntryAsync(TKey entryId, bool hardDelete = false);
 
 		/// <summary>
 		/// Add or update an entry.

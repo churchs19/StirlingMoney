@@ -24,6 +24,8 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			_transactionRepository = transactionRepo;
 			if (transSum == null) throw new ArgumentNullException("transSum");
 			_transactionSum = transSum;
+
+			AccountName = "";
 		}
 
 		public Account()

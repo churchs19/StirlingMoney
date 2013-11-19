@@ -1,77 +1,82 @@
-﻿using Shane.Church.StirlingMoney.Core.Data;
-using Shane.Church.StirlingMoney.Core.Repositories;
-using Shane.Church.StirlingMoney.Core.Services;
-using System;
-using System.Linq;
+﻿using Shane.Church.StirlingMoney.Core.Services;
 using System.IO.IsolatedStorage;
-using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.WP.Services
 {
-    public class PhoneSettingsService : ISettingsService
-    {
-        IRepository<Setting, string> _settings;
+	public class PhoneSettingsService : ISettingsService
+	{
+		IsolatedStorageSettings _settings;
 
-        public PhoneSettingsService(IRepository<Setting, string> settings)
-        {
-			if (settings == null) throw new ArgumentNullException("settings");
-            _settings = settings;
-        }
+		public PhoneSettingsService()
+		{
+			_settings = IsolatedStorageSettings.ApplicationSettings;
+		}
 
-        public bool SaveSetting<T>(T value, string key)
-        {
+		public bool SaveSetting<T>(T value, string key)
+		{
 			bool valueChanged = false;
 
-			if (_settings.GetAllKeys().Contains(key))
+			// If the key exists
+			if (_settings.Contains(key))
 			{
-				var entry = _settings.GetEntryAsync(key).Result;
-				if (!(entry.Value is T) || !entry.Value.Equals(value))
+				// If the value has changed
+				if (_settings[key] is T)
 				{
-					entry.Value = value;
-					_settings.AddOrUpdateEntryAsync(entry).Wait();
+					T currentVal = (T)_settings[key];
+					if (!currentVal.Equals(value))
+					{
+						// Store the new value
+						_settings[key] = value;
+						valueChanged = true;
+					}
+				}
+				else
+				{
+					_settings[key] = value;
 					valueChanged = true;
 				}
 			}
+			// Otherwise create the key.
 			else
 			{
-				Setting entry = new Setting() { Key = key, Value = value };
-				_settings.AddOrUpdateEntryAsync(entry).Wait();
+				_settings.Add(key, value);
 				valueChanged = true;
 			}
+			if (valueChanged)
+				_settings.Save();
 			return valueChanged;
-        }
+		}
 
-        public T LoadSetting<T>(string key)
-        {
-            try
-            {
-                // If the key exists, retrieve the value.
-                if (_settings.GetAllKeys().Contains(key))
-                {
-					return (T)_settings.GetEntryAsync(key).Result.Value;
-                }
-                // Otherwise, use the default value.
-                else
-                {
-                    return default(T);
-                }
-            }
-            catch
-            {
-                return default(T);
-            }
-        }
+		public T LoadSetting<T>(string key)
+		{
+			try
+			{
+				// If the key exists, retrieve the value.
+				if (_settings.Contains(key))
+				{
+					return (T)_settings[key];
+				}
+				// Otherwise, use the default value.
+				else
+				{
+					return default(T);
+				}
+			}
+			catch
+			{
+				return default(T);
+			}
+		}
 
-        public bool RemoveSetting(string key)
-        {
-            var removed = false;
-            if (_settings.GetAllKeys().Contains(key))
-            {
-				var entry = _settings.GetEntryAsync(key).Result;
-				_settings.DeleteEntryAsync(entry, true).Wait();
-				removed = true;
-            }
-            return removed;
-        }
-    }
+		public bool RemoveSetting(string key)
+		{
+			var removed = false;
+			if (_settings.Contains(key))
+			{
+				_settings.Remove(key);
+				_settings.Save();
+			}
+			return removed;
+		}
+	}
 }

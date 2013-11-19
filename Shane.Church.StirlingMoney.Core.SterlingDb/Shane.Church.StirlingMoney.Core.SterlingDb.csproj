@@ -80,6 +80,7 @@
     <Compile Include="Repositories\SettingRepository.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Services\SterlingBackupService.cs" />
+    <Compile Include="SterlingActivation.cs" />
     <Compile Include="StirlingMoneyDatabaseInstance.cs" />
   </ItemGroup>
   <ItemGroup>

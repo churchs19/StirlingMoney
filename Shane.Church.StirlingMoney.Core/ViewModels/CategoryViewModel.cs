@@ -99,8 +99,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public async Task DeleteItem()
 		{
-			var c = await _categoryRepository.GetEntryAsync(CategoryId);
-			await _categoryRepository.DeleteEntryAsync(c);
+			await _categoryRepository.DeleteEntryAsync(CategoryId);
 		}
 
 		public ICommand SaveCommand { get; private set; }

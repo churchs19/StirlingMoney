@@ -22,6 +22,8 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			_categoryRepository = categoryRepo;
 			if (transactionSum == null) throw new ArgumentNullException("transactionSum");
 			_transactionSum = transactionSum;
+
+			BudgetName = "";
 		}
 
 		public Budget()

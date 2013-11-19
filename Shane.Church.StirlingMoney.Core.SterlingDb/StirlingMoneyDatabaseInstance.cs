@@ -33,6 +33,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb
 					.WithIndex<Transaction, Guid, Guid>("TransactionAccountId", it => it.AccountId)
 					.WithIndex<Transaction, Guid, Double, Guid>("TransactionAccountIdAmount", it=>new Tuple<Guid, Double>(it.AccountId, it.Amount))
 					.WithIndex<Transaction, Guid, Boolean, Guid>("TransactionAccountIdIsDeleted", it => new Tuple<Guid, Boolean>(it.AccountId, it.IsDeleted))
+					.WithIndex<Transaction, Guid, DateTimeOffset, Guid>("TransactionAccountIdEditDateTime", it => new Tuple<Guid, DateTimeOffset>(it.AccountId, it.EditDateTime))
 					.WithIndex<Transaction, Guid, long, Guid>("TransactionAccountIdCheckNumber", it=>new Tuple<Guid, long>(it.AccountId, it.CheckNumber))
 					.WithIndex<Transaction, Boolean, Guid>("Posted", it=> it.Posted)
 					.WithIndex<Transaction, DateTimeOffset, double, Guid>("TransactionDate", it=>new Tuple<DateTimeOffset, double>(it.TransactionDate, it.Amount))
@@ -43,6 +44,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb
 					.WithIndex<Transaction, Boolean, Guid>("IsDeleted", it => it.IsDeleted),
 				CreateTableDefinition<Setting, string>(it=>it.Key)
 					.WithIndex<Setting, Boolean, string>("IsDeleted", it => it.IsDeleted)
+					.WithIndex<Setting, DateTimeOffset, string>("EditDateTime", it => it.EditDateTime)
 			};
 
 			return tables;

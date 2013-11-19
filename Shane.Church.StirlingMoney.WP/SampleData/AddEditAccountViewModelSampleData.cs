@@ -32,12 +32,12 @@ namespace Shane.Church.StirlingMoney.WP.SampleData
 			throw new NotImplementedException();
 		}
 
-		public void DeleteEntry(Account entry, bool hardDelete = false)
+		public void DeleteEntry(Guid entryId, bool hardDelete = false)
 		{
 			throw new NotImplementedException();
 		}
 
-		public System.Threading.Tasks.Task DeleteEntryAsync(Account entry, bool hardDelete = false)
+		public System.Threading.Tasks.Task DeleteEntryAsync(Guid entryId, bool hardDelete = false)
 		{
 			throw new NotImplementedException();
 		}

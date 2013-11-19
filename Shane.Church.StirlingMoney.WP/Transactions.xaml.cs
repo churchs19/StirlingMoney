@@ -1,5 +1,4 @@
-﻿using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
+﻿using Microsoft.Phone.Shell;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
@@ -42,6 +41,8 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
+			_isNew = e.NavigationMode == System.Windows.Navigation.NavigationMode.New;
+
 			FlurryWP8SDK.Api.LogPageView();
 			_log = KernelService.Kernel.Get<ILoggingService>();
 			_model = KernelService.Kernel.Get<TransactionListViewModel>();
@@ -53,18 +54,19 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override void OnNavigatingFrom(System.Windows.Navigation.NavigatingCancelEventArgs e)
 		{
+			var account = _model.GetAccount().Result;
+			if (account != null)
+			{
+				_model.Commit().Wait(1000);
+			}
 			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.Back)
 			{
-				_isPinned = false;
-				var account = _model.GetAccount().Result;
-				if (account != null)
-				{
-					_model.Commit().Wait(1000);
-				}
 				if (_isPinned)
 				{
 					e.Cancel = true;
+					_isPinned = false;
 					_navService.Navigate<MainViewModel>(true);
+					return;
 				}
 			}
 			base.OnNavigatingFrom(e);
@@ -166,22 +168,27 @@ namespace Shane.Church.StirlingMoney.WP
 
 		private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
 		{
+			TransactionListParams param = null;
+			try
+			{
+				param = PhoneNavigationService.DecodeNavigationParameter<TransactionListParams>(this.NavigationContext);
+			}
+			catch (KeyNotFoundException)
+			{
+				param = new TransactionListParams();
+			}
+
 			if (_isNew)
 			{
-				TransactionListParams param = null;
-				try
-				{
-					param = PhoneNavigationService.DecodeNavigationParameter<TransactionListParams>(this.NavigationContext);
-				}
-				catch (KeyNotFoundException)
-				{
-					param = new TransactionListParams();
-				}
-
 				await _model.LoadData(param.Id);
 
 				_isNew = false;
 				_isPinned = param.PinnedTile;
+
+				if (_isPinned)
+				{
+
+				}
 
 				Deployment.Current.Dispatcher.BeginInvoke(() =>
 				{
@@ -191,7 +198,7 @@ namespace Shane.Church.StirlingMoney.WP
 			}
 			else
 			{
-				await _model.RefreshData();
+				await _model.RefreshData(param.Id);
 				Deployment.Current.Dispatcher.BeginInvoke(() =>
 				{
 					this.jumpListTransactions.RefreshData();

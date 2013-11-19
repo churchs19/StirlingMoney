@@ -246,9 +246,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public async Task Delete()
 		{
-			Goal g = KernelService.Kernel.Get<Goal>();
-			g.GoalId = this.GoalId;
-			await _goalRepository.DeleteEntryAsync(g);
+			await _goalRepository.DeleteEntryAsync(GoalId);
 			if (ItemDeleted != null)
 				ItemDeleted(this);
 		}

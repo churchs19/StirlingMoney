@@ -103,8 +103,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public async Task RemoveEntry()
 		{
-			var entry = await _repository.GetEntryAsync(UserEmail);
-			await _repository.DeleteEntryAsync(entry);
+			await _repository.DeleteEntryAsync(UserEmail);
 			if (RemoveActionCompleted != null)
 				RemoveActionCompleted(this, new EventArgs());
 		}

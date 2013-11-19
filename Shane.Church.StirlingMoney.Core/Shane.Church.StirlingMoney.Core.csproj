@@ -85,12 +85,14 @@
     <Compile Include="Data\ProgressBusyEventArgs.cs" />
     <Compile Include="Data\ProgressChangedArgs.cs" />
     <Compile Include="Data\Setting.cs" />
+    <Compile Include="Data\Tombstone.cs" />
     <Compile Include="Exceptions\BackupException.cs" />
     <Compile Include="Exceptions\NotAuthorizedException.cs" />
     <Compile Include="Services\IBackupService.cs" />
     <Compile Include="Services\ILicensingService.cs" />
     <Compile Include="Services\IUpgradeDBService.cs" />
     <Compile Include="ViewModels\BackupViewModel.cs" />
+    <Compile Include="ViewModels\ITombstoneFriendly.cs" />
     <Compile Include="ViewModels\TransactionListParams.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Data\ITransactionSum.cs" />

@@ -198,14 +198,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 			this.Account = await _accountRepository.GetEntryAsync(accountId);
 			this.CurrentRow = 0;
-			if (this.Account != null)
-			{
-				this.TotalRows = Account.TransactionCount;
-			}
-			else
-			{
-				this.TotalRows = 0;
-			}
+			this.TotalRows = this.Account != null ? Account.TransactionCount : 0;
 			InitialLoadComplete = true;
 
 			await TaskEx.Yield();
@@ -218,7 +211,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public async Task RefreshData()
+		public async Task RefreshData(Guid accountId)
 		{
 			if (BusyChanged != null)
 			{
@@ -227,7 +220,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 			await TaskEx.Yield();
 
-			var updated = _transactionRepository.GetAllIndexKeys<DateTimeOffset>("EditDateTime").Where(it => it.Value > _refreshTime).Select(it => it.Key);
+			this.Account = await _accountRepository.GetEntryAsync(accountId);
+			this.TotalRows = this.Account != null ? Account.TransactionCount : 0;
+
+			var updated = _transactionRepository.GetAllIndexKeys<Tuple<Guid, DateTimeOffset>>("TransactionAccountIdEditDateTime").Where(it => it.Value.Item2 > _refreshTime && it.Value.Item1 == this.AccountId).Select(it => it.Key);
 			var updatedList = updated.ToList();
 			foreach (var t in updatedList)
 			{

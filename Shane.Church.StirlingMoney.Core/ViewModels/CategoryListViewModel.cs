@@ -7,7 +7,6 @@ using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels

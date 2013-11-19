@@ -106,8 +106,6 @@ namespace Shane.Church.StirlingMoney.WP
 			rateReminder.AllowUsersToSkipFurtherReminders = true;
 
 			rateReminder.ReminderClosed += rateReminder_ReminderClosed;
-
-			InitializeBackgroundAgent();
 		}
 
 		void rateReminder_ReminderClosed(object sender, ReminderClosedEventArgs e)
@@ -242,15 +240,9 @@ namespace Shane.Church.StirlingMoney.WP
 			FlurryWP8SDK.Api.StartSession(FlurryConfig.ApiKey);
 			FlurryWP8SDK.Api.SetVersion(versionAttrib.Version.ToString());
 
-			var engine = KernelService.Kernel.Get<SterlingEngine>();
-			SterlingDefaultLogger logger = new SterlingDefaultLogger(engine.SterlingDatabase, SterlingLogLevel.Verbose);
+			SterlingActivation.ActivateDatabase();
 
-			engine.Activate();
-
-			engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
-
-			engine.SterlingDatabase.GetDatabase("Money").RefreshAsync().Wait(1000);
-
+			InitializeBackgroundAgent();
 #if DEBUG
 			DebugUtility.DebugOutputMemoryUsage("Application_Launching");
 #endif
@@ -271,14 +263,7 @@ namespace Shane.Church.StirlingMoney.WP
 				ApplicationUsageHelper.OnApplicationActivated();
 			}
 
-			var engine = KernelService.Kernel.Get<SterlingEngine>();
-			SterlingDefaultLogger logger = new SterlingDefaultLogger(engine.SterlingDatabase, SterlingLogLevel.Verbose);
-
-			engine.Activate();
-
-			engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
-
-			engine.SterlingDatabase.GetDatabase("Money").RefreshAsync().Wait(1000);
+			SterlingActivation.ActivateDatabase();
 
 #if DEBUG
 			DebugUtility.DebugOutputMemoryUsage("Application_Activated");

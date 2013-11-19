@@ -19,6 +19,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			_categoryRepository = categoryRepo;
 
 			CheckNumber = 0;
+			Location = "";
 		}
 
 		public Transaction()

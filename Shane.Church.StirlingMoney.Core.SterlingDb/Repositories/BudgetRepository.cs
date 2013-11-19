@@ -71,17 +71,19 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 			return TaskEx.Run<IQueryable<Budget>>(() => GetFilteredEntries(filter, includeDeleted));
 		}
 
-		public async Task DeleteEntryAsync(Budget entry, bool hardDelete = false)
+		public async Task DeleteEntryAsync(Guid entryId, bool hardDelete = false)
 		{
 			if (hardDelete)
-				await _db.DeleteAsync<Budget>(entry);
+				await _db.DeleteAsync(typeof(Budget), entryId);
 			else
 			{
+				var entry = await this.GetEntryAsync(entryId);
 				entry.EditDateTime = DateTimeOffset.Now;
 				entry.IsDeleted = true;
 				await _db.SaveAsync<Budget>(entry);
 			}
 		}
+
 
 		public async Task<Budget> AddOrUpdateEntryAsync(Budget entry)
 		{
@@ -97,7 +99,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 			{
 				if (entry.IsDeleted)
 				{
-					await DeleteEntryAsync(entry, true);
+					await DeleteEntryAsync(entry.BudgetId, true);
 				}
 				else
 				{
@@ -111,14 +113,11 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 			return await _db.LoadAsync<Budget>(key);
 		}
 
-		public void Dispose()
-		{
-			_db.FlushAsync().Wait(2000);
-		}
-
 		public async Task Commit()
 		{
-			await _db.FlushAsync();
+			//await _db.FlushAsync();
+			//_engine.Activate();
+			await _engine.SterlingDatabase.GetDatabase("Money").RefreshAsync();
 		}
 
 		public Task<IQueryable<Budget>> GetUpdatedEntries(DateTimeOffset date)

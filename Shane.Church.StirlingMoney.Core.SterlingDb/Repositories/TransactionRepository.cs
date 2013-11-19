@@ -71,17 +71,19 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 			return TaskEx.Run<IQueryable<Transaction>>(() => GetFilteredEntries(filter, includeDeleted));
 		}
 
-		public async Task DeleteEntryAsync(Transaction entry, bool hardDelete = false)
+		public async Task DeleteEntryAsync(Guid entryId, bool hardDelete = false)
 		{
 			if (hardDelete)
-				await _db.DeleteAsync<Transaction>(entry);
+				await _db.DeleteAsync(typeof(Transaction), entryId);
 			else
 			{
+				var entry = await this.GetEntryAsync(entryId);
 				entry.EditDateTime = DateTimeOffset.Now;
 				entry.IsDeleted = true;
 				await _db.SaveAsync<Transaction>(entry);
 			}
 		}
+
 
 		public async Task<Transaction> AddOrUpdateEntryAsync(Transaction entry)
 		{
@@ -97,7 +99,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 			{
 				if (entry.IsDeleted)
 				{
-					await DeleteEntryAsync(entry, true);
+					await DeleteEntryAsync(entry.TransactionId, true);
 				}
 				else
 				{
@@ -111,34 +113,41 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 			return await _db.LoadAsync<Transaction>(key);
 		}
 
-		public void Dispose()
-		{
-			_db.FlushAsync().Wait(2000);
-		}
-
 		public double GetSumByAccount(Guid accountId)
 		{
-			return _db.Query<Transaction, Guid, double, Guid>("TransactionAccountIdAmount").Where(it => it.Index.Item1.Equals(accountId)).Sum(it => it.Index.Item2);
+			var activeIds = _db.Query<Transaction, bool, Guid>("IsDeleted").Where(it => !it.Index).Select(it => it.Key).ToList();
+			return _db.Query<Transaction, Guid, double, Guid>("TransactionAccountIdAmount").Where(it => it.Index.Item1.Equals(accountId) && activeIds.Contains(it.Key)).Sum(it => it.Index.Item2);
 		}
 
 		public double GetPostedSumByAccount(Guid accountId)
 		{
 			var postedIds = _db.Query<Transaction, bool, Guid>("Posted").Where(it => it.Index).Select(it => it.Key).ToList();
+			var activeIds = _db.Query<Transaction, bool, Guid>("IsDeleted").Where(it => !it.Index).Select(it => it.Key).ToList();
+			var activePostedIds = postedIds.Intersect(activeIds).ToList();
 			return _db.Query<Transaction, Guid, double, Guid>("TransactionAccountIdAmount")
-					.Where(it => it.Index.Item1.Equals(accountId) && postedIds.Contains(it.Key))
+					.Where(it => it.Index.Item1.Equals(accountId) && activePostedIds.Contains(it.Key))
 					.Sum(it => it.Index.Item2);
 		}
 
 		public async Task Commit()
 		{
-			await _db.FlushAsync();
+			//await _db.FlushAsync();
+			//_engine.Activate();
+			await _engine.SterlingDatabase.GetDatabase("Money").RefreshAsync();
 		}
 
-		public Task<IQueryable<Transaction>> GetUpdatedEntries(DateTimeOffset date)
+		public async Task<IQueryable<Transaction>> GetUpdatedEntries(DateTimeOffset date)
 		{
-			return TaskEx.Run<IQueryable<Transaction>>(() => _db.Query<Transaction, DateTimeOffset, Guid>("EditDateTime")
-				.Where(it => it.Index >= date)
-				.Select(it => it.Value.Result).AsQueryable());
+			var list = _db.Query<Transaction, DateTimeOffset, Guid>("EditDateTime")
+			.Where(it => it.Index >= date)
+			.Select(it => it.Key).ToList();
+			var items = new List<Transaction>();
+			foreach (var i in list)
+			{
+				var item = await _db.LoadAsync<Transaction>(i);
+				items.Add(item);
+			}
+			return items.AsQueryable();
 		}
 
 		public int GetEntriesCount(bool includeDeleted = false)

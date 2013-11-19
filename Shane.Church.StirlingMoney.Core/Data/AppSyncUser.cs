@@ -4,6 +4,11 @@ namespace Shane.Church.StirlingMoney.Core.Data
 {
 	public class AppSyncUser
 	{
+		public AppSyncUser()
+		{
+			UserEmail = "";
+		}
+
 		public Guid AppSyncId { get; set; }
 		public string UserEmail { get; set; }
 		public string UserId { get; set; }

@@ -135,28 +135,26 @@ namespace Shane.Church.StirlingMoney.Core.Services
 
 							DateTimeOffset lastSuccessfulSyncDate = _settingsService.LoadSetting<DateTimeOffset>("LastSuccessfulSync");
 
-							var localCategories = _categories.GetUpdatedEntries(lastSuccessfulSyncDate);
-							var localAccounts = _accounts.GetUpdatedEntries(lastSuccessfulSyncDate);
-							var localUsers = _users.GetUpdatedEntries(lastSuccessfulSyncDate);
-							var localBudgets = _budgets.GetUpdatedEntries(lastSuccessfulSyncDate);
-							var localGoals = _goals.GetUpdatedEntries(lastSuccessfulSyncDate);
-							var localTransactions = _transactions.GetUpdatedEntries(lastSuccessfulSyncDate);
-
-							Task.WaitAll(localCategories, localAccounts, localBudgets, localUsers, localGoals, localTransactions);
+							var localCategories = await _categories.GetUpdatedEntries(lastSuccessfulSyncDate);
+							var localAccounts = await _accounts.GetUpdatedEntries(lastSuccessfulSyncDate);
+							var localUsers = await _users.GetUpdatedEntries(lastSuccessfulSyncDate);
+							var localBudgets = await _budgets.GetUpdatedEntries(lastSuccessfulSyncDate);
+							var localGoals = await _goals.GetUpdatedEntries(lastSuccessfulSyncDate);
+							var localTransactions = await _transactions.GetUpdatedEntries(lastSuccessfulSyncDate);
 
 							List<SyncItem> objects = new List<SyncItem>();
 							JsonSerializer serializer = JsonSerializer.Create(Client.SerializerSettings);
-							JArray arrCategories = JArray.FromObject(localCategories.Result, serializer);
+							JArray arrCategories = JArray.FromObject(localCategories, serializer);
 							objects.Add(new SyncItem() { TableName = "Categories", KeyField = "categoryId", Values = arrCategories });
-							JArray arrAccounts = JArray.FromObject(localAccounts.Result, serializer);
+							JArray arrAccounts = JArray.FromObject(localAccounts, serializer);
 							objects.Add(new SyncItem() { TableName = "Accounts", KeyField = "accountId", Values = arrAccounts });
-							JArray arrUsers = JArray.FromObject(localUsers.Result, serializer);
+							JArray arrUsers = JArray.FromObject(localUsers, serializer);
 							objects.Add(new SyncItem() { TableName = "AppSyncUsers", KeyField = "userEmail", Values = arrUsers });
-							JArray arrBudgets = JArray.FromObject(localBudgets.Result, serializer);
+							JArray arrBudgets = JArray.FromObject(localBudgets, serializer);
 							objects.Add(new SyncItem() { TableName = "Budgets", KeyField = "budgetId", Values = arrBudgets });
-							JArray arrGoals = JArray.FromObject(localGoals.Result, serializer);
+							JArray arrGoals = JArray.FromObject(localGoals, serializer);
 							objects.Add(new SyncItem() { TableName = "Goals", KeyField = "goalId", Values = arrGoals });
-							JArray arrTransactions = JArray.FromObject(localTransactions.Result, serializer);
+							JArray arrTransactions = JArray.FromObject(localTransactions, serializer);
 							objects.Add(new SyncItem() { TableName = "Transactions", KeyField = "transactionId", Values = arrTransactions });
 
 							JObject body = new JObject();
@@ -207,10 +205,22 @@ namespace Shane.Church.StirlingMoney.Core.Services
 								throw;
 							}
 
-							await _accounts.Commit();
+							foreach (var t in _transactions.GetAllIndexKeys<bool>("IsDeleted").Where(it => it.Value).Select(it => it.Key))
+								await _transactions.DeleteEntryAsync(t, true);
+							foreach (var t in _goals.GetAllIndexKeys<bool>("IsDeleted").Where(it => it.Value).Select(it => it.Key))
+								await _goals.DeleteEntryAsync(t, true);
+							foreach (var t in _budgets.GetAllIndexKeys<bool>("IsDeleted").Where(it => it.Value).Select(it => it.Key))
+								await _budgets.DeleteEntryAsync(t, true);
+							foreach (var t in _users.GetAllIndexKeys<bool>("IsDeleted").Where(it => it.Value).Select(it => it.Key))
+								await _users.DeleteEntryAsync(t, true);
+							foreach (var t in _accounts.GetAllIndexKeys<bool>("IsDeleted").Where(it => it.Value).Select(it => it.Key))
+								await _accounts.DeleteEntryAsync(t, true);
+							foreach (var t in _categories.GetAllIndexKeys<bool>("IsDeleted").Where(it => it.Value).Select(it => it.Key))
+								await _categories.DeleteEntryAsync(t, true);
 
 							_settingsService.SaveSetting<DateTimeOffset>(DateTimeOffset.Now, "LastSuccessfulSync");
 
+							await _accounts.Commit();
 							//						await RemoveDatabaseBackup();
 						}
 					}

@@ -1,6 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Windows.Input;

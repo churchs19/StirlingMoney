@@ -11,7 +11,6 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
-using Wintellect.Sterling.Core;
 
 namespace Shane.Church.StirlingMoney.WP.Agent
 {
@@ -79,14 +78,7 @@ namespace Shane.Church.StirlingMoney.WP.Agent
 				DebugUtility.DebugStartStopwatch();
 				DebugUtility.DebugOutputMemoryUsage("Scheduled Task Initial Memory Snapshot");
 #endif
-				var engine = KernelService.Kernel.Get<SterlingEngine>();
-				SterlingDefaultLogger logger = new SterlingDefaultLogger(engine.SterlingDatabase, SterlingLogLevel.Verbose);
-
-				engine.Activate();
-
-				engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
-
-				engine.SterlingDatabase.GetDatabase("Money").RefreshAsync().Wait(5000);
+				SterlingActivation.ActivateDatabase();
 
 				var settingsService = KernelService.Kernel.Get<ISettingsService>();
 

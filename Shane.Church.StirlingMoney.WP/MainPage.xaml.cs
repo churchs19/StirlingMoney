@@ -119,6 +119,10 @@ namespace Shane.Church.StirlingMoney.WP
 			{
 				Deployment.Current.Dispatcher.BeginInvoke(() =>
 				{
+					if (!string.IsNullOrWhiteSpace(args.Message))
+					{
+
+					}
 					LoadingBusy.IsRunning = false;
 				});
 			}

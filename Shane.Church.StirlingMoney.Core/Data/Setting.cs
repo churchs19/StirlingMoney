@@ -4,6 +4,11 @@ namespace Shane.Church.StirlingMoney.Core.Data
 {
 	public class Setting
 	{
+		public Setting()
+		{
+			Key = "";
+		}
+
 		public string Key { get; set; }
 		public object Value { get; set; }
 		public DateTimeOffset EditDateTime { get; set; }

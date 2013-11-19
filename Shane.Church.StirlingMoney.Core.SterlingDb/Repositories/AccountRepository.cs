@@ -71,12 +71,13 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 			return TaskEx.Run<IQueryable<Account>>(() => GetFilteredEntries(filter, includeDeleted));
 		}
 
-		public async Task DeleteEntryAsync(Account entry, bool hardDelete = false)
+		public async Task DeleteEntryAsync(Guid entryId, bool hardDelete = false)
 		{
 			if (hardDelete)
-				await _db.DeleteAsync<Account>(entry);
+				await _db.DeleteAsync(typeof(Account), entryId);
 			else
 			{
+				var entry = await this.GetEntryAsync(entryId);
 				entry.EditDateTime = DateTimeOffset.Now;
 				entry.IsDeleted = true;
 				await _db.SaveAsync<Account>(entry);
@@ -97,7 +98,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 			{
 				if (entry.IsDeleted)
 				{
-					await DeleteEntryAsync(entry, true);
+					await DeleteEntryAsync(entry.AccountId, true);
 				}
 				else
 				{
@@ -111,14 +112,11 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 			return await _db.LoadAsync<Account>(key);
 		}
 
-		public void Dispose()
-		{
-			_db.FlushAsync().Wait(2000);
-		}
-
 		public async Task Commit()
 		{
 			await _db.FlushAsync();
+			_engine.Activate();
+			await _engine.SterlingDatabase.GetDatabase("Money").RefreshAsync();
 		}
 
 		public Task<IQueryable<Account>> GetUpdatedEntries(DateTimeOffset date)

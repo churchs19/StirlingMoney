@@ -91,7 +91,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 						tile.AccountDeleted += tile_AccountDeleted;
 						Accounts.Add(tile);
 					}
-					tile.LoadData(a);
+					tile.LoadData(a, true);
 				}
 				_accountsLoaded = true;
 			}

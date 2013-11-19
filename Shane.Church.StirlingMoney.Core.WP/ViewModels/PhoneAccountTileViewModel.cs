@@ -20,15 +20,15 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 			_accountRepository = accountRepository;
 		}
 
-		public override void LoadData(Account a)
+		public override void LoadData(Account a, bool updateTile = false)
 		{
-			base.LoadData(a);
+			base.LoadData(a, updateTile);
 			GetImage(_imageUri);
 		}
 
-		public override async Task LoadData(Guid accountId)
+		public override async Task LoadData(Guid accountId, bool updateTile = false)
 		{
-			await base.LoadData(accountId);
+			await base.LoadData(accountId, updateTile);
 			GetImage(_imageUri);
 		}
 
