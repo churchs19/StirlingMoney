@@ -804,4 +804,7 @@ I take your security very seriously and all data is transmitted securely over HT
   <data name="DownloadingProgressText" xml:space="preserve">
     <value>downloaded {0} of {1} bytes...</value>
   </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>select account</value>
+  </data>
 </root>

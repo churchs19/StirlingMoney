@@ -2,6 +2,7 @@
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
 using Ninject;
+using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Exceptions;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.SterlingDb;
@@ -283,7 +284,9 @@ namespace Shane.Church.StirlingMoney.WP
 		// This code will not execute when the application is deactivated
 		private void Application_Closing(object sender, ClosingEventArgs e)
 		{
-			KernelService.Kernel.Get<SterlingEngine>().Dispose();
+			var engine = KernelService.Kernel.Get<SterlingEngine>();
+			engine.SterlingDatabase.GetDatabase("Money").TruncateAsync(typeof(Tombstone)).Wait();
+			engine.Dispose();
 			FlurryWP8SDK.Api.EndSession();
 		}
 

@@ -84,6 +84,11 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			Shane.Church.Utility.Core.WP.BindingHelper.UpdateBindings(this.textBoxAmount, this.textBoxCheckNum, this.textBoxLocation, this.textBoxNote);
 
+			var bind = autoCompleteCategory.GetBindingExpression(Telerik.Windows.Controls.RadAutoCompleteBox.TextProperty);
+
+			if (bind != null)
+				bind.UpdateSource();
+
 			_model.SaveCommand.Execute(null);
 		}
 

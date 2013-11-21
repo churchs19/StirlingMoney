@@ -106,7 +106,7 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,8" Visibility="{Binding InitialLoadComplete, Converter={StaticResource BooleanVisibilityConverter}}">
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,8">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -137,8 +137,7 @@
 					   Grid.Row="0"
 					   Grid.Column="0" 
 					   FontSize="{StaticResource PhoneFontSizeMedium}"
-					   Padding="3,3"
-                       Visibility="{Binding InitialLoadComplete, Converter={StaticResource BooleanVisibilityConverter}}"></TextBlock>
+					   Padding="3,3"></TextBlock>
             <TextBlock x:Name="textBlockAvailableBalance" 
 					   Text="{Binding AvailableBalance, Converter={StaticResource LocalizedCurrency}}"
 					   Grid.Row="0"
@@ -146,15 +145,13 @@
 					   FontSize="{StaticResource PhoneFontSizeMedium}" 
 					   FontWeight="Bold"
 					   TextAlignment="Right"
-					   Padding="3,3"
-                       Visibility="{Binding InitialLoadComplete, Converter={StaticResource BooleanVisibilityConverter}}"></TextBlock>
+					   Padding="3,3"></TextBlock>
             <TextBlock x:Name="textBlockPostedBalanceLabel" 
 					   Text="{Binding Path=LocalizedResources.TransactionsPostedBalanceLabel, Source={StaticResource LocalizedStrings}}"
 					   Grid.Row="1"
 					   Grid.Column="0" 
 					   FontSize="{StaticResource PhoneFontSizeMedium}"
-					   Padding="3,3"
-                       Visibility="{Binding InitialLoadComplete, Converter={StaticResource BooleanVisibilityConverter}}"></TextBlock>
+					   Padding="3,3"></TextBlock>
             <TextBlock x:Name="textBlockPostedBalance" 
 					   Text="{Binding PostedBalance, Converter={StaticResource LocalizedCurrency}}"
 					   Grid.Row="1"
@@ -162,8 +159,7 @@
 					   FontSize="{StaticResource PhoneFontSizeMedium}" 
 					   FontWeight="Bold"
 					   TextAlignment="Right"
-					   Padding="3,3"
-                       Visibility="{Binding InitialLoadComplete, Converter={StaticResource BooleanVisibilityConverter}}"></TextBlock>
+					   Padding="3,3"></TextBlock>
             <telerikData:RadJumpList x:Name="jumpListTransactions" Grid.Row="5" 
                                      Grid.Column="0" 
                                      Grid.ColumnSpan="2"
@@ -187,11 +183,11 @@
                     <Grid MinHeight="60">
                         <telerikPrimitives:RadBusyIndicator x:Name="LoadingTransactionsBusy" 
                                             Foreground="{StaticResource PhoneAccentBrush}" 
-                                            ContentPosition="Right"
+                                            ContentPosition="Top"
                                             Content="{Binding Path=LocalizedResources.ProgressBarText, Source={StaticResource LocalizedStrings}}"
                                             IsRunning="True"
                                             BorderBrush="{StaticResource PhoneSemitransparentBrush}"
-                                            AnimationStyle="AnimationStyle2"/>
+                                            AnimationStyle="AnimationStyle3"/>
                     </Grid>
                 </telerikData:RadJumpList.ItemLoadingContent>
             </telerikData:RadJumpList>

@@ -59,6 +59,7 @@
 						   Text="{Binding Path=LocalizedResources.TransactionAccountLabel, Source={StaticResource LocalizedStrings}}"
 						   Visibility="{Binding AccountVisible, Converter={StaticResource BooleanVisibilityConverter}}"/>
                 <telerikInput:RadListPicker Name="listPickerAccount"
+                                            NoSelectionContent="{Binding Path=LocalizedResources.TransactionSelectAccountLabel, Source={StaticResource LocalizedStrings}}"
                                             ItemsSource="{Binding TransferAccounts}"
                                             SelectedItem="{Binding TransferAccount,Mode=TwoWay}"
                                             PopupHeader="{Binding Path=LocalizedResources.TransactionAccountLabel, Source={StaticResource LocalizedStrings}}"
@@ -76,12 +77,11 @@
 						   Text="{Binding Path=LocalizedResources.TransactionCategoryLabel, Source={StaticResource LocalizedStrings}}"
 						   Margin="5,5" 
 						   Visibility="{Binding CategoryVisible, Converter={StaticResource BooleanVisibilityConverter}}"/>
-                <telerikInput:RadListPicker Name="listPickerCategory"
-                                            ItemsSource="{Binding Categories}"
-                                            SelectedItem="{Binding Category,Mode=TwoWay}"
-                                            PopupHeader="{Binding Path=LocalizedResources.TransactionCategoryLabel, Source={StaticResource LocalizedStrings}}"
-                                            Visibility="{Binding CategoryVisible, Converter={StaticResource BooleanVisibilityConverter}}">
-                </telerikInput:RadListPicker>
+                <telerikInput:RadAutoCompleteBox Name="autoCompleteCategory"
+                                                 SuggestionsSource="{Binding Categories}"
+                                                 Text="{Binding Category,Mode=TwoWay}"
+                                                 Visibility="{Binding CategoryVisible, Converter={StaticResource BooleanVisibilityConverter}}">
+                </telerikInput:RadAutoCompleteBox>
                 <TextBlock HorizontalAlignment="Left" Name="textBlockNote" 
 						   Text="{Binding Path=LocalizedResources.TransactionNotesLabel, Source={StaticResource LocalizedStrings}}"
 						   Margin="5,5"/>

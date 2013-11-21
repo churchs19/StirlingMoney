@@ -27,16 +27,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 			InitializeApplicationBar();
 
-			GenericGroupDescriptor<TransactionListItemViewModel, DateTime> grouping = new GenericGroupDescriptor<TransactionListItemViewModel, DateTime>(it => it.TransactionDate.Date);
-			grouping.GroupFormatString = "{0:D}";
-			grouping.SortMode = ListSortMode.Descending;
-
-			jumpListTransactions.GroupDescriptorsSource = new List<DataDescriptor>() { grouping };
-
-			GenericSortDescriptor<TransactionListItemViewModel, TransactionListItemViewModel> sort = new GenericSortDescriptor<TransactionListItemViewModel, TransactionListItemViewModel>(it => it);
-			sort.SortMode = ListSortMode.Descending;
-
-			jumpListTransactions.SortDescriptorsSource = new List<DataDescriptor>() { sort };
+			InitializeJumpList();
 		}
 
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
@@ -54,11 +45,6 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override void OnNavigatingFrom(System.Windows.Navigation.NavigatingCancelEventArgs e)
 		{
-			var account = _model.GetAccount().Result;
-			if (account != null)
-			{
-				_model.Commit().Wait(1000);
-			}
 			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.Back)
 			{
 				if (_isPinned)
@@ -69,7 +55,11 @@ namespace Shane.Church.StirlingMoney.WP
 					return;
 				}
 			}
-			base.OnNavigatingFrom(e);
+			else
+			{
+				_model.Deactivate();
+				base.OnNavigatingFrom(e);
+			}
 		}
 
 		void _model_BusyChanged(Core.Data.BusyEventArgs args)
@@ -100,6 +90,21 @@ namespace Shane.Church.StirlingMoney.WP
 				});
 			}
 		}
+
+		private void InitializeJumpList()
+		{
+			GenericGroupDescriptor<TransactionListItemViewModel, DateTime> grouping = new GenericGroupDescriptor<TransactionListItemViewModel, DateTime>(it => it.TransactionDate.Date);
+			grouping.GroupFormatString = "{0:D}";
+			grouping.SortMode = ListSortMode.Descending;
+
+			jumpListTransactions.GroupDescriptorsSource = new List<DataDescriptor>() { grouping };
+
+			GenericSortDescriptor<TransactionListItemViewModel, TransactionListItemViewModel> sort = new GenericSortDescriptor<TransactionListItemViewModel, TransactionListItemViewModel>(it => it);
+			sort.SortMode = ListSortMode.Descending;
+
+			jumpListTransactions.SortDescriptorsSource = new List<DataDescriptor>() { sort };
+		}
+
 
 		#region App Bar
 		/// <summary>
@@ -158,7 +163,7 @@ namespace Shane.Church.StirlingMoney.WP
 			await _model.LoadNextTransactions();
 			Deployment.Current.Dispatcher.BeginInvoke(() =>
 			{
-				if (_model.TotalRows == _model.Transactions.Count)
+				if (_model.TotalRows >= _model.Transactions.Count)
 					jumpListTransactions.DataVirtualizationMode = Telerik.Windows.Controls.DataVirtualizationMode.None;
 			});
 #if DEBUG
@@ -168,18 +173,20 @@ namespace Shane.Church.StirlingMoney.WP
 
 		private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
 		{
-			TransactionListParams param = null;
-			try
-			{
-				param = PhoneNavigationService.DecodeNavigationParameter<TransactionListParams>(this.NavigationContext);
-			}
-			catch (KeyNotFoundException)
-			{
-				param = new TransactionListParams();
-			}
+			await _model.ActivateAsync();
 
 			if (_isNew)
 			{
+				TransactionListParams param = null;
+				try
+				{
+					param = PhoneNavigationService.DecodeNavigationParameter<TransactionListParams>(this.NavigationContext);
+				}
+				catch (KeyNotFoundException)
+				{
+					param = new TransactionListParams();
+				}
+
 				await _model.LoadData(param.Id);
 
 				_isNew = false;
@@ -198,10 +205,11 @@ namespace Shane.Church.StirlingMoney.WP
 			}
 			else
 			{
-				await _model.RefreshData(param.Id);
 				Deployment.Current.Dispatcher.BeginInvoke(() =>
 				{
-					this.jumpListTransactions.RefreshData();
+					this.DataContext = _model;
+					this.jumpListTransactions.ItemsSource = null;
+					this.jumpListTransactions.ItemsSource = _model.Transactions;
 				});
 
 			}

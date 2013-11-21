@@ -20,6 +20,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb
 					.WithIndex<Category, Boolean, Guid>("IsDeleted", it => it.IsDeleted)
 					.WithIndex<Category, string, Boolean, Guid>("CategoryNameIsDeleted", it => new Tuple<string, Boolean>(it.CategoryName, it.IsDeleted)),
 				CreateTableDefinition<Account, Guid>(it => it.AccountId)
+					.WithIndex<Account, string, Guid>("AccountName", it => it.AccountName)
 					.WithIndex<Account, double, Guid>("InitialBalance", it => it.InitialBalance)
 					.WithIndex<Account, DateTimeOffset, Guid>("EditDateTime", it => it.EditDateTime)
 					.WithIndex<Account, Boolean, Guid>("IsDeleted", it => it.IsDeleted),
@@ -44,7 +45,8 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb
 					.WithIndex<Transaction, Boolean, Guid>("IsDeleted", it => it.IsDeleted),
 				CreateTableDefinition<Setting, string>(it=>it.Key)
 					.WithIndex<Setting, Boolean, string>("IsDeleted", it => it.IsDeleted)
-					.WithIndex<Setting, DateTimeOffset, string>("EditDateTime", it => it.EditDateTime)
+					.WithIndex<Setting, DateTimeOffset, string>("EditDateTime", it => it.EditDateTime),
+				CreateTableDefinition<Tombstone, string>(it=>it.Key)
 			};
 
 			return tables;

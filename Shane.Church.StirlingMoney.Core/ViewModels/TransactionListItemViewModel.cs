@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -16,9 +17,17 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		private IRepository<Transaction, Guid> _transactionRepository;
 		private IRepository<Category, Guid> _categoryRepository;
 		private INavigationService _navService;
-		private TransactionListViewModel _parent;
+		internal TransactionListViewModel _parent;
 
-		public TransactionListItemViewModel(IRepository<Transaction, Guid> transactionRepository, IRepository<Category, Guid> categoryRepository, INavigationService navService, TransactionListViewModel parent)
+		public TransactionListItemViewModel()
+			: this(KernelService.Kernel.Get<IRepository<Transaction, Guid>>(),
+					KernelService.Kernel.Get<IRepository<Category, Guid>>(),
+					KernelService.Kernel.Get<INavigationService>())
+		{
+
+		}
+
+		public TransactionListItemViewModel(IRepository<Transaction, Guid> transactionRepository, IRepository<Category, Guid> categoryRepository, INavigationService navService, TransactionListViewModel parent = null)
 		{
 			if (transactionRepository == null) throw new ArgumentNullException("transactionRepository");
 			_transactionRepository = transactionRepository;
@@ -26,8 +35,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_categoryRepository = categoryRepository;
 			if (navService == null) throw new ArgumentNullException("navService");
 			_navService = navService;
-			if (parent == null) throw new ArgumentNullException("parent");
-			_parent = parent;
 
 			EditCommand = new RelayCommand(Edit);
 			DeleteCommand = new AsyncRelayCommand(o => Delete());
@@ -85,32 +92,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public delegate void PostedChangedHandler();
+		public delegate void PostedChangedHandler(TransactionListItemViewModel sender);
 		public event PostedChangedHandler PostedChanged;
 
-		private bool _posted;
+		internal bool _posted;
 		public bool Posted
 		{
 			get { return _posted; }
 			set
 			{
+				var oldValue = _posted;
 				if (Set(() => Posted, ref _posted, value))
 				{
-					try
-					{
-						var t = _transactionRepository.GetEntryAsync(TransactionId).Result;
-						if (t != null)
-						{
-							t.Posted = Posted;
-							t = _transactionRepository.AddOrUpdateEntryAsync(t).Result;
-						}
-						if (PostedChanged != null)
-							PostedChanged();
-					}
-					catch
-					{
-						Set(() => Posted, ref _posted, !Posted);
-					}
+					if (PostedChanged != null)
+						PostedChanged(this);
 				}
 			}
 		}
@@ -189,9 +184,12 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public async Task Delete()
 		{
 			await _transactionRepository.DeleteEntryAsync(TransactionId);
-			_parent.Transactions.Remove(this);
-			_parent.CurrentRow--;
-			_parent.TotalRows--;
+			if (this._parent != null)
+			{
+				_parent.Transactions.Remove(this);
+				_parent.CurrentRow--;
+				_parent.TotalRows--;
+			}
 		}
 
 		public int CompareTo(object obj)

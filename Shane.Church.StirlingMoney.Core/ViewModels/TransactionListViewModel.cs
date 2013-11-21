@@ -5,6 +5,7 @@ using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,14 +13,15 @@ using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class TransactionListViewModel : ObservableObject, ICommittable
+	public class TransactionListViewModel : ObservableObject, ICommittable, ITombstoneFriendly
 	{
 		private IRepository<Account, Guid> _accountRepository;
 		private IRepository<Transaction, Guid> _transactionRepository;
+		private IRepository<Tombstone, string> _tombstoneRepository;
 		private INavigationService _navService;
 		private DateTimeOffset _refreshTime;
 
-		public TransactionListViewModel(IRepository<Account, Guid> accountRepository, IRepository<Transaction, Guid> transactionRepository, INavigationService navService)
+		public TransactionListViewModel(IRepository<Account, Guid> accountRepository, IRepository<Transaction, Guid> transactionRepository, INavigationService navService, IRepository<Tombstone, string> tombstoneRepository)
 		{
 			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
 			_accountRepository = accountRepository;
@@ -27,6 +29,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_transactionRepository = transactionRepository;
 			if (navService == null) throw new ArgumentNullException("navService");
 			_navService = navService;
+			if (tombstoneRepository == null) throw new ArgumentNullException("tombstoneRepository");
+			_tombstoneRepository = tombstoneRepository;
 
 			WithdrawCommand = new RelayCommand(Withdraw);
 			WriteCheckCommand = new RelayCommand(WriteCheck);
@@ -160,18 +164,36 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				var nextTransactions = Account.GetTransactionKeys().OrderByDescending(it => it.Value.Item1).ThenByDescending(it => it.Value.Item2).Skip(CurrentRow).Take(count).Select(it => it.Key).ToList();
 				foreach (var t in nextTransactions)
 				{
-					var item = KernelService.Kernel.Get<TransactionListItemViewModel>(new Ninject.Parameters.ConstructorArgument("parent", this));
-					await item.LoadData(t);
-					item.PostedChanged += item_PostedChanged;
-					Transactions.Add(item);
-					CurrentRow++;
+					var updated = _transactionRepository.GetAllIndexKeys<Tuple<Guid, DateTimeOffset>>("TransactionAccountIdEditDateTime").Where(it => it.Value.Item2 > _refreshTime && it.Value.Item1 == this.AccountId).Select(it => it.Key);
+					var updatedList = updated.ToList();
+					var listItem = Transactions.Where(it => it.TransactionId == t).FirstOrDefault();
+					if (listItem != null)
+					{
+						await listItem.LoadData(t);
+					}
+					else
+					{
+						var item = KernelService.Kernel.Get<TransactionListItemViewModel>(new Ninject.Parameters.ConstructorArgument("parent", this));
+						await item.LoadData(t);
+						item.PostedChanged += async (s) => await item_PostedChanged(s);
+						Transactions.Add(item);
+						CurrentRow++;
+						TotalRows = this.Account.TransactionCount;
+					}
 				}
 				_refreshTime = DateTimeOffset.UtcNow;
 			}
 		}
 
-		void item_PostedChanged()
+		async Task item_PostedChanged(TransactionListItemViewModel sender)
 		{
+			var value = _transactionRepository.GetAllIndexKeys<Tuple<DateTimeOffset, bool>>("EditDateTimePosted").Where(it => it.Key == sender.TransactionId).Select(it => it.Value.Item2).FirstOrDefault();
+			if (value != sender.Posted)
+			{
+				var trans = await _transactionRepository.GetEntryAsync(sender.TransactionId);
+				trans.Posted = sender.Posted;
+				await _transactionRepository.AddOrUpdateEntryAsync(trans);
+			}
 			RaisePropertyChanged(() => PostedBalance);
 			RaisePropertyChanged(() => AvailableBalance);
 		}
@@ -211,7 +233,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 		}
 
-		public async Task RefreshData(Guid accountId)
+		public async Task RefreshData()
 		{
 			if (BusyChanged != null)
 			{
@@ -219,9 +241,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 
 			await TaskEx.Yield();
-
-			this.Account = await _accountRepository.GetEntryAsync(accountId);
-			this.TotalRows = this.Account != null ? Account.TransactionCount : 0;
 
 			var updated = _transactionRepository.GetAllIndexKeys<Tuple<Guid, DateTimeOffset>>("TransactionAccountIdEditDateTime").Where(it => it.Value.Item2 > _refreshTime && it.Value.Item1 == this.AccountId).Select(it => it.Key);
 			var updatedList = updated.ToList();
@@ -236,7 +255,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				{
 					var item = KernelService.Kernel.Get<TransactionListItemViewModel>(new Ninject.Parameters.ConstructorArgument("parent", this));
 					await item.LoadData(t);
-					item.PostedChanged += item_PostedChanged;
+					item.PostedChanged += async (s) => await item_PostedChanged(s);
 					Transactions.Add(item);
 					CurrentRow++;
 					TotalRows = this.Account.TransactionCount;
@@ -245,6 +264,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_refreshTime = DateTimeOffset.UtcNow;
 			RaisePropertyChanged(() => AvailableBalance);
 			RaisePropertyChanged(() => PostedBalance);
+
+			await TaskEx.Yield();
 
 			if (BusyChanged != null)
 			{
@@ -287,6 +308,71 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public async Task Commit()
 		{
 			await _accountRepository.Commit();
+		}
+
+		public void Deactivate()
+		{
+			DeactivateAsync().Wait(2000);
+		}
+
+		public void Activate()
+		{
+			ActivateAsync().Wait(2000);
+		}
+
+		public async Task DeactivateAsync()
+		{
+			try
+			{
+				Tombstone t = new Tombstone();
+				t.Key = typeof(TransactionListViewModel).ToString();
+				t.State.Add("Account", this.Account);
+				t.State.Add("Transactions", this.Transactions.ToList());
+				t.State.Add("CurrentRow", this.CurrentRow);
+				t.State.Add("SearchText", this.SearchText);
+				t.State.Add("SearchVisible", this.SearchVisible);
+				t.State.Add("RefreshTime", this._refreshTime);
+				await _tombstoneRepository.AddOrUpdateEntryAsync(t);
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+			await this.Commit();
+		}
+
+		public async Task ActivateAsync()
+		{
+			var t = await _tombstoneRepository.GetEntryAsync(typeof(TransactionListViewModel).ToString());
+			if (t != null)
+			{
+				this.Account = t.TryGet<Account>("Account", null);
+				if (this.Account != null)
+				{
+					var transactions = t.TryGet<List<TransactionListItemViewModel>>("Transactions", new List<TransactionListItemViewModel>());
+					foreach (var tli in transactions)
+					{
+						if (!Transactions.Where(it => it.TransactionId == tli.TransactionId).Any())
+						{
+							tli._parent = this;
+							tli.PostedChanged += async (s) => await item_PostedChanged(s);
+							Transactions.Add(tli);
+						}
+						else
+						{
+							var existingItem = Transactions.Where(it => it.TransactionId == tli.TransactionId).First();
+							existingItem._parent = this;
+							existingItem.PostedChanged += async (s) => await item_PostedChanged(s);
+						}
+					}
+					this.CurrentRow = t.TryGet<int>("CurrentRow", 0);
+					this.SearchText = t.TryGet<string>("SearchText", "");
+					this.SearchVisible = t.TryGet<bool>("SearchVisible", false);
+					this._refreshTime = t.TryGet<DateTimeOffset>("RefreshTime", DateTimeOffset.MinValue);
+					await RefreshData();
+				}
+				await _tombstoneRepository.DeleteEntryAsync(typeof(TransactionListViewModel).ToString());
+			}
 		}
 	}
 }

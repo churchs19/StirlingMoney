@@ -303,18 +303,14 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				Amount = -Amount;
 
 			Categories.Clear();
-			var catQuery = await _categoryRepository.GetAllEntriesAsync();
-			foreach (var c in catQuery.OrderBy(it => it.CategoryName).Select(it => it.CategoryName))
+			var catQuery = _categoryRepository.GetAllIndexKeys<string>("CategoryName");
+			foreach (var c in catQuery.OrderBy(it => it.Value).Select(it => it.Value))
 				Categories.Add(c);
-			if (Categories.Count > 0)
-				Categories.Insert(0, "");
 
 			TransferAccounts.Clear();
-			var acctQuery = await _accountRepository.GetAllEntriesAsync();
-			foreach (var a in acctQuery.OrderBy(it => it.AccountName).Select(it => it.AccountName))
+			var acctQuery = _accountRepository.GetAllIndexKeys<string>("AccountName");
+			foreach (var a in acctQuery.OrderBy(it => it.Value).Select(it => it.Value))
 				TransferAccounts.Add(a);
-			if (TransferAccounts.Count > 0)
-				TransferAccounts.Insert(0, "");
 		}
 
 		public IList<string> Validate()
@@ -358,8 +354,12 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				Guid categoryId = Guid.Empty;
 				if (!string.IsNullOrEmpty(Category))
 				{
-					var catQuery = await _categoryRepository.GetFilteredEntriesAsync(it => it.CategoryName == Category);
-					categoryId = catQuery.Select(it => it.CategoryId).FirstOrDefault();
+					categoryId = _categoryRepository.GetAllIndexKeys<string>("CategoryName").Where(it => it.Value == Category).Select(it => it.Key).FirstOrDefault();
+					if (categoryId.Equals(Guid.Empty))
+					{
+						var cat = await _categoryRepository.AddOrUpdateEntryAsync(new Category() { CategoryName = Category });
+						categoryId = cat.CategoryId;
+					}
 				}
 				else
 					categoryId = Guid.Empty;
@@ -400,17 +400,14 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 								transaction = await _transactionRepository.AddOrUpdateEntryAsync(transaction);
 							}
 
-							var accountRepository = KernelService.Kernel.Get<IRepository<Account, Guid>>();
-
 							Transaction destTransaction = new Transaction();
 							destTransaction.TransactionDate = new DateTimeOffset(DateTime.SpecifyKind(TransactionDate, DateTimeKind.Utc));
 							destTransaction.Note = Note;
 							destTransaction.Posted = Posted;
-							var transAcctQuery = await accountRepository.GetFilteredEntriesAsync(it => it.AccountName == TransferAccount);
-							destTransaction.AccountId = transAcctQuery.Select(it => it.AccountId).FirstOrDefault();
+							var transAcctQuery = _accountRepository.GetAllIndexKeys<string>("AccountName").Where(it => it.Value == this.TransferAccount);
+							destTransaction.AccountId = transAcctQuery.Select(it => it.Key).FirstOrDefault();
 							destTransaction.Amount = Amount;
-							var acct = await accountRepository.GetEntryAsync(AccountId);
-							var accountName = acct.AccountName;
+							var accountName = transAcctQuery.Select(it => it.Value).FirstOrDefault();
 							destTransaction.Location = string.Format(Resources.TransferFromLocation, accountName);
 
 							destTransaction = await _transactionRepository.AddOrUpdateEntryAsync(destTransaction);

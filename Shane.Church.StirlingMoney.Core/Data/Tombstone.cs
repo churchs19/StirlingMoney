@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Shane.Church.StirlingMoney.Core.Data
 {
@@ -11,6 +8,8 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		{
 			State = new Dictionary<string, object>();
 		}
+
+		public string Key { get; set; }
 
 		public Dictionary<string, object> State { get; set; }
 

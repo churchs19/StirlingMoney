@@ -78,6 +78,7 @@
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\GoalRepository.cs" />
     <Compile Include="Repositories\SettingRepository.cs" />
+    <Compile Include="Repositories\TombstoneRepository.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Services\SterlingBackupService.cs" />
     <Compile Include="SterlingActivation.cs" />

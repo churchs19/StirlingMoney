@@ -1894,6 +1894,15 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to select account.
+        /// </summary>
+        public static string TransactionSelectAccountLabel {
+            get {
+                return ResourceManager.GetString("TransactionSelectAccountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loading....
         /// </summary>
         public static string TransactionsLoadingTitle {
