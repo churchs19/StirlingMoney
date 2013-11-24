@@ -243,6 +243,9 @@
       <DependentUpon>Categories.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\EntryTemplateSelector.cs" />
     <Compile Include="Helpers\BudgetBrushConverter.cs" />
     <Compile Include="Helpers\GoalBrushConverter.cs" />
@@ -404,6 +407,10 @@
     <Page Include="Categories.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>

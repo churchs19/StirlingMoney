@@ -1,5 +1,4 @@
-﻿using Inneractive.Nokia.Ad;
-using Microsoft.Phone.Controls;
+﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -93,7 +92,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 		void appBarIconButtonSave_Click(object sender, EventArgs e)
 		{
-			Shane.Church.Utility.Core.WP.BindingHelper.UpdatePasswordBindings(this.passwordPassword, this.passwordPassword);
+			Shane.Church.Utility.Core.WP.BindingHelper.UpdatePasswordBindings(this.passwordPassword, this.passwordConfirm);
 
 			_model.SaveCommand.Execute(null);
 		}

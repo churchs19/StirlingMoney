@@ -457,6 +457,9 @@ I would appreciate your assistance by sending the prepared error report. This wi
   <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
     <value>Application Error</value>
   </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>downloaded {0} of {1} bytes...</value>
+  </data>
   <data name="EditAccountTitle" xml:space="preserve">
     <value>Edit Account</value>
   </data>
@@ -468,6 +471,9 @@ I would appreciate your assistance by sending the prepared error report. This wi
   </data>
   <data name="EditMenuItem" xml:space="preserve">
     <value>edit</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>enter your password</value>
   </data>
   <data name="ExpensesChartLabel" xml:space="preserve">
     <value>Expenses</value>
@@ -573,6 +579,12 @@ I would appreciate your assistance by sending the prepared error report. This wi
   </data>
   <data name="PasswordLabel" xml:space="preserve">
     <value>password</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>validating...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>invalid password</value>
   </data>
   <data name="PinToStart" xml:space="preserve">
     <value>pin to start</value>
@@ -729,6 +741,9 @@ I take your security very seriously and all data is transmitted securely over HT
   <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
     <value>available balance</value>
   </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>select account</value>
+  </data>
   <data name="TransactionsLoadingTitle" xml:space="preserve">
     <value>Loading...</value>
   </data>
@@ -780,31 +795,34 @@ I take your security very seriously and all data is transmitted securely over HT
   <data name="UnpinFromStart" xml:space="preserve">
     <value>unpin from start</value>
   </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>uploaded {0} of {1} bytes...</value>
+  </data>
   <data name="WithdrawalTitle" xml:space="preserve">
     <value>Withdrawal</value>
-  </data>
-  <data name="Yes" xml:space="preserve">
-    <value>yes</value>
-  </data>
-  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
-    <value>Trial Expired</value>
-  </data>
-  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
-    <value>Your synchronization service triial has expired. Do you want to purchase the application now? If you choose Yes - you will be redirected to the marketplace.</value>
-  </data>
-  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
-    <value>Trial Reminder</value>
   </data>
   <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
     <value>You are using the 30 day free trial of the synchronization services. Would you like to purchase the application to continue using the services beyond the trial? If you choose Yes - you will be redirected to the marketplace.</value>
   </data>
-  <data name="UploadingProgressText" xml:space="preserve">
-    <value>uploaded {0} of {1} bytes...</value>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>Trial Reminder</value>
   </data>
-  <data name="DownloadingProgressText" xml:space="preserve">
-    <value>downloaded {0} of {1} bytes...</value>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Your synchronization service triial has expired. Do you want to purchase the application now? If you choose Yes - you will be redirected to the marketplace.</value>
   </data>
-  <data name="TransactionSelectAccountLabel" xml:space="preserve">
-    <value>select account</value>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>Trial Expired</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>yes</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>invalid password</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>retry</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>exit</value>
   </data>
 </root>

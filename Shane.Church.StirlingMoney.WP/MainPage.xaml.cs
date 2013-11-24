@@ -19,6 +19,7 @@ namespace Shane.Church.StirlingMoney.WP
 		private ILoggingService _log;
 		private ISettingsService _settings;
 		private ILicensingService _license;
+		private INavigationService _navService;
 
 		private bool _refreshAccounts;
 		private bool _refreshBudgets;
@@ -46,6 +47,7 @@ namespace Shane.Church.StirlingMoney.WP
 			_log = KernelService.Kernel.Get<ILoggingService>();
 			_settings = KernelService.Kernel.Get<ISettingsService>();
 			_license = KernelService.Kernel.Get<ILicensingService>();
+			_navService = KernelService.Kernel.Get<INavigationService>();
 			_model = KernelService.Kernel.Get<MainViewModel>();
 			_model.BusyChanged += _model_BusyChanged;
 			_model.SyncCompleted += _model_SyncCompleted;
@@ -105,6 +107,7 @@ namespace Shane.Church.StirlingMoney.WP
 					LoadingBusy.AnimationStyle = (Telerik.Windows.Controls.AnimationStyle)args.AnimationType;
 					LoadingBusy.IsRunning = true;
 				});
+				return;
 			}
 			else if (args.IsError)
 			{

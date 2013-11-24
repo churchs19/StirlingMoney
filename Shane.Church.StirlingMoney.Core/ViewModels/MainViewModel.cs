@@ -246,6 +246,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public void SyncError(Exception ex)
 		{
+			if (SyncCompleted != null)
+			{
+				SyncCompleted();
+			}
 			if (BusyChanged != null)
 			{
 				BusyChanged(new BusyEventArgs() { IsBusy = false, IsError = true, Error = ex });

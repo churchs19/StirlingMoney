@@ -1118,6 +1118,15 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to enter your password.
+        /// </summary>
+        public static string EnterPasswordLabel {
+            get {
+                return ResourceManager.GetString("EnterPasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expenses.
         /// </summary>
         public static string ExpensesChartLabel {
@@ -1298,6 +1307,33 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to invalid password.
+        /// </summary>
+        public static string InvalidPassword {
+            get {
+                return ResourceManager.GetString("InvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to exit.
+        /// </summary>
+        public static string InvalidPasswordExitButton {
+            get {
+                return ResourceManager.GetString("InvalidPasswordExitButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to retry.
+        /// </summary>
+        public static string InvalidPasswordRetryButton {
+            get {
+                return ResourceManager.GetString("InvalidPasswordRetryButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Warning: Invalid Values.
         /// </summary>
         public static string InvalidValuesTitle {
@@ -1429,6 +1465,24 @@ namespace Shane.Church.StirlingMoney.Strings {
         public static string PasswordLabel {
             get {
                 return ResourceManager.GetString("PasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to validating....
+        /// </summary>
+        public static string PasswordValidatingText {
+            get {
+                return ResourceManager.GetString("PasswordValidatingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invalid password.
+        /// </summary>
+        public static string PasswordValidationError {
+            get {
+                return ResourceManager.GetString("PasswordValidationError", resourceCulture);
             }
         }
         
