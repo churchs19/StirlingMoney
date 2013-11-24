@@ -42,7 +42,7 @@ namespace Shane.Church.StirlingMoney.WP.Controls
 
 		private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
 		{
-			this.radPasswordBox.Focus();
+			//this.radPasswordBox.Focus();
 		}
 	}
 }

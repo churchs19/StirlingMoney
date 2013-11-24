@@ -45,21 +45,21 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override void OnNavigatingFrom(System.Windows.Navigation.NavigatingCancelEventArgs e)
 		{
-			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.Back)
-			{
-				if (_isPinned)
-				{
-					e.Cancel = true;
-					_isPinned = false;
-					_navService.Navigate<MainViewModel>(true);
-					return;
-				}
-			}
-			else
+			if (e.NavigationMode != System.Windows.Navigation.NavigationMode.Back)
 			{
 				_model.Deactivate();
 				base.OnNavigatingFrom(e);
 			}
+		}
+
+		protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+		{
+			if (_isPinned)
+			{
+				_navService.Navigate<MainViewModel>(true);
+				e.Cancel = true;
+			}
+			base.OnBackKeyPress(e);
 		}
 
 		void _model_BusyChanged(Core.Data.BusyEventArgs args)

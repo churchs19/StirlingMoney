@@ -4,6 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:telerikTextBox="clr-namespace:Telerik.Windows.Controls.PhoneTextBox;assembly=Telerik.Windows.Controls.Primitives"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -12,6 +13,13 @@
     MinWidth="480" MinHeight="768" 
     MaxWidth="480" MaxHeight="768" Loaded="UserControl_Loaded">
 
+    <UserControl.Resources>
+        <SolidColorBrush Color="#FF81007F" x:Key="ActionBrush"/>
+        <Style x:Key="LoginActionButtonStyle" TargetType="telerikTextBox:TextBoxActionButton">
+            <Setter Property="Background" Value="{StaticResource ActionBrush}"/>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid x:Name="LayoutRoot" 
           Background="{StaticResource SplashBackgroundBrush}"
           Height="768"
@@ -26,7 +34,8 @@
                                           ActionButtonVisibility="Visible" 
                                           ExecuteActionOnReturn="True" 
                                           ActionButtonTap="radPasswordBox_ActionButtonTap" 
-                                          Watermark="enter your password" >
+                                          Watermark="{Binding Path=LocalizedResources.EnterPasswordLabel, Source={StaticResource LocalizedStrings}}"
+                                          ActionButtonStyle="{StaticResource LoginActionButtonStyle}">
             <telerikPrimitives:RadPasswordBox.Foreground>
                 <SolidColorBrush Color="Black"/>
             </telerikPrimitives:RadPasswordBox.Foreground>
