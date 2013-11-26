@@ -1,6 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en" />
+  <Languages xmlns="">
+    <Language code="ar" />
+    <Language code="bg" />
+    <Language code="ca" />
+    <Language code="zh-CN" />
+    <Language code="zh-TW" />
+    <Language code="cs" />
+    <Language code="da" />
+    <Language code="nl" />
+    <Language code="en" />
+    <Language code="en-GB" />
+    <Language code="en-US" />
+    <Language code="et" />
+    <Language code="fi" />
+    <Language code="fr" />
+    <Language code="de" />
+    <Language code="el" />
+    <Language code="he" />
+    <Language code="hi" />
+    <Language code="hu" />
+    <Language code="id" />
+    <Language code="it" />
+    <Language code="ja" />
+    <Language code="ko" />
+    <Language code="lv" />
+    <Language code="lt" />
+    <Language code="ms" />
+    <Language code="no" />
+    <Language code="fa" />
+    <Language code="pl" />
+    <Language code="pt" />
+    <Language code="pt-BR" />
+    <Language code="pt-PT" />
+    <Language code="ro" />
+    <Language code="ru" />
+    <Language code="sk" />
+    <Language code="sl" />
+    <Language code="es" />
+    <Language code="es-MX" />
+    <Language code="es-ES" />
+    <Language code="sv" />
+    <Language code="th" />
+    <Language code="tr" />
+    <Language code="uk" />
+    <Language code="vi" />
+  </Languages>
   <App xmlns="" ProductID="{71b78345-8b19-4fcd-881a-d6a2d137e522}" Title="Stirling Money" RuntimeType="Silverlight" Version="3.0.8.0" Genre="apps.normal" Author="Shane Church" Description="Manage your personal finances with this simple application to keep track of account balances, transactions, budgets, and goals. Securely synchronize your data with selected family or friends." Publisher="Shane Church" PublisherID="{ec35f097-ae6a-4553-9fd5-bcd16646bbcd}">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>

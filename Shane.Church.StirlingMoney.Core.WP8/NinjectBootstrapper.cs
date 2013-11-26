@@ -13,7 +13,9 @@ using Shane.Church.StirlingMoney.Core.WP.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP8.Services;
 using System;
 using System.Linq;
+#if !AGENT
 using Telerik.Windows.Controls;
+#endif
 using Wintellect.Sterling.Core;
 
 namespace Shane.Church.StirlingMoney.Core.WP8
@@ -35,6 +37,7 @@ namespace Shane.Church.StirlingMoney.Core.WP8
 			KernelService.Kernel.Rebind<INavigationService>().To<PhoneNavigationService>().InSingletonScope();
 #else
 			KernelService.Kernel.Rebind<ILoggingService>().To<Shane.Church.StirlingMoney.Core.WP8.Agent.Services.AgentLoggingService>();
+			KernelService.Kernel.Rebind<INavigationService>().To<Shane.Church.StirlingMoney.Core.WP8.Agent.Services.AgentNavigationService>();
 #endif
 			KernelService.Kernel.Rebind<ISettingsService>().To<PhoneSettingsService>().InSingletonScope();
 			KernelService.Kernel.Rebind<IRepository<Core.Data.Account, Guid>>().To<AccountRepository>();

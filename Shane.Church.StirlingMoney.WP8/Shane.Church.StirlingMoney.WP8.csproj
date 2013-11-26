@@ -497,10 +497,6 @@
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Windows.BackgroundAgentTools, Version=2013.3.1016.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWP\2013.3.1016.3040\Telerik.Windows.BackgroundAgentTools.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Telerik.Windows.Controls.Chart, Version=2013.3.1016.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
       <HintPath>..\lib\RCWP\2013.3.1016.3040\Telerik.Windows.Controls.Chart.dll</HintPath>
       <Private>True</Private>
@@ -566,10 +562,6 @@
     <ProjectReference Include="..\Shane.Church.StirlingMoney.Strings\Shane.Church.StirlingMoney.Strings.csproj">
       <Project>{E66B6C80-38B7-4929-B6B9-B9FC8F62C356}</Project>
       <Name>Shane.Church.StirlingMoney.Strings</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shane.Church.StirlingMoney.WP8.Agent\Shane.Church.StirlingMoney.WP8.Agent.csproj">
-      <Project>{10925F39-9B15-429F-9262-4ECEAB6F89FA}</Project>
-      <Name>Shane.Church.StirlingMoney.WP8.Agent</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shane.Church.Utility.Core.WP\Shane.Church.Utility.Core.WP.csproj">
       <Project>{75A3873F-015F-4784-B6A6-8A4484FBE48D}</Project>

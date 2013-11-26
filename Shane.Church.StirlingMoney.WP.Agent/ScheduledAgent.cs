@@ -15,6 +15,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
+using Shane.Church.StirlingMoney.Core.WP.Services;
 
 namespace Shane.Church.StirlingMoney.WP.Agent
 {
@@ -82,11 +83,25 @@ namespace Shane.Church.StirlingMoney.WP.Agent
 				DebugUtility.DebugStartStopwatch();
 				DebugUtility.DebugOutputMemoryUsage("Scheduled Task Initial Memory Snapshot");
 #endif
+				var settingsService = new PhoneSettingsService();
+
 				SterlingActivation.ActivateDatabase();
 
-				var settingsService = KernelService.Kernel.Get<ISettingsService>();
+				System.GC.Collect();
+				System.GC.WaitForPendingFinalizers();
+				System.GC.Collect();
+#if DEBUG
+				DebugUtility.DebugOutputMemoryUsage("After Database Activation");
+#endif
+				var sync = settingsService.LoadSetting<bool>("EnableSync");
 
-				if (settingsService.LoadSetting<bool>("EnableSync"))
+				settingsService = null;
+
+				System.GC.Collect();
+				System.GC.WaitForPendingFinalizers();
+				System.GC.Collect();
+
+				if (sync)
 				{
 					var syncService = KernelService.Kernel.Get<SyncService>();
 					try

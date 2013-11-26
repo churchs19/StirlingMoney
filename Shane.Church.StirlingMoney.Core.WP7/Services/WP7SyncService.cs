@@ -45,19 +45,21 @@ namespace Shane.Church.StirlingMoney.Core.WP7.Services
 
 		public override async Task AuthenticateUserSilent()
 		{
-#if !AGENT
 			try
 			{
+#if !AGENT
 				if (await _liveUtils.LiveLoginSilent())
 				{
+#endif
 					await SetUserData();
+#if !AGENT
 				}
+#endif
 			}
 			catch (Exception ex)
 			{
 				_log.LogException(ex, "WP7SyncService AuthenticateUserSilent");
 			}
-#endif
 		}
 
 		public override void Disconnect()
@@ -103,7 +105,7 @@ namespace Shane.Church.StirlingMoney.Core.WP7.Services
 					LiveOperationResult meResult = await client.GetAsyncTask("me");
 					JObject token = JObject.Parse("{\"authenticationToken\": \"" + _liveUtils.Session.AuthenticationToken + "\"}");
 					var emails = meResult.Result["emails"] as Dictionary<string, object>;
-					_settingsService.SaveSetting<JObject>(token, "AuthenticationToken");
+					_settingsService.SaveSetting<string>(token.ToString(), "AuthenticationToken");
 					if (emails != null)
 					{
 						this.Email = emails["account"].ToString();
@@ -112,7 +114,7 @@ namespace Shane.Church.StirlingMoney.Core.WP7.Services
 					this.FirstName = meResult.Result["first_name"].ToString();
 					_settingsService.SaveSetting<string>(this.FirstName, "FirstName");
 #else
-				JObject token = _settingsService.LoadSetting<JObject>("AuthenticationToken");
+				JObject token = JObject.Parse(_settingsService.LoadSetting<string>("AuthenticationToken"));
 				this.Email = _settingsService.LoadSetting<string>("Email");
 				this.FirstName = _settingsService.LoadSetting<string>("FirstName");
 #endif

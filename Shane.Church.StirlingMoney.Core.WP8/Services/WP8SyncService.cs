@@ -42,19 +42,21 @@ namespace Shane.Church.StirlingMoney.Core.WP8.Services
 
 		public override async Task AuthenticateUserSilent()
 		{
-#if !AGENT
 			try
 			{
+#if !AGENT
 				if (await _liveUtils.LiveLoginSilent())
 				{
-					await SetUserData();
+#endif
+				await SetUserData();
+#if !AGENT
 				}
+#endif
 			}
 			catch (Exception ex)
 			{
 				_log.LogException(ex, "WP7SyncService AuthenticateUserSilent");
 			}
-#endif
 		}
 
 		public override void Disconnect()
@@ -99,7 +101,7 @@ namespace Shane.Church.StirlingMoney.Core.WP8.Services
 					LiveConnectClient client = new LiveConnectClient(_liveUtils.Session);
 					LiveOperationResult meResult = await client.GetAsync("me");
 					JObject token = JObject.Parse("{\"authenticationToken\": \"" + _liveUtils.Session.AuthenticationToken + "\"}");
-					_settingsService.SaveSetting<JObject>(token, "AuthenticationToken");
+					_settingsService.SaveSetting<string>(token.ToString(), "AuthenticationToken");
 					dynamic result = meResult.Result;
 
 					if (result.emails != null)
@@ -110,11 +112,11 @@ namespace Shane.Church.StirlingMoney.Core.WP8.Services
 					this.FirstName = meResult.Result["first_name"].ToString();
 					_settingsService.SaveSetting<string>(this.FirstName, "FirstName");
 #else
-				JObject token = _settingsService.LoadSetting<JObject>("AuthenticationToken");
+				JObject token = JObject.Parse(_settingsService.LoadSetting<string>("AuthenticationToken"));
 				this.Email = _settingsService.LoadSetting<string>("Email");
 				this.FirstName = _settingsService.LoadSetting<string>("FirstName");
 #endif
-					this.User = await this.Client.LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount, token);
+				this.User = await this.Client.LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount, token);
 #if !AGENT
 				}
 #endif

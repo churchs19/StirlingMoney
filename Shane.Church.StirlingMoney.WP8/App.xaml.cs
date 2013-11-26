@@ -221,15 +221,15 @@ namespace Shane.Church.StirlingMoney.WP
 
 		private void InitializeBackgroundAgent()
 		{
-			try
-			{
-				IAgentManagementService service = KernelService.Kernel.Get<IAgentManagementService>();
-				service.StartAgent();
-			}
-			catch (AgentManagementException)
-			{
-				//Eat any Agent Management exceptions here.
-			}
+			//try
+			//{
+			//	IAgentManagementService service = KernelService.Kernel.Get<IAgentManagementService>();
+			//	service.StartAgent();
+			//}
+			//catch (AgentManagementException)
+			//{
+			//	//Eat any Agent Management exceptions here.
+			//}
 		}
 
 		// Code to execute when the application is launching (eg, from Start)

@@ -5,7 +5,6 @@ using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Wintellect.Sterling.Core.Serialization;
 
 namespace Shane.Church.StirlingMoney.Core.Data
@@ -83,13 +82,8 @@ namespace Shane.Church.StirlingMoney.Core.Data
 
 		public Dictionary<Guid, Tuple<DateTimeOffset, DateTimeOffset>> GetTransactionKeys()
 		{
-			var transactionIds = _transactionRepository.GetAllIndexKeys<Guid>("TransactionAccountId").Where(it => it.Value == this.AccountId).Select(it => it.Key);
+			var transactionIds = _transactionRepository.GetAllIndexKeys<Tuple<Guid, double>>("TransactionAccountIdAmount").Where(it => it.Value.Item1 == this.AccountId).Select(it => it.Key);
 			return _transactionRepository.GetAllIndexKeys<Tuple<DateTimeOffset, DateTimeOffset>>("TransactionDateEditDateTime").Where(it => transactionIds.Contains(it.Key)).ToDictionary(key => key.Key, val => val.Value);
-		}
-
-		public async Task<IQueryable<Transaction>> GetTransactions()
-		{
-			return await _transactionRepository.GetIndexFilteredEntriesAsync<Guid>("TransactionAccountId", AccountId);
 		}
 
 		public static double GetAccountBalance(Guid AccountId)

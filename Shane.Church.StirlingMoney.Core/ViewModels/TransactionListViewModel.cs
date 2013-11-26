@@ -187,13 +187,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		async Task item_PostedChanged(TransactionListItemViewModel sender)
 		{
-			var value = _transactionRepository.GetAllIndexKeys<Tuple<DateTimeOffset, bool>>("EditDateTimePosted").Where(it => it.Key == sender.TransactionId).Select(it => it.Value.Item2).FirstOrDefault();
-			if (value != sender.Posted)
-			{
-				var trans = await _transactionRepository.GetEntryAsync(sender.TransactionId);
-				trans.Posted = sender.Posted;
-				await _transactionRepository.AddOrUpdateEntryAsync(trans);
-			}
+			var trans = await _transactionRepository.GetEntryAsync(sender.TransactionId);
+			trans.Posted = sender.Posted;
+			await _transactionRepository.AddOrUpdateEntryAsync(trans);
 			RaisePropertyChanged(() => PostedBalance);
 			RaisePropertyChanged(() => AvailableBalance);
 		}
