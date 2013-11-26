@@ -4,6 +4,7 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
+using Shane.Church.StirlingMoney.Core.ViewModels.Reports;
 using Shane.Church.Utility.Core.Command;
 using System;
 using System.Collections.ObjectModel;
@@ -260,7 +261,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public void NavigateToReports()
 		{
-			throw new NotImplementedException();
+			_navService.Navigate<ReportsViewModel>();
 		}
 
 		public ICommand SettingsCommand { get; private set; }

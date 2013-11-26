@@ -47,9 +47,9 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			if (e.NavigationMode != System.Windows.Navigation.NavigationMode.Back)
 			{
-				_model.Deactivate();
-				base.OnNavigatingFrom(e);
+				//				_model.Deactivate();
 			}
+			base.OnNavigatingFrom(e);
 		}
 
 		protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
@@ -173,46 +173,41 @@ namespace Shane.Church.StirlingMoney.WP
 
 		private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
 		{
-			await _model.ActivateAsync();
+			//await _model.ActivateAsync();
 
-			if (_isNew)
+			//if (_isNew)
+			//{
+			TransactionListParams param = null;
+			try
 			{
-				TransactionListParams param = null;
-				try
-				{
-					param = PhoneNavigationService.DecodeNavigationParameter<TransactionListParams>(this.NavigationContext);
-				}
-				catch (KeyNotFoundException)
-				{
-					param = new TransactionListParams();
-				}
-
-				await _model.LoadData(param.Id);
-
-				_isNew = false;
-				_isPinned = param.PinnedTile;
-
-				if (_isPinned)
-				{
-
-				}
-
-				Deployment.Current.Dispatcher.BeginInvoke(() =>
-				{
-					this.DataContext = _model;
-					this.jumpListTransactions.ItemsSource = _model.Transactions;
-				});
+				param = PhoneNavigationService.DecodeNavigationParameter<TransactionListParams>(this.NavigationContext);
 			}
-			else
+			catch (KeyNotFoundException)
 			{
-				Deployment.Current.Dispatcher.BeginInvoke(() =>
-				{
-					this.DataContext = _model;
-					this.jumpListTransactions.ItemsSource = null;
-					this.jumpListTransactions.ItemsSource = _model.Transactions;
-				});
-
+				param = new TransactionListParams();
 			}
+
+			await _model.LoadData(param.Id);
+
+			_isNew = false;
+			_isPinned = param.PinnedTile;
+
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				this.DataContext = _model;
+				this.jumpListTransactions.ItemsSource = _model.Transactions;
+			});
+			//}
+			//else
+			//{
+			//	Deployment.Current.Dispatcher.BeginInvoke(() =>
+			//	{
+			//		this.DataContext = _model;
+			//		this.jumpListTransactions.ItemsSource = null;
+			//		this.jumpListTransactions.ItemsSource = _model.Transactions;
+			//	});
+
+			//}
 
 #if DEBUG
 			DebugUtility.DebugOutputMemoryUsage("Transactions_PhoneApplicationPage_Loaded");

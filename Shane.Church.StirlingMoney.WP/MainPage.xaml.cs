@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Telerik.Windows.Controls;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -225,10 +226,10 @@ namespace Shane.Church.StirlingMoney.WP
 				}
 			}
 
-			//ApplicationBarIconButton appBarIconButtonReports = new ApplicationBarIconButton(new Uri("/Images/Reports.png", UriKind.Relative));
-			//appBarIconButtonReports.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarReports;
-			//appBarIconButtonReports.Click += new EventHandler(appBarIconButtonReports_Click);
-			//ApplicationBar.Buttons.Add(appBarIconButtonReports);
+			ApplicationBarIconButton appBarIconButtonReports = new ApplicationBarIconButton(new Uri("/Images/Reports.png", UriKind.Relative));
+			appBarIconButtonReports.Text = Shane.Church.StirlingMoney.Strings.Resources.AppBarReports;
+			appBarIconButtonReports.Click += new EventHandler(appBarIconButtonReports_Click);
+			ApplicationBar.Buttons.Add(appBarIconButtonReports);
 		}
 
 		private void appBarIconButtonSkyDrive_Click(object sender, EventArgs e)

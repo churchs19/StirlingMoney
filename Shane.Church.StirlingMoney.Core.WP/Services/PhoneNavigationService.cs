@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
+using Shane.Church.StirlingMoney.Core.ViewModels.Reports;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -22,7 +23,8 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 																				{ typeof(CategoryListViewModel), "Categories.xaml" },
 																				{ typeof(CategoryViewModel), "AddEditCategory.xaml" },
 																				{ typeof(TransactionListViewModel), "Transactions.xaml" },
-																				{ typeof(BackupViewModel), "SkyDrive.xaml" }
+																				{ typeof(BackupViewModel), "SkyDrive.xaml" },
+																				{ typeof(ReportsViewModel), "Reports.xaml" }
 		};
 
 		public bool CanGoBack

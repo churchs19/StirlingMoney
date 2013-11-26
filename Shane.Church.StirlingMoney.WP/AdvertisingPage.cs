@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Controls;
+﻿using Inneractive.Nokia.Ad;
+using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -78,7 +79,7 @@ namespace Shane.Church.StirlingMoney.WP
 			}
 			else
 			{
-				_adPanel.Children.Remove(AdControl);
+				_adPanel.Children.Remove(_adControl);
 				_adControl = null;
 			}
 #else

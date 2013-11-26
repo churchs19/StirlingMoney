@@ -93,6 +93,10 @@
     <Compile Include="Services\IUpgradeDBService.cs" />
     <Compile Include="ViewModels\BackupViewModel.cs" />
     <Compile Include="ViewModels\ITombstoneFriendly.cs" />
+    <Compile Include="ViewModels\Reports\BasicChartItem.cs" />
+    <Compile Include="ViewModels\Reports\BudgetReportItem.cs" />
+    <Compile Include="ViewModels\Reports\NetIncomeReportItem.cs" />
+    <Compile Include="ViewModels\Reports\ReportViewModel.cs" />
     <Compile Include="ViewModels\TransactionListParams.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Data\ITransactionSum.cs" />

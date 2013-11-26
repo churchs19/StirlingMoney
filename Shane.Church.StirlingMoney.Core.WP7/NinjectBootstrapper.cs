@@ -106,6 +106,7 @@ namespace Shane.Church.StirlingMoney.Core.WP7
 			KernelService.Kernel.Rebind<RadTrialFeatureReminder>().ToMethod<RadTrialFeatureReminder>(it =>
 			{
 				var syncReminder = new RadTrialFeatureReminder();
+				syncReminder.FeatureId = 1;
 				syncReminder.AllowUsersToSkipFurtherReminders = false;
 				syncReminder.AllowedTrialPeriod = TimeSpan.FromDays(30);
 #if DEBUG_TRIAL

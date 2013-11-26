@@ -557,7 +557,7 @@ I would appreciate your assistance by sending the prepared error report. This wi
     <value>yes</value>
   </data>
   <data name="NetIncomeTitle" xml:space="preserve">
-    <value>net income</value>
+    <value>Net Income</value>
   </data>
   <data name="NewAuthorizedUser" xml:space="preserve">
     <value>add authorized user account</value>
@@ -617,7 +617,7 @@ I would appreciate your assistance by sending the prepared error report. This wi
     <value>Rate the app</value>
   </data>
   <data name="ReportsTitle" xml:space="preserve">
-    <value>STIRLING MONEY - REPORTS</value>
+    <value>Stirling Money - Reports</value>
   </data>
   <data name="ResourceFlowDirection" xml:space="preserve">
     <value>LeftToRight</value>
@@ -824,5 +824,8 @@ I take your security very seriously and all data is transmitted securely over HT
   </data>
   <data name="InvalidPasswordExitButton" xml:space="preserve">
     <value>exit</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
   </data>
 </root>

@@ -1397,7 +1397,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to net income.
+        ///   Looks up a localized string similar to Net Income.
         /// </summary>
         public static string NetIncomeTitle {
             get {
@@ -1438,6 +1438,15 @@ namespace Shane.Church.StirlingMoney.Strings {
         public static string NoCategoryLabel {
             get {
                 return ResourceManager.GetString("NoCategoryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string NoDataLabel {
+            get {
+                return ResourceManager.GetString("NoDataLabel", resourceCulture);
             }
         }
         
@@ -1577,7 +1586,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to STIRLING MONEY - REPORTS.
+        ///   Looks up a localized string similar to Stirling Money - Reports.
         /// </summary>
         public static string ReportsTitle {
             get {
