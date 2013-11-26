@@ -236,7 +236,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public void NavigateToEdit()
 		{
-			_navService.Navigate<AddEditBudgetViewModel>(this.GoalId);
+			_navService.Navigate<AddEditGoalViewModel>(this.GoalId);
 		}
 
 		public delegate void ItemDeletedHandler(object sender);

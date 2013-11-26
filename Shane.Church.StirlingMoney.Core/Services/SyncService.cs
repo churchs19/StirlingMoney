@@ -144,17 +144,17 @@ namespace Shane.Church.StirlingMoney.Core.Services
 
 							List<SyncItem> objects = new List<SyncItem>();
 							JsonSerializer serializer = JsonSerializer.Create(Client.SerializerSettings);
-							JArray arrCategories = JArray.FromObject(localCategories, serializer);
+							JArray arrCategories = JArray.FromObject(localCategories.ToList(), serializer);
 							objects.Add(new SyncItem() { TableName = "Categories", KeyField = "categoryId", Values = arrCategories });
-							JArray arrAccounts = JArray.FromObject(localAccounts, serializer);
+							JArray arrAccounts = JArray.FromObject(localAccounts.ToList(), serializer);
 							objects.Add(new SyncItem() { TableName = "Accounts", KeyField = "accountId", Values = arrAccounts });
-							JArray arrUsers = JArray.FromObject(localUsers, serializer);
+							JArray arrUsers = JArray.FromObject(localUsers.ToList(), serializer);
 							objects.Add(new SyncItem() { TableName = "AppSyncUsers", KeyField = "userEmail", Values = arrUsers });
-							JArray arrBudgets = JArray.FromObject(localBudgets, serializer);
+							JArray arrBudgets = JArray.FromObject(localBudgets.ToList(), serializer);
 							objects.Add(new SyncItem() { TableName = "Budgets", KeyField = "budgetId", Values = arrBudgets });
-							JArray arrGoals = JArray.FromObject(localGoals, serializer);
+							JArray arrGoals = JArray.FromObject(localGoals.ToList(), serializer);
 							objects.Add(new SyncItem() { TableName = "Goals", KeyField = "goalId", Values = arrGoals });
-							JArray arrTransactions = JArray.FromObject(localTransactions, serializer);
+							JArray arrTransactions = JArray.FromObject(localTransactions.ToList(), serializer);
 							objects.Add(new SyncItem() { TableName = "Transactions", KeyField = "transactionId", Values = arrTransactions });
 
 							JObject body = new JObject();

@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>درباره</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>برنامه های دیگر توسط کلیسا شین</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>امتیاز این برنامه</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>تصویر حساب کاربری</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>نام حساب</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>نام حساب مورد نیاز است.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>حساب مورد نیاز است.</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>حساب</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>واقعی</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>افزودن حساب را شروع کنید</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>افزودن حساب</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>اضافه کردن بودجه</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>افزودن رده</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>اضافه کردن هدف</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>این وظیفه همگام استرلینگ پول داده با هر کاربر مشترک و کاشی های زنده به روز رسانی.</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>سابقه نمایندگی برای این برنامه کاربردی توسط کاربر غيرفعال شده اند.</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>بنابراین این ویژگی غیرفعال خواهد شد این دستگاه عوامل زمینه پشتیبانی نمی کند.</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>مقدار</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>{0} باقی مانده</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>درباره</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>اضافه کردن</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>افزودن حساب</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>پشتیبان گیری</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>ردههای صفحه</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>سپرده</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>این برنامه را نقد کنید</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>گزارش</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>ذخیره</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>تنظیمات</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>همگام سازی</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>انتقال</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>برداشت</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>نوشتن چک</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>کپی رایت © شین کلیسای 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>برنامه ریز مالی برای Windows Phone</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>پول استرلینگ</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>محاکمه این نرم افزار منقضی شده است. شما می خواهید برای خرید برنامه در حال حاضر? اگر شما را انتخاب کنید بله - شما را به بازار هدایت.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>نمایش ندادن دوباره این یادآوری</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>محاکمه منقضی شده</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>شما با استفاده از نسخه آزمایشی پشتیبانی از این نرم افزار. شما می خواهید برای خرید نرم افزار در حال حاضر به حذف تبلیغات اگر شما را انتخاب کنید بله - شما را به بازار هدایت.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>نمایش ندادن دوباره این یادآوری</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>یادآوری محاکمه</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>استرلینگ پول می تواند داده ها بین کاربران مجاز تا شما و خانواده تان همیشه تا تاریخ در جایی که ایستاده حساب خود را به اشتراک بگذارید. وارد کنید آدرس ایمیل حساب مایکروسافت از کاربر یا کاربران شما می خواهم به همگام سازی کنید و به اشتراک گذاری اطلاعات خود را با زیر.</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>کاربران مجاز</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>پشتیبان گیری</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>خطای پشتیبان گیری از پایگاه داده: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>پشتیبان گیری داده های خود را به پوشه پول استرلینگ در SkyDrive ذخیره را ضربه بزنید. این هیچ پشتیبان موجود را رونویسی می شود.
+
+بازگرداندن به داده های محلی خود را با پشتیبانی خود را از SkyDrive بازنویسی ضربه بزنید.</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>ثبت.</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>خطای پایگاه داده بازسازی.</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>خطا در برگرداندن پایگاه داده: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>قادر به پیدا کردن فایل های پشتیبان موجود برای بازگرداندن.</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>پایگاه داده با موفقیت بازیابی.</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>وارد شده.</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>خطا در اتصال با SkyDrive: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>پایگاه داده پشتیبان گیری با موفقیت.</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>پشتیبان گیری</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>تمام هزینه های</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>مقدار</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>مقدار مورد نیاز است و باید بزرگتر از 0 باشد.</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>بودجه</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>سفارشی</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>تاریخ پایان</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>تاریخ پایان باید پس از تاریخ شروع باشد.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>تاریخ پایان مدت بودجه سفارشی مورد نیاز است.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>ماهانه</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>نام مورد نیاز است.</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>دوره</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>تاریخ شروع</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>بودجه</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>بودجه</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>نوع</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>بارگیری</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>سالانه</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>ردههای صفحه</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>خودرو</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>اسکناس</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>کسب و کار</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>موسسه خیریه</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>بر اساس طبقه بندی</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>تاریخچه</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>لباس</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>سپرده</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>سرگرمی</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>مواد غذایی</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>بهداشت و درمان</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>صفحه اصلی</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>متفرقه</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>نام دسته</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>نام بخش مورد نیاز است.</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>آب و برق</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>تعطیلات</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>انواع نمودار</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>بررسی</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>حد اعتبار</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>محدوده تاریخ</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} روز گذشته</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} روز باقی مانده</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} روز گذشته</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} روز باقی مانده</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>حذف حساب</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>آیا مطمئنید که می خواهید برای حذف این اشتراک همه آن معاملات و همه اهداف مرتبط کنید؟</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>حذف بودجه</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>آیا مطمئن هستید که می خواهید این بودجه را حذف کنید؟</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>حذف هدف</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>مطمئن هستید که می خواهید این هدف را حذف کنید؟</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>حذف معامله</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>آیا مطمئن هستید که می خواهید این معامله را حذف کنید؟</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>سپرده</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>برنامه با مشکل مواجه شده است. من پوزش می طلبیم برای مزاحمت.
+
+من می خواهم کمک شما با ارسال گزارش خطا آماده قدردانی. این با مشکل به حل سریع تر کمک کند.</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>خطای برنامه کاربردی</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>دانلود {0} از {1} کلمه در ادامه متن...</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>ویرایش حساب</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>ویرایش بودجه</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>ویرایش هدف</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>ویرایش</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>رمز عبور خود را وارد کنید</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>هزینه های</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>طوری که شما مایل به آن امتیاز 5 ستاره در بازار خواهد چگونه می توانم این برنامه بهبود است؟</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>من این کار را بهتر می کند؟</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>استرلینگ پول خطا</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>انتقادات</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>حساب</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>حساب مورد نیاز است.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>به دست آورد!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>مقدار باید بزرگتر از موجودی فعلی حساب انتخاب شده باشد.</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>مقدار</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>تاریخ مورد نظر می باید پس از {0:d}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>تاریخ مورد نظر باید بعد از امروز.</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>نام مورد نیاز است.</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>حساب را انتخاب کنید</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>تاریخ شروع</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>اهداف</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>تاریخ مورد نظر</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>درآمد</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>تعادل اوليه</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>اخطار: مقادیر غیر معتبر</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>کارت اعتباری</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>مکان مورد نیاز است.</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>"لغو"</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>نه</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>باشه</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>بله</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>درآمد خالص</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>حساب کاربر مجاز اضافه کنید</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>نه</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>هیچ کاربری مجاز</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(طبقه)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>نه ممنون</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>دیگر</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>رمز عبور</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>اعتبار...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>رمز عبور نامعتبر</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>پین برای شروع</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>دانلود...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>همگام سازی...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>در حال بارگذاری...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>به روز رسانی پایگاه داده</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>آپلود...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>خرید نسخه کامل</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>خیلی دوست دارم از شما بشنوند! اگر دوست دارید برنامه، لطفا میزان آن در بازار و نظرات خود را به اشتراک بگذارید.</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>نمایش ندادن دوباره این یادآوری</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>برنامه نرخ</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>استرلینگ پول - گزارش</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>RightToLeft</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>fa-IR</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>بازیابی</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>ذخیره</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>جستجو</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>انتخاب تاریخ</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>حروف الفبا</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>مرتب سازی فهرست حساب</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>اغلب مورد استفاده قرار</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>تکرار رمز عبور</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>تایید رمز عبور لازم است.</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>رمز عبور</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>رمز عبور تکرار رمز عبور مطابقت داشته باشد.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>رمز عبور لازم است.</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>تنظیمات</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>استفاده از رمز عبور</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>تعادل: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>فعال سازی همگام سازی</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>استرلینگ پول می تواند همگام سازی و پشتیبان گیری ویندوز لاجوردی. علاوه بر این، حساب فرد ممکن است با سایر کاربران مثل همسر شما اشتراک گذاشته شود.
+
+من امنیت شما را بسیار جدی و تمام داده ها از طریق HTTPS امن منتقل می شود و ناشناس امن با استفاده از اطلاعات کاربری حساب Microsoft خود. استرلینگ پول هر حساب خاص مانند حساب و یا شماره های مسیریابی و یا اطلاعات شخصی مانند نام و یا ورود اطلاعات خود ذخیره نمی. اگر شما سوالی دارید و بیشتر, لطفا تماس با من با استفاده از لینک زیر:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>استرلینگ پول همگام سازی سوال و یا نگرانی</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>سؤال یا نگرانی</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>همگام سازی</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>شما باید ورود برای همگام سازی.</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>همگام سازی در هنگام راه اندازی</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>قادر به همگام سازی در این زمان نمی باشد. لطفا بعدا دوباره امتحان کنید.</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>فنی پشتیبانی در پست الکترونیکی</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>استرلینگ پول انتقادات و پیشنهادات</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>سرور در دسترس نیست</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>خطای همگام سازی داده ها</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>بیش از حد بسیاری از عوامل زمينه فعال شده اند. لطفا برو به تنظیمات برنامه برای غیرفعال کردن عوامل دیگر قبل از فعال سازی عامل تولد استرلینگ.</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>مجموع موجودی</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>حساب</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>مقدار</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>رده</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>بررسی</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>تاریخ</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>محل</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>یادداشت ها</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>فرستاده شده در تاریخ</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>تعادل موجود</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>حساب را انتخاب کنید</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>در حال بارگذاری...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>هیچ معاملات</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>تعادل ارسال شده</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>انتقال از</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>انتقال از {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>انتقال</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>انتقال به</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>انتقال به {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>این قابلیت فقط در نسخه کامل در دسترس است.</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} کلیک روی فروش دکمه زیر برای خرید نسخه کامل.</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>تنها ده (10) معاملات هر حساب در حالت آزمایشی مجاز است.</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>تنها دو (2) حساب در حالت آزمایشی مجاز است.</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>شما باید روزها {0} چپ.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>شما باید به دفعات بار {0} چپ.</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>محاکمه</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>ناشناخته</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>عدم اتصال به از آغاز</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>آپلود {0} از {1} کلمه در ادامه متن...</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>شما با استفاده از 30 روز تست رایگان خدمات همگام سازی. درخواست به استفاده از خدمات خارج از دادگاه ادامه خرید کنید؟ اگر شما را انتخاب کنید بله - شما را به بازار هدایت.</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>یادآوری محاکمه</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Triial خدمات همگام سازی خود را منقضی شده است. شما می خواهید برای خرید برنامه در حال حاضر? اگر شما را انتخاب کنید بله - شما را به بازار هدایت.</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>محاکمه منقضی شده</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>بله</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>رمز عبور نامعتبر</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>سعی مجدد</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

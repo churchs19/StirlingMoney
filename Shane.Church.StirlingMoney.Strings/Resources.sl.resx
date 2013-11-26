@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>druge aplikacije, ki jih Shane cerkev</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>Ocenite to app</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>račun sliko</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>ime računa</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>Ime računa je potrebno.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>Račun je zahtevati.</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>Računov</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>Dejanski</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>Dodaj račun za začetek</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>Dodaj račun</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>Dodaj proračuna</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>Dodaj kategorijo</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>Dodajte cilj</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>To opravilo sinhronizira podatke Stirling denar z rabi uporabnike in posodobi živo ploščice.</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>Ozadje agenti za ta program so onemogočil uporabnik.</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>Ta naprava podpira ozadje agenti, zato ta funkcija bo onemogočena.</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>Znesek</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>preostalih {0}</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>o</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>Dodaj račun</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>varnostno kopiranje</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>kategorije</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>depozit</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>pregled to app</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>poročila</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>Shrani</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>nastavitve</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>Sinhronizacija</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>prenos</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>umakne</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>napišite pregled</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>Copyright © Shane cerkev 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Finančni organizator za Windows Phone</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Stirling denar</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>Poskus to uporaba has izdihniti. Ali želite nakup uporabe zdaj? Če izberete Yes - boste preusmerjeni na trgu.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Ta opomin ne kaži več</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>Poskus izdihniti</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>Uporabljate ad-zaslomba poskusno različico tega programa. Ali želite nakup uporabe zdaj umakniti ads? Če izberete Yes - boste preusmerjeni na trgu.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Ta opomin ne kaži več</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>Poskus opomnik</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>Stirling denar lahko skupno rabo podatkov med pooblaščenim uporabnikom, tako da vam in vaši družini so vedno na tekočem z vaše račune, kjer stojijo. Nastopiti email ogovor Microsoft Account uporabnika ali uporabnik želite sinhronizirati in delite svoje podatke s spodaj.</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>Pooblaščeni uporabniki</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>varnostno kopiranje</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>Napaka varnostno kopiranje zbirke podatkov: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>Tapnite backup do podatkov shranite v mapo Stirling denar v SkyDrive. To dejanje bo prepisalo katero koli obstoječo varnostno kopijo.
+
+Tapnite restore prepisali podatke z varnostno kopijo iz SkyDrive.</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>Niste vpisani.</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>Obnovitev zbirke podatkov prišlo do napake.</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>Napaka pri obnovitvi zbirke podatkov: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>Ni mogoče najti obstoječo varnostno datoteko za obnovitev.</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>Zbirka podatkov uspešno obnoviti.</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>Vpisani.</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>Napaka pri povezovanju s SkyDrive: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>Zbirka podatkov uspešno varnostno kopirana.</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>Varnostno kopiranje</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>Vse stroške</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>znesek</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>Znesek je potrebno in mora biti večja od 0.</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>Proračun</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>Po meri</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>končni datum</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>Končni datum mora biti po začetni datum.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>Končni datum je potrebna za Custom proračunski obdobji.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>Mesečno</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>ime</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>Vnesti je treba ime.</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>obdobje</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>začetni datum</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>Proračuni</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>proračun</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>vrsta</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>Tedenski</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>Letno</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>Kategorije</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>Avtomobil</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>Menice</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>Poslovni</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>Dobrodelni</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>po kategoriji</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>Zgodovina</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>Oblačila</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>Depozit</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>Zabava</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>Hrane</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>Zdravje</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>Dom</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>Razni</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>ime kategorije</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>Vnesti je treba ime kategorije.</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>Utilities</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>Počitnice</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>vrste grafikonov</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>Preverite</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>kreditni limit</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>Datumski obseg</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} dan zamuja</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} dan preostalih</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} dni v zaostanku</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} days ostanek</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>Izbrisati račun</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>Ali ste prepričani, da želite izbrisati ta račun, vse svoje transakcije, in vse povezane cilje?</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>Izbrisati proračuna</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>Ali ste prepričani, da želite izbrisati ta proračun?</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>Izbrisati cilj</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>Ali ste prepričani, da želite izbrisati ta cilj?</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>izbrisati</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>Izbriši posel</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>Ali ste prepričani, da želite izbrisati ta posel?</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>Depozit</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>Program je naletel na težavo. Žal mi je za morebitne nevšečnosti.
+
+Jaz hoteti uvaževati vaš pomoč pošlje poročilo o napaki pripravljeni. To bo pomagalo pri reševanju problema hitreje.</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>Uporaba zmota</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>downloaded {0} {1} bajtov...</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>Urejanje račun</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>Urejanje proračuna</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>Urejanje cilja</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>urejanje</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>Vnesite geslo</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>Stroški</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>Kako lahko izboljšam ta program, tako da bi bil pripravljen obrok to 5 zvezdic na trgu?</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Lahko bi bilo boljše?</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>Stirling denarja napake</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>povratne informacije</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>račun</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>Račun je zahtevati.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>doseči!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>Mora biti večja od sedanje ravnotežje izbrani račun.</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>znesek</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>Ciljni datum mora biti {0: d}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>Po danes mora biti ciljni datum.</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>ime</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>Vnesti je treba ime.</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>Izberite račun</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>začetni datum</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>Cilji</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>ciljni datum</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>Dohodek</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>začetne bilance</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>Opozorilo: Neveljavne vrednosti</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>kreditne kartice</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>Mesto je potrebno.</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>Prekliči</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>ne</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>v redu</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>da</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>Neto dohodek</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>Dodajte račun pooblaščenega uporabnika</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>ne</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>Ne pooblaščeni uporabniki</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(nobene kategorije)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>ne, hvala</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>Drugih</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>geslo</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>preverjanje veljavnosti...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>Neveljavno geslo</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>PIN za zagon</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>Prenašanje...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>Sinhronizacijo...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>Nalaganje...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>Posodabljanje zbirke podatkov</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>Nalaganje...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>Kupite polno različico</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>Bi radi slišali od vas! Če vam je všeč app, prosim ocenite na trgu in delite svoje povratne informacije.</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Ta opomin ne kaži več</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>Ocenite app</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>Stirling denar - poročila</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>sl-SL</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>obnovitev</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Shrani</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>Išči</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>Izberite datum</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>po abecedi</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>razvrščanje seznam račun</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>najpogosteje uporabljajo</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>Potrditev gesla</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>Potrdite geslo.</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>geslo</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>Geslo se mora ujemati Potrdite geslo.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>Geslo je potrebno.</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Nastavitve</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>uporabite geslo</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>Ravnotežje: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>omogočiti sinhronizacijo</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>Stirling denar lahko sinhronizirane in podpreti z Windows Azure. Poleg tega posamezne konte lahko delijo z drugimi uporabniki kot vaš partner.
+
+Vzamem vašo varnost zelo resno in vsi podatki se varno prenašajo prek HTTPS in anonimno pritrjen z uporabo poverilnic račun Microsoft. Stirling denarja ne hranite vsi posebni račun kot račun ali številke proizvodnih postopkov ali osebne podatke, kot so vaše ime ali prijava informacije. Če imate dodatna vprašanja, se obrnite mi uporabi spodnjo povezavo:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>Stirling denar sinhronizacijo vprašanje ali skrb</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>vprašanja ali pomisleke</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>Sinhronizacija</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>Morate biti prijavljeni sinhronizacijo.</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>Sinhronizacija na začetek</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>Ni mogoče sinhronizirati obtorej. Prosimo, poskusite znova pozneje.</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>email tehnične podpore in povratnih informacij</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>Stirling denar povratne informacije</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>Strežnik ni na voljo</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>Napaka pri sinhronizaciji podatkov</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>Preveč ozadje agenti imajo omogočen. Prosimo, pojdite na nastavitve aplikacijo onemogočiti drugih agentov, preden omogočite agent Stirling rojstni dan.</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>skupni saldo</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>račun</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>znesek</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>Kategorija</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>Preverite</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>datum</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>Lokacija</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>opombe</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>Objavljeno</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>razpoložljivi saldo</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>Izberite račun</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>Nalaganje...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>Brez transakcij</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>knjižene ravnovesje</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>Prenos iz</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>Prenos iz {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>Prenos</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>Prenos na</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>Prenos v {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>Ta funkcionalnost je na voljo v polni različici le.</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} Kliknite buy gumb spodaj za nakup polno različico.</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>V poskus način so dovoljeni le deset (10) transakcij na računu.</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>Le dva (2) računi so dovoljene v poskus način.</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>Imate {0} dni levo.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>Imate {0} 3-krat levo.</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>Poskus</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>Neznano</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>Odpni od začetka</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>uploaded {0} {1} bajtov...</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>Umik</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>Uporabljate 30 dan prost poskus storitve sinhronizacije. Bi želeli nakup uporabe še naprej uporabljati storitev, ki presegajo sojenja? Če izberete Yes - boste preusmerjeni na trgu.</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>Poskus opomnik</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Vaš sinhronizacijo storitev triial je potekel. Ali želite nakup uporabe zdaj? Če izberete Yes - boste preusmerjeni na trgu.</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>Poskus izdihniti</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>da</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Neveljavno geslo</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>Poskusi znova</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>izhod</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

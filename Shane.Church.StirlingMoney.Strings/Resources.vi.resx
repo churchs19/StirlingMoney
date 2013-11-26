@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>Về</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>Các ứng dụng khác bởi Shane Church</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>đánh giá các ứng dụng này</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>hình ảnh tài khoản</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>tên tài khoản</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>Tên trương mục được yêu cầu.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>Tài khoản được yêu cầu.</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>Tài khoản</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>Thực tế</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>Thêm một tài khoản để bắt đầu</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>Thêm tài khoản</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>Thêm ngân sách</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>Thêm thể loại</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>Thêm mục tiêu</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>Nhiệm vụ này đồng bộ hóa dữ liệu Stirling tiền với bất kỳ người dùng được chia sẻ và cập nhật các gạch sống.</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>Đại lý nền cho ứng dụng này đã bị vô hiệu hoá bởi người dùng.</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>Thiết bị này không hỗ trợ đại lý nền, do đó, tính năng này sẽ bị vô hiệu.</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>Số lượng</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>{0} còn lại</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>về</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>Thêm</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>Thêm tài khoản</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>sao lưu</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>thể loại</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>tiền gửi</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>Xem lại ứng dụng này</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>báo cáo</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>tiết kiệm</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>cài đặt</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>đồng bộ</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>chuyển giao</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>rút lui</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>viết kiểm tra</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>Bản quyền © Shane Church 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Một tổ chức tài chính cho Windows Phone</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Stirling tiền</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>Thử nghiệm của ứng dụng này đã hết hạn. Bạn có muốn mua ứng dụng bây giờ? Nếu bạn chọn màu - bạn sẽ được chuyển hướng đến thị trường.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Không hiển thị lại nhắc nhở này</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>Dùng thử hết hạn</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>Bạn đang sử dụng quảng cáo hỗ trợ phiên bản dùng thử của ứng dụng này. Bạn có muốn mua các ứng dụng bây giờ để loại bỏ các quảng cáo? Nếu bạn chọn màu - bạn sẽ được chuyển hướng đến thị trường.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Không hiển thị lại nhắc nhở này</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>Thử nghiệm nhắc nhở</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>Stirling tiền có thể chia sẻ dữ liệu giữa các người dùng được ủy quyền để bạn và gia đình của bạn luôn luôn Cập Nhật vào tài khoản của bạn đứng ở đó. Nhập địa chỉ email Microsoft Account của người dùng hoặc người dùng bạn muốn đồng bộ hóa và chia sẻ dữ liệu với dưới đây.</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>Người dùng được ủy quyền</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>sao lưu</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>Lỗi sao lưu cơ sở dữ liệu: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>Tập sao lưu để lưu dữ liệu của bạn vào thư mục Stirling tiền, SkyDrive. Điều này sẽ ghi đè lên bất kỳ bản sao lưu sẵn có.
+
+Bấm vào khôi phục để ghi đè lên dữ liệu địa phương với sao lưu của bạn từ SkyDrive.</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>Không đăng nhập.</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>Lỗi khôi phục lại cơ sở dữ liệu.</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>Lỗi khôi phục cơ sở dữ liệu: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>Không thể tìm thấy tệp sao lưu hiện có để khôi phục lại.</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>Cơ sở dữ liệu phục hồi thành công.</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>Đăng nhập.</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>Lỗi kết nối với SkyDrive: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>Cơ sở dữ liệu sao lưu thành công.</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>Sao lưu</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>Tất cả chi phí</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>số lượng</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>Số tiền được yêu cầu và phải lớn hơn 0.</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>Ngân sách</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>Tuỳ chỉnh</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>Ngày kết thúc</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>Ngày kết thúc phải sau ngày bắt đầu.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>Ngày kết thúc là cần thiết trong Custom ngân sách thời gian.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>Hàng tháng</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>Tên là bắt buộc.</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>thời gian</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>Ngày bắt đầu</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>Ngân sách</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>ngân sách</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>loại</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>Lượt</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>Hàng năm</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>Thể loại</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>Xe ô tô</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>Hóa đơn</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>Kinh doanh</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>Tổ chức từ thiện</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>theo thể loại</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>lịch sử</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>Quần áo</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>Tiền gửi</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>Giải trí</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>Thực phẩm</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>Sức khỏe</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>Trang chủ</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>Linh tinh</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>thể loại tên</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>Thể loại tên là cần thiết.</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>Tiện ích</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>Kỳ nghỉ</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>Các loại biểu đồ</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>Kiểm tra</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>hạn mức tín dụng</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>Phạm vi ngày</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} ngày quá hạn</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} ngày còn lại</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} ngày quá hạn</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} ngày còn lại</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>Xoá tài khoản</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>Bạn có chắc bạn muốn xóa trương mục này, tất cả các giao dịch của mình, và tất cả liên quan đến mục tiêu không?</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>Xóa ngân sách</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>Bạn có chắc bạn muốn xóa ngân sách này?</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>Xóa mục tiêu</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>Bạn có chắc bạn muốn xóa mục tiêu này?</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>xóa</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>Xóa bỏ giao dịch</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>Bạn có chắc bạn muốn xóa bỏ giao dịch này không?</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>Tiền gửi</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>Các ứng dụng đã gặp phải một vấn đề. Tôi xin lỗi vì sự bất tiện này.
+
+Tôi sẽ đánh giá cao sự hỗ trợ của bạn bằng cách gửi báo cáo chuẩn bị lỗi. Điều này sẽ giúp với giải quyết vấn đề nhanh hơn.</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>Lỗi ứng dụng</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>tải về {0} {1} byte...</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>Chỉnh sửa tài khoản</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>Chỉnh sửa ngân sách</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>Chỉnh sửa mục tiêu</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>chỉnh sửa</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>nhập mật khẩu của bạn</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>Chi phí</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>Làm thế nào tôi có thể cải thiện ứng dụng này vì vậy bạn sẽ sẵn sàng để đánh giá nó 5 sao trên thị trường?</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Tôi có thể làm cho nó tốt hơn?</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>Stirling tiền lỗi</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>cung cấp cho thông tin phản hồi</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>tài khoản</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>Tài khoản được yêu cầu.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>đạt được!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>Số tiền phải lớn hơn số dư hiện tại của trương mục đã chọn.</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>số lượng</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>Mục tiêu ngày phải sau khi {0:d}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>Mục tiêu ngày phải sau ngày hôm nay.</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>Tên là bắt buộc.</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>chọn tài khoản</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>Ngày bắt đầu</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>Mục tiêu</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>mục tiêu ngày</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>Thu nhập</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>số dư ban đầu</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>Chú ý: Giá trị không hợp lệ</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>thẻ tín dụng</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>Vị trí được yêu cầu.</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>hủy bỏ</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>Có</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>Thu nhập ròng</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>Thêm trương mục người dùng được ủy quyền</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>Không có người được ủy quyền</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(không có thể loại)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>Không, cảm ơn</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>Khác</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>mật khẩu</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>phê chuẩn...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>mật khẩu không hợp lệ</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>pin để bắt đầu</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>Đang tải xuống...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>Đồng bộ hóa...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>Đang tải...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>Cập Nhật cơ sở dữ liệu</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>Tải lên...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>Mua phiên bản đầy đủ</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>Tôi rất thích nghe từ bạn! Nếu bạn thích các ứng dụng, xin vui lòng tỷ lệ trên thị trường và chia sẻ thông tin phản hồi của bạn.</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Không hiển thị lại nhắc nhở này</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>Đánh giá các ứng dụng</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>Stirling tiền - báo cáo</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>vi-VN</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>khôi phục</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>tiết kiệm</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>Tìm</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>chọn ngày</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>theo thứ tự ABC</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>danh sách tài khoản sắp xếp bởi</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>thường xuyên nhất được sử dụng nhất</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>xác nhận mật khẩu</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>Xác nhận mật khẩu là cần thiết.</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>mật khẩu</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>Mật khẩu phải phù hợp với xác nhận mật khẩu.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>Mật khẩu là cần thiết.</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>sử dụng mật khẩu</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>Cân bằng: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>sử đồng bộ hóa</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>Stirling tiền có thể được đồng bộ hoá và sao lưu để Windows Azure. Ngoài ra, cá nhân tài khoản có thể được chia sẻ với những người dùng khác giống như vợ/chồng của bạn.
+
+Tôi có an ninh của bạn rất nghiêm túc và tất cả dữ liệu được truyền đi một cách an toàn qua HTTPS và nặc danh được bảo vệ bằng cách sử dụng thông tin đăng nhập tài khoản Microsoft của bạn. Stirling tiền không lưu trữ bất kỳ tài khoản cụ thể như tài khoản hoặc số điện thoại định tuyến hoặc các thông tin nhận dạng cá nhân như tên hoặc đăng nhập thông tin của bạn. Nếu bạn có thêm câu hỏi, xin vui lòng liên hệ với tôi bằng cách sử dụng liên kết dưới đây:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>Stirling tiền đồng bộ hóa câu hỏi hoặc mối quan tâm</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>câu hỏi hoặc mối quan tâm</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>Đồng bộ hóa</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>Bạn phải đăng nhập để đồng bộ.</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>đồng bộ hóa trên khởi động</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>Không thể đồng bộ lúc này. Xin vui lòng thử lại sau.</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>hỗ trợ kỹ thuật/phản hồi email</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>Stirling tiền thông tin phản hồi</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>Hệ phục vụ không sẵn dùng</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>Lỗi đồng bộ hóa dữ liệu</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>Quá nhiều nền đại lý có được kích hoạt. Xin vui lòng đi đến các ứng dụng cài đặt để vô hiệu hóa các đại lý khác trước khi cho phép các đại lý sinh nhật Stirling.</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>Tổng số dư</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>tài khoản</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>số lượng</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>thể loại</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>kiểm tra</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>Ngày</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>vị trí</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>ghi chú</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>đăng</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>có cân bằng</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>chọn tài khoản</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>Đang tải...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>Không có giao dịch</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>đăng cân bằng</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>Chuyển từ</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>Chuyển từ {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>Chuyển giao</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>Chuyển sang</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>Chuyển đến {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>Chức năng này chỉ có sẵn trong các phiên bản đầy đủ.</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} Nhấp vào mua nút dưới đây để mua phiên bản đầy đủ.</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>Chỉ mười (10) giao dịch cho mỗi tài khoản được cho phép trong chế độ thử nghiệm.</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>Chỉ hai (2) tài khoản được cho phép trong chế độ thử nghiệm.</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>Bạn có {0} ngày còn lại.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>Bạn có {0} time(s) còn lại.</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>Thử nghiệm</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>Chưa biết</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>bỏ ghim từ đầu</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>đã tải lên {0} {1} byte...</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>Rút tiền</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>Bạn đang sử dụng 30 ngày dùng thử miễn phí của các dịch vụ đồng bộ hóa. Bạn có muốn mua các ứng dụng để tiếp tục sử dụng dịch vụ vượt ra ngoài phiên tòa? Nếu bạn chọn màu - bạn sẽ được chuyển hướng đến thị trường.</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>Thử nghiệm nhắc nhở</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Triial dịch vụ đồng bộ hóa của bạn đã hết hạn. Bạn có muốn mua ứng dụng bây giờ? Nếu bạn chọn màu - bạn sẽ được chuyển hướng đến thị trường.</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>Dùng thử hết hạn</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Có</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>mật khẩu không hợp lệ</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>thử lại</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>lối ra</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

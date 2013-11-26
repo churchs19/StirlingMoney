@@ -20,6 +20,7 @@
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <SupportedCultures>ar%3bbg%3bca%3bzh-CN%3bzh-TW%3bcs%3bda%3bnl%3ben%3ben-GB%3bet%3bfi%3bfr%3bde%3bel%3bhe%3bhi%3bhu%3bid%3bit%3bja%3bko%3blv%3blt%3bms%3bno%3bfa-IR%3bpl%3bpt%3bpt-BR%3bpt-PT%3bro%3bru%3bsk%3bsl%3bes%3bes-MX%3bes-ES%3bsv%3bth%3btr%3buk%3bvi</SupportedCultures>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -83,10 +84,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Live, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\LiveSDK.5.5\lib\WindowsPhone71\Microsoft.Live.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -107,9 +104,6 @@
     <Reference Include="Microsoft.WindowsAzure.Mobile.Ext, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WindowsAzure.MobileServices.1.1.0\lib\sl4-windowsphone71\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Mobile.UI">
-      <HintPath>..\packages\WindowsAzure.MobileServices.1.1.0\lib\sl4-windowsphone71\Microsoft.WindowsAzure.Mobile.UI.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\portable-net40+sl4+wp7+win8\Newtonsoft.Json.dll</HintPath>
@@ -161,15 +155,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP7\Extensions\LiveAuthClientExtensions.cs">
-      <Link>Extensions\LiveAuthClientExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP7\Extensions\LiveConnectClientExtensions.cs">
-      <Link>Extensions\LiveConnectClientExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP7\MicrosoftLiveUtils.cs">
-      <Link>MicrosoftLiveUtils.cs</Link>
-    </Compile>
     <Compile Include="..\Shane.Church.StirlingMoney.Core.WP7\NinjectBootstrapper.cs">
       <Link>NinjectBootstrapper.cs</Link>
     </Compile>
@@ -199,10 +184,6 @@
       <Link>Controls\SmallTile.xaml.cs</Link>
       <DependentUpon>SmallTile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\WideTileBack.xaml.cs">
-      <Link>Controls\WideTileBack.xaml.cs</Link>
-      <DependentUpon>WideTileBack.xaml</DependentUpon>
-    </Compile>
     <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\WideTileFront.xaml.cs">
       <Link>Controls\WideTileFront.xaml.cs</Link>
       <DependentUpon>WideTileFront.xaml</DependentUpon>
@@ -228,9 +209,6 @@
     <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\MobileServiceConfig.cs">
       <Link>MobileServiceConfig.cs</Link>
     </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Services\PhoneNavigationService.cs">
-      <Link>Services\PhoneNavigationService.cs</Link>
-    </Compile>
     <Compile Include="..\Shane.Church.StirlingMoney.Core.WP\Services\PhoneSettingsService.cs">
       <Link>Services\PhoneSettingsService.cs</Link>
     </Compile>
@@ -242,7 +220,6 @@
     <Compile Include="Services\WP7AgentLicensingService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Fonts\LiveSymbol.ttf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -290,11 +267,6 @@
     </Page>
     <Page Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\SmallTile.xaml">
       <Link>Controls\SmallTile.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\Shane.Church.StirlingMoney.Core.WP\Controls\WideTileBack.xaml">
-      <Link>Controls\WideTileBack.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>Tentang</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>aplikasi lain oleh Shane gereja</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>tingkat app ini</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>rekening gambar</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>nama account</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>Nama account diperlukan.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>Rekening diperlukan.</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>Akun</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>Sebenarnya</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>Tambahkan account untuk memulai</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>Menambahkan Account</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>Tambahkan anggaran</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>Tambahkan Kategori</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>Tambahkan sasaran</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>Tugas ini sinkronisasi data Stirling uang dengan setiap pengguna bersama dan update ubin hidup.</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>Latar belakang agen untuk aplikasi ini telah dinonaktifkan oleh pengguna.</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>Perangkat ini tidak mendukung agen latar belakang, sehingga fitur ini akan dinonaktifkan.</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>Jumlah</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>{0} tersisa</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>tentang</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>Tambahkan</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>menambahkan account</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>cadangan</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>deposit</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>meninjau aplikasi ini</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>Laporan</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>Simpan</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>pengaturan</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>sinkronisasi</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>transfer</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>menarik</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>menulis check</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>Hak cipta © Shane gereja 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Penyelenggara keuangan untuk Windows Phone</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Stirling uang</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>Trial dari aplikasi ini telah kedaluwarsa. Apakah Anda ingin membeli aplikasi sekarang? Jika Anda memilih ya - Anda akan diarahkan ke pasar.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Jangan Tampilkan pengingat ini lagi</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>Persidangan kadaluarsa</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>Anda menggunakan iklan-didukung versi trial dari aplikasi ini. Apakah Anda ingin membeli aplikasi sekarang untuk menghapus iklan? Jika Anda memilih ya - Anda akan diarahkan ke pasar.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Jangan Tampilkan pengingat ini lagi</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>Pengingat sidang</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>Stirling uang dapat berbagi data antara pengguna resmi sehingga Anda dan keluarga Anda selalu up to date pada mana account Anda berdiri. Masukkan alamat email Microsoft Account pengguna atau pengguna yang Anda ingin sinkronisasi dan berbagi data dengan di bawah ini.</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>Pengguna resmi</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>cadangan</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>Kesalahan back up database: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>Ketuk cadangan untuk menyimpan data Anda ke folder Stirling uang di SkyDrive. Ini akan menimpa cadangan yang sudah ada.
+
+Ketuk restore untuk menimpa data pada komputer lokal dengan cadangan Anda dari SkyDrive.</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>Tidak masuk.</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>Terjadi kesalahan memulihkan database.</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>Kesalahan memulihkan database: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>Tidak dapat menemukan file cadangan yang ada untuk memulihkan.</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>Database dipulihkan berhasil.</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>Masuk.</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>Galat yang menghubungkan dengan SkyDrive: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>Database yang didukung berhasil.</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>Cadangan</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>Semua biaya</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>jumlah</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>Jumlah diperlukan dan harus lebih besar daripada 0.</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>Anggaran</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>tanggal berakhir</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>Tanggal akhir harus setelah tanggal mulai.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>Tanggal berakhir diperlukan untuk periode anggaran kebiasaan.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>Bulanan</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>Nama</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>Nama diperlukan.</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>periode</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>tanggal mulai</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>Anggaran</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>anggaran</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>jenis</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>Mingguan</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>Tahunan</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>Otomotif</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>Tagihan</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>Bisnis</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>Amal</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>Berdasarkan Kategori</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>Sejarah</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>Pakaian</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>Deposit</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>Hiburan</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>Makanan</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>Kesehatan</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>Rumah</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>Miscellaneous</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>nama kategori</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>Nama kategori diperlukan.</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>Utilitas</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>Liburan</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>jenis bagan</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>Periksa</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>batas kredit</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>Rentang tanggal</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} hari terlambat</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} hari tersisa</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} hari terlambat</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} hari tersisa</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>Menghapus akun</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>Apakah Anda yakin Anda ingin menghapus akun ini, Semua transaksi yang, dan semua terkait tujuan?</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>Menghapus anggaran</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>Apakah Anda yakin Anda ingin menghapus anggaran ini?</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>Menghapus tujuan</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>Apakah Anda yakin Anda ingin menghapus tujuan ini?</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>Hapus</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>Menghapus transaksi</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>Apakah Anda yakin Anda ingin menghapus transaksi ini?</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>Deposit</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>Aplikasi mengalami masalah. Saya minta maaf atas ketidaknyamanan.
+
+Aku akan menghargai bantuan Anda dengan mengirimkan laporan kesalahan disiapkan. Ini akan membantu dengan menyelesaikan masalah lebih cepat.</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>Kesalahan aplikasi</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>Download {0} byte {1}...</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>Mengedit Account</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>Mengedit anggaran</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>Mengedit tujuan</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>mengedit</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>Masukkan sandi</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>Biaya</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>Bagaimana dapat meningkatkan aplikasi ini sehingga Anda akan bersedia untuk menilai itu 5 bintang di pasar?</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Dapatkah saya membuat lebih baik?</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>Stirling uang kesalahan</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>memberikan umpan balik</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>akun</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>Rekening diperlukan.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>dicapai!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>Jumlah harus lebih besar dari saldo account yang dipilih.</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>jumlah</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>Target tanggal harus setelah {0:d}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>Target tanggal harus setelah hari ini.</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>Nama</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>Nama diperlukan.</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>pilih account</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>tanggal mulai</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>Tujuan</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>target tanggal</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>Pendapatan</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>setoran awal</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>Peringatan: Nilai-nilai yang tidak sah</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>kartu kredit</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>Lokasi diperlukan.</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>Batal</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>Tidak</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>Oke</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>Ya</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>Pendapatan bersih</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>menambahkan account pengguna resmi</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Tidak</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>Tidak ada pengguna yang berwenang</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(tidak ada kategori)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>Tidak terima kasih</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>Lainnya</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>sandi</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>memvalidasi...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>sandi tidak valid</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>PIN untuk memulai</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>Men-download...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>Sinkronisasi...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>Memuat...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>Update database</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>Meng-upload...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>Membeli versi lengkap</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>Saya akan senang mendengar dari Anda! Jika Anda menyukai app, silakan menilai di pasar dan berbagi umpan balik Anda.</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Jangan Tampilkan pengingat ini lagi</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>Menilai app</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>Stirling uang - laporan</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>id-ID</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>mengembalikan</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Simpan</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>Cari</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>Pilih tanggal</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>menurut abjad</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>daftar account semacam oleh</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>paling sering digunakan</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>Konfirmasi password</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>Konfirmasi Password diperlukan.</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>sandi</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>Password harus cocok Confirm Password.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>Sandi diperlukan.</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Pengaturan</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>Gunakan sandi</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>Keseimbangan: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>mengaktifkan sinkronisasi</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>Stirling uang dapat disinkronisasi dan mundur ke Windows Azure. Selain itu, account perorangan dapat dipergunakan bersama dengan pengguna lain seperti pasangan Anda.
+
+Saya menjaga keamanan Anda dengan sangat serius dan semua data yang ditransmisikan secara aman melalui HTTPS dan secara anonim dijamin dengan menggunakan kredensial Microsoft. Stirling uang tidak menyimpan setiap rekening tertentu seperti rekening atau nomor routing atau informasi pribadi seperti nama atau login informasi. Jika Anda memiliki pertanyaan lebih lanjut, silahkan hubungi saya menggunakan link di bawah ini:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>Stirling uang sinkronisasi pertanyaan atau kekhawatiran</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>pertanyaan atau kekhawatiran</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>Sinkronisasi</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>Anda harus login untuk sync.</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>Sinkronisasi pada startup</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>Tidak bisa sync saat ini. Harap coba lagi nanti.</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>email teknis dukungan/umpan balik</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>Umpan-balik uang Stirling</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>Server tidak tersedia</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>Galat sinkronisasi data</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>Terlalu banyak latar belakang agen telah diaktifkan. Silakan pergi ke aplikasi pengaturan untuk menonaktifkan agen lain sebelum memungkinkan agen Stirling ulang tahun.</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>keseimbangan Total</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>akun</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>jumlah</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>Periksa</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>tanggal</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>Lokasi</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>Catatan</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>Dikirim</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>saldo yang tersedia</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>pilih account</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>Memuat...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>Tidak ada transaksi</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>Posted keseimbangan</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>Transfer dari</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>Transfer dari {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>Transfer ke</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>Transfer ke {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>Fungsi ini hanya tersedia dalam versi lengkap.</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} Klik Beli tombol di bawah untuk membeli versi lengkap.</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>Hanya 10 (sepuluh) kali transaksi per rekening diperbolehkan dalam sidang modus.</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>Hanya dua (2) account diperbolehkan dalam sidang modus.</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>Anda memiliki {0} hari kiri.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>Anda memiliki {0} kali kiri.</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>Percobaan</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>melepas sematan dari awal</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>upload {0} byte {1}...</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>Penarikan</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>Anda menggunakan 30 hari percobaan gratis layanan sinkronisasi. Anda ingin membeli aplikasi terus menggunakan layanan di luar sidang? Jika Anda memilih ya - Anda akan diarahkan ke pasar.</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>Pengingat sidang</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Triial layanan sinkronisasi Anda telah kedaluwarsa. Apakah Anda ingin membeli aplikasi sekarang? Jika Anda memilih ya - Anda akan diarahkan ke pasar.</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>Persidangan kadaluarsa</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ya</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>sandi tidak valid</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>coba lagi</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>keluar</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

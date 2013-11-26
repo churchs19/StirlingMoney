@@ -19,7 +19,7 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.WP.Agent")]
 [assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.Core.WP")]
 [assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.Core.WP7.Agent")]
-
+[assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.Core.WP8.Agent")]
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version

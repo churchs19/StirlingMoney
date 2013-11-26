@@ -20,6 +20,7 @@
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <SupportedCultures>ar%3bbg%3bca%3bzh-CN%3bzh-TW%3bcs%3bda%3bnl%3ben%3ben-GB%3bet%3bfi%3bfr%3bde%3bel%3bhe%3bhi%3bhu%3bid%3bit%3bja%3bko%3blv%3blt%3bms%3bno%3bfa-IR%3bpl%3bpt%3bpt-BR%3bpt-PT%3bro%3bru%3bsk%3bsl%3bes%3bes-MX%3bes-ES%3bsv%3bth%3btr%3buk%3bvi</SupportedCultures>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -177,9 +178,6 @@
     <Compile Include="Controls\SmallTile.xaml.cs">
       <DependentUpon>SmallTile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WideTileBack.xaml.cs">
-      <DependentUpon>WideTileBack.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\WideTileFront.xaml.cs">
       <DependentUpon>WideTileFront.xaml</DependentUpon>
     </Compile>
@@ -236,92 +234,35 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\Accounts-Book.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\American Express.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\ATM.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Bank.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Bike-Loan.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Book-Open.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Car-Loan.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Cash.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Charity.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Cheque.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\CitiBank.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Counting-Machine.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Debit-Card.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Discover.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Fund.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Home-Loan.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\HSBC.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Jewel-Loan.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Market.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Master-Card.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Money-Bag.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Money.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Payment-01.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Payment-02.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Paypal.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Piggy Bank.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\RBS.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Settled credit record.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\Visa.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Page Include="Controls\MediumTileBack.xaml">
       <SubType>Designer</SubType>
@@ -343,14 +284,40 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\WideTileBack.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\WideTileFront.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Aeroplane.png" />
+    <EmbeddedResource Include="Images\Baseball-Bat.png" />
+    <EmbeddedResource Include="Images\Basket.png" />
+    <EmbeddedResource Include="Images\Basketball.png" />
+    <EmbeddedResource Include="Images\Bid-01.png" />
+    <EmbeddedResource Include="Images\Bid-02.png" />
+    <EmbeddedResource Include="Images\Bill.png" />
+    <EmbeddedResource Include="Images\Caduceus.png" />
+    <EmbeddedResource Include="Images\Cat.png" />
+    <EmbeddedResource Include="Images\Children.png" />
+    <EmbeddedResource Include="Images\Dice.png" />
+    <EmbeddedResource Include="Images\Dog.png" />
+    <EmbeddedResource Include="Images\Dollar-Tag.png" />
+    <EmbeddedResource Include="Images\Euro-Tag.png" />
+    <EmbeddedResource Include="Images\Football-01.png" />
+    <EmbeddedResource Include="Images\Gift.png" />
+    <EmbeddedResource Include="Images\Golf-Ball.png" />
+    <EmbeddedResource Include="Images\Graduate-02.png" />
+    <EmbeddedResource Include="Images\Paid-Invoice.png" />
+    <EmbeddedResource Include="Images\Pending-Invoice.png" />
+    <EmbeddedResource Include="Images\Sales-Order.png" />
+    <EmbeddedResource Include="Images\Savings-01.png" />
+    <EmbeddedResource Include="Images\Savings-02.png" />
+    <EmbeddedResource Include="Images\Shopping-Bag.png" />
+    <EmbeddedResource Include="Images\Soccer.png" />
+    <EmbeddedResource Include="Images\Ticket.png" />
+    <EmbeddedResource Include="Images\Travel-Luggage.png" />
+    <EmbeddedResource Include="Images\University.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

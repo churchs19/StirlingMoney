@@ -1,14 +1,15 @@
 ﻿using System.Reflection;
+using System.Resources;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Stirling Money - Windows Phone 7 - Dev")]
+[assembly: AssemblyTitle("Stirling Money - Windows Phone 7")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Shane Church")]
-[assembly: AssemblyProduct("Stirling Money - Windows Phone 7 - Dev")]
+[assembly: AssemblyProduct("Stirling Money - Windows Phone 7")]
 [assembly: AssemblyCopyright("Copyright © Shane Church 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,4 +33,4 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 [assembly: AssemblyVersion("3.0.7.*")]
 [assembly: AssemblyFileVersion("3.0.7.0")]
-
+[assembly: NeutralResourcesLanguageAttribute("en")]

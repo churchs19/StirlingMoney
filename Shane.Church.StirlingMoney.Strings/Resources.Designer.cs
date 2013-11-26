@@ -376,7 +376,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stirling Money - Dev.
+        ///   Looks up a localized string similar to Stirling Money.
         /// </summary>
         public static string AppTitle {
             get {
@@ -1604,7 +1604,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to en.
+        ///   Looks up a localized string similar to en-US.
         /// </summary>
         public static string ResourceLanguage {
             get {

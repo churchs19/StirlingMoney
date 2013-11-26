@@ -22,10 +22,10 @@
           Height="336"
           Width="336">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="{Binding AccountBalance, Converter={StaticResource LocalLocalizedCurrency}}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="12" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}" />
         <Image Grid.Row="0" Grid.RowSpan="2" Source="{Binding Image, Converter={StaticResource LocalByteImageConverter}}" Margin="39" Stretch="Fill"/>
-        <TextBlock Grid.Row="0" Text="{Binding AccountBalance, Converter={StaticResource LocalLocalizedCurrency}}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="12" FontSize="{StaticResource PhoneFontSizeNormal}" FontFamily="{StaticResource PhoneFontFamilyNormal}" />
     </Grid>
 </UserControl>

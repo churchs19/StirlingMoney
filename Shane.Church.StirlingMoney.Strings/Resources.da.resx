@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>Om</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>andre apps af Shane Church</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>Vurder denne app</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>konto billede</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>kontonavn</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>Kontonavnet er påkrævet.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>Konto er påkrævet.</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>Konti</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>Faktiske</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>Tilføje en konto til at komme i gang</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>Tilføj konto</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>Tilføje Budget</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>Tilføj kategori</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>Tilføj mål</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>Denne opgave synkroniserer Stirling penge data med enhver delt brugernes og opdaterer live fliser.</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>Baggrund agenter for dette program er blevet deaktiveret af brugeren.</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>Denne enhed understøtter ikke baggrunden agenter, så denne funktion deaktiveres.</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>Beløb</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>{0} resterende</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>om</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>tilføje</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>Tilføj konto</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>backup</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>kategorier</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>depositum</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>anmeld denne app</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>rapporter</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>Gem</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>indstillinger</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>Sync</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>overførsel</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>trække</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>Skriv check</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>Copyright © Shane kirke 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>En finansiel arrangør for Windows Phone</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Stirling penge</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>Prøveperioden for dette program er udløbet. Vil du købe programmet nu? Hvis du vælger Ja - vil du blive omdirigeret til markedet.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Vis ikke denne påmindelse igen</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>Retssag udløbet</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>Du bruger den anno domini-understøttet retssag gengivelse af dette program. Vil du købe programmet nu at fjerne annoncerne? Hvis du vælger Ja - vil du blive omdirigeret til markedet.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Vis ikke denne påmindelse igen</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>Retssag påmindelse</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>Stirling penge kan dele data mellem autoriserede brugere så du og din familie er altid up to date på hvor dine konti står. Angiv Microsoft Account e-mail adressen af den eller de brugere du ønsker at synkronisere og dele dine data med nedenfor.</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>Autoriserede brugere</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>backup</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>Fejl sikkerhedskopiere databasen: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>Tryk på backup for at gemme dine data i mappen Stirling penge i SkyDrive. Dette vil overskrive en eksisterende sikkerhedskopi.
+
+Tryk på Gendan for at overskrive dine lokale data med din backup fra SkyDrive.</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>Ikke logget på.</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>Der opstod fejl under gendanne databasen.</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>Fejl gendanner databasen: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>Der blev ikke fundet en eksisterende sikkerhedskopifil til at gendanne.</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>Database gendannet.</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>Logget på.</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>Fejl forbinder med SkyDrive: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>Database sikkerhedskopieret.</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>Alle udgifter</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>beløb</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>Beløbet er påkrævet og skal være større end 0.</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>slutdato</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>Slutdato skal være efter startdato.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>Slutdato er krævede for Custom budgetperioder.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>Månedlige</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>Navn</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>Navnet er påkrævet.</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>periode</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>Start dato</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>Budgetter</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>budget</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>type</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>Ugentlige</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>Hvert år</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>Kategorier</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>Automobile</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>Regninger</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>Business</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>Velgørenhed</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>af kategori</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>historie</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>Tøj</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>Depositum</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>Underholdning</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>Mad</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>Sundhed</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>Hjem</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>Diverse</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>kategorinavn</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>Kategorinavnet er påkrævet.</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>Hjælpeprogrammer</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>Ferie</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>diagramtyper</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>kreditmaksimum</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>Datointerval</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} dag forsinket</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} dag tilbageværende</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} dage forsinket</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} dag(e) tilbage</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>Slet konto</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>Er du sikker på du vil slette denne konto, alle sine transaktioner, og alle tilknyttede mål?</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>Slet Budget</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>Er du sikker på du vil slette dette budget?</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>Slette mål</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>Er du sikker på du vil slette dette mål?</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>Slet</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>Slette transaktionen</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>Er du sikker på du vil slette denne transaktion?</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>Depositum</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>Programmet har stødt på et problem. Jeg er ked af ulejligheden.
+
+Jeg ville sætte pris på din hjælp ved at sende den forberedte fejlrapport. Dette vil bidrage til at løse problemet hurtigere.</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>Ansøgning fejl</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>downloadede {0} af {1} byte...</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>Rediger konto</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>Redigere Budget</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>Redigere mål</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>Rediger</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>Indtast din adgangskode</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>Udgifter</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>Hvordan kan jeg forbedre dette program, så at du ville være villig til at vurdere det 5 stjerner i marketplace?</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Kan jeg gøre det bedre?</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>Stirling penge fejl</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>give feedback</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>konto</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>Konto er påkrævet.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>opnået!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>Beløbet skal være større end den aktuelle saldo for den valgte konto.</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>beløb</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>Måldato skal efter {0:d}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>Måldato skal efter i dag.</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>Navn</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>Navnet er påkrævet.</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>Vælg konto</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>Start dato</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>Mål</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>måldato</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>Indkomst</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>oprindelige balance</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>Advarsel: Ugyldige værdier</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>kreditkort</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>Placering er påkrævet.</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>Annuller</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>Nej</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>Nettoindkomst</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>tilføje autoriseret brugerkonto</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nej</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>Ingen godkendte brugere</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(ingen kategori)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>Nej tak</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>Andre</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>adgangskode</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>validering af...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>ugyldig adgangskode</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>Fastgør til start</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>Downloading...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>Synkronisering...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>Indlæser...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>Opdatering af databasen</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>Upload...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>Købe den fulde version</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>Jeg ville elske at høre fra dig! Hvis du kan lide app, venligst sats det på markedet og dele din feedback.</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Vis ikke denne påmindelse igen</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>Bedøm app'en</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>Stirling penge - rapporter</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>da-DK</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>gendanne</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Gem</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>Søg</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>Vælg dato</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>alfabetisk</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>sorter Firmaoversigt efter</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>oftest bruges</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>Bekræft adgangskode</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>Bekræft adgangskode er påkrævet.</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>adgangskode</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>Adgangskode skal matche Bekræft adgangskode.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>Adgangskode er påkrævet.</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Indstillinger</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>Brug adgangskode</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>Balance: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>Aktiver synkronisering</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>Stirling penge kan synkroniseres og sikkerhedskopieret til Windows Azure. Derudover kan individuelle konti deles med andre brugere som din ægtefælle.
+
+Jeg tager din sikkerhed meget alvorligt, og alle data overføres sikkert over HTTPS og anonymt sikres ved hjælp af din Microsoft-konto legitimationsoplysninger. Stirling penge gemmer ikke nogen konto specifikke ligesom konto eller rutenumrene eller personligt identificerbare oplysninger såsom dit navn eller login oplysninger. Hvis du har yderligere spørgsmål, bedes du kontakte mig via linket nedenfor:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>Stirling penge synkronisering spørgsmål eller anliggende</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>spørgsmål eller bekymringer</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>Synkronisering</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>Du skal være logget ind at sync.</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>synkronisere ved opstart</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>Der kan ikke synkronisere på dette tidspunkt. Prøv igen senere.</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>feedback/teknisk support email</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>Stirling penge Feedback</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>Server ikke tilgængelig</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>Data Sync fejl</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>For mange baggrund agenter er blevet aktiveret. Venligst gå til programmet indstillinger deaktivere andre agenter før aktivering Stirling fødselsdag agent.</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>samlede balance</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>konto</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>beløb</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>kategori</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>dato</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>beliggenhed</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>noter</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>bogført</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>disponible balance</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>Vælg konto</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>Indlæser...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>Ingen transaktioner</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>bogførte balance</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>Transfer fra</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>Transfer fra {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>Overførsel</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>Overførsel til</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>Overføre til {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>Denne funktion er kun tilgængelig i den fulde version.</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} Skal du klikke på Køb-knappen nedenfor for at købe den fulde version.</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>Kun ti (10) transaktioner pr. konto er tilladt i prøveperiode tilstand.</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>Kun to (2) brugerkonti er tilladte i prøveperiode tilstand.</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>Du har {0} dag(e) tilbage.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>Du har {0} gange tilbage.</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>Retssag</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>Ukendt</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>Frigør fra start</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>uploadede {0} af {1} byte...</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>Tilbagetrækning</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>Du bruger den 30 dages gratis prøveversion af synkronisering tjenester. Ønsker du at købe programmet for at fortsætte med at bruge tjenesterne ud over retssagen? Hvis du vælger Ja - vil du blive omdirigeret til markedet.</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>Retssag påmindelse</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Din synkronisering service triial er udløbet. Vil du købe programmet nu? Hvis du vælger Ja - vil du blive omdirigeret til markedet.</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>Retssag udløbet</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>ugyldig adgangskode</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>efter flere forsøg</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>exit</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

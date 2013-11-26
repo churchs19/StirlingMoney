@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>אודות</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>יישומים אחרים על ידי הכנסייה שיין</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>קצב יישום זה</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>תמונת חשבון</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>שם החשבון</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>שם החשבון נדרש.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>נדרש חשבון.</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>חשבונות</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>בפועל</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>להוסיף חשבון כדי להתחיל</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>הוסף חשבון</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>להוסיף תקציב</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>הוסף קטגוריה</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>הוסף את המטרה</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>משימה זו סינכרון נתונים כסף סטרלינג עם כל המשתמשים משותפת ומעדכן את האריחים בשידור חי.</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>רקע סוכנים עבור יישום זה בוטלו על-ידי המשתמש.</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>התקן זה אינו תומך רקע סוכנים, אז לא יהיה זמין תכונה זו.</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>כמות</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>{0} הנותרים</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>אודות</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>להוסיף</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>הוסף חשבון</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>גיבוי</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>קטגוריות</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>פיקדון</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>לסקור את יישום זה</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>דוחות</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>שמור</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>הגדרות</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>סינכרון</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>העברה</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>לסגת</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>לרשום צ'ק</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>כל הזכויות שמורות © שיין הכנסייה 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>מארגן פיננסיים עבור Windows Phone</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>כסף סטרלינג</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>משפטו של יישום זה פג. האם ברצונך לרכוש את היישום עכשיו? אם תבחר כן, תועבר לשוק.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>אל תציג את התזכורת הזאת שוב</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>המשפט פג</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>אתה משתמש גירסת הניסיון תמיכה ב- ad של יישום זה. האם ברצונך לרכוש את היישום כעת כדי להסיר את הפרסומות? אם תבחר כן, תועבר לשוק.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>אל תציג את התזכורת הזאת שוב</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>תזכורת למשפט</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>כסף סטרלינג באפשרותך לשתף נתונים בין משתמשים מורשים כך אתה והמשפחה שלך יהיו תמיד מעודכן על איפה החשבונות שלך עומד. הזן את כתובת הדואר האלקטרוני של Microsoft החשבון של המשתמש או המשתמשים שברצונך לסנכרן ולשתף את הנתונים שלך עם מתחת.</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>משתמשים מורשים</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>גיבוי</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>שגיאה גיבוי מסד נתונים: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>הקש על גיבוי כדי לשמור את הנתונים שלך לתיקיה סטירלינג כסף ב- SkyDrive. פעולה זו תחליף את כל הגיבוי הקיים.
+
+הקש על שחזר כדי להחליף את הנתונים המקומיים שלך עם הגיבוי של SkyDrive.</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>לא התחבר.</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>אירעה שגיאה בעת שחזור מסד הנתונים.</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>שגיאה בשחזור מסד נתונים: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>אין אפשרות למצוא קובץ גיבוי קיים כדי לשחזר.</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>מסד שוחזר בהצלחה.</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>נכנסת.</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>שגיאה בהתחברות עם SkyDrive: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>מסד נתונים מגובים בהצלחה.</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>גיבוי</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>כל ההוצאות</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>כמות</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>כמות נדרשת, חייב להיות גדול מ- 0.</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>תקציב</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>מותאם אישית</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>תאריך סיום</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>תאריך הסיום להיות לאחר תאריך התחלה.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>תאריך סיום נדרש לפרקי התקציב מותאם אישית.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>חודשי</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>שם</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>דרוש שם.</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>תקופת</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>תאריך התחלה</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>תקציבים</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>תקציב</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>סוג</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>שבועי</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>שנתי</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>קטגוריות</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>רכב</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>שטרות</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>עסקים</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>צדקה</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>לפי קטגוריה</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>היסטוריה</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>בגדים</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>פיקדון</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>בידור</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>מזון</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>בריאות</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>הבית</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>שונות</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>שם הקטגוריה</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>דרוש שם קטגוריה.</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>כלי עזר</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>חופשה</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>סוגי תרשימים</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>בדוק</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>מגבלת אשראי</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>טווח תאריכים</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} יום של איחור</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} יום הנותרים</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} ימים איחור</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} ימים נותרו</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>למחוק את החשבון</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>האם אתה בטוח שברצונך למחוק את החשבון הזה, כל התנועות שלה, ומקושרת כל המטרות?</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>למחוק את התקציב</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>האם אתה בטוח שברצונך למחוק את התקציב הזה?</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>למחוק את המטרה</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>האם אתה בטוח שברצונך למחוק את המטרה הזו?</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>מחק</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>למחוק את התנועה</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>האם אתה בטוח שברצונך למחוק את התנועה הזאת?</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>פיקדון</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>היישום נתקל בבעיה. . אני מצטער על הטירחה.
+
+אודה לעזרתך על-ידי שליחת דוח השגיאה מוכן. זה יעזור לפתרון הבעיה מהר יותר.</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>שגיאת יישום</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>שהורדו {0} מתוך {1} בתים...</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>עריכת חשבון</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>עריכת תקציב</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>ערוך את המטרה</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>עריכה</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>הזן את הסיסמה שלך</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>הוצאות</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>כיצד ניתן לשפר יישום זה כך שתהי מוכנה לדרג אותו 5 כוכבים בשוק?</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>אני יכול לרפא אותה?</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>שגיאה כסף סטרלינג</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>לתת משוב</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>חשבון</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>נדרש חשבון.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>מושגת!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>סכום חייב להיות גדול יותר יתרת החשבון הנבחר הנוכחי.</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>כמות</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>תאריך היעד חייב להיות לאחר {0:d}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>תאריך היעד חייב להיות אחרי היום.</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>שם</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>דרוש שם.</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>בחר חשבון</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>תאריך התחלה</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>מטרות</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>תאריך היעד</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>הכנסה</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>האיזון הראשוני</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>אזהרה: ערכים לא חוקיים</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>כרטיס אשראי</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>מיקום נדרש.</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>ביטול</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>לא</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>אוקיי</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>כן</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>הכנסה נטו</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>הוסף חשבון משתמש מורשה</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>לא</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>אין למשתמשים מורשים</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(ללא קטגוריה)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>לא, תודה</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>אחרים</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>סיסמה</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>אימות...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>סיסמה לא חוקית</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>pin כדי להתחיל</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>הורדת...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>מסנכרן...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>טוען...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>עדכון מסד נתונים</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>העלאת...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>לקנות את הגרסה המלאה</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>אשמח לשמוע ממך! אם אתה אוהב את היישום, בבקשה שיעור זה על השוק ולשתף את המשוב שלך.</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>אל תציג את התזכורת הזאת שוב</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>קצב היישום</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>סטירלינג כסף - דוחות</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>RightToLeft</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>he-IL</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>שחזור</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>שמור</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>חיפוש</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>בחר תאריך</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>בסדר אלפביתי</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>סוג רשימת תיקי לקוחות לפי</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>תכוף</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>אשר את הסיסמה</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>אשר שסיסמה נדרשת.</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>סיסמה</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>הסיסמה חייבת להתאים אשר סיסמה.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>הסיסמה נדרשת.</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>הגדרות</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>השתמש בסיסמה</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>איזון: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>לאפשר סנכרון</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>סטירלינג כסף יכול להיות מסונכרנים, גיבוי Windows Azure. בנוסף, חשבונות נפרדים עשוי להיות משותף עם משתמשים אחרים כמו בן הזוג שלך.
+
+אני לוקח ברצינות את האבטחה שלך ואת כל הנתונים הוא מועבר בצורה מאובטחת באמצעות http בעילום שם מאובטח באמצעות האישורים שלך חשבון Microsoft. סטירלינג כסף אין לאחסן כל חשבון ספציפי כמו חשבון או מספרי הניתוב או מידע אישי כמו המידע שלך שם או כניסה. אם יש לך שאלות נוספות, אנא פנה לי באמצעות הקישור להלן:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>סטירלינג כסף סינכרון שאלה או חשש</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>שאלות או דאגות</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>סינכרון</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>אתה חייב להיות מחובר כדי סינכרון.</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>סינכרון בעת ההפעלה</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>אין אפשרות לסנכרן בשלב זה. נא נסה שוב מאוחר יותר.</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>דוא ל תמיכה טכנית/משוב</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>משוב כסף סטרלינג</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>שרת לא זמין</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>שגיאת סינכרון נתונים</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>יותר מידי סוכנים רקע הופעלו. . ללכת הגדרות היישום כדי להשבית סוכנים אחרים לפני הפעלת יום הולדת סטירלינג הסוכן, בבקשה</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>המאזן</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>חשבון</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>כמות</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>קטגוריה</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>בדוק</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>תאריך</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>מיקום</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>הערות</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>פורסם</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>היתרה הזמינה</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>בחר חשבון</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>טוען...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>אין תנועות</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>פורסם המאזן</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>העבר</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>העברה מ- {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>העברה</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>להעביר</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>להעביר את {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>פונקציונליות זו זמינה רק בהגירסה המלאה.</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} לחץ את לשאוג לחצן לקנות כדי לרכוש את הגירסה המלאה.</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>רק עשר (10) עסקאות לכל חשבון מותר במצב המשפט.</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>רק שני (2) חשבונות מותר במצב המשפט.</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>{0} ימים נשארו.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>נשארו {0} פעמים.</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>משפט</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>ידוע</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>בטל הצמדה מההתחלה</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>הועלה {0} מתוך {1} בתים...</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>גמילה</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>אתה משתמש גירסת ניסיון בחינם ל- 30 יום של שירותי סינכרון. אם ברצונכם לרכוש את היישום כדי להמשיך להשתמש בשירותים מעבר למשפט? אם תבחר כן, תועבר לשוק.</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>תזכורת למשפט</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Triial שירות הסינכרון שלך פגה. האם ברצונך לרכוש את היישום עכשיו? אם תבחר כן, תועבר לשוק.</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>המשפט פג</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>כן</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>סיסמה לא חוקית</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>נסה שנית</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>יציאה</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

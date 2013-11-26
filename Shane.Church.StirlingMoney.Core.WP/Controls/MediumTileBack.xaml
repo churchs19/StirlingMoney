@@ -28,20 +28,20 @@
                                                                 HorizontalAlignment="Left" 
                                                                 Margin="12,12,12,0"
                                                                 FontWeight="Bold" 
-                                                                FontSize="15" />
+                                                                FontSize="{StaticResource PhoneFontSizeMediumLarge}" />
             <TextBlock Text="{Binding AccountBalance, Converter={StaticResource LocalLocalizedCurrency}}" 
                                                                 HorizontalAlignment="Left" 
                                                                 Margin="12,0" 
-                                                                FontSize="15"/>
+                                                                FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
             <TextBlock Text="{Binding Path=LocalizedResources.TransactionsPostedBalanceLabel, Source={StaticResource LocalLocalizedStrings}}" 
                                                                 HorizontalAlignment="Left" 
                                                                 Margin="12,0" 
                                                                 FontWeight="Bold"
-                                                                FontSize="15"/>
+                                                                FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
             <TextBlock Text="{Binding PostedBalance, Converter={StaticResource LocalLocalizedCurrency}}" 
                                                                 HorizontalAlignment="Left" 
                                                                 Margin="12,0,12,12"
-                                                                FontSize="15"/>
+                                                                FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
         </StackPanel>
     </Grid>
 </UserControl>

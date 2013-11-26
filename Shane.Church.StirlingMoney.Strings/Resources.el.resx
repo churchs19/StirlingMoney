@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>Σχετικά με</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>άλλες εφαρμογές από Shane εκκλησία</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>Βαθμολογήστε αυτό το app</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>εικόνα του υπόψη</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>όνομα λογαριασμού</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>Απαιτείται το όνομα του λογαριασμού.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>Απαιτείται λογαριασμός.</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>Λογαριασμοί</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>Πραγματική</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>Προσθέστε ένα λογαριασμό για να ξεκινήσετε</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>Προσθέστε το λογαριασμό</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>Προσθέστε προϋπολογισμού</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>Προσθέστε την κατηγορία</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>Προσθήκη στόχου</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>Το έργο αυτό συγχρονίζει τα δεδομένα Stirling χρήματα με κάθε κοινούς χρήστες και ενημερώνει τα ζωντανά κεραμίδια.</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>Φόντο παράγοντες για αυτήν την εφαρμογή έχουν απενεργοποιηθεί από το χρήστη.</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>Αυτή η συσκευή δεν υποστηρίζει φόντο πράκτορες, έτσι αυτό το χαρακτηριστικό θα απενεργοποιηθεί.</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>Ποσό</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>{0} που είναι υπόλοιπο</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>σχετικά με</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>Προσθέστε</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>Προσθέστε το λογαριασμό</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>δημιουργία αντιγράφων ασφαλείας</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>κατηγορίες</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>κατάθεση</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>αναθεώρηση αυτή app</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>εκθέσεις</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>αποθήκευση</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>ρυθμίσεις</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>συγχρονισμού</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>μεταφορά</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>αποσύρει</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>Γράψτε ελέγχου</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>Πνευματικά δικαιώματα © Shane εκκλησία 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Μια οικονομική διοργανωτής για Windows Phone</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Stirling χρήματα</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>Έχει λήξει η δοκιμή αυτής της εφαρμογής. Θέλετε να αγοράσει την εφαρμογή τώρα; Αν επιλέξετε ναι - θα μεταφερθείτε στην αγορά.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Να μην εμφανιστεί ξανά αυτή η υπενθύμιση</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>Δίκη έληξε</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>Χρησιμοποιείτε το ad-υποστηρίζεται δοκιμαστική έκδοση αυτής της εφαρμογής. Θέλετε να αγοράσει την εφαρμογή τώρα για να αφαιρέσετε τις διαφημίσεις; Αν επιλέξετε ναι - θα μεταφερθείτε στην αγορά.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Να μην εμφανιστεί ξανά αυτή η υπενθύμιση</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>Δοκιμή υπενθύμιση</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>Stirling χρήματα μπορεί να μοιραστεί τα στοιχεία μεταξύ εξουσιοδοτημένους χρήστες έτσι εσείς και η οικογένειά σας είναι πάντα ενήμεροι για τη στάση τους λογαριασμούς σας. Εισάγετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου του Microsoft λογαριασμού του χρήστη ή χρήστες που θέλετε να συγχρονίσετε και να μοιράζονται τα δεδομένα σας κάτω από.</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>Εξουσιοδοτημένους χρήστες</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>δημιουργία αντιγράφων ασφαλείας</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>Σφάλμα αντιγράφων ασφαλείας βάσης δεδομένων: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>Πατήστε δημιουργία αντιγράφων ασφαλείας για να αποθηκεύσετε τα δεδομένα σας στο φάκελο Stirling χρήματα στο SkyDrive. Αυτό θα αντικαταστήσει οποιοδήποτε υπάρχον αντίγραφο ασφαλείας.
+
+Πατήστε Επαναφορά για να αντικαταστήσετε τα τοπικά δεδομένα σας με το αντίγραφο ασφαλείας από το SkyDrive.</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>Δεν φέρει.</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα κατά την Επαναφορά βάσης δεδομένων.</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>Σφάλμα που Επαναφορά βάσης δεδομένων: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>Σε θέση να βρείτε ένα υπάρχον αρχείο αντιγράφων ασφαλείας για την αποκατάσταση.</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>Βάση δεδομένων αποκατασταθεί με επιτυχία.</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>Υπεγράφη στο.</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>Σφάλμα κατά τη σύνδεση με το SkyDrive: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>Βάση δεδομένων με επιτυχία.</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>Δημιουργία αντιγράφων ασφαλείας</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>Όλα τα έξοδα</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>ποσό</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>Ποσό που απαιτείται και πρέπει να είναι μεγαλύτερη από 0.</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>Προϋπολογισμού</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>Προσαρμοσμένη</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>ημερομηνία λήξης</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>Τέλος Ημερομηνία πρέπει να είναι μετά την ημερομηνία έναρξης.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>Ημερομηνία λήξης είναι αναγκαία για την προσαρμοσμένη δημοσιονομικών περιόδων.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>Μηνιαία</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>Όνομα</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>Απαιτείται το όνομα.</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>περίοδο</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>ημερομηνία έναρξης</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>Προϋπολογισμούς</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>προϋπολογισμού</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>Τύπος</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>Εβδομαδιαία</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>Ετήσιου</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>Κατηγορίες</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>Αυτοκινήτου</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>Τους λογαριασμούς</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>Επιχειρήσεων</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>Φιλανθρωπία</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>από την κατηγορία</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>ιστορία</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>Είδη ένδυσης</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>Κατάθεση</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>Ψυχαγωγία</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>Τροφίμων</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>Υγεία</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>Σπίτι</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>Διάφορα</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>όνομα της κατηγορίας</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>Απαιτείται το όνομα της κατηγορίας.</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>Βοηθητικά προγράμματα</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>Διακοπές</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>τύποι γραφήματος</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>Ελέγχου</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>πιστωτικό όριο</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>Εύρος ημερομηνιών</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} ημέρα εκπρόθεσμες</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>ημέρα {0} που απομένουν</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>ληξιπρόθεσμες ημέρες {0}</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} ημερών που απομένουν</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>Διαγραφή λογαριασμού</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το λογαριασμό, όλων των συναλλαγών, και όλες τις συναφείς στόχους;</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>Διαγραφή προϋπολογισμού</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτόν τον προϋπολογισμό;</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>Διαγραφή στόχος</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτόν τον στόχο;</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>Διαγραφή</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>Διαγράψτε τη συναλλαγή</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτή τη συναλλαγή;</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>Κατάθεση</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>Η εφαρμογή έχει αντιμετώπισα έναs πρόβλημα. Λυπάμαι για την ταλαιπωρία.
+
+Θα εκτιμούσα τη βοήθειά σας στέλνοντας αναφορά σφάλματος προετοιμασμένοι. Αυτό θα βοηθήσει με την επίλυση του προβλήματος πιο γρήγορα.</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>Σφάλμα εφαρμογής</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>Κατέβασα {0} από {1} bytes...</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>Επεξεργαστείτε το λογαριασμό</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>Επεξεργασία προϋπολογισμού</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>Επεξεργαστείτε στόχος</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>επεξεργασία</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>εισάγετε τον κωδικό σας</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>Έξοδα</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>Πώς μπορεί να βελτιώσει αυτήν την εφαρμογή, έτσι ώστε θα είστε πρόθυμοι να το αξιολογήσουν 5 αστέρια στην αγορά;</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Μπορώ να το κάνω καλύτερο;</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>Σφάλμα χρήματα Stirling</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>να δώσει ανατροφοδότηση</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>λογαριασμό</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>Απαιτείται λογαριασμός.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>επιτευχθεί!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>Ποσό πρέπει να είναι μεγαλύτερη από το τρέχον ισοζύγιο τον επιλεγμένο λογαριασμό.</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>ποσό</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>Ημερομηνία-στόχος πρέπει να είναι μετά από {0: d}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>Ημερομηνία-στόχος πρέπει να είναι μετά από σήμερα.</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>Όνομα</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>Απαιτείται το όνομα.</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>Επιλέξτε το λογαριασμό</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>ημερομηνία έναρξης</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>Γκολ</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>ημερομηνία-στόχο</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>Εισοδήματος</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>Αρχική ισορροπία</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>Προειδοποίηση: Μη έγκυρες τιμές</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>πιστωτική κάρτα</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>Τοποθεσία απαιτείται.</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>"Άκυρο"</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>Όχι</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>Ναι</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>Καθαρό εισόδημα</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>Προσθέστε το λογαριασμό εξουσιοδοτημένος χρήστης</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Όχι</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>Δεν εξουσιοδοτημένους χρήστες</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(χωρίς κατηγορία)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>Όχι, ευχαριστώ</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>Άλλες</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Κωδικός πρόσβασης</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>επικύρωση...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>άκυρος κωδικός πρόσβασης</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>Καρφίτσωμα στην έναρξη</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>Κατέβασμα...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>Συγχρονισμός...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>Φόρτωση...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>Ενημέρωση βάσης δεδομένων</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>Φόρτωμα...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>Αγοράστε την πλήρη έκδοση</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>Θα ήθελα πολύ να σας ακούσουμε! Αν σας αρέσει το app, παρακαλώ Εκτιμήστε αυτό στην αγορά και να μοιραστείτε τα σχόλιά σας.</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Να μην εμφανιστεί ξανά αυτή η υπενθύμιση</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>Βαθμολογήστε το app</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>Stirling χρήματα - εκθέσεις</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>el-GR</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>Επαναφορά</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>αποθήκευση</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>Αναζήτηση</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>Επιλέξτε ημερομηνία</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>αλφαβητικά</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>Κατάλογος του είδους λογαριασμό από</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>χρησιμοποιούνται συχνότερα</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>Επιβεβαίωση κωδικού</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>Επιβεβαιώστε κωδικό πρόσβασης απαιτείται.</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>Κωδικός πρόσβασης</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>Κωδικός πρόσβασης πρέπει να ταιριάζουν Confirm Password.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>Κωδικός πρόσβασης που απαιτείται.</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Ρυθμίσεις</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>Χρησιμοποιήστε τον κωδικό πρόσβασης</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>Ισορροπία: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>Ενεργοποίηση συγχρονισμού</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>Stirling χρήματα μπορούν να συγχρονιστούν και αντίγραφα ασφαλείας σε Windows Azure. Επιπλέον, μεμονωμένους λογαριασμούς μπορούν να μοιραστούν με άλλους χρήστες όπως το σύζυγό σας.
+
+Παίρνω την ασφάλειά σας πολύ σοβαρά και όλα τα δεδομένα μεταδίδονται με ασφάλεια μέσω HTTPS και στερεώνεται ανώνυμα χρησιμοποιώντας τα διαπιστευτήρια του λογαριασμού σας Microsoft. Stirling χρήματα δεν αποθηκεύει καμία συγκεκριμένη λογαριασμό όπως λογαριασμού ή κωδικούς φασεολογίων ή προσωπικά αναγνωρίσιμες πληροφορίες σας όνομα ή σύνδεση. Εάν έχετε περαιτέρω ερωτήσεις, παρακαλώ επικοινωνήστε μαζί μου χρησιμοποιώντας τον παρακάτω σύνδεσμο:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>Stirling χρήματα συγχρονισμού ερώτηση ή ανησυχία</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>ερωτήσεις ή ανησυχίες</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>Συγχρονισμού</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>Θα πρέπει να συνδεθείτε για να συγχρονίσετε.</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>συγχρονίσετε την εκκίνηση</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>Ανίκανος στο sync αυτή τη στιγμή. Παρακαλώ προσπαθήστε ξανά αργότερα.</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>τεχνική υποστήριξη/ανατροφοδότηση email</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>Stirling χρήματα ανατροφοδότηση</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>Διακομιστή δεν είναι διαθέσιμη</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>Σφάλμα συγχρονισμού δεδομένων</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>Πάρα πολλά φόντο πράκτορες έχουν ενεργοποιηθεί. Παρακαλώ πηγαίνετε στην εφαρμογή ρυθμίσεις για να απενεργοποιήσετε άλλους παράγοντες πριν από την ενεργοποίηση του Stirling γενέθλια πράκτορα.</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>συνολικό υπόλοιπο</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>λογαριασμό</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>ποσό</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>Κατηγορία</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>ελέγχου</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>ημερομηνία</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>τοποθεσία</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>σημειώσεις</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>Καταχωρήθηκε</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>διαθέσιμο υπόλοιπο</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>Επιλέξτε το λογαριασμό</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>Φόρτωση...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>Συναλλαγές</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>Καταχωρήθηκε ισορροπία</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>Μεταφορά από</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>Μεταφορά από {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>Μεταφορά</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>Μεταφορά σε</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>Μεταφορά σε {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>Αυτή η λειτουργία διατίθεται μόνο στην πλήρη έκδοση.</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} Πατήστε την αγορά κουμπί παρακάτω για να αγοράσετε την πλήρη έκδοση.</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>Σε δοκιμαστική λειτουργία, επιτρέπονται μόνο δέκα (10) οι συναλλαγές ανά λογαριασμό.</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>Σε δοκιμαστική λειτουργία, επιτρέπονται μόνο δύο (2) λογαριασμών.</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>Έχετε {0} ημέρες αριστερά.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>Έχετε {0} ώρα(-ες) αριστερά.</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>Δίκη</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>Άγνωστο</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>Ξεκαρφίτσωμα από την αρχή</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>φορτώθηκε {0} από {1} bytes...</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>Απόσυρση</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>Χρησιμοποιείτε τη δωρεάν δοκιμή 30 ημερών του τις υπηρεσίες συγχρονισμού. Θα θέλατε να αγοράσει την εφαρμογή για να συνεχίσετε να χρησιμοποιείτε τις υπηρεσίες πέρα από τη δίκη; Αν επιλέξετε ναι - θα μεταφερθείτε στην αγορά.</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>Δοκιμή υπενθύμιση</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Σας triial υπηρεσία συγχρονισμού έχει λήξει. Θέλετε να αγοράσει την εφαρμογή τώρα; Αν επιλέξετε ναι - θα μεταφερθείτε στην αγορά.</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>Δίκη έληξε</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ναι</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>άκυρος κωδικός πρόσβασης</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>"Επανάληψη"</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>Έξοδος</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

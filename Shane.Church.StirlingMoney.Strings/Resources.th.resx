@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>เกี่ยวกับ</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>ปพลิเคชันอื่น ๆ โดยคริสตจักรเชน</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>ราคา app นี้</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>รูปภาพบัญชี</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>ชื่อบัญชี</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>ชื่อบัญชีจะต้อง</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>บัญชีจะต้อง</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>บัญชี</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>เกิดขึ้นจริง</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>เพิ่มบัญชีเริ่มต้น</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>เพิ่มบัญชีผู้ใช้</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>เพิ่มงบประมาณ</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>เพิ่มประเภท</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>เพิ่มเป้าหมาย</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>งานนี้ทำข้อมูลเงินสเตอร์ลิง มีผู้ใช้ใด ๆ ร่วมกัน และปรับปรุงกระเบื้องอยู่</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>ตัวแทนพื้นหลังสำหรับโปรแกรมประยุกต์นี้ได้ถูกปิดใช้งาน โดยผู้ใช้</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>อุปกรณ์นี้ไม่สนับสนุนตัวแทนพื้นหลัง เพื่อจะปิดคุณลักษณะนี้</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>ยอดเงิน</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>{0} ที่เหลือ</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>เกี่ยวกับ</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>เพิ่ม</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>เพิ่มบัญชีผู้ใช้</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>การสำรองข้อมูล</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>ประเภท</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>ฝาก</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>ตรวจสอบ app นี้</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>รายงาน</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>บันทึก</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>การตั้งค่า</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>ซิงค์</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>โอนย้าย</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>ถอน</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>เขียนเครื่องหมาย</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>สงวนลิขสิทธิ์ © เชนโบสถ์ 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>ผู้จัดการการเงินสำหรับ Windows Phone</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>เงินสเตอร์ลิง</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>ทดลองใช้โปรแกรมประยุกต์นี้ได้หมดอายุ คุณต้องซื้อใช้ตอนนี้หรือไม่ ถ้าคุณเลือก Yes - คุณจะถูกเปลี่ยนเส้นทางการตลาด</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>ไม่ต้องแสดงตัวเตือนนี้อีก</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>ทดลองใช้หมดอายุ</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>คุณกำลังใช้การสนับสนุนโฆษณารุ่นทดลองใช้โปรแกรมประยุกต์นี้ คุณต้องซื้อใบสมัครตอนนี้เพื่อลบโฆษณาหรือไม่ ถ้าคุณเลือก Yes - คุณจะถูกเปลี่ยนเส้นทางการตลาด</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>ไม่ต้องแสดงตัวเตือนนี้อีก</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>ทดลองใช้จดหมายเตือนชำระเงิน</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>เงินสเตอร์ลิงสามารถแบ่งปันข้อมูลระหว่างผู้ให้คุณและครอบครัวอยู่เสมอเสมอบนที่ยืนบัญชีของคุณ ป้อนอยู่อีเมล์ Microsoft บัญชีของผู้ใช้ที่คุณต้องการซิงโครไนส์ และแบ่งปันข้อมูลของคุณด้านล่าง</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>ผู้ได้รับอนุญาต</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>การสำรองข้อมูล</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>สำรองฐานข้อมูลข้อผิดพลาด: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>เคาะสำรองจะบันทึกข้อมูลของคุณไปยังโฟลเดอร์เงินสเตอร์ลิงใน SkyDrive นี้จะเขียนทับข้อมูลสำรองที่มีอยู่ใด ๆ
+
+คืนค่าแท็บการเขียนทับข้อมูลภายในเครื่องของคุณ ด้วยการสำรองข้อมูลจาก SkyDrive</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>ไม่ลงนามใน</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>เกิดข้อผิดพลาดคืนค่าฐานข้อมูล</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>ฐานข้อมูลการกู้คืนข้อผิดพลาด: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>ไม่พบไฟล์สำรองการคืนค่า</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>ฐานข้อมูลที่คืนค่าเสร็จเรียบร้อยแล้ว</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>ลงนามใน</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>เชื่อมต่อกับ SkyDrive ข้อผิดพลาด: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>ฐานข้อมูลที่สำรองข้อมูลเสร็จเรียบร้อยแล้ว</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>การสำรองข้อมูล</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>ค่าใช้จ่ายทั้งหมด</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>ยอดเงิน</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>ยอดเงินที่จำเป็น และต้องมากกว่า 0</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>งบประมาณ</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>แบบกำหนดเอง</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>วันสิ้นสุด</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>วันสิ้นสุดต้องเป็นวันหลังจากวันที่เริ่มต้น</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>จะต้องวันสิ้นสุดสำหรับรอบระยะเวลางบประมาณเอง</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>รายเดือน</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>ชื่อ</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>ชื่อถูกต้อง</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>รอบระยะเวลา</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>วันเริ่มต้น</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>งบประมาณ</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>งบประมาณ</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>ชนิด</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>รายสัปดาห์</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>ประจำปี</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>ประเภท</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>รถยนต์</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>สูตร</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>ธุรกิจ</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>กุศล</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>แบ่งตามประเภท</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>ประวัติ</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>เสื้อผ้า</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>ฝาก</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>ความบันเทิง</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>อาหาร</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>สุขภาพ</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>บ้าน</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>เบ็ดเตล็ด</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>ชื่อประเภท</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>ชื่อประเภทจะต้อง</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>โปรแกรมอรรถประโยชน์</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>วันหยุดพักผ่อน</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>ชนิดแผนภูมิ</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>กาเครื่องหมาย</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>วงเงินสินเชื่อ</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>ช่วงวัน</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} วันเกินกำหนด</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} วันที่เหลือ</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} วันเกินกำหนด</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} วันที่เหลือ</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>ลบบัญชี</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>คุณแน่ใจคุณต้องการลบบัญชีนี้ ทั้งหมดของธุรกรรม และทั้งหมดสัมพันธ์กับเป้าหมายหรือไม่</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>ลบงบประมาณ</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>คุณต้องการลบงบประมาณนี้แน่ใจหรือไม่</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>ลบเป้าหมาย</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>คุณต้องการลบเป้าหมายนี้แน่ใจหรือไม่</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>ลบธุรกรรม</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>คุณต้องการลบธุรกรรมนี้แน่ใจหรือไม่</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>ฝาก</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>โปรแกรมประยุกต์ที่พบปัญหา ผมขออภัยในความไม่สะดวก
+
+ฉันจะขอบคุณความช่วยเหลือของคุณ โดยการส่งรายงานข้อผิดพลาดที่เตรียมไว้ นี้จะช่วยแก้ปัญหาได้เร็วขึ้น</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>ข้อผิดพลาดของแอพลิเคชัน</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>ดาวน์โหลด {0} {1} ไบต์...</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>แก้ไขบัญชี</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>แก้ไขงบประมาณ</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>แก้ไขเป้าหมาย</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>แก้ไข</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>ป้อนรหัสผ่านของคุณ</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>ค่าใช้จ่าย</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>ฉันจะปรับปรุงโปรแกรมประยุกต์นี้เพื่อที่คุณจะยินดีที่จะจัดอันดับ 5 ดาวในตลาด</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>ฉันสามารถทำให้มันดีขึ้นหรือไม่</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>ข้อผิดพลาดเงินสเตอร์ลิง</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>ติชม</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>บัญชี</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>บัญชีจะต้อง</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>สำเร็จ</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>ยอดเงินต้องมากกว่ายอดดุลปัจจุบันของบัญชีที่เลือก</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>ยอดเงิน</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>วันเป้าหมายต้องหลัง {0:d }</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>วันเป้าหมายต้องเป็นหลังจากวันนี้</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>ชื่อ</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>ชื่อถูกต้อง</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>เลือกบัญชี</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>วันเริ่มต้น</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>เป้าหมาย</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>วันเป้าหมาย</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>รายได้</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>ยอดดุลเริ่มต้น</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>คำเตือน: ค่าไม่ถูกต้อง</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>บัตรเครดิต</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>ตำแหน่งที่ถูกต้อง</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>ไม่ใช่</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>ตกลง, ได้</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>ใช่</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>กำไรสุทธิ</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>เพิ่มบัญชีผู้ใช้ที่ได้รับอนุญาต</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>ไม่ใช่</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>ผู้ไม่ได้รับอนุญาต</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(ไม่มีหมวดหมู่)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>ไม่ล่ะขอบใจ</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>อื่น ๆ</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>รหัสผ่าน</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>ตรวจสอบ...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>รหัสผ่านไม่ถูกต้อง</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>pin สำหรับการเริ่มต้น</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>ดาวน์โหลด...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>ตรง...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>กำลังโหลด...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>ปรับปรุงฐานข้อมูล</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>อัปโหลด...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>ซื้อเวอร์ชันเต็ม</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>ฉันชอบที่จะได้ยินจากคุณ ถ้าคุณชอบ app กรุณาอัตราในตลาด และใช้คำติชมของคุณ</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>ไม่ต้องแสดงตัวเตือนนี้อีก</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>ราคา app</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>เงินสเตอร์ลิง - รายงาน</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>th-TH</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>การคืนค่า</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>บันทึก</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>ค้นหา</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>เลือกวัน</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>ตามตัวอักษร</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>เรียงลำดับรายการบัญชีตาม</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>ใช้บ่อยที่สุด</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>ยืนยันรหัสผ่าน</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>ยืนยันรหัสผ่านที่จำเป็น</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>รหัสผ่าน</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>รหัสผ่านต้องตรงกับรหัส</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>รหัสผ่านที่ถูกต้อง</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>การตั้งค่า</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>ใช้รหัสผ่าน</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>ดุล: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>เปิดใช้งานการซิงโครไนส์</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>เงินสเตอร์ลิงสามารถการซิงโครไนส์ และสำรอง Windows Azure นอกจากนี้ บัญชีอาจร่วมกับผู้อื่นเช่นคู่สมรส
+
+ฉันใช้ความปลอดภัยของคุณอย่างมาก และข้อมูลทั้งหมดถูกส่งอย่างปลอดภัยผ่านทาง HTTPS และมีโดยไม่ระบุชื่อความปลอดภัยโดยใช้ข้อมูลประจำตัวบัญชี Microsoft ของคุณ เงินสเตอร์ลิงเก็บเฉพาะบัญชีต่าง ๆ เช่นบัญชี หรือหมายเลขสายงานการผลิตหรือข้อมูลส่วนบุคคลเช่นชื่อหรือเข้าสู่ระบบข้อมูลของคุณ ถ้าคุณสงสัยเพิ่มเติม กรุณาติดต่อใช้ลิงค์ด้านล่าง:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>กังวลหรือคำถามตรงเงินสเตอร์ลิง</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>คำถามหรือข้อสงสัย</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>ซิงโครไนส์</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>คุณต้องเข้าสู่ในซิงค์</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>ซิงโครไนส์เมื่อเริ่มต้นระบบ</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>ไม่สามารถซิงค์ได้ในขณะนี้ กรุณาลองใหม่ในภายหลัง</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>อีเมล์ติชมเทคนิคสนับสนุน</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>ความคิดเห็นเงินสเตอร์ลิง</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>เซิร์ฟเวอร์ไม่พร้อมใช้งาน</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>ข้อผิดพลาดในการซิงค์ข้อมูล</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>มีการเปิดใช้งานตัวแทนพื้นหลังมากเกินไป กรุณาไปแอพลิเคชันการตั้งค่าการปิดใช้งานตัวแทนอื่น ๆ ก่อนเปิดใช้งานตัวแทนวันเกิดสเตอร์ลิง</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>ยอดดุลรวม</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>บัญชี</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>ยอดเงิน</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>ประเภท</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>กาเครื่องหมาย</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>วัน</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>สถานที่ตั้ง</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>หมายเหตุ</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>ลงรายการบัญชี</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>มี</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>เลือกบัญชี</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>กำลังโหลด...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>ไม่มีธุรกรรม</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>ลงรายการบัญชียอดดุล</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>โอนย้ายจาก</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>โอนย้ายจาก {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>โอนย้าย</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>โอนย้ายไป</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>โอนย้ายไปยัง {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>ฟังก์ชันนี้จะพร้อมใช้งานในเวอร์ชันเต็มเท่านั้น</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} แล้วซอลเบลโลว์ปุ่มซื้อเพื่อซื้อเวอร์ชันเต็ม</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>เฉพาะสิบ (10) ธุรกรรมสำหรับแต่ละบัญชีได้ในโหมดการทดลอง</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>เฉพาะสอง (2) บัญชีได้ในโหมดการทดลอง</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>ซ้ายคุณมี {0} วัน</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>คุณมี {0} time(s) ซ้าย</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>ทดลอง</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>ไม่รู้จัก</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>ถอนหมุดออกจากจุดเริ่มต้น</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>อัพโหลด {0} {1} ไบต์...</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>ถอน</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>คุณกำลังใช้ทดลองฟรี 30 วันบริการซิงโครไนส์ คุณต้องการซื้อเพื่อใช้บริการนอกเหนือจากการพิจารณาคดีต่อไปหรือไม่ ถ้าคุณเลือก Yes - คุณจะถูกเปลี่ยนเส้นทางการตลาด</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>ทดลองใช้จดหมายเตือนชำระเงิน</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Triial การบริการซิงโครไนส์ของคุณหมดอายุ คุณต้องซื้อใช้ตอนนี้หรือไม่ ถ้าคุณเลือก Yes - คุณจะถูกเปลี่ยนเส้นทางการตลาด</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>ทดลองใช้หมดอายุ</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>ใช่</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>รหัสผ่านไม่ถูกต้อง</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>ลองอีกครั้ง</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>ออกจาก</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

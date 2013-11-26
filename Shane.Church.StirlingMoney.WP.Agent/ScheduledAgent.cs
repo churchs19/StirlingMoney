@@ -5,7 +5,11 @@ using Shane.Church.StirlingMoney.Core.Exceptions;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.SterlingDb;
+#if WP8
+using Shane.Church.StirlingMoney.Core.WP8;
+#else
 using Shane.Church.StirlingMoney.Core.WP7;
+#endif
 using Shane.Church.Utility.Core.WP;
 using System;
 using System.Diagnostics;

@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>Over</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>andere apps door Shane Church</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>Stem op dit app</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>afbeelding van de account</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>accountnaam</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>Accountnaam is vereist.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>Account is vereist.</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>Rekeningen</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>Werkelijke</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>Een account aan de slag toevoegen</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>Account toevoegen</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>Begroting toevoegen</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>Categorie toevoegen</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>Doel toevoegen</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>Deze taak Stirling geld gegevens synchroniseert met een gedeelde gebruikers en updates van de levende tegels.</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>Achtergrond agenten voor deze toepassing zijn uitgeschakeld door de gebruiker.</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>Dit apparaat biedt geen ondersteuning voor achtergrond agenten, dus deze functie zal worden uitgeschakeld.</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>Bedrag</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>{0} resterende</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>over</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>toevoegen</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>account toevoegen</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>back-up</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>Categorieën</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>storting</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>Dit app bekijken</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>rapporten</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>opslaan</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>Sync</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>overdracht</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>trekken</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>selectievakje schrijven</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>Copyright © Shane kerk 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Een financiële organisator voor Windows Phone</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Stirling geld</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>Het proces van deze toepassing is verlopen. Wilt u de toepassing nu kopen? Kiest u voor Ja - zal u worden doorgestuurd naar de markt.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Deze herinnering niet opnieuw weergeven</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>Verhoor vervallen</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>U gebruikt de advertentie-ondersteunde trial versie van deze toepassing. Wilt u om te kopen de toepassing nu om de advertenties te verwijderen? Kiest u voor Ja - zal u worden doorgestuurd naar de markt.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Deze herinnering niet opnieuw weergeven</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>Proef herinnering</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>Stirling geld kunt het delen van gegevens tussen geautoriseerde gebruikers zodat u en uw familie altijd up to date zijn over de stand van uw accounts. Voer de Microsoft-Account e-mailadres van de gebruiker of gebruikers die u wilt synchroniseren en delen van uw gegevens met hieronder.</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>Geautoriseerde gebruikers</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>back-up</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>Back-up database fout: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>Tik op de back-up als u wilt uw gegevens opslaan in de map Stirling geld in SkyDrive. Dit overschrijft alle bestaande back-up.
+
+Kraan terugzetten naar uw lokale gegevens overschrijven met uw back-up van SkyDrive.</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>Niet ingelogd.</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>Fout opgetreden herstel database.</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>Fout herstellen database: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>Kan niet vinden van een bestaand back-upbestand te herstellen.</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>Database hersteld.</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>Ingelogd.</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>Fout verbinden met SkyDrive: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>Database met succes een back-up.</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>Back-up</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>Alle onkosten</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>bedrag</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>Bedrag is vereist en moet groter zijn dan 0.</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>Begroting</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>Aangepaste</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>einddatum</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>Einddatum moet worden na begindatum.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>Einddatum is vereist voor aangepaste begroting periodes.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>Maandelijkse</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>naam</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>Dit veld is verplicht.</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>periode</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>begindatum</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>Begrotingen</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>begroting</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>type</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>Per</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>Jaarlijks</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>Categorieën</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>Rekeningen</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>Business</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>Liefdadigheid</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>per categorie</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>geschiedenis</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>Kleding</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>Storting</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>Entertainment</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>Voedsel</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>Gezondheid</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>Huis</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>Diversen</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>Categorienaam</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>Categorienaam is vereist.</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>Hulpprogramma 's</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>Vakantie</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>grafiektypen</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>Selectievakje</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>kredietlimiet</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>Datumbereik</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} dag achterstallige</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} dag resterende</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} dagen achterstallig</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} dag(en) te gaan</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>Account verwijderen</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>Weet u zeker dat u wilt verwijderen van deze account, alle van de transacties, en alle bijbehorende doelstellingen?</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>Verwijderen van begroting</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>Weet u zeker dat u wilt verwijderen van deze begroting?</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>Doel verwijderen</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>Weet u zeker dat u wilt verwijderen van dit doel?</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>verwijderen</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>Verwijderen van transactie</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>Weet u zeker dat u wilt verwijderen van deze transactie?</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>Storting</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>De toepassing is een fout opgetreden. Het spijt me voor het ongemak.
+
+Ik waardeer uw hulp door het bereid foutenrapport te sturen. Dit zal helpen met het oplossen van het probleem sneller.</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>Toepassingsfout</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>gedownloade {0} {1} bytes...</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>Account bewerken</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>Begroting bewerken</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>Bewerken van doel</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>bewerken</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>Voer uw wachtwoord</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>Kosten</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>Hoe kan ik deze toepassing verbeteren zodat u bereid om te beoordelen het 5 sterren in de markt zou zijn?</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Kan ik het beter maken?</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>Stirling geld fout</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>feedback geven</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>rekening</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>Account is vereist.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>bereikt!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>Bedrag moet groter zijn dan het huidige saldo van de geselecteerde account.</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>bedrag</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>Streefdatum moet na {0:d}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>Streefdatum moet na vandaag.</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>naam</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>Dit veld is verplicht.</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>Selecteer account</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>begindatum</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>Doelstellingen</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>streefdatum</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>Inkomen</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>oorspronkelijke evenwicht</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>Waarschuwing: Ongeldige waarden</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>creditcard</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>Locatie is vereist.</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>niet</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>Netto-inkomsten</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>geautoriseerde gebruikersaccount toevoegen</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>niet</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>Geen geautoriseerde gebruikers</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(geen categorie)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>Nee dank je</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>Andere</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>wachtwoord</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>valideren...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>ongeldig wachtwoord</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>pin om te beginnen</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>Downloaden...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>Synchroniseren...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>Bezig met laden...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>Bijwerken, database</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>Uploaden...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>Volledige versie kopen</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>Ik zou graag van u horen! Als je de app, alstublieft stem op het op de markt en deel uw feedback.</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Deze herinnering niet opnieuw weergeven</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>Stem op de app</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>Stirling geld - rapporten</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>nl-NL</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>herstellen</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>opslaan</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>zoeken</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>Selecteer datum</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>alfabetisch</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>lijst van de rekening van de sorteren op</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>meest gebruikte</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>Bevestig wachtwoord</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>Bevestigen dat wachtwoord is vereist.</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>wachtwoord</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>Wachtwoord moet overeenkomen met wachtwoord bevestigen.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>Wachtwoord is vereist.</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>wachtwoord gebruiken</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>Balans: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>synchronisatie inschakelen</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>Stirling geld kan worden gesynchroniseerd en back-up Windows Azure. Bovendien, kunnen afzonderlijke accounts worden gedeeld met andere gebruikers zoals uw echtgenoot.
+
+Ik neem uw veiligheid zeer serieus en alle gegevens veilig via HTTPS wordt verzonden en anoniem is beveiligd met behulp van de referenties van uw Microsoft-account. Stirling geld slaat geen specifieke account zoals account of bewerkingsplannummers of persoonlijk identificeerbare informatie zoals uw naam of login informatie. Als u verdere vragen hebt, neem contact op met mij op via de link hieronder:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>Stirling geld synchronisatie vraag of probleem</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>vragen of opmerkingen</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>Synchronisatie</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>U moet zijn aangemeld sync.</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>synchroniseren bij het opstarten</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>Niet in staat om te synchroniseren op dit moment. Probeer het later nog eens.</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>technische ondersteuning/feedback e-mail</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>Stirling geld Feedback</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>Server niet beschikbaar</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>Gegevensfout Sync</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>Te veel achtergrond agenten zijn ingeschakeld. Ga naar de toepassing van voorraadMontages andere agenten uitschakelen voordat u de Stirling verjaardag-agent inschakelt.</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>totaalsaldo</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>rekening</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>bedrag</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>selectievakje</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>datum</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>locatie</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>notities</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>Gepost</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>beschikbare saldo</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>Selecteer account</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>Bezig met laden...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>Geen transacties</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>geboekte evenwicht</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>Overdracht van</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>Overdracht van {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>Overdracht</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>Overbrengen</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>Overbrengen in {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>Deze functionaliteit is alleen beschikbaar in de volledige versie.</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} Klikt u op de koop knop hieronder om de volledige versie aanschaffen.</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>Slechts tien (10) transacties per account zijn toegestaan in proefmodus.</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>Slechts twee (2) rekeningen zijn toegestaan in proefmodus.</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>U hebt {0} dag(en) links.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>U hebt {0} tijd(en) links.</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>Proces</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>Onbekend</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>vrijmaken van start</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>geüploade {0} {1} bytes...</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>Intrekking</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>U gebruikt de 30 dag vrije proef van de synchronisatie diensten. Wenst u te kopen van de toepassing blijven gebruiken van de diensten buiten het proces? Kiest u voor Ja - zal u worden doorgestuurd naar de markt.</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>Proef herinnering</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Uw synchronisatie service triial is verlopen. Wilt u de toepassing nu kopen? Kiest u voor Ja - zal u worden doorgestuurd naar de markt.</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>Verhoor vervallen</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>ongeldig wachtwoord</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>opnieuw proberen</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>uitgang</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

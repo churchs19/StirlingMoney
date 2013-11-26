@@ -1,0 +1,825 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>由謝恩教會的其他應用程式</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>率這個應用程式</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>帳戶圖像</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>帳戶名稱</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>帳戶名稱是必需的。</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>帳戶是必需的。</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>帳戶</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>實際</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>添加帳戶入門</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>添加帳戶</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>添加預算</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>添加類別</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>添加目標</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>此任務將斯特林錢資料同步與共享的任何使用者和更新的活的瓷磚。</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>背景代理商為此應用程式已被禁用的使用者。</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>此設備不支援後臺代理，因此這項功能將被禁用。</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>剩餘 {0}</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>添加帳戶</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>備份</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>類別</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>存款</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>審查此應用程式</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>報告</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>設置</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>同步</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>轉讓</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>撤回</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>寫檢查</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>版權所有 © 謝恩教會 2013 年</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Windows Phone 財務召集人</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>斯特林錢</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>此應用程式的審判已過期。你想要購買現在應用程式嗎？如果您選擇是-您將重定向到市場上。</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>不要再顯示此提醒</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>審判已過期</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>您正在使用此應用程式的廣告支援試用版。你想要購買應用程式現在要刪除廣告嗎？如果您選擇是-您將重定向到市場上。</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>不要再顯示此提醒</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>審判的提醒</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>斯特林錢可以之間共用資料經過授權的使用者，所以您和您的家人都始終是最新的您的帳戶所處的位置。輸入微軟帳戶電子郵件地址的使用者或使用者您想要同步和共用您資料的下面。</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>經授權的使用者</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>備份</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>備份資料庫錯誤: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>點擊備份，以將您的資料保存到在 SkyDrive 的斯特林錢資料夾。這將覆蓋任何現有的備份。點擊還原，用您的 SkyDrive 的備份覆蓋您的本地資料。</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>未簽名。</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>還原資料庫時出現錯誤。</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>還原資料庫時出錯: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>無法找到現有的備份檔案來恢復。</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>成功還原的資料庫。</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>在簽署。</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>與 SkyDrive 連接時出錯: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>成功備份的資料庫。</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>備份</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>所有的費用</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>需要金額，必須大於 0。</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>預算</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>自訂</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>結束日期</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>結束日期必須在開始日期之後。</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>為自訂預算期的結束日期是必需的。</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>每月</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>名稱是必需的。</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>期間</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>開始日期</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>預算</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>預算</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>類型</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>每週</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>每年</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>類別</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>汽車</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>條例草案</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>業務</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>慈善機構</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>按類別</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>歷史</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>服裝</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>存款</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>娛樂</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>食品</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>健康</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>首頁</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>雜項</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>類別名稱</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>類別名稱是必需的。</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>實用程式</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>度假</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>圖表類型</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>檢查</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>信用額度</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>日期範圍</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} 天過期</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} 天剩餘</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} 天逾期</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} 的剩餘天數</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>刪除帳戶</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>確實要刪除此帳戶，所有其交易和所有關聯的目標嗎？</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>刪除預算</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>是否確實要刪除此預算?</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>刪除目標</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>確實要刪除這個目標嗎?</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>刪除交易記錄</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>是否確實要刪除此交易記錄?</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>存款</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>應用程式遇到了問題。我很抱歉造成的不便。通過發送準備的錯誤報表，我會感謝您的説明。這將有助於更快地解決問題。</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>應用程式錯誤</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>下載第 {0} {1} 個位元組......</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>編輯帳戶</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>編輯預算</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>編輯目標</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>請輸入您的密碼</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>費用</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>如何改進此應用程式，所以，你會願意率它在市場上的 5 顆星？</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>我能更好嗎？</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>斯特林錢錯誤</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>提供回饋</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>帳戶</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>帳戶是必需的。</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>實現 ！</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>金額必須大於所選帳戶的當前餘額。</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>目標日期必須後 {0: d}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>目標日期必須經過今天之後。</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>名稱是必需的。</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>選擇帳戶</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>開始日期</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>目標</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>目標日期</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>收入</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>初始餘額</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>警告： 值無效</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>信用卡</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>位置是必需的。</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>沒有</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>還行</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>淨收益</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>添加授權的使用者帳戶</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>沒有</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>沒有經過授權的使用者</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(沒有類別)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>不，謝謝</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>密碼</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>正在驗證...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>不正確密碼</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>pin 來啟動</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>正在下載...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>正在同步...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>正在載入...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>更新資料庫</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>上傳......</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>購買完整版本</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>我很樂意聽到你 ！如果你喜歡這款應用程式，請率它在市場上和共用您的回饋意見。</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>不要再顯示此提醒</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>率這款應用程式</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>斯特林錢-報告</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>zh-TW</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>還原</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>選擇日期</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>按字母順序</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>按帳戶清單排序</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>最常使用的</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>確認密碼</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>確認密碼是必需的。</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>密碼</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>密碼與確認的密碼必須匹配。</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>密碼是必需的。</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>設置</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>使用密碼</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>平衡: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>啟用同步</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>斯特林錢可以到 Windows Azure 備份和同步。此外，個人帳戶可能會與其他使用者共用像你的配偶。您的安全非常認真和所有的資料通過 HTTPS 安全地傳輸和使用您的 Microsoft 帳戶憑據以匿名方式保護。斯特林的錢並不存儲任何帳戶具體象帳戶或路由號碼或個人可識別資訊，如您的姓名或登錄資訊。如果您有任何問題，請聯繫我使用下面的連結：</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>斯特林錢同步問題或關注</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>問題或擔憂</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>同步</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>您必須登錄到同步。</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>在啟動時進行同步</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>不能在這時間同步。請稍後再試。</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>電子郵件技術支援回饋</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>斯特林錢回饋</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>伺服器不可用</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>資料同步錯誤</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>已啟用代理背景太多。請轉到設置應用程式若要在啟用斯特林生日代理之前禁用其他代理。</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>總餘額</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>帳戶</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>類別</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>檢查</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>備註</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>過帳</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>可用餘額</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>選擇帳戶</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>正在載入...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>沒有交易記錄</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>已過帳的平衡</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>從傳輸</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>從 {0} 轉移</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>轉讓</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>轉移到</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>轉移到 {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>此功能才是完整的版本中可用。</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} 點購買按鈕波紋管購買完整版本。</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>在試用模式下允許每個帳戶只能十 10 事務。</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>在試用模式下允許僅兩 2 帳戶。</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>你剩 {0} 天。</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>你剩 {0} 時間 (s)。</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>審判</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>從開始解鎖</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>上載第 {0} {1} 個位元組......</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>您正在使用同步服務 30 天免費的試用。想要購買應用程式繼續使用超出審判服務嗎？如果您選擇是-您將重定向到市場上。</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>審判的提醒</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>您同步服務 triial 已過期。你想要購買現在應用程式嗎？如果您選擇是-您將重定向到市場上。</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>審判已過期</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>不正確密碼</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>請重試</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

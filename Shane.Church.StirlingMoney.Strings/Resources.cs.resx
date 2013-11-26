@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>Další aplikace, Shane církev</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>Ohodnoťte tuto aplikaci</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>Obrázek účtu</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>název účtu</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>Je vyžadován název účtu.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>Účet je nutné.</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>Účty</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>Skutečné</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>Přidat účet, který má začít</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>Přidat účet</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>Přidat rozpočet</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>Přidat kategorii</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>Přidat cíl</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>Tento úkol synchronizuje data Stirling peníze s sdílené uživateli a aktualizuje aktivní okénka.</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>Agenti pozadí pro tuto aplikaci byla zakázána uživatelem.</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>Toto zařízení nepodporuje pozadí agenty, takže tato funkce bude zakázána.</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>Částka</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>zbývá {0}</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>o</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>Přidat</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>přidat účet</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>zálohování</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>vklad</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>přezkoumat tuto aplikaci</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>zprávy</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>uložit</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>nastavení</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>synchronizace</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>přenos</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>Stáhnout</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>šek</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>Copyright © Shane církve 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Finanční organizátor pro Windows Phone</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Stirling peníze</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>Zkušební verze této aplikace vypršela. Přejete si koupit aplikaci nyní? Pokud zvolíte Ano - budete přesměrováni na trhu.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Toto upozornění již příště nezobrazovat</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>Vypršela platnost zkušební verze</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>Používáte ad podporované zkušební verzi této aplikace. Přejete si koupit aplikaci nyní odstranit reklamy? Pokud zvolíte Ano - budete přesměrováni na trhu.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Toto upozornění již příště nezobrazovat</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>Zkušební upomínky</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>Stirling peníze mohou sdílet data mezi oprávněným uživatelům, takže vy a vaše rodina jsou vždy aktuální informace o čem vaše účty. Zadejte e-mailovou adresu Account společnosti Microsoft uživatele nebo uživatelů, které chcete synchronizovat a sdílet údaje s níže.</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>Autorizovaní uživatelé</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>zálohování</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>Chyba při zálohování databáze: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>Klepněte zálohování zachránit vaše data do složky Stirling peníze ve službě SkyDrive. Tato akce přepíše všechny existující zálohu.
+
+Klepnutím na tlačítko obnovení přepsat místní data s záloha z SkyDrive.</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>Není podepsán.</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>Při obnovení databáze došlo k chybě.</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>Chyba při obnovování databáze: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>Nelze najít stávající záložní soubor pro obnovení.</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>Databáze byla úspěšně obnovena.</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>Přihlášeni.</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>Chyba při připojování pomocí služby SkyDrive: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>Databáze úspěšně zálohovány.</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>Zálohování</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>Všechny výdaje</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>částka</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>Částka je požadováno a musí být větší než 0.</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>Rozpočet</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>Vlastní</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>Datum ukončení</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>Koncové datum musí následovat po datu zahájení.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>Konečné datum je vyžadován pro vlastní rozpočtové období.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>Měsíční</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>Jméno</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>Je požadován název.</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>období</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>datum zahájení</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>Rozpočty</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>rozpočet</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>Týdně</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>Ročně</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>Automobil</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>Směnky</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>Obchodní</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>Charita</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>podle kategorie</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>Historie</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>Oblečení</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>Vklad</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>Zábava</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>Jídlo</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>Zdraví</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>Domov</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>Různé</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>název kategorie</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>Je požadován název kategorie.</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>Nástroje</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>Dovolená</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>typy grafů</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>Kontrola</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>úvěrový limit</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>Časové období</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} den splatnosti</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} den zbývá</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} dnů po splatnosti</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} dní zbývá</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>Odstranit účet</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>Opravdu chcete odstranit tento účet, všechny své transakce a všechny související cíle?</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>Odstranit rozpočet</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>Jste si jisti, že chcete odstranit tento rozpočet?</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>Odstranit cíl</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>Jste si jisti, že chcete smazat tohoto cíle?</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>odstranit</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>Odstranit transakce</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>Jste si jisti, že chcete odstranit tuto transakci?</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>Vklad</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>Aplikace došlo k problému. Omlouvám se za nepříjemnosti.
+
+Ocenil bych vaši pomoc odesláním zprávy připravené chybách. To vám pomůže při řešení problému rychleji.</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>Chyba aplikace</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>staženo {0} {1} bajtů...</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>Upravit účet</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>Upravit rozpočet</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>Cíl upravit</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>úpravy</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>Zadejte své heslo</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>Výdaje</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>Jak lze zlepšit tuto aplikaci tak, že by byl ochoten ji ohodnotit 5 hvězdiček na trhu?</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Tohle bude lepší?</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>Stirling peníze chyba</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>poskytnout zpětnou vazbu</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>účet</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>Účet je nutné.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>dosáhnout!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>Částka musí být vyšší než aktuálního zůstatku vybraného účtu.</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>částka</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>Cílové datum musí následovat po {0: d}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>Cílové datum musí být po dnešku.</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>Jméno</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>Je požadován název.</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>vybrat účet</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>datum zahájení</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>Cíle</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>cílové datum</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>Příjem</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>počáteční zůstatek</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>Varování: Neplatné hodnoty</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>kreditní karta</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>Místo je vyžadováno.</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>Storno</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>Čistý příjem</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>Přidání účtu oprávněného uživatele</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>Žádná oprávnění uživatelé</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(žádná kategorie)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>Ne, děkuji</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>Ostatní</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>heslo</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>ověření...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>neplatné heslo</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>PIN ke spuštění</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>Stahování...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>Synchronizace...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>Probíhá načítání...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>Aktualizace databáze</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>Odesílání...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>Koupit plnou verzi</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>Rád bych slyšet od vás! Pokud se vám líbí app, Ohodnoťte ji na tržišti a sdílet své názory.</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Toto upozornění již příště nezobrazovat</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>Stirling peníze - zprávy</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>cs-CZ</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>obnovení</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>uložit</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>Hledat</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>vybrat datum</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>podle abecedy</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>seřadit seznam obchodních vztahů podle</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>nejčastěji používané</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>potvrzení hesla</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>Heslo je vyžadováno potvrzení.</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>heslo</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>Heslo se musí shodovat potvrzení hesla.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>Je vyžadováno heslo.</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>použití hesla</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>Bilance: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>povolit synchronizaci</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>Stirling peníze mohou být synchronizovány a zálohována do Windows Azure. Navíc jednotlivé účty mohou být sdíleny s jinými uživateli jako váš manžel.
+
+Beru vaši bezpečnost velmi vážně a všechna data se přenáší bezpečně přes HTTPS a anonymně zabezpečeno pomocí pověření účtu společnosti Microsoft. Stirling peníze neukládá žádné konkrétní účet jako účet nebo směrovací čísla nebo určitelné osobní údaje jako je vaše jméno nebo přihlašovací informace. Pokud máte další otázky, prosím, kontaktujte mě pomocí odkazu níže:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>Stirling peníze synchronizace otázky či</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>obavy nebo dotazy</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>Synchronizace</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>Musíte být přihlášeni k synchronizaci.</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>synchronizace při spuštění</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>Nelze provést synchronizaci v tuto chvíli. Opakujte akci později.</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>Technická podpora a zpětnou vazbu e-mail</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>Stirling peníze zpětné vazby</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>Server je nedostupný</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>Chyba synchronizace dat</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>Příliš mnoho pozadí agenti byly povoleny. Přejděte na aplikaci nastavení zakázat jiné látky před povolením Stirling narozeniny agenta.</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>celkový zůstatek</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>účet</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>částka</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>Kontrola</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>umístění</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>poznámky</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>Publikováno</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>Disponibilní zůstatek</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>vybrat účet</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>Probíhá načítání...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>Žádné transakce</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>zaúčtované bilance</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>Přenést z</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>Přenos z {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>Přenos</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>Přenos do</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>Převod do {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>Tato funkce je pouze k dispozici v plné verzi.</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} Klepnutím na tlačítko níže koupit aby zakoupit plnou verzi.</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>Pouze deset (10) transakcí na účtu jsou povoleny ve zkušebním režimu.</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>Pouze dva (2) účty jsou povoleny ve zkušebním režimu.</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>Máte {0} dnech odešel.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>Máte {0} jednou doleva.</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>Zkušební verze</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>Neznámý</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>Odepnout od začátku</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>nahrané {0} {1} bajtů...</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>Odstoupení od smlouvy</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>Používáte 30 dnů zdarma zkušební verzi služby synchronizace. Chcete koupit aplikaci nadále používat služby nad rámec procesu? Pokud zvolíte Ano - budete přesměrováni na trhu.</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>Zkušební upomínky</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Vaše triial služby synchronizace skončila. Přejete si koupit aplikaci nyní? Pokud zvolíte Ano - budete přesměrováni na trhu.</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>Vypršela platnost zkušební verze</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>neplatné heslo</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>opakovat</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>konec</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>Umbes</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>muud apps Shane kiriku poolt</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>hinda seda app</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>konto pilt</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>konto nimi</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>Konto nimi on nõutav.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>Konto on nõutav.</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>Kontod</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>Tegelik</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>Konto algas lisamine</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>Konto lisamine</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>Lisada eelarvesse</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>Kategooria lisamine</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>Lisa eesmärk</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>Selle ülesande Stirling raha andmed sünkroonitakse jagatud kasutajate ja uuendab live plaadid.</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>Tausta agendid, see rakendus on blokeeritud kasutaja poolt.</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>See seade ei toeta taustal agendid, nii see funktsioon keelatud.</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>Summa</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>ülejäänud {0}</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>umbes</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>lisamine</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>konto lisamine</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>varundus</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>Kategooriad</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>tagatisraha</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>Vaadake seda app</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>aruanded</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>Salvesta</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>seaded</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>sünkroonimine</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>üleandmine</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>tühistama</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>Kirjutage sisse</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>Copyright © Shane kiriku 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Windows Phone rahalise korraldaja</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Stirling raha</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>See rakendus prooviperiood on aegunud. Kas soovite osta taotlus nüüd? Kui valite Jah - suunatakse teid turul.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Enam kuva seda meeldetuletust</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>Kohtuprotsess lõppenud</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>Kasutate reklaami-toetatud prooviversiooni see rakendus. Kas soovite osta rakendus nüüd eemaldada reklaamid? Kui valite Jah - suunatakse teid turul.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Enam kuva seda meeldetuletust</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>Kohtuprotsess meeldetuletus</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>Stirling raha jagada andmete volitatud kasutajate nii teie ja teie pere on alati kursis kui oma kontodele seisma. Sisestage kasutaja või kasutajate soovite sünkroonida ja jaga oma andmeid Microsoft Account e-posti aadress allapoole.</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>Volitatud kasutajad</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>varundus</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>Andmebaasi varundamine tõrge: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>Koputage varundamine teie andmeid salvestada SkyDrive kausta Stirling raha. See kirjutab üle kõik olemasoleva varukoopia.
+
+Koputage nuppu Taasta ülekirjutamiseks teie kohalike andmete varundamist alates SkyDrive.</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>Pole sisse logitud.</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>Ilmnes tõrge, taaste andmebaasi.</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>Andmebaasi taastamise tõrge: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>Ei leia olemasoleva varukoopia faili taastada.</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>Andmebaas taastada edukalt.</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>Allkirjastada.</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>Viga ühendamisel SkyDrive'iga: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>Andmebaasi varundada edukalt.</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>Varundus</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>Kõik kulud</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>summa</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>Summa on vajalik ja peab olema suurem kui 0.</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>Eelarve</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>Kohandatud</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>lõppkuupäev</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>Lõppkuupäev peab olema pärast alguskuupäeva.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>Lõppkuupäev on vaja Custom ühekuulisteks eelarveperioodideks.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>Iga kuu</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>Nimi on nõutav.</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>perioodi</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>Alguskuupäev</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>Eelarved</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>eelarve</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>tüüp</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>Kord nädalas</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>Iga aasta</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>Kategooriad</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>Sõiduauto</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>Arved</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>Äri</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>Heategevus</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>Kategooria järgi</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>ajalugu</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>Riietus</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>Tagatisraha</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>Meelelahutus</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>Toidu</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>Tervis</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>Kodu</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>Mitmesugused</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>kategooria nimi</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>Kategooria nimi on nõutav.</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>Utiliidid</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>Puhkus</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>diagrammitüübid</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>Kontrollige</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>krediidilimiiti</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>Kuupäevade vahemik</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} päeva üle tähtaja</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} päeva jäänud</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} päeva üle tähtaja</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} päeva jäänud</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>Kustuta konto</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>Kas soovite kindlasti kustutada selle konto, kõik oma tehingud ja kõik sellega seotud eesmärgid?</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>Kustuta eelarve</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>Kas kindlasti kustutada selle eelarve?</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>Kustuta eesmärk</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>Kas kindlasti kustutada selle eesmärgi?</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>Kustuta</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>Kande kustutamine</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>Kas kindlasti kustutada seda kannet?</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>Tagatisraha</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>Taotlus ilmnes probleem. Vabandust võimalike ebamugavuste pärast.
+
+Ma hindan teie abi poolt ettevalmistatud tõrketeatist. See aitab à problemaatikale kiiremini.</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>Rakenduse viga</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>allalaaditud {0} {1} bytes...</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>Muuda kontot</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>Muutmise</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>Redigeeri eesmärki</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>Redigeeri</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>Sisestage oma parool</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>Kulud</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>Kuidas parandada käesoleva avalduse, et siis oleksin nõus hinda 5 tärni turul?</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Kas ma saan selle parem?</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>Stirling raha tõrge</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>Anna tagasisidet</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>konto</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>Konto on nõutav.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>saavutatud!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>Summa peab olema suurem kui valitud konto saldo.</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>summa</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>Kuupäev peab olema hilisem kui {SPWebApplication}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>Kuupäev peab olema hilisem kui täna.</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>Nimi on nõutav.</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>Vali konto</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>Alguskuupäev</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>Eesmärgid</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>tähtaeg</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>Tulu</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>esmase tasakaalu</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>Hoiatus: Vigane väärtused</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>krediitkaardi</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>Asukoht on nõutav.</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>Loobu</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>Ei</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>Jah</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>Puhaskasum</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>autoriseeritud kasutaja konto lisamine</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Ei</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>Volitatud kasutajad</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(no kategooria)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>Tänan ei</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>Muud</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>parooli</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>valideerimine...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>Sobimatu parool</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>PIN-koodi käivitamiseks</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>Allalaadimine...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>Sünkroonimine...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>Laadimine...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>Andmebaasi uuendamine</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>Uploading...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>Osta täisversioon</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>Ma armastan kuulda teid! Kui soovid app, hinda turul ja jagada oma tagasisidet.</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>Enam kuva seda meeldetuletust</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>Hinda app</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>Stirling raha - aruanded</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>et-EE</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>taastamine</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Salvesta</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>Otsi hotelle</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>Vali kuupäev</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>tähestiku järjekorras</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>konto loendi Sortimisalus</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>kõige sagedamini kasutatavate</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>Kinnita parool</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>Kinnita parool on kohustuslik.</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>parooli</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>Parool tuleb ühti kinnitage parool.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>Parooli on vaja.</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Seaded</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>Kasuta parooli</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>Tasakaal: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>luba sünkroonimine</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>Stirling raha saab sünkroonida ja varundada Windows Azure. Lisaks võivad Üksikkontode jagada teistele kasutajatele nagu teie abikaasa.
+
+Ma võtan oma turvalisust väga tõsiselt ja kõik andmed edastatakse kindlalt https ja turvatakse anonüümselt, kasutades Microsoft konto mandaadid. Stirling raha hoida arvesse konkreetsete nagu konto või marsruudinumbrite või isiklikke andmeid nagu teie nimi või sisselogimise teave. Kui teil on lisaküsimusi, võtke mind kasutades allolevat linki:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>Stirling raha sünkroonimise küsimus või mure</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>küsimusi või muresid</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>Sünkroonimine</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>Sa pead olema sisselogitud, et sünkroniseerimine.</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>sünkroonimise käivitumisel</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>Ei saa hetkel sünkroonida. Palun proovige hiljem uuesti.</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>tehniline tugi/tagasiside e-posti</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>Stirling raha tagasiside</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>Server pole saadaval</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>Andmete sünkroonimise tõrge</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>Liiga palju tausta agendid on lubatud. Palun minge seaded taotluse keelata teiste agentide enne Stirling sünnipäeva agent.</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>lõppsaldo</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>konto</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>summa</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>kategooria</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>Kontrollige</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>kuupäev</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>asukoht</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>märkmed</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>Postitatud</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>järelejäänud</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>Vali konto</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>Laadimine...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>Kandeid</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>konteeritud tasakaal</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>Ülekandmine</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>Ülekanne: {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>Üleandmine</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>Üle kanda</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>Üle {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>See funktsioon sisaldub ainult täielik versioon.</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} Kliki osta nuppu bellow selleks, et osta täisversiooni.</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>Ainult kümme (10) ühe konto kanded ei ole lubatud uuringus režiimis.</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>Ainult kahes (2) kontode lubatud kohtuprotsess režiimis.</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>Olete {0} päeva vasakule.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>Olete {0} kõrgperioodil vasakule.</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>Uuringus</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>Teadmata</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>Eemalda algusest</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>üleslaaditud {0} {1} bytes...</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>Tagasivõtmine</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>Kasutate sünkroonimise teenused 30-päevase tasuta prooviversiooni. Kas soovite osta taotlus edasi kasutada teenuseid pärast kohtuprotsessi? Kui valite Jah - suunatakse teid turul.</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>Kohtuprotsess meeldetuletus</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>Sünkroonimise teenuse triial on aegunud. Kas soovite osta taotlus nüüd? Kui valite Jah - suunatakse teid turul.</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>Kohtuprotsess lõppenud</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Jah</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Sobimatu parool</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>Proovi uuesti</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>välju</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

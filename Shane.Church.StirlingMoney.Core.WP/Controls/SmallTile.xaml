@@ -3,16 +3,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:util="clr-namespace:Shane.Church.StirlingMoney.Core.WP.Converters"
+    xmlns:local="clr-namespace:Shane.Church.StirlingMoney.Core.WP"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="159" d:DesignWidth="159">
-    
+
+    <UserControl.Resources>
+        <util:ByteToImageSourceValueConverter x:Key="LocalByteImageConverter"/>
+    </UserControl.Resources>
+
     <Grid x:Name="LayoutRoot" 
           Background="{StaticResource PhoneAccentBrush}"
           Height="159"
           Width="159">
-
+        <Image Source="{Binding Image, Converter={StaticResource LocalByteImageConverter}}" Margin="9" Stretch="Fill"/>
     </Grid>
 </UserControl>

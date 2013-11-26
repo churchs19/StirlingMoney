@@ -35,10 +35,10 @@ namespace Shane.Church.StirlingMoney.Core.WP7
 			KernelService.Kernel.Rebind<AddEditAccountViewModel>().To<PhoneAddEditAccountViewModel>();
 			KernelService.Kernel.Rebind<SettingsViewModel>().To<PhoneSettingsViewModel>();
 			KernelService.Kernel.Rebind<ILoggingService>().To<PhoneLoggingService>();
+			KernelService.Kernel.Rebind<INavigationService>().To<PhoneNavigationService>().InSingletonScope();
 #else
 			KernelService.Kernel.Rebind<ILoggingService>().To<Shane.Church.StirlingMoney.Core.WP7.Agent.Services.AgentLoggingService>();
 #endif
-			KernelService.Kernel.Rebind<INavigationService>().To<PhoneNavigationService>().InSingletonScope();
 			KernelService.Kernel.Rebind<ISettingsService>().To<PhoneSettingsService>().InSingletonScope();
 			KernelService.Kernel.Rebind<IRepository<Core.Data.Account, Guid>>().To<AccountRepository>();
 			KernelService.Kernel.Rebind<IRepository<Core.Data.AppSyncUser, string>>().To<AppSyncUserRepository>();

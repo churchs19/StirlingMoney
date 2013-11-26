@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>uns altres apps per Shane Church</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>Valora aquest app</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>imatge de compte</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>nom de compte</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>Nom de compte és necessària.</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>Cal compte.</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>Comptes</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>Real</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>Afegeix un compte per començar</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>Afegir compte</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>Afegir el pressupost</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>Afegir categoria</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>Afegir l'objectiu</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>Aquesta tasca sincronitza dades Stirling diners amb qualsevol usuaris compartits i actualitza les rajoles en directe.</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>Agents de fons per a aquesta aplicació s'han inhabilitat per l'usuari.</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>Aquest dispositiu no suporta agents de fons, perquè aquesta característica s'inhabilitarà.</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>Quantitat</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>restants de {0}</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>sobre</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>afegir</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>afegir compte</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>còpia de seguretat</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>dipòsit</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>revisar aquest app</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>informes</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>Desa</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>configuració</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>sincronització</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>transferència</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>retirar</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>escriure comprovació</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>Copyright © Shane església 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Un organitzador financera per a Windows Phone</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Stirling diners</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>El judici d'aquesta aplicació ha caducat. Voleu comprar l'aplicació ara? Si trieu sí - vostè serà redirigit al mercat.</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>No tornis a mostrar aquest recordatori</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>Judici expirava</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>Esteu utilitzant la versió de judici d'anuncis d'aquesta aplicació. Voleu comprar l'aplicació ara de treure els anuncis? Si trieu sí - vostè serà redirigit al mercat.</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>No tornis a mostrar aquest recordatori</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>Judici recordatori</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>Stirling diners pot compartir dades entre usuaris autoritzats perquè vostè i la seva família són sempre actualitzades sobre on reposar els comptes. Introduïu l'adreça de correu electrònic de Microsoft Account de l'usuari o usuaris que voleu sincronitzar i compartir les seves dades amb sota.</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>Usuaris autoritzats</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>còpia de seguretat</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>Còpies de seguretat de base de dades d'error: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>Toc de còpia de seguretat per guardar les dades a la carpeta de Stirling diners en SkyDrive. Això se sobreescriurà qualsevol còpia de seguretat existent.
+
+Doni copets el restaurar per sobreescriure les dades locals amb la còpia de seguretat de SkyDrive.</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>No signat.</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>Error en restauració de base de dades.</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>Restaurar la base de dades d'error: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>Incapaç de trobar un arxiu de còpia de seguretat existent per restaurar.</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>Base de dades restaurat reeixidament.</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>Signat.</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>Connectant amb l'SkyDrive error: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>Base de dades de recolzar-se amb èxit.</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>Còpia de seguretat</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>Totes les despeses</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>quantitat</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>Quantitat és obligatori i ha de ser major que 0.</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>Pressupost</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>Costum</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>data de finalització</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>Data de finalització ha de ser després de la data d'inici.</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>Data de finalització és necessari per a períodes de pressupost personalitzat.</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>Mensual</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>nom</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>Cal el nom.</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>període</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>data d'inici</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>Pressupostos</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>pressupost</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>tipus</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>Setmanal</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>Anual</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>L'automòbil</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>Factures</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>Negoci</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>Caritat</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>per categoria</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>història</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>Roba</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>Dipòsit</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>Entreteniment</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>Alimentació</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>Salut</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>Inici</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>Miscel·lània</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>nom de la categoria</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>Nom de la categoria és necessària.</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>Utilitats</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>Vacances</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>tipus de gràfic</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>Registre d'entrada</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>límit de crèdit</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>Interval de dates</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} dia d'endarreriment</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>{0} dies restants</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} dies de retard</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>{0} dies restants</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>Suprimir el compte</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>Esteu segur que voleu suprimir aquest compte, totes les seves transaccions, i tots associats objectius?</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>Suprimir el pressupost</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>Esteu segur que voleu suprimir aquest pressupost?</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>Objectiu de suprimir</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>Esteu segur que voleu suprimir aquest objectiu?</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>suprimir</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>Suprimir la transacció</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>Esteu segur que voleu suprimir aquesta operació?</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>Dipòsit</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>L'aplicació ha trobat un problema. Lamento les molesties.
+
+Li agrairia la seva assistència enviant l'informe preparat error. Això ajudarà a resoldre el problema més ràpid.</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>Error d'aplicació</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>descarregat {0} de {1} bytes...</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>Editar compte</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>Editar pressupost</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>Editar objectiu</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>editar</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>Introduïu la vostra contrasenya</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>Despeses</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>Com puc millorar aquesta aplicació per tal que vostè estaria disposat a puntua amb 5 estrelles en el mercat?</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Puc fer-ho millor?</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>Stirling diners Error</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>donar retroalimentació</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>compte</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>Cal compte.</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>aconseguit!</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>Quantitat ha de ser major que l'equilibri actual del compte seleccionat.</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>quantitat</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>Data d'objectiu ha de ser després {0: d}</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>Data d'objectiu ha de ser després d'avui.</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>nom</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>Cal el nom.</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>Seleccioneu el compte</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>data d'inici</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>Objectius</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>data límit</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>Ingressos</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>saldo inicial</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>Advertiment: Valor no és vàlid</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>targeta de crèdit</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>Ubicació és necessari.</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>Cancel·la</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>no</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>correcte</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>Ingressos nets</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>afegir compte d'usuari autoritzat</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>no</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>Cap usuari autoritzat</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>(sense categoria)</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>no, gràcies</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>Altres</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>contrasenya</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>s'està validant...</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>contrasenya no és vàlida</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>agulla de cap per començar</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>Descarregant...</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>S'estan sincronitzant...</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>Carregant...</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>Actualitzar base de dades</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>Carregant...</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>Comprar la versió completa</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>M'encantaria saber de vostè! Si t'agrada l'app, si us plau vota en el mercat i compartiu els vostres comentaris.</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>No tornis a mostrar aquest recordatori</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>Valorar l'aplicació</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>Stirling els diners - informes</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>ca-ES</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>restauració</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Desa</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>Cerca</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>Seleccioneu la data</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>per ordre alfabètic</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>Llista de comptes d'ordenar els</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>més freqüentment utilitzats</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>Confirmar contrasenya</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>Confirmar que contrasenya és necessària.</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>contrasenya</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>Contrasenya han de coincidir confirma la contrasenya.</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>Contrasenya és necessària.</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Configuració</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>utilitzar la contrasenya</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>Equilibri: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>permeten la sincronització</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>Stirling diners pot ser sincronitzat i recolzar-se a Windows Azure. Addicionalment, els comptes individuals pot ser compartida amb altres usuaris com el seu cònjuge.
+
+Aprofito la vostra seguretat molt seriosament i totes les dades es transmet de forma segura sobre HTTPS i anònima està assegurat amb les vostres credencials de compte de Microsoft. Stirling diners no emmagatzemar informació personalment identificable com el seu nom o connexió de informació o qualsevol específics compte com compte o números d'encaminament. Si teniu més preguntes, si us plau contactin mitjançant el següent enllaç:</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>Stirling diners sincronització pregunta o preocupació</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>pregunta o preocupació</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>Sincronització</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>Vostè ha d'estar loguejat a sync.</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>sincronitzar sobre posada en marxa</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>No es pot sincronitzar en aquest moment. Si us plau provar una altra vegada més tard.</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>correu electrònic de suport tècnic/resposta</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>Resposta de diners de Stirling</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>Servidor no disponible</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>Error de sincronització de dades</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>Molts agents de fons ha estat habilitat. Si us plau, aneu a l'aplicació d'escenes per impossibilitar altres agents abans d'habilitar l'agent Stirling aniversari.</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>balanç total</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>compte</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>quantitat</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>Registre d'entrada</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>data</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>Localització</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>Publicat</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>saldo disponible</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>Seleccioneu el compte</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>Carregant...</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>Cap transacció</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>equilibri publicat</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>Transferència de</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>Transferència de {0}</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>Transferència</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>Transferir a</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>Transferir a {0}</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>Aquesta funcionalitat només està disponible en la plena versió.</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} Cliqueu el següent botó comprar per comprar la versió completa.</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>S'admeten només deu (10) operacions per compte en el mode de judici.</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>Comptes només dos (2) s'admeten en el mode de judici.</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>Esquerra teniu {0} dies.</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>Esquerra teniu {0} Time (s).</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>Judici</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>Desconegut</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>desenganxa-ho del començament</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>Carregada {0} de {1} bytes...</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>Retirada</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>Esteu utilitzant el judici lliure de 30 dies dels serveis sincronització. Li agradaria comprar l'aplicació per continuar utilitzant els serveis més enllà del judici? Si trieu sí - vostè serà redirigit al mercat.</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>Judici recordatori</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>El seu triial servei de sincronització ha caducat. Voleu comprar l'aplicació ara? Si trieu sí - vostè serà redirigit al mercat.</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>Judici expirava</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>contrasenya no és vàlida</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>Reintenta</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>sortida</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

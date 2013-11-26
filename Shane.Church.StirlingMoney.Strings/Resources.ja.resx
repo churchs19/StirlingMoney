@@ -1,0 +1,825 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutLabel" xml:space="preserve">
+    <value>について</value>
+  </data>
+  <data name="AboutOtherAppsLabel" xml:space="preserve">
+    <value>シェーン教会によって他のアプリ</value>
+  </data>
+  <data name="AboutReviewLabel" xml:space="preserve">
+    <value>このアプリを評価します。</value>
+  </data>
+  <data name="AccountImageLabel" xml:space="preserve">
+    <value>アカウントの画像</value>
+  </data>
+  <data name="AccountNameLabel" xml:space="preserve">
+    <value>アカウント名</value>
+  </data>
+  <data name="AccountNameRequiredError" xml:space="preserve">
+    <value>アカウント名が必要です。</value>
+  </data>
+  <data name="AccountRequiredError" xml:space="preserve">
+    <value>アカウントが必要です。</value>
+  </data>
+  <data name="AccountsTitle" xml:space="preserve">
+    <value>アカウント</value>
+  </data>
+  <data name="ActualChartLabel" xml:space="preserve">
+    <value>実際</value>
+  </data>
+  <data name="AddAccountPrompt" xml:space="preserve">
+    <value>始めるためにアカウントを追加します。</value>
+  </data>
+  <data name="AddAccountTitle" xml:space="preserve">
+    <value>アカウントを追加します。</value>
+  </data>
+  <data name="AddBudgetTitle" xml:space="preserve">
+    <value>予算を追加します。</value>
+  </data>
+  <data name="AddCategoryTitle" xml:space="preserve">
+    <value>カテゴリを追加します。</value>
+  </data>
+  <data name="AddGoalTitle" xml:space="preserve">
+    <value>目標を追加します。</value>
+  </data>
+  <data name="AgentDescription" xml:space="preserve">
+    <value>このタスク スターリングお金データ共有のすべてのユーザーと同期し、ライブ タイルを更新します。</value>
+  </data>
+  <data name="AgentsDisabledByUserError" xml:space="preserve">
+    <value>このアプリケーションのバック グラウンド エージェントは、ユーザーによって無効にされています。</value>
+  </data>
+  <data name="AgentsNotSupportedError" xml:space="preserve">
+    <value>このデバイスはこの機能は無効になりますので、バック グラウンド エージェントをサポートしません。</value>
+  </data>
+  <data name="AmountChartLabel" xml:space="preserve">
+    <value>量</value>
+  </data>
+  <data name="AmountRemaining" xml:space="preserve">
+    <value>残り {0}</value>
+  </data>
+  <data name="AppBarAbout" xml:space="preserve">
+    <value>について</value>
+  </data>
+  <data name="AppBarAdd" xml:space="preserve">
+    <value>追加</value>
+  </data>
+  <data name="AppBarAddAccount" xml:space="preserve">
+    <value>アカウントを追加します。</value>
+  </data>
+  <data name="AppBarBackup" xml:space="preserve">
+    <value>バックアップ</value>
+  </data>
+  <data name="AppBarCategories" xml:space="preserve">
+    <value>カテゴリ</value>
+  </data>
+  <data name="AppBarDeposit" xml:space="preserve">
+    <value>預金</value>
+  </data>
+  <data name="AppBarMenuItemReview" xml:space="preserve">
+    <value>このアプリをレビューします。</value>
+  </data>
+  <data name="AppBarReports" xml:space="preserve">
+    <value>レポート</value>
+  </data>
+  <data name="AppBarSave" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="AppBarSettings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="AppBarSync" xml:space="preserve">
+    <value>同期</value>
+  </data>
+  <data name="AppBarTransfer" xml:space="preserve">
+    <value>転送</value>
+  </data>
+  <data name="AppBarWithdraw" xml:space="preserve">
+    <value>撤回します。</value>
+  </data>
+  <data name="AppBarWriteCheck" xml:space="preserve">
+    <value>チェックを書く</value>
+  </data>
+  <data name="AppCopyright" xml:space="preserve">
+    <value>著作権 © シェーン教会 2013</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Windows Phone の金融オーガナイザー</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>スターリングのお金</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <value>このアプリケーションの試用版の有効期限が切れました。現在のアプリケーションを購入したいですか？-[はい] を選択した場合は、市場に切り替わります。</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>今後、この通知を表示しません。</value>
+  </data>
+  <data name="AppTrialEnd_MessageBox_Title" xml:space="preserve">
+    <value>試用版の有効期限が切れてください。</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Content" xml:space="preserve">
+    <value>このアプリケーションの広告サポートされている試用版を使用しています。今すぐ広告を削除するアプリケーションを購入したいですか？-[はい] を選択した場合は、市場に切り替わります。</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>今後、この通知を表示しません。</value>
+  </data>
+  <data name="AppTrialReminder_MessageBox_Title" xml:space="preserve">
+    <value>試用版のアラーム</value>
+  </data>
+  <data name="AuthorizedUsersDescription" xml:space="preserve">
+    <value>スターリングのお金はあなたとあなたの家族は常に最新のアカウントのスタンドに権限のあるユーザー間でデータを共有できます。ユーザーまたは同期し、を使用してデータを共有したいユーザーの Microsoft アカウントのメール アドレスを入力してくださいの下。</value>
+  </data>
+  <data name="AuthorizedUsersTitle" xml:space="preserve">
+    <value>承認されたユーザー</value>
+  </data>
+  <data name="BackupButton" xml:space="preserve">
+    <value>バックアップ</value>
+  </data>
+  <data name="BackupError" xml:space="preserve">
+    <value>データベースのバックアップ エラー: {0}</value>
+  </data>
+  <data name="BackupInstructions" xml:space="preserve">
+    <value>SkyDrive でスターリング金フォルダーにデータを保存するバックアップをタップします。既存のバックアップを上書きします。SkyDrive からあなたのバックアップでローカル データを上書きする復元をタップします。</value>
+  </data>
+  <data name="BackupNotSignedIn" xml:space="preserve">
+    <value>サインインしていません。</value>
+  </data>
+  <data name="BackupRestoreError" xml:space="preserve">
+    <value>エラーは、復元するデータベースが発生しました。</value>
+  </data>
+  <data name="BackupRestoreException" xml:space="preserve">
+    <value>データベースの復元エラー: {0}</value>
+  </data>
+  <data name="BackupRestoreNoBackupError" xml:space="preserve">
+    <value>復元する既存のバックアップ ファイルが見つかりません。</value>
+  </data>
+  <data name="BackupRestoreSuccess" xml:space="preserve">
+    <value>データベースは正常に復元されました。</value>
+  </data>
+  <data name="BackupSignedIn" xml:space="preserve">
+    <value>署名しました。</value>
+  </data>
+  <data name="BackupSkyDriveError" xml:space="preserve">
+    <value>SkyDrive との接続エラー: {0}</value>
+  </data>
+  <data name="BackupSuccess" xml:space="preserve">
+    <value>データベースは正常にバックアップ。</value>
+  </data>
+  <data name="BackupTitle" xml:space="preserve">
+    <value>バックアップ</value>
+  </data>
+  <data name="BudgetAllExpensesLabel" xml:space="preserve">
+    <value>すべての費用</value>
+  </data>
+  <data name="BudgetAmountLabel" xml:space="preserve">
+    <value>量</value>
+  </data>
+  <data name="BudgetAmountRequiredError" xml:space="preserve">
+    <value>量が必要ですし、0 より大きくなければなりません。</value>
+  </data>
+  <data name="BudgetChartLabel" xml:space="preserve">
+    <value>予算</value>
+  </data>
+  <data name="BudgetCustom" xml:space="preserve">
+    <value>カスタム</value>
+  </data>
+  <data name="BudgetEndDateLabel" xml:space="preserve">
+    <value>終了日</value>
+  </data>
+  <data name="BudgetEndDateRangeError" xml:space="preserve">
+    <value>終了日は開始日の後でなければなりません。</value>
+  </data>
+  <data name="BudgetEndDateRequiredError" xml:space="preserve">
+    <value>カスタム予算期間の終了日が必要です。</value>
+  </data>
+  <data name="BudgetMonthly" xml:space="preserve">
+    <value>毎月</value>
+  </data>
+  <data name="BudgetNameLabel" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="BudgetNameRequiredError" xml:space="preserve">
+    <value>名前が必要です。</value>
+  </data>
+  <data name="BudgetPeriodLabel" xml:space="preserve">
+    <value>期間</value>
+  </data>
+  <data name="BudgetStartDateLabel" xml:space="preserve">
+    <value>開始日</value>
+  </data>
+  <data name="BudgetsTitle" xml:space="preserve">
+    <value>予算</value>
+  </data>
+  <data name="BudgetTitle" xml:space="preserve">
+    <value>予算</value>
+  </data>
+  <data name="BudgetTypeLabel" xml:space="preserve">
+    <value>タイプ</value>
+  </data>
+  <data name="BudgetWeekly" xml:space="preserve">
+    <value>毎週</value>
+  </data>
+  <data name="BudgetYearly" xml:space="preserve">
+    <value>年次</value>
+  </data>
+  <data name="CategoriesTitle" xml:space="preserve">
+    <value>カテゴリ</value>
+  </data>
+  <data name="CategoryAutomobile" xml:space="preserve">
+    <value>自動車</value>
+  </data>
+  <data name="CategoryBills" xml:space="preserve">
+    <value>手形</value>
+  </data>
+  <data name="CategoryBusiness" xml:space="preserve">
+    <value>ビジネス</value>
+  </data>
+  <data name="CategoryCharity" xml:space="preserve">
+    <value>慈善団体</value>
+  </data>
+  <data name="CategoryChartTypeByCategory" xml:space="preserve">
+    <value>カテゴリ別</value>
+  </data>
+  <data name="CategoryChartTypeHistory" xml:space="preserve">
+    <value>歴史</value>
+  </data>
+  <data name="CategoryClothing" xml:space="preserve">
+    <value>衣料品</value>
+  </data>
+  <data name="CategoryDeposit" xml:space="preserve">
+    <value>預金</value>
+  </data>
+  <data name="CategoryEntertainment" xml:space="preserve">
+    <value>エンターテイメント</value>
+  </data>
+  <data name="CategoryFood" xml:space="preserve">
+    <value>食品</value>
+  </data>
+  <data name="CategoryHealth" xml:space="preserve">
+    <value>健康</value>
+  </data>
+  <data name="CategoryHome" xml:space="preserve">
+    <value>ホーム</value>
+  </data>
+  <data name="CategoryMiscellaneous" xml:space="preserve">
+    <value>その他</value>
+  </data>
+  <data name="CategoryNameLabel" xml:space="preserve">
+    <value>カテゴリ名</value>
+  </data>
+  <data name="CategoryNameRequiredError" xml:space="preserve">
+    <value>カテゴリ名が必要です。</value>
+  </data>
+  <data name="CategoryUtilities" xml:space="preserve">
+    <value>ユーティリティ</value>
+  </data>
+  <data name="CategoryVacation" xml:space="preserve">
+    <value>休暇</value>
+  </data>
+  <data name="ChartTypesTitle" xml:space="preserve">
+    <value>グラフの種類</value>
+  </data>
+  <data name="CheckTitle" xml:space="preserve">
+    <value>チェック</value>
+  </data>
+  <data name="CreditLimitLabel" xml:space="preserve">
+    <value>与信限度額</value>
+  </data>
+  <data name="DateRangeLabel" xml:space="preserve">
+    <value>日付の範囲</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>{0} 日過ぎて</value>
+  </data>
+  <data name="DayRemaining" xml:space="preserve">
+    <value>残り {0} 日</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} 日過ぎて</value>
+  </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>あと {0} 日</value>
+  </data>
+  <data name="DeleteAccountTitle" xml:space="preserve">
+    <value>アカウントを削除します。</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>そのトランザクションのすべてのこのアカウントを削除して関連するすべての目標を確認ですか？</value>
+  </data>
+  <data name="DeleteBudgetTitle" xml:space="preserve">
+    <value>予算を削除します。</value>
+  </data>
+  <data name="DeleteBudgetWarning" xml:space="preserve">
+    <value>この予算を削除してもよろしいですか。</value>
+  </data>
+  <data name="DeleteGoalTitle" xml:space="preserve">
+    <value>目標を削除します。</value>
+  </data>
+  <data name="DeleteGoalWarning" xml:space="preserve">
+    <value>この目標を削除してもよろしいですか。</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="DeleteTransactionTitle" xml:space="preserve">
+    <value>トランザクションを削除します。</value>
+  </data>
+  <data name="DeleteTransactionWarning" xml:space="preserve">
+    <value>この取引を削除してもよろしいですか。</value>
+  </data>
+  <data name="DepositTitle" xml:space="preserve">
+    <value>預金</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Content" xml:space="preserve">
+    <value>アプリケーションは、問題が発生しました。迷惑をおかけ申し訳があります。準備されたエラー レポートを送信することによってあなたの援助を申し上げます。これは、問題を速く解決するのに役立ちます。</value>
+  </data>
+  <data name="Diagnostics_MessageBox_Title" xml:space="preserve">
+    <value>アプリケーション エラー</value>
+  </data>
+  <data name="DownloadingProgressText" xml:space="preserve">
+    <value>ダウンロードした {0} {1} バイトの.</value>
+  </data>
+  <data name="EditAccountTitle" xml:space="preserve">
+    <value>アカウントを編集します。</value>
+  </data>
+  <data name="EditBudgetTitle" xml:space="preserve">
+    <value>予算を編集します。</value>
+  </data>
+  <data name="EditGoalTitle" xml:space="preserve">
+    <value>目標を編集します。</value>
+  </data>
+  <data name="EditMenuItem" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="EnterPasswordLabel" xml:space="preserve">
+    <value>パスワードを入力します</value>
+  </data>
+  <data name="ExpensesChartLabel" xml:space="preserve">
+    <value>費用</value>
+  </data>
+  <data name="FeedbackContent" xml:space="preserve">
+    <value>市場で 5 つの星それを評価することはいとわないのでこのアプリケーションを改善することができますどのように</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>それより良い行うことができますか？</value>
+  </data>
+  <data name="GeneralErrorCaption" xml:space="preserve">
+    <value>スターリングのお金のエラー</value>
+  </data>
+  <data name="GiveFeedbackButton" xml:space="preserve">
+    <value>フィードバックを与える</value>
+  </data>
+  <data name="GoalAccountLabel" xml:space="preserve">
+    <value>アカウント</value>
+  </data>
+  <data name="GoalAccountRequiredError" xml:space="preserve">
+    <value>アカウントが必要です。</value>
+  </data>
+  <data name="GoalAchieved" xml:space="preserve">
+    <value>達成 ！</value>
+  </data>
+  <data name="GoalAmountError" xml:space="preserve">
+    <value>量は、選択したアカウントの現在の残高より大きくなければなりません。</value>
+  </data>
+  <data name="GoalAmountLabel" xml:space="preserve">
+    <value>量</value>
+  </data>
+  <data name="GoalDateComparisonError" xml:space="preserve">
+    <value>{0: D} 後ターゲット日付する必要があります。</value>
+  </data>
+  <data name="GoalDateError" xml:space="preserve">
+    <value>目標の期日は、今日の後でなければなりません。</value>
+  </data>
+  <data name="GoalNameLabel" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="GoalNameRequiredError" xml:space="preserve">
+    <value>名前が必要です。</value>
+  </data>
+  <data name="GoalSelectAccountLabel" xml:space="preserve">
+    <value>アカウントを選択します</value>
+  </data>
+  <data name="GoalStartDateLabel" xml:space="preserve">
+    <value>開始日</value>
+  </data>
+  <data name="GoalsTitle" xml:space="preserve">
+    <value>目標</value>
+  </data>
+  <data name="GoalTargetDateLabel" xml:space="preserve">
+    <value>ターゲットの日付</value>
+  </data>
+  <data name="IncomeChartLabel" xml:space="preserve">
+    <value>収入</value>
+  </data>
+  <data name="InitialBalanceLabel" xml:space="preserve">
+    <value>最初のバランス</value>
+  </data>
+  <data name="InvalidValuesTitle" xml:space="preserve">
+    <value>警告: 無効な値</value>
+  </data>
+  <data name="IsCreditCardLabel" xml:space="preserve">
+    <value>クレジット カード</value>
+  </data>
+  <data name="LocationRequiredError" xml:space="preserve">
+    <value>場所が必要です。</value>
+  </data>
+  <data name="MBCancelText" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="MBNoText" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
+  <data name="MBOkText" xml:space="preserve">
+    <value>わかりました</value>
+  </data>
+  <data name="MBYesText" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="NetIncomeTitle" xml:space="preserve">
+    <value>当期純利益</value>
+  </data>
+  <data name="NewAuthorizedUser" xml:space="preserve">
+    <value>承認されたユーザー アカウントを追加します。</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
+  <data name="NoAuthorizedUsers" xml:space="preserve">
+    <value>承認されたユーザー</value>
+  </data>
+  <data name="NoCategoryLabel" xml:space="preserve">
+    <value>（カテゴリ）</value>
+  </data>
+  <data name="NoThanksButton" xml:space="preserve">
+    <value>遠慮します</value>
+  </data>
+  <data name="OtherLabel" xml:space="preserve">
+    <value>その他</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>パスワード</value>
+  </data>
+  <data name="PasswordValidatingText" xml:space="preserve">
+    <value>検証しています.</value>
+  </data>
+  <data name="PasswordValidationError" xml:space="preserve">
+    <value>無効なパスワード</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>スタート画面に追加</value>
+  </data>
+  <data name="ProgressBarDownloadingText" xml:space="preserve">
+    <value>ダウンロードしています.</value>
+  </data>
+  <data name="ProgressBarSyncText" xml:space="preserve">
+    <value>同期しています.</value>
+  </data>
+  <data name="ProgressBarText" xml:space="preserve">
+    <value>読み込んでいます.</value>
+  </data>
+  <data name="ProgressBarUpdatingText" xml:space="preserve">
+    <value>データベースの更新</value>
+  </data>
+  <data name="ProgressBarUploadingText" xml:space="preserve">
+    <value>アップロードしています.</value>
+  </data>
+  <data name="PurchaseFullVersionButton" xml:space="preserve">
+    <value>フルバージョンを購入します。</value>
+  </data>
+  <data name="RateReminder_MessageBox_Content" xml:space="preserve">
+    <value>あなたから聞いてみたい ！アプリのように、市場でそれを評価してくださいとあなたのフィードバックを共有します。</value>
+  </data>
+  <data name="RateReminder_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
+    <value>今後、この通知を表示しません。</value>
+  </data>
+  <data name="RateReminder_MessageBox_Title" xml:space="preserve">
+    <value>アプリを評価します。</value>
+  </data>
+  <data name="ReportsTitle" xml:space="preserve">
+    <value>スターリングのお金のレポート</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>ja-JP</value>
+  </data>
+  <data name="RestoreButton" xml:space="preserve">
+    <value>復元</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="SearchHint" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="SelectDateText" xml:space="preserve">
+    <value>日付を選択します</value>
+  </data>
+  <data name="SettingsAccountSortAlpha" xml:space="preserve">
+    <value>アルファベット順に</value>
+  </data>
+  <data name="SettingsAccountSortLabel" xml:space="preserve">
+    <value>資産一覧</value>
+  </data>
+  <data name="SettingsAccountSortMostFrequentlyUsed" xml:space="preserve">
+    <value>最も頻繁に使用されます。</value>
+  </data>
+  <data name="SettingsConfirmPasswordLabel" xml:space="preserve">
+    <value>パスワードの確認入力</value>
+  </data>
+  <data name="SettingsConfirmPasswordRequiredError" xml:space="preserve">
+    <value>確認パスワードが必要です。</value>
+  </data>
+  <data name="SettingsPasswordLabel" xml:space="preserve">
+    <value>パスワード</value>
+  </data>
+  <data name="SettingsPasswordMismatchError" xml:space="preserve">
+    <value>パスワードは、パスワードの確認入力と一致する必要があります。</value>
+  </data>
+  <data name="SettingsPasswordRequiredError" xml:space="preserve">
+    <value>パスワードが必要です。</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="SettingsUsePasswordLabel" xml:space="preserve">
+    <value>パスワードを使用します。</value>
+  </data>
+  <data name="StartTileBalance" xml:space="preserve">
+    <value>バランス: {0}</value>
+  </data>
+  <data name="SynchronizationEnableLabel" xml:space="preserve">
+    <value>同期を有効にします。</value>
+  </data>
+  <data name="SynchronizationExplanation" xml:space="preserve">
+    <value>スターリングのお金は、同期し、Windows Azure にバックアップすることができます。さらに、個々 のアカウントあなたの配偶者のような他のユーザーと共有する可能性があります。非常に真剣にセキュリティを取るし、すべてのデータ HTTPS を介して安全に送信される匿名で Microsoft アカウントの資格情報を使用して保護されます。スターリングのお金は、アカウントまたはルーティング番号のような特定のアカウントまたはあなたの名前またはログイン情報のような個人を特定できる情報を格納しません。さらに質問がある場合下のリンクを使用して私に連絡してください：</value>
+  </data>
+  <data name="SynchronizationFeedbackEmailSubject" xml:space="preserve">
+    <value>スターリングのお金同期質問や懸念</value>
+  </data>
+  <data name="SynchronizationFeedbackLink" xml:space="preserve">
+    <value>質問や懸念</value>
+  </data>
+  <data name="SynchronizationTitle" xml:space="preserve">
+    <value>同期</value>
+  </data>
+  <data name="SyncLoginError" xml:space="preserve">
+    <value>同期にログインしている必要があります。</value>
+  </data>
+  <data name="SyncOnStartupLabel" xml:space="preserve">
+    <value>起動時に同期します。</value>
+  </data>
+  <data name="SyncUnknownError" xml:space="preserve">
+    <value>この時点で同期させることができません。もう一度やり直してください。</value>
+  </data>
+  <data name="TechnicalSupportEmailLabel" xml:space="preserve">
+    <value>テクニカル サポート/フィードバックの電子メール</value>
+  </data>
+  <data name="TechnicalSupportEmailSubject" xml:space="preserve">
+    <value>スターリングのお金のフィードバック</value>
+  </data>
+  <data name="ToastServerUnavailable" xml:space="preserve">
+    <value>サーバーが使用できません。</value>
+  </data>
+  <data name="ToastSyncError" xml:space="preserve">
+    <value>データの同期エラー</value>
+  </data>
+  <data name="TooManyAgentsError" xml:space="preserve">
+    <value>あまりにも多くのバック グラウンド エージェントが有効になっています。設定アプリケーションをスターリング誕生日エージェントを有効にする前に他のエージェントを無効にしてください。</value>
+  </data>
+  <data name="TotalBalanceLabel" xml:space="preserve">
+    <value>トータル バランス</value>
+  </data>
+  <data name="TransactionAccountLabel" xml:space="preserve">
+    <value>アカウント</value>
+  </data>
+  <data name="TransactionAmountLabel" xml:space="preserve">
+    <value>量</value>
+  </data>
+  <data name="TransactionCategoryLabel" xml:space="preserve">
+    <value>カテゴリ</value>
+  </data>
+  <data name="TransactionCheckNumberLabel" xml:space="preserve">
+    <value>チェック</value>
+  </data>
+  <data name="TransactionDateLabel" xml:space="preserve">
+    <value>日付</value>
+  </data>
+  <data name="TransactionLocationLabel" xml:space="preserve">
+    <value>場所</value>
+  </data>
+  <data name="TransactionNotesLabel" xml:space="preserve">
+    <value>メモ</value>
+  </data>
+  <data name="TransactionPostedLabel" xml:space="preserve">
+    <value>掲示されます。</value>
+  </data>
+  <data name="TransactionsAvailableBalanceLabel" xml:space="preserve">
+    <value>利用可能な残高</value>
+  </data>
+  <data name="TransactionSelectAccountLabel" xml:space="preserve">
+    <value>アカウントを選択します</value>
+  </data>
+  <data name="TransactionsLoadingTitle" xml:space="preserve">
+    <value>読み込んでいます.</value>
+  </data>
+  <data name="TransactionsNoData" xml:space="preserve">
+    <value>トランザクションがありません。</value>
+  </data>
+  <data name="TransactionsPostedBalanceLabel" xml:space="preserve">
+    <value>掲示されるバランス</value>
+  </data>
+  <data name="TransferFromComparisonString" xml:space="preserve">
+    <value>転送します。</value>
+  </data>
+  <data name="TransferFromLocation" xml:space="preserve">
+    <value>{0} からの転送します。</value>
+  </data>
+  <data name="TransferTitle" xml:space="preserve">
+    <value>転送</value>
+  </data>
+  <data name="TransferToComparisonString" xml:space="preserve">
+    <value>転送するには</value>
+  </data>
+  <data name="TransferToLocation" xml:space="preserve">
+    <value>{0} への転送します。</value>
+  </data>
+  <data name="TrialMessageGeneric" xml:space="preserve">
+    <value>この機能は、完全なバージョンで利用できるのみです。</value>
+  </data>
+  <data name="TrialMessagePurchaseText" xml:space="preserve">
+    <value>{0} は、完全なバージョンを購入するために購入するボタン怒鳴るをクリックします。</value>
+  </data>
+  <data name="TrialMessageTenTransactions" xml:space="preserve">
+    <value>アカウントごとの 10 10 のみのトランザクションは、試用モードで許可されます。</value>
+  </data>
+  <data name="TrialMessageTwoAccounts" xml:space="preserve">
+    <value>2 2 のみアカウントは試用モードで許可されます。</value>
+  </data>
+  <data name="TrialReminderPeriodMessage" xml:space="preserve">
+    <value>左から {0} 日があります。</value>
+  </data>
+  <data name="TrialReminderUsageCountMessage" xml:space="preserve">
+    <value>左に {0} 回があります。</value>
+  </data>
+  <data name="TrialTitle" xml:space="preserve">
+    <value>試用版</value>
+  </data>
+  <data name="UnknownTitle" xml:space="preserve">
+    <value>不明</value>
+  </data>
+  <data name="UnpinFromStart" xml:space="preserve">
+    <value>開始からの固定を解除します。</value>
+  </data>
+  <data name="UploadingProgressText" xml:space="preserve">
+    <value>アップロードされた {0} {1} バイトの.</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>撤退</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Content" xml:space="preserve">
+    <value>同期サービスの 30 日間無料試用版を使用しています。引き続き裁判を超えてサービスを使用するアプリケーションを購入する希望ですか？-[はい] を選択した場合は、市場に切り替わります。</value>
+  </data>
+  <data name="WP7SyncTrialReminder_Title" xml:space="preserve">
+    <value>試用版のアラーム</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Content" xml:space="preserve">
+    <value>あなたの同期サービス triial の有効期限が切れました。現在のアプリケーションを購入したいですか？-[はい] を選択した場合は、市場に切り替わります。</value>
+  </data>
+  <data name="WP7SyncTrialReminderExpired_Title" xml:space="preserve">
+    <value>試用版の有効期限が切れてください。</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>無効なパスワード</value>
+  </data>
+  <data name="InvalidPasswordRetryButton" xml:space="preserve">
+    <value>再試行</value>
+  </data>
+  <data name="InvalidPasswordExitButton" xml:space="preserve">
+    <value>出口</value>
+  </data>
+  <data name="NoDataLabel" xml:space="preserve">
+    <value />
+  </data>
+</root>

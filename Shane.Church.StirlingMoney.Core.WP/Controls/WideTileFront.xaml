@@ -3,16 +3,54 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:util="clr-namespace:Shane.Church.StirlingMoney.Core.WP.Converters"
+    xmlns:local="clr-namespace:Shane.Church.StirlingMoney.Core.WP"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
+    Foreground="White"
     d:DesignHeight="336" d:DesignWidth="691">
-    
+
+    <UserControl.Resources>
+        <local:LocalizedStrings x:Key="LocalLocalizedStrings"/>
+        <util:ByteToImageSourceValueConverter x:Key="LocalByteImageConverter"/>
+        <util:CurrencyValueConverter x:Key="LocalLocalizedCurrency"/>
+    </UserControl.Resources>
+
     <Grid x:Name="LayoutRoot" 
           Background="{StaticResource PhoneAccentBrush}"
           Height="336"
           Width="691">
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="346"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0"
+               Grid.Column="0" 
+               Source="{Binding Image, Converter={StaticResource LocalByteImageConverter}}"
+               Margin="24" 
+               Stretch="Fill"/>
+        <StackPanel Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="12">
+            <TextBlock Text="{Binding Path=LocalizedResources.TransactionsAvailableBalanceLabel, Source={StaticResource LocalLocalizedStrings}}" 
+                                                                HorizontalAlignment="Left" 
+                                                                Margin="12,12,12,0"
+                                                                FontWeight="Bold" 
+                                                                FontSize="{StaticResource PhoneFontSizeMediumLarge}" />
+            <TextBlock Text="{Binding AccountBalance, Converter={StaticResource LocalLocalizedCurrency}}" 
+                                                                HorizontalAlignment="Left" 
+                                                                Margin="12,0" 
+                                                                FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+            <TextBlock Text="{Binding Path=LocalizedResources.TransactionsPostedBalanceLabel, Source={StaticResource LocalLocalizedStrings}}" 
+                                                                HorizontalAlignment="Left" 
+                                                                Margin="12,0" 
+                                                                FontWeight="Bold"
+                                                                FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+            <TextBlock Text="{Binding PostedBalance, Converter={StaticResource LocalLocalizedCurrency}}" 
+                                                                HorizontalAlignment="Left" 
+                                                                Margin="12,0,12,12"
+                                                                FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+        </StackPanel>
     </Grid>
 </UserControl>
