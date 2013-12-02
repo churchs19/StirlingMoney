@@ -176,6 +176,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 						var item = KernelService.Kernel.Get<TransactionListItemViewModel>(new Ninject.Parameters.ConstructorArgument("parent", this));
 						await item.LoadData(t);
 						item.PostedChanged += async (s) => await item_PostedChanged(s);
+						item.ItemDeleted += async (s) => await item_ItemDeleted(s);
 						Transactions.Add(item);
 						CurrentRow++;
 						TotalRows = this.Account.TransactionCount;
@@ -194,14 +195,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			RaisePropertyChanged(() => AvailableBalance);
 		}
 
-		void item_ItemDeleted(object sender, EventArgs args)
+		async Task item_ItemDeleted(TransactionListItemViewModel sender)
 		{
-			var item = sender as TransactionListItemViewModel;
-			if (item != null)
+			if (sender != null)
 			{
-				CurrentRow--;
-				RaisePropertyChanged(() => PostedBalance);
-				RaisePropertyChanged(() => AvailableBalance);
+				if (this.Transactions.Remove(sender))
+				{
+					await _transactionRepository.DeleteEntryAsync(sender.TransactionId);
+					sender = null;
+					CurrentRow--;
+					TotalRows--;
+					RaisePropertyChanged(() => Transactions);
+					RaisePropertyChanged(() => PostedBalance);
+					RaisePropertyChanged(() => AvailableBalance);
+				}
 			}
 		}
 

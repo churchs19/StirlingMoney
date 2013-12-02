@@ -3,7 +3,6 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
-using Shane.Church.Utility.Core.WP;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -163,7 +162,7 @@ namespace Shane.Church.StirlingMoney.WP
 			await _model.LoadNextTransactions();
 			Deployment.Current.Dispatcher.BeginInvoke(() =>
 			{
-				if (_model.TotalRows >= _model.Transactions.Count)
+				if (_model.Transactions.Count >= _model.TotalRows)
 					jumpListTransactions.DataVirtualizationMode = Telerik.Windows.Controls.DataVirtualizationMode.None;
 			});
 #if DEBUG

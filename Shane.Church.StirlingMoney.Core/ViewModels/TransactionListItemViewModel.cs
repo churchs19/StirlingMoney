@@ -4,7 +4,6 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
-using Shane.Church.Utility.Core.Command;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -37,7 +36,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_navService = navService;
 
 			EditCommand = new RelayCommand(Edit);
-			DeleteCommand = new AsyncRelayCommand(o => Delete());
+			DeleteCommand = new RelayCommand(Delete);
 		}
 
 		private Guid _accountId;
@@ -179,17 +178,22 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_navService.Navigate<AddEditTransactionViewModel>(param);
 		}
 
+		public delegate void ItemDeletedHandler(TransactionListItemViewModel sender);
+		public event ItemDeletedHandler ItemDeleted;
+
 		public ICommand DeleteCommand { get; private set; }
 
-		public async Task Delete()
+		public void Delete()
 		{
-			await _transactionRepository.DeleteEntryAsync(TransactionId);
-			if (this._parent != null)
-			{
-				_parent.Transactions.Remove(this);
-				_parent.CurrentRow--;
-				_parent.TotalRows--;
-			}
+			//await _transactionRepository.DeleteEntryAsync(TransactionId);
+			//if (this._parent != null)
+			//{
+			//	_parent.Transactions.Remove(this);
+			//	_parent.CurrentRow--;
+			//	_parent.TotalRows--;
+			//}
+			if (ItemDeleted != null)
+				ItemDeleted(this);
 		}
 
 		public int CompareTo(object obj)
