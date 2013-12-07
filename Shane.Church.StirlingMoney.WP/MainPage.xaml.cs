@@ -54,6 +54,8 @@ namespace Shane.Church.StirlingMoney.WP
 			_model.SyncCompleted += _model_SyncCompleted;
 			this.DataContext = _model;
 
+			await _model.Initialize();
+
 			try
 			{
 				if (PhoneNavigationService.DecodeNavigationParameter<bool>(this.NavigationContext))
@@ -98,7 +100,7 @@ namespace Shane.Church.StirlingMoney.WP
 			});
 		}
 
-		void _model_BusyChanged(Core.Data.BusyEventArgs args)
+		void _model_BusyChanged(object sender, Core.Data.BusyEventArgs args)
 		{
 			if (args.IsBusy)
 			{

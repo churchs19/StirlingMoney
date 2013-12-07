@@ -111,23 +111,20 @@ namespace Shane.Church.StirlingMoney.WP
 			rateReminder.ReminderClosed += rateReminder_ReminderClosed;
 		}
 
-		void rateReminder_ReminderClosed(object sender, ReminderClosedEventArgs e)
+		async void rateReminder_ReminderClosed(object sender, ReminderClosedEventArgs e)
 		{
 			if (e.MessageBoxEventArgs.Result == DialogResult.Cancel)
 			{
-				RadMessageBox.Show(buttonsContent: new List<object>() { Shane.Church.StirlingMoney.Strings.Resources.GiveFeedbackButton, Shane.Church.StirlingMoney.Strings.Resources.NoThanksButton },
+				var eArgs = await RadMessageBox.ShowAsync(buttonsContent: new List<object>() { Shane.Church.StirlingMoney.Strings.Resources.GiveFeedbackButton, Shane.Church.StirlingMoney.Strings.Resources.NoThanksButton },
 					title: Shane.Church.StirlingMoney.Strings.Resources.FeedbackTitle,
-					message: Shane.Church.StirlingMoney.Strings.Resources.FeedbackContent,
-					closedHandler: (eArgs) =>
-					{
-						if (eArgs.ButtonIndex == 0)
-						{
-							EmailComposeTask emailTask = new EmailComposeTask();
-							emailTask.To = "shane@s-church.net";
-							emailTask.Subject = emailTask.Subject = Shane.Church.StirlingMoney.Strings.Resources.TechnicalSupportEmailSubject;
-							emailTask.Show();
-						}
-					});
+					message: Shane.Church.StirlingMoney.Strings.Resources.FeedbackContent);
+				if (eArgs.ButtonIndex == 0)
+				{
+					EmailComposeTask emailTask = new EmailComposeTask();
+					emailTask.To = "shane@s-church.net";
+					emailTask.Subject = emailTask.Subject = Shane.Church.StirlingMoney.Strings.Resources.TechnicalSupportEmailSubject;
+					emailTask.Show();
+				}
 			}
 		}
 

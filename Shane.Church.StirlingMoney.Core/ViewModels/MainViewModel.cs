@@ -62,6 +62,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			BackupCommand = new RelayCommand(NavigateToBackup);
 		}
 
+		public virtual Task Initialize()
+		{
+			return TaskEx.Run(() => { });
+		}
+
 		public delegate void SyncCompletedHandler();
 		public event SyncCompletedHandler SyncCompleted;
 
@@ -95,7 +100,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			if (BusyChanged != null)
 			{
-				BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
+				BusyChanged(this, new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 			}
 
 			await TaskEx.Yield();
@@ -104,7 +109,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 			if (BusyChanged != null)
 			{
-				BusyChanged(new BusyEventArgs() { IsBusy = false });
+				BusyChanged(this, new BusyEventArgs() { IsBusy = false });
 			}
 		}
 
@@ -114,7 +119,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				if (BusyChanged != null)
 				{
-					BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
+					BusyChanged(this, new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 				}
 
 				await TaskEx.Yield();
@@ -141,7 +146,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				_budgetsLoaded = true;
 				if (BusyChanged != null)
 				{
-					BusyChanged(new BusyEventArgs() { IsBusy = false });
+					BusyChanged(this, new BusyEventArgs() { IsBusy = false });
 				}
 			}
 		}
@@ -162,7 +167,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				if (BusyChanged != null)
 				{
-					BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
+					BusyChanged(this, new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 				}
 
 				await TaskEx.Yield();
@@ -189,7 +194,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				_goalsLoaded = true;
 				if (BusyChanged != null)
 				{
-					BusyChanged(new BusyEventArgs() { IsBusy = false });
+					BusyChanged(this, new BusyEventArgs() { IsBusy = false });
 				}
 			}
 		}
@@ -224,15 +229,26 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			if (BusyChanged != null)
 			{
-				BusyChanged(new BusyEventArgs() { AnimationType = 7, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarSyncText });
+				BusyChanged(this, new BusyEventArgs() { AnimationType = 7, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarSyncText });
 			}
 			await TaskEx.Yield();
 
 			await _syncService.Sync();
 		}
 
-		public delegate void BusyChangedHandler(BusyEventArgs args);
-		public event BusyChangedHandler BusyChanged;
+		public event EventHandler<BusyEventArgs> BusyChanged;
+
+		protected virtual void OnBusyChanged(BusyEventArgs e)
+		{
+			// Make a temporary copy of the event to avoid possibility of 
+			// a race condition if the last subscriber unsubscribes 
+			// immediately after the null check and before the event is raised.
+			EventHandler<BusyEventArgs> handler = BusyChanged;
+			if (handler != null)
+			{
+				handler(this, e);
+			}
+		}
 
 		public Task SyncTaskCompleted()
 		{
@@ -240,7 +256,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				if (BusyChanged != null)
 				{
-					BusyChanged(new BusyEventArgs() { IsBusy = false });
+					BusyChanged(this, new BusyEventArgs() { IsBusy = false });
 				}
 			});
 		}
@@ -253,7 +269,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			}
 			if (BusyChanged != null)
 			{
-				BusyChanged(new BusyEventArgs() { IsBusy = false, IsError = true, Error = ex });
+				BusyChanged(this, new BusyEventArgs() { IsBusy = false, IsError = true, Error = ex });
 			}
 		}
 

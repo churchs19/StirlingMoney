@@ -3,6 +3,9 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
+#if DEBUG
+using Shane.Church.Utility.Core.WP;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Windows;

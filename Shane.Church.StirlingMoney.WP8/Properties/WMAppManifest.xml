@@ -47,7 +47,7 @@
     <Language code="uk" />
     <Language code="vi" />
   </Languages>
-  <App xmlns="" ProductID="{71b78345-8b19-4fcd-881a-d6a2d137e522}" Title="Stirling Money" RuntimeType="Silverlight" Version="3.0.8.0" Genre="apps.normal" Author="Shane Church" Description="Manage your personal finances with this simple application to keep track of account balances, transactions, budgets, and goals. Securely synchronize your data with selected family or friends." Publisher="Shane Church" PublisherID="{ec35f097-ae6a-4553-9fd5-bcd16646bbcd}">
+  <App xmlns="" ProductID="{71b78345-8b19-4fcd-881a-d6a2d137e522}" Title="Stirling Money" RuntimeType="Silverlight" Version="3.1.8.0" Genre="apps.normal" Author="Shane Church" Description="Manage your personal finances with this simple application to keep track of account balances, transactions, budgets, and goals. Securely synchronize your data with selected family or friends." Publisher="Shane Church" PublisherID="{ec35f097-ae6a-4553-9fd5-bcd16646bbcd}">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

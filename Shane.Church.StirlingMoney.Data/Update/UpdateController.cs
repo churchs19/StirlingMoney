@@ -17,7 +17,7 @@ namespace Shane.Church.StirlingMoney.Data.Update
 			{
 				var engine = KernelService.Kernel.Get<SterlingEngine>();
 				var db = engine.SterlingDatabase.GetDatabase("Money");
-				await db.PurgeAsync();
+				//await db.PurgeAsync();
 
 				foreach (Data.v2.Category c in context.Categories)
 				{
