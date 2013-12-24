@@ -14,7 +14,6 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    Loaded="PhoneApplicationPage_Loaded"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
@@ -119,7 +118,7 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" Visibility="Collapsed">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -199,7 +198,7 @@
                                             Background="{StaticResource PhoneSemitransparentBrush}" 
                                             Foreground="{StaticResource PhoneAccentBrush}" 
                                             Content="{Binding Path=LocalizedResources.ProgressBarText, Source={StaticResource LocalizedStrings}}"
-                                            IsRunning="False"
+                                            IsRunning="True"
                                             BorderBrush="{StaticResource PhoneSemitransparentBrush}"
                                             AnimationStyle="AnimationStyle3"/>
         <StackPanel Grid.Row="2">

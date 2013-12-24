@@ -31,7 +31,7 @@ namespace Shane.Church.StirlingMoney.Core.WP8
 			KernelService.Kernel.Rebind<IWebNavigationService>().To<PhoneWebNavigationService>().InSingletonScope();
 			KernelService.Kernel.Rebind<MainViewModel>().To<PhoneMainViewModel>();
 			KernelService.Kernel.Rebind<AboutViewModel>().To<PhoneAboutViewModel>();
-			KernelService.Kernel.Rebind<AddEditAccountViewModel>().To<PhoneAddEditAccountViewModel>();
+			//			KernelService.Kernel.Rebind<AddEditAccountViewModel>().To<PhoneAddEditAccountViewModel>();
 			KernelService.Kernel.Rebind<SettingsViewModel>().To<PhoneSettingsViewModel>();
 			KernelService.Kernel.Rebind<ILoggingService>().To<PhoneLoggingService>();
 			KernelService.Kernel.Rebind<INavigationService>().To<PhoneNavigationService>().InSingletonScope();
@@ -50,7 +50,7 @@ namespace Shane.Church.StirlingMoney.Core.WP8
 			KernelService.Kernel.Rebind<IRepository<Core.Data.Tombstone, string>>().To<TombstoneRepository>();
 			KernelService.Kernel.Rebind<ITransactionSum>().To<TransactionRepository>();
 			KernelService.Kernel.Rebind<ITileService<Core.Data.Account, Guid>>().To<WP8AccountTileService>().InSingletonScope();
-			KernelService.Kernel.Rebind<AccountTileViewModel>().To<PhoneAccountTileViewModel>();
+			//			KernelService.Kernel.Rebind<AccountTileViewModel>().To<PhoneAccountTileViewModel>();
 			KernelService.Kernel.Rebind<IMobileServiceClient>().ToMethod<MobileServiceClient>(it =>
 			{
 				var client = new MobileServiceClient(

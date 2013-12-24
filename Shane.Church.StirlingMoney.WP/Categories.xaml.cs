@@ -3,6 +3,8 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using System;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -15,20 +17,30 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeComponent();
 
 			InitializeAdControl(this.AdPanel, this.AdControl);
-
-			BuildApplicationBar();
 		}
 
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
+			base.OnNavigatedTo(e);
+
+			TaskEx.Run(() => Initialize());
+		}
+
+		protected void Initialize()
+		{
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				BuildApplicationBar();
+			});
 			FlurryWP8SDK.Api.LogPageView();
 			_model = KernelService.Kernel.Get<CategoryListViewModel>();
 
-			base.OnNavigatedTo(e);
-
 			_model.LoadData();
 
-			this.DataContext = _model;
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				this.DataContext = _model;
+			});
 		}
 
 		/// <summary>

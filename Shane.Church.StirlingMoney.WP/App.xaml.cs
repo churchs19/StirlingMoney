@@ -6,8 +6,10 @@ using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Exceptions;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.SterlingDb;
+using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP;
 using Shane.Church.StirlingMoney.Core.WP7;
+using Shane.Church.StirlingMoney.WP.ViewModels;
 using Shane.Church.Utility.Core.WP;
 using System;
 using System.Collections.Generic;
@@ -65,6 +67,8 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeLanguage();
 
 			NinjectBootstrapper.Bootstrap();
+			KernelService.Kernel.Rebind<AccountTileViewModel>().To<PhoneAccountTileViewModel>();
+			KernelService.Kernel.Rebind<AddEditAccountViewModel>().To<PhoneAddEditAccountViewModel>();
 
 			// Show graphics profiling information while debugging.
 			if (System.Diagnostics.Debugger.IsAttached)

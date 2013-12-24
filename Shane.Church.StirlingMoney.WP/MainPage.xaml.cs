@@ -6,6 +6,7 @@ using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
 using Shane.Church.Utility.Core.WP;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,19 +33,35 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeComponent();
 
 			InitializeAdControl(this.AdPanel, this.AdControl);
-
-#if !PERSONAL
-			//Shows the trial reminder message, according to the settings of the TrialReminder.
-			KernelService.Kernel.Get<RadTrialApplicationReminder>().Notify();
-
-			//Shows the rate reminder message, according to the settings of the RateReminder.
-			(App.Current as App).rateReminder.Notify();
-#endif
 		}
 
-		protected override async void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+		{
+			base.OnNavigatedTo(e);
+
+			var navContext = Newtonsoft.Json.Linq.JObject.FromObject(this.NavigationContext);
+
+			TaskEx.Run(() => Initialize(e.NavigationMode, navContext));
+		}
+
+		protected async Task Initialize(System.Windows.Navigation.NavigationMode navMode, Newtonsoft.Json.Linq.JObject navContext)
 		{
 			FlurryWP8SDK.Api.LogPageView();
+
+#if !PERSONAL
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				//Shows the trial reminder message, according to the settings of the TrialReminder.
+				KernelService.Kernel.Get<RadTrialApplicationReminder>().Notify();
+			});
+
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				//Shows the rate reminder message, according to the settings of the RateReminder.
+				(App.Current as App).rateReminder.Notify();
+			});
+#endif
+
 			_log = KernelService.Kernel.Get<ILoggingService>();
 			_settings = KernelService.Kernel.Get<ISettingsService>();
 			_license = KernelService.Kernel.Get<ILicensingService>();
@@ -52,22 +69,19 @@ namespace Shane.Church.StirlingMoney.WP
 			_model = KernelService.Kernel.Get<MainViewModel>();
 			_model.BusyChanged += _model_BusyChanged;
 			_model.SyncCompleted += _model_SyncCompleted;
-			this.DataContext = _model;
 
 			await _model.Initialize();
 
 			try
 			{
-				if (PhoneNavigationService.DecodeNavigationParameter<bool>(this.NavigationContext))
+				if (PhoneNavigationService.DecodeNavigationParameter<bool>(navContext) && _navService.CanGoBack)
 				{
 					NavigationService.RemoveBackEntry();
 				}
 			}
 			catch { }
 
-			base.OnNavigatedTo(e);
-
-			if (e.NavigationMode == System.Windows.Navigation.NavigationMode.New && _settings.LoadSetting<bool>("EnableSync") && _settings.LoadSetting<bool>("SyncOnStartup"))
+			if (navMode == System.Windows.Navigation.NavigationMode.New && _settings.LoadSetting<bool>("EnableSync") && _settings.LoadSetting<bool>("SyncOnStartup"))
 			{
 				_model.SyncCommand.Execute(null);
 			}
@@ -77,8 +91,14 @@ namespace Shane.Church.StirlingMoney.WP
 				_refreshBudgets = true;
 				_refreshGoals = true;
 
-				await LoadData();
+				LoadData();
 			}
+
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				this.DataContext = _model;
+				this.PivotMain.Visibility = System.Windows.Visibility.Visible;
+			});
 		}
 
 		protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
@@ -90,13 +110,13 @@ namespace Shane.Church.StirlingMoney.WP
 
 		async void _model_SyncCompleted()
 		{
-			await Deployment.Current.Dispatcher.InvokeAsync(async () =>
+			await Deployment.Current.Dispatcher.InvokeAsync(() =>
 			{
 				_refreshAccounts = true;
 				_refreshBudgets = true;
 				_refreshGoals = true;
 
-				await LoadData();
+				LoadData();
 			});
 		}
 
@@ -285,68 +305,75 @@ namespace Shane.Church.StirlingMoney.WP
 		}
 		#endregion
 
-		private async void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			PivotItem pi = e.AddedItems[0] as PivotItem;
-
-			Deployment.Current.Dispatcher.BeginInvoke(() =>
-			{
-				UpdateApplicationBar(pi);
-			});
-
-			if (!LoadingBusy.IsRunning)
-				await LoadData();
+			LoadData();
 		}
 
-		private void UpdateApplicationBar(PivotItem pi)
+		private void UpdateApplicationBar(string header)
 		{
-			if (pi != null)
+			if (header == Shane.Church.StirlingMoney.Strings.Resources.AccountsTitle)
 			{
-				string header = pi.Header.ToString();
-				if (header == Shane.Church.StirlingMoney.Strings.Resources.AccountsTitle)
-				{
-					BuildApplicationBar(ApplicationBarType.Accounts);
-				}
-				else if (header == Shane.Church.StirlingMoney.Strings.Resources.BudgetsTitle)
-				{
-					BuildApplicationBar(ApplicationBarType.Budget);
-				}
-				else if (header == Shane.Church.StirlingMoney.Strings.Resources.GoalsTitle)
-				{
-					BuildApplicationBar(ApplicationBarType.Goals);
-				}
+				BuildApplicationBar(ApplicationBarType.Accounts);
+			}
+			else if (header == Shane.Church.StirlingMoney.Strings.Resources.BudgetsTitle)
+			{
+				BuildApplicationBar(ApplicationBarType.Budget);
+			}
+			else if (header == Shane.Church.StirlingMoney.Strings.Resources.GoalsTitle)
+			{
+				BuildApplicationBar(ApplicationBarType.Goals);
 			}
 		}
 
-		private async Task LoadData()
+		private void LoadData()
 		{
-			PivotItem pi = PivotMain.SelectedItem as PivotItem;
-			if (pi != null)
+			Deployment.Current.Dispatcher.BeginInvoke(async () =>
 			{
-				Deployment.Current.Dispatcher.BeginInvoke(() =>
+				PivotItem pi = PivotMain.SelectedItem as PivotItem;
+				string header = Shane.Church.StirlingMoney.Strings.Resources.AccountsTitle;
+				if (pi != null)
 				{
-					UpdateApplicationBar(pi);
-				});
-				string header = pi.Header.ToString();
-				if (header == Shane.Church.StirlingMoney.Strings.Resources.AccountsTitle)
-				{
-					await _model.LoadAccounts(_refreshAccounts);
-					_refreshAccounts = false;
+					header = pi.Header.ToString();
 				}
-				else if (header == Shane.Church.StirlingMoney.Strings.Resources.BudgetsTitle)
+				if (_model != null)
 				{
-					await _model.LoadBudgets(_refreshBudgets);
-					_refreshBudgets = false;
-				}
-				else if (header == Shane.Church.StirlingMoney.Strings.Resources.GoalsTitle)
-				{
-					await _model.LoadGoals(_refreshGoals);
-					_refreshGoals = false;
-				}
+					UpdateApplicationBar(header);
+					if (header == Shane.Church.StirlingMoney.Strings.Resources.AccountsTitle)
+					{
+						await _model.LoadAccounts(_refreshAccounts);
+						_refreshAccounts = false;
+						Deployment.Current.Dispatcher.BeginInvoke(() =>
+						{
+							if (AccountPanel.Visibility == System.Windows.Visibility.Collapsed)
+								AccountPanel.Visibility = System.Windows.Visibility.Visible;
+						});
+					}
+					else if (header == Shane.Church.StirlingMoney.Strings.Resources.BudgetsTitle)
+					{
+						await _model.LoadBudgets(_refreshBudgets);
+						_refreshBudgets = false;
+						Deployment.Current.Dispatcher.BeginInvoke(() =>
+						{
+							if (BudgetPanel.Visibility == System.Windows.Visibility.Collapsed)
+								BudgetPanel.Visibility = System.Windows.Visibility.Visible;
+						});
+					}
+					else if (header == Shane.Church.StirlingMoney.Strings.Resources.GoalsTitle)
+					{
+						await _model.LoadGoals(_refreshGoals);
+						_refreshGoals = false;
+						Deployment.Current.Dispatcher.BeginInvoke(() =>
+						{
+							if (GoalsPanel.Visibility == System.Windows.Visibility.Collapsed)
+								GoalsPanel.Visibility = System.Windows.Visibility.Visible;
+						});
+					}
 #if DEBUG
-				DebugUtility.DebugOutputMemoryUsage("MainPage_LoadData");
+					DebugUtility.DebugOutputMemoryUsage("MainPage_LoadData");
 #endif
-			}
+				}
+			});
 		}
 	}
 }

@@ -6,6 +6,7 @@ using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.Utility.Core.Command;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
 using Telerik.Windows.Controls;
@@ -25,12 +26,21 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeComponent();
 
 			InitializeAdControl(this.AdPanel, this.AdControl);
-
-			InitializeApplicationBar();
 		}
 
-		protected override async void OnNavigatedTo(NavigationEventArgs e)
+		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
+			base.OnNavigatedTo(e);
+
+			TaskEx.Run(() => Initialize());
+		}
+
+		protected async Task Initialize()
+		{
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				InitializeApplicationBar();
+			});
 			FlurryWP8SDK.Api.LogPageView();
 			_logService = KernelService.Kernel.Get<ILoggingService>();
 			_model = KernelService.Kernel.Get<SettingsViewModel>();
@@ -41,7 +51,10 @@ namespace Shane.Church.StirlingMoney.WP
 						args.Errors.ToArray());
 				if (!String.IsNullOrEmpty(errorMessages))
 				{
-					MessageBox.Show(errorMessages, Shane.Church.StirlingMoney.Strings.Resources.InvalidValuesTitle, MessageBoxButton.OK);
+					Deployment.Current.Dispatcher.BeginInvoke(() =>
+					{
+						MessageBox.Show(errorMessages, Shane.Church.StirlingMoney.Strings.Resources.InvalidValuesTitle, MessageBoxButton.OK);
+					});
 				}
 			};
 			_model.AddActionCompleted += (s, args) =>
@@ -50,14 +63,16 @@ namespace Shane.Church.StirlingMoney.WP
 				if (args is ValidationResultEventArgs)
 					isSuccess = ((ValidationResultEventArgs)args).IsValid;
 
-				if (isSuccess)
+				Deployment.Current.Dispatcher.BeginInvoke(() =>
 				{
-					this.newAuthorizedUser.Text = "";
-				}
-				else
-					newAuthorizedUser.ChangeValidationState(ValidationState.Invalid, "Required");
+					if (isSuccess)
+					{
+						this.newAuthorizedUser.Text = "";
+					}
+					else
+						newAuthorizedUser.ChangeValidationState(ValidationState.Invalid, "Required");
+				});
 			};
-			base.OnNavigatedTo(e);
 
 			await _model.LoadData();
 
@@ -72,7 +87,6 @@ namespace Shane.Church.StirlingMoney.WP
 				this.DataContext = _model;
 			});
 		}
-
 		protected override void OnNavigatedFrom(NavigationEventArgs e)
 		{
 			if (e.NavigationMode == NavigationMode.Back)

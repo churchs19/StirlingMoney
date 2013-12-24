@@ -150,6 +150,12 @@ namespace Shane.Church.StirlingMoney.WP.SampleData
 		{
 			throw new NotImplementedException();
 		}
+
+
+		public void RemoveBackEntry()
+		{
+			throw new NotImplementedException();
+		}
 	}
 	public class SampleAddEditAccountViewModel : AddEditAccountViewModel
 	{

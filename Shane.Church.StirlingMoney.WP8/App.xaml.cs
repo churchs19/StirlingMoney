@@ -6,8 +6,10 @@ using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Exceptions;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.SterlingDb;
+using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP;
 using Shane.Church.StirlingMoney.Core.WP8;
+using Shane.Church.StirlingMoney.WP.ViewModels;
 using Shane.Church.Utility.Core.WP;
 using System;
 using System.Collections.Generic;
@@ -65,6 +67,8 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeLanguage();
 
 			NinjectBootstrapper.Bootstrap();
+			KernelService.Kernel.Rebind<AccountTileViewModel>().To<PhoneAccountTileViewModel>();
+			KernelService.Kernel.Rebind<AddEditAccountViewModel>().To<PhoneAddEditAccountViewModel>();
 
 			// Show graphics profiling information while debugging.
 			if (System.Diagnostics.Debugger.IsAttached)
@@ -313,40 +317,40 @@ namespace Shane.Church.StirlingMoney.WP
 			}
 		}
 
-        #region Phone application initialization
+		#region Phone application initialization
 
-        // Avoid double-initialization
-        private bool phoneApplicationInitialized = false;
+		// Avoid double-initialization
+		private bool phoneApplicationInitialized = false;
 
-        // Do not add any additional code to this method
-        private void InitializePhoneApplication()
-        {
-            if (phoneApplicationInitialized)
-                return;
+		// Do not add any additional code to this method
+		private void InitializePhoneApplication()
+		{
+			if (phoneApplicationInitialized)
+				return;
 
-            // Create the frame but don't set it as RootVisual yet; this allows the splash
-            // screen to remain active until the application is ready to render.
-            RootFrame = new RadPhoneApplicationFrame();
-            RootFrame.Navigated += CompleteInitializePhoneApplication;
+			// Create the frame but don't set it as RootVisual yet; this allows the splash
+			// screen to remain active until the application is ready to render.
+			RootFrame = new RadPhoneApplicationFrame();
+			RootFrame.Navigated += CompleteInitializePhoneApplication;
 
-            // Handle navigation failures
-            RootFrame.NavigationFailed += RootFrame_NavigationFailed;
+			// Handle navigation failures
+			RootFrame.NavigationFailed += RootFrame_NavigationFailed;
 
-            // Ensure we don't initialize again
-            phoneApplicationInitialized = true;
-        }
+			// Ensure we don't initialize again
+			phoneApplicationInitialized = true;
+		}
 
-        // Do not add any additional code to this method
-        private void CompleteInitializePhoneApplication(object sender, NavigationEventArgs e)
-        {
-            // Set the root visual to allow the application to render
-            if (RootVisual != RootFrame)
-                RootVisual = RootFrame;
+		// Do not add any additional code to this method
+		private void CompleteInitializePhoneApplication(object sender, NavigationEventArgs e)
+		{
+			// Set the root visual to allow the application to render
+			if (RootVisual != RootFrame)
+				RootVisual = RootFrame;
 
-            // Remove this handler since it is no longer needed
-            RootFrame.Navigated -= CompleteInitializePhoneApplication;
-        }
+			// Remove this handler since it is no longer needed
+			RootFrame.Navigated -= CompleteInitializePhoneApplication;
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

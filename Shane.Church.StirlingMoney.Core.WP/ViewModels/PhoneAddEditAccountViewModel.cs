@@ -43,8 +43,8 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 		{
 			// The resource name will correspond to the namespace and path in the file system.
 			// Have a look at the resources collection in the debugger to figure out the name.
-			string resourcePath = "Shane.Church.StirlingMoney.Core.WP.Images";
-			Assembly assembly = Assembly.GetExecutingAssembly();
+			string resourcePath = "Shane.Church.StirlingMoney.WP.Images";
+			Assembly assembly = Assembly.Load("Shane.Church.StirlingMoney.WP");
 			var resources = assembly.GetManifestResourceNames().Where(it => it.StartsWith(resourcePath));
 
 			foreach (var r in resources)

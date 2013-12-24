@@ -1,6 +1,7 @@
 ﻿using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
 
@@ -20,16 +21,24 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
+			base.OnNavigatedTo(e);
+
+			TaskEx.Run(() => Initialize());
+		}
+
+		protected void Initialize()
+		{
 			FlurryWP8SDK.Api.LogPageView();
 			_model = KernelService.Kernel.Get<BackupViewModel>();
 			_log = KernelService.Kernel.Get<ILoggingService>();
 
 			_model.BusyChanged += _model_BusyChanged;
 
-			base.OnNavigatedTo(e);
-
-			BusyIndicator.DataContext = new { ProgressText = "", ProgressPercentage = 0 };
-			this.DataContext = _model;
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				BusyIndicator.DataContext = new { ProgressText = "", ProgressPercentage = 0 };
+				this.DataContext = _model;
+			});
 		}
 
 		void _model_BusyChanged(Core.Data.ProgressBusyEventArgs args)

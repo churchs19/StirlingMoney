@@ -16,6 +16,9 @@ namespace Shane.Church.StirlingMoney.Core.Services
 		/// </summary>
 		void GoBack();
 
+		//Remove Entry from the Back Stack
+		void RemoveBackEntry();
+
 		/// <summary>
 		/// The navigate.
 		/// </summary>

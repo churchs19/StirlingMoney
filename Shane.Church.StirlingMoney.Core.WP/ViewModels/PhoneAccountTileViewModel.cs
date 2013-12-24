@@ -37,12 +37,8 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 			if (string.IsNullOrWhiteSpace(ImageName)) ImageName = "Book-Open.png";
 			// The resource name will correspond to the namespace and path in the file system.
 			// Have a look at the resources collection in the debugger to figure out the name.
-#if AGENT
-			string resourcePath = "Shane.Church.StirlingMoney.Core.WP7.Agent.Images." + ImageName;
-#else
-			string resourcePath = "Shane.Church.StirlingMoney.Core.WP.Images." + ImageName;
-#endif
-			Assembly assembly = Assembly.GetExecutingAssembly();
+			string resourcePath = "Shane.Church.StirlingMoney.WP.Images.AccountIcons" + ImageName;
+			Assembly assembly = Assembly.Load("Shane.Church.StirlingMoney.WP");
 
 			using (var resourceStream = assembly.GetManifestResourceStream(resourcePath))
 			{

@@ -7,6 +7,7 @@ using Shane.Church.Utility.Core.WP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
 
@@ -21,12 +22,23 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeComponent();
 
 			InitializeAdControl(this.AdPanel, this.AdControl);
-
-			InitializeApplicationBar();
 		}
 
-		protected override async void OnNavigatedTo(NavigationEventArgs e)
+		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
+			base.OnNavigatedTo(e);
+
+			var navContext = Newtonsoft.Json.Linq.JObject.FromObject(this.NavigationContext);
+
+			TaskEx.Run(() => Initialize(navContext));
+		}
+
+		protected async Task Initialize(Newtonsoft.Json.Linq.JObject navContext)
+		{
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				InitializeApplicationBar();
+			});
 			FlurryWP8SDK.Api.LogPageView();
 			_model = KernelService.Kernel.Get<AddEditBudgetViewModel>();
 			_model.ValidationFailed += (s, args) =>
@@ -36,16 +48,17 @@ namespace Shane.Church.StirlingMoney.WP
 						args.Errors.ToArray());
 				if (!String.IsNullOrEmpty(errorMessages))
 				{
-					MessageBox.Show(errorMessages, Shane.Church.StirlingMoney.Strings.Resources.InvalidValuesTitle, MessageBoxButton.OK);
+					Deployment.Current.Dispatcher.BeginInvoke(() =>
+					{
+						MessageBox.Show(errorMessages, Shane.Church.StirlingMoney.Strings.Resources.InvalidValuesTitle, MessageBoxButton.OK);
+					});
 				}
 			};
-
-			base.OnNavigatedTo(e);
 
 			Guid id;
 			try
 			{
-				id = PhoneNavigationService.DecodeNavigationParameter<Guid>(this.NavigationContext);
+				id = PhoneNavigationService.DecodeNavigationParameter<Guid>(navContext);
 			}
 			catch (KeyNotFoundException)
 			{

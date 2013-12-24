@@ -197,8 +197,6 @@
     <Compile Include="Services\PhoneUpgradeDBService.cs" />
     <Compile Include="Services\PhoneWebNavigationService.cs" />
     <Compile Include="ViewModels\PhoneAboutViewModel.cs" />
-    <Compile Include="ViewModels\PhoneAccountTileViewModel.cs" />
-    <Compile Include="ViewModels\PhoneAddEditAccountViewModel.cs" />
     <Compile Include="ViewModels\PhoneMainViewModel.cs" />
     <Compile Include="ViewModels\PhoneSettingsViewModel.cs" />
   </ItemGroup>
@@ -233,37 +231,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Images\Accounts-Book.png" />
-    <EmbeddedResource Include="Images\American Express.png" />
-    <EmbeddedResource Include="Images\ATM.png" />
-    <EmbeddedResource Include="Images\Bank.png" />
-    <EmbeddedResource Include="Images\Bike-Loan.png" />
-    <EmbeddedResource Include="Images\Book-Open.png" />
-    <EmbeddedResource Include="Images\Car-Loan.png" />
-    <EmbeddedResource Include="Images\Cash.png" />
-    <EmbeddedResource Include="Images\Charity.png" />
-    <EmbeddedResource Include="Images\Cheque.png" />
-    <EmbeddedResource Include="Images\CitiBank.png" />
-    <EmbeddedResource Include="Images\Counting-Machine.png" />
-    <EmbeddedResource Include="Images\Debit-Card.png" />
-    <EmbeddedResource Include="Images\Discover.png" />
-    <EmbeddedResource Include="Images\Fund.png" />
-    <EmbeddedResource Include="Images\Home-Loan.png" />
-    <EmbeddedResource Include="Images\HSBC.png" />
-    <EmbeddedResource Include="Images\Jewel-Loan.png" />
-    <EmbeddedResource Include="Images\Market.png" />
-    <EmbeddedResource Include="Images\Master-Card.png" />
-    <EmbeddedResource Include="Images\Money-Bag.png" />
-    <EmbeddedResource Include="Images\Money.png" />
-    <EmbeddedResource Include="Images\Payment-01.png" />
-    <EmbeddedResource Include="Images\Payment-02.png" />
-    <EmbeddedResource Include="Images\Paypal.png" />
-    <EmbeddedResource Include="Images\Piggy Bank.png" />
-    <EmbeddedResource Include="Images\RBS.png" />
-    <EmbeddedResource Include="Images\Settled credit record.png" />
-    <EmbeddedResource Include="Images\Visa.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Controls\MediumTileBack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -290,34 +257,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Images\Aeroplane.png" />
-    <EmbeddedResource Include="Images\Baseball-Bat.png" />
-    <EmbeddedResource Include="Images\Basket.png" />
-    <EmbeddedResource Include="Images\Basketball.png" />
-    <EmbeddedResource Include="Images\Bid-01.png" />
-    <EmbeddedResource Include="Images\Bid-02.png" />
-    <EmbeddedResource Include="Images\Bill.png" />
-    <EmbeddedResource Include="Images\Caduceus.png" />
-    <EmbeddedResource Include="Images\Cat.png" />
-    <EmbeddedResource Include="Images\Children.png" />
-    <EmbeddedResource Include="Images\Dice.png" />
-    <EmbeddedResource Include="Images\Dog.png" />
-    <EmbeddedResource Include="Images\Dollar-Tag.png" />
-    <EmbeddedResource Include="Images\Euro-Tag.png" />
-    <EmbeddedResource Include="Images\Football-01.png" />
-    <EmbeddedResource Include="Images\Gift.png" />
-    <EmbeddedResource Include="Images\Golf-Ball.png" />
-    <EmbeddedResource Include="Images\Graduate-02.png" />
-    <EmbeddedResource Include="Images\Paid-Invoice.png" />
-    <EmbeddedResource Include="Images\Pending-Invoice.png" />
-    <EmbeddedResource Include="Images\Sales-Order.png" />
-    <EmbeddedResource Include="Images\Savings-01.png" />
-    <EmbeddedResource Include="Images\Savings-02.png" />
-    <EmbeddedResource Include="Images\Shopping-Bag.png" />
-    <EmbeddedResource Include="Images\Soccer.png" />
-    <EmbeddedResource Include="Images\Ticket.png" />
-    <EmbeddedResource Include="Images\Travel-Luggage.png" />
-    <EmbeddedResource Include="Images\University.png" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

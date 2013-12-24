@@ -41,7 +41,11 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <controls:Pivot x:Name="PivotMain" Title="{Binding Path=LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Grid.Row="0" SelectionChanged="Pivot_SelectionChanged" Grid.ColumnSpan="2">
+        <controls:Pivot x:Name="PivotMain" 
+                        Title="{Binding Path=LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" 
+                        Grid.Row="0" 
+                        SelectionChanged="Pivot_SelectionChanged" 
+                        Visibility="Collapsed">
             <controls:Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontFamily="{StaticResource TitleFontFamily}" FontSize="{StaticResource PhoneFontSizeExtraExtraLarge}"/>
@@ -54,7 +58,7 @@
             </controls:Pivot.TitleTemplate>
             <controls:PivotItem Header="{Binding Path=LocalizedResources.AccountsTitle, Source={StaticResource LocalizedStrings}}" 
 								    DataContext="{Binding Accounts}">
-                <Grid x:Name="ContentPanel" Margin="12,0,12,0">
+                <Grid x:Name="AccountPanel" Margin="12,0,12,0" Visibility="Collapsed">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
@@ -169,7 +173,7 @@
                 </Grid>
             </controls:PivotItem>
             <controls:PivotItem Header="{Binding Path=LocalizedResources.BudgetsTitle, Source={StaticResource LocalizedStrings}}">
-                <Grid>
+                <Grid x:Name="BudgetPanel" Visibility="Collapsed">
                     <ScrollViewer>
                         <ItemsControl ItemsSource="{Binding Budgets}">
                             <ItemsControl.ItemsPanel>
@@ -288,7 +292,7 @@
                 </Grid>
             </controls:PivotItem>
             <controls:PivotItem Header="{Binding Path=LocalizedResources.GoalsTitle, Source={StaticResource LocalizedStrings}}">
-                <Grid>
+                <Grid x:Name="GoalsPanel" Visibility="Collapsed">
                     <ScrollViewer>
                         <ItemsControl ItemsSource="{Binding Goals}">
                             <ItemsControl.ItemsPanel>
@@ -407,10 +411,10 @@
                                             Grid.Column="0"
                                             Background="{StaticResource PhoneSemitransparentBrush}" 
                                             Foreground="{StaticResource PhoneAccentBrush}" 
-                                            IsRunning="False"
+                                            IsRunning="True"
                                             BorderBrush="{StaticResource PhoneSemitransparentBrush}"
-                                            AnimationStyle="AnimationStyle3" Grid.ColumnSpan="2"/>
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                                            AnimationStyle="AnimationStyle3"/>
+        <StackPanel Grid.Row="1">
             <StackPanel x:Name="AdPanel">
                 <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"
                                   AppID="ShaneChurch_StirlingMoney_WP"

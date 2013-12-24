@@ -19,6 +19,8 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
+			base.OnNavigatedTo(e);
+
 			var settings = KernelService.Kernel.Get<ISettingsService>();
 
 			if (settings.LoadSetting<bool>("UsePassword") && !((Shane.Church.StirlingMoney.WP.App)App.Current).IsLoggedIn)
@@ -58,8 +60,6 @@ namespace Shane.Church.StirlingMoney.WP
 					loginWindow.IsOpen = true;
 				}
 			}
-
-			base.OnNavigatedTo(e);
 		}
 
 		private Inneractive.Nokia.Ad.InneractiveAd _adControl;

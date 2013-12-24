@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using Telerik.Windows.Data;
+using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -26,15 +27,27 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeComponent();
 
 			InitializeAdControl(this.AdPanel, this.AdControl);
-
-			InitializeApplicationBar();
-
-			InitializeJumpList();
 		}
 
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
-			_isNew = e.NavigationMode == System.Windows.Navigation.NavigationMode.New;
+			base.OnNavigatedTo(e);
+
+			var navContext = Newtonsoft.Json.Linq.JObject.FromObject(this.NavigationContext);
+
+			TaskEx.Run(() => Initialize(e.NavigationMode, navContext));
+		}
+
+		protected async Task Initialize(System.Windows.Navigation.NavigationMode navMode, Newtonsoft.Json.Linq.JObject navContext)
+		{
+			_isNew = navMode == System.Windows.Navigation.NavigationMode.New;
+
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				InitializeApplicationBar();
+
+				InitializeJumpList();
+			});
 
 			FlurryWP8SDK.Api.LogPageView();
 			_log = KernelService.Kernel.Get<ILoggingService>();
@@ -42,7 +55,46 @@ namespace Shane.Church.StirlingMoney.WP
 			_navService = KernelService.Kernel.Get<INavigationService>();
 			_model.BusyChanged += _model_BusyChanged;
 
-			base.OnNavigatedTo(e);
+			//await _model.ActivateAsync();
+
+			//if (_isNew)
+			//{
+			TransactionListParams param = null;
+			try
+			{
+				param = PhoneNavigationService.DecodeNavigationParameter<TransactionListParams>(navContext);
+			}
+			catch (KeyNotFoundException)
+			{
+				param = new TransactionListParams();
+			}
+
+			await _model.LoadData(param.Id);
+
+			_isNew = false;
+			_isPinned = param.PinnedTile;
+
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				this.DataContext = _model;
+				this.jumpListTransactions.ItemsSource = _model.Transactions;
+				this.ContentPanel.Visibility = System.Windows.Visibility.Visible;
+			});
+			//}
+			//else
+			//{
+			//	Deployment.Current.Dispatcher.BeginInvoke(() =>
+			//	{
+			//		this.DataContext = _model;
+			//		this.jumpListTransactions.ItemsSource = null;
+			//		this.jumpListTransactions.ItemsSource = _model.Transactions;
+			//	});
+
+			//}
+
+#if DEBUG
+			DebugUtility.DebugOutputMemoryUsage("Transactions_Initialize");
+#endif
 		}
 
 		protected override void OnNavigatingFrom(System.Windows.Navigation.NavigatingCancelEventArgs e)
@@ -172,49 +224,5 @@ namespace Shane.Church.StirlingMoney.WP
 			DebugUtility.DebugOutputMemoryUsage("Transactions_jumpListTransactions_DataRequested");
 #endif
 		}
-
-		private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-		{
-			//await _model.ActivateAsync();
-
-			//if (_isNew)
-			//{
-			TransactionListParams param = null;
-			try
-			{
-				param = PhoneNavigationService.DecodeNavigationParameter<TransactionListParams>(this.NavigationContext);
-			}
-			catch (KeyNotFoundException)
-			{
-				param = new TransactionListParams();
-			}
-
-			await _model.LoadData(param.Id);
-
-			_isNew = false;
-			_isPinned = param.PinnedTile;
-
-			Deployment.Current.Dispatcher.BeginInvoke(() =>
-			{
-				this.DataContext = _model;
-				this.jumpListTransactions.ItemsSource = _model.Transactions;
-			});
-			//}
-			//else
-			//{
-			//	Deployment.Current.Dispatcher.BeginInvoke(() =>
-			//	{
-			//		this.DataContext = _model;
-			//		this.jumpListTransactions.ItemsSource = null;
-			//		this.jumpListTransactions.ItemsSource = _model.Transactions;
-			//	});
-
-			//}
-
-#if DEBUG
-			DebugUtility.DebugOutputMemoryUsage("Transactions_PhoneApplicationPage_Loaded");
-#endif
-		}
-
 	}
 }

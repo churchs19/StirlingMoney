@@ -2,6 +2,8 @@
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels.Reports;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Navigation;
 
@@ -34,6 +36,13 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
+			base.OnNavigatedTo(e);
+
+			TaskEx.Run(() => Initialize());
+		}
+
+		protected void Initialize()
+		{
 			FlurryWP8SDK.Api.LogPageView();
 			_log = KernelService.Kernel.Get<ILoggingService>();
 			_settings = KernelService.Kernel.Get<ISettingsService>();
@@ -42,10 +51,12 @@ namespace Shane.Church.StirlingMoney.WP
 			_model = KernelService.Kernel.Get<ReportsViewModel>();
 			_model.SpendingByCategoryReportReloaded += _model_SpendingByCategoryReportReloaded;
 
-			base.OnNavigatedTo(e);
-
-			this.DataContext = _model;
 			_model.LoadData();
+
+			Deployment.Current.Dispatcher.BeginInvoke(() =>
+			{
+				this.DataContext = _model;
+			});
 		}
 
 		protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
