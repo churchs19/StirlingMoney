@@ -256,9 +256,9 @@
     <value>שגיאה גיבוי מסד נתונים: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>הקש על גיבוי כדי לשמור את הנתונים שלך לתיקיה סטירלינג כסף ב- SkyDrive. פעולה זו תחליף את כל הגיבוי הקיים.
+    <value>הקש על גיבוי כדי לשמור את הנתונים שלך לתיקיה סטירלינג כסף ב- OneDrive. פעולה זו תחליף את כל הגיבוי הקיים.
 
-הקש על שחזר כדי להחליף את הנתונים המקומיים שלך עם הגיבוי של SkyDrive.</value>
+הקש על שחזר כדי להחליף את הנתונים המקומיים שלך עם הגיבוי של OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>לא התחבר.</value>
@@ -278,8 +278,8 @@
   <data name="BackupSignedIn" xml:space="preserve">
     <value>נכנסת.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>שגיאה בהתחברות עם SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>שגיאה בהתחברות עם OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>מסד נתונים מגובים בהצלחה.</value>

@@ -256,9 +256,9 @@
     <value>Chyba pri zálohovaní databázy: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Ťuknite na položku zálohovať údaje ukladať do priečinka Stirling peniaze v službe SkyDrive. Toto prepíše akékoľvek existujúce zálohy.
+    <value>Ťuknite na položku zálohovať údaje ukladať do priečinka Stirling peniaze v službe OneDrive. Toto prepíše akékoľvek existujúce zálohy.
 
-Ťuknite na položku obnoviť vaše lokálne údaje prepísať zálohu z SkyDrive.</value>
+Ťuknite na položku obnoviť vaše lokálne údaje prepísať zálohu z OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Nie sťe prihlásený.</value>
@@ -278,8 +278,8 @@
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Prihlásení.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Chyba pri pripájaní pomocou služby SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Chyba pri pripájaní pomocou služby OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Databáza sa úspešne zálohovali.</value>

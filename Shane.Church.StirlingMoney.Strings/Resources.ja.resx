@@ -256,7 +256,7 @@
     <value>データベースのバックアップ エラー: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>SkyDrive でスターリング金フォルダーにデータを保存するバックアップをタップします。既存のバックアップを上書きします。SkyDrive からあなたのバックアップでローカル データを上書きする復元をタップします。</value>
+    <value>OneDrive でスターリング金フォルダーにデータを保存するバックアップをタップします。既存のバックアップを上書きします。OneDrive からあなたのバックアップでローカル データを上書きする復元をタップします。</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>サインインしていません。</value>
@@ -276,8 +276,8 @@
   <data name="BackupSignedIn" xml:space="preserve">
     <value>署名しました。</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>SkyDrive との接続エラー: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>OneDrive との接続エラー: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>データベースは正常にバックアップ。</value>

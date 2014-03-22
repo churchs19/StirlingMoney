@@ -256,9 +256,9 @@
     <value>Помилка резервне копіювання бази даних: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Торкніться резервного копіювання, щоб зберегти ваші дані в папці Стірлінг гроші у SkyDrive. Це буде перезаписано будь-якого наявну резервну копію.
+    <value>Торкніться резервного копіювання, щоб зберегти ваші дані в папці Стірлінг гроші у OneDrive. Це буде перезаписано будь-якого наявну резервну копію.
 
-Доторкніться до пункту відновити перезаписати локальних даних з резервної копії з SkyDrive.</value>
+Доторкніться до пункту відновити перезаписати локальних даних з резервної копії з OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Не ввійшли.</value>
@@ -278,8 +278,8 @@
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Вхід.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Помилка підключення зі SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Помилка підключення зі OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Базу даних успішно резервне копіювання.</value>

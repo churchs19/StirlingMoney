@@ -256,9 +256,9 @@
     <value>Dublējumkopiju datu bāzes kļūda: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Pieskarieties dublēšanu, lai saglabātu jūsu datus mapei Stirling naudu SkyDrive. Tādējādi tiks pārrakstīta jebkura esošā dublējumkopija.
+    <value>Pieskarieties dublēšanu, lai saglabātu jūsu datus mapei Stirling naudu OneDrive. Tādējādi tiks pārrakstīta jebkura esošā dublējumkopija.
 
-Ūdensvada atjaunošanas pārrakstīt savu lokālo datu dublēšanas no SkyDrive.</value>
+Ūdensvada atjaunošanas pārrakstīt savu lokālo datu dublēšanas no OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Nav pierakstījies.</value>
@@ -278,8 +278,8 @@
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Parakstīts.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Savieno ar SkyDrive kļūda: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Savieno ar OneDrive kļūda: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Datu bāze veiksmīgi dublēti.</value>

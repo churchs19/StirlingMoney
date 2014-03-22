@@ -256,9 +256,9 @@
     <value>Feil under sikkerhetskopiering av databasen: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Trykk backup for å lagre data i mappen Stirling penger i SkyDrive. Dette vil overskrive en eksisterende sikkerhetskopi.
+    <value>Trykk backup for å lagre data i mappen Stirling penger i OneDrive. Dette vil overskrive en eksisterende sikkerhetskopi.
 
-Tapp Gjenopprett overskrive lokale dataene med sikkerhetskopien fra SkyDrive.</value>
+Tapp Gjenopprett overskrive lokale dataene med sikkerhetskopien fra OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Ikke pålogget.</value>
@@ -278,8 +278,8 @@ Tapp Gjenopprett overskrive lokale dataene med sikkerhetskopien fra SkyDrive.</v
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Pålogget.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Feil under tilkobling med SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Feil under tilkobling med OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Databasen sikkerhetskopiert ordentlig.</value>

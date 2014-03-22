@@ -256,9 +256,9 @@
     <value>Adatbázis biztonsági másolatának hiba: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Érintse meg a biztonsági mentés adatait a Stirling pénzt SkyDrive mappájába. Ez felülírja a meglévő biztonsági másolat.
+    <value>Érintse meg a biztonsági mentés adatait a Stirling pénzt OneDrive mappájába. Ez felülírja a meglévő biztonsági másolat.
 
-Koppintson a visszaállítás felülírja a helyi adatok, a másolatot a SkyDrive.</value>
+Koppintson a visszaállítás felülírja a helyi adatok, a másolatot a OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Nincs bejelentkezve.</value>
@@ -278,8 +278,8 @@ Koppintson a visszaállítás felülírja a helyi adatok, a másolatot a SkyDriv
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Bejelentkezve.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Hiba történt a SkyDrive szolgáltatásban való kapcsolódáskor: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Hiba történt a OneDrive szolgáltatásban való kapcsolódáskor: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Adatbázis biztonsági mentése sikeresen.</value>

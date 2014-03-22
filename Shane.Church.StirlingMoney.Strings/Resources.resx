@@ -256,9 +256,9 @@
     <value>Error backing up database: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Tap backup to save your data to the Stirling Money folder in SkyDrive. This will overwrite any existing backup.
+    <value>Tap backup to save your data to the Stirling Money folder in OneDrive. This will overwrite any existing backup.
 
-Tap restore to overwrite your local data with your backup from SkyDrive.</value>
+Tap restore to overwrite your local data with your backup from OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Not Signed In.</value>
@@ -278,8 +278,8 @@ Tap restore to overwrite your local data with your backup from SkyDrive.</value>
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Signed In.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Error connecting with SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Error connecting with OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Database backed up successfully.</value>

@@ -256,9 +256,9 @@
     <value>Napaka varnostno kopiranje zbirke podatkov: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Tapnite backup do podatkov shranite v mapo Stirling denar v SkyDrive. To dejanje bo prepisalo katero koli obstoječo varnostno kopijo.
+    <value>Tapnite backup do podatkov shranite v mapo Stirling denar v OneDrive. To dejanje bo prepisalo katero koli obstoječo varnostno kopijo.
 
-Tapnite restore prepisali podatke z varnostno kopijo iz SkyDrive.</value>
+Tapnite restore prepisali podatke z varnostno kopijo iz OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Niste vpisani.</value>
@@ -278,8 +278,8 @@ Tapnite restore prepisali podatke z varnostno kopijo iz SkyDrive.</value>
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Vpisani.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Napaka pri povezovanju s SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Napaka pri povezovanju s OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Zbirka podatkov uspešno varnostno kopirana.</value>

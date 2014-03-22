@@ -256,9 +256,9 @@
     <value>Sicherung Datenbank Fehler: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Tippen Sie auf Sicherung, um Ihre Daten in den Stirling Geld Ordner SkyDrive Speichern. Damit werden alle vorhandenen Sicherungssätze überschrieben.
+    <value>Tippen Sie auf Sicherung, um Ihre Daten in den Stirling Geld Ordner OneDrive Speichern. Damit werden alle vorhandenen Sicherungssätze überschrieben.
 
-Tippen Sie auf Wiederherstellen, um Ihre lokalen Daten mit der Sicherung von SkyDrive zu überschreiben.</value>
+Tippen Sie auf Wiederherstellen, um Ihre lokalen Daten mit der Sicherung von OneDrive zu überschreiben.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Nicht angemeldet.</value>
@@ -278,8 +278,8 @@ Tippen Sie auf Wiederherstellen, um Ihre lokalen Daten mit der Sicherung von Sky
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Angemeldet.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Fehler beim Verbinden mit SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Fehler beim Verbinden mit OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Datenbank erfolgreich gesichert.</value>

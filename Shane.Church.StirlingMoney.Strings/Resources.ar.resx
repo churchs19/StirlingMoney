@@ -256,9 +256,9 @@
     <value>خطأ في النسخ الاحتياطي لقاعدة البيانات: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>انقر فوق النسخ الاحتياطي لحفظ البيانات الخاصة بك إلى مجلد "المال ستيرلنغ" في SkyDrive. هذا سيتم الكتابة فوق أي نسخة احتياطية موجودة.
+    <value>انقر فوق النسخ الاحتياطي لحفظ البيانات الخاصة بك إلى مجلد "المال ستيرلنغ" في OneDrive. هذا سيتم الكتابة فوق أي نسخة احتياطية موجودة.
 
-انقر فوق استعادة الكتابة فوق البيانات المحلية الخاصة بك مع النسخ الاحتياطي الخاصة بك من SkyDrive.</value>
+انقر فوق استعادة الكتابة فوق البيانات المحلية الخاصة بك مع النسخ الاحتياطي الخاصة بك من OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>لم توقع.</value>
@@ -278,8 +278,8 @@
   <data name="BackupSignedIn" xml:space="preserve">
     <value>وقع.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>خطأ في الاتصال مع SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>خطأ في الاتصال مع OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>قاعدة بيانات النسخ الاحتياطي بنجاح.</value>

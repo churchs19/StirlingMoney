@@ -256,9 +256,9 @@
     <value>Грешка при архивиране на базата данни: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Натиснете архивиране да запишете данните си в Стърлинг пари папка в SkyDrive. Това ще презапише всички съществуващи подкрепление.
+    <value>Натиснете архивиране да запишете данните си в Стърлинг пари папка в OneDrive. Това ще презапише всички съществуващи подкрепление.
 
-Натиснете възстанови да замените вашите локални данни с вашия Архив от SkyDrive.</value>
+Натиснете възстанови да замените вашите локални данни с вашия Архив от OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Не влезли в.</value>
@@ -278,8 +278,8 @@
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Подписано в.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Грешка при свързване със SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Грешка при свързване със OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>База данни архивирани успешно.</value>

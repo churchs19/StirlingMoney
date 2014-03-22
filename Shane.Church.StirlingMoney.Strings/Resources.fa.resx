@@ -256,9 +256,9 @@
     <value>خطای پشتیبان گیری از پایگاه داده: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>پشتیبان گیری داده های خود را به پوشه پول استرلینگ در SkyDrive ذخیره را ضربه بزنید. این هیچ پشتیبان موجود را رونویسی می شود.
+    <value>پشتیبان گیری داده های خود را به پوشه پول استرلینگ در OneDrive ذخیره را ضربه بزنید. این هیچ پشتیبان موجود را رونویسی می شود.
 
-بازگرداندن به داده های محلی خود را با پشتیبانی خود را از SkyDrive بازنویسی ضربه بزنید.</value>
+بازگرداندن به داده های محلی خود را با پشتیبانی خود را از OneDrive بازنویسی ضربه بزنید.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>ثبت.</value>
@@ -278,8 +278,8 @@
   <data name="BackupSignedIn" xml:space="preserve">
     <value>وارد شده.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>خطا در اتصال با SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>خطا در اتصال با OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>پایگاه داده پشتیبان گیری با موفقیت.</value>

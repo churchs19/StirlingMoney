@@ -256,9 +256,9 @@
     <value>Ralat sandaran pangkalan data: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Ketuk sandaran untuk menyimpan data anda ke dalam folder Stirling wang di SkyDrive. Ini akan menggantikan sebarang sandaran sedia ada.
+    <value>Ketuk sandaran untuk menyimpan data anda ke dalam folder Stirling wang di OneDrive. Ini akan menggantikan sebarang sandaran sedia ada.
 
-Paip ambil-semula untuk menulis data tempatan anda dengan sandaran dari SkyDrive.</value>
+Paip ambil-semula untuk menulis data tempatan anda dengan sandaran dari OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Tidak didaftar masuk.</value>
@@ -278,8 +278,8 @@ Paip ambil-semula untuk menulis data tempatan anda dengan sandaran dari SkyDrive
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Didaftar masuk.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Ralat sambungan dengan SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Ralat sambungan dengan OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Pangkalan data disandarkan berjaya.</value>

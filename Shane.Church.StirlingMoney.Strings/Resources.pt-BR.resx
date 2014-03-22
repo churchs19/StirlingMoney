@@ -256,9 +256,9 @@
     <value>Erro de backup de banco de dados: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Torneira backup para salvar seus dados para a pasta de Stirling dinheiro no SkyDrive. Isto irá sobrescrever qualquer backup existente.
+    <value>Torneira backup para salvar seus dados para a pasta de Stirling dinheiro no OneDrive. Isto irá sobrescrever qualquer backup existente.
 
-Toque em restaurar para substituir seus dados locais com o backup do SkyDrive.</value>
+Toque em restaurar para substituir seus dados locais com o backup do OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Não assinado.</value>
@@ -278,8 +278,8 @@ Toque em restaurar para substituir seus dados locais com o backup do SkyDrive.</
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Assinado em.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Erro ao conectar com o SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Erro ao conectar com o OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Banco de dados de backup com êxito.</value>

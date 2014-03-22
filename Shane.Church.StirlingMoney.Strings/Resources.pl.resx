@@ -256,9 +256,9 @@
     <value>Błąd tworzenie kopii zapasowych bazy danych: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Wybierz opcję kopia zapasowa, aby zapisać danych do folderu Stirling pieniądze w usłudze SkyDrive. To spowoduje zastąpienie wszelkich istniejących kopia zapasowa.
+    <value>Wybierz opcję kopia zapasowa, aby zapisać danych do folderu Stirling pieniądze w usłudze OneDrive. To spowoduje zastąpienie wszelkich istniejących kopia zapasowa.
 
-Wybierz polecenie Przywróć, aby zastąpić dane z kopii zapasowej z SkyDrive.</value>
+Wybierz polecenie Przywróć, aby zastąpić dane z kopii zapasowej z OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Nie zalogowany.</value>
@@ -278,8 +278,8 @@ Wybierz polecenie Przywróć, aby zastąpić dane z kopii zapasowej z SkyDrive.<
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Zalogowany.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Błąd podczas łączenia z usługą SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Błąd podczas łączenia z usługą OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Bazy danych kopii zapasowej pomyślnie.</value>

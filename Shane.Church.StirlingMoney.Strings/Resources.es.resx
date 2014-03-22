@@ -256,9 +256,9 @@
     <value>Error de base de datos de copia de seguridad: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Grifo de copia de seguridad para guardar tus datos en la carpeta Stirling dinero en SkyDrive. Esto sobrescribirá cualquier copia de seguridad existente.
+    <value>Grifo de copia de seguridad para guardar tus datos en la carpeta Stirling dinero en OneDrive. Esto sobrescribirá cualquier copia de seguridad existente.
 
-Grifo para restaurar para sobrescribir los datos locales con la copia de seguridad de SkyDrive.</value>
+Grifo para restaurar para sobrescribir los datos locales con la copia de seguridad de OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>No firmó en.</value>
@@ -278,8 +278,8 @@ Grifo para restaurar para sobrescribir los datos locales con la copia de segurid
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Firmado en.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Error de conexión con SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Error de conexión con OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Base de datos de copia de seguridad con éxito.</value>

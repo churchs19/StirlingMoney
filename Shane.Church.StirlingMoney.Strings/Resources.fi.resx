@@ -256,9 +256,9 @@
     <value>Varmuuskopioidaan tietokantaa virhe: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Napauta varmuuskopiointi tallentaa tiedot SkyDrive Stirling rahaa-kansion. Tämä korvaa olemassa varmuuskopio.
+    <value>Napauta varmuuskopiointi tallentaa tiedot OneDrive Stirling rahaa-kansion. Tämä korvaa olemassa varmuuskopio.
 
-Napauta Palauta korvata paikallisten tietojen varmuuskopioinnin SkyDrive.</value>
+Napauta Palauta korvata paikallisten tietojen varmuuskopioinnin OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Ole kirjautunut sisään.</value>
@@ -278,8 +278,8 @@ Napauta Palauta korvata paikallisten tietojen varmuuskopioinnin SkyDrive.</value
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Allekirjoitettu.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Virhe muodostettaessa yhteyttä SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Virhe muodostettaessa yhteyttä OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Tietokannan varmuuskopiointi onnistui.</value>

@@ -256,9 +256,9 @@
     <value>Kesalahan back up database: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Ketuk cadangan untuk menyimpan data Anda ke folder Stirling uang di SkyDrive. Ini akan menimpa cadangan yang sudah ada.
+    <value>Ketuk cadangan untuk menyimpan data Anda ke folder Stirling uang di OneDrive. Ini akan menimpa cadangan yang sudah ada.
 
-Ketuk restore untuk menimpa data pada komputer lokal dengan cadangan Anda dari SkyDrive.</value>
+Ketuk restore untuk menimpa data pada komputer lokal dengan cadangan Anda dari OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Tidak masuk.</value>
@@ -278,8 +278,8 @@ Ketuk restore untuk menimpa data pada komputer lokal dengan cadangan Anda dari S
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Masuk.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Galat yang menghubungkan dengan SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Galat yang menghubungkan dengan OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Database yang didukung berhasil.</value>

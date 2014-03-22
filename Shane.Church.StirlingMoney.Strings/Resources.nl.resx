@@ -256,9 +256,9 @@
     <value>Back-up database fout: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Tik op de back-up als u wilt uw gegevens opslaan in de map Stirling geld in SkyDrive. Dit overschrijft alle bestaande back-up.
+    <value>Tik op de back-up als u wilt uw gegevens opslaan in de map Stirling geld in OneDrive. Dit overschrijft alle bestaande back-up.
 
-Kraan terugzetten naar uw lokale gegevens overschrijven met uw back-up van SkyDrive.</value>
+Kraan terugzetten naar uw lokale gegevens overschrijven met uw back-up van OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Niet ingelogd.</value>
@@ -278,8 +278,8 @@ Kraan terugzetten naar uw lokale gegevens overschrijven met uw back-up van SkyDr
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Ingelogd.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Fout verbinden met SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Fout verbinden met OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Database met succes een back-up.</value>

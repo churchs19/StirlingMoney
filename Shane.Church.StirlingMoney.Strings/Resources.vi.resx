@@ -256,9 +256,9 @@
     <value>Lỗi sao lưu cơ sở dữ liệu: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Tập sao lưu để lưu dữ liệu của bạn vào thư mục Stirling tiền, SkyDrive. Điều này sẽ ghi đè lên bất kỳ bản sao lưu sẵn có.
+    <value>Tập sao lưu để lưu dữ liệu của bạn vào thư mục Stirling tiền, OneDrive. Điều này sẽ ghi đè lên bất kỳ bản sao lưu sẵn có.
 
-Bấm vào khôi phục để ghi đè lên dữ liệu địa phương với sao lưu của bạn từ SkyDrive.</value>
+Bấm vào khôi phục để ghi đè lên dữ liệu địa phương với sao lưu của bạn từ OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Không đăng nhập.</value>
@@ -278,8 +278,8 @@ Bấm vào khôi phục để ghi đè lên dữ liệu địa phương với sa
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Đăng nhập.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Lỗi kết nối với SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Lỗi kết nối với OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Cơ sở dữ liệu sao lưu thành công.</value>

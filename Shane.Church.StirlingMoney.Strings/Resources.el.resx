@@ -256,9 +256,9 @@
     <value>Σφάλμα αντιγράφων ασφαλείας βάσης δεδομένων: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Πατήστε δημιουργία αντιγράφων ασφαλείας για να αποθηκεύσετε τα δεδομένα σας στο φάκελο Stirling χρήματα στο SkyDrive. Αυτό θα αντικαταστήσει οποιοδήποτε υπάρχον αντίγραφο ασφαλείας.
+    <value>Πατήστε δημιουργία αντιγράφων ασφαλείας για να αποθηκεύσετε τα δεδομένα σας στο φάκελο Stirling χρήματα στο OneDrive. Αυτό θα αντικαταστήσει οποιοδήποτε υπάρχον αντίγραφο ασφαλείας.
 
-Πατήστε Επαναφορά για να αντικαταστήσετε τα τοπικά δεδομένα σας με το αντίγραφο ασφαλείας από το SkyDrive.</value>
+Πατήστε Επαναφορά για να αντικαταστήσετε τα τοπικά δεδομένα σας με το αντίγραφο ασφαλείας από το OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Δεν φέρει.</value>
@@ -278,8 +278,8 @@
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Υπεγράφη στο.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Σφάλμα κατά τη σύνδεση με το SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Σφάλμα κατά τη σύνδεση με το OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Βάση δεδομένων με επιτυχία.</value>

@@ -256,9 +256,9 @@
     <value>Erreur de sauvegarde de base de données : {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Robinet de sauvegarde pour sauvegarder vos données dans le dossier de Stirling argent sur SkyDrive. Cela va écraser toute sauvegarde existante.
+    <value>Robinet de sauvegarde pour sauvegarder vos données dans le dossier de Stirling argent sur OneDrive. Cela va écraser toute sauvegarde existante.
 
-Restauration de robinet pour écraser vos données locales avec votre sauvegarde de SkyDrive.</value>
+Restauration de robinet pour écraser vos données locales avec votre sauvegarde de OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Pas connecté.</value>
@@ -278,8 +278,8 @@ Restauration de robinet pour écraser vos données locales avec votre sauvegarde
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Signé en.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Erreur de connexion avec SkyDrive : {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Erreur de connexion avec OneDrive : {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Base de données sauvegardée avec succès.</value>

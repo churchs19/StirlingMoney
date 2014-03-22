@@ -256,7 +256,7 @@
     <value>备份数据库错误: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>点击备份，以将您的数据保存到在 SkyDrive 的斯特林钱文件夹。这将覆盖任何现有的备份。点击还原，用您的 SkyDrive 的备份覆盖您的本地数据。</value>
+    <value>点击备份，以将您的数据保存到在 OneDrive 的斯特林钱文件夹。这将覆盖任何现有的备份。点击还原，用您的 OneDrive 的备份覆盖您的本地数据。</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>未签名。</value>
@@ -276,8 +276,8 @@
   <data name="BackupSignedIn" xml:space="preserve">
     <value>在签署。</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>与 SkyDrive 连接时出错: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>与 OneDrive 连接时出错: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>成功备份的数据库。</value>

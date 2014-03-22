@@ -256,9 +256,9 @@
     <value>Ошибка резервного копирования базы данных: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Коснитесь Резервное копирование, чтобы сохранить ваши данные в папке Стирлинг деньги в SkyDrive. Это будет перезаписать любую существующую резервную копию.
+    <value>Коснитесь Резервное копирование, чтобы сохранить ваши данные в папке Стирлинг деньги в OneDrive. Это будет перезаписать любую существующую резервную копию.
 
-Коснитесь восстановить перезапись локальных данных с резервного копирования из SkyDrive.</value>
+Коснитесь восстановить перезапись локальных данных с резервного копирования из OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>В не подписан.</value>
@@ -278,8 +278,8 @@
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Подписано в.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Ошибка при подключении с помощью SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Ошибка при подключении с помощью OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Успешно резервное копирование базы данных.</value>

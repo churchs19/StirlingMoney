@@ -256,9 +256,9 @@
     <value>Còpies de seguretat de base de dades d'error: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Toc de còpia de seguretat per guardar les dades a la carpeta de Stirling diners en SkyDrive. Això se sobreescriurà qualsevol còpia de seguretat existent.
+    <value>Toc de còpia de seguretat per guardar les dades a la carpeta de Stirling diners en OneDrive. Això se sobreescriurà qualsevol còpia de seguretat existent.
 
-Doni copets el restaurar per sobreescriure les dades locals amb la còpia de seguretat de SkyDrive.</value>
+Doni copets el restaurar per sobreescriure les dades locals amb la còpia de seguretat de OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>No signat.</value>
@@ -278,8 +278,8 @@ Doni copets el restaurar per sobreescriure les dades locals amb la còpia de seg
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Signat.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Connectant amb l'SkyDrive error: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Connectant amb l'OneDrive error: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Base de dades de recolzar-se amb èxit.</value>

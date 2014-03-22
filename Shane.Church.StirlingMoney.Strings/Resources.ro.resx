@@ -256,9 +256,9 @@
     <value>Eroare copierea de rezervă a bazei de date: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Atingeţi de rezervă pentru a salva datele în dosarul Stirling bani din SkyDrive. Acest lucru va suprascrie orice copie de rezervă existentă.
+    <value>Atingeţi de rezervă pentru a salva datele în dosarul Stirling bani din OneDrive. Acest lucru va suprascrie orice copie de rezervă existentă.
 
-Apăsaţi pauză pentru a suprascrie datele locale cu copia de rezervă la SkyDrive.</value>
+Apăsaţi pauză pentru a suprascrie datele locale cu copia de rezervă la OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Nu a semnat în.</value>
@@ -278,8 +278,8 @@ Apăsaţi pauză pentru a suprascrie datele locale cu copia de rezervă la SkyDr
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Semnat.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Eroare de conectare cu SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Eroare de conectare cu OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Baza de date de rezervă cu succes.</value>

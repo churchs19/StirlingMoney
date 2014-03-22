@@ -256,9 +256,9 @@
     <value>데이터베이스 백업 오류: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>SkyDrive에서 스털링 돈을 폴더에 데이터를 저장 하는 백업을 누릅니다. 이 모든 기존 백업을 덮어씁니다.
+    <value>OneDrive에서 스털링 돈을 폴더에 데이터를 저장 하는 백업을 누릅니다. 이 모든 기존 백업을 덮어씁니다.
 
-SkyDrive에서 백업 된 로컬 데이터를 덮어쓰려면 복원을 누릅니다.</value>
+OneDrive에서 백업 된 로컬 데이터를 덮어쓰려면 복원을 누릅니다.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>서명 되지 않습니다.</value>
@@ -278,8 +278,8 @@ SkyDrive에서 백업 된 로컬 데이터를 덮어쓰려면 복원을 누릅�
   <data name="BackupSignedIn" xml:space="preserve">
     <value>서명 했다.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>SkyDrive와 연결 오류: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>OneDrive와 연결 오류: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>데이터베이스는 성공적으로 백업 됩니다.</value>

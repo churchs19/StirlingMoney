@@ -256,9 +256,9 @@
     <value>Fejl sikkerhedskopiere databasen: {0}</value>
   </data>
   <data name="BackupInstructions" xml:space="preserve">
-    <value>Tryk på backup for at gemme dine data i mappen Stirling penge i SkyDrive. Dette vil overskrive en eksisterende sikkerhedskopi.
+    <value>Tryk på backup for at gemme dine data i mappen Stirling penge i OneDrive. Dette vil overskrive en eksisterende sikkerhedskopi.
 
-Tryk på Gendan for at overskrive dine lokale data med din backup fra SkyDrive.</value>
+Tryk på Gendan for at overskrive dine lokale data med din backup fra OneDrive.</value>
   </data>
   <data name="BackupNotSignedIn" xml:space="preserve">
     <value>Ikke logget på.</value>
@@ -278,8 +278,8 @@ Tryk på Gendan for at overskrive dine lokale data med din backup fra SkyDrive.<
   <data name="BackupSignedIn" xml:space="preserve">
     <value>Logget på.</value>
   </data>
-  <data name="BackupSkyDriveError" xml:space="preserve">
-    <value>Fejl forbinder med SkyDrive: {0}</value>
+  <data name="BackupOneDriveError" xml:space="preserve">
+    <value>Fejl forbinder med OneDrive: {0}</value>
   </data>
   <data name="BackupSuccess" xml:space="preserve">
     <value>Database sikkerhedskopieret.</value>
