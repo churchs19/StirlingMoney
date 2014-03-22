@@ -32,7 +32,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_accounts.CollectionChanged += (s, e) =>
 			{
 				RaisePropertyChanged(() => Accounts);
-				RaisePropertyChanged(() => TotalBalance);
 			};
 		}
 
@@ -89,12 +88,18 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					{
 						tile = KernelService.Kernel.Get<AccountTileViewModel>();
 						tile.AccountDeleted += tile_AccountDeleted;
+						tile.AccountUpdated += tile_AccountUpdated;
 						Accounts.Add(tile);
 					}
 					tile.LoadData(a, true);
 				}
 				_accountsLoaded = true;
 			}
+		}
+
+		void tile_AccountUpdated(object sender)
+		{
+			RaisePropertyChanged(() => TotalBalance);
 		}
 
 		void tile_AccountDeleted(object sender)
@@ -104,6 +109,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				item.AccountDeleted -= tile_AccountDeleted;
 				Accounts.Remove(item);
+				RaisePropertyChanged(() => TotalBalance);
 			}
 		}
 	}

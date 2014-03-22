@@ -164,6 +164,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_navService.Navigate<TransactionListViewModel>(new TransactionListParams() { Id = AccountId, PinnedTile = false });
 		}
 
+		public delegate void AccountUpdatedHandler(object sender);
+		public event AccountUpdatedHandler AccountUpdated;
+
 		public virtual async Task LoadData(Guid accountId, bool updateTile = false)
 		{
 			Account a = await _accountRepository.GetEntryAsync(accountId);
@@ -182,6 +185,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_imageUri = a.ImageUri;
 			if (updateTile)
 				_tileService.UpdateTile(AccountId);
+			if (AccountUpdated != null)
+				AccountUpdated(this);
 		}
 	}
 }
