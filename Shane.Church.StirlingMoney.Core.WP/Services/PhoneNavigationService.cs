@@ -55,7 +55,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 				var param = context["QueryString"]["param"];
 				return param == null ? default(TJson) : JsonConvert.DeserializeObject<TJson>(param.ToString());
 			}
-			catch(Exception ex)
+			catch   /* (Exception ex) */
 			{
 				throw new KeyNotFoundException();
 			}

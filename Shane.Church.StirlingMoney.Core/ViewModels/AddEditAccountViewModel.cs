@@ -105,7 +105,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			get
 			{
-				return AccountId != null && AccountId != Guid.Empty;
+				return AccountId != Guid.Empty;
 			}
 		}
 

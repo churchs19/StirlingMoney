@@ -43,7 +43,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 
 						OnBusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 
-						await TaskEx.Yield();
+						await Task.Yield();
 
 						await upgrade.UpgradeDatabase(dbVersion, dbFile);
 

@@ -213,109 +213,144 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\About.xaml.cs">
-      <Link>About.xaml.cs</Link>
+    <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\AddEditAccount.xaml.cs">
-      <Link>AddEditAccount.xaml.cs</Link>
+    <Compile Include="AddEditAccount.xaml.cs">
       <DependentUpon>AddEditAccount.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\AddEditBudget.xaml.cs">
-      <Link>AddEditBudget.xaml.cs</Link>
+    <Compile Include="AddEditBudget.xaml.cs">
       <DependentUpon>AddEditBudget.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\AddEditCategory.xaml.cs">
-      <Link>AddEditCategory.xaml.cs</Link>
+    <Compile Include="AddEditCategory.xaml.cs">
       <DependentUpon>AddEditCategory.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\AddEditGoal.xaml.cs">
-      <Link>AddEditGoal.xaml.cs</Link>
+    <Compile Include="AddEditGoal.xaml.cs">
       <DependentUpon>AddEditGoal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\AddEditTransaction.xaml.cs">
-      <Link>AddEditTransaction.xaml.cs</Link>
+    <Compile Include="AddEditTransaction.xaml.cs">
       <DependentUpon>AddEditTransaction.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\AdvertisingPage.cs">
-      <Link>AdvertisingPage.cs</Link>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\Categories.xaml.cs">
-      <Link>Categories.xaml.cs</Link>
-      <DependentUpon>Categories.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\Controls\Login.xaml.cs">
-      <Link>Controls\Login.xaml.cs</Link>
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\Helpers\BudgetBrushConverter.cs">
-      <Link>Helpers\BudgetBrushConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\Helpers\EntryTemplateSelector.cs">
-      <Link>Helpers\EntryTemplateSelector.cs</Link>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\Helpers\GoalBrushConverter.cs">
-      <Link>Helpers\GoalBrushConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\Helpers\IntBusyAnimationConverter.cs">
-      <Link>Helpers\IntBusyAnimationConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\Helpers\LocalizedDateConverter.cs">
-      <Link>Helpers\LocalizedDateConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\Helpers\NonEmptyDateValidator.cs">
-      <Link>Helpers\NonEmptyDateValidator.cs</Link>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\Helpers\TextBinding.cs">
-      <Link>Helpers\TextBinding.cs</Link>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\MainPage.xaml.cs">
-      <Link>MainPage.xaml.cs</Link>
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\Reports.xaml.cs">
-      <Link>Reports.xaml.cs</Link>
-      <DependentUpon>Reports.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\SampleData\AddEditAccountViewModelSampleData.cs">
-      <Link>SampleData\AddEditAccountViewModelSampleData.cs</Link>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\Settings.xaml.cs">
-      <Link>Settings.xaml.cs</Link>
-      <DependentUpon>Settings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\SkyDrive.xaml.cs">
-      <Link>SkyDrive.xaml.cs</Link>
-      <DependentUpon>SkyDrive.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\Transactions.xaml.cs">
-      <Link>Transactions.xaml.cs</Link>
-      <DependentUpon>Transactions.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\ViewModels\PhoneAccountTileViewModel.cs">
-      <Link>ViewModels\PhoneAccountTileViewModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Shane.Church.StirlingMoney.WP\ViewModels\PhoneAddEditAccountViewModel.cs">
-      <Link>ViewModels\PhoneAddEditAccountViewModel.cs</Link>
-    </Compile>
+    <Compile Include="AdvertisingPage.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Categories.xaml.cs">
+      <DependentUpon>Categories.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\BudgetBrushConverter.cs" />
+    <Compile Include="Helpers\EntryTemplateSelector.cs" />
+    <Compile Include="Helpers\GoalBrushConverter.cs" />
+    <Compile Include="Helpers\IntBusyAnimationConverter.cs" />
+    <Compile Include="Helpers\LocalizedDateConverter.cs" />
+    <Compile Include="Helpers\NonEmptyDateValidator.cs" />
+    <Compile Include="Helpers\TextBinding.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports.xaml.cs">
+      <DependentUpon>Reports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SkyDrive.xaml.cs">
+      <DependentUpon>SkyDrive.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions.xaml.cs">
+      <DependentUpon>Transactions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\PhoneAccountTileViewModel.cs" />
+    <Compile Include="ViewModels\PhoneAddEditAccountViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Fonts\Novecentosanswide-Light.ttf">
-      <Link>Fonts\Novecentosanswide-Light.ttf</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Fonts\Novecentosanswide-Normal.ttf">
-      <Link>Fonts\Novecentosanswide-Normal.ttf</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\About.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Account.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Accounts.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AccountTileBack.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AccountTileFront.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AddAccount.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AddCategory.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\BackupToCloud.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Book-Open.png" />
+    <Content Include="Images\Cancel.dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Cancel.light.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Categories.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\DateTimePickerCancel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\DateTimePickerOK.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Deposit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Reports.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Search.dark.active.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Search.dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Search.light.active.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Search.light.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Synchronize.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Transfer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Withdraw.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\WriteCheck.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SplashScreenImage.jpg">
@@ -324,12 +359,17 @@
     <Content Include="SplashScreenImage_Screen-720p.jpg" />
     <Content Include="SplashScreenImage_Screen-WVGA.jpg" />
     <Content Include="SplashScreenImage_Screen-WXGA.jpg" />
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\AccountIcons.zip">
-      <Link>Images\AccountIcons.zip</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="app.config" />
     <None Include="Fonts\LiveSymbol.ttf" />
+    <Content Include="Fonts\Novecentosanswide-Light.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Novecentosanswide-Normal.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AccountIcons.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -337,113 +377,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\About.png">
-      <Link>Images\About.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Account.png">
-      <Link>Images\Account.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Accounts.png">
-      <Link>Images\Accounts.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\AccountTileBack.png">
-      <Link>Images\AccountTileBack.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\AccountTileFront.png">
-      <Link>Images\AccountTileFront.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Add.png">
-      <Link>Images\Add.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\AddAccount.png">
-      <Link>Images\AddAccount.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\AddCategory.png">
-      <Link>Images\AddCategory.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Background.png">
-      <Link>Images\Background.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\BackupToCloud.png">
-      <Link>Images\BackupToCloud.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Book-Open.png">
-      <Link>Images\Book-Open.png</Link>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Cancel.dark.png">
-      <Link>Images\Cancel.dark.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Cancel.light.png">
-      <Link>Images\Cancel.light.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Categories.png">
-      <Link>Images\Categories.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\DateTimePickerCancel.png">
-      <Link>Images\DateTimePickerCancel.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\DateTimePickerOK.png">
-      <Link>Images\DateTimePickerOK.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Deposit.png">
-      <Link>Images\Deposit.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Reports.png">
-      <Link>Images\Reports.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Save.png">
-      <Link>Images\Save.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Search.dark.active.png">
-      <Link>Images\Search.dark.active.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Search.dark.png">
-      <Link>Images\Search.dark.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Search.light.active.png">
-      <Link>Images\Search.light.active.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Search.light.png">
-      <Link>Images\Search.light.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Synchronize.png">
-      <Link>Images\Synchronize.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Transfer.png">
-      <Link>Images\Transfer.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\Withdraw.png">
-      <Link>Images\Withdraw.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Shane.Church.StirlingMoney.WP\Images\WriteCheck.png">
-      <Link>Images\WriteCheck.png</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -465,20 +398,20 @@
       <HintPath>..\lib\InneractiveAdSDK\WP8\Inneractive.Ad.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Live">
-      <HintPath>..\packages\LiveSDK.5.5\lib\WindowsPhone8\Microsoft.Live.dll</HintPath>
+      <HintPath>..\packages\LiveSDK.5.6\lib\WindowsPhone8\Microsoft.Live.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Live.Controls">
-      <HintPath>..\packages\LiveSDK.5.5\lib\WindowsPhone8\Microsoft.Live.Controls.dll</HintPath>
+      <HintPath>..\packages\LiveSDK.5.6\lib\WindowsPhone8\Microsoft.Live.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Threading.Tasks">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\wp8\Microsoft.Threading.Tasks.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks.Extensions">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\wp8\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\wp8\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Mobile">
       <HintPath>..\packages\WindowsAzure.MobileServices.1.1.0\lib\wp8\Microsoft.WindowsAzure.Mobile.dll</HintPath>
@@ -490,22 +423,22 @@
       <HintPath>..\packages\WindowsAzure.MobileServices.1.1.0\lib\wp8\Microsoft.WindowsAzure.Mobile.UI.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Common">
-      <HintPath>..\packages\Portable.Ninject.3.0.6\lib\sl4-wp71\Ninject.Common.dll</HintPath>
+      <HintPath>..\packages\Portable.Ninject.3.0.7\lib\sl4-wp71\Ninject.Common.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.WP">
-      <HintPath>..\packages\Portable.Ninject.3.0.6\lib\sl4-wp71\Ninject.WP.dll</HintPath>
+      <HintPath>..\packages\Portable.Ninject.3.0.7\lib\sl4-wp71\Ninject.WP.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\sl4-windowsphone71\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.Extensions.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\sl4-windowsphone71\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Windows.Controls.Chart, Version=2014.1.226.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
       <HintPath>..\lib\RCWP\2014.1.226.3040\Telerik.Windows.Controls.Chart.dll</HintPath>
@@ -553,10 +486,6 @@
       <Project>{7EDFE360-EEFA-42DC-A5DA-DCEFFA32DEFE}</Project>
       <Name>Shane.Church.StirlingMoney.Core.SterlingDb</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shane.Church.StirlingMoney.Core.WP8\Shane.Church.StirlingMoney.Core.WP8.csproj">
-      <Project>{71D1DB95-4A41-494E-AD37-BC198934B3EA}</Project>
-      <Name>Shane.Church.StirlingMoney.Core.WP8</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shane.Church.StirlingMoney.Core.WP\Shane.Church.StirlingMoney.Core.WP.csproj">
       <Project>{3FBC6023-4FDA-40DE-9937-6CA019ADD09A}</Project>
       <Name>Shane.Church.StirlingMoney.Core.WP</Name>
@@ -583,97 +512,55 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\Controls\Login.xaml">
-      <Link>Controls\Login.xaml</Link>
+    <Page Include="About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <DesignData Include="..\Shane.Church.StirlingMoney.WP\SampleData\CategoryListViewModelSampleData.xaml">
-      <Link>SampleData\CategoryListViewModelSampleData.xaml</Link>
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
-      <SubType>Designer</SubType>
-    </DesignData>
-    <DesignData Include="..\Shane.Church.StirlingMoney.WP\SampleData\MainViewModelSampleData.xaml">
-      <Link>SampleData\MainViewModelSampleData.xaml</Link>
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
-      <SubType>Designer</SubType>
-    </DesignData>
-    <DesignData Include="..\Shane.Church.StirlingMoney.WP\SampleData\PhoneAddEditAccountViewModelSampleData.xaml">
-      <Link>SampleData\PhoneAddEditAccountViewModelSampleData.xaml</Link>
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
-      <SubType>Designer</SubType>
-    </DesignData>
-    <DesignData Include="..\Shane.Church.StirlingMoney.WP\SampleData\ReportsViewModelSampleData.xaml">
-      <Link>SampleData\ReportsViewModelSampleData.xaml</Link>
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
-      <SubType>Designer</SubType>
-    </DesignData>
-    <DesignData Include="..\Shane.Church.StirlingMoney.WP\SampleData\TransactionListViewModelSampleData.xaml">
-      <Link>SampleData\TransactionListViewModelSampleData.xaml</Link>
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
-      <SubType>Designer</SubType>
-    </DesignData>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\About.xaml">
-      <Link>About.xaml</Link>
+    <Page Include="AddEditAccount.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\AddEditAccount.xaml">
-      <Link>AddEditAccount.xaml</Link>
+    <Page Include="AddEditBudget.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\AddEditBudget.xaml">
-      <Link>AddEditBudget.xaml</Link>
+    <Page Include="AddEditCategory.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\AddEditCategory.xaml">
-      <Link>AddEditCategory.xaml</Link>
+    <Page Include="AddEditGoal.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\AddEditGoal.xaml">
-      <Link>AddEditGoal.xaml</Link>
+    <Page Include="AddEditTransaction.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\AddEditTransaction.xaml">
-      <Link>AddEditTransaction.xaml</Link>
+    <Page Include="Categories.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\Categories.xaml">
-      <Link>Categories.xaml</Link>
+    <Page Include="Controls\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\MainPage.xaml">
-      <Link>MainPage.xaml</Link>
+    <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\Reports.xaml">
-      <Link>Reports.xaml</Link>
+    <Page Include="Reports.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\Settings.xaml">
-      <Link>Settings.xaml</Link>
+    <Page Include="Settings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\SkyDrive.xaml">
-      <Link>SkyDrive.xaml</Link>
+    <Page Include="SkyDrive.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\Shane.Church.StirlingMoney.WP\Transactions.xaml">
-      <Link>Transactions.xaml</Link>
+    <Page Include="Transactions.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -689,9 +576,9 @@
   -->
   <ProjectExtensions />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
 </Project>

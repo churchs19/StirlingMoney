@@ -8,7 +8,6 @@ using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.SterlingDb;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP;
-using Shane.Church.StirlingMoney.Core.WP8;
 using Shane.Church.StirlingMoney.WP.ViewModels;
 using Shane.Church.Utility.Core.WP;
 using System;
