@@ -8,15 +8,18 @@
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
+    Foreground="White"
     d:DesignHeight="159" d:DesignWidth="159">
 
     <UserControl.Resources>
         <util:ByteToImageSourceValueConverter x:Key="LocalByteImageConverter"/>
     </UserControl.Resources>
-
+    <UserControl.Background>
+        <StaticResource ResourceKey="TransparentBrush"/>
+    </UserControl.Background>
+    
     <Grid x:Name="LayoutRoot" 
-          Background="{StaticResource PhoneAccentBrush}"
+          Background="{StaticResource TransparentBrush}"
           Height="159"
           Width="159">
         <Image Source="{Binding Image, Converter={StaticResource LocalByteImageConverter}}" Margin="9" Stretch="Fill"/>

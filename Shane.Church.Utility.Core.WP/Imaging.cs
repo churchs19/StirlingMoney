@@ -33,7 +33,7 @@ namespace Shane.Church.Utility.Core.WP
                         appStorage.DeleteFile(path);
                     }
 
-                    CompensateForRender(wbm.Pixels);
+                    //CompensateForRender(wbm.Pixels);
 
                     using (IsolatedStorageFileStream stream = new IsolatedStorageFileStream(path, System.IO.FileMode.Create, appStorage))
                     {

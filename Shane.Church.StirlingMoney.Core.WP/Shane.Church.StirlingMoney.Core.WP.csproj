@@ -205,14 +205,8 @@
     <Compile Include="Controls\MediumTileBack.xaml.cs">
       <DependentUpon>MediumTileBack.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MediumTileBackWP7.xaml.cs">
-      <DependentUpon>MediumTileBackWP7.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\MediumTileFront.xaml.cs">
       <DependentUpon>MediumTileFront.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\MediumTileFrontWP7.xaml.cs">
-      <DependentUpon>MediumTileFrontWP7.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\SmallTile.xaml.cs">
       <DependentUpon>SmallTile.xaml</DependentUpon>
@@ -283,19 +277,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\MediumTileBackWP7.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\MediumTileFront.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\MediumTileFrontWP7.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>

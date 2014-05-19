@@ -15,9 +15,12 @@
         <local:LocalizedStrings x:Key="LocalLocalizedStrings"/>
         <util:CurrencyValueConverter x:Key="LocalLocalizedCurrency"/>
     </UserControl.Resources>
+    <UserControl.Background>
+        <StaticResource ResourceKey="TransparentBrush"/>
+    </UserControl.Background>
 
     <Grid x:Name="LayoutRoot" 
-          Background="{StaticResource PhoneAccentBrush}"
+          Background="{StaticResource TransparentBrush}"
           Height="336" 
           Width="336">
         <Grid.RowDefinitions>

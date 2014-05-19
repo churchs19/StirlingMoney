@@ -116,7 +116,8 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 					SmallVisualElement = small,
 					VisualElement = medFront,
 					BackVisualElement = medBack,
-					WideVisualElement = wideFront
+					WideVisualElement = wideFront,
+                    IsTransparencySupported = true
 				};
 
 				return tileData;
