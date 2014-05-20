@@ -39,6 +39,14 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			base.OnNavigatedTo(e);
 
+            var previousNavSource = NavigationService.BackStack.FirstOrDefault();
+            if (e.NavigationMode == System.Windows.Navigation.NavigationMode.New && 
+                previousNavSource != null &&
+                previousNavSource.Source.ToString().Contains("Transactions"))
+            {
+                NavigationService.RemoveBackEntry();
+            }
+
 			var navContext = Newtonsoft.Json.Linq.JObject.FromObject(this.NavigationContext);
 
 			TaskEx.Run(() => Initialize(e.NavigationMode, navContext));
