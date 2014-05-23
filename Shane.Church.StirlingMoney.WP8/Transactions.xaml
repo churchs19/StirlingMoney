@@ -1,33 +1,35 @@
 ﻿<base:AdvertisingPage
     xmlns:base="clr-namespace:Shane.Church.StirlingMoney.WP"
-    x:Class="Shane.Church.StirlingMoney.WP.Transactions"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
-	xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
-	xmlns:telerikData="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Data"
+    xmlns:telerikCore="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core" 
+    xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:telerikData="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Data"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:util="clr-namespace:Shane.Church.StirlingMoney.Core.WP.Converters;assembly=Shane.Church.StirlingMoney.Core.WP"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
+    xmlns:ImageButton="clr-namespace:Telerik.Windows.Controls.ImageButton;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:helpers="clr-namespace:Shane.Church.StirlingMoney.WP.Helpers"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    x:Class="Shane.Church.StirlingMoney.WP.Transactions"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
     <base:AdvertisingPage.Resources>
         <util:TransactionBrushConverter x:Key="TransactionBrushConverter"/>
-        <DataTemplate x:Key="transactionsLoadingTemplate">
-        </DataTemplate>
+        <helpers:SearchImageConverter x:Key="SearchImageConverter"/>
+        <telerikCore:RadSlideAnimation x:Key="SlideInAnimation" Duration="300" MoveDirection="BottomIn"/>
+        <telerikCore:RadSlideAnimation x:Key="SlideOutAnimation" Duration="300" MoveDirection="TopOut"/>
         <DataTemplate x:Key="transactionsItemTemplate">
             <StackPanel>
                 <telerikPrimitives:RadContextMenu.ContextMenu>
                     <telerikPrimitives:RadContextMenu OpenGesture="Hold">
-                        <telerikPrimitives:RadContextMenuItem x:Name="menuItemEdit" Content="{Binding Path=LocalizedResources.EditMenuItem, Source={StaticResource LocalizedStrings}}" Command="{Binding EditCommand}"/>
-                        <telerikPrimitives:RadContextMenuItem x:Name="menuItemDelete" Content="{Binding Path=LocalizedResources.DeleteMenuItem, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
+                        <telerikPrimitives:RadContextMenuItem x:Name="menuItemEdit" Content="{Binding LocalizedResources.EditMenuItem, Source={StaticResource LocalizedStrings}}" Command="{Binding EditCommand}"/>
+                        <telerikPrimitives:RadContextMenuItem x:Name="menuItemDelete" Content="{Binding LocalizedResources.DeleteMenuItem, Source={StaticResource LocalizedStrings}}" Command="{Binding DeleteCommand}" />
                     </telerikPrimitives:RadContextMenu>
                 </telerikPrimitives:RadContextMenu.ContextMenu>
                 <Grid>
@@ -36,66 +38,75 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto" MinWidth="120"></ColumnDefinition>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto" MinWidth="120"/>
                     </Grid.ColumnDefinitions>
                     <Rectangle Grid.Column="0" 
-							   Grid.Row="0" 
-							   Grid.RowSpan="2" 
-							   Margin="0,2,0,2"
-							   Fill="{Binding Amount, Converter={StaticResource TransactionBrushConverter}}"/>
+                        Grid.Row="0" 
+                        Grid.RowSpan="2" 
+                        Margin="0,2,0,2"
+                        Fill="{Binding Amount, Converter={StaticResource TransactionBrushConverter}}"/>
                     <CheckBox IsChecked="{Binding Posted, Mode=TwoWay}"
-							  Grid.Row="0"
-							  Grid.Column="1"
-							  Grid.RowSpan="2"
-							  VerticalAlignment="Center"
-							  HorizontalAlignment="Center"/>
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
                     <TextBlock Text="{Binding CheckNumber}" 
-							   FontSize="{StaticResource PhoneFontSizeNormal}"  
-							   Padding="0,0,10,0"
-							   Grid.Row="1"
-							   Grid.Column="2"
-							   VerticalAlignment="Center"
-							   HorizontalAlignment="Left"
-							   Visibility="{Binding IsCheck, Converter={StaticResource BooleanVisibilityConverter}}"/>
+                        FontSize="{StaticResource PhoneFontSizeNormal}"  
+                        Padding="0,0,10,0"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Visibility="{Binding IsCheck, Converter={StaticResource BooleanVisibilityConverter}}"/>
                     <TextBlock Text="{Binding Location}" 
-							   FontSize="{StaticResource PhoneFontSizeMediumLarge}"  
-							   Margin="0,0,0,0"
-							   Grid.Row="0"
-							   Grid.Column="2"
-							   Grid.ColumnSpan="2"
-							   VerticalAlignment="Center"
-							   HorizontalAlignment="Left"/>
+                        FontSize="{StaticResource PhoneFontSizeMediumLarge}"  
+                        Margin="0,0,0,0"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"/>
                     <TextBlock Text="{Binding Category}" 
-							   FontSize="{StaticResource PhoneFontSizeNormal}"  
-							   Margin="0,0,0,0"
-							   Grid.Row="1"
-							   Grid.Column="3"
-							   VerticalAlignment="Center"
-							   HorizontalAlignment="Left"/>
+                        FontSize="{StaticResource PhoneFontSizeNormal}"  
+                        Margin="0,0,0,0"
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"/>
                     <TextBlock Text="{Binding Amount, Converter={StaticResource LocalizedCurrency}}"  
-							   FontSize="{StaticResource PhoneFontSizeMedium}"
-							   Grid.Row="0"
-							   Grid.Column="4"
-							   Grid.RowSpan="2"
-							   Margin="5,0,5,0"
-							   TextAlignment="Right"
-							   VerticalAlignment="Center"/>
+                        FontSize="{StaticResource PhoneFontSizeMedium}"
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        Grid.RowSpan="2"
+                        Margin="5,0,5,0"
+                        TextAlignment="Right"
+                        VerticalAlignment="Center"/>
                 </Grid>
             </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="groupHeaderTemplate">
             <Border Background="{StaticResource PhoneContrastBackgroundBrush}"
-					Padding="5,5">
+                Padding="5,5">
                 <TextBlock Text="{Binding BindsDirectlyToSource=True}"
-						   Foreground="{StaticResource PhoneContrastForegroundBrush}"/>
+                    Foreground="{StaticResource PhoneContrastForegroundBrush}"/>
             </Border>
         </DataTemplate>
     </base:AdvertisingPage.Resources>
-    
+
+    <base:AdvertisingPage.FontFamily>
+        <StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+    </base:AdvertisingPage.FontFamily>
+    <base:AdvertisingPage.FontSize>
+        <StaticResource ResourceKey="PhoneFontSizeNormal"/>
+    </base:AdvertisingPage.FontSize>
+    <base:AdvertisingPage.Foreground>
+        <StaticResource ResourceKey="PhoneForegroundBrush"/>
+    </base:AdvertisingPage.Foreground>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="{StaticResource MoneyBackgroundBrush}">
         <Grid.RowDefinitions>
@@ -111,8 +122,150 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" x:Name="ApplicationTitle" Text="{Binding Path=LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="{StaticResource AppTitleFontFamily}"/>
-                <!--<Image Grid.Column="1" x:Name="ImageSearch"  Source="{Binding SearchImagePath}" HorizontalAlignment="Right" VerticalAlignment="Center" Height="32" Width="32" Margin="0,0,12,0" Tap="ImageSearch_Tap" />-->
+                <TextBlock Grid.Column="0" x:Name="ApplicationTitle" Text="{Binding LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="{StaticResource AppTitleFontFamily}"/>
+                <telerikPrimitives:RadImageButton x:Name="ImageSearch"
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Height="32"
+                    Width="32"                                                  
+                    ButtonShape="Image"
+                    Command="{Binding SearchToggleCommand}" 
+                    RestStateImageSource="{Binding SearchVisible, Converter={StaticResource SearchImageConverter}, ConverterParameter=false}"
+                    ButtonBehavior="ToggleButton"
+                    MinWidth="32" 
+                    MinHeight="32" 
+                    BorderThickness="0,0,0,2" 
+                    Margin="0,0,12,0">
+                    <telerikPrimitives:RadImageButton.Resources>
+                        <ImageButton:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter"/>
+                        <ImageButton:ImageButtonShapeToVisibilityConverter x:Key="ImageButtonShapeToVisibilityConverter"/>
+                        <SolidColorBrush x:Key="PressedStateWithOpacityMaskForegroundFillBrush" Color="White"/>
+                        <Style x:Key="TitleSearchButtonImageStyle" TargetType="telerikPrimitives:RadImageButton">
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="VerticalAlignment" Value="Top"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="MinWidth" Value="48"/>
+                            <Setter Property="MinHeight" Value="48"/>
+                            <Setter Property="FontSize" Value="12"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="telerikPrimitives:RadImageButton">
+                                        <Grid Background="Transparent">
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="RestState"/>
+                                                    <VisualState x:Name="PressedState">
+                                                        <Storyboard>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Source" Storyboard.TargetName="PART_ButtonImage">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding PressedStateImageSource, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="DisabledState">
+                                                        <Storyboard>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Source" Storyboard.TargetName="PART_ButtonImage">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding DisabledStateImageSource, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="RectangleButtonBackground">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="EllipseButtonBackground">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="RestStateWithOpacityMask">
+                                                        <Storyboard>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="PART_ButtonImage">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="PressedStateWithOpacityMask">
+                                                        <Storyboard>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="PART_ButtonImage">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="RectangleButtonBackground">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneAccentBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="RectangleButtonForeground">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PressedStateWithOpacityMaskForegroundFillBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="EllipseButtonBackground">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneAccentBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="EllipseButtonForeground">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PressedStateWithOpacityMaskForegroundFillBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="DisabledStateWithOpacityMask">
+                                                        <Storyboard>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="PART_ButtonImage">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="RectangleButtonBackground">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="RectangleButtonBackground">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="RectangleButtonForeground">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="EllipseButtonBackground">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="EllipseButtonBackground">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="EllipseButtonForeground">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentControl">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Rectangle x:Name="RectangleButtonBackground" Fill="{TemplateBinding Background}" MinWidth="{Binding MinWidth, RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding MinHeight, RelativeSource={RelativeSource TemplatedParent}}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{Binding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding ButtonShape, ConverterParameter=Rectangle, Converter={StaticResource ImageButtonShapeToVisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                <Rectangle x:Name="RectangleButtonForeground" Fill="{TemplateBinding Foreground}" MinWidth="{Binding MinWidth, RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding MinHeight, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding ButtonShape, ConverterParameter=Rectangle, Converter={StaticResource ImageButtonShapeToVisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}">
+                                                    <Rectangle.OpacityMask>
+                                                        <ImageBrush x:Name="PART_RectangleOpacityMaskImageBrush"/>
+                                                    </Rectangle.OpacityMask>
+                                                </Rectangle>
+                                                <Ellipse x:Name="EllipseButtonBackground" Fill="{TemplateBinding Background}" MinWidth="{Binding MinWidth, RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding MinHeight, RelativeSource={RelativeSource TemplatedParent}}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{Binding BorderThickness, Converter={StaticResource ThicknessToDoubleConverter}, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding ButtonShape, ConverterParameter=Ellipse, Converter={StaticResource ImageButtonShapeToVisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                <Ellipse x:Name="EllipseButtonForeground" Fill="{TemplateBinding Foreground}" MinWidth="{Binding MinWidth, RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding MinHeight, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding ButtonShape, ConverterParameter=Ellipse, Converter={StaticResource ImageButtonShapeToVisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}">
+                                                    <Ellipse.OpacityMask>
+                                                        <ImageBrush x:Name="PART_EllipseOpacityMaskImageBrush"/>
+                                                    </Ellipse.OpacityMask>
+                                                </Ellipse>
+                                                <Image x:Name="PART_ButtonImage" CacheMode="BitmapCache" Stretch="{TemplateBinding ImageStretch}"/>
+                                                <ContentControl x:Name="ContentControl" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </telerikPrimitives:RadImageButton.Resources>
+                    <telerikPrimitives:RadImageButton.BorderBrush>
+                        <StaticResource ResourceKey="TransparentBrush"/>
+                    </telerikPrimitives:RadImageButton.BorderBrush>
+                    <telerikPrimitives:RadImageButton.Style>
+                        <StaticResource ResourceKey="TitleSearchButtonImageStyle"/>
+                    </telerikPrimitives:RadImageButton.Style>
+                </telerikPrimitives:RadImageButton>
             </Grid>
             <TextBlock x:Name="PageTitle" Text="{Binding AccountName}" Style="{StaticResource PhoneTextTitle1Style}" Margin="9,-7,0,0" FontFamily="{StaticResource TitleFontFamily}"/>
         </StackPanel>
@@ -120,99 +273,119 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" Visibility="Collapsed">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="textBlockAvailableBalanceLabel" 
-					   Text="{Binding Path=LocalizedResources.TransactionsAvailableBalanceLabel, Source={StaticResource LocalizedStrings}}"
-					   Grid.Row="0"
-					   Grid.Column="0" 
-					   FontSize="{StaticResource PhoneFontSizeMedium}"
-					   Padding="3,3"></TextBlock>
+                Text="{Binding LocalizedResources.TransactionsAvailableBalanceLabel, Source={StaticResource LocalizedStrings}}"
+                Grid.Row="0"
+                Grid.Column="0" 
+                FontSize="{StaticResource PhoneFontSizeMedium}"
+                Padding="3,3"/>
             <TextBlock x:Name="textBlockAvailableBalance" 
-					   Text="{Binding AvailableBalance, Converter={StaticResource LocalizedCurrency}}"
-					   Grid.Row="0"
-					   Grid.Column="1" 
-					   FontSize="{StaticResource PhoneFontSizeMedium}" 
-					   FontWeight="Bold"
-					   TextAlignment="Right"
-					   Padding="3,3"></TextBlock>
+                Text="{Binding AvailableBalance, Converter={StaticResource LocalizedCurrency}}"
+                Grid.Row="0"
+                Grid.Column="1" 
+                FontSize="{StaticResource PhoneFontSizeMedium}" 
+                FontWeight="Bold"
+                TextAlignment="Right"
+                Padding="3,3"/>
             <TextBlock x:Name="textBlockPostedBalanceLabel" 
-					   Text="{Binding Path=LocalizedResources.TransactionsPostedBalanceLabel, Source={StaticResource LocalizedStrings}}"
-					   Grid.Row="1"
-					   Grid.Column="0" 
-					   FontSize="{StaticResource PhoneFontSizeMedium}"
-					   Padding="3,3"></TextBlock>
+                Text="{Binding LocalizedResources.TransactionsPostedBalanceLabel, Source={StaticResource LocalizedStrings}}"
+                Grid.Row="1"
+                Grid.Column="0" 
+                FontSize="{StaticResource PhoneFontSizeMedium}"
+                Padding="3,3"/>
             <TextBlock x:Name="textBlockPostedBalance" 
-					   Text="{Binding PostedBalance, Converter={StaticResource LocalizedCurrency}}"
-					   Grid.Row="1"
-					   Grid.Column="1" 
-					   FontSize="{StaticResource PhoneFontSizeMedium}" 
-					   FontWeight="Bold"
-					   TextAlignment="Right"
-					   Padding="3,3"></TextBlock>
+                Text="{Binding PostedBalance, Converter={StaticResource LocalizedCurrency}}"
+                Grid.Row="1"
+                Grid.Column="1" 
+                FontSize="{StaticResource PhoneFontSizeMedium}" 
+                FontWeight="Bold"
+                TextAlignment="Right"
+                Padding="3,3"/>
+            <telerikPrimitives:RadTextBox x:Name="SearchBox"
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        ActionButtonVisibility="Visible" 
+                                        Watermark="{Binding LocalizedResources.SearchHint, Mode=OneWay, Source={StaticResource LocalizedStrings}}" 
+                                        Visibility="{Binding SearchVisible,Converter={StaticResource BooleanVisibilityConverter}}"
+                                        Text="{Binding SearchText}"
+                                        ExecuteActionOnReturn="True" 
+                                        BorderThickness="0" 
+                                        Margin="-12,-10,-12,0" 
+                                        RenderTransformOrigin="0,0"
+                                        ActionButtonCommand="{Binding ExecuteSearchCommand}"
+                                        ClearButtonCommand="{Binding ClearSearchCommand}">
+                <telerikPrimitives:RadTextBox.ActionButtonStyle>
+                    <Style TargetType="telerikPrimitives:RadImageButton">
+                        <Setter Property="ButtonShape" Value="Ellipse"/>
+                        <Setter Property="RestStateImageSource" Value="\Images\Search.dark.png"/>
+                    </Style>
+                </telerikPrimitives:RadTextBox.ActionButtonStyle>
+            </telerikPrimitives:RadTextBox>
             <telerikData:RadJumpList x:Name="jumpListTransactions" Grid.Row="5" 
-                                     Grid.Column="0" 
-                                     Grid.ColumnSpan="2"
-                                     IsAsyncBalanceEnabled="True"
-                                     AsyncBalanceMode="Standard"
-                                     ItemTemplate="{StaticResource transactionsItemTemplate}" 
-                                     ItemsSource="{Binding Transactions}"
-                                     EmptyContent="{Binding Path=LocalizedResources.TransactionsNoData, Source={StaticResource LocalizedStrings}}" 
-                                     GroupHeaderTemplate="{StaticResource groupHeaderTemplate}"
-                                     IsGroupPickerEnabled="False"
-                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                     EmptyContentDisplayMode="DataSourceEmpty" 
-                                     DataVirtualizationMode="OnDemandAutomatic" 
-                                     DataRequested="jumpListTransactions_DataRequested" 
-                                     GroupCheckMode="None">
-				<telerikData:RadJumpList.VirtualizationStrategyDefinition>
-					<telerikPrimitives:StackVirtualizationStrategyDefinition>
-					</telerikPrimitives:StackVirtualizationStrategyDefinition>
-				</telerikData:RadJumpList.VirtualizationStrategyDefinition>
+                Grid.Column="0" 
+                Grid.ColumnSpan="2"
+                IsAsyncBalanceEnabled="True"
+                AsyncBalanceMode="Standard"
+                ItemTemplate="{StaticResource transactionsItemTemplate}" 
+                ItemsSource="{Binding Transactions}"
+                EmptyContent="{Binding LocalizedResources.TransactionsNoData, Source={StaticResource LocalizedStrings}}" 
+                GroupHeaderTemplate="{StaticResource groupHeaderTemplate}"
+                IsGroupPickerEnabled="False"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                EmptyContentDisplayMode="DataSourceEmpty" 
+                DataVirtualizationMode="OnDemandAutomatic" 
+                DataRequested="jumpListTransactions_DataRequested" 
+                GroupCheckMode="None">
+                <telerikData:RadJumpList.VirtualizationStrategyDefinition>
+                    <telerikPrimitives:StackVirtualizationStrategyDefinition/>
+                </telerikData:RadJumpList.VirtualizationStrategyDefinition>
                 <telerikData:RadJumpList.ItemLoadingContent>
                     <Grid MinHeight="60">
                         <telerikPrimitives:RadBusyIndicator x:Name="LoadingTransactionsBusy" 
-                                            Foreground="{StaticResource PhoneAccentBrush}" 
-                                            ContentPosition="Top"
-                                            Content="{Binding Path=LocalizedResources.ProgressBarText, Source={StaticResource LocalizedStrings}}"
-                                            IsRunning="True"
-                                            BorderBrush="{StaticResource PhoneSemitransparentBrush}"
-                                            AnimationStyle="AnimationStyle3"/>
+                            Foreground="{StaticResource PhoneAccentBrush}" 
+                            ContentPosition="Top"
+                            Content="{Binding LocalizedResources.ProgressBarText, Source={StaticResource LocalizedStrings}}"
+                            IsRunning="True"
+                            BorderBrush="{StaticResource PhoneSemitransparentBrush}"
+                            AnimationStyle="AnimationStyle3"/>
                     </Grid>
                 </telerikData:RadJumpList.ItemLoadingContent>
             </telerikData:RadJumpList>
         </Grid>
         <telerikPrimitives:RadBusyIndicator x:Name="LoadingBusy" 
-                                            Grid.Row="0"
-                                            Grid.Column="0"
-                                            Grid.RowSpan="2"
-                                            Background="{StaticResource PhoneSemitransparentBrush}" 
-                                            Foreground="{StaticResource PhoneAccentBrush}" 
-                                            Content="{Binding Path=LocalizedResources.ProgressBarText, Source={StaticResource LocalizedStrings}}"
-                                            IsRunning="True"
-                                            BorderBrush="{StaticResource PhoneSemitransparentBrush}"
-                                            AnimationStyle="AnimationStyle3"/>
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.RowSpan="2"
+            Background="{StaticResource PhoneSemitransparentBrush}" 
+            Foreground="{StaticResource PhoneAccentBrush}" 
+            Content="{Binding LocalizedResources.ProgressBarText, Source={StaticResource LocalizedStrings}}"
+            IsRunning="True"
+            BorderBrush="{StaticResource PhoneSemitransparentBrush}"
+            AnimationStyle="AnimationStyle3"/>
         <StackPanel Grid.Row="2">
             <StackPanel x:Name="AdPanel">
                 <ad:InneractiveAd xmlns:ad="clr-namespace:Inneractive.Nokia.Ad;assembly=Inneractive.Ad"
-                                  AppID="ShaneChurch_StirlingMoney_WP"
-                                  AdType="IaAdType_Banner"
-                                  ReloadTime="30"
-                                  Keywords="finance,money,cash,check,credit,credit card,financial,debt,income"
-                                  OptionalAdHeight="80"
-                                  OptionalAdWidth="480"
-                                  AdAlignment="BOTTOM_CENTER"
-                                  Margin="0,0,0,0"
-                                  Name="AdControl" />
+                    AppID="ShaneChurch_StirlingMoney_WP"
+                    AdType="IaAdType_Banner"
+                    ReloadTime="30"
+                    Keywords="finance,money,cash,check,credit,credit card,financial,debt,income"
+                    OptionalAdHeight="80"
+                    OptionalAdWidth="480"
+                    AdAlignment="BOTTOM_CENTER"
+                    Margin="0,0,0,0"
+                    x:Name="AdControl" />
             </StackPanel>
         </StackPanel>
     </Grid>

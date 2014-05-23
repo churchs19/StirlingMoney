@@ -247,6 +247,7 @@
     <Compile Include="Helpers\IntBusyAnimationConverter.cs" />
     <Compile Include="Helpers\LocalizedDateConverter.cs" />
     <Compile Include="Helpers\NonEmptyDateValidator.cs" />
+    <Compile Include="Helpers\SearchImageConverter.cs" />
     <Compile Include="Helpers\TextBinding.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

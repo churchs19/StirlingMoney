@@ -3,6 +3,7 @@ using Ninject;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
+using Shane.Church.Utility.Core.Command;
 #if DEBUG
 using Shane.Church.Utility.Core.WP;
 #endif
@@ -11,6 +12,7 @@ using System.Collections.Generic;
 using System.Windows;
 using Telerik.Windows.Data;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Command;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -27,7 +29,7 @@ namespace Shane.Church.StirlingMoney.WP
 			InitializeComponent();
 
 			InitializeAdControl(this.AdPanel, this.AdControl);
-		}
+        }
 
 		protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
 		{
@@ -224,5 +226,5 @@ namespace Shane.Church.StirlingMoney.WP
 			DebugUtility.DebugOutputMemoryUsage("Transactions_jumpListTransactions_DataRequested");
 #endif
 		}
-	}
+    }
 }

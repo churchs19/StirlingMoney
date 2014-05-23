@@ -103,6 +103,7 @@
     <Compile Include="Data\Category.cs" />
     <Compile Include="Data\Goal.cs" />
     <Compile Include="Data\ImageData.cs" />
+    <Compile Include="Data\ITransactionSearch.cs" />
     <Compile Include="Data\ProgressBusyEventArgs.cs" />
     <Compile Include="Data\ProgressChangedArgs.cs" />
     <Compile Include="Data\Setting.cs" />
