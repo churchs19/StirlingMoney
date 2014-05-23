@@ -182,6 +182,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Update\v2\Account.cs" />
     <Compile Include="Update\v2\Category.cs" />
     <Compile Include="v1\Account.cs" />

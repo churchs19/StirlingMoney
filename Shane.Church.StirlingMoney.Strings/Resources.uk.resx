@@ -121,7 +121,7 @@
     <value>Про</value>
   </data>
   <data name="AboutOtherAppsLabel" xml:space="preserve">
-    <value>Шейн церкви з іншими програмами</value>
+    <value>Shane Church з іншими програмами</value>
   </data>
   <data name="AboutReviewLabel" xml:space="preserve">
     <value>оцінити це ОК</value>
@@ -217,7 +217,7 @@
     <value>написати перевірка</value>
   </data>
   <data name="AppCopyright" xml:space="preserve">
-    <value>Copyright © 2013 Шейн церкви</value>
+    <value>Copyright © 2014 Shane Church</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
     <value>Фінансові Організатор для Windows Phone</value>

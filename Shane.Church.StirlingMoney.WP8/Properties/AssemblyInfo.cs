@@ -8,9 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Stirling Money - Windows Phone 8")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Shane Church")]
 [assembly: AssemblyProduct("Stirling Money - Windows Phone 8")]
-[assembly: AssemblyCopyright("Copyright © Shane Church 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -21,16 +19,3 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("2b869006-e87d-4adc-93c2-e8121a9e6987")]
-
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-[assembly: AssemblyVersion("3.2.8.*")]
-[assembly: AssemblyFileVersion("3.2.8.0")]
-[assembly: NeutralResourcesLanguageAttribute("en")]

@@ -137,6 +137,9 @@
     <EmbeddedResource Include="Resources\UtilityResources.zh-TW.resx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Command\ActionCompleteEventHandler.cs" />
     <Compile Include="Command\AsyncRelayCommand.cs" />
     <Compile Include="Command\AsyncRelayCommandGeneric.cs" />

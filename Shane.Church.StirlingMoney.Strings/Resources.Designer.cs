@@ -358,7 +358,7 @@ namespace Shane.Church.StirlingMoney.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copyright © Shane Church 2013.
+        ///   Looks up a localized string similar to Copyright © Shane Church 2014.
         /// </summary>
         public static string AppCopyright {
             get {

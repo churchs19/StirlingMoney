@@ -97,6 +97,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Data\Account.cs" />
     <Compile Include="Data\AppSyncUser.cs" />
     <Compile Include="Data\Budget.cs" />

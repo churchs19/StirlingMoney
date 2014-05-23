@@ -109,6 +109,9 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\ByteToImageSourceValueConverter.cs" />
     <Compile Include="Converters\CurrencyValueConverter.cs" />
