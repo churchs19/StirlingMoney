@@ -69,12 +69,12 @@
         <controls:Pivot Grid.Row="0" x:Name="SettingsPivot" Title="{Binding LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}">
             <controls:Pivot.HeaderTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontFamily="{StaticResource TitleFontFamily}" FontSize="{StaticResource PhoneFontSizeExtraExtraLarge}"/>
+                    <TextBlock Text="{Binding BindsDirectlyToSource=True}" Style="{StaticResource AppTextTitle1Style}"/>
                 </DataTemplate>
             </controls:Pivot.HeaderTemplate>
             <controls:Pivot.TitleTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontFamily="{StaticResource AppTitleFontFamily}" FontSize="{StaticResource PhoneFontSizeNormal}"/>
+                    <TextBlock Text="{Binding BindsDirectlyToSource=True}" Style="{StaticResource AppTitleStyle}"/>
                 </DataTemplate>
             </controls:Pivot.TitleTemplate>
             <controls:PivotItem Header="{Binding LocalizedResources.SettingsTitle, Source={StaticResource LocalizedStrings}}">

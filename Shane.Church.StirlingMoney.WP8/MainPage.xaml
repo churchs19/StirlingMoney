@@ -12,12 +12,15 @@
     xmlns:coreUtil="clr-namespace:Shane.Church.StirlingMoney.Core.WP.Converters;assembly=Shane.Church.StirlingMoney.Core.WP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    mc:Ignorable="d" 
+    d:DesignWidth="480" 
+    d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
+    SupportedOrientations="Portrait"  
+    Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
 
     <base:AdvertisingPage.Resources>
         <coreUtil:ByteToImageSourceValueConverter x:Key="ByteImageConverter"/>
@@ -48,12 +51,12 @@
                         Visibility="Collapsed">
             <controls:Pivot.HeaderTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontFamily="{StaticResource TitleFontFamily}" FontSize="{StaticResource PhoneFontSizeExtraExtraLarge}"/>
+                    <TextBlock Text="{Binding BindsDirectlyToSource=True}" Style="{StaticResource AppTextTitle1Style}"/>
                 </DataTemplate>
             </controls:Pivot.HeaderTemplate>
             <controls:Pivot.TitleTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontFamily="{StaticResource AppTitleFontFamily}" FontSize="{StaticResource PhoneFontSizeNormal}"/>
+                    <TextBlock Text="{Binding BindsDirectlyToSource=True}" Style="{StaticResource AppTitleStyle}"/>
                 </DataTemplate>
             </controls:Pivot.TitleTemplate>
             <controls:PivotItem Header="{Binding Path=LocalizedResources.AccountsTitle, Source={StaticResource LocalizedStrings}}" 

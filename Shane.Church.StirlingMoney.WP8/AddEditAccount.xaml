@@ -30,8 +30,8 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="{Binding Path=LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="{StaticResource AppTitleFontFamily}"/>
-            <TextBlock x:Name="PageTitle" Text="{Binding PageTitle}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="{StaticResource TitleFontFamily}"/>
+            <TextBlock x:Name="ApplicationTitle" Text="{Binding Path=LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource AppTitleStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="{Binding PageTitle}" Margin="9,-7,0,0" Style="{StaticResource AppTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->

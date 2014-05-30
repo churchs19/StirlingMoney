@@ -116,13 +116,13 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,8">
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,18">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" x:Name="ApplicationTitle" Text="{Binding LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="{StaticResource AppTitleFontFamily}"/>
+                <TextBlock Grid.Column="0" x:Name="ApplicationTitle" Text="{Binding LocalizedResources.AppTitle, Source={StaticResource LocalizedStrings}}" Style="{StaticResource AppTitleStyle}"/>
                 <telerikPrimitives:RadImageButton x:Name="ImageSearch"
                     Grid.Column="1"
                     HorizontalAlignment="Right"
@@ -267,7 +267,7 @@
                     </telerikPrimitives:RadImageButton.Style>
                 </telerikPrimitives:RadImageButton>
             </Grid>
-            <TextBlock x:Name="PageTitle" Text="{Binding AccountName}" Style="{StaticResource PhoneTextTitle1Style}" Margin="9,-7,0,0" FontFamily="{StaticResource TitleFontFamily}"/>
+            <TextBlock x:Name="PageTitle" Text="{Binding AccountName}" Style="{StaticResource AppTextTitle1Style}" Margin="9,-7,0,0"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
