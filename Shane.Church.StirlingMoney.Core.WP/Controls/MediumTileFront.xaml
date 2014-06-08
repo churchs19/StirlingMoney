@@ -28,7 +28,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="{Binding AccountBalance, Converter={StaticResource LocalLocalizedCurrency}}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="12" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}" />
+        <TextBlock Grid.Row="0" Text="{Binding AccountBalance, Converter={StaticResource LocalLocalizedCurrency}}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="12" FontSize="{StaticResource PhoneFontSizeLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}" FontWeight="Bold" />
         <Image Grid.Row="0" Grid.RowSpan="2" Source="{Binding Image, Converter={StaticResource LocalByteImageConverter}}" Margin="39" Stretch="Fill"/>
     </Grid>
 </UserControl>
