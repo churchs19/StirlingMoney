@@ -1,15 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shane.Church.StirlingMoney.Data", "Shane.Church.StirlingMoney.Data\Shane.Church.StirlingMoney.Data.csproj", "{146ED221-2FCD-42B6-8A1E-88E43DD00C8A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{72373023-72DC-42D1-A4CE-F1B21276D20E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows 8", "Windows 8", "{DC206565-1379-4567-AEAA-E7CCA3E8E435}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows Phone", "Windows Phone", "{0220AF3A-E842-4792-8ED0-763BB6A68727}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4FDA51E7-5062-41E8-972F-A0A08D7C5D87}"
+	ProjectSection(SolutionItems) = preProject
+		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shane.Church.StirlingMoney.Data", "Shane.Church.StirlingMoney.Data\Shane.Church.StirlingMoney.Data.csproj", "{146ED221-2FCD-42B6-8A1E-88E43DD00C8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shane.Church.StirlingMoney.Core", "Shane.Church.StirlingMoney.Core\Shane.Church.StirlingMoney.Core.csproj", "{4E5D8824-CC49-41A4-BC97-3E5BC5378754}"
 EndProject
@@ -30,11 +35,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shane.Church.StirlingMoney.Win8", "Shane.Church.StirlingMoney.Win8\Shane.Church.StirlingMoney.Win8.csproj", "{FE0D900E-D3AB-44E6-AF92-F0B4768AB512}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shane.Church.StirlingMoney.Core.Win8", "Shane.Church.StirlingMoney.Core.Win8\Shane.Church.StirlingMoney.Core.Win8.csproj", "{EA7A47C6-7AEB-4E82-8CA7-47C47A29AD86}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4FDA51E7-5062-41E8-972F-A0A08D7C5D87}"
-	ProjectSection(SolutionItems) = preProject
-		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

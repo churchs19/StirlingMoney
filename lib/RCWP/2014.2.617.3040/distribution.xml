@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<Distribution xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Version>2014.2.617.3040</Version>
+  <Trial>false</Trial>
+  <Dependencies>
+    <Project>71b78345-8b19-4fcd-881a-d6a2d137e522</Project>
+    <Project>3fbc6023-4fda-40de-9937-6ca019add09a</Project>
+  </Dependencies>
+  <DistributionInfo>
+    <Release Version="2010.3.0">
+      <AdditionalPaths />
+      <DesignAssembliesRelativePath Path="design" />
+    </Release>
+  </DistributionInfo>
+</Distribution>

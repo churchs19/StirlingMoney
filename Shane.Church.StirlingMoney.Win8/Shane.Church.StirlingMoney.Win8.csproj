@@ -16,7 +16,7 @@
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <TargetFrameworkVersion />
-    <SDKReferenceDirectoryRoot>$(LocalAppData)\Microsoft SDKs;$(MSBuildProgramFiles32)\Microsoft SDKs;$(SolutionDir)\lib\W8X\2014.1.221.45.Sdk</SDKReferenceDirectoryRoot>
+    <SDKReferenceDirectoryRoot>$(LocalAppData)\Microsoft SDKs;$(MSBuildProgramFiles32)\Microsoft SDKs;$(SolutionDir)\lib\W8X\2014.2.617.45.Sdk</SDKReferenceDirectoryRoot>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -105,12 +105,6 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <SDKReference Include="Telerik UI for Windows 8.1 XAML, Version=2014.1.221">
-      <Name>Telerik UI for Windows 8.1 XAML</Name>
-    </SDKReference>
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
@@ -214,6 +208,11 @@
     <Reference Include="Wintellect.Sterling.WinRT">
       <HintPath>..\lib\Wintellect.SterlingDB\WinRT\Wintellect.Sterling.WinRT.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Telerik UI for Windows 8.1 XAML, Version=2014.2.617">
+      <Name>Telerik UI for Windows 8.1 XAML</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
