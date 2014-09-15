@@ -32,7 +32,7 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			base.OnNavigatedTo(e);
 
-			TaskEx.Run(() => Initialize());
+			Task.Run(() => Initialize());
 		}
 
 		protected async Task Initialize()

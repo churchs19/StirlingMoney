@@ -3,6 +3,9 @@ using System.IO.IsolatedStorage;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
+using Windows.Foundation;
+using Windows.UI.Core;
 
 namespace Shane.Church.Utility.Core.WP
 {
@@ -14,9 +17,9 @@ namespace Shane.Church.Utility.Core.WP
             Jpeg
         }
 
-        public static Task SaveImageAsync(WriteableBitmap wbm, string path, ImageType type)
+        public static async Task SaveImageAsync(WriteableBitmap wbm, string path, ImageType type)
         {
-            return Deployment.Current.Dispatcher.InvokeAsync(() =>
+            await CoreWindow.GetForCurrentThread().Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 using (IsolatedStorageFile appStorage = IsolatedStorageFile.GetUserStoreForApplication())
                 {
@@ -50,9 +53,10 @@ namespace Shane.Church.Utility.Core.WP
             });
         }
 
-        public static Task<WriteableBitmap> LoadImageAsync(string path)
+        public static async Task<WriteableBitmap> LoadImageAsync(string path)
         {
-            return Deployment.Current.Dispatcher.InvokeAsync<WriteableBitmap>(() =>
+            WriteableBitmap bmp = null;
+            await CoreWindow.GetForCurrentThread().Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 try
                 {
@@ -60,9 +64,9 @@ namespace Shane.Church.Utility.Core.WP
                     {
                         using (IsolatedStorageFileStream stream = new IsolatedStorageFileStream(path, System.IO.FileMode.Open, appStorage))
                         {
-                            WriteableBitmap bmp = new WriteableBitmap(173, 173);
+                            bmp = new WriteableBitmap(173, 173);
                             bmp.LoadJpeg(stream);
-                            return bmp;
+
                         }
                     }
                 }
@@ -72,9 +76,10 @@ namespace Shane.Church.Utility.Core.WP
                     {
                         //                    DebugUtility.DebugOutputMemoryUsage("Error Loading Image");
                     }
-                    return null;
+                    bmp = null;
                 }
             });
+            return bmp;
         }
 
         private static void CompensateForRender(int[] bitmapPixels)

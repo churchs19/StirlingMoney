@@ -239,7 +239,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                 BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
             }
 
-            await TaskEx.Yield();
+            await Task.Yield();
 
             this.Transactions.Clear();
             this.Account = await _accountRepository.GetEntryAsync(accountId);
@@ -262,7 +262,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
             }
             InitialLoadComplete = true;
 
-            await TaskEx.Yield();
+            await Task.Yield();
 
             await LoadNextTransactions();
 
@@ -279,7 +279,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                 BusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
             }
 
-            await TaskEx.Yield();
+            await Task.Yield();
 
             var updated = _transactionRepository.GetAllIndexKeys<Tuple<Guid, DateTimeOffset>>("TransactionAccountIdEditDateTime").Where(it => it.Value.Item2 > _refreshTime && it.Value.Item1 == this.AccountId).Select(it => it.Key);
             var updatedList = updated.ToList();
@@ -304,7 +304,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
             RaisePropertyChanged(() => AvailableBalance);
             RaisePropertyChanged(() => PostedBalance);
 
-            await TaskEx.Yield();
+            await Task.Yield();
 
             if (BusyChanged != null)
             {

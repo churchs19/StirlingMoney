@@ -58,7 +58,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public Task BackupComplete()
 		{
-			return TaskEx.Run(() =>
+			return Task.Run(() =>
 			{
 				if (BusyChanged != null)
 					BusyChanged(new ProgressBusyEventArgs() { IsBusy = false, Message = Strings.Resources.BackupSuccess });
@@ -86,7 +86,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public Task RestoreComplete()
 		{
-			return TaskEx.Run(() =>
+			return Task.Run(() =>
 			{
 				if (BusyChanged != null)
 					BusyChanged(new ProgressBusyEventArgs() { IsBusy = false, Message = Strings.Resources.BackupRestoreSuccess });

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Windows.UI.Core;
 using Telerik.Windows.Controls;
 
 namespace Shane.Church.StirlingMoney.WP
@@ -49,7 +50,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 			var navContext = Newtonsoft.Json.Linq.JObject.FromObject(this.NavigationContext);
 
-			TaskEx.Run(() => Initialize(e.NavigationMode, navContext));
+			Task.Run(() => Initialize(e.NavigationMode, navContext));
 		}
 
 		protected async Task Initialize(System.Windows.Navigation.NavigationMode navMode, Newtonsoft.Json.Linq.JObject navContext)
@@ -118,7 +119,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 		async void _model_SyncCompleted()
 		{
-			await Deployment.Current.Dispatcher.InvokeAsync(() =>
+			await CoreWindow.GetForCurrentThread().Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
 			{
 				_refreshAccounts = true;
 				_refreshBudgets = true;

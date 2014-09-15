@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace Shane.Church.Utility.Core.Extensions
 		public InterfaceTypeDefinition(Type type)
 		{
 			Implementation = type;
-			Interfaces = type.GetInterfaces();
+			Interfaces = type.GetTypeInfo().ImplementedInterfaces;
 		}
 
 		/// <summary>
@@ -38,7 +39,8 @@ namespace Shane.Church.Utility.Core.Extensions
 		public Type GetService(Type openGenericType)
 		{
 			return Interfaces.First(i => i.IsOpenGeneric(openGenericType))
-				.GetGenericArguments()
+                .GetTypeInfo()
+                .GenericTypeArguments
 				.Select(arguments => openGenericType.MakeGenericType(arguments))
 				.First();
 		}

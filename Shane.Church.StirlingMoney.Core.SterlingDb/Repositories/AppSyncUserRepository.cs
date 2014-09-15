@@ -56,7 +56,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public Task<IQueryable<AppSyncUser>> GetAllEntriesAsync(bool includeDeleted = false)
 		{
-			return TaskEx.Run<IQueryable<AppSyncUser>>(() => GetAllEntries(includeDeleted));
+			return Task.Run<IQueryable<AppSyncUser>>(() => GetAllEntries(includeDeleted));
 		}
 
 		IQueryable<AppSyncUser> GetFilteredEntries(System.Linq.Expressions.Expression<Func<AppSyncUser, bool>> filter, bool includeDeleted = false)
@@ -68,7 +68,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public Task<IQueryable<AppSyncUser>> GetFilteredEntriesAsync(System.Linq.Expressions.Expression<Func<AppSyncUser, bool>> filter, bool includeDeleted = false)
 		{
-			return TaskEx.Run<IQueryable<AppSyncUser>>(() => GetFilteredEntries(filter, includeDeleted));
+			return Task.Run<IQueryable<AppSyncUser>>(() => GetFilteredEntries(filter, includeDeleted));
 		}
 
 		public async Task DeleteEntryAsync(string entryId, bool hardDelete = false)
@@ -121,7 +121,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public Task<IQueryable<AppSyncUser>> GetUpdatedEntries(DateTimeOffset date)
 		{
-			return TaskEx.Run<IQueryable<AppSyncUser>>(() => _db.Query<AppSyncUser, DateTimeOffset, string>("EditDateTime")
+			return Task.Run<IQueryable<AppSyncUser>>(() => _db.Query<AppSyncUser, DateTimeOffset, string>("EditDateTime")
 				.Where(it => it.Index >= date)
 				.Select(it => it.Value.Result).AsQueryable());
 		}
@@ -136,12 +136,12 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public Task<int> GetEntriesCountAsync(bool includeDeleted = false)
 		{
-			return TaskEx.Run<int>(() => GetEntriesCount(includeDeleted));
+			return Task.Run<int>(() => GetEntriesCount(includeDeleted));
 		}
 
 		public Task<IQueryable<AppSyncUser>> GetIndexFilteredEntriesAsync<TIndex>(string indexName, TIndex indexValue, bool includeDeleted = false)
 		{
-			return TaskEx.Run<IQueryable<AppSyncUser>>(() =>
+			return Task.Run<IQueryable<AppSyncUser>>(() =>
 			{
 				if (includeDeleted)
 					return _db.Query<AppSyncUser, TIndex, Guid>(indexName).Where(it => it.Index.Equals(indexValue)).Select(it => it.Value.Result).AsQueryable();
@@ -160,7 +160,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public Task<int> GetIndexFilteredEntriesCountAsync<TIndex>(string indexName, TIndex indexValue, bool includeDeleted = false)
 		{
-			return TaskEx.Run<int>(() => GetIndexFilteredEntriesCount<TIndex>(indexName, indexValue, includeDeleted));
+			return Task.Run<int>(() => GetIndexFilteredEntriesCount<TIndex>(indexName, indexValue, includeDeleted));
 		}
 	}
 }

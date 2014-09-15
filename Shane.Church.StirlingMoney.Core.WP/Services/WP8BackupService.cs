@@ -35,7 +35,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 			if (ProgressChanged != null)
 				ProgressChanged(new ProgressChangedArgs() { ProgressPercentage = 0, Bytes = 0, TotalBytes = 0 });
 
-			await TaskEx.Yield();
+			await Task.Yield();
 
 			await base.BackupDatabase();
 
@@ -87,7 +87,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 			if (ProgressChanged != null)
 				ProgressChanged(new ProgressChangedArgs() { ProgressPercentage = 0, Bytes = 0, TotalBytes = 0 });
 
-			await TaskEx.Yield();
+			await Task.Yield();
 
 			if (await _liveUtils.LiveLogin())
 			{
@@ -182,7 +182,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 
 		public override Task RemoveDatabaseBackup()
 		{
-			return TaskEx.Run(() => DeleteFile(_fileName));
+			return Task.Run(() => DeleteFile(_fileName));
 		}
 
 		private void DeleteFile(string fileName)

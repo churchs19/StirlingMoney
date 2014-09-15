@@ -14,6 +14,7 @@
 // ****************************************************************************
 
 using System;
+using System.Reflection;
 
 namespace GalaSoft.MvvmLight.Helpers
 {
@@ -35,11 +36,6 @@ namespace GalaSoft.MvvmLight.Helpers
         {
             get
             {
-                if (_staticFunc != null)
-                {
-                    return _staticFunc.Method.Name;
-                }
-
                 return Method.Name;
             }
         }
@@ -88,7 +84,8 @@ namespace GalaSoft.MvvmLight.Helpers
         /// <param name="func">The func that will be associated to this instance.</param>
         public WeakFunc(object target, Func<T, TResult> func)
         {
-            if (func.Method.IsStatic)
+            Method = func.GetMethodInfo();
+            if (Method.IsStatic)
             {
                 _staticFunc = func;
 
@@ -102,7 +99,6 @@ namespace GalaSoft.MvvmLight.Helpers
                 return;
             }
 
-            Method = func.Method;
             FuncReference = new WeakReference(func.Target);
 
             Reference = new WeakReference(target);

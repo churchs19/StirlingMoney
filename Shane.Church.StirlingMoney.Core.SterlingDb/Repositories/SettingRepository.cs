@@ -52,7 +52,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public Task<IQueryable<Setting>> GetAllEntriesAsync(bool includeDeleted = false)
 		{
-			return TaskEx.Run<IQueryable<Setting>>(() => GetAllEntries(includeDeleted));
+			return Task.Run<IQueryable<Setting>>(() => GetAllEntries(includeDeleted));
 		}
 
 		IQueryable<Setting> GetFilteredEntries(System.Linq.Expressions.Expression<Func<Setting, bool>> filter, bool includeDeleted = false)
@@ -64,7 +64,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public Task<IQueryable<Setting>> GetFilteredEntriesAsync(System.Linq.Expressions.Expression<Func<Setting, bool>> filter, bool includeDeleted = false)
 		{
-			return TaskEx.Run<IQueryable<Setting>>(() => GetFilteredEntries(filter, includeDeleted));
+			return Task.Run<IQueryable<Setting>>(() => GetFilteredEntries(filter, includeDeleted));
 		}
 
 		public async Task DeleteEntryAsync(string entryId, bool hardDelete = false)
@@ -108,7 +108,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public Task<IQueryable<Setting>> GetUpdatedEntries(DateTimeOffset date)
 		{
-			return TaskEx.Run<IQueryable<Setting>>(() => _db.Query<Setting, DateTimeOffset, string>("EditDateTime")
+			return Task.Run<IQueryable<Setting>>(() => _db.Query<Setting, DateTimeOffset, string>("EditDateTime")
 				.Where(it => it.Index >= date)
 				.Select(it => it.Value.Result).AsQueryable());
 		}
@@ -123,12 +123,12 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public Task<int> GetEntriesCountAsync(bool includeDeleted = false)
 		{
-			return TaskEx.Run<int>(() => GetEntriesCount(includeDeleted));
+			return Task.Run<int>(() => GetEntriesCount(includeDeleted));
 		}
 
 		public Task<IQueryable<Setting>> GetIndexFilteredEntriesAsync<TIndex>(string indexName, TIndex indexValue, bool includeDeleted = false)
 		{
-			return TaskEx.Run<IQueryable<Setting>>(() =>
+			return Task.Run<IQueryable<Setting>>(() =>
 			{
 				if (includeDeleted)
 					return _db.Query<Setting, TIndex, Guid>(indexName).Where(it => it.Index.Equals(indexValue)).Select(it => it.Value.Result).AsQueryable();
@@ -147,7 +147,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public Task<int> GetIndexFilteredEntriesCountAsync<TIndex>(string indexName, TIndex indexValue, bool includeDeleted = false)
 		{
-			return TaskEx.Run<int>(() => GetIndexFilteredEntriesCount<TIndex>(indexName, indexValue, includeDeleted));
+			return Task.Run<int>(() => GetIndexFilteredEntriesCount<TIndex>(indexName, indexValue, includeDeleted));
 		}
 	}
 }

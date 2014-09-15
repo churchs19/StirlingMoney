@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +18,8 @@ namespace Shane.Church.Utility.Core.Extensions
 
 		public static bool IsOpenGeneric(this Type type, Type openGenericType)
 		{
-			return type.IsGenericType
-				&& type.GetGenericTypeDefinition().IsAssignableFrom(openGenericType);
+			return type.GetTypeInfo().IsGenericType
+				&& type.GetGenericTypeDefinition().GetTypeInfo().IsAssignableFrom(openGenericType.GetTypeInfo());
 		}
 	}
 }

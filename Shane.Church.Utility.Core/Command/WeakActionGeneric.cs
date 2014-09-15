@@ -14,6 +14,7 @@
 // ****************************************************************************
 
 using System;
+using System.Reflection;
 
 namespace GalaSoft.MvvmLight.Helpers
 {
@@ -34,11 +35,6 @@ namespace GalaSoft.MvvmLight.Helpers
         {
             get
             {
-                if (_staticAction != null)
-                {
-                    return _staticAction.Method.Name;
-                }
-
                 return Method.Name;
             }
         }
@@ -87,7 +83,8 @@ namespace GalaSoft.MvvmLight.Helpers
         /// <param name="action">The action that will be associated to this instance.</param>
         public WeakAction(object target, Action<T> action)
         {
-            if (action.Method.IsStatic)
+            Method = action.GetMethodInfo();
+            if (Method.IsStatic)
             {
                 _staticAction = action;
 
@@ -101,7 +98,6 @@ namespace GalaSoft.MvvmLight.Helpers
                 return;
             }
 
-            Method = action.Method;
             ActionReference = new WeakReference(action.Target);
 
             Reference = new WeakReference(target);

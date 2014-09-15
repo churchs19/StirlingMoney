@@ -61,7 +61,7 @@ namespace GalaSoft.MvvmLight
 			var myType = GetType();
 
 			if (!string.IsNullOrEmpty(propertyName)
-				&& myType.GetProperty(propertyName) == null)
+				&& myType.GetTypeInfo().DeclaredProperties.Any(it=>it.Name.Equals(propertyName)))
 			{
 				throw new ArgumentException("Property not found", propertyName);
 			}

@@ -10,6 +10,7 @@
 
 namespace Shane.Church.Utility.Core.Resources {
     using System;
+    using System.Reflection;
     
     
     /// <summary>
@@ -39,7 +40,7 @@ namespace Shane.Church.Utility.Core.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Shane.Church.Utility.Core.Resources.UtilityResources", typeof(UtilityResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Shane.Church.Utility.Core.Resources.UtilityResources", typeof(UtilityResources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

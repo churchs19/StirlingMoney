@@ -56,7 +56,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
         public Task<IQueryable<Transaction>> GetAllEntriesAsync(bool includeDeleted = false)
         {
-            return TaskEx.Run<IQueryable<Transaction>>(() => GetAllEntries(includeDeleted));
+            return Task.Run<IQueryable<Transaction>>(() => GetAllEntries(includeDeleted));
         }
 
         IQueryable<Transaction> GetFilteredEntries(System.Linq.Expressions.Expression<Func<Transaction, bool>> filter, bool includeDeleted = false)
@@ -68,7 +68,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
         public Task<IQueryable<Transaction>> GetFilteredEntriesAsync(System.Linq.Expressions.Expression<Func<Transaction, bool>> filter, bool includeDeleted = false)
         {
-            return TaskEx.Run<IQueryable<Transaction>>(() => GetFilteredEntries(filter, includeDeleted));
+            return Task.Run<IQueryable<Transaction>>(() => GetFilteredEntries(filter, includeDeleted));
         }
 
         public async Task DeleteEntryAsync(Guid entryId, bool hardDelete = false)
@@ -160,12 +160,12 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
         public Task<int> GetEntriesCountAsync(bool includeDeleted = false)
         {
-            return TaskEx.Run<int>(() => GetEntriesCount(includeDeleted));
+            return Task.Run<int>(() => GetEntriesCount(includeDeleted));
         }
 
         public Task<IQueryable<Transaction>> GetIndexFilteredEntriesAsync<TIndex>(string indexName, TIndex indexValue, bool includeDeleted = false)
         {
-            return TaskEx.Run<IQueryable<Transaction>>(() =>
+            return Task.Run<IQueryable<Transaction>>(() =>
             {
                 if (includeDeleted)
                     return _db.Query<Transaction, TIndex, Guid>(indexName).Where(it => it.Index.Equals(indexValue)).Select(it => it.Value.Result).AsQueryable();
@@ -184,7 +184,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
         public Task<int> GetIndexFilteredEntriesCountAsync<TIndex>(string indexName, TIndex indexValue, bool includeDeleted = false)
         {
-            return TaskEx.Run<int>(() => GetIndexFilteredEntriesCount<TIndex>(indexName, indexValue, includeDeleted));
+            return Task.Run<int>(() => GetIndexFilteredEntriesCount<TIndex>(indexName, indexValue, includeDeleted));
         }
 
         public double GetSumBetweenDates(DateTimeOffset startDate, DateTimeOffset endDate)
@@ -269,7 +269,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
         public Task<List<Transaction>> GetSearchResultsAsync(Guid AccountId, string searchText)
         {
-            return TaskEx.Run<List<Transaction>>(() => GetSearchResults(AccountId, searchText));
+            return Task.Run<List<Transaction>>(() => GetSearchResults(AccountId, searchText));
         }
     }
 

@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E66B6C80-38B7-4929-B6B9-B9FC8F62C356}</ProjectGuid>
@@ -10,8 +10,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Shane.Church.StirlingMoney.Strings</RootNamespace>
     <AssemblyName>Shane.Church.StirlingMoney.Strings</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <SupportedCultures>ar%3bbg%3bca%3bzh-CN%3bzh-TW%3bcs%3bda%3bnl%3ben%3ben-GB%3bet%3bfi%3bfr%3bde%3bel%3bhe%3bhi%3bhu%3bid%3bit%3bja%3bko%3blv%3blt%3bms%3bno%3bfa-IR%3bpl%3bpt%3bpt-BR%3bpt-PT%3bro%3bru%3bsk%3bsl%3bes%3bes-MX%3bes-ES%3bsv%3bth%3btr%3buk%3bvi</SupportedCultures>

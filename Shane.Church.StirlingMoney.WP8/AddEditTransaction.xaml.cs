@@ -32,7 +32,7 @@ namespace Shane.Church.StirlingMoney.WP
 
 			var navContext = Newtonsoft.Json.Linq.JObject.FromObject(this.NavigationContext);
 
-			TaskEx.Run(() => Initialize(navContext));
+			Task.Run(() => Initialize(navContext));
 		}
 
 		protected async Task Initialize(Newtonsoft.Json.Linq.JObject navContext)

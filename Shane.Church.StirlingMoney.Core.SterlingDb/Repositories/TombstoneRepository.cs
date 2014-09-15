@@ -32,7 +32,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public Task<IQueryable<Tombstone>> GetAllEntriesAsync(bool includeDeleted = false)
 		{
-			return TaskEx.Run(() => _db.Query<Tombstone, string>().Select(it => it.LazyValue.Value).AsQueryable());
+			return Task.Run(() => _db.Query<Tombstone, string>().Select(it => it.LazyValue.Value).AsQueryable());
 		}
 
 		public int GetEntriesCount(bool includeDeleted = false)
@@ -42,7 +42,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Repositories
 
 		public Task<int> GetEntriesCountAsync(bool includeDeleted = false)
 		{
-			return TaskEx.Run(() => GetEntriesCount(includeDeleted));
+			return Task.Run(() => GetEntriesCount(includeDeleted));
 		}
 
 		public Task<IQueryable<Tombstone>> GetFilteredEntriesAsync(System.Linq.Expressions.Expression<Func<Tombstone, bool>> filter, bool includeDeleted = false)

@@ -64,7 +64,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public virtual Task Initialize()
 		{
-			return TaskEx.Run(() => { });
+			return Task.Run(() => { });
 		}
 
 		public delegate void SyncCompletedHandler();
@@ -103,7 +103,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				BusyChanged(this, new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 			}
 
-			await TaskEx.Yield();
+			await Task.Yield();
 
 			await Accounts.LoadData(forceUpdate);
 
@@ -122,7 +122,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					BusyChanged(this, new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 				}
 
-				await TaskEx.Yield();
+				await Task.Yield();
 
 				var budgets = _budgetRepository.GetAllKeys();
 				var budgetList = budgets.ToList();
@@ -170,7 +170,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					BusyChanged(this, new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 				}
 
-				await TaskEx.Yield();
+				await Task.Yield();
 
 				var goals = _goalRepository.GetAllKeys();
 				var goalList = goals.ToList();
@@ -231,7 +231,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			{
 				BusyChanged(this, new BusyEventArgs() { AnimationType = 7, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarSyncText });
 			}
-			await TaskEx.Yield();
+			await Task.Yield();
 
 			await _syncService.Sync();
 		}
