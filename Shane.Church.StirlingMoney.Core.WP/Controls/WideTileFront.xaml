@@ -4,7 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:util="clr-namespace:Shane.Church.StirlingMoney.Core.WP.Converters"
-    xmlns:local="clr-namespace:Shane.Church.StirlingMoney.Core.WP"
+    xmlns:local="clr-namespace:Shane.Church.StirlingMoney.Strings;assembly=Shane.Church.StirlingMoney.Strings"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"

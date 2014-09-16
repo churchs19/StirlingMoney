@@ -414,7 +414,7 @@
                                             Grid.Column="0"
                                             Background="{StaticResource PhoneSemitransparentBrush}" 
                                             Foreground="{StaticResource PhoneAccentBrush}" 
-                                            IsRunning="True"
+                                            IsRunning="False"
                                             BorderBrush="{StaticResource PhoneSemitransparentBrush}"
                                             AnimationStyle="AnimationStyle3"/>
         <StackPanel Grid.Row="1">

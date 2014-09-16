@@ -217,7 +217,6 @@
     <Compile Include="Converters\TransactionBrushConverter.cs" />
     <Compile Include="FlurryConfig.cs" />
     <Compile Include="LiveConfig.cs" />
-    <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MicrosoftLiveUtils.cs" />
     <Compile Include="MobileServiceConfig.cs" />
     <Compile Include="NinjectBootstrapper.cs" />

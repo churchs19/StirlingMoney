@@ -161,6 +161,11 @@
       <Name>Shane.Church.Utility.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Syncfusion 8.1 controls for Universal XAML, Version=12.2.0.36">
+      <Name>Syncfusion 8.1 controls for Universal XAML</Name>
+    </SDKReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

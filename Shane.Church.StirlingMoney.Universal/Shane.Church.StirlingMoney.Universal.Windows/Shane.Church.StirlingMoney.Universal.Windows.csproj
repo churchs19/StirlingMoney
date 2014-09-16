@@ -18,6 +18,7 @@
     <PackageCertificateKeyFile>Shane.Church.StirlingMoney.Universal.Windows_TemporaryKey.pfx</PackageCertificateKeyFile>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <SDKReferenceDirectoryRoot>$(LocalAppData)\Microsoft SDKs;$(MSBuildProgramFiles32)\Microsoft SDKs;$(SolutionDir)\lib\W8X\2014.2.617.45.Sdk</SDKReferenceDirectoryRoot>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -178,6 +179,11 @@
       <Project>{a28a5353-afbb-4f9e-a1aa-1c9b49523028}</Project>
       <Name>Shane.Church.Utility.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Syncfusion 8.1 controls for Universal XAML, Version=12.2.0.36">
+      <Name>Syncfusion 8.1 controls for Universal XAML</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

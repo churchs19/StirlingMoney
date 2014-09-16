@@ -12,9 +12,9 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.WP")]
-[assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.WP.Agent")]
-[assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.Core.WP")]
-[assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.Core.WP7.Agent")]
-[assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.Core.WP8.Agent")]
+//[assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.WP")]
+//[assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.WP.Agent")]
+//[assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.Core.WP")]
+//[assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.Core.WP7.Agent")]
+//[assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.Core.WP8.Agent")]
 

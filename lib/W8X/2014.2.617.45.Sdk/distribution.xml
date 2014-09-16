@@ -5,6 +5,7 @@
   <Dependencies>
     <Project>ea7a47c6-7aeb-4e82-8ca7-47c47a29ad86</Project>
     <Project>fe0d900e-d3ab-44e6-af92-f0b4768ab512</Project>
+    <Project>96ff3ce3-71c8-4d1e-bfa9-600312b5ea59</Project>
   </Dependencies>
   <DistributionInfo />
   <DistributionType>ExtensionSdk</DistributionType>
