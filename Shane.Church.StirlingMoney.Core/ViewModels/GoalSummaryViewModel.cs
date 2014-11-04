@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;

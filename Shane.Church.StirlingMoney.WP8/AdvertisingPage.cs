@@ -1,7 +1,7 @@
 ﻿using Inneractive.Nokia.Ad;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Services;
 using System.Linq;
 using System.Windows;
@@ -21,7 +21,7 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			base.OnNavigatedTo(e);
 
-			var settings = KernelService.Kernel.Get<ISettingsService>();
+			var settings = ContainerService.Container.Locate<ISettingsService>();
 
 			if (settings.LoadSetting<bool>("UsePassword") && !((Shane.Church.StirlingMoney.WP.App)App.Current).IsLoggedIn)
 			{
@@ -33,7 +33,7 @@ namespace Shane.Church.StirlingMoney.WP
 				loginWindow.IsAnimationEnabled = true;
 				loginWindow.OpenAnimation = new RadSlideAnimation() { MoveDirection = MoveDirection.BottomIn };
 				loginWindow.CloseAnimation = new RadSlideAnimation() { MoveDirection = MoveDirection.BottomOut };
-				Controls.Login loginContent = KernelService.Kernel.Get<Controls.Login>();
+				Controls.Login loginContent = ContainerService.Container.Locate<Controls.Login>();
 				loginContent.ActionExecuted += () =>
 				{
 					Deployment.Current.Dispatcher.BeginInvoke(() =>
@@ -71,7 +71,7 @@ namespace Shane.Church.StirlingMoney.WP
 			_adPanel = adPanel;
 			_adControl = adControl;
 #if !PERSONAL
-			if (KernelService.Kernel.Get<Telerik.Windows.Controls.RadTrialApplicationReminder>().IsTrialMode())
+			if (ContainerService.Container.Locate<Telerik.Windows.Controls.RadTrialApplicationReminder>().IsTrialMode())
 			{
 				_adControl.AdReceived += new InneractiveAd.IaAdReceived(AdControl_AdReceived);
 				_adControl.AdFailed += new InneractiveAd.IaAdFailed(AdControl_AdFailed);

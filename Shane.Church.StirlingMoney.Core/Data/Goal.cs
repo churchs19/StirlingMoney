@@ -1,4 +1,4 @@
-﻿using Ninject;
+﻿using Grace;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
@@ -27,7 +27,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		{
 			try
 			{
-				return await KernelService.Kernel.Get<IRepository<Account, Guid>>().GetEntryAsync(this.AccountId);
+				return await ContainerService.Container.Locate<IRepository<Account, Guid>>().GetEntryAsync(this.AccountId);
 			}
 			catch
 			{

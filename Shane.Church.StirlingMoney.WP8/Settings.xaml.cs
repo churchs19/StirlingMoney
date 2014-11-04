@@ -1,6 +1,6 @@
 ﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.Utility.Core.Command;
@@ -42,8 +42,8 @@ namespace Shane.Church.StirlingMoney.WP
 				InitializeApplicationBar();
 			});
 			FlurryWP8SDK.Api.LogPageView();
-			_logService = KernelService.Kernel.Get<ILoggingService>();
-			_model = KernelService.Kernel.Get<SettingsViewModel>();
+			_logService = ContainerService.Container.Locate<ILoggingService>();
+			_model = ContainerService.Container.Locate<SettingsViewModel>();
 			_model.ValidationFailed += (s, args) =>
 			{
 				string errorMessages = String.Join(

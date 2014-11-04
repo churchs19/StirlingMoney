@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -38,7 +38,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			_logService = logService;
 			if (settingsService == null) throw new ArgumentNullException("settingsService");
 			_settingsService = settingsService;
-			_accounts = KernelService.Kernel.Get<AccountListViewModel>();
+			_accounts = ContainerService.Container.Locate<AccountListViewModel>();
 			_budgets = new ObservableCollection<BudgetSummaryViewModel>();
 			_budgets.CollectionChanged += (s, e) =>
 			{
@@ -137,7 +137,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					}
 					else
 					{
-						budgetModel = KernelService.Kernel.Get<BudgetSummaryViewModel>();
+						budgetModel = ContainerService.Container.Locate<BudgetSummaryViewModel>();
 						budgetModel.ItemDeleted += budgetModel_ItemDeleted;
 						Budgets.Add(budgetModel);
 					}
@@ -185,7 +185,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					}
 					else
 					{
-						goalModel = KernelService.Kernel.Get<GoalSummaryViewModel>();
+						goalModel = ContainerService.Container.Locate<GoalSummaryViewModel>();
 						goalModel.ItemDeleted += goalModel_ItemDeleted;
 						Goals.Add(goalModel);
 					}

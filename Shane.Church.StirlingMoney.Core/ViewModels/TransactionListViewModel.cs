@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Ninject;
+using Grace;
+using Grace.DependencyInjection;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -193,7 +194,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                     }
                     else
                     {
-                        var item = KernelService.Kernel.Get<TransactionListItemViewModel>(new Ninject.Parameters.ConstructorArgument("parent", this));
+                        var item = ContainerService.Container.LocateWithNamedParameters<TransactionListItemViewModel>(new KeyValuePair<string, TransactionListViewModel>("parent", this));
                         item.LoadData(t);
                         item.PostedChanged += async (s) => await item_PostedChanged(s);
                         item.ItemDeleted += async (s) => await item_ItemDeleted(s);
@@ -292,7 +293,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                 }
                 else
                 {
-                    var item = KernelService.Kernel.Get<TransactionListItemViewModel>(new Ninject.Parameters.ConstructorArgument("parent", this));
+                    var item = ContainerService.Container.LocateWithNamedParameters<TransactionListItemViewModel>(new KeyValuePair<string, TransactionListViewModel>("parent", this));
                     await item.LoadData(t);
                     item.PostedChanged += async (s) => await item_PostedChanged(s);
                     Transactions.Add(item);

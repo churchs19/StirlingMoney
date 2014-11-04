@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using Shane.Church.StirlingMoney.Universal.Common;
+using Shane.Church.StirlingMoney.Core.SterlingDb;
 
 // The Universal Hub Application project template is documented at http://go.microsoft.com/fwlink/?LinkID=391955
 
@@ -30,14 +31,35 @@ namespace Shane.Church.StirlingMoney.Universal
         private TransitionCollection transitions;
 #endif
 
+        // Locale to force CurrentCulture to in InitializeLanguage(). 
+        // Use "qps-PLOC" to deploy pseudolocalized strings. 
+        // Use "" to let user Phone Language selection determine locale. 
+        public static string appForceCulture = "";
+
+        public bool IsLoggedIn { get; set; }
+
         /// <summary>
         /// Initializes the singleton instance of the <see cref="App"/> class. This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
         {
+            UnhandledException += App_UnhandledException;
+
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+
+            IoCBootstrapper.Bootstrap();
+        }
+
+        void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            if (System.Diagnostics.Debugger.IsAttached && !e.Handled)
+            {
+                // An unhandled exception has occurred; break into the debugger
+                System.Diagnostics.Debugger.Break();
+            }
+            MarkedUp.AnalyticClient.LogLastChanceException(e);
         }
 
         /// <summary>
@@ -51,8 +73,14 @@ namespace Shane.Church.StirlingMoney.Universal
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
+//                this.DebugSettings.EnableFrameRateCounter = true;
             }
+#endif
+
+#if DEBUG
+            MarkedUp.AnalyticClient.Initialize("31681ab8-4a89-4596-bad7-bb5c456ded3a");
+#else
+            MarkedUp.AnalyticClient.Initialize("117f704c-2562-4776-936a-9b7264619f25");
 #endif
 
             Frame rootFrame = Window.Current.Content as Frame;
@@ -68,7 +96,9 @@ namespace Shane.Church.StirlingMoney.Universal
                 SuspensionManager.RegisterFrame(rootFrame, "AppFrame");
 
                 // TODO: change this value to a cache size that is appropriate for your application
-                rootFrame.CacheSize = 1;
+                rootFrame.CacheSize = 2;
+
+                SterlingActivation.ActivateDatabase();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

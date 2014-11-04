@@ -1,5 +1,5 @@
 ﻿using Microsoft.Phone.Shell;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
@@ -42,7 +42,7 @@ namespace Shane.Church.StirlingMoney.WP
 				InitializeApplicationBar();
 			});
 			FlurryWP8SDK.Api.LogPageView();
-			_model = KernelService.Kernel.Get<AddEditTransactionViewModel>();
+			_model = ContainerService.Container.Locate<AddEditTransactionViewModel>();
 			_model.ValidationFailed += (s, args) =>
 			{
 				string errorMessages = String.Join(

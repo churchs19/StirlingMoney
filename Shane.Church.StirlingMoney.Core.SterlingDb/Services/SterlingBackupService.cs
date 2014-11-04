@@ -1,4 +1,4 @@
-﻿using Ninject;
+﻿using Grace;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.IO;
@@ -33,17 +33,11 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb.Services
 				await _engine.SterlingDatabase.RestoreAsync<StirlingMoneyDatabaseInstance>(reader);
 			}
 
-			_engine.Dispose();
-
-			KernelService.Kernel.Release(_engine);
-			_engine = null;
-			KernelService.Kernel.Rebind<SterlingEngine>().ToSelf().InSingletonScope();
-
-			_engine = KernelService.Kernel.Get<SterlingEngine>();
+			_engine = ContainerService.Container.Locate<SterlingEngine>();
 
 			_engine.Activate();
 
-			_engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
+			_engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", ContainerService.Container.Locate<ISterlingDriver>());
 
 			_engine.SterlingDatabase.GetDatabase("Money").RefreshAsync().Wait(1000);
 		}

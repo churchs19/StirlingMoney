@@ -1,5 +1,5 @@
 ﻿using Microsoft.Phone.Shell;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using System;
@@ -33,7 +33,7 @@ namespace Shane.Church.StirlingMoney.WP
 				BuildApplicationBar();
 			});
 			FlurryWP8SDK.Api.LogPageView();
-			_model = KernelService.Kernel.Get<CategoryListViewModel>();
+			_model = ContainerService.Container.Locate<CategoryListViewModel>();
 
 			_model.LoadData();
 

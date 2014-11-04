@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -110,7 +110,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public async Task SaveEntry()
 		{
-			var entry = KernelService.Kernel.Get<AppSyncUser>();
+			var entry = ContainerService.Container.Locate<AppSyncUser>();
 			entry.AppSyncId = AppSyncId;
 			entry.UserEmail = UserEmail;
 			await _repository.AddOrUpdateEntryAsync(entry);

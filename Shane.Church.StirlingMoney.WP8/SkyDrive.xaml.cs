@@ -1,4 +1,4 @@
-﻿using Ninject;
+﻿using Grace;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using System.Threading.Tasks;
@@ -29,8 +29,8 @@ namespace Shane.Church.StirlingMoney.WP
 		protected void Initialize()
 		{
 			FlurryWP8SDK.Api.LogPageView();
-			_model = KernelService.Kernel.Get<BackupViewModel>();
-			_log = KernelService.Kernel.Get<ILoggingService>();
+			_model = ContainerService.Container.Locate<BackupViewModel>();
+			_log = ContainerService.Container.Locate<ILoggingService>();
 
 			_model.BusyChanged += _model_BusyChanged;
 

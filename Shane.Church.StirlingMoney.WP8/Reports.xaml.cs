@@ -1,4 +1,4 @@
-﻿using Ninject;
+﻿using Grace;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels.Reports;
 using System.Collections.ObjectModel;
@@ -44,11 +44,11 @@ namespace Shane.Church.StirlingMoney.WP
 		protected void Initialize()
 		{
 			FlurryWP8SDK.Api.LogPageView();
-			_log = KernelService.Kernel.Get<ILoggingService>();
-			_settings = KernelService.Kernel.Get<ISettingsService>();
-			_license = KernelService.Kernel.Get<ILicensingService>();
-			_navService = KernelService.Kernel.Get<INavigationService>();
-			_model = KernelService.Kernel.Get<ReportsViewModel>();
+			_log = ContainerService.Container.Locate<ILoggingService>();
+			_settings = ContainerService.Container.Locate<ISettingsService>();
+			_license = ContainerService.Container.Locate<ILicensingService>();
+			_navService = ContainerService.Container.Locate<INavigationService>();
+			_model = ContainerService.Container.Locate<ReportsViewModel>();
 			_model.SpendingByCategoryReportReloaded += _model_SpendingByCategoryReportReloaded;
 
 			_model.LoadData();

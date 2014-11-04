@@ -1,4 +1,4 @@
-﻿using Ninject;
+﻿using Grace;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -39,7 +39,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 
 					if (dbVersion != 3)
 					{
-						IUpgradeDBService upgrade = KernelService.Kernel.Get<IUpgradeDBService>();
+						IUpgradeDBService upgrade = ContainerService.Container.Locate<IUpgradeDBService>();
 
 						OnBusyChanged(new BusyEventArgs() { AnimationType = 2, IsBusy = true, Message = Shane.Church.StirlingMoney.Strings.Resources.ProgressBarText });
 

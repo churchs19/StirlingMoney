@@ -1,4 +1,4 @@
-﻿using Ninject;
+﻿using Grace;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
@@ -23,7 +23,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		}
 
 		public Transaction()
-			: this(KernelService.Kernel.Get<IRepository<Account, Guid>>(), KernelService.Kernel.Get<IRepository<Category, Guid>>())
+			: this(ContainerService.Container.Locate<IRepository<Account, Guid>>(), ContainerService.Container.Locate<IRepository<Category, Guid>>())
 		{
 
 		}
@@ -58,7 +58,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			try
 			{
 				if (!CategoryId.Equals(Guid.Empty)) return null;
-				return await KernelService.Kernel.Get<IRepository<Category, Guid>>().GetEntryAsync(CategoryId);
+				return await ContainerService.Container.Locate<IRepository<Category, Guid>>().GetEntryAsync(CategoryId);
 			}
 			catch
 			{

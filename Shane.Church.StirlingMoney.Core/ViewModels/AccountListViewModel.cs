@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -17,7 +17,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		private ISettingsService _settings;
 
 		public AccountListViewModel()
-			: this(KernelService.Kernel.Get<IRepository<Account, Guid>>(), KernelService.Kernel.Get<ISettingsService>())
+			: this(ContainerService.Container.Locate<IRepository<Account, Guid>>(), ContainerService.Container.Locate<ISettingsService>())
 		{
 
 		}
@@ -86,7 +86,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 					}
 					else
 					{
-						tile = KernelService.Kernel.Get<AccountTileViewModel>();
+						tile = ContainerService.Container.Locate<AccountTileViewModel>();
 						tile.AccountDeleted += tile_AccountDeleted;
 						tile.AccountUpdated += tile_AccountUpdated;
 						Accounts.Add(tile);

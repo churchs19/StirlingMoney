@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -28,7 +28,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		}
 
 		public CategoryListViewModel()
-			: this(KernelService.Kernel.Get<IRepository<Category, Guid>>())
+			: this(ContainerService.Container.Locate<IRepository<Category, Guid>>())
 		{
 		}
 
@@ -42,7 +42,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 		public void AddCategory()
 		{
-			var navService = KernelService.Kernel.Get<INavigationService>();
+			var navService = ContainerService.Container.Locate<INavigationService>();
 			navService.Navigate<CategoryViewModel>();
 		}
 

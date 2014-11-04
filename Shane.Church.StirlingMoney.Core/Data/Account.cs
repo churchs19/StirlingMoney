@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
@@ -28,9 +28,9 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		}
 
 		public Account()
-			: this(KernelService.Kernel.Get<IRepository<Account, Guid>>(),
-					KernelService.Kernel.Get<IRepository<Transaction, Guid>>(),
-					KernelService.Kernel.Get<ITransactionSum>())
+			: this(ContainerService.Container.Locate<IRepository<Account, Guid>>(),
+					ContainerService.Container.Locate<IRepository<Transaction, Guid>>(),
+					ContainerService.Container.Locate<ITransactionSum>())
 		{
 
 		}
@@ -88,8 +88,8 @@ namespace Shane.Church.StirlingMoney.Core.Data
 
 		public static double GetAccountBalance(Guid AccountId)
 		{
-			var accountRepo = KernelService.Kernel.Get<IRepository<Account, Guid>>();
-			var transSum = KernelService.Kernel.Get<ITransactionSum>();
+			var accountRepo = ContainerService.Container.Locate<IRepository<Account, Guid>>();
+			var transSum = ContainerService.Container.Locate<ITransactionSum>();
 			var initialBalance = accountRepo.GetAllIndexKeys<double>("InitialBalance").Where(it => it.Key == AccountId).Select(it => it.Value).FirstOrDefault();
 			return initialBalance + transSum.GetSumByAccount(AccountId);
 		}

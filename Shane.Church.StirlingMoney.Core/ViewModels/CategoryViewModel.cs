@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -32,12 +32,12 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		}
 
 		public CategoryViewModel()
-			: this(KernelService.Kernel.Get<IRepository<Category, Guid>>(), KernelService.Kernel.Get<INavigationService>())
+			: this(ContainerService.Container.Locate<IRepository<Category, Guid>>(), ContainerService.Container.Locate<INavigationService>())
 		{
 		}
 
 		public CategoryViewModel(Category c)
-			: this(KernelService.Kernel.Get<IRepository<Category, Guid>>(), KernelService.Kernel.Get<INavigationService>())
+			: this(ContainerService.Container.Locate<IRepository<Category, Guid>>(), ContainerService.Container.Locate<INavigationService>())
 		{
 			CategoryId = c.CategoryId;
 			CategoryName = c.CategoryName;

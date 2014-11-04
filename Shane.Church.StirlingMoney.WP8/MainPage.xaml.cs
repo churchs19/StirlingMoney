@@ -1,6 +1,6 @@
 ﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
@@ -61,7 +61,7 @@ namespace Shane.Church.StirlingMoney.WP
 			Deployment.Current.Dispatcher.BeginInvoke(() =>
 			{
 				//Shows the trial reminder message, according to the settings of the TrialReminder.
-				KernelService.Kernel.Get<RadTrialApplicationReminder>().Notify();
+				ContainerService.Container.Locate<RadTrialApplicationReminder>().Notify();
 			});
 
 			Deployment.Current.Dispatcher.BeginInvoke(() =>
@@ -71,11 +71,11 @@ namespace Shane.Church.StirlingMoney.WP
 			});
 #endif
 
-			_log = KernelService.Kernel.Get<ILoggingService>();
-			_settings = KernelService.Kernel.Get<ISettingsService>();
-			_license = KernelService.Kernel.Get<ILicensingService>();
-			_navService = KernelService.Kernel.Get<INavigationService>();
-			_model = KernelService.Kernel.Get<MainViewModel>();
+			_log = ContainerService.Container.Locate<ILoggingService>();
+			_settings = ContainerService.Container.Locate<ISettingsService>();
+			_license = ContainerService.Container.Locate<ILicensingService>();
+			_navService = ContainerService.Container.Locate<INavigationService>();
+			_model = ContainerService.Container.Locate<MainViewModel>();
 			_model.BusyChanged += _model_BusyChanged;
 			_model.SyncCompleted += _model_SyncCompleted;
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Phone.Shell;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP.Services;
@@ -52,9 +52,9 @@ namespace Shane.Church.StirlingMoney.WP
 			});
 
 			FlurryWP8SDK.Api.LogPageView();
-			_log = KernelService.Kernel.Get<ILoggingService>();
-			_model = KernelService.Kernel.Get<TransactionListViewModel>();
-			_navService = KernelService.Kernel.Get<INavigationService>();
+			_log = ContainerService.Container.Locate<ILoggingService>();
+			_model = ContainerService.Container.Locate<TransactionListViewModel>();
+			_navService = ContainerService.Container.Locate<INavigationService>();
 			_model.BusyChanged += _model_BusyChanged;
 
 			//await _model.ActivateAsync();

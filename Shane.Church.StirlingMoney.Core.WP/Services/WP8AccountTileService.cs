@@ -1,5 +1,5 @@
 ﻿using Microsoft.Phone.Shell;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Core.ViewModels;
@@ -100,7 +100,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 
 		private RadFlipTileData GetWP8TileData(Guid id)
 		{
-			var model = KernelService.Kernel.Get<AccountTileViewModel>();
+			var model = ContainerService.Container.Locate<AccountTileViewModel>();
 			if (model.LoadData(id).Wait(1000))
 			{
 				RadFlipTileData tileData = null;

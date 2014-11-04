@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -45,7 +45,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		}
 
 		public AddEditBudgetViewModel()
-			: this(KernelService.Kernel.Get<IRepository<Budget, Guid>>(), KernelService.Kernel.Get<IRepository<Category, Guid>>(), KernelService.Kernel.Get<INavigationService>())
+			: this(ContainerService.Container.Locate<IRepository<Budget, Guid>>(), ContainerService.Container.Locate<IRepository<Category, Guid>>(), ContainerService.Container.Locate<INavigationService>())
 		{
 
 		}
@@ -249,7 +249,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			var errors = Validate();
 			if (errors.Count == 0)
 			{
-				Budget b = KernelService.Kernel.Get<Budget>();
+				Budget b = ContainerService.Container.Locate<Budget>();
 				b.BudgetId = BudgetId.HasValue ? BudgetId.Value : Guid.Empty;
 				b.BudgetName = Name;
 				b.BudgetAmount = Amount;

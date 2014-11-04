@@ -1,4 +1,4 @@
-﻿using Ninject;
+﻿using Grace;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
@@ -15,7 +15,7 @@ namespace Shane.Church.StirlingMoney.Data.Update
 		{
 			using (var context = new StirlingMoney.Data.v2.StirlingMoneyDataContext(connectionString))
 			{
-				var engine = KernelService.Kernel.Get<SterlingEngine>();
+				var engine = ContainerService.Container.Locate<SterlingEngine>();
 				var db = engine.SterlingDatabase.GetDatabase("Money");
 				//await db.PurgeAsync();
 

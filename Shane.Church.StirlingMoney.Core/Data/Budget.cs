@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
@@ -27,9 +27,9 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		}
 
 		public Budget()
-			: this(KernelService.Kernel.Get<IRepository<Transaction, Guid>>(),
-				KernelService.Kernel.Get<IRepository<Category, Guid>>(),
-				KernelService.Kernel.Get<ITransactionSum>())
+			: this(ContainerService.Container.Locate<IRepository<Transaction, Guid>>(),
+				ContainerService.Container.Locate<IRepository<Category, Guid>>(),
+				ContainerService.Container.Locate<ITransactionSum>())
 		{
 
 		}

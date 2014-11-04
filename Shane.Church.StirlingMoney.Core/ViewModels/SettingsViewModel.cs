@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -158,7 +158,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			var users = _userRepository.GetAllKeys();
 			foreach (var u in users)
 			{
-				var authUser = KernelService.Kernel.Get<SettingsAppSyncUserViewModel>();
+				var authUser = ContainerService.Container.Locate<SettingsAppSyncUserViewModel>();
 				await authUser.LoadEntry(u);
 				AuthorizedUsers.Add(authUser);
 			}
@@ -201,10 +201,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			if (IsNewEntryValid())
 			{
-				var newEntry = KernelService.Kernel.Get<AppSyncUser>();
+				var newEntry = ContainerService.Container.Locate<AppSyncUser>();
 				newEntry.UserEmail = this.NewUserEmail;
 				newEntry = await _userRepository.AddOrUpdateEntryAsync(newEntry);
-				var evm = KernelService.Kernel.Get<SettingsAppSyncUserViewModel>();
+				var evm = ContainerService.Container.Locate<SettingsAppSyncUserViewModel>();
 				evm.LoadEntry(newEntry);
 				evm.RemoveActionCompleted += (sender, args) =>
 				{

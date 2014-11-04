@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Data;
 using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
@@ -49,10 +49,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
         }
 
         public AddEditTransactionViewModel()
-            : this(KernelService.Kernel.Get<IRepository<Account, Guid>>(),
-                KernelService.Kernel.Get<IRepository<Transaction, Guid>>(),
-                KernelService.Kernel.Get<IRepository<Category, Guid>>(),
-                KernelService.Kernel.Get<INavigationService>())
+            : this(ContainerService.Container.Locate<IRepository<Account, Guid>>(),
+                ContainerService.Container.Locate<IRepository<Transaction, Guid>>(),
+                ContainerService.Container.Locate<IRepository<Category, Guid>>(),
+                ContainerService.Container.Locate<INavigationService>())
         {
         }
 

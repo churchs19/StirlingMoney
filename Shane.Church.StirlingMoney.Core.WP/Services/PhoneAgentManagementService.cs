@@ -1,6 +1,6 @@
 ﻿using Microsoft.Phone.Info;
 using Microsoft.Phone.Scheduler;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.Exceptions;
 using Shane.Church.StirlingMoney.Core.Services;
 using Shane.Church.StirlingMoney.Strings;
@@ -27,7 +27,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 			if (periodicTask != null)
 			{
 				AgentExitReason reason = periodicTask.LastExitReason;
-				ISettingsService settings = KernelService.Kernel.Get<ISettingsService>();
+				ISettingsService settings = ContainerService.Container.Locate<ISettingsService>();
 				settings.SaveSetting<AgentExitReason>(reason, "AgentLastExitReason");
 				//				_logger.Debug("Agent Last Exited for Reason: " + reason.ToString());
 				RemoveAgent();

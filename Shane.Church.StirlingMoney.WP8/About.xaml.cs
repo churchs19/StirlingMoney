@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
-using Ninject;
+using Grace;
 using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.Services;
 
@@ -22,7 +22,7 @@ namespace Shane.Church.StirlingMoney.WP
         {
             InitializeComponent();
 
-            this.DataContext = KernelService.Kernel.Get<AboutViewModel>();
+            this.DataContext = ContainerService.Container.Locate<AboutViewModel>();
         }
     }
 }

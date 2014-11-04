@@ -1,4 +1,4 @@
-﻿using Ninject;
+﻿using Grace;
 using Shane.Church.StirlingMoney.Core.Services;
 using Wintellect.Sterling.Core;
 
@@ -8,7 +8,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb
 	{
 		public static void ActivateDatabase()
 		{
-			var engine = KernelService.Kernel.Get<SterlingEngine>();
+			var engine = ContainerService.Container.Locate<SterlingEngine>();
 
 			SterlingDefaultLogger logger = new SterlingDefaultLogger(engine.SterlingDatabase, SterlingLogLevel.Verbose);
 
@@ -16,7 +16,7 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb
 
 			engine.Activate();
 
-			engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", KernelService.Kernel.Get<ISterlingDriver>());
+			engine.SterlingDatabase.RegisterDatabase<StirlingMoneyDatabaseInstance>("Money", ContainerService.Container.Locate<ISterlingDriver>());
 
 			engine.SterlingDatabase.GetDatabase("Money").RefreshAsync().Wait(1000);
 		}
