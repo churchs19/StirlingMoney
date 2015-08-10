@@ -70,6 +70,8 @@ namespace Shane.Church.StirlingMoney.WP
             // Language display initialization 
             InitializeLanguage();
 
+            Data.StirlingMoneyDatabaseInstance.Init();
+
             IoCBootstrapper.Bootstrap();
 
             // Show graphics profiling information while debugging.
