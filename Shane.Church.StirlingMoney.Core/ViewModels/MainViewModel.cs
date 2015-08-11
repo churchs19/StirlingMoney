@@ -14,7 +14,7 @@ using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class MainViewModel : ObservableObject, ICommittable
+	public class MainViewModel : ObservableObject
 	{
 		private IRepository<Budget, Guid> _budgetRepository;
 		private IRepository<Goal, Guid> _goalRepository;

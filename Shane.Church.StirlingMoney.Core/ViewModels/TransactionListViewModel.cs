@@ -15,7 +15,7 @@ using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-    public class TransactionListViewModel : ObservableObject, ICommittable, ITombstoneFriendly
+    public class TransactionListViewModel : ObservableObject
     {
         private IRepository<Account, Guid> _accountRepository;
         private IRepository<Transaction, Guid> _transactionRepository;

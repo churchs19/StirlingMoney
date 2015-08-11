@@ -68,9 +68,7 @@ namespace Shane.Church.StirlingMoney.WP
             InitializePhoneApplication();
 
             // Language display initialization 
-            InitializeLanguage();
-
-            Data.StirlingMoneyDatabaseInstance.Init();
+            InitializeLanguage();         
 
             IoCBootstrapper.Bootstrap();
 
@@ -271,6 +269,10 @@ namespace Shane.Church.StirlingMoney.WP
             SterlingActivation.ActivateDatabase();
 
             InitializeBackgroundAgent();
+
+            Core.Sqlite.StirlingMoneyDatabaseInstance.Initialize();
+            var repo = new Core.Sqlite.Repositories.AccountRepository();
+            var count = repo.GetEntriesCount();
 #if DEBUG
             DebugUtility.DebugOutputMemoryUsage("Application_Launching");
 #endif

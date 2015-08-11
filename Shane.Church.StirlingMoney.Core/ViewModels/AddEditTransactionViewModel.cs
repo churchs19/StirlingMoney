@@ -15,7 +15,7 @@ using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-    public class AddEditTransactionViewModel : ObservableObject, ICommittable
+    public class AddEditTransactionViewModel : ObservableObject
     {
         private TransactionType _transactionType = TransactionType.Unknown;
         private IRepository<Account, Guid> _accountRepository;

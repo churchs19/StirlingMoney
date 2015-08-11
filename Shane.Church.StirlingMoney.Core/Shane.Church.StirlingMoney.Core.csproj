@@ -114,6 +114,7 @@
     <Compile Include="Data\Tombstone.cs" />
     <Compile Include="Exceptions\BackupException.cs" />
     <Compile Include="Exceptions\NotAuthorizedException.cs" />
+    <Compile Include="Repositories\IDataRepository.cs" />
     <Compile Include="Services\IBackupService.cs" />
     <Compile Include="Services\ILicensingService.cs" />
     <Compile Include="Services\IUpgradeDBService.cs" />

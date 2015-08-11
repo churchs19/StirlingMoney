@@ -14,7 +14,7 @@ using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class AddEditGoalViewModel : ObservableObject, ICommittable
+	public class AddEditGoalViewModel : ObservableObject
 	{
 		private INavigationService _navService;
 		private IRepository<Goal, Guid> _goalRepository;

@@ -14,7 +14,7 @@ using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class CategoryViewModel : ObservableObject, ICommittable
+	public class CategoryViewModel : ObservableObject
 	{
 		private IRepository<Category, Guid> _categoryRepository;
 		private INavigationService _navService;

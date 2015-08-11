@@ -16,7 +16,7 @@ using System.Windows.Input;
 
 namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
-	public class SettingsViewModel : ObservableObject, ICommittable
+	public class SettingsViewModel : ObservableObject
 	{
 		private ISettingsService _settings;
 		private INavigationService _navService;
