@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using AutoMapper;
+using SQLite;
 using System;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
@@ -24,5 +25,15 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 		public Guid AccountId { get; set; }
         [Indexed]
 		public Guid CategoryId { get; set; }
-	}
+
+        public static Transaction FromCore(Core.Data.Transaction toMap)
+        {
+            return Mapper.Map<Core.Data.Transaction, Transaction>(toMap);
+        }
+
+        public Core.Data.Transaction ToCore()
+        {
+            return Mapper.Map<Transaction, Core.Data.Transaction>(this);
+        }
+    }
 }

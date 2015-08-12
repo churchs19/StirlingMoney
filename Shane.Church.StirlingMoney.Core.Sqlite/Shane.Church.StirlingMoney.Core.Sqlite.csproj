@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Data\Account.cs" />
     <Compile Include="Data\AppSyncUser.cs" />
     <Compile Include="Data\Budget.cs" />
@@ -44,6 +47,11 @@
     <Compile Include="Data\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\AppSyncUserRepository.cs" />
+    <Compile Include="Repositories\BudgetRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\GoalRepository.cs" />
+    <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="StirlingMoneyDatabaseInstance.cs" />
   </ItemGroup>
   <ItemGroup>

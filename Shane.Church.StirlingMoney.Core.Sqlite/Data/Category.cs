@@ -1,5 +1,6 @@
 ﻿using System;
 using SQLite;
+using AutoMapper;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 {
@@ -18,5 +19,15 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
         public DateTimeOffset EditDateTime { get; set; }
         [Indexed]
         public bool IsDeleted { get; set; }
-	}
+
+        public static Category FromCore(Core.Data.Category toMap)
+        {
+            return Mapper.Map<Core.Data.Category, Category>(toMap);
+        }
+
+        public Core.Data.Category ToCore()
+        {
+            return Mapper.Map<Category, Core.Data.Category>(this);
+        }
+    }
 }

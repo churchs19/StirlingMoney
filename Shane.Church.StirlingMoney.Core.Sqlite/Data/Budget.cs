@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AutoMapper;
+using Newtonsoft.Json;
 using SQLite;
 using System;
 using System.Threading.Tasks;
@@ -24,5 +25,15 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
         [Indexed]
         public DateTimeOffset EditDateTime { get; set; }
 		public bool IsDeleted { get; set; }
-	}
+
+        public static Budget FromCore(Core.Data.Budget toMap)
+        {
+            return Mapper.Map<Core.Data.Budget, Budget>(toMap);
+        }
+
+        public Core.Data.Budget ToCore()
+        {
+            return Mapper.Map<Budget, Core.Data.Budget>(this);
+        }
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using SQLite;
+using AutoMapper;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 {
@@ -19,5 +20,15 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 		public DateTimeOffset EditDateTime { get; set; }
 		public bool IsDeleted { get; set; }
 		public bool IsSyncOwner { get; set; }
-	}
+
+        public static AppSyncUser FromCore(Core.Data.AppSyncUser toMap)
+        {
+            return Mapper.Map<Core.Data.AppSyncUser, AppSyncUser>(toMap);
+        }
+
+        public Core.Data.AppSyncUser ToCore()
+        {
+            return Mapper.Map<AppSyncUser, Core.Data.AppSyncUser>(this);
+        }
+    }
 }
