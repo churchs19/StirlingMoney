@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 using System;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
@@ -21,10 +22,16 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 		public DateTimeOffset EditDateTime { get; set; }
 		public bool IsDeleted { get; set; }
 
-        [Indexed]
+
+        [ForeignKey(typeof(Account))]
 		public Guid AccountId { get; set; }
-        [Indexed]
+        [ForeignKey(typeof(Category))]
 		public Guid CategoryId { get; set; }
+
+        [ManyToOne]
+        public Account Account { get; set; }
+        [ManyToOne]
+        public Category Category { get; set; }
 
         public static Transaction FromCore(Core.Data.Transaction toMap)
         {

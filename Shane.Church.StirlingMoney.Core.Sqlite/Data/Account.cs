@@ -2,6 +2,8 @@
 using System;
 using AutoMapper;
 using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
+using System.Collections.Generic;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 {
@@ -22,6 +24,9 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
         public DateTimeOffset EditDateTime { get; set; }
 		public bool IsDeleted { get; set; }
 		public string ImageUri { get; set; }
+
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Transaction> Transactions { get; set; }
 
         public static Account FromCore(Core.Data.Account accountToMap)
         {

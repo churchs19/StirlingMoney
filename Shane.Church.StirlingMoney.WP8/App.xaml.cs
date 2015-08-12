@@ -270,7 +270,7 @@ namespace Shane.Church.StirlingMoney.WP
 
             InitializeBackgroundAgent();
 
-            Core.Sqlite.StirlingMoneyDatabaseInstance.Initialize(new SQLite.Net.Platform.WindowsPhone8.SQLitePlatformWP8());            
+            Core.Sqlite.StirlingMoneyDatabaseInstance.Initialize(new SQLite.Net.Platform.WindowsPhone8.SQLitePlatformWP8(), Windows.Storage.ApplicationData.Current.LocalFolder.Path);            
 #if DEBUG
             DebugUtility.DebugOutputMemoryUsage("Application_Launching");
 #endif

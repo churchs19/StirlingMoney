@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 using System;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
@@ -15,6 +16,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 		public Guid GoalId { get; set; }
         [Indexed(Name = "ixGoalName", Unique = true)]
         public string GoalName { get; set; }
+        [ForeignKey(typeof(Data.Account))]
 		public Guid AccountId { get; set; }
 		public double Amount { get; set; }
 		public double InitialBalance { get; set; }
@@ -23,6 +25,9 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
         [Indexed]
         public DateTimeOffset EditDateTime { get; set; }
 		public bool IsDeleted { get; set; }
+
+        [ManyToOne]
+        public Account Account { get; set; }
 
         public static Goal FromCore(Core.Data.Goal toMap)
         {
