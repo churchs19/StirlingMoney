@@ -1,6 +1,7 @@
-﻿using SQLite;
+﻿using SQLite.Net;
 using System;
 using AutoMapper;
+using SQLite.Net.Attributes;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 {

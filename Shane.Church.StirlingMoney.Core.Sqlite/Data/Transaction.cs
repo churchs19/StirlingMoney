@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SQLite;
+using SQLite.Net.Attributes;
 using System;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Data

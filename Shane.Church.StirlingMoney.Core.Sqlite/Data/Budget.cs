@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using Newtonsoft.Json;
-using SQLite;
+using SQLite.Net.Attributes;
 using System;
-using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 {
