@@ -52,6 +52,7 @@
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\GoalRepository.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
+    <Compile Include="Services\SqliteBackupService.cs" />
     <Compile Include="StirlingMoneyDatabaseInstance.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -100,9 +101,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Shane.Church.StirlingMoney.Core\Shane.Church.StirlingMoney.Core.csproj">
       <Project>{4e5d8824-cc49-41a4-bc97-3e5bc5378754}</Project>

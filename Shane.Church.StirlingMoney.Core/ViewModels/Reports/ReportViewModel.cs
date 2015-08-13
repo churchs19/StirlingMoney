@@ -324,10 +324,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels.Reports
 
 		public void LoadData()
 		{
-			var budgets = _budgetRepo.GetAllIndexKeys<string>("BudgetName");
-			foreach (var key in budgets.Keys)
+            var budgets = _budgetRepo.GetAllEntries();
+			foreach (var b in budgets)
 			{
-				ListDataItem item = new ListDataItem() { Text = budgets[key], Value = key };
+				ListDataItem item = new ListDataItem() { Text = b.BudgetName, Value = b.BudgetId };
 				BudgetList.Add(item);
 			}
 			if (BudgetList.Count > 0)
@@ -335,10 +335,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels.Reports
 				Budget = BudgetList.First();
 			}
 
-			var categories = _categoryRepo.GetAllIndexKeys<string>("CategoryName");
-			foreach (var c in categories.Keys.OrderBy(k => categories[k]))
+            var categories = _categoryRepo.GetAllEntries();
+			foreach (var c in categories)
 			{
-				ListDataItem item = new ListDataItem() { Text = categories[c], Value = c };
+				ListDataItem item = new ListDataItem() { Text = c.CategoryName, Value = c.CategoryId };
 				CategoryList.Add(item);
 			}
 			if (CategoryList.Count > 0)
@@ -379,19 +379,21 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels.Reports
 							item.Label = StartDate.ToString("YYYY");
 							break;
 					}
-					var transactionDateKeys = _transactionRepo.GetAllIndexKeys<Tuple<DateTimeOffset, DateTimeOffset>>("TransactionDateEditDateTime")
-						.Where(it => it.Value.Item1 >= StartDate && it.Value.Item1 < EndDate)
-						.Select(it => it.Key).ToList();
-					var transactionKeys = _transactionRepo.GetAllIndexKeys<string>("Location")
-						.Where(it => !it.Value.Contains(Strings.Resources.TransferToComparisonString) && !it.Value.Contains(Strings.Resources.TransferFromComparisonString))
-						.Select(it => it.Key).ToList().Intersect(transactionDateKeys).ToList();
-					if (!budget.CategoryId.HasValue)
+                    //var transactionDateKeys = _transactionRepo.GetFilteredEntries(it=> it.TransactionDate >= StartDate && it.TransactionDate < EndDate)
+                    //	.Select(it => it.TransactionId).ToList();
+                    //var transactionKeys = _transactionRepo.GetAllIndexKeys<string>("Location")
+                    //	.Where(it => !it.Value.Contains(Strings.Resources.TransferToComparisonString) && !it.Value.Contains(Strings.Resources.TransferFromComparisonString))
+                    //	.Select(it => it.Key).ToList().Intersect(transactionDateKeys).ToList();
+                    if (!budget.CategoryId.HasValue)
 					{
-						var amountSpentQuery = _transactionRepo.GetAllIndexKeys<Tuple<Guid, Double>>("TransactionCategoryAmount")
-							.Where(it => transactionKeys.Contains(it.Key) && it.Value.Item2 < 0).Select(it => it.Value.Item2);
+                        //var amountSpentQuery = _transactionRepo.GetAllIndexKeys<Tuple<Guid, Double>>("TransactionCategoryAmount")
+                        //	.Where(it => transactionKeys.Contains(it.Key) && it.Value.Item2 < 0).Select(it => it.Value.Item2);
+                        var amountSpentQuery = _transactionRepo.GetFilteredEntries(it => (!it.Location.Contains(Strings.Resources.TransferToComparisonString) && !it.Location.Contains(Strings.Resources.TransferFromComparisonString)) &&
+                                                                                        (it.TransactionDate >= StartDate && it.TransactionDate < EndDate) &&
+                                                                                        it.Amount < 0).Select(it => -it.Amount);
 						if (amountSpentQuery.Any())
 						{
-							item.Actual = -amountSpentQuery.Sum();
+							item.Actual = amountSpentQuery.Sum();
 						}
 						else
 						{
@@ -400,11 +402,15 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels.Reports
 					}
 					else
 					{
-						var amountSpentQuery = _transactionRepo.GetAllIndexKeys<Tuple<Guid, Double>>("TransactionCategoryAmount")
-							.Where(it => transactionKeys.Contains(it.Key) && it.Value.Item1.Equals(budget.CategoryId.Value) && it.Value.Item2 < 0).Select(it => it.Value.Item2);
-						if (amountSpentQuery.Any())
+                        //var amountSpentQuery = _transactionRepo.GetAllIndexKeys<Tuple<Guid, Double>>("TransactionCategoryAmount")
+                        //	.Where(it => transactionKeys.Contains(it.Key) && it.Value.Item1.Equals(budget.CategoryId.Value) && it.Value.Item2 < 0).Select(it => it.Value.Item2);
+                        var amountSpentQuery = _transactionRepo.GetFilteredEntries(it => (!it.Location.Contains(Strings.Resources.TransferToComparisonString) && !it.Location.Contains(Strings.Resources.TransferFromComparisonString)) &&
+                                                                                        (it.TransactionDate >= StartDate && it.TransactionDate < EndDate) &&
+                                                                                        it.CategoryId == budget.CategoryId.Value &&
+                                                                                        it.Amount < 0).Select(it => -it.Amount);                  
+                        if (amountSpentQuery.Any())
 						{
-							item.Actual = -amountSpentQuery.Sum();
+							item.Actual = amountSpentQuery.Sum();
 						}
 						else
 						{
@@ -424,14 +430,15 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels.Reports
 			var MonthStart = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
 			var MonthEnd = MonthStart.AddMonths(1);
 			SpendingByCategoryReportCollection.Clear();
-			var transactionDateKeys = _transactionRepo.GetAllIndexKeys<Tuple<DateTimeOffset, DateTimeOffset>>("TransactionDateEditDateTime")
-				.Where(it => it.Value.Item1 >= MonthStart.AddMonths(-(SpendingByCategoryMonths - 1)) && it.Value.Item1 < MonthEnd)
-				.Select(it => it.Key).ToList();
-			var transactionKeys = _transactionRepo.GetAllIndexKeys<string>("Location")
-				.Where(it => !it.Value.Contains(Strings.Resources.TransferToComparisonString) && !it.Value.Contains(Strings.Resources.TransferFromComparisonString))
-				.Select(it => it.Key).ToList().Intersect(transactionDateKeys).ToList();
-			var categories = _transactionRepo.GetAllIndexKeys<Tuple<Guid, Double>>("TransactionCategoryAmount")
-				.Where(it => transactionKeys.Contains(it.Key) && it.Value.Item2 < 0).Select(it => it.Value);
+			//var transactionDateKeys = _transactionRepo.GetAllIndexKeys<Tuple<DateTimeOffset, DateTimeOffset>>("TransactionDateEditDateTime")
+			//	.Where(it => it.Value.Item1 >= MonthStart.AddMonths(-(SpendingByCategoryMonths - 1)) && it.Value.Item1 < MonthEnd)
+			//	.Select(it => it.Key).ToList();
+			//var transactionKeys = _transactionRepo.GetAllIndexKeys<string>("Location")
+			//	.Where(it => !it.Value.Contains(Strings.Resources.TransferToComparisonString) && !it.Value.Contains(Strings.Resources.TransferFromComparisonString))
+			//	.Select(it => it.Key).ToList().Intersect(transactionDateKeys).ToList();
+			//var categories = _transactionRepo.GetAllIndexKeys<Tuple<Guid, Double>>("TransactionCategoryAmount")
+			//	.Where(it => transactionKeys.Contains(it.Key) && it.Value.Item2 < 0).Select(it => it.Value);
+            
 			List<BasicChartItem> items = new List<BasicChartItem>();
 			foreach (var g in categories.GroupBy(m => m.Item1))
 			{
