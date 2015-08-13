@@ -8,10 +8,10 @@ namespace Shane.Church.StirlingMoney.Core.Data
 {
 	public class Transaction
 	{
-		private IRepository<Account, Guid> _accountRepository;
-		private IRepository<Category, Guid> _categoryRepository;
+		private IDataRepository<Account, Guid> _accountRepository;
+		private IDataRepository<Category, Guid> _categoryRepository;
 
-		public Transaction(IRepository<Account, Guid> accountRepo, IRepository<Category, Guid> categoryRepo)
+		public Transaction(IDataRepository<Account, Guid> accountRepo, IDataRepository<Category, Guid> categoryRepo)
 		{
 			if (accountRepo == null) throw new ArgumentNullException("accountRepo");
 			_accountRepository = accountRepo;
@@ -23,7 +23,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		}
 
 		public Transaction()
-			: this(ContainerService.Container.Locate<IRepository<Account, Guid>>(), ContainerService.Container.Locate<IRepository<Category, Guid>>())
+			: this(ContainerService.Container.Locate<IDataRepository<Account, Guid>>(), ContainerService.Container.Locate<IDataRepository<Category, Guid>>())
 		{
 
 		}
@@ -58,7 +58,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			try
 			{
 				if (!CategoryId.Equals(Guid.Empty)) return null;
-				return await ContainerService.Container.Locate<IRepository<Category, Guid>>().GetEntryAsync(CategoryId);
+				return await ContainerService.Container.Locate<IDataRepository<Category, Guid>>().GetEntryAsync(CategoryId);
 			}
 			catch
 			{

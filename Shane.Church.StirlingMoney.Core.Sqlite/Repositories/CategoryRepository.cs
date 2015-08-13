@@ -93,20 +93,26 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             }
         }
 
-        public IQueryable<Category> GetAllEntries(bool includeDeleted = false)
+        public IQueryable<Category> GetAllEntries(bool includeDeleted = false, int currentRow = 0, int? pageSize = null)
         {
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
-                var sqliteEntries = includeDeleted ? db.Table<Data.Category>().ToList() : db.Table<Data.Category>().Where(it => !it.IsDeleted).ToList();
-                return AutoMapper.Mapper.Map<List<Data.Category>, List<Category>>(sqliteEntries).AsQueryable();
+                var resultsQuery = db.Table<Data.Category>().OrderBy(it => it.CategoryName);
+                if (!includeDeleted) resultsQuery = resultsQuery.Where(it => !it.IsDeleted);
+                if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
+                var results = resultsQuery.ToList();
+                return AutoMapper.Mapper.Map<List<Data.Category>, List<Category>>(results).AsQueryable();
             }
         }
 
-        public async Task<IQueryable<Category>> GetAllEntriesAsync(bool includeDeleted = false)
+        public async Task<IQueryable<Category>> GetAllEntriesAsync(bool includeDeleted = false, int currentRow = 0, int? pageSize = null)
         {
             var db = StirlingMoneyDatabaseInstance.GetDbAsync();
-            var sqliteEntries = includeDeleted ? await db.Table<Data.Category>().ToListAsync() : await db.Table<Data.Category>().Where(it => !it.IsDeleted).ToListAsync();
-            return AutoMapper.Mapper.Map<List<Data.Category>, List<Category>>(sqliteEntries).AsQueryable();
+            var resultsQuery = db.Table<Data.Category>().OrderBy(it => it.CategoryName);
+            if (!includeDeleted) resultsQuery = resultsQuery.Where(it => it.IsDeleted);
+            if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
+            var results = await resultsQuery.ToListAsync();
+            return AutoMapper.Mapper.Map<List<Data.Category>, List<Category>>(results).AsQueryable();
         }
 
         public int GetEntriesCount(bool includeDeleted = false)
@@ -139,24 +145,44 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             return entry != null ? entry.ToCore() : null;
         }
 
-        public IQueryable<Category> GetFilteredEntries(Expression<Func<Category, bool>> filter, bool includeDeleted = false)
+        public IQueryable<Category> GetFilteredEntries(Expression<Func<Category, bool>> filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null)
         {
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
                 var filterDelegate = filter.Compile();
-                var results = db.Table<Data.Category>().Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted).ToList();
+                var resultsQuery = db.Table<Data.Category>().Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted).OrderBy(it => it.CategoryName);
+                if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
+                var results = resultsQuery.ToList();
                 var coreResults = AutoMapper.Mapper.Map<List<Data.Category>, List<Category>>(results);
                 return coreResults.AsQueryable();
             }
         }
 
-        public async  Task<IQueryable<Category>> GetFilteredEntriesAsync(Expression<Func<Category, bool>> filter, bool includeDeleted = false)
+        public async  Task<IQueryable<Category>> GetFilteredEntriesAsync(Expression<Func<Category, bool>> filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null)
         {
             var db = StirlingMoneyDatabaseInstance.GetDbAsync();
             var filterDelegate = filter.Compile();
-            var results = await db.Table<Data.Category>().Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted).ToListAsync();
+            var resultsQuery = db.Table<Data.Category>().Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted).OrderBy(it => it.CategoryName);
+            if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
+            var results = await resultsQuery.ToListAsync();
             var coreResults = AutoMapper.Mapper.Map<List<Data.Category>, List<Category>>(results);
             return coreResults.AsQueryable();
+        }
+
+        public int GetFilteredEntriesCount(Expression<Func<Core.Data.Category, bool>> filter, bool includeDeleted = false)
+        {
+            using (var db = StirlingMoneyDatabaseInstance.GetDb())
+            {
+                var filterDelegate = filter.Compile();
+                return db.Table<Data.Category>().Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted).Count();
+            }
+        }
+
+        public async Task<int> GetFilteredEntriesCountAsync(Expression<Func<Core.Data.Category, bool>> filter, bool includeDeleted = false)
+        {
+            var db = StirlingMoneyDatabaseInstance.GetDbAsync();
+            var filterDelegate = filter.Compile();
+            return await db.Table<Data.Category>().Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted).CountAsync();
         }
     }
 }

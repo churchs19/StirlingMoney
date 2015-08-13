@@ -12,11 +12,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels.Reports
 {
 	public class ReportsViewModel : ObservableObject
 	{
-		private IRepository<Category, Guid> _categoryRepo;
-		private IRepository<Budget, Guid> _budgetRepo;
-		private IRepository<Transaction, Guid> _transactionRepo;
+		private IDataRepository<Category, Guid> _categoryRepo;
+		private IDataRepository<Budget, Guid> _budgetRepo;
+		private IDataRepository<Transaction, Guid> _transactionRepo;
 
-		public ReportsViewModel(IRepository<Category, Guid> categoryRepo, IRepository<Budget, Guid> budgetRepo, IRepository<Transaction, Guid> transactionRepo)
+		public ReportsViewModel(IDataRepository<Category, Guid> categoryRepo, IDataRepository<Budget, Guid> budgetRepo, IDataRepository<Transaction, Guid> transactionRepo)
 		{
 			if (categoryRepo == null) throw new ArgumentNullException("categoryRepo");
 			_categoryRepo = categoryRepo;

@@ -10,11 +10,11 @@ namespace Shane.Church.StirlingMoney.Core.Data
 {
 	public class Budget
 	{
-		private IRepository<Transaction, Guid> _transactionRepository;
-		private IRepository<Category, Guid> _categoryRepository;
+		private IDataRepository<Transaction, Guid> _transactionRepository;
+		private IDataRepository<Category, Guid> _categoryRepository;
 		private ITransactionSum _transactionSum;
 
-		public Budget(IRepository<Transaction, Guid> transactionRepo, IRepository<Category, Guid> categoryRepo, ITransactionSum transactionSum)
+		public Budget(IDataRepository<Transaction, Guid> transactionRepo, IDataRepository<Category, Guid> categoryRepo, ITransactionSum transactionSum)
 		{
 			if (transactionRepo == null) throw new ArgumentNullException("transactionRepo");
 			_transactionRepository = transactionRepo;
@@ -27,8 +27,8 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		}
 
 		public Budget()
-			: this(ContainerService.Container.Locate<IRepository<Transaction, Guid>>(),
-				ContainerService.Container.Locate<IRepository<Category, Guid>>(),
+			: this(ContainerService.Container.Locate<IDataRepository<Transaction, Guid>>(),
+				ContainerService.Container.Locate<IDataRepository<Category, Guid>>(),
 				ContainerService.Container.Locate<ITransactionSum>())
 		{
 

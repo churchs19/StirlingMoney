@@ -11,11 +11,11 @@ namespace Shane.Church.StirlingMoney.Core.Data
 {
 	public class Account
 	{
-		private IRepository<Account, Guid> _accountRepository;
-		private IRepository<Transaction, Guid> _transactionRepository;
+		private IDataRepository<Account, Guid> _accountRepository;
+		private IDataRepository<Transaction, Guid> _transactionRepository;
 		private ITransactionSum _transactionSum;
 
-		public Account(IRepository<Account, Guid> accountRepo, IRepository<Transaction, Guid> transactionRepo, ITransactionSum transSum)
+		public Account(IDataRepository<Account, Guid> accountRepo, IDataRepository<Transaction, Guid> transactionRepo, ITransactionSum transSum)
 		{
 			if (accountRepo == null) throw new ArgumentNullException("accountRepo");
 			_accountRepository = accountRepo;
@@ -28,8 +28,8 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		}
 
 		public Account()
-			: this(ContainerService.Container.Locate<IRepository<Account, Guid>>(),
-					ContainerService.Container.Locate<IRepository<Transaction, Guid>>(),
+			: this(ContainerService.Container.Locate<IDataRepository<Account, Guid>>(),
+					ContainerService.Container.Locate<IDataRepository<Transaction, Guid>>(),
 					ContainerService.Container.Locate<ITransactionSum>())
 		{
 
@@ -48,7 +48,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		{
 			get
 			{
-				return _transactionRepository.GetIndexFilteredEntriesCount<Guid>("TransactionAccountId", AccountId);
+                return _transactionRepository.GetFilteredEntriesCount(t => t.AccountId == AccountId);
 			}
 		}
 
@@ -80,17 +80,18 @@ namespace Shane.Church.StirlingMoney.Core.Data
 			}
 		}
 
-		public Dictionary<Guid, Tuple<DateTimeOffset, DateTimeOffset>> GetTransactionKeys()
+		public IQueryable<Transaction> GetTransactions(int currentRow = 0, int? pageSize = null)
 		{
-			var transactionIds = _transactionRepository.GetAllIndexKeys<Tuple<Guid, double>>("TransactionAccountIdAmount").Where(it => it.Value.Item1 == this.AccountId).Select(it => it.Key);
-			return _transactionRepository.GetAllIndexKeys<Tuple<DateTimeOffset, DateTimeOffset>>("TransactionDateEditDateTime").Where(it => transactionIds.Contains(it.Key)).ToDictionary(key => key.Key, val => val.Value);
+            return _transactionRepository.GetFilteredEntries(t => t.AccountId == AccountId, false, currentRow, pageSize);
 		}
 
 		public static double GetAccountBalance(Guid AccountId)
 		{
-			var accountRepo = ContainerService.Container.Locate<IRepository<Account, Guid>>();
+			var accountRepo = ContainerService.Container.Locate<IDataRepository<Account, Guid>>();
 			var transSum = ContainerService.Container.Locate<ITransactionSum>();
-			var initialBalance = accountRepo.GetAllIndexKeys<double>("InitialBalance").Where(it => it.Key == AccountId).Select(it => it.Value).FirstOrDefault();
+            var account = accountRepo.GetEntry(AccountId);
+            double initialBalance = 0;
+            if (account != null) initialBalance = account.InitialBalance;
 			return initialBalance + transSum.GetSumByAccount(AccountId);
 		}
 	}

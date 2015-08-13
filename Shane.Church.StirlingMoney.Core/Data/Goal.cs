@@ -27,7 +27,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		{
 			try
 			{
-				return await ContainerService.Container.Locate<IRepository<Account, Guid>>().GetEntryAsync(this.AccountId);
+				return await ContainerService.Container.Locate<IDataRepository<Account, Guid>>().GetEntryAsync(this.AccountId);
 			}
 			catch
 			{

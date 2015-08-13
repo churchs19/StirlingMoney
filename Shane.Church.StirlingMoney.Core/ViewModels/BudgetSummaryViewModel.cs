@@ -14,9 +14,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 	public class BudgetSummaryViewModel : ObservableObject
 	{
 		private INavigationService _navService;
-		private IRepository<Budget, Guid> _budgetRepository;
+		private IDataRepository<Budget, Guid> _budgetRepository;
 
-		public BudgetSummaryViewModel(INavigationService navService, IRepository<Budget, Guid> budgetRepository)
+		public BudgetSummaryViewModel(INavigationService navService, IDataRepository<Budget, Guid> budgetRepository)
 		{
 			if (navService == null) throw new ArgumentNullException("navService");
 			_navService = navService;

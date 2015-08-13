@@ -14,11 +14,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 	public class AccountTileViewModel : ObservableObject
 	{
 		private ITileService<Account, Guid> _tileService;
-		private IRepository<Account, Guid> _accountRepository;
+		private IDataRepository<Account, Guid> _accountRepository;
 		private INavigationService _navService;
 		protected string _imageUri;
 
-		public AccountTileViewModel(ITileService<Account, Guid> tileService, IRepository<Account, Guid> accountRepository, INavigationService navService)
+		public AccountTileViewModel(ITileService<Account, Guid> tileService, IDataRepository<Account, Guid> accountRepository, INavigationService navService)
 		{
 			if (tileService == null) throw new ArgumentNullException("tileService");
 			_tileService = tileService;

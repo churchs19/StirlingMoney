@@ -9,17 +9,21 @@ namespace Shane.Church.StirlingMoney.Core.Repositories
 {
     public interface IDataRepository<T, TKey>
     {
-        IQueryable<T> GetAllEntries(bool includeDeleted = false);
+        IQueryable<T> GetAllEntries(bool includeDeleted = false, int currentRow = 0, int? pageSize = null);
 
-        Task<IQueryable<T>> GetAllEntriesAsync(bool includeDeleted = false);
+        Task<IQueryable<T>> GetAllEntriesAsync(bool includeDeleted = false, int currentRow = 0, int? pageSize = null);
 
         int GetEntriesCount(bool includeDeleted = false);
 
         Task<int> GetEntriesCountAsync(bool includeDeleted = false);
 
-        IQueryable<T> GetFilteredEntries(Expression<Func<T, bool>> filter, bool includeDeleted = false);
+        IQueryable<T> GetFilteredEntries(Expression<Func<T, bool>> filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null);
 
-        Task<IQueryable<T>> GetFilteredEntriesAsync(Expression<Func<T, bool>> filter, bool includeDeleted = false);
+        Task<IQueryable<T>> GetFilteredEntriesAsync(Expression<Func<T, bool>> filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null);
+
+        int GetFilteredEntriesCount(Expression<Func<T, bool>> filter, bool includeDeleted = false);
+
+        Task<int> GetFilteredEntriesCountAsync(Expression<Func<T, bool>> filter, bool includeDeleted = false);
 
         T GetEntry(TKey key);
 

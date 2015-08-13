@@ -16,10 +16,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class AddEditAccountViewModel : ObservableObject
 	{
-		private IRepository<Account, Guid> _accountRepository;
+		private IDataRepository<Account, Guid> _accountRepository;
 		private INavigationService _navService;
 
-		public AddEditAccountViewModel(IRepository<Account, Guid> accountRepository, INavigationService navService)
+		public AddEditAccountViewModel(IDataRepository<Account, Guid> accountRepository, INavigationService navService)
 		{
 			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
 			_accountRepository = accountRepository;
@@ -165,11 +165,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				if (ValidationFailed != null)
 					ValidationFailed(this, new ValidationFailedEventArgs(errors));
 			}
-		}
-
-		public async Task Commit()
-		{
-			await _accountRepository.Commit();
 		}
 	}
 }

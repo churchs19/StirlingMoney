@@ -11,7 +11,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 {
 	public class PhoneSettingsViewModel : SettingsViewModel
 	{
-		public PhoneSettingsViewModel(ISettingsService settings, INavigationService navService, IRepository<AppSyncUser, string> userRepository, SyncService syncService)
+		public PhoneSettingsViewModel(ISettingsService settings, INavigationService navService, IDataRepository<AppSyncUser, string> userRepository, SyncService syncService)
 			: base(settings, navService, userRepository, syncService)
 		{
 			SyncFeedbackCommand = new RelayCommand(SendFeedback);

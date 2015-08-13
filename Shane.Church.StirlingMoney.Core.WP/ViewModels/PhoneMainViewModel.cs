@@ -12,7 +12,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 {
 	public class PhoneMainViewModel : MainViewModel
 	{
-		public PhoneMainViewModel(IRepository<Budget, Guid> budgetRepository, IRepository<Goal, Guid> goalRepository, INavigationService navService, SyncService syncService, ILoggingService logService, ISettingsService settingsService)
+		public PhoneMainViewModel(IDataRepository<Budget, Guid> budgetRepository, IDataRepository<Goal, Guid> goalRepository, INavigationService navService, SyncService syncService, ILoggingService logService, ISettingsService settingsService)
 			: base(budgetRepository, goalRepository, navService, syncService, logService, settingsService)
 		{
 			RateCommand = new RateThisAppCommand();

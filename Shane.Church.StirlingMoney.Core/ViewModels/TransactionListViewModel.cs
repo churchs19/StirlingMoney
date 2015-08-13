@@ -17,20 +17,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
     public class TransactionListViewModel : ObservableObject
     {
-        private IRepository<Account, Guid> _accountRepository;
-        private IRepository<Transaction, Guid> _transactionRepository;
+        private IDataRepository<Account, Guid> _accountRepository;
+        private IDataRepository<Transaction, Guid> _transactionRepository;
         private ITransactionSearch _transactionSearch;
-        private IRepository<Tombstone, string> _tombstoneRepository;
-        private IRepository<Category, Guid> _categoryRepository;
+        private IDataRepository<Tombstone, string> _tombstoneRepository;
+        private IDataRepository<Category, Guid> _categoryRepository;
         private INavigationService _navService;
         private DateTimeOffset _refreshTime;
 
-        public TransactionListViewModel(IRepository<Account, Guid> accountRepository, 
-            IRepository<Transaction, Guid> transactionRepository,
+        public TransactionListViewModel(IDataRepository<Account, Guid> accountRepository, 
+            IDataRepository<Transaction, Guid> transactionRepository,
             ITransactionSearch transactionSearch,
-            IRepository<Category, Guid> categoryRepository,
+            IDataRepository<Category, Guid> categoryRepository,
             INavigationService navService, 
-            IRepository<Tombstone, string> tombstoneRepository)
+            IDataRepository<Tombstone, string> tombstoneRepository)
         {
             if (accountRepository == null) throw new ArgumentNullException("accountRepository");
             _accountRepository = accountRepository;
@@ -173,8 +173,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                 if (String.IsNullOrWhiteSpace(SearchText))
                 {
                     //All Transactions
-                    var nextIds = Account.GetTransactionKeys().OrderByDescending(it => it.Value.Item1).ThenByDescending(it => it.Value.Item2).Skip(CurrentRow).Take(count).Select(it => it.Key).ToList();
-                    var nextItems = await _transactionRepository.GetFilteredEntriesAsync(it => nextIds.Contains(it.TransactionId));
+                    var nextItems = Account.GetTransactions(CurrentRow, count);
                     nextTransactions.AddRange(nextItems.ToList());
                 }
                 else
@@ -282,19 +281,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
             await Task.Yield();
 
-            var updated = _transactionRepository.GetAllIndexKeys<Tuple<Guid, DateTimeOffset>>("TransactionAccountIdEditDateTime").Where(it => it.Value.Item2 > _refreshTime && it.Value.Item1 == this.AccountId).Select(it => it.Key);
+            //var updated = _transactionRepository.GetAllIndexKeys<Tuple<Guid, DateTimeOffset>>("TransactionAccountIdEditDateTime").Where(it => it.Value.Item2 > _refreshTime && it.Value.Item1 == this.AccountId).Select(it => it.Key);
+            var updated = await _transactionRepository.GetFilteredEntriesAsync(it => it.EditDateTime > _refreshTime && it.AccountId == this.AccountId);
             var updatedList = updated.ToList();
             foreach (var t in updatedList)
             {
-                var listItem = Transactions.Where(it => it.TransactionId == t).FirstOrDefault();
+                var listItem = Transactions.Where(it => it.TransactionId == t.TransactionId).FirstOrDefault();
                 if (listItem != null)
                 {
-                    await listItem.LoadData(t);
+                    listItem.LoadData(t);
                 }
                 else
                 {
                     var item = ContainerService.Container.LocateWithNamedParameters<TransactionListItemViewModel>(new KeyValuePair<string, TransactionListViewModel>("parent", this));
-                    await item.LoadData(t);
+                    item.LoadData(t);
                     item.PostedChanged += async (s) => await item_PostedChanged(s);
                     Transactions.Add(item);
                     CurrentRow++;
@@ -368,11 +368,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
             await LoadData(AccountId);
         }
 
-        public async Task Commit()
-        {
-            await _accountRepository.Commit();
-        }
-
         public void Deactivate()
         {
             DeactivateAsync().Wait(2000);
@@ -401,7 +396,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
             {
                 throw ex;
             }
-            await this.Commit();
         }
 
         public async Task ActivateAsync()

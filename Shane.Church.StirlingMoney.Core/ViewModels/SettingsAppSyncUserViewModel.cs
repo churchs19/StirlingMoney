@@ -12,12 +12,12 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class SettingsAppSyncUserViewModel : ObservableObject
 	{
-		private IRepository<AppSyncUser, string> _repository;
+		private IDataRepository<AppSyncUser, string> _repository;
 
 		public event ActionCompleteEventHandler SaveActionCompleted;
 		public event ActionCompleteEventHandler RemoveActionCompleted;
 
-		public SettingsAppSyncUserViewModel(IRepository<AppSyncUser, string> repository)
+		public SettingsAppSyncUserViewModel(IDataRepository<AppSyncUser, string> repository)
 		{
 			if (repository == null)
 				throw new ArgumentNullException("repository");

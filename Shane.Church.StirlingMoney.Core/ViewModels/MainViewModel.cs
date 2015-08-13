@@ -16,14 +16,14 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class MainViewModel : ObservableObject
 	{
-		private IRepository<Budget, Guid> _budgetRepository;
-		private IRepository<Goal, Guid> _goalRepository;
+		private IDataRepository<Budget, Guid> _budgetRepository;
+		private IDataRepository<Goal, Guid> _goalRepository;
 		private INavigationService _navService;
 		private SyncService _syncService;
 		private ILoggingService _logService;
 		private ISettingsService _settingsService;
 
-		public MainViewModel(IRepository<Budget, Guid> budgetRepository, IRepository<Goal, Guid> goalRepository, INavigationService navService, SyncService syncService, ILoggingService logService, ISettingsService settingsService)
+		public MainViewModel(IDataRepository<Budget, Guid> budgetRepository, IDataRepository<Goal, Guid> goalRepository, INavigationService navService, SyncService syncService, ILoggingService logService, ISettingsService settingsService)
 		{
 			if (budgetRepository == null) throw new ArgumentNullException("budgetRepository");
 			_budgetRepository = budgetRepository;
@@ -124,24 +124,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 				await Task.Yield();
 
-				var budgets = _budgetRepository.GetAllKeys();
-				var budgetList = budgets.ToList();
-				foreach (var b in Budgets.Where(it => !budgets.Select(z => z == it.BudgetId).Any()))
+                var budgets = await _budgetRepository.GetAllEntriesAsync();
+                var keys = budgets.Select(it => it.BudgetId).ToList();
+                foreach (var b in Budgets.Where(it => !keys.Contains(it.BudgetId)))
 					Budgets.Remove(b);
-				foreach (var b in budgetList)
+				foreach (var b in budgets)
 				{
-					BudgetSummaryViewModel budgetModel;
-					if (Budgets.Where(it => it.BudgetId == b).Any())
-					{
-						budgetModel = Budgets.Where(it => it.BudgetId == b).First();
-					}
-					else
+					BudgetSummaryViewModel budgetModel = Budgets.Where(it => it.BudgetId == b.BudgetId).FirstOrDefault();
+					if(budgetModel == null)
 					{
 						budgetModel = ContainerService.Container.Locate<BudgetSummaryViewModel>();
 						budgetModel.ItemDeleted += budgetModel_ItemDeleted;
 						Budgets.Add(budgetModel);
 					}
-					await budgetModel.LoadData(b);
+					budgetModel.LoadData(b);
 				}
 				_budgetsLoaded = true;
 				if (BusyChanged != null)
@@ -172,24 +168,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
 				await Task.Yield();
 
-				var goals = _goalRepository.GetAllKeys();
-				var goalList = goals.ToList();
-				foreach (var g in Goals.Where(it => !goalList.Where(z => z == it.GoalId).Any()))
+                var goals = await _goalRepository.GetAllEntriesAsync();
+                var keys = goals.Select(it => it.GoalId).ToList();
+				foreach (var g in Goals.Where(it => !keys.Contains(it.GoalId)))
 					Goals.Remove(g);
 				foreach (var g in goals)
 				{
-					GoalSummaryViewModel goalModel;
-					if (Goals.Where(it => it.GoalId == g).Any())
-					{
-						goalModel = Goals.Where(it => it.GoalId == g).First();
-					}
-					else
+					GoalSummaryViewModel goalModel = Goals.Where(it => it.GoalId == g.GoalId).FirstOrDefault();
+					if(goalModel == null)
 					{
 						goalModel = ContainerService.Container.Locate<GoalSummaryViewModel>();
 						goalModel.ItemDeleted += goalModel_ItemDeleted;
 						Goals.Add(goalModel);
 					}
-					await goalModel.LoadData(g);
+					goalModel.LoadData(g);
 				}
 				_goalsLoaded = true;
 				if (BusyChanged != null)
@@ -313,11 +305,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public void NavigateToAddGoal()
 		{
 			_navService.Navigate<AddEditGoalViewModel>();
-		}
-
-		public async Task Commit()
-		{
-			await _budgetRepository.Commit();
 		}
 
 		public ICommand BackupCommand { get; private set; }

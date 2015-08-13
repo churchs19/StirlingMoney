@@ -13,9 +13,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class CategoryListViewModel : ObservableObject
 	{
-		private IRepository<Category, Guid> _categoryRepository;
+		private IDataRepository<Category, Guid> _categoryRepository;
 
-		public CategoryListViewModel(IRepository<Category, Guid> categoryRepo)
+		public CategoryListViewModel(IDataRepository<Category, Guid> categoryRepo)
 		{
 			if (categoryRepo == null) throw new ArgumentNullException("categoryRepo");
 			_categoryRepository = categoryRepo;
@@ -28,7 +28,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		}
 
 		public CategoryListViewModel()
-			: this(ContainerService.Container.Locate<IRepository<Category, Guid>>())
+			: this(ContainerService.Container.Locate<IDataRepository<Category, Guid>>())
 		{
 		}
 
@@ -49,11 +49,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		public void LoadData()
 		{
 			Items.Clear();
-			var categories = _categoryRepository.GetAllIndexKeys<string>("CategoryName");
-			var categoryList = categories.OrderBy(it => it.Value).ToDictionary(key => key.Key, val => val.Value);
+            var categories = _categoryRepository.GetAllEntries();
 			foreach (var c in categories)
 			{
-				Items.Add(new CategoryViewModel() { CategoryId = c.Key, CategoryName = c.Value });
+				Items.Add(new CategoryViewModel() { CategoryId = c.CategoryId, CategoryName = c.CategoryName });
 			}
 		}
 	}

@@ -13,9 +13,9 @@ namespace Shane.Church.StirlingMoney.WP.ViewModels
 {
 	public class PhoneAccountTileViewModel : AccountTileViewModel
 	{
-		private IRepository<Account, Guid> _accountRepository;
+		private IDataRepository<Account, Guid> _accountRepository;
 
-		public PhoneAccountTileViewModel(ITileService<Account, Guid> tileService, IRepository<Account, Guid> accountRepository, INavigationService navService)
+		public PhoneAccountTileViewModel(ITileService<Account, Guid> tileService, IDataRepository<Account, Guid> accountRepository, INavigationService navService)
 			: base(tileService, accountRepository, navService)
 		{
 			if (accountRepository == null) throw new ArgumentNullException("accountRepository");

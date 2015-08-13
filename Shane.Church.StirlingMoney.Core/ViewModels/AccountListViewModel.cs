@@ -13,16 +13,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class AccountListViewModel : ObservableObject
 	{
-		private IRepository<Account, Guid> _accountRepository;
+		private IDataRepository<Account, Guid> _accountRepository;
 		private ISettingsService _settings;
 
 		public AccountListViewModel()
-			: this(ContainerService.Container.Locate<IRepository<Account, Guid>>(), ContainerService.Container.Locate<ISettingsService>())
+			: this(ContainerService.Container.Locate<IDataRepository<Account, Guid>>(), ContainerService.Container.Locate<ISettingsService>())
 		{
 
 		}
 
-		public AccountListViewModel(IRepository<Account, Guid> accountRepository, ISettingsService settings)
+		public AccountListViewModel(IDataRepository<Account, Guid> accountRepository, ISettingsService settings)
 		{
 			if (accountRepository == null) throw new ArgumentNullException("accountRepository");
 			_accountRepository = accountRepository;

@@ -15,9 +15,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 	public class GoalSummaryViewModel : ObservableObject
 	{
 		private INavigationService _navService;
-		private IRepository<Goal, Guid> _goalRepository;
+		private IDataRepository<Goal, Guid> _goalRepository;
 
-		public GoalSummaryViewModel(INavigationService navService, IRepository<Goal, Guid> goalRepository)
+		public GoalSummaryViewModel(INavigationService navService, IDataRepository<Goal, Guid> goalRepository)
 		{
 			if (navService == null) throw new ArgumentNullException("navService");
 			_navService = navService;

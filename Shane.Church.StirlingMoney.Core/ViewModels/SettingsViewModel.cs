@@ -20,12 +20,12 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 	{
 		private ISettingsService _settings;
 		private INavigationService _navService;
-		private IRepository<AppSyncUser, string> _userRepository;
+		private IDataRepository<AppSyncUser, string> _userRepository;
 		private SyncService _syncService;
 
 		public event ActionCompleteEventHandler AddActionCompleted;
 
-		public SettingsViewModel(ISettingsService settings, INavigationService navService, IRepository<AppSyncUser, string> userRepository, SyncService syncService)
+		public SettingsViewModel(ISettingsService settings, INavigationService navService, IDataRepository<AppSyncUser, string> userRepository, SyncService syncService)
 		{
 			if (settings == null) throw new ArgumentNullException("settings");
 			_settings = settings;
@@ -155,11 +155,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			EnableSync = _settings.LoadSetting<bool>("EnableSync");
 			SyncOnStartup = _settings.LoadSetting<bool>("SyncOnStartup");
 
-			var users = _userRepository.GetAllKeys();
+            var users = await _userRepository.GetAllEntriesAsync();
 			foreach (var u in users)
 			{
 				var authUser = ContainerService.Container.Locate<SettingsAppSyncUserViewModel>();
-				await authUser.LoadEntry(u);
+				authUser.LoadEntry(u);
 				AuthorizedUsers.Add(authUser);
 			}
 		}
@@ -261,10 +261,5 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		}
 
 		public ICommand SyncFeedbackCommand { get; protected set; }
-
-		public async Task Commit()
-		{
-			await _userRepository.Commit();
-		}
 	}
 }

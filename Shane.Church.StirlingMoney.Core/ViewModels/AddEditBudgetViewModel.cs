@@ -17,11 +17,11 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class AddEditBudgetViewModel : ObservableObject
 	{
-		private IRepository<Budget, Guid> _budgetRepository;
-		private IRepository<Category, Guid> _categoryRepository;
+		private IDataRepository<Budget, Guid> _budgetRepository;
+		private IDataRepository<Category, Guid> _categoryRepository;
 		private INavigationService _navService;
 
-		public AddEditBudgetViewModel(IRepository<Budget, Guid> budgetRepo, IRepository<Category, Guid> categoryRepo, INavigationService navService)
+		public AddEditBudgetViewModel(IDataRepository<Budget, Guid> budgetRepo, IDataRepository<Category, Guid> categoryRepo, INavigationService navService)
 		{
 			if (budgetRepo == null) throw new ArgumentNullException("budgetRepo");
 			_budgetRepository = budgetRepo;
@@ -45,7 +45,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		}
 
 		public AddEditBudgetViewModel()
-			: this(ContainerService.Container.Locate<IRepository<Budget, Guid>>(), ContainerService.Container.Locate<IRepository<Category, Guid>>(), ContainerService.Container.Locate<INavigationService>())
+			: this(ContainerService.Container.Locate<IDataRepository<Budget, Guid>>(), ContainerService.Container.Locate<IDataRepository<Category, Guid>>(), ContainerService.Container.Locate<INavigationService>())
 		{
 
 		}
@@ -297,11 +297,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				if (ValidationFailed != null)
 					ValidationFailed(this, new ValidationFailedEventArgs(errors));
 			}
-		}
-
-		public async Task Commit()
-		{
-			await _budgetRepository.Commit();
 		}
 	}
 }

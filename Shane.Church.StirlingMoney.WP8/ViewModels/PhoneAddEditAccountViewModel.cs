@@ -14,9 +14,9 @@ namespace Shane.Church.StirlingMoney.WP.ViewModels
 {
 	public class PhoneAddEditAccountViewModel : AddEditAccountViewModel
 	{
-		private IRepository<Account, Guid> _accountRepository;
+		private IDataRepository<Account, Guid> _accountRepository;
 
-		public PhoneAddEditAccountViewModel(IRepository<Account, Guid> accountRepository, INavigationService navService)
+		public PhoneAddEditAccountViewModel(IDataRepository<Account, Guid> accountRepository, INavigationService navService)
 			: base(accountRepository, navService)
 		{
 			if (accountRepository == null) throw new ArgumentNullException("accountRepository");

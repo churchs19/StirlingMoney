@@ -16,10 +16,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class CategoryViewModel : ObservableObject
 	{
-		private IRepository<Category, Guid> _categoryRepository;
+		private IDataRepository<Category, Guid> _categoryRepository;
 		private INavigationService _navService;
 
-		public CategoryViewModel(IRepository<Category, Guid> categoryRepo, INavigationService navService)
+		public CategoryViewModel(IDataRepository<Category, Guid> categoryRepo, INavigationService navService)
 		{
 			if (categoryRepo == null) throw new ArgumentNullException("categoryRepo");
 			_categoryRepository = categoryRepo;
@@ -32,12 +32,12 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		}
 
 		public CategoryViewModel()
-			: this(ContainerService.Container.Locate<IRepository<Category, Guid>>(), ContainerService.Container.Locate<INavigationService>())
+			: this(ContainerService.Container.Locate<IDataRepository<Category, Guid>>(), ContainerService.Container.Locate<INavigationService>())
 		{
 		}
 
 		public CategoryViewModel(Category c)
-			: this(ContainerService.Container.Locate<IRepository<Category, Guid>>(), ContainerService.Container.Locate<INavigationService>())
+			: this(ContainerService.Container.Locate<IDataRepository<Category, Guid>>(), ContainerService.Container.Locate<INavigationService>())
 		{
 			CategoryId = c.CategoryId;
 			CategoryName = c.CategoryName;
@@ -124,11 +124,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				if (ValidationFailed != null)
 					ValidationFailed(this, new ValidationFailedEventArgs(errors));
 			}
-		}
-
-		public async Task Commit()
-		{
-			await _categoryRepository.Commit();
 		}
 	}
 }

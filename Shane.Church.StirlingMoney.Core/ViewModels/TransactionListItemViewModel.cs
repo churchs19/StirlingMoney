@@ -13,20 +13,20 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 {
 	public class TransactionListItemViewModel : ObservableObject, IComparable
 	{
-		private IRepository<Transaction, Guid> _transactionRepository;
-		private IRepository<Category, Guid> _categoryRepository;
+		private IDataRepository<Transaction, Guid> _transactionRepository;
+		private IDataRepository<Category, Guid> _categoryRepository;
 		private INavigationService _navService;
 		internal TransactionListViewModel _parent;
 
 		public TransactionListItemViewModel()
-			: this(ContainerService.Container.Locate<IRepository<Transaction, Guid>>(),
-					ContainerService.Container.Locate<IRepository<Category, Guid>>(),
+			: this(ContainerService.Container.Locate<IDataRepository<Transaction, Guid>>(),
+					ContainerService.Container.Locate<IDataRepository<Category, Guid>>(),
 					ContainerService.Container.Locate<INavigationService>())
 		{
 
 		}
 
-		public TransactionListItemViewModel(IRepository<Transaction, Guid> transactionRepository, IRepository<Category, Guid> categoryRepository, INavigationService navService, TransactionListViewModel parent = null)
+		public TransactionListItemViewModel(IDataRepository<Transaction, Guid> transactionRepository, IDataRepository<Category, Guid> categoryRepository, INavigationService navService, TransactionListViewModel parent = null)
 		{
 			if (transactionRepository == null) throw new ArgumentNullException("transactionRepository");
 			_transactionRepository = transactionRepository;
@@ -165,7 +165,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			CheckNumber = transaction.CheckNumber;
 			_posted = transaction.Posted;
 			Memo = transaction.Note;
-			Category = _categoryRepository.GetAllIndexKeys<string>("CategoryName").Where(it => it.Key == transaction.CategoryId).Select(it => it.Value).FirstOrDefault();
+			Category = _categoryRepository.GetFilteredEntries(it => it.CategoryId == transaction.CategoryId).Select(it => it.CategoryName).FirstOrDefault();
 			_accountId = transaction.AccountId;
 			EditDate = transaction.EditDateTime;
 		}

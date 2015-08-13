@@ -17,10 +17,10 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 	public class AddEditGoalViewModel : ObservableObject
 	{
 		private INavigationService _navService;
-		private IRepository<Goal, Guid> _goalRepository;
-		private IRepository<Account, Guid> _accountRepository;
+		private IDataRepository<Goal, Guid> _goalRepository;
+		private IDataRepository<Account, Guid> _accountRepository;
 
-		public AddEditGoalViewModel(INavigationService navService, IRepository<Goal, Guid> goalRepository, IRepository<Account, Guid> accountRepository)
+		public AddEditGoalViewModel(INavigationService navService, IDataRepository<Goal, Guid> goalRepository, IDataRepository<Account, Guid> accountRepository)
 		{
 			if (navService == null) throw new ArgumentNullException("navService");
 			_navService = navService;
@@ -224,11 +224,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				if (ValidationFailed != null)
 					ValidationFailed(this, new ValidationFailedEventArgs(errors));
 			}
-		}
-
-		public async Task Commit()
-		{
-			await _goalRepository.Commit();
 		}
 	}
 }

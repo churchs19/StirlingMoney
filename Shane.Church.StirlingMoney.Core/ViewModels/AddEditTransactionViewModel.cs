@@ -18,12 +18,12 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
     public class AddEditTransactionViewModel : ObservableObject
     {
         private TransactionType _transactionType = TransactionType.Unknown;
-        private IRepository<Account, Guid> _accountRepository;
-        private IRepository<Transaction, Guid> _transactionRepository;
-        private IRepository<Category, Guid> _categoryRepository;
+        private IDataRepository<Account, Guid> _accountRepository;
+        private IDataRepository<Transaction, Guid> _transactionRepository;
+        private IDataRepository<Category, Guid> _categoryRepository;
         private INavigationService _navService;
 
-        public AddEditTransactionViewModel(IRepository<Account, Guid> accountRepo, IRepository<Transaction, Guid> transactionRepo, IRepository<Category, Guid> categoryRepo, INavigationService navService)
+        public AddEditTransactionViewModel(IDataRepository<Account, Guid> accountRepo, IDataRepository<Transaction, Guid> transactionRepo, IDataRepository<Category, Guid> categoryRepo, INavigationService navService)
         {
             if (accountRepo == null) throw new ArgumentNullException("accountRepo");
             _accountRepository = accountRepo;
@@ -49,9 +49,9 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
         }
 
         public AddEditTransactionViewModel()
-            : this(ContainerService.Container.Locate<IRepository<Account, Guid>>(),
-                ContainerService.Container.Locate<IRepository<Transaction, Guid>>(),
-                ContainerService.Container.Locate<IRepository<Category, Guid>>(),
+            : this(ContainerService.Container.Locate<IDataRepository<Account, Guid>>(),
+                ContainerService.Container.Locate<IDataRepository<Transaction, Guid>>(),
+                ContainerService.Container.Locate<IDataRepository<Category, Guid>>(),
                 ContainerService.Container.Locate<INavigationService>())
         {
         }
@@ -247,7 +247,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                 TransactionDate = DateTime.Today;
                 if (_transactionType == TransactionType.Check)
                 {
-                    var checks = _transactionRepository.GetAllIndexKeys<Tuple<Guid, long>>("TransactionAccountIdCheckNumber").Where(it => it.Value.Item1 == AccountId).Select(it => it.Value.Item2);
+                    //var checks = _transactionRepository.GetAllIndexKeys<Tuple<Guid, long>>("TransactionAccountIdCheckNumber").Where(it => it.Value.Item1 == AccountId).Select(it => it.Value.Item2);
+                    var checks = _transactionRepository.GetFilteredEntries(it => it.AccountId == AccountId && it.CheckNumber > 0).Select(it => it.CheckNumber);
                     if (checks.Any())
                     {
                         CheckNumber = checks.Max() + 1;
@@ -303,13 +304,13 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                 Amount = -Amount;
 
             Categories.Clear();
-            var catQuery = _categoryRepository.GetAllIndexKeys<string>("CategoryName");
-            foreach (var c in catQuery.OrderBy(it => it.Value).Select(it => it.Value))
+            var catQuery = _categoryRepository.GetAllEntries().Select(it => it.CategoryName);
+            foreach (var c in catQuery)
                 Categories.Add(c);
 
             TransferAccounts.Clear();
-            var acctQuery = _accountRepository.GetAllIndexKeys<string>("AccountName");
-            foreach (var a in acctQuery.OrderBy(it => it.Value).Select(it => it.Value))
+            var acctQuery = _accountRepository.GetAllEntries().Select(it => it.AccountName);
+            foreach (var a in acctQuery)
                 TransferAccounts.Add(a);
         }
 
@@ -354,7 +355,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                 Guid categoryId = Guid.Empty;
                 if (!string.IsNullOrEmpty(Category))
                 {
-                    categoryId = _categoryRepository.GetAllIndexKeys<string>("CategoryName").Where(it => it.Value == Category).Select(it => it.Key).FirstOrDefault();
+                    var catQuery = await _categoryRepository.GetFilteredEntriesAsync(it => it.CategoryName == Category);
+                    categoryId = catQuery.Select(it => it.CategoryId).FirstOrDefault();
                     if (categoryId.Equals(Guid.Empty))
                     {
                         var cat = await _categoryRepository.AddOrUpdateEntryAsync(new Category() { CategoryName = Category });
@@ -404,8 +406,8 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                             destTransaction.TransactionDate = new DateTimeOffset(DateTime.SpecifyKind(TransactionDate, DateTimeKind.Utc));
                             destTransaction.Note = Note;
                             destTransaction.Posted = Posted;
-                            var transAcctQuery = _accountRepository.GetAllIndexKeys<string>("AccountName").Where(it => it.Value == this.TransferAccount);
-                            destTransaction.AccountId = transAcctQuery.Select(it => it.Key).FirstOrDefault();
+                            var transAcctQuery = await _accountRepository.GetFilteredEntriesAsync(it => it.AccountName == this.TransferAccount);
+                            destTransaction.AccountId = transAcctQuery.Select(it => it.AccountId).FirstOrDefault();
                             destTransaction.Amount = Amount;
                             var sourceAccount = await _accountRepository.GetEntryAsync(transaction.AccountId);
 
@@ -438,11 +440,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                 if (ValidationFailed != null)
                     ValidationFailed(this, new ValidationFailedEventArgs(errors));
             }
-        }
-
-        public async Task Commit()
-        {
-            await _transactionRepository.Commit();
         }
     }
 }

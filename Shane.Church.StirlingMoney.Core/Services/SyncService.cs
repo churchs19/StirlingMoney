@@ -15,23 +15,23 @@ namespace Shane.Church.StirlingMoney.Core.Services
 	{
 		protected ISettingsService _settingsService;
 		protected ILoggingService _log;
-		protected IRepository<Account, Guid> _accounts;
-		protected IRepository<AppSyncUser, string> _users;
-		protected IRepository<Budget, Guid> _budgets;
-		protected IRepository<Goal, Guid> _goals;
-		protected IRepository<Category, Guid> _categories;
-		protected IRepository<Transaction, Guid> _transactions;
+		protected IDataRepository<Account, Guid> _accounts;
+		protected IDataRepository<AppSyncUser, string> _users;
+		protected IDataRepository<Budget, Guid> _budgets;
+		protected IDataRepository<Goal, Guid> _goals;
+		protected IDataRepository<Category, Guid> _categories;
+		protected IDataRepository<Transaction, Guid> _transactions;
 		protected ILicensingService _licensing;
 
 		public SyncService(IMobileServiceClient client,
 							ISettingsService settings,
 							ILoggingService log,
-							IRepository<Account, Guid> accounts,
-							IRepository<AppSyncUser, string> users,
-							IRepository<Budget, Guid> budgets,
-							IRepository<Goal, Guid> goals,
-							IRepository<Category, Guid> categories,
-							IRepository<Transaction, Guid> transactions,
+							IDataRepository<Account, Guid> accounts,
+							IDataRepository<AppSyncUser, string> users,
+							IDataRepository<Budget, Guid> budgets,
+							IDataRepository<Goal, Guid> goals,
+							IDataRepository<Category, Guid> categories,
+							IDataRepository<Transaction, Guid> transactions,
 							ILicensingService licensing)
 		{
 			if (settings == null) throw new ArgumentNullException("settings");
@@ -135,12 +135,12 @@ namespace Shane.Church.StirlingMoney.Core.Services
 
 							DateTimeOffset lastSuccessfulSyncDate = _settingsService.LoadSetting<DateTimeOffset>("LastSuccessfulSync");
 
-							var localCategories = await _categories.GetUpdatedEntries(lastSuccessfulSyncDate);
-							var localAccounts = await _accounts.GetUpdatedEntries(lastSuccessfulSyncDate);
-							var localUsers = await _users.GetUpdatedEntries(lastSuccessfulSyncDate);
-							var localBudgets = await _budgets.GetUpdatedEntries(lastSuccessfulSyncDate);
-							var localGoals = await _goals.GetUpdatedEntries(lastSuccessfulSyncDate);
-							var localTransactions = await _transactions.GetUpdatedEntries(lastSuccessfulSyncDate);
+							var localCategories = await _categories.GetFilteredEntriesAsync(it => it.EditDateTime >= lastSuccessfulSyncDate);
+							var localAccounts = await _accounts.GetFilteredEntriesAsync(it => it.EditDateTime >= lastSuccessfulSyncDate);
+							var localUsers = await _users.GetFilteredEntriesAsync(it => it.EditDateTime >= lastSuccessfulSyncDate);
+							var localBudgets = await _budgets.GetFilteredEntriesAsync(it => it.EditDateTime >= lastSuccessfulSyncDate);
+							var localGoals = await _goals.GetFilteredEntriesAsync(it => it.EditDateTime >= lastSuccessfulSyncDate);
+							var localTransactions = await _transactions.GetFilteredEntriesAsync(it => it.EditDateTime >= lastSuccessfulSyncDate);
 
 							List<SyncItem> objects = new List<SyncItem>();
 							JsonSerializer serializer = JsonSerializer.Create(Client.SerializerSettings);
@@ -205,23 +205,20 @@ namespace Shane.Church.StirlingMoney.Core.Services
 								throw;
 							}
 
-							foreach (var t in _transactions.GetAllIndexKeys<bool>("IsDeleted").Where(it => it.Value).Select(it => it.Key))
+							foreach (var t in _transactions.GetFilteredEntries(it=>it.IsDeleted).Select(it=>it.TransactionId))
 								await _transactions.DeleteEntryAsync(t, true);
-							foreach (var t in _goals.GetAllIndexKeys<bool>("IsDeleted").Where(it => it.Value).Select(it => it.Key))
+							foreach (var t in _goals.GetFilteredEntries(it => it.IsDeleted).Select(it=>it.GoalId))
 								await _goals.DeleteEntryAsync(t, true);
-							foreach (var t in _budgets.GetAllIndexKeys<bool>("IsDeleted").Where(it => it.Value).Select(it => it.Key))
+							foreach (var t in _budgets.GetFilteredEntries(it => it.IsDeleted).Select(it=>it.BudgetId))
 								await _budgets.DeleteEntryAsync(t, true);
-							foreach (var t in _users.GetAllIndexKeys<bool>("IsDeleted").Where(it => it.Value).Select(it => it.Key))
+							foreach (var t in _users.GetFilteredEntries(it => it.IsDeleted).Select(it=>it.UserId))
 								await _users.DeleteEntryAsync(t, true);
-							foreach (var t in _accounts.GetAllIndexKeys<bool>("IsDeleted").Where(it => it.Value).Select(it => it.Key))
-								await _accounts.DeleteEntryAsync(t, true);
-							foreach (var t in _categories.GetAllIndexKeys<bool>("IsDeleted").Where(it => it.Value).Select(it => it.Key))
-								await _categories.DeleteEntryAsync(t, true);
+							foreach (var t in _accounts.GetFilteredEntries(it => it.IsDeleted).Select(it=>it.AccountId))
+                                await _accounts.DeleteEntryAsync(t, true);
+							foreach (var t in _categories.GetFilteredEntries(it => it.IsDeleted).Select(it=>it.CategoryId))
+                                await _categories.DeleteEntryAsync(t, true);
 
 							_settingsService.SaveSetting<DateTimeOffset>(DateTimeOffset.Now, "LastSuccessfulSync");
-
-							await _accounts.Commit();
-							//						await RemoveDatabaseBackup();
 						}
 					}
 					if (SyncCompleted != null)
