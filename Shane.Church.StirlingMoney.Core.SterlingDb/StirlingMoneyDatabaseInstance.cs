@@ -47,8 +47,8 @@ namespace Shane.Church.StirlingMoney.Core.SterlingDb
 					.WithIndex<Transaction, Boolean, Guid>("IsDeleted", it => it.IsDeleted),
 				CreateTableDefinition<Setting, string>(it=>it.Key)
 					.WithIndex<Setting, Boolean, string>("IsDeleted", it => it.IsDeleted)
-					.WithIndex<Setting, DateTimeOffset, string>("EditDateTime", it => it.EditDateTime),
-				CreateTableDefinition<Tombstone, string>(it=>it.Key)
+					.WithIndex<Setting, DateTimeOffset, string>("EditDateTime", it => it.EditDateTime)
+				//CreateTableDefinition<Tombstone, string>(it=>it.Key)
 			};
 
 			return tables;

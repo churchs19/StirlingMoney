@@ -23,12 +23,12 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 		public WP8SyncService(IMobileServiceClient client,
 							ISettingsService settings,
 							ILoggingService log,
-							IRepository<Account, Guid> accounts,
-							IRepository<AppSyncUser, string> users,
-							IRepository<Budget, Guid> budgets,
-							IRepository<Goal, Guid> goals,
-							IRepository<Category, Guid> categories,
-							IRepository<Transaction, Guid> transactions,
+							IDataRepository<Account, Guid> accounts,
+							IDataRepository<AppSyncUser, string> users,
+							IDataRepository<Budget, Guid> budgets,
+							IDataRepository<Goal, Guid> goals,
+							IDataRepository<Category, Guid> categories,
+							IDataRepository<Transaction, Guid> transactions,
 							SterlingEngine engine,
 							ILicensingService licensing)
 			: base(client, settings, log, accounts, users, budgets, goals, categories, transactions, licensing)

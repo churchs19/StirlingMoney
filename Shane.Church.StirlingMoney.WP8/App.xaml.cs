@@ -1,14 +1,7 @@
 ﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
-using Grace;
-using Shane.Church.StirlingMoney.Core.Data;
-using Shane.Church.StirlingMoney.Core.Exceptions;
-using Shane.Church.StirlingMoney.Core.Services;
-using Shane.Church.StirlingMoney.Core.SterlingDb;
-using Shane.Church.StirlingMoney.Core.ViewModels;
 using Shane.Church.StirlingMoney.Core.WP;
-using Shane.Church.StirlingMoney.WP.ViewModels;
 using Shane.Church.Utility.Core.WP;
 using System;
 using System.Linq;
@@ -23,7 +16,6 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using Telerik.Windows.Controls;
-using Wintellect.Sterling.Core;
 
 namespace Shane.Church.StirlingMoney.WP
 {
@@ -266,7 +258,7 @@ namespace Shane.Church.StirlingMoney.WP
             FlurryWP8SDK.Api.StartSession(FlurryConfig.ApiKey);
             FlurryWP8SDK.Api.SetVersion(versionAttrib.Version.ToString());
 
-            SterlingActivation.ActivateDatabase();
+            //SterlingActivation.ActivateDatabase();
 
             InitializeBackgroundAgent();
 
@@ -291,7 +283,7 @@ namespace Shane.Church.StirlingMoney.WP
                 ApplicationUsageHelper.OnApplicationActivated();
             }
 
-            SterlingActivation.ActivateDatabase();
+            //SterlingActivation.ActivateDatabase();
 
 #if DEBUG
             DebugUtility.DebugOutputMemoryUsage("Application_Activated");
@@ -303,7 +295,7 @@ namespace Shane.Church.StirlingMoney.WP
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
             // Ensure that required application state is persisted here.
-            ContainerService.Container.Locate<SterlingEngine>().Dispose();
+            //ContainerService.Container.Locate<SterlingEngine>().Dispose();
             FlurryWP8SDK.Api.EndSession();
         }
 
@@ -311,9 +303,9 @@ namespace Shane.Church.StirlingMoney.WP
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
-            var engine = ContainerService.Container.Locate<SterlingEngine>();
-            engine.SterlingDatabase.GetDatabase("Money").TruncateAsync(typeof(Tombstone)).Wait();
-            engine.Dispose();
+            //var engine = ContainerService.Container.Locate<SterlingEngine>();
+            //engine.SterlingDatabase.GetDatabase("Money").TruncateAsync(typeof(Tombstone)).Wait();
+            //engine.Dispose();
             FlurryWP8SDK.Api.EndSession();
         }
 

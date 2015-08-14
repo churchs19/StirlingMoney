@@ -228,7 +228,6 @@
     <Compile Include="Services\PhoneUpgradeDBService.cs" />
     <Compile Include="Services\PhoneWebNavigationService.cs" />
     <Compile Include="Services\WP8AccountTileService.cs" />
-    <Compile Include="Services\WP8BackupService.cs" />
     <Compile Include="Services\WP8LicensingService.cs" />
     <Compile Include="Services\WP8SyncService.cs" />
     <Compile Include="ViewModels\PhoneAboutViewModel.cs" />
@@ -236,10 +235,6 @@
     <Compile Include="ViewModels\PhoneSettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Shane.Church.StirlingMoney.Core.SterlingDb\Shane.Church.StirlingMoney.Core.SterlingDb.csproj">
-      <Project>{7EDFE360-EEFA-42DC-A5DA-DCEFFA32DEFE}</Project>
-      <Name>Shane.Church.StirlingMoney.Core.SterlingDb</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shane.Church.StirlingMoney.Core\Shane.Church.StirlingMoney.Core.csproj">
       <Project>{4E5D8824-CC49-41A4-BC97-3E5BC5378754}</Project>
       <Name>Shane.Church.StirlingMoney.Core</Name>

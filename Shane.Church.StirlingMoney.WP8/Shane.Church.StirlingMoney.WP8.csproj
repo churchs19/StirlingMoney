@@ -570,10 +570,6 @@
       <Project>{698f2865-57f4-40e5-8a3c-3288df5e8610}</Project>
       <Name>Shane.Church.StirlingMoney.Core.Sqlite</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shane.Church.StirlingMoney.Core.SterlingDb\Shane.Church.StirlingMoney.Core.SterlingDb.csproj">
-      <Project>{7EDFE360-EEFA-42DC-A5DA-DCEFFA32DEFE}</Project>
-      <Name>Shane.Church.StirlingMoney.Core.SterlingDb</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shane.Church.StirlingMoney.Core.WP\Shane.Church.StirlingMoney.Core.WP.csproj">
       <Project>{3FBC6023-4FDA-40DE-9937-6CA019ADD09A}</Project>
       <Name>Shane.Church.StirlingMoney.Core.WP</Name>

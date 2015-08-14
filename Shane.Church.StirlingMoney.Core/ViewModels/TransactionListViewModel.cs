@@ -20,7 +20,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
         private IDataRepository<Account, Guid> _accountRepository;
         private IDataRepository<Transaction, Guid> _transactionRepository;
         private ITransactionSearch _transactionSearch;
-        private IDataRepository<Tombstone, string> _tombstoneRepository;
         private IDataRepository<Category, Guid> _categoryRepository;
         private INavigationService _navService;
         private DateTimeOffset _refreshTime;
@@ -29,8 +28,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
             IDataRepository<Transaction, Guid> transactionRepository,
             ITransactionSearch transactionSearch,
             IDataRepository<Category, Guid> categoryRepository,
-            INavigationService navService, 
-            IDataRepository<Tombstone, string> tombstoneRepository)
+            INavigationService navService)
         {
             if (accountRepository == null) throw new ArgumentNullException("accountRepository");
             _accountRepository = accountRepository;
@@ -40,8 +38,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
             _categoryRepository = categoryRepository;
             if (navService == null) throw new ArgumentNullException("navService");
             _navService = navService;
-            if (tombstoneRepository == null) throw new ArgumentNullException("tombstoneRepository");
-            _tombstoneRepository = tombstoneRepository;
             if (transactionSearch == null) throw new ArgumentNullException("transactionSearch");
             _transactionSearch = transactionSearch;
 
@@ -55,8 +51,6 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 
             _transactions = new ObservableCollection<TransactionListItemViewModel>();
             _transactions.CollectionChanged += _transactions_CollectionChanged;
-
-
         }
 
         public delegate void BusyChangedHandler(BusyEventArgs args);
@@ -368,68 +362,68 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
             await LoadData(AccountId);
         }
 
-        public void Deactivate()
-        {
-            DeactivateAsync().Wait(2000);
-        }
+        //public void Deactivate()
+        //{
+        //    DeactivateAsync().Wait(2000);
+        //}
 
-        public void Activate()
-        {
-            ActivateAsync().Wait(2000);
-        }
+        //public void Activate()
+        //{
+        //    ActivateAsync().Wait(2000);
+        //}
 
-        public async Task DeactivateAsync()
-        {
-            try
-            {
-                Tombstone t = new Tombstone();
-                t.Key = typeof(TransactionListViewModel).ToString();
-                t.State.Add("Account", this.Account);
-                t.State.Add("Transactions", this.Transactions.ToList());
-                t.State.Add("CurrentRow", this.CurrentRow);
-                t.State.Add("SearchText", this.SearchText);
-                t.State.Add("SearchVisible", this.SearchVisible);
-                t.State.Add("RefreshTime", this._refreshTime);
-                await _tombstoneRepository.AddOrUpdateEntryAsync(t);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public async Task DeactivateAsync()
+        //{
+        //    try
+        //    {
+        //        Tombstone t = new Tombstone();
+        //        t.Key = typeof(TransactionListViewModel).ToString();
+        //        t.State.Add("Account", this.Account);
+        //        t.State.Add("Transactions", this.Transactions.ToList());
+        //        t.State.Add("CurrentRow", this.CurrentRow);
+        //        t.State.Add("SearchText", this.SearchText);
+        //        t.State.Add("SearchVisible", this.SearchVisible);
+        //        t.State.Add("RefreshTime", this._refreshTime);
+        //        await _tombstoneRepository.AddOrUpdateEntryAsync(t);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
-        public async Task ActivateAsync()
-        {
-            var t = await _tombstoneRepository.GetEntryAsync(typeof(TransactionListViewModel).ToString());
-            if (t != null)
-            {
-                this.Account = t.TryGet<Account>("Account", null);
-                if (this.Account != null)
-                {
-                    var transactions = t.TryGet<List<TransactionListItemViewModel>>("Transactions", new List<TransactionListItemViewModel>());
-                    foreach (var tli in transactions)
-                    {
-                        if (!Transactions.Where(it => it.TransactionId == tli.TransactionId).Any())
-                        {
-                            tli._parent = this;
-                            tli.PostedChanged += async (s) => await item_PostedChanged(s);
-                            Transactions.Add(tli);
-                        }
-                        else
-                        {
-                            var existingItem = Transactions.Where(it => it.TransactionId == tli.TransactionId).First();
-                            existingItem._parent = this;
-                            existingItem.PostedChanged += async (s) => await item_PostedChanged(s);
-                        }
-                    }
-                    this.CurrentRow = t.TryGet<int>("CurrentRow", 0);
-                    this.SearchText = t.TryGet<string>("SearchText", "");
-                    this.SearchVisible = t.TryGet<bool>("SearchVisible", false);
-                    this._refreshTime = t.TryGet<DateTimeOffset>("RefreshTime", DateTimeOffset.MinValue);
-                    await RefreshData();
-                }
-                await _tombstoneRepository.DeleteEntryAsync(typeof(TransactionListViewModel).ToString());
-            }
-        }
+        //public async Task ActivateAsync()
+        //{
+        //    var t = await _tombstoneRepository.GetEntryAsync(typeof(TransactionListViewModel).ToString());
+        //    if (t != null)
+        //    {
+        //        this.Account = t.TryGet<Account>("Account", null);
+        //        if (this.Account != null)
+        //        {
+        //            var transactions = t.TryGet<List<TransactionListItemViewModel>>("Transactions", new List<TransactionListItemViewModel>());
+        //            foreach (var tli in transactions)
+        //            {
+        //                if (!Transactions.Where(it => it.TransactionId == tli.TransactionId).Any())
+        //                {
+        //                    tli._parent = this;
+        //                    tli.PostedChanged += async (s) => await item_PostedChanged(s);
+        //                    Transactions.Add(tli);
+        //                }
+        //                else
+        //                {
+        //                    var existingItem = Transactions.Where(it => it.TransactionId == tli.TransactionId).First();
+        //                    existingItem._parent = this;
+        //                    existingItem.PostedChanged += async (s) => await item_PostedChanged(s);
+        //                }
+        //            }
+        //            this.CurrentRow = t.TryGet<int>("CurrentRow", 0);
+        //            this.SearchText = t.TryGet<string>("SearchText", "");
+        //            this.SearchVisible = t.TryGet<bool>("SearchVisible", false);
+        //            this._refreshTime = t.TryGet<DateTimeOffset>("RefreshTime", DateTimeOffset.MinValue);
+        //            await RefreshData();
+        //        }
+        //        await _tombstoneRepository.DeleteEntryAsync(typeof(TransactionListViewModel).ToString());
+        //    }
+        //}
     }
 }

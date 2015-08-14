@@ -77,8 +77,6 @@ namespace Shane.Church.StirlingMoney.WP
 
 		protected override void OnNavigatedFrom(NavigationEventArgs e)
 		{
-			if (e.NavigationMode == NavigationMode.Back)
-				_model.Commit().Wait(1000);
 			base.OnNavigatedFrom(e);
 		}
 

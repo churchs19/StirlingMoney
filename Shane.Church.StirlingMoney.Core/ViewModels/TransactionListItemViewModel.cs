@@ -16,7 +16,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		private IDataRepository<Transaction, Guid> _transactionRepository;
 		private IDataRepository<Category, Guid> _categoryRepository;
 		private INavigationService _navService;
-		internal TransactionListViewModel _parent;
+//		internal TransactionListViewModel _parent;
 
 		public TransactionListItemViewModel()
 			: this(ContainerService.Container.Locate<IDataRepository<Transaction, Guid>>(),
