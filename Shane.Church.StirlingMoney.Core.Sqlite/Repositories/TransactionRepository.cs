@@ -7,15 +7,19 @@ using System.Threading.Tasks;
 using Shane.Church.StirlingMoney.Core.Data;
 using System.Linq.Expressions;
 using AutoMapper;
+using SQLite.Net;
+using SQLiteNetExtensions;
+using SQLiteNetExtensionsAsync;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
 {
-    public class TransactionRepository : IDataRepository<Core.Data.Transaction, Guid>
+    public class TransactionRepository : IDataRepository<Core.Data.Transaction, Guid>, ITransactionSum, ITransactionSearch
     {
         public Transaction AddOrUpdateEntry(Transaction entry)
         {
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
+                if (entry.TransactionId.Equals(Guid.Empty)) entry.TransactionId = Guid.NewGuid();
                 entry.EditDateTime = DateTimeOffset.Now;
                 db.InsertOrReplace(Data.Transaction.FromCore(entry));
             }
@@ -25,6 +29,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
         public async Task<Transaction> AddOrUpdateEntryAsync(Transaction entry)
         {
             var db = StirlingMoneyDatabaseInstance.GetDbAsync();
+            if (entry.TransactionId.Equals(Guid.Empty)) entry.TransactionId = Guid.NewGuid();
             entry.EditDateTime = DateTimeOffset.Now;
             await db.InsertOrReplaceAsync(Data.Transaction.FromCore(entry));
             return entry;
@@ -191,6 +196,56 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             var db = StirlingMoneyDatabaseInstance.GetDbAsync();
             var filterDelegate = filter.Compile();
             return await db.Table<Data.Transaction>().Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted).CountAsync();
+        }
+
+        public double GetPostedSumByAccount(Guid accountId)
+        {
+            using (var db = StirlingMoneyDatabaseInstance.GetDb())
+            {
+                return db.Table<Data.Transaction>().Where(it => it.AccountId == accountId && it.Posted && !it.IsDeleted).Select(it => it.Amount).Sum();
+            }
+        }
+
+        public List<Transaction> GetSearchResults(Guid AccountId, string searchText)
+        {
+            using (var db = StirlingMoneyDatabaseInstance.GetDb())
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public Task<List<Transaction>> GetSearchResultsAsync(Guid AccountId, string searchText)
+        {
+            throw new NotImplementedException();
+        }
+
+        public double GetSumBetweenDates(DateTimeOffset startDate, DateTimeOffset endDate)
+        {
+            using (var db = StirlingMoneyDatabaseInstance.GetDb())
+            {
+                return db.Table<Data.Transaction>().Where(it => it.TransactionDate >= startDate &&
+                                                            it.TransactionDate < endDate &&
+                                                            !it.IsDeleted).Select(it => it.Amount).Sum();
+            }
+        }
+
+        public double GetSumBetweenDatesByCategory(Guid categoryId, DateTimeOffset startDate, DateTimeOffset endDate)
+        {
+            using (var db = StirlingMoneyDatabaseInstance.GetDb())
+            {
+                return db.Table<Data.Transaction>().Where(it => it.CategoryId == categoryId &&
+                                                            it.TransactionDate >= startDate &&
+                                                            it.TransactionDate < endDate &&
+                                                            !it.IsDeleted).Select(it => it.Amount).Sum();
+            }
+        }
+
+        public double GetSumByAccount(Guid accountId)
+        {
+            using (var db = StirlingMoneyDatabaseInstance.GetDb())
+            {
+                return db.Table<Data.Transaction>().Where(it => it.AccountId == accountId && !it.IsDeleted).Select(it => it.Amount).Sum();
+            }
         }
     }
 }

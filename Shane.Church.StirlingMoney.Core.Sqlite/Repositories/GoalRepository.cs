@@ -15,6 +15,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
         {
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
+                if (entry.GoalId.Equals(Guid.Empty)) entry.GoalId = Guid.NewGuid();
                 entry.EditDateTime = DateTimeOffset.Now;
                 db.InsertOrReplace(Data.Goal.FromCore(entry));
             }
@@ -24,6 +25,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
         public async Task<Goal> AddOrUpdateEntryAsync(Goal entry)
         {
             var db = StirlingMoneyDatabaseInstance.GetDbAsync();
+            if (entry.GoalId.Equals(Guid.Empty)) entry.GoalId = Guid.NewGuid();
             entry.EditDateTime = DateTimeOffset.Now;
             await db.InsertOrReplaceAsync(Data.Goal.FromCore(entry));
             return entry;

@@ -15,7 +15,8 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 		public Guid AppSyncId { get; set; }
         [Indexed(Name = "ixUserEmail", Unique = true)]
 		public string UserEmail { get; set; }
-		public string UserId { get; set; }
+        [Indexed(Unique = true)]
+    	public string UserId { get; set; }
         [Indexed]
 		public DateTimeOffset EditDateTime { get; set; }
 		public bool IsDeleted { get; set; }

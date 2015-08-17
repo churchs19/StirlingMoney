@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
-using SQLite;
+using Shane.Church.StirlingMoney.Core.Services;
 using SQLite.Net;
 using SQLite.Net.Async;
 using SQLite.Net.Interop;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite
 {
@@ -23,12 +19,23 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite
             _platform = platform;
             if (path == null) throw new ArgumentNullException("path");
             DbPath = System.IO.Path.Combine(path, DB_FILE);
-            Mapper.CreateMap<Data.Account, Core.Data.Account>();
-            Mapper.CreateMap<Data.AppSyncUser, Core.Data.AppSyncUser>();
-            Mapper.CreateMap<Data.Budget, Core.Data.Budget>();
-            Mapper.CreateMap<Data.Category, Core.Data.Category>();
-            Mapper.CreateMap<Data.Goal, Core.Data.Goal>();
-            Mapper.CreateMap<Data.Transaction, Core.Data.Transaction>();
+
+            Mapper.Initialize(cfg =>
+            {
+                cfg.ConstructServicesUsing(type => ContainerService.Container.Locate(type));
+                cfg.CreateMap<Data.Account, Core.Data.Account>().ConstructUsingServiceLocator();
+                cfg.CreateMap<Core.Data.Account, Data.Account>();
+                cfg.CreateMap<Data.AppSyncUser, Core.Data.AppSyncUser>().ConstructUsingServiceLocator();
+                cfg.CreateMap<Core.Data.AppSyncUser, Data.AppSyncUser>();
+                cfg.CreateMap<Data.Budget, Core.Data.Budget>().ConstructUsingServiceLocator();
+                cfg.CreateMap<Core.Data.Budget, Data.Budget>();
+                cfg.CreateMap<Data.Category, Core.Data.Category>().ConstructUsingServiceLocator();
+                cfg.CreateMap<Core.Data.Category, Data.Category>();
+                cfg.CreateMap<Data.Goal, Core.Data.Goal>().ConstructUsingServiceLocator();
+                cfg.CreateMap<Core.Data.Goal, Data.Goal>();
+                cfg.CreateMap<Data.Transaction, Core.Data.Transaction>().ConstructUsingServiceLocator();
+                cfg.CreateMap<Core.Data.Transaction, Data.Transaction>();
+            });
 
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
@@ -37,13 +44,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite
                 db.CreateTable<Data.Account>();
                 db.CreateTable<Data.Transaction>();
                 db.CreateTable<Data.Budget>();
-                db.CreateTable<Data.Goal>();
-
-                db.RunInTransaction(() =>
-                {
-                    var cat = new Data.Category() { CategoryId = Guid.NewGuid(), CategoryName = "Test", EditDateTime = DateTimeOffset.Now, IsDeleted = false };
-                    db.Insert(cat);
-                });              
+                db.CreateTable<Data.Goal>();             
             }
         }
 

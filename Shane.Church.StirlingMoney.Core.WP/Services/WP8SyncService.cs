@@ -15,7 +15,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 {
 	public class WP8SyncService : SyncService
 	{
-		SterlingEngine _engine;
+		//SterlingEngine _engine;
 #if !AGENT
 		MicrosoftLiveUtils _liveUtils;
 #endif
@@ -29,12 +29,9 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 							IDataRepository<Goal, Guid> goals,
 							IDataRepository<Category, Guid> categories,
 							IDataRepository<Transaction, Guid> transactions,
-							SterlingEngine engine,
 							ILicensingService licensing)
 			: base(client, settings, log, accounts, users, budgets, goals, categories, transactions, licensing)
 		{
-			if (engine == null) throw new ArgumentNullException("engine");
-			_engine = engine;
 #if !AGENT
 			_liveUtils = new MicrosoftLiveUtils();
 #endif

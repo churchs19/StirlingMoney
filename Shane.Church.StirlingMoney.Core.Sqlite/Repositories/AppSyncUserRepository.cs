@@ -9,12 +9,13 @@ using System.Linq.Expressions;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
 {
-    public class AppSyncUserRepository : IDataRepository<Core.Data.AppSyncUser, Guid>
+    public class AppSyncUserRepository : IDataRepository<Core.Data.AppSyncUser, string>
     {
         public AppSyncUser AddOrUpdateEntry(AppSyncUser entry)
         {
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
+                if (entry.AppSyncId.Equals(string.Empty)) entry.AppSyncId = Guid.NewGuid();
                 entry.EditDateTime = DateTimeOffset.Now;
                 db.InsertOrReplace(Data.AppSyncUser.FromCore(entry));
             }
@@ -24,6 +25,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
         public async Task<AppSyncUser> AddOrUpdateEntryAsync(AppSyncUser entry)
         {
             var db = StirlingMoneyDatabaseInstance.GetDbAsync();
+            if (entry.AppSyncId.Equals(string.Empty)) entry.AppSyncId = Guid.NewGuid();
             entry.EditDateTime = DateTimeOffset.Now;
             await db.InsertOrReplaceAsync(Data.AppSyncUser.FromCore(entry));
             return entry;
@@ -53,18 +55,18 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             await db.UpdateAllAsync(sqliteEntries);
         }
 
-        public void DeleteEntry(Guid entryId, bool hardDelete = false)
+        public void DeleteEntry(string entryId, bool hardDelete = false)
         {
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
-                if (hardDelete)
+                var entry = db.Find<Data.AppSyncUser>(it => it.UserId == entryId);
+                if (entry != null)
                 {
-                    db.Delete<Data.AppSyncUser>(entryId);
-                }
-                else
-                {
-                    var entry = db.Get<Data.AppSyncUser>(entryId);
-                    if (entry != null)
+                    if (hardDelete)
+                    {
+                        db.Delete(entry);
+                    }
+                    else
                     {
                         entry.EditDateTime = DateTimeOffset.Now;
                         entry.IsDeleted = true;
@@ -74,10 +76,10 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             }
         }
 
-        public async Task DeleteEntryAsync(Guid entryId, bool hardDelete = false)
+        public async Task DeleteEntryAsync(string entryId, bool hardDelete = false)
         {
             var db = StirlingMoneyDatabaseInstance.GetDbAsync();
-            var entry = await db.GetAsync<Data.AppSyncUser>(entryId);
+            var entry = await db.FindAsync<Data.AppSyncUser>(it=>it.UserId == entryId);
             if (entry != null)
             {
                 if (hardDelete)
@@ -129,19 +131,19 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             return includeDeleted ? await db.Table<Data.AppSyncUser>().CountAsync() : await db.Table<Data.AppSyncUser>().Where(it => !it.IsDeleted).CountAsync();
         }
 
-        public AppSyncUser GetEntry(Guid key)
+        public AppSyncUser GetEntry(string key)
         {
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
-                var entry = db.Get<Data.AppSyncUser>(key);
+                var entry = db.Find<Data.AppSyncUser>(it => it.UserId == key);
                 return entry != null ? entry.ToCore() : null;
             }
         }
 
-        public async Task<AppSyncUser> GetEntryAsync(Guid key)
+        public async Task<AppSyncUser> GetEntryAsync(string key)
         {
             var db = StirlingMoneyDatabaseInstance.GetDbAsync();
-            var entry = await db.GetAsync<Data.AppSyncUser>(key);
+            var entry = await db.FindAsync<Data.AppSyncUser>(it => it.UserId == key);
             return entry != null ? entry.ToCore() : null;
         }
 
