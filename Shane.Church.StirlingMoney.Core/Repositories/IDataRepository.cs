@@ -17,13 +17,13 @@ namespace Shane.Church.StirlingMoney.Core.Repositories
 
         Task<int> GetEntriesCountAsync(bool includeDeleted = false);
 
-        IQueryable<T> GetFilteredEntries(Expression<Func<T, bool>> filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null);
+        IQueryable<T> GetFilteredEntries(string filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null);
 
-        Task<IQueryable<T>> GetFilteredEntriesAsync(Expression<Func<T, bool>> filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null);
+        Task<IQueryable<T>> GetFilteredEntriesAsync(string filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null);
 
-        int GetFilteredEntriesCount(Expression<Func<T, bool>> filter, bool includeDeleted = false);
+        int GetFilteredEntriesCount(string filter, bool includeDeleted = false);
 
-        Task<int> GetFilteredEntriesCountAsync(Expression<Func<T, bool>> filter, bool includeDeleted = false);
+        Task<int> GetFilteredEntriesCountAsync(string filter, bool includeDeleted = false);
 
         T GetEntry(TKey key);
 

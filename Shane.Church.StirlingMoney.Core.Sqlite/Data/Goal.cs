@@ -14,9 +14,9 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 
         [PrimaryKey]
 		public Guid GoalId { get; set; }
-        [Indexed(Name = "ixGoalName", Unique = true)]
+        [Indexed(Unique = true)]
         public string GoalName { get; set; }
-        [ForeignKey(typeof(Data.Account))]
+        [Indexed]
 		public Guid AccountId { get; set; }
 		public double Amount { get; set; }
 		public double InitialBalance { get; set; }
@@ -25,9 +25,6 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
         [Indexed]
         public DateTimeOffset EditDateTime { get; set; }
 		public bool IsDeleted { get; set; }
-
-        [ManyToOne]
-        public Account Account { get; set; }
 
         public static Goal FromCore(Core.Data.Goal toMap)
         {

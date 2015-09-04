@@ -13,7 +13,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 
         [PrimaryKey]
 		public Guid CategoryId { get; set; }
-        [Indexed(Name = "ixCategoryName", Unique = true)]
+        [Indexed(Unique = true)]
 		public string CategoryName { get; set; }
         [Indexed]
         public DateTimeOffset EditDateTime { get; set; }

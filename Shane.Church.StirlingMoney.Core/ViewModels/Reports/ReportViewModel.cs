@@ -388,9 +388,14 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels.Reports
 					{
                         //var amountSpentQuery = _transactionRepo.GetAllIndexKeys<Tuple<Guid, Double>>("TransactionCategoryAmount")
                         //	.Where(it => transactionKeys.Contains(it.Key) && it.Value.Item2 < 0).Select(it => it.Value.Item2);
-                        var amountSpentQuery = _transactionRepo.GetFilteredEntries(it => (!it.Location.Contains(Strings.Resources.TransferToComparisonString) && !it.Location.Contains(Strings.Resources.TransferFromComparisonString)) &&
-                                                                                        (it.TransactionDate >= StartDate && it.TransactionDate < EndDate) &&
-                                                                                        it.Amount < 0).Select(it => -it.Amount);
+                        //var amountSpentQuery = _transactionRepo.GetFilteredEntries(it => (!it.Location.Contains(Strings.Resources.TransferToComparisonString) && !it.Location.Contains(Strings.Resources.TransferFromComparisonString)) &&
+                        //                                                                (it.TransactionDate >= StartDate && it.TransactionDate < EndDate) &&
+                        //                                                                it.Amount < 0).Select(it => -it.Amount);
+                        var amountSpentQuery = _transactionRepo.GetFilteredEntries(string.Format("NOT [Location] LIKE '%{0}%' AND NOT [Location] LIKE '%{1}%' AND [TransactionDate] >= {2} AND [TransactionDate] < {3} AND [Amount] < 0",
+                            Strings.Resources.TransferToComparisonString,
+                            Strings.Resources.TransferFromComparisonString,
+                            StartDate.Ticks,
+                            EndDate.Ticks)).Select(it => -it.Amount);
 						if (amountSpentQuery.Any())
 						{
 							item.Actual = amountSpentQuery.Sum();
@@ -404,10 +409,16 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels.Reports
 					{
                         //var amountSpentQuery = _transactionRepo.GetAllIndexKeys<Tuple<Guid, Double>>("TransactionCategoryAmount")
                         //	.Where(it => transactionKeys.Contains(it.Key) && it.Value.Item1.Equals(budget.CategoryId.Value) && it.Value.Item2 < 0).Select(it => it.Value.Item2);
-                        var amountSpentQuery = _transactionRepo.GetFilteredEntries(it => (!it.Location.Contains(Strings.Resources.TransferToComparisonString) && !it.Location.Contains(Strings.Resources.TransferFromComparisonString)) &&
-                                                                                        (it.TransactionDate >= StartDate && it.TransactionDate < EndDate) &&
-                                                                                        it.CategoryId == budget.CategoryId.Value &&
-                                                                                        it.Amount < 0).Select(it => -it.Amount);                  
+                        //var amountSpentQuery = _transactionRepo.GetFilteredEntries(it => (!it.Location.Contains(Strings.Resources.TransferToComparisonString) && !it.Location.Contains(Strings.Resources.TransferFromComparisonString)) &&
+                        //                                                                (it.TransactionDate >= StartDate && it.TransactionDate < EndDate) &&
+                        //                                                                it.CategoryId == budget.CategoryId.Value &&
+                        //                                                                it.Amount < 0).Select(it => -it.Amount);                  
+                        var amountSpentQuery = _transactionRepo.GetFilteredEntries(string.Format("NOT [Location] LIKE '%{0}%' AND NOT [Location] LIKE '%{1}%' AND [TransactionDate] >= {2} AND [TransactionDate] < {3} AND [Amount] < 0 AND [CategoryId] = {4}",
+                            Strings.Resources.TransferToComparisonString,
+                            Strings.Resources.TransferFromComparisonString,
+                            StartDate.Ticks,
+                            EndDate.Ticks, 
+                            budget.CategoryId.Value)).Select(it => -it.Amount);
                         if (amountSpentQuery.Any())
 						{
 							item.Actual = amountSpentQuery.Sum();
@@ -438,12 +449,17 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels.Reports
             //	.Select(it => it.Key).ToList().Intersect(transactionDateKeys).ToList();
             //var categories = _transactionRepo.GetAllIndexKeys<Tuple<Guid, Double>>("TransactionCategoryAmount")
             //	.Where(it => transactionKeys.Contains(it.Key) && it.Value.Item2 < 0).Select(it => it.Value);
-            var categories = _transactionRepo.GetFilteredEntries(t => t.TransactionDate >= MonthStart.AddMonths(-(SpendingByCategoryMonths - 1)) &&
-                                                                     t.TransactionDate < MonthEnd &&
-                                                                     !t.Location.Contains(Strings.Resources.TransferToComparisonString) &&
-                                                                     !t.Location.Contains(Strings.Resources.TransferFromComparisonString) &&
-                                                                     t.Amount < 0).GroupBy(it => it.CategoryId);
-			List<BasicChartItem> items = new List<BasicChartItem>();
+            //var categories = _transactionRepo.GetFilteredEntries(t => t.TransactionDate >= MonthStart.AddMonths(-(SpendingByCategoryMonths - 1)) &&
+            //                                                         t.TransactionDate < MonthEnd &&
+            //                                                         !t.Location.Contains(Strings.Resources.TransferToComparisonString) &&
+            //                                                         !t.Location.Contains(Strings.Resources.TransferFromComparisonString) &&
+            //                                                         t.Amount < 0).GroupBy(it => it.CategoryId);
+            var categories = _transactionRepo.GetFilteredEntries(string.Format("NOT [Location] LIKE '%{0}%' AND NOT [Location] LIKE '%{1}%' AND [TransactionDate] >= {2} AND [TransactionDate] < {3} AND [Amount] < 0",
+                Strings.Resources.TransferToComparisonString,
+                Strings.Resources.TransferFromComparisonString,
+                MonthStart.AddMonths(-(SpendingByCategoryMonths - 1)).Ticks,
+                MonthEnd.Ticks)).GroupBy(it=>it.CategoryId);
+            List<BasicChartItem> items = new List<BasicChartItem>();
 			foreach (var g in categories)
 			{
                 var entry = _categoryRepo.GetEntry(g.Key);
@@ -497,10 +513,14 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels.Reports
                 //	.Select(it => it.Key).ToList();
                 //var amountSpentQuery = _transactionRepo.GetAllIndexKeys<Tuple<Guid, Double>>("TransactionCategoryAmount")
                 //	.Where(it => transactionKeys.Contains(it.Key) && it.Value.Item1.Equals(Category.Value)).Select(it => it.Value.Item2);
-                var amountSpentQuery = _transactionRepo.GetFilteredEntries(it => it.TransactionDate >= MonthStart &&
-                                                                                it.TransactionDate < MonthEnd &&
-                                                                                it.CategoryId.Equals(Category.Value));
-				BasicChartItem item = new BasicChartItem();
+                //var amountSpentQuery = _transactionRepo.GetFilteredEntries(it => it.TransactionDate >= MonthStart &&
+                //                                                                it.TransactionDate < MonthEnd &&
+                //                                                                it.CategoryId.Equals(Category.Value));
+                var amountSpentQuery = _transactionRepo.GetFilteredEntries(string.Format("[TransactionDate] >= {0} AND [TransactionDate] < {1} AND [CategoryId] = '{2}'",
+                    MonthStart.Ticks,
+                    MonthEnd.Ticks,
+                    Category.Value));
+                BasicChartItem item = new BasicChartItem();
 				item.Title = EndDate.ToString("MMM");
 				try
 				{
@@ -533,16 +553,26 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels.Reports
                 //	.Where(it => transactionKeys.Contains(it.Key) && it.Value.Item2 > 0).Select(it => it.Value.Item2);
                 //var expenses = _transactionRepo.GetAllIndexKeys<Tuple<Guid, Double>>("TransactionCategoryAmount")
                 //	.Where(it => transactionKeys.Contains(it.Key) && it.Value.Item2 < 0).Select(it => it.Value.Item2);
-                var income = _transactionRepo.GetFilteredEntries(it => it.TransactionDate >= MonthStart &&
-                                                                        it.TransactionDate < MonthEnd &&
-                                                                        !it.Location.Contains(Strings.Resources.TransferToComparisonString) &&
-                                                                        !it.Location.Contains(Strings.Resources.TransferFromComparisonString) &&
-                                                                        it.Amount > 0);
-                var expenses = _transactionRepo.GetFilteredEntries(it => it.TransactionDate >= MonthStart &&
-                                                                        it.TransactionDate < MonthEnd &&
-                                                                        !it.Location.Contains(Strings.Resources.TransferToComparisonString) &&
-                                                                        !it.Location.Contains(Strings.Resources.TransferFromComparisonString) &&
-                                                                        it.Amount < 0);
+                //var income = _transactionRepo.GetFilteredEntries(it => it.TransactionDate >= MonthStart &&
+                //                                                        it.TransactionDate < MonthEnd &&
+                //                                                        !it.Location.Contains(Strings.Resources.TransferToComparisonString) &&
+                //                                                        !it.Location.Contains(Strings.Resources.TransferFromComparisonString) &&
+                //                                                        it.Amount > 0);
+                var income = _transactionRepo.GetFilteredEntries(string.Format("NOT [Location] LIKE '%{0}%' AND NOT [Location] LIKE '%{1}%' AND [TransactionDate] >= '{2}' AND [TransactionDate] < {3} AND [Amount] > 0",
+                    Strings.Resources.TransferToComparisonString,
+                    Strings.Resources.TransferFromComparisonString,
+                    MonthStart.Ticks,
+                    MonthEnd.Ticks));
+                //var expenses = _transactionRepo.GetFilteredEntries(it => it.TransactionDate >= MonthStart &&
+                //                                                        it.TransactionDate < MonthEnd &&
+                //                                                        !it.Location.Contains(Strings.Resources.TransferToComparisonString) &&
+                //                                                        !it.Location.Contains(Strings.Resources.TransferFromComparisonString) &&
+                //                                                        it.Amount < 0);
+                var expenses = _transactionRepo.GetFilteredEntries(string.Format("NOT [Location] LIKE '%{0}%' AND NOT [Location] LIKE '%{1}%' AND [TransactionDate] >= '{2}' AND [TransactionDate] < {3} AND [Amount] < 0",
+                    Strings.Resources.TransferToComparisonString,
+                    Strings.Resources.TransferFromComparisonString,
+                    MonthStart.Ticks,
+                    MonthEnd.Ticks));
                 NetIncomeReportItem item = new NetIncomeReportItem();
 				item.Label = EndDate.ToString("MMM");
 				try

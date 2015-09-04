@@ -17,16 +17,13 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 
         [PrimaryKey]
 		public Guid AccountId { get; set; }
-        [Indexed(Name = "ixAccountName", Unique = true)]
+        [Indexed(Unique = true)]
 		public string AccountName { get; set; }
 		public double InitialBalance { get; set; }
         [Indexed]
         public DateTimeOffset EditDateTime { get; set; }
 		public bool IsDeleted { get; set; }
 		public string ImageUri { get; set; }
-
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Transaction> Transactions { get; set; }
 
         public static Account FromCore(Core.Data.Account accountToMap)
         {

@@ -165,7 +165,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			CheckNumber = transaction.CheckNumber;
 			_posted = transaction.Posted;
 			Memo = transaction.Note;
-			Category = _categoryRepository.GetFilteredEntries(it => it.CategoryId == transaction.CategoryId).Select(it => it.CategoryName).FirstOrDefault();
+			Category = _categoryRepository.GetFilteredEntries(string.Format("[CategoryId] = '{0}'", transaction.CategoryId)).Select(it => it.CategoryName).FirstOrDefault();
 			_accountId = transaction.AccountId;
 			EditDate = transaction.EditDateTime;
 		}

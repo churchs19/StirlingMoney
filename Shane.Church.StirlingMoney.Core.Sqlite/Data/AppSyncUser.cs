@@ -13,7 +13,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 
         [PrimaryKey]
 		public Guid AppSyncId { get; set; }
-        [Indexed(Name = "ixUserEmail", Unique = true)]
+        [Indexed(Unique = true)]
 		public string UserEmail { get; set; }
         [Indexed(Unique = true)]
     	public string UserId { get; set; }

@@ -169,7 +169,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				validationErrors.Add(String.Format(Resources.GoalDateComparisonError, _startDate));
 			}
 
-			var account = await _accountRepository.GetFilteredEntriesAsync(it => it.AccountName == Account);
+			var account = await _accountRepository.GetFilteredEntriesAsync(string.Format("AccountName = '{0}'", Account));
 			double accountBalance = 0;
 			if (account.FirstOrDefault() != null)
 			{
@@ -207,7 +207,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				g.TargetDate = new DateTimeOffset(DateTime.SpecifyKind(TargetDate, DateTimeKind.Utc));
 				g.Amount = Amount;
 				g.IsDeleted = _isDeleted;
-				var accountQuery = await _accountRepository.GetFilteredEntriesAsync(it => it.AccountName == Account);
+				var accountQuery = await _accountRepository.GetFilteredEntriesAsync(string.Format("[AccountName] = '{0}'", Account));
 				var account = accountQuery.FirstOrDefault();
 				g.AccountId = account.AccountId;
 				g.InitialBalance = account.AccountBalance;

@@ -42,9 +42,8 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
                 foreach(var entry in entries)
                 {
                     entry.EditDateTime = DateTimeOffset.Now;
+                    db.InsertOrReplace(Data.Transaction.FromCore(entry));
                 }
-                var sqliteEntries = Mapper.Map<List<Transaction>, List<Data.Transaction>>(entries.ToList());
-                db.UpdateAll(sqliteEntries);
             }
         }
 
@@ -54,9 +53,8 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             foreach (var entry in entries)
             {
                 entry.EditDateTime = DateTimeOffset.Now;
+                await db.InsertOrReplaceAsync(Data.Transaction.FromCore(entry));
             }
-            var sqliteEntries = Mapper.Map<List<Transaction>, List<Data.Transaction>>(entries.ToList());
-            await db.UpdateAllAsync(sqliteEntries);
         }
 
         public void DeleteEntry(Guid entryId, bool hardDelete = false)
@@ -152,50 +150,60 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             return trans != null ? trans.ToCore() : null;
         }
 
-        public IQueryable<Transaction> GetFilteredEntries(Expression<Func<Transaction, bool>> filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null)
+        public IQueryable<Transaction> GetFilteredEntries(string filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null)
         {
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
-                var filterDelegate = filter.Compile();
-                var resultsQuery = db.Table<Data.Transaction>()
-                    .Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted)
-                    .OrderByDescending(it => it.TransactionDate)
-                    .ThenByDescending(it => it.EditDateTime);
-                if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
-                var results = resultsQuery.ToList();
+                var query = string.Format("select * from [Transaction] where {0}", filter);
+                if (!includeDeleted)
+                {
+                    query += " and [IsDeleted] = 0";
+                }
+                query += " order by [TransactionDate] desc, [EditDateTime] desc";
+                var resultsQuery = db.Query<Data.Transaction>(query);
+                List<Data.Transaction> results = pageSize.HasValue && pageSize.Value > 0 ? resultsQuery.Skip(currentRow).Take(pageSize.Value).ToList() : resultsQuery;
                 var coreResults = AutoMapper.Mapper.Map<List<Data.Transaction>, List<Transaction>>(results);
                 return coreResults.AsQueryable();
             }
         }
 
-        public async Task<IQueryable<Transaction>> GetFilteredEntriesAsync(Expression<Func<Transaction, bool>> filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null)
+        public async Task<IQueryable<Transaction>> GetFilteredEntriesAsync(string filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null)
         {
             var db = StirlingMoneyDatabaseInstance.GetDbAsync();
-            var filterDelegate = filter.Compile();
-            var resultsQuery = db.Table<Data.Transaction>()
-                .Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted)
-                .OrderByDescending(it => it.TransactionDate)
-                .ThenByDescending(it => it.EditDateTime);
-            if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
-            var results = await resultsQuery.ToListAsync();
+            var query = string.Format("select * from [Transaction] where {0}", filter);
+            if (!includeDeleted)
+            {
+                query += " and [IsDeleted] = 0";
+            }
+            query += " order by [TransactionDate] desc, [EditDateTime] desc";
+            var resultsQuery = await db.QueryAsync<Data.Transaction>(query);
+            List<Data.Transaction> results = pageSize.HasValue && pageSize.Value > 0 ? resultsQuery.Skip(currentRow).Take(pageSize.Value).ToList() : resultsQuery;
             var coreResults = AutoMapper.Mapper.Map<List<Data.Transaction>, List<Transaction>>(results);
             return coreResults.AsQueryable();
         }
 
-        public int GetFilteredEntriesCount(Expression<Func<Core.Data.Transaction, bool>> filter, bool includeDeleted = false)
+        public int GetFilteredEntriesCount(string filter, bool includeDeleted = false)
         {
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
-                var filterDelegate = filter.Compile();
-                return db.Table<Data.Transaction>().Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted).Count();
+                var query = string.Format("select count(*) from [Transaction] where {0}", filter);
+                if (!includeDeleted)
+                {
+                    query += " and [IsDeleted] = 0";
+                }
+                return db.ExecuteScalar<int>(query);
             }
         }
 
-        public async Task<int> GetFilteredEntriesCountAsync(Expression<Func<Core.Data.Transaction, bool>> filter, bool includeDeleted = false)
+        public async Task<int> GetFilteredEntriesCountAsync(string filter, bool includeDeleted = false)
         {
             var db = StirlingMoneyDatabaseInstance.GetDbAsync();
-            var filterDelegate = filter.Compile();
-            return await db.Table<Data.Transaction>().Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted).CountAsync();
+            var query = string.Format("select count(*) from [Transaction] where {0}", filter);
+            if (!includeDeleted)
+            {
+                query += " and [IsDeleted] = 0";
+            }
+            return await db.ExecuteScalarAsync<int>(query);
         }
 
         public double GetPostedSumByAccount(Guid accountId)

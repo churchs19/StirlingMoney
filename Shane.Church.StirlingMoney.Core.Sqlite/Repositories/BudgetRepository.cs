@@ -38,9 +38,8 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
                 foreach(var entry in entries)
                 {
                     entry.EditDateTime = DateTimeOffset.Now;
+                    db.InsertOrReplace(Data.Budget.FromCore(entry));
                 }
-                var sqliteEntries = AutoMapper.Mapper.Map<List<Budget>, List<Data.Budget>>(entries.ToList());
-                db.UpdateAll(sqliteEntries);
             }
         }
 
@@ -50,9 +49,8 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             foreach (var entry in entries)
             {
                 entry.EditDateTime = DateTimeOffset.Now;
+                await db.InsertOrReplaceAsync(Data.Budget.FromCore(entry));
             }
-            var sqliteEntries = AutoMapper.Mapper.Map<List<Budget>, List<Data.Budget>>(entries.ToList());
-            await db.UpdateAllAsync(sqliteEntries);
         }
 
         public void DeleteEntry(Guid entryId, bool hardDelete = false)
@@ -148,48 +146,58 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             return entry != null ? entry.ToCore() : null;
         }
 
-        public IQueryable<Budget> GetFilteredEntries(Expression<Func<Budget, bool>> filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null)
+        public IQueryable<Budget> GetFilteredEntries(string filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null)
         {
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
-                var filterDelegate = filter.Compile();
-                var resultsQuery = db.Table<Data.Budget>()
-                    .Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted)
-                    .OrderBy(it => it.BudgetName);
-                if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
-                var results = resultsQuery.ToList();
+                var query = string.Format("select * from [Budget] where {0}", filter);
+                if (!includeDeleted)
+                {
+                    query += " and [IsDeleted] = 0";
+                }
+                var resultsQuery = db.Query<Data.Budget>(query);
+                List<Data.Budget> results = pageSize.HasValue && pageSize.Value > 0 ? resultsQuery.Skip(currentRow).Take(pageSize.Value).ToList() : resultsQuery;
                 var coreResults = AutoMapper.Mapper.Map<List<Data.Budget>, List<Budget>>(results);
                 return coreResults.AsQueryable();
             }
         }
 
-        public async  Task<IQueryable<Budget>> GetFilteredEntriesAsync(Expression<Func<Budget, bool>> filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null)
+        public async  Task<IQueryable<Budget>> GetFilteredEntriesAsync(string filter, bool includeDeleted = false, int currentRow = 0, int? pageSize = null)
         {
             var db = StirlingMoneyDatabaseInstance.GetDbAsync();
-            var filterDelegate = filter.Compile();
-            var resultsQuery = db.Table<Data.Budget>()
-                .Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted)
-                .OrderBy(it => it.BudgetName);
-            if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
-            var results = await resultsQuery.ToListAsync();
+            var query = string.Format("select * from [Budget] where {0}", filter);
+            if (!includeDeleted)
+            {
+                query += " and [IsDeleted] = 0";
+            }
+            var resultsQuery = await db.QueryAsync<Data.Budget>(query);
+            List<Data.Budget> results = pageSize.HasValue && pageSize.Value > 0 ? resultsQuery.Skip(currentRow).Take(pageSize.Value).ToList() : resultsQuery;
             var coreResults = AutoMapper.Mapper.Map<List<Data.Budget>, List<Budget>>(results);
             return coreResults.AsQueryable();
         }
 
-        public int GetFilteredEntriesCount(Expression<Func<Core.Data.Budget, bool>> filter, bool includeDeleted = false)
+        public int GetFilteredEntriesCount(string filter, bool includeDeleted = false)
         {
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
-                var filterDelegate = filter.Compile();
-                return db.Table<Data.Budget>().Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted).Count();
+                var query = string.Format("select count(*) from [Budget] where {0}", filter);
+                if (!includeDeleted)
+                {
+                    query += " and [IsDeleted] = 0";
+                }
+                return db.ExecuteScalar<int>(query);
             }
         }
 
-        public async Task<int> GetFilteredEntriesCountAsync(Expression<Func<Core.Data.Budget, bool>> filter, bool includeDeleted = false)
+        public async Task<int> GetFilteredEntriesCountAsync(string filter, bool includeDeleted = false)
         {
             var db = StirlingMoneyDatabaseInstance.GetDbAsync();
-            var filterDelegate = filter.Compile();
-            return await db.Table<Data.Budget>().Where(it => includeDeleted ? filterDelegate(it.ToCore()) : filterDelegate(it.ToCore()) && !it.IsDeleted).CountAsync();
+            var query = string.Format("select count(*) from [Budget] where {0}", filter);
+            if (!includeDeleted)
+            {
+                query += " and [IsDeleted] = 0";
+            }
+            return await db.ExecuteScalarAsync<int>(query);
         }
     }
 }

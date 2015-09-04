@@ -135,12 +135,14 @@ namespace Shane.Church.StirlingMoney.Core.Services
 
 							DateTimeOffset lastSuccessfulSyncDate = _settingsService.LoadSetting<DateTimeOffset>("LastSuccessfulSync");
 
-							var localCategories = await _categories.GetFilteredEntriesAsync(it => it.EditDateTime >= lastSuccessfulSyncDate);
-							var localAccounts = await _accounts.GetFilteredEntriesAsync(it => it.EditDateTime >= lastSuccessfulSyncDate);
-							var localUsers = await _users.GetFilteredEntriesAsync(it => it.EditDateTime >= lastSuccessfulSyncDate);
-							var localBudgets = await _budgets.GetFilteredEntriesAsync(it => it.EditDateTime >= lastSuccessfulSyncDate);
-							var localGoals = await _goals.GetFilteredEntriesAsync(it => it.EditDateTime >= lastSuccessfulSyncDate);
-							var localTransactions = await _transactions.GetFilteredEntriesAsync(it => it.EditDateTime >= lastSuccessfulSyncDate);
+                            var filterString = string.Format("[EditDateTime] >= {0}", lastSuccessfulSyncDate.Ticks);
+
+                            var localCategories = await _categories.GetFilteredEntriesAsync(filterString, true);
+							var localAccounts = await _accounts.GetFilteredEntriesAsync(filterString, true);
+							var localUsers = await _users.GetFilteredEntriesAsync(filterString, true);
+							var localBudgets = await _budgets.GetFilteredEntriesAsync(filterString, true);
+							var localGoals = await _goals.GetFilteredEntriesAsync(filterString, true);
+							var localTransactions = await _transactions.GetFilteredEntriesAsync(filterString, true);
 
 							List<SyncItem> objects = new List<SyncItem>();
 							JsonSerializer serializer = JsonSerializer.Create(Client.SerializerSettings);
@@ -166,7 +168,7 @@ namespace Shane.Church.StirlingMoney.Core.Services
 
 							try
 							{
-								var updateTasks = new List<Task>();
+//								var updateTasks = new List<Task>();
 								foreach (var item in results.OrderBy(it => it["tableName"].ToString(), new TableNameSortComparer()))
 								{
 
@@ -174,48 +176,54 @@ namespace Shane.Church.StirlingMoney.Core.Services
 									{
 										case "Categories":
 											var categoryChanges = item["changes"].ToObject<List<Category>>();
-											updateTasks.Add(_categories.BatchUpdateEntriesAsync(categoryChanges));
+                                            //											updateTasks.Add(_categories.BatchUpdateEntriesAsync(categoryChanges));
+                                            _categories.BatchUpdateEntries(categoryChanges);
 											break;
 										case "Accounts":
 											var accountChanges = item["changes"].ToObject<List<Account>>();
-											updateTasks.Add(_accounts.BatchUpdateEntriesAsync(accountChanges));
+                                            //											updateTasks.Add(_accounts.BatchUpdateEntriesAsync(accountChanges));
+                                            _accounts.BatchUpdateEntries(accountChanges);
 											break;
 										case "AppSyncUsers":
 											var userChanges = item["changes"].ToObject<List<AppSyncUser>>().Where(it => it.UserEmail.ToLower() != this.Email.ToLower()).ToList();
-											updateTasks.Add(_users.BatchUpdateEntriesAsync(userChanges));
+                                            //											updateTasks.Add(_users.BatchUpdateEntriesAsync(userChanges));
+                                            _users.BatchUpdateEntries(userChanges);
 											break;
 										case "Budgets":
 											var budgetChanges = item["changes"].ToObject<List<Budget>>();
-											updateTasks.Add(_budgets.BatchUpdateEntriesAsync(budgetChanges));
+                                            //											updateTasks.Add(_budgets.BatchUpdateEntriesAsync(budgetChanges));
+                                            _budgets.BatchUpdateEntries(budgetChanges);
 											break;
 										case "Goals":
 											var goalChanges = item["changes"].ToObject<List<Goal>>();
-											updateTasks.Add(_goals.BatchUpdateEntriesAsync(goalChanges));
+                                            //											updateTasks.Add(_goals.BatchUpdateEntriesAsync(goalChanges));
+                                            _goals.BatchUpdateEntries(goalChanges);
 											break;
-										case "Transactions":
-											var transactionChanges = item["changes"].ToObject<List<Transaction>>();
-											updateTasks.Add(_transactions.BatchUpdateEntriesAsync(transactionChanges));
-											break;
-									}
+                                        case "Transactions":
+                                            var transactionChanges = item["changes"].ToObject<List<Transaction>>();
+                                            //                                            updateTasks.Add(_transactions.BatchUpdateEntriesAsync(transactionChanges));
+                                            _transactions.BatchUpdateEntries(transactionChanges);
+                                            break;
+                                    }
 								}
-								Task.WaitAll(updateTasks.ToArray());
+								//Task.WaitAll(updateTasks.ToArray());
 							}
 							catch
 							{
 								throw;
 							}
 
-							foreach (var t in _transactions.GetFilteredEntries(it=>it.IsDeleted).Select(it=>it.TransactionId))
+							foreach (var t in _transactions.GetFilteredEntries("[IsDeleted] = 1", true).Select(it=>it.TransactionId))
 								await _transactions.DeleteEntryAsync(t, true);
-							foreach (var t in _goals.GetFilteredEntries(it => it.IsDeleted).Select(it=>it.GoalId))
+							foreach (var t in _goals.GetFilteredEntries("[IsDeleted] = 1", true).Select(it=>it.GoalId))
 								await _goals.DeleteEntryAsync(t, true);
-							foreach (var t in _budgets.GetFilteredEntries(it => it.IsDeleted).Select(it=>it.BudgetId))
+							foreach (var t in _budgets.GetFilteredEntries("[IsDeleted] = 1", true).Select(it=>it.BudgetId))
 								await _budgets.DeleteEntryAsync(t, true);
-							foreach (var t in _users.GetFilteredEntries(it => it.IsDeleted).Select(it=>it.UserId))
+							foreach (var t in _users.GetFilteredEntries("[IsDeleted] = 1", true).Select(it=>it.UserId))
 								await _users.DeleteEntryAsync(t, true);
-							foreach (var t in _accounts.GetFilteredEntries(it => it.IsDeleted).Select(it=>it.AccountId))
+							foreach (var t in _accounts.GetFilteredEntries("[IsDeleted] = 1", true).Select(it=>it.AccountId))
                                 await _accounts.DeleteEntryAsync(t, true);
-							foreach (var t in _categories.GetFilteredEntries(it => it.IsDeleted).Select(it=>it.CategoryId))
+							foreach (var t in _categories.GetFilteredEntries("[IsDeleted] = 1", true).Select(it=>it.CategoryId))
                                 await _categories.DeleteEntryAsync(t, true);
 
 							_settingsService.SaveSetting<DateTimeOffset>(DateTimeOffset.Now, "LastSuccessfulSync");

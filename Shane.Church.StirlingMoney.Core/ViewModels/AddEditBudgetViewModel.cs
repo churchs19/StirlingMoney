@@ -256,7 +256,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 				b.StartDate = new DateTimeOffset(DateTime.SpecifyKind(StartDate.Date, DateTimeKind.Utc));
 				if (Type != Resources.BudgetAllExpensesLabel)
 				{
-					var catQuery = await _categoryRepository.GetFilteredEntriesAsync(it => it.CategoryName == Type);
+					var catQuery = await _categoryRepository.GetFilteredEntriesAsync(string.Format("[CategoryId] = '{0}'", Type));
 					b.CategoryId = catQuery.Select(it => it.CategoryId).FirstOrDefault();
 				}
 				else

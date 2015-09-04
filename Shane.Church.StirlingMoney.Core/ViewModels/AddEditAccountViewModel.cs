@@ -113,7 +113,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 		{
 			if (accountId != Guid.Empty)
 			{
-				var query = await _accountRepository.GetFilteredEntriesAsync(it => it.AccountId == accountId);
+				var query = await _accountRepository.GetFilteredEntriesAsync(string.Format("[AccountId] = '{0}'", accountId));
 				var a = query.FirstOrDefault();
 				if (a != null)
 				{

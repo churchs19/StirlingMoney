@@ -28,7 +28,7 @@ namespace Shane.Church.StirlingMoney.WP
 		{
 			base.OnNavigatedTo(e);
 
-			var navContext = Newtonsoft.Json.Linq.JObject.FromObject(this.NavigationContext.QueryString);
+			var navContext = Newtonsoft.Json.Linq.JObject.FromObject(this.NavigationContext);
 
 			Task.Run(() => Initialize(navContext));
 		}

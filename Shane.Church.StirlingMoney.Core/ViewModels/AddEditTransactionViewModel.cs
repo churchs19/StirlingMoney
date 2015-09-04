@@ -248,7 +248,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                 if (_transactionType == TransactionType.Check)
                 {
                     //var checks = _transactionRepository.GetAllIndexKeys<Tuple<Guid, long>>("TransactionAccountIdCheckNumber").Where(it => it.Value.Item1 == AccountId).Select(it => it.Value.Item2);
-                    var checks = _transactionRepository.GetFilteredEntries(it => it.AccountId == AccountId && it.CheckNumber > 0).Select(it => it.CheckNumber);
+                    var checks = _transactionRepository.GetFilteredEntries(string.Format("[AccountId] = '{0}' and [CheckNumber] > 0", AccountId)).Select(it => it.CheckNumber);
                     if (checks.Any())
                     {
                         CheckNumber = checks.Max() + 1;
@@ -355,7 +355,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                 Guid categoryId = Guid.Empty;
                 if (!string.IsNullOrEmpty(Category))
                 {
-                    var catQuery = await _categoryRepository.GetFilteredEntriesAsync(it => it.CategoryName == Category);
+                    var catQuery = await _categoryRepository.GetFilteredEntriesAsync(string.Format("[CategoryName] = '{0}'", Category));
                     categoryId = catQuery.Select(it => it.CategoryId).FirstOrDefault();
                     if (categoryId.Equals(Guid.Empty))
                     {
@@ -406,7 +406,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
                             destTransaction.TransactionDate = new DateTimeOffset(DateTime.SpecifyKind(TransactionDate, DateTimeKind.Utc));
                             destTransaction.Note = Note;
                             destTransaction.Posted = Posted;
-                            var transAcctQuery = await _accountRepository.GetFilteredEntriesAsync(it => it.AccountName == this.TransferAccount);
+                            var transAcctQuery = await _accountRepository.GetFilteredEntriesAsync(string.Format("[AccountName] = '{0}'", this.TransferAccount));
                             destTransaction.AccountId = transAcctQuery.Select(it => it.AccountId).FirstOrDefault();
                             destTransaction.Amount = Amount;
                             var sourceAccount = await _accountRepository.GetEntryAsync(transaction.AccountId);

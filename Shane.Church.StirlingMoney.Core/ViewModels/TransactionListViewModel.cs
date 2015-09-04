@@ -276,7 +276,7 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
             await Task.Yield();
 
             //var updated = _transactionRepository.GetAllIndexKeys<Tuple<Guid, DateTimeOffset>>("TransactionAccountIdEditDateTime").Where(it => it.Value.Item2 > _refreshTime && it.Value.Item1 == this.AccountId).Select(it => it.Key);
-            var updated = await _transactionRepository.GetFilteredEntriesAsync(it => it.EditDateTime > _refreshTime && it.AccountId == this.AccountId);
+            var updated = await _transactionRepository.GetFilteredEntriesAsync(string.Format("[EditDateTime] > {0} AND [AccountId] = '{1}'", _refreshTime.Ticks, this.AccountId));
             var updatedList = updated.ToList();
             foreach (var t in updatedList)
             {

@@ -48,7 +48,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 		{
 			get
 			{
-                return _transactionRepository.GetFilteredEntriesCount(t => t.AccountId == AccountId);
+                return _transactionRepository.GetFilteredEntriesCount(string.Format("[AccountId] = '{0}'", AccountId));
 			}
 		}
 
@@ -82,7 +82,7 @@ namespace Shane.Church.StirlingMoney.Core.Data
 
 		public IQueryable<Transaction> GetTransactions(int currentRow = 0, int? pageSize = null)
 		{
-            return _transactionRepository.GetFilteredEntries(t => t.AccountId == AccountId, false, currentRow, pageSize);
+            return _transactionRepository.GetFilteredEntries(string.Format("[AccountId] = '{0}'", this.AccountId), false, currentRow, pageSize);
 		}
 
 		public static double GetAccountBalance(Guid AccountId)

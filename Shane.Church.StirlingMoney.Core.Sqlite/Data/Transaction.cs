@@ -17,21 +17,15 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 		public string Note { get; set; }
         [Indexed]
         public bool Posted { get; set; }
+        [Indexed]
 		public long CheckNumber { get; set; }
         [Indexed]
 		public DateTimeOffset EditDateTime { get; set; }
 		public bool IsDeleted { get; set; }
 
-
-        [ForeignKey(typeof(Account))]
+        [Indexed]
 		public Guid AccountId { get; set; }
-        [ForeignKey(typeof(Category))]
 		public Guid CategoryId { get; set; }
-
-        [ManyToOne]
-        public Account Account { get; set; }
-        [ManyToOne]
-        public Category Category { get; set; }
 
         public static Transaction FromCore(Core.Data.Transaction toMap)
         {
