@@ -50,7 +50,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             {
                 entry.EditDateTime = DateTime.Now;
             }
-            var sqliteEntries = AutoMapper.Mapper.Map<List<Category>, List<Data.Category>>(entries.ToList());
+            var sqliteEntries = entries.Select(it => Data.Category.FromCore(it)).ToList();
             await db.InsertOrReplaceAllAsync(sqliteEntries);
         }
 
@@ -102,7 +102,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
                 if (!includeDeleted) resultsQuery = resultsQuery.Where(it => !it.IsDeleted);
                 if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
                 var results = resultsQuery.ToList();
-                return AutoMapper.Mapper.Map<List<Data.Category>, List<Category>>(results).AsQueryable();
+                return results.Select(it => it.ToCore()).AsQueryable();
             }
         }
 
@@ -113,7 +113,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             if (!includeDeleted) resultsQuery = resultsQuery.Where(it => it.IsDeleted);
             if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
             var results = await resultsQuery.ToListAsync();
-            return AutoMapper.Mapper.Map<List<Data.Category>, List<Category>>(results).AsQueryable();
+            return results.Select(it => it.ToCore()).AsQueryable();
         }
 
         public int GetEntriesCount(bool includeDeleted = false)
@@ -157,8 +157,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
                 }
                 var resultsQuery = db.Query<Data.Category>(query);
                 List<Data.Category> results = pageSize.HasValue && pageSize.Value > 0 ? resultsQuery.Skip(currentRow).Take(pageSize.Value).ToList() : resultsQuery;
-                var coreResults = AutoMapper.Mapper.Map<List<Data.Category>, List<Category>>(results);
-                return coreResults.AsQueryable();
+                return results.Select(it => it.ToCore()).AsQueryable();
             }
         }
 
@@ -172,8 +171,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             }
             var resultsQuery = await db.QueryAsync<Data.Category>(query);
             List<Data.Category> results = pageSize.HasValue && pageSize.Value > 0 ? resultsQuery.Skip(currentRow).Take(pageSize.Value).ToList() : resultsQuery;
-            var coreResults = AutoMapper.Mapper.Map<List<Data.Category>, List<Category>>(results);
-            return coreResults.AsQueryable();
+            return results.Select(it => it.ToCore()).AsQueryable();
         }
 
         public int GetFilteredEntriesCount(string filter, bool includeDeleted = false)

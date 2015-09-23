@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using SQLite.Net.Attributes;
+﻿using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 using System;
 
@@ -28,12 +27,34 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 
         public static Goal FromCore(Core.Data.Goal toMap)
         {
-            return Mapper.Map<Core.Data.Goal, Goal>(toMap);
+            return new Goal()
+            {
+                GoalId = toMap.GoalId,
+                GoalName = toMap.GoalName,
+                AccountId = toMap.AccountId,
+                Amount = toMap.Amount,
+                InitialBalance = toMap.InitialBalance,
+                TargetDate = toMap.TargetDate,
+                StartDate = toMap.StartDate,
+                EditDateTime = toMap.EditDateTime,
+                IsDeleted = toMap.IsDeleted
+            };
         }
 
         public Core.Data.Goal ToCore()
         {
-            return Mapper.Map<Goal, Core.Data.Goal>(this);
+            return new Core.Data.Goal()
+            {
+                GoalId = this.GoalId,
+                GoalName = this.GoalName,
+                AccountId = this.AccountId,
+                Amount = this.Amount,
+                InitialBalance = this.InitialBalance,
+                TargetDate = this.TargetDate,
+                StartDate = this.StartDate,
+                EditDateTime = this.EditDateTime,
+                IsDeleted = this.IsDeleted
+            };
         }
     }
 }

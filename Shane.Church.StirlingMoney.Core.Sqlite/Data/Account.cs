@@ -1,6 +1,5 @@
 ﻿using SQLite.Net;
 using System;
-using AutoMapper;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 using System.Collections.Generic;
@@ -25,14 +24,30 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 		public bool IsDeleted { get; set; }
 		public string ImageUri { get; set; }
 
-        public static Account FromCore(Core.Data.Account accountToMap)
+        public static Account FromCore(Core.Data.Account toMap)
         {
-            return Mapper.Map<Core.Data.Account, Account>(accountToMap);
+            return new Account()
+            {
+                AccountId = toMap.AccountId,
+                AccountName = toMap.AccountName,
+                InitialBalance = toMap.InitialBalance,
+                EditDateTime = toMap.EditDateTime,
+                IsDeleted = toMap.IsDeleted,
+                ImageUri = toMap.ImageUri
+            };
         }
 
         public Core.Data.Account ToCore()
         {
-            return Mapper.Map<Account, Core.Data.Account>(this);
+            return new Core.Data.Account()
+            {
+                AccountId = this.AccountId,
+                AccountName = this.AccountName,
+                InitialBalance = this.InitialBalance,
+                EditDateTime = this.EditDateTime,
+                IsDeleted = this.IsDeleted,
+                ImageUri = this.ImageUri
+            };
         }
 	}
 }

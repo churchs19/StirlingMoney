@@ -214,17 +214,17 @@ namespace Shane.Church.StirlingMoney.Core.Services
 							}
 
 							foreach (var t in _transactions.GetFilteredEntries("[IsDeleted] = 1", true).Select(it=>it.TransactionId))
-								await _transactions.DeleteEntryAsync(t, true);
+								_transactions.DeleteEntry(t, true);
 							foreach (var t in _goals.GetFilteredEntries("[IsDeleted] = 1", true).Select(it=>it.GoalId))
-								await _goals.DeleteEntryAsync(t, true);
+								_goals.DeleteEntry(t, true);
 							foreach (var t in _budgets.GetFilteredEntries("[IsDeleted] = 1", true).Select(it=>it.BudgetId))
-								await _budgets.DeleteEntryAsync(t, true);
+								_budgets.DeleteEntry(t, true);
 							foreach (var t in _users.GetFilteredEntries("[IsDeleted] = 1", true).Select(it=>it.UserId))
-								await _users.DeleteEntryAsync(t, true);
+								_users.DeleteEntry(t, true);
 							foreach (var t in _accounts.GetFilteredEntries("[IsDeleted] = 1", true).Select(it=>it.AccountId))
-                                await _accounts.DeleteEntryAsync(t, true);
+                                _accounts.DeleteEntry(t, true);
 							foreach (var t in _categories.GetFilteredEntries("[IsDeleted] = 1", true).Select(it=>it.CategoryId))
-                                await _categories.DeleteEntryAsync(t, true);
+                                _categories.DeleteEntry(t, true);
 
 							_settingsService.SaveSetting<DateTimeOffset>(DateTimeOffset.Now, "LastSuccessfulSync");
 						}

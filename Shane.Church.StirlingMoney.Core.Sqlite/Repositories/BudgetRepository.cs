@@ -101,7 +101,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
                 if (!includeDeleted) resultsQuery = resultsQuery.Where(it => !it.IsDeleted);
                 if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
                 var results = resultsQuery.ToList();
-                return AutoMapper.Mapper.Map<List<Data.Budget>, List<Budget>>(results).AsQueryable();
+                return results.Select(it => it.ToCore()).AsQueryable();
             }
         }
 
@@ -112,7 +112,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             if (!includeDeleted) resultsQuery = resultsQuery.Where(it => !it.IsDeleted);
             if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
             var results = await resultsQuery.ToListAsync();
-            return AutoMapper.Mapper.Map<List<Data.Budget>, List<Budget>>(results).AsQueryable();
+            return results.Select(it => it.ToCore()).AsQueryable();
         }
 
         public int GetEntriesCount(bool includeDeleted = false)
@@ -157,8 +157,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
                 }
                 var resultsQuery = db.Query<Data.Budget>(query);
                 List<Data.Budget> results = pageSize.HasValue && pageSize.Value > 0 ? resultsQuery.Skip(currentRow).Take(pageSize.Value).ToList() : resultsQuery;
-                var coreResults = AutoMapper.Mapper.Map<List<Data.Budget>, List<Budget>>(results);
-                return coreResults.AsQueryable();
+                return results.Select(it => it.ToCore()).AsQueryable();
             }
         }
 
@@ -172,8 +171,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             }
             var resultsQuery = await db.QueryAsync<Data.Budget>(query);
             List<Data.Budget> results = pageSize.HasValue && pageSize.Value > 0 ? resultsQuery.Skip(currentRow).Take(pageSize.Value).ToList() : resultsQuery;
-            var coreResults = AutoMapper.Mapper.Map<List<Data.Budget>, List<Budget>>(results);
-            return coreResults.AsQueryable();
+            return results.Select(it => it.ToCore()).AsQueryable();
         }
 
         public int GetFilteredEntriesCount(string filter, bool includeDeleted = false)

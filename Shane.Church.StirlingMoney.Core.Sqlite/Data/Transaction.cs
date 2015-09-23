@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using SQLite.Net.Attributes;
+﻿using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 using System;
 
@@ -25,16 +24,43 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 
         [Indexed]
 		public Guid AccountId { get; set; }
+        [Indexed]
 		public Guid CategoryId { get; set; }
 
         public static Transaction FromCore(Core.Data.Transaction toMap)
         {
-            return Mapper.Map<Core.Data.Transaction, Transaction>(toMap);
+            return new Transaction()
+            {
+                TransactionId = toMap.TransactionId,
+                TransactionDate = toMap.TransactionDate,
+                Amount = toMap.Amount,
+                Location = toMap.Location,
+                Note = toMap.Note,
+                Posted = toMap.Posted,
+                CheckNumber = toMap.CheckNumber,
+                EditDateTime = toMap.EditDateTime,
+                IsDeleted = toMap.IsDeleted,
+                AccountId = toMap.AccountId,
+                CategoryId = toMap.CategoryId
+            };
         }
 
         public Core.Data.Transaction ToCore()
         {
-            return Mapper.Map<Transaction, Core.Data.Transaction>(this);
+            return new Core.Data.Transaction()
+            {
+                TransactionId = this.TransactionId,
+                TransactionDate = this.TransactionDate,
+                Amount = this.Amount,
+                Location = this.Location,
+                Note = this.Note,
+                Posted = this.Posted,
+                CheckNumber = this.CheckNumber,
+                EditDateTime = this.EditDateTime,
+                IsDeleted = this.IsDeleted,
+                AccountId = this.AccountId,
+                CategoryId = this.CategoryId
+            };
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using AutoMapper;
 using SQLite.Net.Attributes;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
@@ -24,12 +23,28 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 
         public static AppSyncUser FromCore(Core.Data.AppSyncUser toMap)
         {
-            return Mapper.Map<Core.Data.AppSyncUser, AppSyncUser>(toMap);
+            return new AppSyncUser()
+            {
+                AppSyncId = toMap.AppSyncId,
+                UserEmail = toMap.UserEmail,
+                UserId = toMap.UserId,
+                EditDateTime = toMap.EditDateTime,
+                IsDeleted = toMap.IsDeleted,
+                IsSyncOwner = toMap.IsSyncOwner
+            };
         }
 
         public Core.Data.AppSyncUser ToCore()
         {
-            return Mapper.Map<AppSyncUser, Core.Data.AppSyncUser>(this);
+            return new Core.Data.AppSyncUser()
+            {
+                AppSyncId = this.AppSyncId,
+                UserEmail = this.UserEmail,
+                UserId = this.UserId,
+                EditDateTime = this.EditDateTime,
+                IsDeleted = this.IsDeleted,
+                IsSyncOwner = this.IsSyncOwner
+            };
         }
     }
 }

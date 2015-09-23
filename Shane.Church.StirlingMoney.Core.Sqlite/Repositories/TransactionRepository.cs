@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Shane.Church.StirlingMoney.Core.Data;
 using System.Linq.Expressions;
-using AutoMapper;
 using SQLite.Net;
 using SQLiteNetExtensions;
 using SQLiteNetExtensionsAsync;
@@ -105,7 +104,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
                 if (!includeDeleted) resultsQuery = resultsQuery.Where(it => !it.IsDeleted);
                 if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
                 var results = resultsQuery.ToList();
-                return Mapper.Map<List<Data.Transaction>, List<Transaction>>(results).AsQueryable();
+                return results.Select(it => it.ToCore()).AsQueryable();
             }
         }
 
@@ -116,8 +115,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             if (!includeDeleted) resultsQuery = resultsQuery.Where(it => !it.IsDeleted);
             if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
             var results = await resultsQuery.ToListAsync();
-            return Mapper.Map<List<Data.Transaction>, List<Transaction>>(results).AsQueryable();
-
+            return results.Select(it => it.ToCore()).AsQueryable();
         }
 
         public int GetEntriesCount(bool includeDeleted = false)
@@ -162,8 +160,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
                 query += " order by [TransactionDate] desc, [EditDateTime] desc";
                 var resultsQuery = db.Query<Data.Transaction>(query);
                 List<Data.Transaction> results = pageSize.HasValue && pageSize.Value > 0 ? resultsQuery.Skip(currentRow).Take(pageSize.Value).ToList() : resultsQuery;
-                var coreResults = AutoMapper.Mapper.Map<List<Data.Transaction>, List<Transaction>>(results);
-                return coreResults.AsQueryable();
+                return results.Select(it => it.ToCore()).AsQueryable();
             }
         }
 
@@ -178,8 +175,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             query += " order by [TransactionDate] desc, [EditDateTime] desc";
             var resultsQuery = await db.QueryAsync<Data.Transaction>(query);
             List<Data.Transaction> results = pageSize.HasValue && pageSize.Value > 0 ? resultsQuery.Skip(currentRow).Take(pageSize.Value).ToList() : resultsQuery;
-            var coreResults = AutoMapper.Mapper.Map<List<Data.Transaction>, List<Transaction>>(results);
-            return coreResults.AsQueryable();
+            return results.Select(it => it.ToCore()).AsQueryable();
         }
 
         public int GetFilteredEntriesCount(string filter, bool includeDeleted = false)

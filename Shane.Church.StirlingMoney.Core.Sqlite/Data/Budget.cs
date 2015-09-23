@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using SQLite.Net.Attributes;
+﻿using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 using System;
 
@@ -28,12 +27,36 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 
         public static Budget FromCore(Core.Data.Budget toMap)
         {
-            return Mapper.Map<Core.Data.Budget, Budget>(toMap);
+            return new Budget()
+            {
+                BudgetId = toMap.BudgetId,
+                BudgetName = toMap.BudgetName,
+                BudgetAmount = toMap.BudgetAmount,
+                CategoryId = toMap.CategoryId.HasValue ? toMap.CategoryId.Value : Guid.Empty,
+                BudgetPeriod = toMap.BudgetPeriod,
+                StartDate = toMap.StartDate,
+                EndDate = toMap.EndDate,
+                EditDateTime = toMap.EditDateTime,
+                IsDeleted = toMap.IsDeleted
+            };
+//            return Mapper.Map<Core.Data.Budget, Budget>(toMap);
         }
 
         public Core.Data.Budget ToCore()
         {
-            return Mapper.Map<Budget, Core.Data.Budget>(this);
+            return new Core.Data.Budget()
+            {
+                BudgetId = this.BudgetId,
+                BudgetName = this.BudgetName,
+                BudgetAmount = this.BudgetAmount,
+                CategoryId = this.CategoryId != Guid.Empty ? this.CategoryId : (Guid?)null,
+                BudgetPeriod = this.BudgetPeriod,
+                StartDate = this.StartDate,
+                EndDate = this.EndDate,
+                EditDateTime = this.EditDateTime,
+                IsDeleted = this.IsDeleted
+            };
+            //return Mapper.Map<Budget, Core.Data.Budget>(this);
         }
     }
 }

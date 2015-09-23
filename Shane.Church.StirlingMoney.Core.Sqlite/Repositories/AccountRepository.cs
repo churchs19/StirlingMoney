@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
-using AutoMapper;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
 {
@@ -59,12 +58,14 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
         {
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {
-                TransactionRepository transRepo = new TransactionRepository();
-                var transactions = transRepo.GetFilteredEntries(string.Format("[AccountId] = {0}", entryId));
-                foreach (var t in transactions)
-                {
-                    transRepo.DeleteEntry(t.TransactionId, hardDelete);
-                }
+                //TransactionRepository transRepo = new TransactionRepository();
+                //var transactions = transRepo.GetFilteredEntries(string.Format("[AccountId] = '{0}'", entryId));
+                //foreach (var t in transactions)
+                //{
+                //    transRepo.DeleteEntry(t.TransactionId, hardDelete);
+                //}
+                var transactionsQuery = hardDelete ? string.Format("delete from [Transaction] where [AccountId] = '{0}'", entryId) : string.Format("update [Transaction] set [IsDeleted] = 1 where [AccountId] = '{0}'", entryId);
+                db.Execute(transactionsQuery);
                 if (hardDelete)
                 {
                     db.Delete<Sqlite.Data.Account>(entryId);
@@ -89,7 +90,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             if(entry != null)
             {
                 TransactionRepository transRepo = new TransactionRepository();
-                var transactions = await transRepo.GetFilteredEntriesAsync(string.Format("[AccountId] = {0}", entryId));
+                var transactions = await transRepo.GetFilteredEntriesAsync(string.Format("[AccountId] = '{0}'", entryId));
                 foreach (var t in transactions)
                 {
                     await transRepo.DeleteEntryAsync(t.TransactionId, hardDelete);
@@ -115,7 +116,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
                 if (!includeDeleted) resultsQuery = resultsQuery.Where(it => !it.IsDeleted);
                 if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
                 var results = resultsQuery.ToList();
-                return Mapper.Map<List<Sqlite.Data.Account>, List<Core.Data.Account>>(results).AsQueryable();
+                return results.Select(it=>it.ToCore()).AsQueryable();
             }
         }
 
@@ -126,7 +127,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             if (!includeDeleted) resultsQuery = resultsQuery.Where(it => !it.IsDeleted);
             if (pageSize.HasValue && pageSize.Value > 0) resultsQuery = resultsQuery.Skip(currentRow).Take(pageSize.Value);
             var results = await resultsQuery.ToListAsync();
-            return Mapper.Map<List<Sqlite.Data.Account>, List<Core.Data.Account>>(results).AsQueryable();
+            return results.Select(it => it.ToCore()).AsQueryable();
         }
 
         public int GetEntriesCount(bool includeDeleted = false)
@@ -170,8 +171,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
                 }
                 var resultsQuery = db.Query<Data.Account>(query);
                 List<Data.Account> results = pageSize.HasValue && pageSize.Value > 0 ? resultsQuery.Skip(currentRow).Take(pageSize.Value).ToList() : resultsQuery;
-                var coreResults = Mapper.Map<List<Data.Account>, List<Core.Data.Account>>(results);
-                return coreResults.AsQueryable();
+                return results.Select(it => it.ToCore()).AsQueryable();
             }
         }
 
@@ -185,8 +185,7 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Repositories
             }
             var resultsQuery = await db.QueryAsync<Data.Account>(query);
             List<Data.Account> results = pageSize.HasValue && pageSize.Value > 0 ? resultsQuery.Skip(currentRow).Take(pageSize.Value).ToList() : resultsQuery;
-            var coreResults = Mapper.Map<List<Data.Account>, List<Core.Data.Account>>(results);
-            return coreResults.AsQueryable();
+            return results.Select(it => it.ToCore()).AsQueryable();
         }
 
         public int GetFilteredEntriesCount(string filter, bool includeDeleted = false)

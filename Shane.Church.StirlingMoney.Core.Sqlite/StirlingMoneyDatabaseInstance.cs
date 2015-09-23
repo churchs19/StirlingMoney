@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Shane.Church.StirlingMoney.Core.Services;
+﻿using Shane.Church.StirlingMoney.Core.Services;
 using SQLite.Net;
 using SQLite.Net.Async;
 using SQLite.Net.Interop;
@@ -20,22 +19,22 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite
             if (path == null) throw new ArgumentNullException("path");
             DbPath = System.IO.Path.Combine(path, DB_FILE);
 
-            Mapper.Initialize(cfg =>
-            {
-                cfg.ConstructServicesUsing(type => ContainerService.Container.Locate(type));
-                cfg.CreateMap<Data.Account, Core.Data.Account>().ConstructUsingServiceLocator();
-                cfg.CreateMap<Core.Data.Account, Data.Account>();
-                cfg.CreateMap<Data.AppSyncUser, Core.Data.AppSyncUser>().ConstructUsingServiceLocator();
-                cfg.CreateMap<Core.Data.AppSyncUser, Data.AppSyncUser>();
-                cfg.CreateMap<Data.Budget, Core.Data.Budget>().ConstructUsingServiceLocator();
-                cfg.CreateMap<Core.Data.Budget, Data.Budget>();
-                cfg.CreateMap<Data.Category, Core.Data.Category>().ConstructUsingServiceLocator();
-                cfg.CreateMap<Core.Data.Category, Data.Category>();
-                cfg.CreateMap<Data.Goal, Core.Data.Goal>().ConstructUsingServiceLocator();
-                cfg.CreateMap<Core.Data.Goal, Data.Goal>();
-                cfg.CreateMap<Data.Transaction, Core.Data.Transaction>().ConstructUsingServiceLocator();
-                cfg.CreateMap<Core.Data.Transaction, Data.Transaction>();
-            });
+            //Mapper.Initialize(cfg =>
+            //{
+            //    cfg.ConstructServicesUsing(type => ContainerService.Container.Locate(type));
+            //    cfg.CreateMap<Data.Account, Core.Data.Account>().ConstructUsingServiceLocator();
+            //    cfg.CreateMap<Core.Data.Account, Data.Account>();
+            //    cfg.CreateMap<Data.AppSyncUser, Core.Data.AppSyncUser>().ConstructUsingServiceLocator();
+            //    cfg.CreateMap<Core.Data.AppSyncUser, Data.AppSyncUser>();
+            //    cfg.CreateMap<Data.Budget, Core.Data.Budget>().ConstructUsingServiceLocator();
+            //    cfg.CreateMap<Core.Data.Budget, Data.Budget>();
+            //    cfg.CreateMap<Data.Category, Core.Data.Category>().ConstructUsingServiceLocator();
+            //    cfg.CreateMap<Core.Data.Category, Data.Category>();
+            //    cfg.CreateMap<Data.Goal, Core.Data.Goal>().ConstructUsingServiceLocator();
+            //    cfg.CreateMap<Core.Data.Goal, Data.Goal>();
+            //    cfg.CreateMap<Data.Transaction, Core.Data.Transaction>().ConstructUsingServiceLocator();
+            //    cfg.CreateMap<Core.Data.Transaction, Data.Transaction>();
+            //});
 
             using (var db = StirlingMoneyDatabaseInstance.GetDb())
             {

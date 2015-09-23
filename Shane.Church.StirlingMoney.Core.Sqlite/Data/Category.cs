@@ -1,5 +1,4 @@
 ﻿using System;
-using AutoMapper;
 using SQLite.Net.Attributes;
 
 namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
@@ -22,12 +21,24 @@ namespace Shane.Church.StirlingMoney.Core.Sqlite.Data
 
         public static Category FromCore(Core.Data.Category toMap)
         {
-            return Mapper.Map<Core.Data.Category, Category>(toMap);
+            return new Category()
+            {
+                CategoryId = toMap.CategoryId,
+                CategoryName = toMap.CategoryName,
+                EditDateTime = toMap.EditDateTime,
+                IsDeleted = toMap.IsDeleted
+            };
         }
 
         public Core.Data.Category ToCore()
         {
-            return Mapper.Map<Category, Core.Data.Category>(this);
+            return new Core.Data.Category()
+            {
+                CategoryId = this.CategoryId,
+                CategoryName = this.CategoryName,
+                EditDateTime = this.EditDateTime,
+                IsDeleted = this.IsDeleted
+            };
         }
     }
 }
