@@ -217,15 +217,15 @@
     <value>viết kiểm tra</value>
   </data>
   <data name="AppCopyright" xml:space="preserve">
-    <value>Bản quyền © Shane Church 2014</value>
+    <value>Bản quyền © Shane Church 2015</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
     <value>Một tổ chức tài chính cho Windows Phone</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>Stirling tiền</value>
+    <data name="AppTitle" xml:space="preserve">
+    <value>Stirling Money - Old</value>
   </data>
-  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
     <value>Thử nghiệm của ứng dụng này đã hết hạn. Bạn có muốn mua ứng dụng bây giờ? Nếu bạn chọn màu - bạn sẽ được chuyển hướng đến thị trường.</value>
   </data>
   <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
@@ -827,5 +827,8 @@ Tôi có an ninh của bạn rất nghiêm túc và tất cả dữ liệu đư�
   </data>
   <data name="NoDataLabel" xml:space="preserve">
     <value />
+  </data>
+  <data name="DeprecatedMessage" xml:space="preserve">
+    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
   </data>
 </root>

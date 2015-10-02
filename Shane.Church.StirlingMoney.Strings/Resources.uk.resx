@@ -217,15 +217,15 @@
     <value>написати перевірка</value>
   </data>
   <data name="AppCopyright" xml:space="preserve">
-    <value>Copyright © 2014 Shane Church</value>
+    <value>Copyright © 2015 Shane Church</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
     <value>Фінансові Організатор для Windows Phone</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>Стірлінг гроші</value>
+    <data name="AppTitle" xml:space="preserve">
+    <value>Stirling Money - Old</value>
   </data>
-  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
     <value>Судовий розгляд цього додатка, минув. Ви хочете придбати додаток зараз? Якщо вибрати параметр так - ви будете перенаправлені на ринок.</value>
   </data>
   <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
@@ -827,5 +827,8 @@
   </data>
   <data name="NoDataLabel" xml:space="preserve">
     <value />
+  </data>
+  <data name="DeprecatedMessage" xml:space="preserve">
+    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
   </data>
 </root>

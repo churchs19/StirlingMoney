@@ -217,15 +217,15 @@
     <value>Skriv check</value>
   </data>
   <data name="AppCopyright" xml:space="preserve">
-    <value>Copyright © Shane Church 2014</value>
+    <value>Copyright © Shane Church 2015</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
     <value>En finansiell arrangör för Windows Phone</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>Stirling pengar</value>
+    <data name="AppTitle" xml:space="preserve">
+    <value>Stirling Money - Old</value>
   </data>
-  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
     <value>Rättegången mot denna ansökan har löpt ut. Vill du köpa programmet nu? Om du väljer Ja - kommer du att omdirigeras till marknadsplatsen.</value>
   </data>
   <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
@@ -827,5 +827,8 @@ Jag tar din säkerhet på allvar och alla data överförs säkert över HTTPS oc
   </data>
   <data name="NoDataLabel" xml:space="preserve">
     <value />
+  </data>
+  <data name="DeprecatedMessage" xml:space="preserve">
+    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
   </data>
 </root>

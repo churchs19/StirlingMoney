@@ -217,15 +217,15 @@
     <value>चेक लिखने</value>
   </data>
   <data name="AppCopyright" xml:space="preserve">
-    <value>कॉपीराइट © शेन चर्च 2014</value>
+    <value>कॉपीराइट © शेन चर्च 2015</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
     <value>Windows Phone के लिए एक वित्तीय आयोजक</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>Stirling पैसे</value>
+    <data name="AppTitle" xml:space="preserve">
+    <value>Stirling Money - Old</value>
   </data>
-  <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
+    <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
     <value>इस आवेदन का परीक्षण समाप्त हो गया है। क्या आप आवेदन पत्र अब खरीद करना चाहते हैं? यदि आप हाँ - चुन तुम बाजार करने के लिए पुनः निर्देशित किया जाएगा।</value>
   </data>
   <data name="AppTrialEnd_MessageBox_SkipFurtherRemindersMessage" xml:space="preserve">
@@ -827,5 +827,8 @@ OneDrive से अपने बैकअप के साथ आपके स�
   </data>
   <data name="NoDataLabel" xml:space="preserve">
     <value />
+  </data>
+  <data name="DeprecatedMessage" xml:space="preserve">
+    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
   </data>
 </root>

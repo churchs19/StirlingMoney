@@ -217,13 +217,13 @@
     <value>write check</value>
   </data>
   <data name="AppCopyright" xml:space="preserve">
-    <value>Copyright © Shane Church 2014</value>
+    <value>Copyright © Shane Church 2015</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
     <value>A financial organizer for Windows Phone</value>
   </data>
   <data name="AppTitle" xml:space="preserve">
-    <value>Stirling Money</value>
+    <value>Stirling Money - Old</value>
   </data>
   <data name="AppTrialEnd_MessageBox_Content" xml:space="preserve">
     <value>The trial of this application has expired. Do you want to purchase the application now? If you choose Yes - you will be redirected to the marketplace.</value>
@@ -827,5 +827,8 @@ I take your security very seriously and all data is transmitted securely over HT
   </data>
   <data name="NoDataLabel" xml:space="preserve">
     <value />
+  </data>
+  <data name="DeprecatedMessage" xml:space="preserve">
+    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
   </data>
 </root>
