@@ -829,6 +829,6 @@ OneDrive에서 백업 된 로컬 데이터를 덮어쓰려면 복원을 누릅�
     <value />
   </data>
   <data name="DeprecatedMessage" xml:space="preserve">
-    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
+    <value>스털링의이 버전 Windows Phone 저장소에 변경 되지 않았거나 고 더 이상 업데이트 됩니다. 다운로드 하 고 설치 하는 새로운 보편적인 응용 프로그램 버전을 Windows 스토어에 스털링 돈을 위해 검색 하시기 바랍니다.</value>
   </data>
 </root>

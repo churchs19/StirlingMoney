@@ -829,6 +829,6 @@ Aprofito la vostra seguretat molt seriosament i totes les dades es transmet de f
     <value />
   </data>
   <data name="DeprecatedMessage" xml:space="preserve">
-    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
+    <value>Aquesta versió de Stirling diners s'ha recriminat degut a canvis en la botiga de Windows Phone i ja no s'actualitzarà. Si us plau cerqueu Stirling diners a la botiga de Windows descarregar i instal·lar la versió nova d'aplicació universal.</value>
   </data>
 </root>

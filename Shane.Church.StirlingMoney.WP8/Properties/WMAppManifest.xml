@@ -47,8 +47,8 @@
     <Language code="uk" />
     <Language code="vi" />
   </Languages>
-  <App xmlns="" ProductID="{71b78345-8b19-4fcd-881a-d6a2d137e522}" Title="Stirling Money" RuntimeType="Silverlight" Version="3.4.0.0" Genre="apps.normal" Author="Shane Church" Description="Manage your personal finances with this simple application to keep track of account balances, transactions, budgets, and goals. Securely synchronize your data with selected family or friends." Publisher="Shane Church" PublisherID="{ec35f097-ae6a-4553-9fd5-bcd16646bbcd}">
-    <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
+  <App xmlns="" ProductID="{71b78345-8b19-4fcd-881a-d6a2d137e522}" Title="Stirling Money - Old" RuntimeType="Silverlight" Version="3.5.0.0" Genre="apps.normal" Author="Shane Church" Description="Deprecated version - Please download the new version!&#xD;&#xA;&#xD;&#xA;Manage your personal finances with this simple application to keep track of account balances, transactions, budgets, and goals. Securely synchronize your data with selected family or friends." Publisher="Shane Church" PublisherID="{ec35f097-ae6a-4553-9fd5-bcd16646bbcd}">
+    <IconPath IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
@@ -67,7 +67,7 @@
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>Stirling Money</Title>
+          <Title>Stirling Money - Old</Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>

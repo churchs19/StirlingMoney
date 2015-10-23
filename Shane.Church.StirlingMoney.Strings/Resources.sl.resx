@@ -829,6 +829,6 @@ Vzamem vašo varnost zelo resno in vsi podatki se varno prenašajo prek HTTPS in
     <value />
   </data>
   <data name="DeprecatedMessage" xml:space="preserve">
-    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
+    <value>Ta različica Stirling denarja je zastaral zaradi sprememb v shrambi Windows Phone in ni več mogoče posodobiti. Poiščite Stirling denar v shrambi Windows prenesti in namestiti novo različico univerzalne app.</value>
   </data>
 </root>

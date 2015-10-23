@@ -829,6 +829,6 @@
     <value />
   </data>
   <data name="DeprecatedMessage" xml:space="preserve">
-    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
+    <value>Эта версия Стирлинг денег является устаревшим из-за изменений в хранилище Windows Phone и больше не будет обновляться. Пожалуйста, поиск для Стерлинг деньги в магазине Windows, чтобы загрузить и установить новую версию универсального приложения.</value>
   </data>
 </root>

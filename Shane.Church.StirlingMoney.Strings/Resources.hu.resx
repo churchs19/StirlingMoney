@@ -829,6 +829,6 @@ Koppintson a visszaállítás felülírja a helyi adatok, a másolatot a OneDriv
     <value />
   </data>
   <data name="DeprecatedMessage" xml:space="preserve">
-    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
+    <value>Ez a verzió a Stirling pénz köszönhetően megváltozik-ban Windows Phone Store már elavult, és többé nem frissíthető. Kérjük keressen Stirling pénzt a Windows Store-hoz letölt és felszerel a új univerzális app változat.</value>
   </data>
 </root>

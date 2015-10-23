@@ -823,6 +823,6 @@
     <value />
   </data>
   <data name="DeprecatedMessage" xml:space="preserve">
-    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
+    <value>此版本的斯特林钱已弃用 Windows Phone 存储区中的变化，将不再更新。请搜索斯特林钱在 Windows 应用商店下载并安装最新的通用应用程序版本。</value>
   </data>
 </root>

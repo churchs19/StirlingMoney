@@ -829,6 +829,6 @@ Ota turvallisuuden erittäin vakavasti ja kaikki tiedot on toimitettu turvallise
     <value />
   </data>
   <data name="DeprecatedMessage" xml:space="preserve">
-    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
+    <value>Tämä versio Stirling rahaa on vähentynyt, koska Windows Phone ketjuihin ja ei enää päivitetä. Etsi Stirling rahaa ladata ja asentaa uusi universal-sovellus-versio Windows-kauppa.</value>
   </data>
 </root>

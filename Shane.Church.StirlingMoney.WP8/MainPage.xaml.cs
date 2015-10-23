@@ -106,6 +106,10 @@ namespace Shane.Church.StirlingMoney.WP
 			{
 				this.DataContext = _model;
 				this.PivotMain.Visibility = System.Windows.Visibility.Visible;
+				if (!ApplicationUsageHelper.PreviousRunDate.HasValue || (ApplicationUsageHelper.PreviousRunDate.HasValue && (DateTime.Today - ApplicationUsageHelper.PreviousRunDate) >= new TimeSpan(14, 0, 0, 0)))
+				{
+					MessageBox.Show(Strings.Resources.DeprecatedMessage, Strings.Resources.AppTitle, MessageBoxButton.OK);
+				}
 			});
 		}
 

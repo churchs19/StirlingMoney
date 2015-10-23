@@ -829,6 +829,6 @@ Es ļoti nopietni jūsu drošību un visi dati ir droši pārraidīts pa HTTPS u
     <value />
   </data>
   <data name="DeprecatedMessage" xml:space="preserve">
-    <value>This version of Stirling Money has been deprecated due to changes in the Windows Phone Store and will no longer be updated. Please search for Stirling Money in the Windows Store to download and install the new universal app version.</value>
+    <value>Šajā versijā Stirling naudu sakarā ar izmaiņām Windows Phone krātuvē ir novecojusi un vairs netiek atjaunināta. Lūdzu meklējiet Stirling naudu, lai lejupielādētu un instalētu jauno universālo app versiju Windows krātuvē.</value>
   </data>
 </root>
