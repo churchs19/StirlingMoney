@@ -1,0 +1,2 @@
+MainPackage=C:\projects\StirlingMoney\Shane.Church.StirlingMoney.UWP\bin\ARM\Debug\Shane.Church.StirlingMoney.UWP_5.0.0.0_ARM_Debug.appx
+SymbolPackage=C:\projects\StirlingMoney\Shane.Church.StirlingMoney.UWP\AppPackages\Shane.Church.StirlingMoney.UWP_5.0.0.0_Debug_Test\Shane.Church.StirlingMoney.UWP_5.0.0.0_ARM_Debug.appxsym
