@@ -13,7 +13,7 @@ namespace Shane.Church.StirlingMoney.Core.UWP.Services
         {
             get
             {
-                throw new NotImplementedException();
+                return false;
             }
         }
 
@@ -21,18 +21,19 @@ namespace Shane.Church.StirlingMoney.Core.UWP.Services
         {
             get
             {
-                throw new NotImplementedException();
+//                throw new NotImplementedException();
+                return false;
             }
         }
 
         public void RemoveAgent()
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
 
         public void StartAgent()
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
     }
 }
