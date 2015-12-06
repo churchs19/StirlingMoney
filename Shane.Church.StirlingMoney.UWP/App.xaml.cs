@@ -14,6 +14,13 @@ namespace Shane.Church.StirlingMoney.UWP
     /// </summary>
     sealed partial class App : Application
     {
+        // Locale to force CurrentCulture to in InitializeLanguage(). 
+        // Use "qps-PLOC" to deploy pseudolocalized strings. 
+        // Use "" to let user Phone Language selection determine locale. 
+        public static String appForceCulture = "";
+
+        public bool IsLoggedIn { get; set; }
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -21,6 +28,9 @@ namespace Shane.Church.StirlingMoney.UWP
         public App()
         {
             this.InitializeComponent();
+
+            IoCBootstrapper.Bootstrap();
+
             this.Suspending += OnSuspending;
         }
 
@@ -34,9 +44,10 @@ namespace Shane.Church.StirlingMoney.UWP
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
+                //this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+            Core.Sqlite.StirlingMoneyDatabaseInstance.Initialize(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), Windows.Storage.ApplicationData.Current.LocalFolder.Path);
 
             AppShell shell = Window.Current.Content as AppShell;
 
@@ -65,7 +76,7 @@ namespace Shane.Church.StirlingMoney.UWP
             {
                 // When the navigation stack isn't restored, navigate to the first page
                 // suppressing the initial entrance animation.
-                shell.AppFrame.Navigate(typeof(Views.Page1), e.Arguments, new Windows.UI.Xaml.Media.Animation.SuppressNavigationTransitionInfo());
+                shell.AppFrame.Navigate(typeof(Views.MainPage), e.Arguments, new Windows.UI.Xaml.Media.Animation.SuppressNavigationTransitionInfo());
             }
 
             // Ensure the current window is active

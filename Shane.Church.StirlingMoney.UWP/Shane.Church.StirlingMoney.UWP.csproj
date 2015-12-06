@@ -118,6 +118,7 @@
     <Compile Include="Controls\PageHeader.xaml.cs">
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IocBootstrapper.cs" />
     <Compile Include="LiveConfig.cs" />
     <Compile Include="MicrosoftLiveUtils.cs" />
     <Compile Include="MobileServiceConfig.cs" />

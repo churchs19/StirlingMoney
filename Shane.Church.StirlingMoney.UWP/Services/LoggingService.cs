@@ -11,12 +11,12 @@ namespace Shane.Church.StirlingMoney.UWP.Services
     {
         public void LogException(Exception ex, string message = null)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void LogMessage(string message)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

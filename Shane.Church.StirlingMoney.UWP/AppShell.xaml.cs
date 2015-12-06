@@ -27,26 +27,22 @@ namespace Shane.Church.StirlingMoney.UWP
             {
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Contact,
-                    Label = "Page1",
-                    DestinationPage = typeof(Views.Page1)
+                    Label = "Accounts",
+                    DestinationPage = typeof(Views.MainPage)
                 },
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Edit,
-                    Label = "Page2",
+                    Label = "Budgets",
                     DestinationPage = typeof(Views.Page2)
                 },
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Favorite,
-                    Label = "Page3",
+                    Label = "Goals",
                     DestinationPage = typeof(Views.Page3)
                 },
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Link,
-                    Label = "Download Source Code",
+                    Label = "Reports",
                     DestinationPage = typeof(Uri),
                     Arguments = "http://scottge.net/product/uwp-windows-10-sample-navigation-panes",
                 }
@@ -171,7 +167,7 @@ namespace Shane.Church.StirlingMoney.UWP
         {
             if (this.AppFrame.CurrentSourcePageType != typeof(SettingsPage))
             {
-                this.AppFrame.Navigate(typeof(SettingsPage), null);
+                this.AppFrame.Navigate(typeof(Views.SettingsPage), null);
             }
         }
 
