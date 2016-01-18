@@ -9,3 +9,8 @@ _UpgradeReport_Files
 /UpgradeLog.htm
 *.vssscc
 /Shane.Church.StirlingMoney.sln.ide
+.vs/
+Shane.Church.StirlingMoney.UWP/AppPackages/
+Shane.Church.StirlingMoney.Core.UWP/project.lock.json
+Shane.Church.StirlingMoney.UWP/project.lock.json
+Shane.Church.Utility.UWP/project.lock.json
