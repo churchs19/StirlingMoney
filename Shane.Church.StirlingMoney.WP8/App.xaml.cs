@@ -258,9 +258,9 @@ namespace Shane.Church.StirlingMoney.WP
             FlurryWP8SDK.Api.StartSession(FlurryConfig.ApiKey);
             FlurryWP8SDK.Api.SetVersion(versionAttrib.Version.ToString());
 
-            //SterlingActivation.ActivateDatabase();
+            Core.SterlingDb.SterlingActivation.ActivateDatabase();
 
-            Core.Sqlite.StirlingMoneyDatabaseInstance.Initialize(new SQLite.Net.Platform.WindowsPhone8.SQLitePlatformWP8(), Windows.Storage.ApplicationData.Current.LocalFolder.Path);
+            //Core.Sqlite.StirlingMoneyDatabaseInstance.Initialize(new SQLite.Net.Platform.WindowsPhone8.SQLitePlatformWP8(), Windows.Storage.ApplicationData.Current.LocalFolder.Path);
 
             InitializeBackgroundAgent();
 #if DEBUG
@@ -283,7 +283,7 @@ namespace Shane.Church.StirlingMoney.WP
                 ApplicationUsageHelper.OnApplicationActivated();
             }
 
-            //SterlingActivation.ActivateDatabase();
+            Core.SterlingDb.SterlingActivation.ActivateDatabase();
 
 #if DEBUG
             DebugUtility.DebugOutputMemoryUsage("Application_Activated");

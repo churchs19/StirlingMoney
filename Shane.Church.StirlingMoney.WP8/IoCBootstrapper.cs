@@ -41,14 +41,19 @@ namespace Shane.Church.StirlingMoney.WP
             //KernelService.Kernel.Rebind<Shane.Church.StirlingMoney.Core.WP8.Agent.Services.AgentNavigationService>().As<INavigationService>());
 #endif
             ContainerService.Container.Configure(c => c.Export<PhoneSettingsService>().As<ISettingsService>().UsingLifestyle(new Grace.DependencyInjection.Lifestyle.SingletonLifestyle()));
-            ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.AccountRepository>().As<IDataRepository<Core.Data.Account, Guid>>());
-            ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.AppSyncUserRepository>().As<IDataRepository<Core.Data.AppSyncUser, string>>());
-            ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.BudgetRepository>().As<IDataRepository<Core.Data.Budget, Guid>>());
-            ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.CategoryRepository>().As<IDataRepository<Core.Data.Category, Guid>>());
-            ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.GoalRepository>().As<IDataRepository<Core.Data.Goal, Guid>>());
-            ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.TransactionRepository>().As<IDataRepository<Core.Data.Transaction, Guid>>().As<ITransactionSum>().As<ITransactionSearch>());
-//            ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.SettingRepository>().As<IDataRepository<Core.Data.Setting, string>>());
-//            ContainerService.Container.Configure(c => c.Export<TombstoneRepository>().As<IDataRepository<Core.Data.Tombstone, string>>());
+            ContainerService.Container.Configure(c => c.Export<Core.SterlingDb.Repositories.AccountRepository>().As<IDataRepository<Core.Data.Account, Guid>>());
+            ContainerService.Container.Configure(c => c.Export<Core.SterlingDb.Repositories.AppSyncUserRepository>().As<IDataRepository<Core.Data.AppSyncUser, string>>());
+            ContainerService.Container.Configure(c => c.Export<Core.SterlingDb.Repositories.BudgetRepository>().As<IDataRepository<Core.Data.Budget, Guid>>());
+            ContainerService.Container.Configure(c => c.Export<Core.SterlingDb.Repositories.CategoryRepository>().As<IDataRepository<Core.Data.Category, Guid>>());
+            ContainerService.Container.Configure(c => c.Export<Core.SterlingDb.Repositories.GoalRepository>().As<IDataRepository<Core.Data.Goal, Guid>>());
+            ContainerService.Container.Configure(c => c.Export<Core.SterlingDb.Repositories.TransactionRepository>().As<IDataRepository<Core.Data.Transaction, Guid>>().As<ITransactionSum>().As<ITransactionSearch>());
+            //ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.AccountRepository>().As<IDataRepository<Core.Data.Account, Guid>>());
+            //ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.AppSyncUserRepository>().As<IDataRepository<Core.Data.AppSyncUser, string>>());
+            //ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.BudgetRepository>().As<IDataRepository<Core.Data.Budget, Guid>>());
+            //ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.CategoryRepository>().As<IDataRepository<Core.Data.Category, Guid>>());
+            //ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.GoalRepository>().As<IDataRepository<Core.Data.Goal, Guid>>());
+            //ContainerService.Container.Configure(c => c.Export<Core.Sqlite.Repositories.TransactionRepository>().As<IDataRepository<Core.Data.Transaction, Guid>>().As<ITransactionSum>().As<ITransactionSearch>());
+
             ContainerService.Container.Configure(c => c.Export<WP8AccountTileService>().As<ITileService<Core.Data.Account, Guid>>().UsingLifestyle(new Grace.DependencyInjection.Lifestyle.SingletonLifestyle()));
             //			KernelService.Kernel.Rebind<AccountTileViewModel>().As<AccountTileViewModel>());
             ContainerService.Container.Configure(c=> c.ExportInstance<IMobileServiceClient>((scope, context) =>
@@ -64,10 +69,12 @@ namespace Shane.Church.StirlingMoney.WP
                 return client;
             }));
             ContainerService.Container.Configure(c => c.Export<WP8SyncService>().As<SyncService>());
-            //ContainerService.Container.Configure(c => c.Export<Wintellect.Sterling.WP8.PlatformAdapter>().As<ISterlingPlatformAdapter>());
-            //ContainerService.Container.Configure(c => c.ExportInstance<Wintellect.Sterling.WP8.IsolatedStorage.IsolatedStorageDriver>((scope, context) => { return new Wintellect.Sterling.WP8.IsolatedStorage.IsolatedStorageDriver(); }).As<ISterlingDriver>());
-            //ContainerService.Container.Configure(c => c.Export<StirlingMoneyDatabaseInstance>().As<ISterlingDatabaseInstance>());
-            //ContainerService.Container.Configure(c => c.Export<SterlingEngine>().UsingLifestyle(new Grace.DependencyInjection.Lifestyle.SingletonLifestyle()));
+
+            ContainerService.Container.Configure(c => c.Export<Wintellect.Sterling.WP8.PlatformAdapter>().As<ISterlingPlatformAdapter>());
+            ContainerService.Container.Configure(c => c.ExportInstance<Wintellect.Sterling.WP8.IsolatedStorage.IsolatedStorageDriver>((scope, context) => { return new Wintellect.Sterling.WP8.IsolatedStorage.IsolatedStorageDriver(); }).As<ISterlingDriver>());
+            ContainerService.Container.Configure(c => c.Export<Core.SterlingDb.StirlingMoneyDatabaseInstance>().As<ISterlingDatabaseInstance>());
+            ContainerService.Container.Configure(c => c.Export<SterlingEngine>().UsingLifestyle(new Grace.DependencyInjection.Lifestyle.SingletonLifestyle()));
+
             ContainerService.Container.Configure(c => c.Export<LicenseInformation>().UsingLifestyle(new Grace.DependencyInjection.Lifestyle.SingletonLifestyle()));
 #if !AGENT
             ContainerService.Container.Configure(c => c.ExportInstance<RadTrialApplicationReminder>((scope, context) =>

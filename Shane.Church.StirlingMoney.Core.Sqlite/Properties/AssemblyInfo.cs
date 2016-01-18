@@ -12,3 +12,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Shane.Church.StirlingMoney.Core.Sqlite")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: InternalsVisibleTo("Shane.Church.StirlingMoney.Data")]

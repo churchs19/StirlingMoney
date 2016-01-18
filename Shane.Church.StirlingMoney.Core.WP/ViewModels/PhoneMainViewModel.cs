@@ -24,8 +24,12 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 			{
 				using (IsolatedStorageFile store = IsolatedStorageFile.GetUserStoreForApplication())
 				{
-					var dbVersion = 3;
+					var dbVersion = 4;
 					var dbFile = "";
+                    if (store.DirectoryExists("Sterling"))
+                    {
+                        dbVersion = 3;
+                    }
 					if (store.FileExists(StirlingMoney.Data.v2.StirlingMoneyDataContext.DBFileName))
 					{
 						dbVersion = 2;

@@ -11,7 +11,59 @@ namespace Shane.Church.StirlingMoney.Data.Update
 {
 	public static class UpdateController
 	{
-		public static async Task UpgradeV2(string connectionString)
+        public static async Task UpgradeSterlingToSqlite()
+        {
+            await Task.Run(() =>
+            {
+                var engine = ContainerService.Container.Locate<SterlingEngine>();
+                var db = engine.SterlingDatabase.GetDatabase("Money");
+
+                using (var sqlDb = Core.Sqlite.StirlingMoneyDatabaseInstance.GetDb())
+                {
+                    foreach (Core.Data.Category item in db.Query<Category, bool, Guid>("IsDeleted")
+                                .Where(it => it.Index == false)
+                                .Select(it => it.Value.Result)
+                                )
+                    {
+                        sqlDb.Insert(item);
+                    }
+
+                    foreach (Core.Data.Account item in db.Query<Account, bool, Guid>("IsDeleted")
+                                .Where(it => it.Index == false)
+                                .Select(it => it.Value.Result)
+                                )
+                    {
+                        sqlDb.Insert(item);
+                    }
+
+                    foreach (Core.Data.Budget item in db.Query<Budget, bool, Guid>("IsDeleted")
+                                .Where(it => it.Index == false)
+                                .Select(it => it.Value.Result)
+                                )
+                    {
+                        sqlDb.Insert(item);
+                    }
+
+                    foreach (Core.Data.Goal item in db.Query<Goal, bool, Guid>("IsDeleted")
+                                .Where(it => it.Index == false)
+                                .Select(it => it.Value.Result)
+                                )
+                    {
+                        sqlDb.Insert(item);
+                    }
+
+                    foreach (Core.Data.Transaction item in db.Query<Transaction, bool, Guid>("IsDeleted")
+                                .Where(it => it.Index == false)
+                                .Select(it => it.Value.Result)
+                                )
+                    {
+                        sqlDb.Insert(item);
+                    }
+                }
+            });
+        }
+
+        public static async Task UpgradeV2(string connectionString)
 		{
 			using (var context = new StirlingMoney.Data.v2.StirlingMoneyDataContext(connectionString))
 			{
