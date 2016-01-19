@@ -17,6 +17,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
             if(dbVersion == 3)
             {
                 await Shane.Church.StirlingMoney.Data.Update.UpdateController.UpgradeSterlingToSqlite();
+                DeleteFolder(fileName);
             }
 			else if (dbVersion == 2)
 			{
@@ -44,5 +45,27 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 				catch { }
 			}
 		}
+
+        private void DeleteFolder(string folder)
+        {
+            using (IsolatedStorageFile store = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                try
+                {
+                    var files = store.GetFileNames(folder + "/*");
+                    foreach(var file in files)
+                    {
+                        DeleteFile(folder + "/" + file);
+                    }
+                    var folders = store.GetDirectoryNames(folder + "/*");
+                    foreach(var subfolder in folders)
+                    {
+                        DeleteFolder(folder + "/" + subfolder);
+                    }
+                    store.DeleteDirectory(folder);
+                }
+                catch { }
+            }
+        }
 	}
 }

@@ -29,6 +29,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
                     if (store.DirectoryExists("Sterling"))
                     {
                         dbVersion = 3;
+                        dbFile = "Sterling";
                     }
 					if (store.FileExists(StirlingMoney.Data.v2.StirlingMoneyDataContext.DBFileName))
 					{

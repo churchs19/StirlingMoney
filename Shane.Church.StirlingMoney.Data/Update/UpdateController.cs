@@ -21,42 +21,42 @@ namespace Shane.Church.StirlingMoney.Data.Update
 
                 using (var sqlDb = Core.Sqlite.StirlingMoneyDatabaseInstance.GetDb())
                 {
-                    foreach (Core.Data.Category item in db.Query<Category, bool, Guid>("IsDeleted")
+                    var categories = db.Query<Category, bool, Guid>("IsDeleted")
                                 .Where(it => it.Index == false)
-                                .Select(it => it.Value.Result)
-                                )
+                                .Select(it => it.Value.Result).ToList();
+                    foreach (Core.Data.Category item in categories)
+                    {
+                        sqlDb.InsertOrReplace(item);
+                    }
+
+                    var accounts = db.Query<Account, bool, Guid>("IsDeleted")
+                                .Where(it => it.Index == false)
+                                .Select(it => it.Value.Result).ToList();
+                    foreach (Core.Data.Account item in accounts)
                     {
                         sqlDb.Insert(item);
                     }
 
-                    foreach (Core.Data.Account item in db.Query<Account, bool, Guid>("IsDeleted")
-                                .Where(it => it.Index == false)
-                                .Select(it => it.Value.Result)
-                                )
+                    var budgets = db.Query<Budget, bool, Guid>("IsDeleted")
+                                                    .Where(it => it.Index == false)
+                                                    .Select(it => it.Value.Result).ToList();
+                    foreach (Core.Data.Budget item in budgets)
                     {
                         sqlDb.Insert(item);
                     }
 
-                    foreach (Core.Data.Budget item in db.Query<Budget, bool, Guid>("IsDeleted")
+                    var goals = db.Query<Goal, bool, Guid>("IsDeleted")
                                 .Where(it => it.Index == false)
-                                .Select(it => it.Value.Result)
-                                )
+                                .Select(it => it.Value.Result).ToList();
+                    foreach (Core.Data.Goal item in goals)
                     {
                         sqlDb.Insert(item);
                     }
 
-                    foreach (Core.Data.Goal item in db.Query<Goal, bool, Guid>("IsDeleted")
+                    var transactions = db.Query<Transaction, bool, Guid>("IsDeleted")
                                 .Where(it => it.Index == false)
-                                .Select(it => it.Value.Result)
-                                )
-                    {
-                        sqlDb.Insert(item);
-                    }
-
-                    foreach (Core.Data.Transaction item in db.Query<Transaction, bool, Guid>("IsDeleted")
-                                .Where(it => it.Index == false)
-                                .Select(it => it.Value.Result)
-                                )
+                                .Select(it => it.Value.Result).ToList();
+                    foreach (Core.Data.Transaction item in transactions)
                     {
                         sqlDb.Insert(item);
                     }
