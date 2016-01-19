@@ -219,6 +219,10 @@
       <Project>{698f2865-57f4-40e5-8a3c-3288df5e8610}</Project>
       <Name>Shane.Church.StirlingMoney.Core.Sqlite</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shane.Church.StirlingMoney.Core.SterlingDb\Shane.Church.StirlingMoney.Core.SterlingDb.csproj">
+      <Project>{7edfe360-eefa-42dc-a5da-dceffa32defe}</Project>
+      <Name>Shane.Church.StirlingMoney.Core.SterlingDb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shane.Church.StirlingMoney.Core\Shane.Church.StirlingMoney.Core.csproj">
       <Project>{4E5D8824-CC49-41A4-BC97-3E5BC5378754}</Project>
       <Name>Shane.Church.StirlingMoney.Core</Name>

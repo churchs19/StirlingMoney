@@ -15,6 +15,7 @@ namespace Shane.Church.StirlingMoney.Data.Update
         {
             await Task.Run(() =>
             {
+                Shane.Church.StirlingMoney.Core.SterlingDb.SterlingActivation.ActivateDatabase();
                 var engine = ContainerService.Container.Locate<SterlingEngine>();
                 var db = engine.SterlingDatabase.GetDatabase("Money");
 

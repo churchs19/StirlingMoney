@@ -41,7 +41,7 @@ namespace Shane.Church.StirlingMoney.Core.WP.ViewModels
 						dbFile = StirlingMoney.Data.v1.StirlingMoneyDataContext.DBFileName;
 					}
 
-					if (dbVersion != 3)
+					if (dbVersion != 4)
 					{
 						IUpgradeDBService upgrade = ContainerService.Container.Locate<IUpgradeDBService>();
 

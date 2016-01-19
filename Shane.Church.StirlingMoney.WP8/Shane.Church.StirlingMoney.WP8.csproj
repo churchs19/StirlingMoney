@@ -287,13 +287,27 @@
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\BadgeLogo.png" />
-    <Content Include="Assets\Logo.png" />
-    <Content Include="Assets\SplashScreen.png" />
-    <Content Include="Assets\SquareTile150x150.png" />
-    <Content Include="Assets\SquareTile71x71.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\WideLogo.png" />
+    <Content Include="Assets\BadgeLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SplashScreen.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SquareTile150x150.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SquareTile71x71.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\StoreLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\WideLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -452,7 +466,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\ApplicationIcon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

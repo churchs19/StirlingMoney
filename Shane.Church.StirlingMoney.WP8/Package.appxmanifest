@@ -1,51 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-
-  <Identity Name="3f28e757-9698-4f30-a6e0-90bd17d792b9"
-            Publisher="CN=Shane"
-            Version="1.0.0.0" />
-
-  <mp:PhoneIdentity PhoneProductId="71b78345-8b19-4fcd-881a-d6a2d137e522" PhonePublisherId="ec35f097-ae6a-4553-9fd5-bcd16646bbcd"/>
-
+  <Identity Name="5c4e9170-66e9-4da9-b643-fae58841754e" Publisher="CN=Shane" Version="5.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="5c4e9170-66e9-4da9-b643-fae58841754e" PhonePublisherId="ec35f097-ae6a-4553-9fd5-bcd16646bbcd" />
   <Properties>
-    <DisplayName>Shane.Church.StirlingMoney.WP8</DisplayName>
-    <PublisherDisplayName>Shane</PublisherDisplayName>
+    <DisplayName>Stirling Money Dev</DisplayName>
+    <PublisherDisplayName>Shane Church</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.3.1</OSMinVersion>
     <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
   </Prerequisites>
-
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="x71b78345y8b19y4fcdy881ayd6a2d137e522x"
-        Executable="AGHost.exe"
-        EntryPoint="MainPage.xaml">
-      <m3:VisualElements
-          DisplayName="Shane.Church.StirlingMoney.WP8"
-          Square150x150Logo="Assets\SquareTile150x150.png"
-          Square44x44Logo="Assets\Logo.png"
-          Description="Shane.Church.StirlingMoney.WP8"
-          ForegroundText="light"
-          BackgroundColor="#464646">
-        <m3:DefaultTile Square71x71Logo="Assets\SquareTile71x71.png"/>
-        <m3:SplashScreen Image="SplashScreenImage.jpg" />
+    <Application Id="x71b78345y8b19y4fcdy881ayd6a2d137e522x" Executable="AGHost.exe" EntryPoint="MainPage.xaml">
+      <m3:VisualElements DisplayName="Stirling Money Dev" Square150x150Logo="Assets\SquareTile150x150.png" Square44x44Logo="Assets\Logo.png" Description="Manage your personal finances with this simple application to keep track of account balances, transactions, budgets, and goals. Securely synchronize your data with selected family or friends." ForegroundText="light" BackgroundColor="#464646" ToastCapable="false">
+        <m3:DefaultTile Square71x71Logo="Assets\SquareTile71x71.png">
+        </m3:DefaultTile>
       </m3:VisualElements>
-      <Extensions>
-        <Extension Category="windows.backgroundTasks" EntryPoint="AgHost.BackgroundTask">
-          <BackgroundTasks>
-          <Task Type="systemEvent" />
-          </BackgroundTasks>
-        </Extension>
-      </Extensions>
     </Application>
   </Applications>
   <Capabilities>
+    <Capability Name="internetClientServer" />
+    <Capability Name="musicLibrary" />
   </Capabilities>
   <Extensions>
     <Extension Category="windows.activatableClass.inProcessServer">
