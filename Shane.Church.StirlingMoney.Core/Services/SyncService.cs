@@ -135,7 +135,7 @@ namespace Shane.Church.StirlingMoney.Core.Services
 
 							DateTimeOffset lastSuccessfulSyncDate = _settingsService.LoadSetting<DateTimeOffset>("LastSuccessfulSync");
 
-                            var filterString = string.Format("[EditDateTime] >= {0}", lastSuccessfulSyncDate.Ticks);
+                            var filterString = string.Format("[EditDateTime] >= {0}", lastSuccessfulSyncDate.UtcTicks);
 
                             var localCategories = await _categories.GetFilteredEntriesAsync(filterString, true);
 							var localAccounts = await _accounts.GetFilteredEntriesAsync(filterString, true);

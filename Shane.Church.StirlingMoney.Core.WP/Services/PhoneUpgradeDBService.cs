@@ -1,4 +1,5 @@
 ﻿using Shane.Church.StirlingMoney.Core.Services;
+using System;
 using System.IO.IsolatedStorage;
 using System.Threading.Tasks;
 
@@ -6,9 +7,15 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 {
 	public class PhoneUpgradeDBService : IUpgradeDBService
 	{
-		public PhoneUpgradeDBService()
-		{
+        private ISettingsService _settings;
+        private SyncService _sync;
 
+		public PhoneUpgradeDBService(ISettingsService settings, SyncService sync)
+		{
+            if (settings == null) throw new ArgumentNullException("settings");
+            _settings = settings;
+            if (sync == null) throw new ArgumentNullException("sync");
+            _sync = sync;
 		}
 
 		public async Task UpgradeDatabase(int dbVersion, string fileName)
@@ -16,7 +23,14 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 			var connectionStringPrefix = "Data Source=isostore:/";
             if(dbVersion == 3)
             {
-                await Shane.Church.StirlingMoney.Data.Update.UpdateController.UpgradeSterlingToSqlite();
+                if (_settings.LoadSetting<bool>("EnableSync"))
+                {
+                    await _sync.Sync();
+                }
+                else
+                {
+                    await Shane.Church.StirlingMoney.Data.Update.UpdateController.UpgradeSterlingToSqlite();
+                }
                 DeleteFolder(fileName);
             }
 			else if (dbVersion == 2)
