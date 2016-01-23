@@ -172,9 +172,18 @@ namespace Shane.Church.StirlingMoney.Core.ViewModels
 			Account a = await _accountRepository.GetEntryAsync(accountId);
 			if (a != null)
 			{
-				LoadData(a);
+				LoadData(a, updateTile);
 			}
 		}
+
+        public virtual void LoadDataSync(Guid accountId, bool updateTile = false)
+        {
+            Account a = _accountRepository.GetEntry(accountId);
+            if(a!= null)
+            {
+                LoadData(a, updateTile);
+            }
+        }
 
 		public virtual void LoadData(Account a, bool updateTile = false)
 		{

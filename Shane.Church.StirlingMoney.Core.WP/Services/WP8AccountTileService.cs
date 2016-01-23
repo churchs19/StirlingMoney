@@ -101,29 +101,33 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 		private RadFlipTileData GetWP8TileData(Guid id)
 		{
 			var model = ContainerService.Container.Locate<AccountTileViewModel>();
-			if (model.LoadData(id).Wait(1000))
-			{
+            try
+            {
+                model.LoadDataSync(id);
 				RadFlipTileData tileData = null;
-				SmallTile small = new SmallTile() { DataContext = model };
-				MediumTileFront medFront = new MediumTileFront() { DataContext = model };
-				MediumTileBack medBack = new MediumTileBack() { DataContext = model };
-				WideTileFront wideFront = new WideTileFront() { DataContext = model };
+                SmallTile small = new SmallTile() { DataContext = model };
+                MediumTileFront medFront = new MediumTileFront() { DataContext = model };
+                MediumTileBack medBack = new MediumTileBack() { DataContext = model };
+                WideTileFront wideFront = new WideTileFront() { DataContext = model };
 
-				tileData = new RadFlipTileData()
-				{
-					Title = model.AccountName,
-					BackTitle = model.AccountName,
-					SmallVisualElement = small,
-					VisualElement = medFront,
-					BackVisualElement = medBack,
-					WideVisualElement = wideFront,
+                tileData = new RadFlipTileData()
+                {
+                    Title = model.AccountName,
+                    BackTitle = model.AccountName,
+                    SmallVisualElement = small,
+                    VisualElement = medFront,
+                    BackVisualElement = medBack,
+                    WideVisualElement = wideFront,
                     IsTransparencySupported = true
-				};
+                };
 
-				return tileData;
-			}
-			else
-				return null;
+                return tileData;
+            }
+            catch (Exception ex)
+            {
+                DebugUtility.SaveDiagnosticException(ex);
+                return null;
+            }
 		}
 
 		public void DeleteTile(Guid Id)
