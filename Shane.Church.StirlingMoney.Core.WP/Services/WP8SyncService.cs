@@ -9,6 +9,7 @@ using Shane.Church.StirlingMoney.Core.Repositories;
 using Shane.Church.StirlingMoney.Core.Services;
 using System;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Wintellect.Sterling.Core;
 
 namespace Shane.Church.StirlingMoney.Core.WP.Services
@@ -99,12 +100,12 @@ namespace Shane.Church.StirlingMoney.Core.WP.Services
 					LiveOperationResult meResult = await client.GetAsync("me");
 					JObject token = JObject.Parse("{\"authenticationToken\": \"" + _liveUtils.Session.AuthenticationToken + "\"}");
 					_settingsService.SaveSetting<string>(token.ToString(), "AuthenticationToken");
-					dynamic result = meResult.Result;
+					//meResult.Result["emails"]
 
-					if (result.emails != null)
+					if (meResult.Result["emails"] != null)
 					{
-						this.Email = result.emails.account;
-						_settingsService.SaveSetting<string>(this.Email, "Email");
+                        this.Email = (string)((IDictionary<string,object>)meResult.Result["emails"])["account"];
+                        _settingsService.SaveSetting<string>(this.Email, "Email");
 					}
 					this.FirstName = meResult.Result["first_name"].ToString();
 					_settingsService.SaveSetting<string>(this.FirstName, "FirstName");
